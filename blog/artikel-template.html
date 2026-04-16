@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[ARTIKEL META DESCRIPTION]">
+  <title>[ARTIKEL TITEL] – Wildgewachsen</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="../assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+      </a>
+      <nav class="header__nav">
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/#newsletter" class="header__cta">Newsletter</a>
+      </nav>
+      <button class="header__burger" onclick="toggleMobileNav()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobile-nav">
+      <a href="/ueber-uns.html">Über uns</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/unsere-reise.html">Unsere Reise</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="/#newsletter">Newsletter</a>
+    </nav>
+  </header>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="container">
+      <span class="article-header__category">[KATEGORIE]</span>
+      <h1>[ARTIKEL TITEL]</h1>
+      <div class="article-header__meta">
+        <span>[DATUM]</span>
+        <span>[X] Min. Lesezeit</span>
+        <span>Stand: [MONAT JAHR]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Body -->
+  <article class="article-body">
+
+    <!-- Inhaltsverzeichnis (bei Evergreen-Posts) -->
+    <div class="article-toc">
+      <div class="article-toc__title">Inhalt</div>
+      <a href="#abschnitt-1">[Abschnitt 1]</a>
+      <a href="#abschnitt-2">[Abschnitt 2]</a>
+      <a href="#abschnitt-3">[Abschnitt 3]</a>
+      <a href="#fazit">Fazit</a>
+    </div>
+
+    <!-- Kurzantwort / Intro -->
+    <p>
+      [4-8 Zeilen: Was bekommt der Leser? Für wen gilt es? Welche Annahmen?
+      Direkt zum Punkt – der Leser soll sofort merken dass er richtig ist.]
+    </p>
+
+    <!-- Abschnitt 1 -->
+    <h2 id="abschnitt-1">[Abschnitt 1 Überschrift]</h2>
+    <p>[Inhalt]</p>
+
+    <!-- Info-Box Beispiel -->
+    <div class="info-box">
+      <div class="info-box__title">Gut zu wissen</div>
+      <p>[Fakten, Zahlen, offizielle Infos – klar getrennt von persönlicher Meinung]</p>
+    </div>
+
+    <!-- Abschnitt 2 -->
+    <h2 id="abschnitt-2">[Abschnitt 2 Überschrift]</h2>
+    <p>[Inhalt]</p>
+
+    <!-- Zitat/persönliche Einschätzung -->
+    <blockquote>
+      [Persönliche Einschätzung oder Erfahrung – klar als subjektiv markiert]
+    </blockquote>
+
+    <!-- Abschnitt 3 -->
+    <h2 id="abschnitt-3">[Abschnitt 3 Überschrift]</h2>
+    <p>[Inhalt]</p>
+
+    <!-- Fazit -->
+    <h2 id="fazit">Fazit</h2>
+    <p>[Zusammenfassung + ggf. nächster Artikel als Verweis]</p>
+
+    <!-- Trust Box (YMYL-Pflicht) -->
+    <div class="trust-box">
+      <strong>Hinweis:</strong> Dieser Artikel basiert auf unseren persönlichen Erfahrungen
+      und stellt keine Rechts- oder Migrationsberatung dar. Für verbindliche Informationen
+      wende dich an die zuständigen Behörden oder einen qualifizierten Berater.
+      <br><br>
+      <strong>Stand:</strong> [Monat Jahr] · <strong>Quellen:</strong> [Links zu offiziellen Stellen]
+    </div>
+
+    <!-- Autor-Box -->
+    <div class="author-box">
+      <div class="author-box__avatar">
+        <img src="../assets/images/author.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="author-box__name">Wildgewachsen</div>
+        <div class="author-box__bio">
+          Eine deutsche Familie dokumentiert ihre Auswanderung nach Byron Bay, Australien.
+          Koch, Innenarchitektin, zwei Kinder – und ein Plan.
+          <a href="/ueber-uns.html" style="color: var(--forest);">Mehr über uns</a>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- Verwandte Artikel -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow">Weiterlesen</span>
+        <h2>Das könnte dich auch interessieren</h2>
+      </div>
+      <div class="articles-grid stagger-children">
+        <!-- 3 verwandte Artikel-Cards hier -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--dark" id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <span class="eyebrow" style="color: var(--sage-light);">Hat dir das geholfen?</span>
+        <h2>Wir schicken dir Updates</h2>
+        <p style="color: var(--sage-light);">Neue Artikel, echte Erfahrungen, konkrete Zahlen – direkt in dein Postfach.</p>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="Deine E-Mail-Adresse" required>
+          <button type="submit" class="btn btn--primary-inverted">Abonnieren</button>
+        </form>
+        <p class="newsletter__hint">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+        <p>Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Seiten</h4>
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="footer__social">
+          <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YT</a>
+          <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener">IG</a>
+        </div>
+      </div>
+      <div class="footer__newsletter-mini">
+        <h4>Newsletter</h4>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="E-Mail" required>
+          <button type="submit" class="btn btn--primary-inverted">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Wildgewachsen</span>
+      <div>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/impressum.html#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

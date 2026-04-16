@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontaktiere uns – Fragen, Ideen oder Kooperationsanfragen rund um unsere Auswanderung nach Australien.">
+  <title>Kontakt – Wildgewachsen</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+      </a>
+      <nav class="header__nav">
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/#newsletter" class="header__cta">Newsletter</a>
+      </nav>
+      <button class="header__burger" onclick="toggleMobileNav()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobile-nav">
+      <a href="/ueber-uns.html">Über uns</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/unsere-reise.html">Unsere Reise</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="/#newsletter">Newsletter</a>
+    </nav>
+  </header>
+
+  <!-- Kontakt -->
+  <section class="section">
+    <div class="container" style="max-width: 720px;">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow">Schreib uns</span>
+        <h1>Kontakt</h1>
+        <p style="color: var(--text-muted); max-width: 480px; margin: 12px auto 0;">
+          Fragen, Ideen, Kooperationen – wir freuen uns von dir zu hören.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+
+        <!-- Kontaktformular -->
+        <div>
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Dein Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" placeholder="Was möchtest du uns sagen?" required></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="Neue Nachricht über wildgewachsen-australien.de">
+            <button type="submit" class="btn btn--primary">Nachricht senden</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h3 style="margin-bottom: 16px;">Direkt erreichen</h3>
+          <p style="margin-bottom: 24px;">
+            <strong>E-Mail:</strong><br>
+            <a href="mailto:info@wildgewachsen-australien.de" style="color: var(--forest);">info@wildgewachsen-australien.de</a>
+          </p>
+
+          <h3 style="margin-bottom: 16px;">Social Media</h3>
+          <p style="margin-bottom: 24px;">
+            <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener" style="color: var(--forest); display: block; margin-bottom: 8px;">YouTube – @die_farm</a>
+            <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener" style="color: var(--forest); display: block;">Instagram – @wildgewachsen_australien</a>
+          </p>
+
+          <h3 style="margin-bottom: 16px;">Kooperationen</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Wir arbeiten gerne mit Marken zusammen die zu unserer Geschichte passen.
+            Schreib uns einfach mit deiner Idee – wir melden uns.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+        <p>Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Seiten</h4>
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="footer__social">
+          <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YT</a>
+          <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener">IG</a>
+        </div>
+      </div>
+      <div class="footer__newsletter-mini">
+        <h4>Newsletter</h4>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="E-Mail" required>
+          <button type="submit" class="btn btn--primary-inverted">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Wildgewachsen</span>
+      <div>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/impressum.html#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Wird gesendet...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://formspree.io/f/xbdqglad', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.innerHTML =
+            '<div style="text-align:center;padding:40px 0;">' +
+            '<h3 style="color:var(--forest);margin-bottom:12px;">Danke für deine Nachricht!</h3>' +
+            '<p style="color:var(--text-muted);">Wir melden uns so schnell wie möglich bei dir.</p>' +
+            '</div>';
+        } else {
+          btn.textContent = 'Nachricht senden';
+          btn.disabled = false;
+          alert('Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreib uns direkt per E-Mail.');
+        }
+      } catch (err) {
+        btn.textContent = 'Nachricht senden';
+        btn.disabled = false;
+        alert('Verbindungsfehler. Bitte versuche es erneut.');
+      }
+    });
+  </script>
+</body>
+</html>

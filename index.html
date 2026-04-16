@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wir dokumentieren unsere Auswanderung als Familie mit zwei Kindern nach Australien. Echte Erfahrungen, konkrete Zahlen, ehrliche Einblicke.">
+  <title>Wildgewachsen – Auswandern nach Australien mit Familie</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+      </a>
+      <nav class="header__nav">
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="#newsletter" class="header__cta">Newsletter</a>
+      </nav>
+      <button class="header__burger" onclick="toggleMobileNav()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobile-nav">
+      <a href="/ueber-uns.html">Über uns</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/unsere-reise.html">Unsere Reise</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="#newsletter">Newsletter</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="assets/images/hero-family.jpg" alt="Familie Wildgewachsen" onerror="this.parentElement.style.background='var(--deep-green)';">
+    </div>
+    <div class="hero__inner" style="grid-template-columns: 1fr; text-align: center; max-width: 800px;">
+      <div class="hero__content">
+        <span class="eyebrow" style="color: var(--sage-light);">Echtzeit-Dokumentation</span>
+        <h1>Wir wandern mit zwei Kindern nach Australien aus.</h1>
+        <p class="hero__subtitle" style="margin: 0 auto 36px;">
+          Wir dokumentieren unseren Umzug von Deutschland nach Byron Bay in Echtzeit.
+          Vier Menschen, zwei Kinder, ein Plan. Keine Beschönigung, nur ehrliche Antworten
+          auf echte Fragen.
+        </p>
+        <div class="hero__actions" style="justify-content: center;">
+          <a href="#newsletter" class="btn btn--primary-inverted">Unsere Reise mitverfolgen</a>
+          <a href="/ueber-uns.html" class="btn btn--outline-light">Unsere Geschichte</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Trust Bar ===== -->
+  <div class="trust-bar">
+    <div class="trust-bar__inner">
+      <div class="trust-bar__item">
+        <span class="trust-bar__dot"></span>
+        Echtzeit-Doku
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__dot"></span>
+        Abflug: 23. Juni 2026
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__dot"></span>
+        Byron Bay, NSW
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__dot"></span>
+        Zwei Kinder (2 & 6)
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Über uns Teaser ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="about-teaser animate-on-scroll">
+        <div class="about-teaser__image about-teaser__image--home">
+          <img src="assets/images/family-about.jpg" alt="Unsere Familie" onerror="this.style.display='none';this.parentElement.style.background='var(--sage-light)';this.parentElement.style.height='360px';">
+        </div>
+        <div class="about-teaser__text">
+          <span class="eyebrow">Wer wir sind</span>
+          <h2>Koch, Innenarchitektin, zwei Kinder und ein Plan.</h2>
+          <p>
+            Sieben Jahre eigenes Restaurant, zwei Jahre Gemüseanbau, und dann die Entscheidung
+            die alles verändert. Wir packen unser Leben in Essen zusammen und fangen in
+            Australien neu an. Hier erzählen wir warum – und wie.
+          </p>
+          <a href="/ueber-uns.html" class="btn btn--outline">Mehr über uns</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Neueste Artikel ===== -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow">Aus dem Blog</span>
+        <h2>Neueste Artikel</h2>
+      </div>
+      <div class="articles-grid stagger-children" id="latest-articles">
+        <!-- Wird dynamisch befüllt oder statisch gepflegt -->
+        <a href="/blog/auswandern-australien-mit-kindern-vorbereitung.html" class="article-card">
+          <div class="article-card__image">
+            <img src="assets/images/artikel-kinder.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="article-card__body">
+            <span class="article-card__category">Familie & Kinder</span>
+            <h3 class="article-card__title">Auswandern nach Australien mit Kindern (2 und 6 Jahre): Unsere ehrliche Vorbereitung</h3>
+            <span class="article-card__meta">9. April 2026 · 8 Min. Lesezeit</span>
+          </div>
+        </a>
+        <a href="/blog/tra-skill-assessment-koch-australien.html" class="article-card">
+          <div class="article-card__image">
+            <img src="assets/images/artikel-tra.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="article-card__body">
+            <span class="article-card__category">Visum & Migration</span>
+            <h3 class="article-card__title">TRA Skill Assessment als Koch: Was es wirklich kostet – besonders als Selbständiger</h3>
+            <span class="article-card__meta">9. April 2026 · 10 Min. Lesezeit</span>
+          </div>
+        </a>
+        <div class="article-card" style="opacity: 0.5; pointer-events: none;">
+          <div class="article-card__image" style="background: var(--sage-light); display: flex; align-items: center; justify-content: center; height: 200px;">
+            <span style="color: var(--text-muted); font-family: var(--font-ui); font-size: 0.85rem;">Bald mehr</span>
+          </div>
+          <div class="article-card__body">
+            <span class="article-card__category">Vorbereitung & Planung</span>
+            <h3 class="article-card__title">Neue Artikel folgen jede Woche</h3>
+            <span class="article-card__meta">Kommt bald</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="/blog.html" class="btn btn--outline">Alle Artikel lesen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Themen ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow">Was dich hier erwartet</span>
+        <h2>Unsere Themen</h2>
+      </div>
+      <div class="topics-grid stagger-children">
+        <a href="/blog.html?filter=visum-migration" class="topic-card">
+          <div class="topic-card__icon">&#9992;</div>
+          <div class="topic-card__name">Visum & Migration</div>
+          <div class="topic-card__desc">Skill Assessment, PTE-Test, Visa 186, Behörden-Erfahrungen</div>
+        </a>
+        <a href="/blog.html?filter=vorbereitung-planung" class="topic-card">
+          <div class="topic-card__icon">&#9776;</div>
+          <div class="topic-card__name">Vorbereitung & Planung</div>
+          <div class="topic-card__desc">Checklisten, Zeitpläne, Dokumente, Entscheidungen</div>
+        </a>
+        <a href="/blog.html?filter=familie-kinder" class="topic-card">
+          <div class="topic-card__icon">&#9829;</div>
+          <div class="topic-card__name">Familie & Kinder</div>
+          <div class="topic-card__desc">Kinder vorbereiten, Schule, Familienalltag im Umbruch</div>
+        </a>
+        <a href="/blog.html?filter=geld-kosten" class="topic-card">
+          <div class="topic-card__icon">&#36;</div>
+          <div class="topic-card__name">Geld & Kosten</div>
+          <div class="topic-card__desc">Budget, echte Zahlen, Banking, was es wirklich kostet</div>
+        </a>
+        <a href="/blog.html?filter=ankommen-alltag" class="topic-card">
+          <div class="topic-card__icon">&#127968;</div>
+          <div class="topic-card__name">Ankommen & Alltag</div>
+          <div class="topic-card__desc">Erste Wochen, Wohnung, Integration, neues Leben</div>
+        </a>
+        <a href="/blog.html?filter=byron-bay-region" class="topic-card">
+          <div class="topic-card__icon">&#127754;</div>
+          <div class="topic-card__name">Byron Bay & Region</div>
+          <div class="topic-card__desc">Ortsinfos, Wohnen, Infrastruktur, Northern Rivers</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Timeline Teaser ===== -->
+  <section class="section section--dark timeline-section">
+    <div class="container">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow" style="color: var(--sage-light);">Unser Weg</span>
+        <h2>Von Essen nach Byron Bay</h2>
+      </div>
+      <div class="timeline-teaser stagger-children">
+        <div class="timeline-teaser__item">
+          <div class="timeline-teaser__dot timeline-teaser__dot--done"></div>
+          <div class="timeline-teaser__date">Dez 2025</div>
+          <div class="timeline-teaser__label" style="color: var(--white);">Restaurant geschlossen</div>
+        </div>
+        <div class="timeline-teaser__item">
+          <div class="timeline-teaser__dot timeline-teaser__dot--done"></div>
+          <div class="timeline-teaser__date">Feb 2026</div>
+          <div class="timeline-teaser__label" style="color: var(--white);">PTE & Skill Assessment bestanden</div>
+        </div>
+        <div class="timeline-teaser__item">
+          <div class="timeline-teaser__dot timeline-teaser__dot--current"></div>
+          <div class="timeline-teaser__date">April 2026</div>
+          <div class="timeline-teaser__label" style="color: var(--white);">Vorbereitung & Abbau</div>
+        </div>
+        <div class="timeline-teaser__item">
+          <div class="timeline-teaser__dot timeline-teaser__dot--upcoming"></div>
+          <div class="timeline-teaser__date">23. Juni 2026</div>
+          <div class="timeline-teaser__label" style="color: var(--white);">Abflug</div>
+        </div>
+        <div class="timeline-teaser__item">
+          <div class="timeline-teaser__dot timeline-teaser__dot--upcoming"></div>
+          <div class="timeline-teaser__date">26. Juli 2026</div>
+          <div class="timeline-teaser__label" style="color: var(--white);">Familie folgt</div>
+        </div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="/unsere-reise.html" class="btn btn--outline-light">Die ganze Reise sehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter CTA ===== -->
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="newsletter animate-on-scroll">
+        <span class="eyebrow">Dabei sein</span>
+        <h2>Unsere Reise mitverfolgen</h2>
+        <p>Wir schicken Updates wenn es weitergeht. Kein Spam, keine Werbung – nur echte Neuigkeiten von unserer Auswanderung.</p>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="Deine E-Mail-Adresse" required>
+          <button type="submit" class="btn btn--primary">Abonnieren</button>
+        </form>
+        <p class="newsletter__hint">Du kannst dich jederzeit abmelden. Versprochen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+        <p>Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Seiten</h4>
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="footer__social">
+          <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener" title="YouTube">YT</a>
+          <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener" title="Instagram">IG</a>
+        </div>
+      </div>
+      <div class="footer__newsletter-mini">
+        <h4>Newsletter</h4>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="E-Mail" required>
+          <button type="submit" class="btn btn--primary-inverted">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Wildgewachsen</span>
+      <div>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/impressum.html#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

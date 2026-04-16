@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unsere Timeline von Essen nach Byron Bay. Jeder Schritt unserer Auswanderung nach Australien – in Echtzeit dokumentiert.">
+  <title>Unsere Reise – Wildgewachsen</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+      </a>
+      <nav class="header__nav">
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/#newsletter" class="header__cta">Newsletter</a>
+      </nav>
+      <button class="header__burger" onclick="toggleMobileNav()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobile-nav">
+      <a href="/ueber-uns.html">Über uns</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/unsere-reise.html">Unsere Reise</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="/#newsletter">Newsletter</a>
+    </nav>
+  </header>
+
+  <!-- Hero with Countdown -->
+  <section class="section section--dark" style="padding: 80px 0 60px;">
+    <div class="container text-center">
+      <span class="eyebrow" style="color: var(--sage-light);">Echtzeit-Dokumentation</span>
+      <h1>Unsere Reise nach Australien</h1>
+      <p style="color: var(--sage-light); max-width: 560px; margin: 16px auto 0;">
+        Jeder Schritt, jede Entscheidung, jede Hürde – von der Idee bis zur Ankunft in Byron Bay.
+      </p>
+      <div class="countdown" style="margin-top: 40px;">
+        <div class="countdown__block">
+          <div class="countdown__number" id="countdown-days">--</div>
+          <div class="countdown__label">Tage bis Abflug</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Chapter -->
+  <section class="section section--white">
+    <div class="container" style="max-width: 720px;">
+      <div class="text-center mb-24 animate-on-scroll">
+        <span class="eyebrow">Aktuelles Kapitel</span>
+        <h2>Vorbereitung & Abbau</h2>
+      </div>
+      <p class="animate-on-scroll" style="text-align: center; color: var(--text-muted);">
+        Das Restaurant ist geschlossen, das Gemüsefeld ist Geschichte.
+        Jetzt geht es ans Eingemachte: Wohnung auflösen, Visa-Unterlagen finalisieren,
+        die Kinder vorbereiten – und zwischendurch filmen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section">
+    <div class="container" style="max-width: 720px;">
+      <div class="timeline">
+
+        <div class="timeline__item">
+          <div class="timeline__dot timeline__dot--done"></div>
+          <div class="timeline__date">31. Dezember 2025</div>
+          <div class="timeline__title">Restaurant die farm geschlossen</div>
+          <div class="timeline__desc">Sieben Jahre eigenes Restaurant. Ein harter, aber richtiger Schritt.</div>
+          <span class="timeline__status timeline__status--done">Erledigt</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot timeline__dot--done"></div>
+          <div class="timeline__date">Februar 2026</div>
+          <div class="timeline__title">PTE Englisch-Test bestanden</div>
+          <div class="timeline__desc">Proficient reicht für das Visum. War nicht einfach, aber hat geklappt.</div>
+          <span class="timeline__status timeline__status--done">Erledigt</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot timeline__dot--done"></div>
+          <div class="timeline__date">Februar 2026</div>
+          <div class="timeline__title">TRA Skill Assessment bestanden</div>
+          <div class="timeline__desc">Als Selbständiger besonders aufwendig. Die Dokumentation war der härteste Teil.</div>
+          <span class="timeline__status timeline__status--done">Erledigt</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot timeline__dot--done"></div>
+          <div class="timeline__date">März 2026</div>
+          <div class="timeline__title">Migration Agent beauftragt</div>
+          <div class="timeline__desc">Professionelle Unterstützung für den Visa-Prozess.</div>
+          <span class="timeline__status timeline__status--done">Erledigt</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot timeline__dot--done"></div>
+          <div class="timeline__date">April 2026</div>
+          <div class="timeline__title">Wohnung gekündigt</div>
+          <div class="timeline__desc">Auszug Ende Juli. Es wird real.</div>
+          <span class="timeline__status timeline__status--done">Erledigt</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">23. Juni 2026</div>
+          <div class="timeline__title">Abflug – Christian fliegt vor</div>
+          <div class="timeline__desc">Alleine voraus: Job und Sponsor finden, Wohnung und Auto organisieren.</div>
+          <span class="timeline__status timeline__status--upcoming">Geplant</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">26. Juli 2026</div>
+          <div class="timeline__title">Familie folgt nach</div>
+          <div class="timeline__desc">Lucy, Jo und Linny kommen nach Australien. Die Familie ist wieder zusammen.</div>
+          <span class="timeline__status timeline__status--upcoming">Geplant</span>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">August 2026</div>
+          <div class="timeline__title">Neues Leben in Byron Bay</div>
+          <div class="timeline__desc">Ankommen, einleben, neue Routinen finden. Ein neues Kapitel beginnt.</div>
+          <span class="timeline__status timeline__status--upcoming">Geplant</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--dark" id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <span class="eyebrow" style="color: var(--sage-light);">Dabei sein</span>
+        <h2>Willst du wissen wie es weitergeht?</h2>
+        <p style="color: var(--sage-light);">Wir schicken Updates bei jedem Meilenstein. Kein Spam – nur echte Neuigkeiten.</p>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="Deine E-Mail-Adresse" required>
+          <button type="submit" class="btn btn--primary-inverted">Abonnieren</button>
+        </form>
+        <p class="newsletter__hint">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+        <p>Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Seiten</h4>
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="footer__social">
+          <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YT</a>
+          <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener">IG</a>
+        </div>
+      </div>
+      <div class="footer__newsletter-mini">
+        <h4>Newsletter</h4>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="E-Mail" required>
+          <button type="submit" class="btn btn--primary-inverted">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Wildgewachsen</span>
+      <div>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/impressum.html#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

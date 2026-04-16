@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wir sind eine deutsche Familie die nach Australien auswandert. Koch, Innenarchitektin, zwei Kinder – und ein Plan.">
+  <title>Über uns – Wildgewachsen</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+      </a>
+      <nav class="header__nav">
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="/#newsletter" class="header__cta">Newsletter</a>
+      </nav>
+      <button class="header__burger" onclick="toggleMobileNav()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobile-nav">
+      <a href="/ueber-uns.html">Über uns</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/unsere-reise.html">Unsere Reise</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="/#newsletter">Newsletter</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="section section--dark" style="padding: 80px 0;">
+    <div class="container text-center">
+      <span class="eyebrow" style="color: var(--sage-light);">Unsere Geschichte</span>
+      <h1>Vier Menschen. Ein Neuanfang.</h1>
+      <p style="color: var(--sage-light); max-width: 600px; margin: 16px auto 0; font-size: 1.05rem;">
+        Wir haben sieben Jahre ein Restaurant betrieben, zwei Jahre lang unser eigenes Gemüse angebaut –
+        und dann entschieden: Wir fangen nochmal von vorne an. In Australien.
+      </p>
+    </div>
+  </section>
+
+  <!-- Unsere Geschichte -->
+  <section class="section">
+    <div class="container">
+      <div class="about-teaser animate-on-scroll">
+        <div class="about-teaser__image">
+          <img src="assets/images/family-story.jpg" alt="Unsere Familie" onerror="this.style.display='none';this.parentElement.style.background='var(--sage-light)';this.parentElement.style.height='360px';">
+        </div>
+        <div class="about-teaser__text">
+          <span class="eyebrow">Die kurze Version</span>
+          <h2>Warum Australien?</h2>
+          <p>
+            Wir haben schon mal in Byron Bay gelebt. Dort wurde die Koch-Ausbildung gemacht,
+            dort hat sich angefühlt was "richtig" heißt. Nach sieben Jahren Restaurant in Essen,
+            einem abgerissenen Gemüsefeld und der Frage "Wenn nicht jetzt, wann dann?" –
+            haben wir gebucht.
+          </p>
+          <p>
+            Flüge sind gebucht. Am 23. Juni 2026 geht es los. Erst alleine voraus,
+            im Juli folgt die Familie. Kein Sicherheitsnetz, 3-4 Monate Puffer. Das ist genau so
+            wie es klingt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Die Familie -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="text-center mb-40 animate-on-scroll">
+        <span class="eyebrow">Die Familie</span>
+        <h2>Wer steckt hinter Wildgewachsen?</h2>
+      </div>
+      <div class="family-grid stagger-children">
+        <div class="family-card">
+          <div class="family-card__name">Christian</div>
+          <div class="family-card__role">Koch · Restaurantbetreiber · Filmemacher</div>
+          <div class="family-card__text">
+            Ausgebildeter Koch, sieben Jahre eigenes Restaurant (die farm, Essen).
+            Koch-Ausbildung in Australien gemacht.
+            Surfer wenn die Wellen stimmen. Steht vor der Kamera und erzählt wie es ist –
+            nicht wie es sein sollte.
+          </div>
+        </div>
+        <div class="family-card">
+          <div class="family-card__name">Lucy</div>
+          <div class="family-card__role">Innenarchitektin · Masterstudentin · Co-Host</div>
+          <div class="family-card__text">
+            Studiert Innenarchitektur-Raumkunst (Master). Abschluss Juli 2026.
+            Hat Byron Bay-Architekturprojekte im Blick.
+            Aktiv vor der Kamera, hält den Laden zusammen während Christian plant.
+          </div>
+        </div>
+        <div class="family-card">
+          <div class="family-card__name">Jo</div>
+          <div class="family-card__role">6 Jahre</div>
+          <div class="family-card__text">
+            Kommt in Australien in die Schule. Lernt spielerisch Englisch und findet das
+            großartig. Stellt die harten Fragen, die Erwachsene sich nicht trauen.
+            Wird spürbar anhänglicher, aber freut sich aufs Abenteuer.
+          </div>
+        </div>
+        <div class="family-card">
+          <div class="family-card__name">Linny</div>
+          <div class="family-card__role">2 Jahre</div>
+          <div class="family-card__text">
+            Noch zu klein um zu verstehen was passiert – aber groß genug um überall
+            gute Laune zu verbreiten. Wird aktiv integriert, auch wenn sie es noch nicht merkt.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warum wir das dokumentieren -->
+  <section class="section">
+    <div class="container" style="max-width: 720px;">
+      <div class="text-center mb-24 animate-on-scroll">
+        <span class="eyebrow">Der Kanal</span>
+        <h2>Warum wir das dokumentieren</h2>
+      </div>
+      <p class="animate-on-scroll" style="text-align: center; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+        Wir dokumentieren für uns, unserer Familie und glauben, dass andere das auch
+        gerade durchmachen. Die gleichen Fragen, die gleichen Ängste, die gleichen Excel-Tabellen
+        um drei Uhr nachts. Wenn unsere Erfahrung jemandem hilft eine bessere Entscheidung
+        zu treffen – dann hat sich das gelohnt.
+      </p>
+      <div class="credentials" style="justify-content: center; margin-top: 32px;">
+        <span class="credential-tag">Koch-Ausbildung in Australien</span>
+        <span class="credential-tag">7 Jahre Restaurantbetrieb</span>
+        <span class="credential-tag">PTE-Test bestanden</span>
+        <span class="credential-tag">Skill Assessment bestanden</span>
+        <span class="credential-tag">Migration Agent beauftragt</span>
+        <span class="credential-tag">Flüge gebucht</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--dark" id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <span class="eyebrow" style="color: var(--sage-light);">Dabei sein</span>
+        <h2>Unsere Reise mitverfolgen</h2>
+        <p style="color: var(--sage-light);">Wir schicken Updates wenn es weitergeht. Kein Spam – nur echte Neuigkeiten.</p>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="Deine E-Mail-Adresse" required>
+          <button type="submit" class="btn btn--primary-inverted">Abonnieren</button>
+        </form>
+        <p class="newsletter__hint">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/images/wildgewachsen_logo.png" alt="Wildgewachsen">
+        <p>Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Seiten</h4>
+        <a href="/ueber-uns.html">Über uns</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/unsere-reise.html">Unsere Reise</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="footer__social">
+          <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YT</a>
+          <a href="https://www.instagram.com/wildgewachsen_australien/" target="_blank" rel="noopener">IG</a>
+        </div>
+      </div>
+      <div class="footer__newsletter-mini">
+        <h4>Newsletter</h4>
+        <form class="newsletter__form" onsubmit="return handleNewsletter(event)">
+          <input type="email" class="newsletter__input" placeholder="E-Mail" required>
+          <button type="submit" class="btn btn--primary-inverted">OK</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Wildgewachsen</span>
+      <div>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/impressum.html#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
