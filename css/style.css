@@ -1028,6 +1028,56 @@ body { padding-top: 76px; }
   line-height: 1.7;
 }
 
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  background: var(--white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  font-size: 0.98rem;
+}
+
+.article-body thead th {
+  background: var(--forest);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 20px;
+  letter-spacing: 0.02em;
+}
+
+.article-body tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--sage-light);
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.article-body tbody tr:last-child td { border-bottom: none; }
+.article-body tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+
+.article-body table th:nth-child(2),
+.article-body table td:nth-child(2) {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.article-body table th:nth-child(3),
+.article-body table td:nth-child(3) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .article-body table { font-size: 0.9rem; }
+  .article-body thead th,
+  .article-body tbody td { padding: 12px 14px; }
+}
+
 .info-box {
   background: var(--white);
   border: 1px solid var(--sage-light);
