@@ -891,12 +891,13 @@ body { padding-top: 76px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 0.72rem;
   color: var(--white);
   opacity: 0.7;
   transition: all 0.3s var(--ease-out);
+}
+.footer__social a svg {
+  width: 18px;
+  height: 18px;
 }
 .footer__social a:hover {
   opacity: 1;
