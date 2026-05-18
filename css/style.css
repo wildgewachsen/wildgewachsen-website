@@ -1011,7 +1011,11 @@ body { padding-top: 76px; }
 .article-body p { font-size: 1rem; line-height: 1.85; }
 
 .article-body p a,
-.article-body li a {
+.article-body li a,
+.article-body td a,
+.article-body .info-box a,
+.article-body .trust-box a,
+.article-body .author-box__bio a {
   color: var(--deep-green);
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -1019,7 +1023,11 @@ body { padding-top: 76px; }
   transition: color 0.2s var(--ease-out);
 }
 .article-body p a:hover,
-.article-body li a:hover {
+.article-body li a:hover,
+.article-body td a:hover,
+.article-body .info-box a:hover,
+.article-body .trust-box a:hover,
+.article-body .author-box__bio a:hover {
   color: var(--text-dark);
   text-decoration-thickness: 2px;
 }
