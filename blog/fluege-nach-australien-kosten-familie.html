@@ -29,7 +29,16 @@
     "@type": "BlogPosting",
     "headline": "Flüge nach Australien buchen: Unsere echten Kosten als Familie (2026)",
     "description": "Was kostet ein Flug nach Australien für eine Familie? Unsere echten Zahlen: 467 € für meinen Flug, 3.061,80 € für Lucy und die Kinder, plus wie wir gebucht haben.",
-    "image": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+      "caption": "Christian mit den beiden Kindern und dem Gepäckwagen am Flughafen-Check-in vor dem One-Way-Flug nach Brisbane.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      }
+    },
     "datePublished": "2026-05-21T12:00:00+02:00",
     "dateModified": "2026-05-21T12:00:00+02:00",
     "author": {
@@ -127,6 +136,23 @@
     ]
   }
   </script>
+
+  <!-- Structured Data: TravelAction (Reise-Etappe — Spec §11.3) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAction",
+    "name": "One-Way-Flug der Familie nach Australien",
+    "fromLocation": {
+      "@type": "Place",
+      "name": "Deutschland"
+    },
+    "toLocation": {
+      "@type": "Place",
+      "name": "Brisbane, Australien"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -164,7 +190,7 @@
       <div class="article-header__meta">
         <span>21. Mai 2026</span>
         <span>8 Min. Lesezeit</span>
-        <span>Stand: Mai 2026</span>
+        <span>Zuletzt aktualisiert: 21.05.2026</span>
       </div>
     </div>
   </section>
@@ -382,7 +408,16 @@
     <div class="trust-box">
       <strong>Hinweis:</strong> Dieser Artikel beschreibt unsere persönlichen Flugbuchungen für die Auswanderung nach Australien. Alle Preise sind unsere echten Buchungsbeträge aus Februar und März 2026. Flugpreise ändern sich täglich und je nach Datum, Route und Buchungszeitpunkt. Unsere Zahlen sind kein Richtwert, sondern eine Momentaufnahme.
       <br><br>
-      <strong>Stand:</strong> Mai 2026 · <strong>Grundlage:</strong> unsere eigenen Buchungsbestätigungen.
+      <strong>Zuletzt aktualisiert:</strong> 21.05.2026 · <strong>Grundlage:</strong> unsere eigenen Buchungsbestätigungen.
+    </div>
+
+    <!-- Update-Log (Spec §11.2) -->
+    <div class="update-log">
+      <div class="update-log__title">Update-Log</div>
+      <div class="update-log__entry">
+        <span class="update-log__date">21.05.2026</span>
+        <span class="update-log__text">Artikel veröffentlicht.</span>
+      </div>
     </div>
 
     <!-- Autor-Box -->

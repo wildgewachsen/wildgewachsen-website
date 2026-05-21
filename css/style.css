@@ -1130,6 +1130,53 @@ body { padding-top: 76px; }
   line-height: 1.7;
 }
 
+/* Update-Log (Plan 3 — Spec §11.2) */
+.update-log {
+  background: var(--white);
+  border: 1px solid var(--sage-light);
+  border-left: 3px solid var(--forest);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  margin: 48px 0;
+}
+
+.update-log__title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.update-log__entry {
+  display: flex;
+  gap: 18px;
+  padding: 10px 0;
+  border-top: 1px solid var(--sage-light);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.update-log__date {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  min-width: 86px;
+}
+
+.update-log__text {
+  color: var(--text-dark);
+}
+
+@media (max-width: 640px) {
+  .update-log__entry { flex-direction: column; gap: 2px; }
+  .update-log__date { min-width: 0; }
+}
+
 .author-box {
   display: flex;
   gap: 24px;

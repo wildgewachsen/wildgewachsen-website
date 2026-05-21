@@ -21,6 +21,113 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "[ARTIKEL TITEL]",
+    "description": "[META DESCRIPTION]",
+    "image": {
+      "@type": "ImageObject",
+      "url": "[HERO-BILD ABSOLUTE URL]",
+      "caption": "[SACHLICHE BILDBESCHREIBUNG]",
+      "creditText": "[BILD-CREDIT — z.B. Wildgewachsen / Pixabay / Pexels]",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "[COPYRIGHT-HALTER — z.B. Wildgewachsen]"
+      }
+    },
+    "datePublished": "[JJJJ-MM-TT]T12:00:00+02:00",
+    "dateModified": "[JJJJ-MM-TT]T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "[CANONICAL URL]"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "[HAUPTTHEMA DES ARTIKELS]"
+    },
+    "keywords": "[KOMMA-GETRENNTE HAUPT-KEYWORDS]"
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage (mind. 5 Fragen — Antworten NUR aus Artikelinhalt) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "[FRAGE 1]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[ANTWORT 1 — NUR Inhalt der tatsächlich im Artikel steht]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FRAGE 2]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[ANTWORT 2]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FRAGE 3]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[ANTWORT 3]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FRAGE 4]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[ANTWORT 4]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FRAGE 5]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[ANTWORT 5]"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "[ARTIKELTITEL]", "item": "[CANONICAL URL]" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -58,7 +165,7 @@
       <div class="article-header__meta">
         <span>[DATUM]</span>
         <span>[X] Min. Lesezeit</span>
-        <span>Stand: [MONAT JAHR]</span>
+        <span>Zuletzt aktualisiert: [TT.MM.JJJJ]</span>
       </div>
     </div>
   </section>
@@ -114,7 +221,20 @@
       und stellt keine Rechts- oder Migrationsberatung dar. Für verbindliche Informationen
       wende dich an die zuständigen Behörden oder einen qualifizierten Berater.
       <br><br>
-      <strong>Stand:</strong> [Monat Jahr] · <strong>Quellen:</strong> [Links zu offiziellen Stellen]
+      <strong>Zuletzt aktualisiert:</strong> [TT.MM.JJJJ] · <strong>Quellen:</strong> [Links zu offiziellen Stellen]
+    </div>
+
+    <!-- Update-Log (Spec §11.2 — Chronik wesentlicher Änderungen, neueste zuerst) -->
+    <div class="update-log">
+      <div class="update-log__title">Update-Log</div>
+      <div class="update-log__entry">
+        <span class="update-log__date">[TT.MM.JJJJ]</span>
+        <span class="update-log__text">[Beschreibung der Änderung]</span>
+      </div>
+      <div class="update-log__entry">
+        <span class="update-log__date">[TT.MM.JJJJ]</span>
+        <span class="update-log__text">Veröffentlicht</span>
+      </div>
     </div>
 
     <!-- Autor-Box -->
