@@ -1581,3 +1581,13 @@ body { padding-top: 76px; }
   body { padding-top: 0; background: white; }
   .section { padding: 24px 0; }
 }
+
+/* ===== Affiliate Disclosure ===== */
+.affiliate-disclosure {
+  background: #f6f4ee;
+  border-left: 3px solid #84a98c;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
