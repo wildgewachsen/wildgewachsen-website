@@ -18,7 +18,7 @@ window.klaroConfig = {
       privacyPolicyUrl: '/impressum.html#datenschutz',
       consentNotice: {
         title: 'Cookies & Tracking',
-        description: 'Wir setzen Cookies, um zu sehen, wenn du über unsere Affiliate-Links buchst. Dafür bekommen wir eine kleine Provision, du zahlst keinen Cent mehr. Du entscheidest.',
+        description: 'Wir setzen Cookies, um zu sehen, wenn du über unsere Affiliate-Links (Wise, SafetyWing, Booking, World Nomads) buchst. Dafür bekommen wir eine kleine Provision, du zahlst keinen Cent mehr. Du entscheidest.',
         learnMore: 'Mehr erfahren',
       },
       ok: 'Alle akzeptieren',
@@ -37,7 +37,7 @@ window.klaroConfig = {
       privacyPolicyUrl: '/en/privacy.html',
       consentNotice: {
         title: 'Cookies & Tracking',
-        description: "We use cookies to see when you book through our affiliate links. We get a small commission for that, you don't pay a cent more. You decide.",
+        description: "We use cookies to see when you book through our affiliate links (Wise, SafetyWing, Booking, World Nomads). We get a small commission for that, you don't pay a cent more. You decide.",
         learnMore: 'Learn more',
       },
       ok: 'Accept all',
@@ -62,14 +62,6 @@ window.klaroConfig = {
       default: true,
       cookies: [],
       onlyOnce: true,
-    },
-    {
-      name: 'travelpayouts',
-      title: 'TravelPayouts (Skyscanner)',
-      purposes: ['affiliate'],
-      required: false,
-      default: false,
-      cookies: [/^tp_/, /^_tp/],
     },
     {
       name: 'wise',
