@@ -1,7 +1,7 @@
 window.klaroConfig = {
   version: 1,
   elementID: 'klaro',
-  styling: { theme: ['light', 'top', 'wide'] },
+  styling: { theme: ['light'] },
   noAutoLoad: false,
   htmlTexts: true,
   embedded: false,
@@ -18,7 +18,7 @@ window.klaroConfig = {
       privacyPolicyUrl: '/impressum.html#datenschutz',
       consentNotice: {
         title: 'Cookies & Tracking',
-        description: 'Wir nutzen Cookies, um Affiliate-Klicks (Wise, SafetyWing, World Nomads, Booking, Skyscanner via TravelPayouts) für unsere Buchhaltung zu erkennen. Du kannst frei entscheiden.',
+        description: 'Wir setzen Cookies, um zu sehen, wenn du über unsere Affiliate-Links buchst. Dafür bekommen wir eine kleine Provision, du zahlst keinen Cent mehr. Du entscheidest.',
         learnMore: 'Mehr erfahren',
       },
       ok: 'Alle akzeptieren',
@@ -37,7 +37,7 @@ window.klaroConfig = {
       privacyPolicyUrl: '/en/privacy.html',
       consentNotice: {
         title: 'Cookies & Tracking',
-        description: 'We use cookies to track affiliate clicks (Wise, SafetyWing, World Nomads, Booking, Skyscanner via TravelPayouts) for our accounting. You can decide freely.',
+        description: "We use cookies to see when you book through our affiliate links. We get a small commission for that, you don't pay a cent more. You decide.",
         learnMore: 'Learn more',
       },
       ok: 'Accept all',
