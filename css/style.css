@@ -1533,6 +1533,7 @@ body { padding-top: 76px; }
 .stagger-children.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(6) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(n+7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
 
 /* ===== Responsive ===== */
 
