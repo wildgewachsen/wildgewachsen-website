@@ -103,7 +103,7 @@ function updateCountdown() {
   if (monthsEl) monthsEl.textContent = months;
 }
 
-// ===== Newsletter (Buttondown) =====
+// ===== Newsletter (Buttondown, sprach-aware mit Tag) =====
 async function handleNewsletter(e) {
   e.preventDefault();
   const form = e.target;
@@ -111,6 +111,20 @@ async function handleNewsletter(e) {
   const btn = form.querySelector('button[type="submit"]');
   const email = input.value;
   const origText = btn.textContent;
+  const lang = (document.documentElement.lang || 'de').toLowerCase().startsWith('en') ? 'en' : 'de';
+
+  const messages = {
+    de: {
+      success: 'Danke! Bitte bestätige deine E-Mail.',
+      error: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
+      network: 'Verbindungsfehler. Bitte versuche es erneut.'
+    },
+    en: {
+      success: 'Thanks! Please confirm your email.',
+      error: 'Something went wrong. Please try again.',
+      network: 'Connection error. Please try again.'
+    }
+  };
 
   btn.textContent = '...';
   btn.disabled = true;
@@ -119,20 +133,20 @@ async function handleNewsletter(e) {
     const res = await fetch('https://buttondown.com/api/emails/embed-subscribe/wildgewachsen', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'email=' + encodeURIComponent(email)
+      body: 'email=' + encodeURIComponent(email) + '&tag=' + lang
     });
 
     if (res.ok || res.status === 201) {
-      form.innerHTML = '<p style="color:inherit;font-size:0.95rem;">Danke! Bitte bestätige deine E-Mail.</p>';
+      form.innerHTML = '<p style="color:inherit;font-size:0.95rem;">' + messages[lang].success + '</p>';
     } else {
       btn.textContent = origText;
       btn.disabled = false;
-      alert('Etwas ist schiefgelaufen. Bitte versuche es erneut.');
+      alert(messages[lang].error);
     }
   } catch (err) {
     btn.textContent = origText;
     btn.disabled = false;
-    alert('Verbindungsfehler. Bitte versuche es erneut.');
+    alert(messages[lang].network);
   }
   return false;
 }
@@ -165,11 +179,12 @@ function initBlogFilters() {
         }
       });
 
-      // Update URL without reload
+      // Update URL without reload (sprach-aware, clean URL)
+      const basePath = window.location.pathname.startsWith('/en/') ? '/en/blog' : '/blog';
       if (filter === 'alle') {
-        history.replaceState(null, '', '/blog.html');
+        history.replaceState(null, '', basePath);
       } else {
-        history.replaceState(null, '', `/blog.html?filter=${filter}`);
+        history.replaceState(null, '', `${basePath}?filter=${filter}`);
       }
     });
   });
