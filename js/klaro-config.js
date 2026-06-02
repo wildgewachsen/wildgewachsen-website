@@ -15,7 +15,7 @@ window.klaroConfig = {
   noticeAsModal: false,
   translations: {
     de: {
-      privacyPolicyUrl: '/impressum.html#datenschutz',
+      privacyPolicyUrl: '/impressum#datenschutz',
       consentNotice: {
         title: 'Cookies & Tracking',
         description: 'Wir setzen Cookies, um zu sehen, wenn du über unsere Affiliate-Links (Wise, SafetyWing, Booking, World Nomads) buchst. Dafür bekommen wir eine kleine Provision, du zahlst keinen Cent mehr. Du entscheidest.',
