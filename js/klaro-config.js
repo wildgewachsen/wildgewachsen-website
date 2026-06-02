@@ -34,7 +34,7 @@ window.klaroConfig = {
       },
     },
     en: {
-      privacyPolicyUrl: '/en/privacy.html',
+      privacyPolicyUrl: '/en/privacy',
       consentNotice: {
         title: 'Cookies & Tracking',
         description: "We use cookies to see when you book through our affiliate links (Wise, SafetyWing, Booking, World Nomads). We get a small commission for that, you don't pay a cent more. You decide.",
