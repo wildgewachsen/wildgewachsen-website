@@ -29,6 +29,53 @@ function initHeaderScroll() {
   }, { passive: true });
 }
 
+// ===== Language Switcher =====
+// Builds a DE|EN toggle from the page's hreflang alternate links and injects it
+// into the desktop nav (before the CTA) and the mobile nav. Pages without an
+// hreflang alternate for the other language (e.g. the German-only Impressum)
+// simply get no switcher. See docs/superpowers/specs/2026-06-12-language-switcher-design.md
+function initLangSwitch() {
+  const curLang = (document.documentElement.getAttribute('lang') || 'de')
+    .toLowerCase().startsWith('en') ? 'en' : 'de';
+  const otherLang = curLang === 'de' ? 'en' : 'de';
+
+  const alt = document.querySelector('link[rel="alternate"][hreflang="' + otherLang + '"]');
+  const otherHref = alt && alt.getAttribute('href');
+  if (!otherHref) return; // orphan page: no counterpart, no switcher
+
+  function build() {
+    const wrap = document.createElement('span');
+    wrap.className = 'header__lang';
+
+    const current = document.createElement('span');
+    current.className = 'header__lang-current';
+    current.textContent = curLang.toUpperCase();
+
+    const sep = document.createElement('span');
+    sep.className = 'header__lang-sep';
+    sep.textContent = '|';
+
+    const link = document.createElement('a');
+    link.href = otherHref;
+    link.setAttribute('hreflang', otherLang);
+    link.setAttribute('lang', otherLang);
+    link.textContent = otherLang.toUpperCase();
+
+    wrap.append(current, sep, link);
+    return wrap;
+  }
+
+  const desktopNav = document.querySelector('.header__nav');
+  if (desktopNav) {
+    const cta = desktopNav.querySelector('.header__cta');
+    if (cta) desktopNav.insertBefore(build(), cta);
+    else desktopNav.appendChild(build());
+  }
+
+  const mobileNav = document.querySelector('.header__mobile-nav');
+  if (mobileNav) mobileNav.appendChild(build());
+}
+
 // ===== Scroll-Triggered Animations =====
 function initScrollAnimations() {
   const observerOptions = {
@@ -59,6 +106,9 @@ function initScrollAnimations() {
 
 // ===== Init on DOM Ready =====
 document.addEventListener('DOMContentLoaded', () => {
+  // Language switcher (built from hreflang alternates)
+  initLangSwitch();
+
   // Close mobile nav on link click
   const mobileLinks = document.querySelectorAll('.header__mobile-nav a');
   mobileLinks.forEach(link => {

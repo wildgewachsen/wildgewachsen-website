@@ -289,6 +289,34 @@ p:last-child { margin-bottom: 0; }
 }
 .header__mobile-nav a:hover { opacity: 1; }
 
+/* Language Switcher */
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.header__lang a {
+  color: var(--white);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.header__lang a:hover { opacity: 1; }
+.header__lang a::after { display: none !important; }
+.header__lang-current { color: var(--cream); opacity: 1; }
+.header__lang-sep { color: var(--white); opacity: 0.3; font-weight: 400; }
+
+.header__mobile-nav .header__lang { font-size: 1.1rem; gap: 12px; }
+.header__mobile-nav .header__lang a {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  color: var(--white);
+}
+
 /* Body offset for fixed header */
 body { padding-top: 76px; }
 
