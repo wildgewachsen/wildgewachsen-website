@@ -206,38 +206,39 @@ function initBlogFilters() {
   const filters = document.querySelectorAll('.blog-filter');
   if (!filters.length) return;
 
-  // Check URL params
-  const params = new URLSearchParams(window.location.search);
-  const activeFilter = params.get('filter') || 'alle';
+  // Apply a filter: update active pill + show/hide articles + clean URL
+  function applyFilter(filter, updateUrl) {
+    // Update active state
+    filters.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
 
-  filters.forEach(btn => {
-    const filter = btn.dataset.filter;
-    if (filter === activeFilter) btn.classList.add('active');
+    // Filter articles
+    const articles = document.querySelectorAll('.article-card[data-category]');
+    articles.forEach(card => {
+      if (filter === 'alle' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
 
-    btn.addEventListener('click', () => {
-      // Update active state
-      filters.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Filter articles
-      const articles = document.querySelectorAll('.article-card[data-category]');
-      articles.forEach(card => {
-        if (filter === 'alle' || card.dataset.category === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Update URL without reload (sprach-aware, clean URL)
+    // Update URL without reload (sprach-aware, clean URL)
+    if (updateUrl) {
       const basePath = window.location.pathname.startsWith('/en/') ? '/en/blog' : '/blog';
       if (filter === 'alle') {
         history.replaceState(null, '', basePath);
       } else {
         history.replaceState(null, '', `${basePath}?filter=${filter}`);
       }
-    });
+    }
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter, true));
   });
+
+  // Apply filter from URL param on page load (e.g. /blog?filter=familie-kinder)
+  const params = new URLSearchParams(window.location.search);
+  applyFilter(params.get('filter') || 'alle', false);
 }
 
 // ===== Smooth scroll for anchor links =====
