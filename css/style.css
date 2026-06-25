@@ -1066,6 +1066,36 @@ body { padding-top: 76px; }
   box-shadow: var(--shadow-card);
 }
 
+/* Hochformat-Bild mit umfliessendem Text (Desktop), gestapelt auf Mobil */
+.article-body .figure-portrait-left {
+  float: left;
+  width: 320px;
+  max-width: 44%;
+  margin: 8px 32px 16px 0;
+}
+.article-body .figure-portrait-left img {
+  width: 100%;
+  margin: 0;
+}
+.article-body .figure-portrait-left figcaption {
+  font-size: 0.85rem;
+  color: #6b6b6b;
+  margin-top: 8px;
+  text-align: left;
+}
+/* Ueberschriften setzen unter einen umflossenen Float */
+.article-body h2 { clear: both; }
+
+@media (max-width: 640px) {
+  .article-body .figure-portrait-left {
+    float: none;
+    width: auto;
+    max-width: 360px;
+    margin: 24px auto;
+  }
+  .article-body .figure-portrait-left figcaption { text-align: center; }
+}
+
 .article-body blockquote {
   border-left: 3px solid var(--forest);
   padding: 20px 28px;
