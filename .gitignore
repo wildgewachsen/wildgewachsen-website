@@ -1,7 +1,32 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
 node_modules/
-.claude/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# Trace-Zwischenstaende der Logo-Vektorisierung (regenerierbar via
+# tools/logo-preprocess.py aus dem TIF-Master im Hauptrepo)
+tools/_trace/
+
+# Altlasten aus der statischen Aera (liegen ggf. noch lokal auf Platte)
 server.js
 download-images.js
-package.json
-package-lock.json
 assets/images/_originals/

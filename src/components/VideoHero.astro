@@ -1,0 +1,217 @@
+---
+// Vollbreite Video-Buehne: stummer Loop, Poster-first (preload="none").
+// Autoplay NUR via IntersectionObserver wenn sichtbar UND keine reduzierte
+// Bewegung; sonst Poster + Play-Button. Overlay-Slot fuer den Titel.
+interface Props {
+  src: string;
+  poster: string;
+  lang?: 'de' | 'en';
+}
+
+const { src, poster, lang = 'de' } = Astro.props;
+
+const labels =
+  lang === 'de'
+    ? { play: 'Video abspielen', pause: 'Video pausieren' }
+    : { play: 'Play video', pause: 'Pause video' };
+---
+
+<section
+  class="video-hero"
+  data-video-hero
+  data-state="paused"
+  data-label-play={labels.play}
+  data-label-pause={labels.pause}
+>
+  <video
+    class="video-hero__media"
+    src={src}
+    poster={poster}
+    muted
+    loop
+    playsinline
+    preload="none"
+  ></video>
+
+  <div class="video-hero__overlay">
+    <div class="video-hero__panel texture-paper">
+      <slot />
+    </div>
+  </div>
+
+  <button class="video-hero__toggle" type="button" data-toggle aria-label={labels.play}>
+    <svg
+      class="video-hero__icon video-hero__icon--play"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M8 5v14l11-7z"></path>
+    </svg>
+    <svg
+      class="video-hero__icon video-hero__icon--pause"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M7 5h4v14H7zM13 5h4v14h-4z"></path>
+    </svg>
+  </button>
+</section>
+
+<style>
+  .video-hero {
+    position: relative;
+    min-height: clamp(60vh, 45vh + 18vw, 90vh);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .video-hero__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-hero__overlay {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: clamp(var(--space-4), 4vw, var(--space-7));
+  }
+
+  /* Halbtransparente Ink-Flaeche sichert den Kontrast des Slot-Inhalts.
+     --bg als Textfarbe funktioniert in Light UND Dark (Tokens flippen). */
+  .video-hero__panel {
+    max-width: min(100%, 44rem);
+    background: var(--ink);
+    background: color-mix(in srgb, var(--ink) 82%, transparent);
+    color: var(--bg);
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--radius-m);
+  }
+
+  .video-hero__panel > :global(* + *) {
+    margin-block-start: var(--space-3);
+  }
+
+  .video-hero__panel :global(.eyebrow) {
+    color: inherit;
+  }
+
+  /* EIN Terrakotta-Akzent pro Sektion: bleibt dem Slot-Inhalt vorbehalten,
+     der Button arbeitet mit Surface/Ink. */
+  .video-hero__toggle {
+    position: absolute;
+    top: clamp(var(--space-4), 4vw, var(--space-6));
+    right: clamp(var(--space-4), 4vw, var(--space-6));
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .video-hero__toggle:hover {
+    border-color: var(--ink-soft);
+  }
+
+  .video-hero__icon--pause {
+    display: none;
+  }
+
+  [data-state='playing'] .video-hero__icon--pause {
+    display: block;
+  }
+
+  [data-state='playing'] .video-hero__icon--play {
+    display: none;
+  }
+</style>
+
+<script>
+  // Laeuft 1x pro Seite, initialisiert alle Instanzen (data-Attribute,
+  // keine IDs -> mehrfach pro Seite robust).
+  function setupVideoHero(root: HTMLElement) {
+    if (root.dataset.videoInit) return;
+    root.dataset.videoInit = '1';
+
+    const video = root.querySelector('video');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]');
+    if (!video || !toggle) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let userPaused = false;
+    let userStarted = false;
+
+    const sync = () => {
+      const playing = !video.paused;
+      root.dataset.state = playing ? 'playing' : 'paused';
+      const label = playing ? root.dataset.labelPause : root.dataset.labelPlay;
+      if (label) toggle.setAttribute('aria-label', label);
+    };
+
+    const tryPlay = () => {
+      video.muted = true;
+      const p = video.play();
+      if (p) p.catch(() => {});
+    };
+
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+
+    toggle.addEventListener('click', () => {
+      if (video.paused) {
+        userPaused = false;
+        userStarted = true;
+        tryPlay();
+      } else {
+        userPaused = true;
+        video.pause();
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              // Expliziter Nutzer-Start gewinnt ueber reduced-motion
+              if (!userPaused && (userStarted || !reduced.matches)) tryPlay();
+            } else if (!video.paused) {
+              video.pause();
+            }
+          }
+        },
+        { threshold: 0.3 }
+      );
+      io.observe(root);
+    }
+
+    reduced.addEventListener('change', () => {
+      if (reduced.matches) {
+        userStarted = false;
+        if (!video.paused) video.pause();
+      }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-video-hero]').forEach(setupVideoHero);
+</script>

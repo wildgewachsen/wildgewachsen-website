@@ -1,0 +1,443 @@
+---
+// EN Privacy Notice im neuen Look "Sonnengetrocknete Erde".
+// Rechtstext 1:1 WORTGLEICH aus website/en/privacy.html (Live-Stand) portiert,
+// nichts gekuerzt. Live-Eigenheit exakt erhalten: hreflang de + x-default zeigen
+// auf /impressum#datenschutz (nicht-reziprok), en auf /en/privacy.
+// Head-Werte (robots noindex, canonical, OG en_GB, Twitter, Favicons) exakt wie
+// live; live hat KEIN JSON-LD auf dieser Seite, daher hier auch nicht.
+// Klaro-Consent 1:1 wie live (wird vom Klaro-Widerrufs-Link in Abschnitt 9
+// gebraucht), app.js bewusst NICHT portiert.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Notice – Wildgewachsen"
+  description="Privacy notice for wildgewachsen-australien.de (English courtesy translation)."
+  lang="en"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/impressum#datenschutz" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/privacy" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/impressum#datenschutz" />
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/privacy" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Privacy Notice – Wildgewachsen" />
+    <meta property="og:description" content="Privacy notice for wildgewachsen-australien.de (English courtesy translation)." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/privacy" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy Notice – Wildgewachsen" />
+    <meta name="twitter:description" content="Privacy notice for wildgewachsen-australien.de (English courtesy translation)." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Auftakt: nur der Seitentitel, kein Akzent ===== */}
+  <section class="section auftakt texture-grid">
+    <div class="container container--text">
+      <h1>Privacy Notice</h1>
+    </div>
+  </section>
+
+  {/* ===== Rechtstext: schmale Lese-Spalte, Akzent = Links ===== */}
+  <section class="section legal">
+    <div class="container container--text prose">
+      <p>
+        <em>Last updated: 26.05.2026</em>
+      </p>
+
+      <div class="info-box">
+        <p class="info-box__titel">Courtesy translation</p>
+        <p>
+          This is an English courtesy translation. The German version at{' '}
+          <a href="/impressum#datenschutz">/impressum#datenschutz</a>{' '}
+          is the legally binding text.
+        </p>
+      </div>
+
+      <h2>1. Controller</h2>
+      <p>
+        The controller responsible for the processing of personal data on this
+        website within the meaning of the EU General Data Protection Regulation
+        (GDPR) and the German Federal Data Protection Act (BDSG) is:
+      </p>
+      <p>
+        Christian Schippel<br />
+        Arndtstr. 6<br />
+        45219 Essen<br />
+        Germany<br />
+        E-mail: info@wildgewachsen-australien.de
+      </p>
+
+      <h2>2. Data Protection Officer</h2>
+      <p>
+        No data protection officer has been appointed. This website is operated by
+        a single individual ("solo operator"). The conditions for the mandatory
+        appointment of a DPO under Art. 37 GDPR and § 38 BDSG are not met (no
+        large-scale regular monitoring, no special categories of data as core
+        business, fewer than 20 persons engaged in automated processing).
+      </p>
+
+      <h2>3. Processing Purposes and Legal Bases</h2>
+      <p>We process personal data for the following purposes:</p>
+      <ul>
+        <li>
+          <strong>Provision of the website (server logs):</strong>{' '}
+          Technical data is collected when the site is accessed (IP address, date,
+          time, browser type, operating system, referrer URL).{' '}
+          <em>Legal basis:</em> Art. 6 (1) (f) GDPR (legitimate interest in
+          operating and securing the website).
+        </li>
+        <li>
+          <strong>Audience measurement (GoatCounter):</strong>{' '}
+          Anonymous, cookieless statistics on page views.{' '}
+          <em>Legal basis:</em> Art. 6 (1) (f) GDPR; additionally
+          § 25 (2) (2) TDDDG, as no information is stored on or read from
+          end-user devices beyond what is strictly necessary.
+        </li>
+        <li>
+          <strong>Newsletter (Buttondown):</strong>{' '}
+          Processing of your e-mail address to send the newsletter (double opt-in).{' '}
+          <em>Legal basis:</em> Art. 6 (1) (a) GDPR (consent) and Art. 6 (1) (b)
+          GDPR (performance of the newsletter contract).
+        </li>
+        <li>
+          <strong>Affiliate tracking (Wise, SafetyWing, World Nomads, Booking.com):</strong>{' '}
+          If you consent in the cookie banner, clicks on affiliate links are
+          tracked via the relevant providers' cookies so that commissions can be
+          attributed correctly.{' '}
+          <em>Legal basis:</em> Art. 6 (1) (a) GDPR and § 25 (1) TDDDG (explicit
+          consent via the Klaro cookie banner).
+        </li>
+        <li>
+          <strong>Contact requests:</strong>{' '}
+          Processing of the information you provide so that we can respond to your
+          query.{' '}
+          <em>Legal basis:</em> Art. 6 (1) (b) GDPR (pre-contractual / contractual)
+          or Art. 6 (1) (f) GDPR (legitimate interest in communication).
+        </li>
+      </ul>
+
+      <h2>4. Legitimate Interests (Art. 6 (1) (f) GDPR)</h2>
+      <ul>
+        <li>Server logs: maintaining the technical operability and security of the
+          website against attacks and abuse.</li>
+        <li>Audience measurement: understanding which content reaches readers in
+          order to improve the website editorially. We use GoatCounter, a tool
+          that does not set cookies and does not store IP addresses.</li>
+      </ul>
+
+      <h2>5. Recipients of Personal Data</h2>
+      <p>
+        The following external service providers process personal data on our
+        behalf or as joint controllers. Each provider's own privacy policy is
+        linked; the provider information is as of 26.05.2026.
+      </p>
+      <div class="tabelle-scroll">
+        <table class="legal-tabelle">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Location</th>
+              <th>Function</th>
+              <th>Data category</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cloudflare, Inc.</td>
+              <td>USA</td>
+              <td>Hosting (Cloudflare Pages), CDN, DNS</td>
+              <td>IP address, connection data</td>
+            </tr>
+            <tr>
+              <td>GoatCounter (Martin Tournoij)</td>
+              <td>EU (Netherlands)</td>
+              <td>Cookieless audience measurement</td>
+              <td>Anonymous page views</td>
+            </tr>
+            <tr>
+              <td>Buttondown, LLC</td>
+              <td>USA (Richmond, Virginia)</td>
+              <td>Newsletter delivery</td>
+              <td>E-mail address, opt-in timestamp, optional first name</td>
+            </tr>
+            <tr>
+              <td>Wise (Wise Payments Limited)</td>
+              <td>United Kingdom</td>
+              <td>Affiliate tracking</td>
+              <td>Cookie ID, click data</td>
+            </tr>
+            <tr>
+              <td>SafetyWing (Managing General Agent) Ltd.</td>
+              <td>Turks and Caicos Islands; EU representative in Larnaca, Cyprus</td>
+              <td>Affiliate tracking</td>
+              <td>Cookie ID, click data</td>
+            </tr>
+            <tr>
+              <td>World Nomads</td>
+              <td>Australia</td>
+              <td>Affiliate tracking</td>
+              <td>Cookie ID, click data</td>
+            </tr>
+            <tr>
+              <td>Booking.com B.V.</td>
+              <td>Netherlands (Amsterdam)</td>
+              <td>Affiliate tracking</td>
+              <td>Cookie ID, click data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>6. Transfers to Third Countries</h2>
+      <p>
+        Some recipients are located outside the EEA. We safeguard such transfers as
+        follows:
+      </p>
+      <ul>
+        <li>
+          <strong>USA (Cloudflare, Buttondown):</strong>{' '}
+          based on the EU-US Data
+          Privacy Framework (Commission adequacy decision of 10.07.2023, to the
+          extent the providers are certified) and/or standard contractual clauses
+          (SCC) pursuant to Art. 46 (2) (c) GDPR.
+        </li>
+        <li>
+          <strong>United Kingdom (Wise):</strong>{' '}
+          Commission adequacy decision
+          of 28.06.2021.
+        </li>
+        <li>
+          <strong>Australia (World Nomads):</strong>{' '}
+          transfer based on standard
+          contractual clauses pursuant to Art. 46 (2) (c) GDPR; no adequacy
+          decision.
+        </li>
+        <li>
+          <strong>Turks and Caicos Islands (SafetyWing):</strong>{' '}
+          transfer based
+          on standard contractual clauses pursuant to Art. 46 (2) (c) GDPR; no
+          adequacy decision. An EU representative under Art. 27 GDPR has been
+          appointed.
+        </li>
+      </ul>
+      <p>
+        Transfers to third countries involve risks (e.g. broader access by state
+        authorities, potential restrictions on enforcing data subject rights). You
+        can object to processing by affiliate providers via the cookie banner.
+      </p>
+
+      <h2>7. Storage Periods</h2>
+      <ul>
+        <li><strong>Server logs (Cloudflare):</strong>{' '}
+          kept according to Cloudflare
+          defaults; to our knowledge no longer than 7 days. Details:{' '}
+          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.</li>
+        <li><strong>Klaro cookie ("wildgewachsen-klaro"):</strong>{' '}
+          365 days from
+          being set or until consent is withdrawn.</li>
+        <li><strong>Affiliate cookies:</strong>{' '}
+          storage period set by the
+          respective provider; see the linked privacy policies.</li>
+        <li><strong>Newsletter data:</strong>{' '}
+          until unsubscribe. After unsubscribe
+          the record is removed at Buttondown.</li>
+        <li><strong>Contact requests:</strong>{' '}
+          until the matter has been resolved
+          or for as long as statutory retention obligations require.</li>
+      </ul>
+
+      <h2>8. Your Rights</h2>
+      <p>Subject to the conditions of the GDPR, you have the following rights:</p>
+      <ul>
+        <li>Access (Art. 15 GDPR)</li>
+        <li>Rectification (Art. 16 GDPR)</li>
+        <li>Erasure (Art. 17 GDPR)</li>
+        <li>Restriction of processing (Art. 18 GDPR)</li>
+        <li>Data portability (Art. 20 GDPR)</li>
+        <li>Object to processing based on Art. 6 (1) (f) GDPR (Art. 21 GDPR)</li>
+        <li>Lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+      </ul>
+      <p>
+        The <strong>competent supervisory authority</strong> for our place of
+        establishment in Essen (North Rhine-Westphalia, Germany) is:
+      </p>
+      <p>
+        Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br />
+        Postfach 20 04 44, 40102 Düsseldorf, Germany<br />
+        <a href="https://www.ldi.nrw.de/" target="_blank" rel="noopener">https://www.ldi.nrw.de/</a>
+      </p>
+
+      <h2>9. Withdrawing Your Consent</h2>
+      <p>
+        You can withdraw any consent you have given (e.g. affiliate tracking,
+        newsletter) at any time with effect for the future. You can withdraw via:
+      </p>
+      <ul>
+        <li>Cookie settings: click{' '}
+          <a href="javascript:if(window.klaro){klaro.show();}else{alert('Cookie banner is loading…');}">open cookie settings</a>{' '}
+          (opens the Klaro dialog).</li>
+        <li>Newsletter: use the unsubscribe link in every newsletter e-mail.</li>
+        <li>Other rights: info@wildgewachsen-australien.de</li>
+      </ul>
+
+      <h2>10. Cookie Overview</h2>
+      <div class="tabelle-scroll">
+        <table class="legal-tabelle">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Provider</th>
+              <th>Purpose</th>
+              <th>Lifetime</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>wildgewachsen-klaro</td>
+              <td>Wildgewachsen (first-party)</td>
+              <td>Stores your cookie choices</td>
+              <td>365 days</td>
+              <td>strictly necessary (consent record)</td>
+            </tr>
+            <tr>
+              <td>wise*</td>
+              <td>Wise</td>
+              <td>Affiliate tracking</td>
+              <td>per provider</td>
+              <td>consent required</td>
+            </tr>
+            <tr>
+              <td>safetywing*, sw_*</td>
+              <td>SafetyWing</td>
+              <td>Affiliate tracking</td>
+              <td>per provider</td>
+              <td>consent required</td>
+            </tr>
+            <tr>
+              <td>worldnomads*, wn_*</td>
+              <td>World Nomads</td>
+              <td>Affiliate tracking</td>
+              <td>per provider</td>
+              <td>consent required</td>
+            </tr>
+            <tr>
+              <td>aid, booking*</td>
+              <td>Booking.com</td>
+              <td>Affiliate tracking</td>
+              <td>per provider</td>
+              <td>consent required</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <em>Note:</em> GoatCounter does not set cookies. Detailed cookie lists of
+        the affiliate providers can be found in their respective privacy policies.
+      </p>
+
+      <h2>11. Automated Decision-Making / Profiling</h2>
+      <p>
+        We do not engage in automated decision-making, including profiling, within
+        the meaning of Art. 22 GDPR.
+      </p>
+
+      <h2>12. Newsletter Details</h2>
+      <p>
+        Our newsletter is delivered by Buttondown, LLC (406 W Franklin St. #201,
+        Richmond, VA 23221, USA). When you subscribe, you confirm your sign-up via
+        a double opt-in procedure (confirmation link sent by e-mail). We store
+        your e-mail address, the timestamp of your consent, and optionally a first
+        name. You can unsubscribe at any time via the link at the bottom of every
+        newsletter e-mail; processing of your e-mail address will then cease.
+        Transfer to the USA is based on the EU-US Data Privacy Framework and/or
+        standard contractual clauses.{' '}
+        <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener">Buttondown privacy policy</a>.
+      </p>
+
+      <h2>13. Changes to this Notice</h2>
+      <p>
+        We update this notice when technical or legal circumstances change. The
+        current version is always published on this page. Last updated: 26.05.2026.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Auftakt: kompakter Seitenkopf ---------------------------------- */
+  .auftakt {
+    border-block-end: 1px solid var(--line);
+    padding-block: var(--space-7);
+  }
+
+  /* --- Rechtstext ------------------------------------------------------- */
+  .legal h2 {
+    scroll-margin-top: var(--space-7);
+  }
+
+  /* --- Info-Box (Courtesy translation) --------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Tabellen: Etiketten-Optik mit Tokens, horizontal scrollbar ------ */
+  .tabelle-scroll {
+    overflow-x: auto;
+  }
+
+  .legal-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+    line-height: 1.5;
+  }
+
+  .legal-tabelle th,
+  .legal-tabelle td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .legal-tabelle thead tr {
+    background: var(--surface);
+  }
+
+  .legal-tabelle th {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+</style>

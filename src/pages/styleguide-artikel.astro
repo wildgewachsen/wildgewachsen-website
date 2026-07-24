@@ -1,0 +1,37 @@
+---
+// Demo-Artikel fuers Lese-Layout (Phase 1). Text = Platzhalter in echter Voice,
+// KEIN echter Content. Geht nie live.
+import ArtikelLayout from '../layouts/ArtikelLayout.astro';
+---
+
+<ArtikelLayout
+  title="So liest sich ein Artikel im neuen Look"
+  description="Interner Layout-Test für das Artikel-Template."
+  lang="de"
+  eyebrow="Layout-Demo · kein echter Artikel"
+  datum="21. Juli 2026"
+  lesezeit="3 Min. Lesezeit"
+>
+  <p>
+    Das hier ist der Lesefluss: eine Spalte, maximal 70 Zeichen pro Zeile,
+    Lora mit Zeilenhöhe 1,75. Keine Sidebar, nichts blinkt. Der Text bekommt
+    den Platz, den er braucht.
+  </p>
+  <h2>Eine Zwischenüberschrift in Young Serif</h2>
+  <p>
+    Absätze bleiben kurz. Erst die knappe Aussage, dann der Kontext. Zahlen
+    nennen wir konkret: Das kostet X Euro, das dauert Y Wochen. So schreibt
+    Christian, so soll es auch aussehen.
+  </p>
+  <ul>
+    <li>Listenpunkte mit genug Luft</li>
+    <li>Konkrete Fakten statt vager Formulierungen</li>
+    <li>Ein Terrakotta-Akzent pro Sektion, nicht mehr</li>
+  </ul>
+  <h3>Und eine H3 darunter</h3>
+  <p>
+    Wichtig für lange Guides: H2 und H3 gliedern alle 200 bis 300 Wörter, das
+    Inhaltsverzeichnis kommt als eigene Komponente in Phase 2.
+  </p>
+  <p class="handnote">Randnotiz in Caveat: sowas kommt später an den Rand.</p>
+</ArtikelLayout>

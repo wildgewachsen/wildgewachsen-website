@@ -1,0 +1,649 @@
+---
+// Migration-Agent-Erfahrungsbericht im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/blog/migration-agent-australien-erfahrung.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'fast-aufgegeben', label: 'Wir hätten das fast aufgegeben' },
+  { id: 'erstgespraech', label: 'Warum wir das Erstgespräch trotzdem gebucht haben' },
+  { id: 'was-sich-aenderte', label: 'Was das Gespräch verändert hat' },
+  { id: 'unsere-liste', label: 'Das stand danach auf unserer Liste' },
+  { id: 'was-der-agent-macht', label: 'Was ein Migration Agent für uns übernimmt' },
+  { id: 'kosten', label: 'Was es kostet, ehrlich gesagt' },
+  { id: 'fazit', label: 'Würden wir es wieder so machen?' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+const weiterlesen = [
+  {
+    href: '/blog/visum-186-australien-familie-guide',
+    meta: 'Visum & Migration',
+    titel: 'Visum 186 Australien: Unser Familien-Weg zum Employer Sponsored Visa (2026)',
+  },
+  {
+    href: '/blog/pte-test-erfahrung-australien-visum',
+    meta: 'Visum & Migration',
+    titel: 'PTE Academic Test Erfahrung: Wie ich als deutscher Koch 89 Punkte für Australien geschafft habe (2026)',
+  },
+  {
+    href: '/blog/tra-skill-assessment-koch-australien',
+    meta: 'Visum & Migration',
+    titel: 'TRA Skill Assessment als Koch: Was es wirklich kostet – besonders als Selbständiger',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Mit oder ohne Migration Agent für Australien? Erfahrung"
+  description="Wir wandern nach Australien aus und haben einen Migration Agent beauftragt: 250 AUD Erstgespräch, 6 Schritte. Warum, wer übernimmt was und unsere Erfahrung."
+  lang="de"
+  eyebrow="Visum & Migration"
+  datum="4. Juni 2026"
+  lesezeit="8 Min. Lesezeit · Zuletzt aktualisiert: 09.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/migration-agent-australia-our-experience" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mit oder ohne Migration Agent für Australien? Erfahrung" />
+    <meta property="og:description" content="Wir wandern nach Australien aus und haben einen Migration Agent beauftragt: 250 AUD Erstgespräch, 6 Schritte. Warum, wer übernimmt was und unsere Erfahrung." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/migration-agent-australien.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mit oder ohne Migration Agent für Australien? Erfahrung" />
+    <meta name="twitter:description" content="Wir wandern nach Australien aus und haben einen Migration Agent beauftragt: 250 AUD Erstgespräch, 6 Schritte. Warum, wer übernimmt was und unsere Erfahrung." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/migration-agent-australien.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Mit oder ohne Migration Agent für Australien? Erfahrung",
+    "description": "Wir wandern nach Australien aus und haben einen Migration Agent beauftragt: 250 AUD Erstgespräch, 6 Schritte. Warum, wer übernimmt was und unsere Erfahrung.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/migration-agent-australien.jpg",
+      "caption": "Eine weiße Tasse auf einer Karte, Symbolbild für die Recherche- und Planungs-Phase der Auswanderung nach Australien.",
+      "creditText": "Pexels",
+      "copyrightNotice": "Pexels License",
+      "creator": {
+        "@type": "Organization",
+        "name": "Pexels",
+        "url": "https://www.pexels.com/"
+      },
+      "license": "https://www.pexels.com/license/",
+      "acquireLicensePage": "https://www.pexels.com/license/"
+    },
+    "datePublished": "2026-06-04T12:00:00+02:00",
+    "dateModified": "2026-06-09T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Erfahrung mit einem Migration Agent für die Auswanderung nach Australien"
+    },
+    "keywords": "Migration Agent Australien, Auswandern Australien, 186 Visum, Skills in Demand 482, Migration Agent Erfahrung, Visum Australien Familie"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Braucht man für die Auswanderung nach Australien einen Migration Agent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zwingend nötig ist er nicht. Wer gern recherchiert, genug Zeit und Nerven hat und einen geradlinigen Fall, kann den Visa-Weg auch selbst gehen. Unsere Erfahrung ist aber: Wenn das Visa-Thema sich wie eine unüberwindbare Wand anfühlt, kann ein Agent die Hilfe sein, die die Auswanderung überhaupt erst möglich macht."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet ein Migration Agent für Australien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir nennen in unserem Erfahrungsbericht bewusst keine konkrete Zahl, weil wir die Preise unseres Agenten nicht öffentlich ausbreiten möchten. Das Honorar erfragt man am besten direkt beim Agent, dann bekommt man auch gleich ein Angebot zur eigenen Situation. Für uns lag die Summe unter dem, womit wir gerechnet hatten: nicht wenig, aber in einem für uns vertretbaren Rahmen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie haben wir unseren Migration Agent gefunden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Über die Facebook-Gruppe Auswandern nach Australien. Dort fragen viele Leute nach einem Migration Agent, und unter fast jedem dieser Beiträge fällt derselbe Name: Johannes Kunz. Diese vielen unabhängigen Empfehlungen haben für uns den Ausschlag gegeben."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was macht ein Migration Agent konkret?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In unserem Fall war es bisher das Erstgespräch und das laufende, kostenlose Beantworten unserer Rückfragen per E-Mail. Die größeren Schritte kommen später: die Kommunikation und Verhandlung mit dem künftigen Sponsor-Arbeitgeber und das korrekte Stellen des eigentlichen Visa-Antrags."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist der Unterschied zwischen dem 186- und dem 482-Visum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das 186, das Employer Nomination Scheme, ist ein permanentes, arbeitgeber-gesponsertes Visum. Das 482, heute Skills in Demand genannt, ist ein häufiger genutztes, temporäres Arbeitgeber-Visum. Wir streben das permanente 186 an. Verbindliche Details dazu gibt das australische Department of Home Affairs."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Mit oder ohne Migration Agent für Australien? Erfahrung", "item": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/migration-agent-australien.jpg"
+    alt="Eine weiße Tasse auf einer Karte mit Notizen, Symbolbild für die Recherche- und Planungs-Phase einer Auswanderung nach Australien"
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Wir wandern im Sommer 2026 nach Australien aus, als Familie mit zwei Kindern. Eine der ersten großen Fragen war nicht, was wir mitnehmen oder wo wir wohnen. Es war: Schaffen wir den Visa-Teil überhaupt allein, oder holen wir uns Hilfe dazu? Wir haben uns für einen Migration Agent entschieden. Dieser Beitrag erzählt, warum. Wie wir kurz davor waren, die ganze Auswanderung an dieser einen Hürde scheitern zu lassen, was das erste Gespräch verändert hat, was so ein Agent eigentlich übernimmt und was uns das kostet. Das ist keine Anleitung und kein Rechtsrat. Es ist unsere ehrliche Erfahrung, für Familien, die vor derselben Frage stehen.
+  </p>
+
+  <p>
+    Wenn du wissen willst, welches Visum wir konkret anstreben und wie unser Weg dahin aussieht, schau in unseren <a href="/blog/visum-186-australien-familie-guide">Überblick zum 186-Visum</a>. Dieser Artikel hier setzt eine Ebene davor an: bei der Entscheidung, sich überhaupt einen Profi an die Seite zu holen.
+  </p>
+
+  <!-- Das Wichtigste in Kürze -->
+  <div class="info-box">
+    <p class="info-box__titel">Das Wichtigste in Kürze</p>
+    <ul>
+      <li>Wir haben für die Auswanderung nach Australien einen Migration Agent beauftragt: Johannes Kunz.</li>
+      <li>Vorher waren wir kurz davor, die Auswanderung an der Visa-Hürde scheitern zu lassen.</li>
+      <li>Den Ausschlag gab ein einziges gebuchtes Erstgespräch. Es hat aus einer Wand einen Weg mit klaren Etappen gemacht.</li>
+      <li>Gefunden haben wir ihn über eine Facebook-Gruppe, in der sein Name immer wieder als Empfehlung auftaucht.</li>
+      <li>Was er kostet, nennen wir hier bewusst nicht. Das Honorar erfragt man am besten direkt bei ihm.</li>
+    </ul>
+  </div>
+
+  <!-- Abschnitt 1 -->
+  <h2 id="fast-aufgegeben">Wir hätten das fast aufgegeben</h2>
+
+  <p>Lucy und ich haben vor einigen Jahren schon einmal zwei Jahre in Australien gelebt. Aus dieser Zeit wussten wir eine Sache ziemlich genau: Ein Visum für Australien zu bekommen ist schwer. Nicht Formular-ausfüllen-schwer. Richtig schwer.</p>
+
+  <p>Als der Gedanke, zurückzugehen, wieder konkret wurde, saß genau dieses Wissen im Weg. Wir haben uns ein bisschen eingelesen. Gegoogelt, geschaut, welche Visa-Typen es überhaupt gibt. Und je mehr wir gelesen haben, desto größer wurde die Wand. Verschiedene Visa-Klassen, Streams, Punkte, Skill Assessments, Berufslisten. Schnell war klar: Das ist komplex, und wir verstehen es ehrlich gesagt nicht richtig.</p>
+
+  <p>Es gab einen Punkt, an dem wir kurz davor waren, die ganze Sache zu lassen. Nicht, weil wir nicht wollten. Sondern weil das Visum sich wie ein Berg anfühlte, den man nicht hochkommt. Das klingt hart, wenn man es so schreibt. Aber so war es. Der Traum war da, und davor stand ein Thema, bei dem wir nicht einmal wussten, wo wir anfangen sollten.</p>
+
+  <!-- Abschnitt 2 -->
+  <h2 id="erstgespraech">Warum wir das Erstgespräch trotzdem gebucht haben</h2>
+
+  <p>Was sich geändert hat, war kein plötzlicher Motivationsschub. Es war eher Trotz.</p>
+
+  <p>Bei uns lief zur selben Zeit die letzte Phase mit unserem Restaurant. Die farm, die wir jahrelang geführt haben, ging Ende 2025 zu. Es war ohnehin eine Zeit, in der vieles gleichzeitig im Umbruch war. Viel Stress, viele offene Enden. Und irgendwann kam der Gedanke: Bevor wir den Traum an einem Visa-Formular sterben lassen, buchen wir wenigstens ein einziges Gespräch und schauen, was dabei rauskommt.</p>
+
+  <p>Auf <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz</a> sind wir nicht durch lange Recherche gekommen. Wir sind in der Facebook-Gruppe „Auswandern nach Australien". Dort fragen ständig Leute nach einem Migration Agent. Und unter fast jedem dieser Beiträge fällt derselbe Name: Johannes Kunz. Wieder und wieder. Irgendwann denkt man sich: Wenn so viele Leute unabhängig voneinander dieselbe Person empfehlen, muss da etwas dran sein. Wir haben keine lange Liste verglichen. Er war durch die vielen Empfehlungen einfach gesetzt.</p>
+
+  <p>Also haben wir das Erstgespräch gebucht. Einfach mal gucken.</p>
+
+  <!-- Abschnitt 3 -->
+  <h2 id="was-sich-aenderte">Was das Gespräch verändert hat</h2>
+
+  <p>Die ehrlichste Antwort: Das Gespräch hat uns die Angst genommen.</p>
+
+  <PullQuote lang="de">Vor dem Gespräch war das Visum eine Wand. Danach war es ein Weg mit Etappen.</PullQuote>
+
+  <p>Das ist schwer in Zahlen zu fassen, aber es war der wichtigste Effekt. Immer noch viel Arbeit, aber eben ein Weg, den man gehen kann. Ganz konkret hat Johannes uns ein paar Dinge erklärt, die wir vorher beim eigenen Googeln nicht durchschaut hatten.</p>
+
+  <p>Zum einen: Es gibt nicht nur „das eine" Sponsoring-Visum. Da ist das permanente Visum, das wir anstreben, das 186, offiziell Employer Nomination Scheme. Und es gibt ein häufiger genutztes, temporäres Arbeitgeber-Visum, das 482, heute „Skills in Demand" genannt. Dazu kommt, getrennt vom Arbeitgeber-Sponsoring, noch eine punktebasierte Schiene über eine sogenannte Expression of Interest. Plötzlich hatte die Sache eine Form. Wir wussten zumindest, in welcher Landschaft wir uns bewegen.</p>
+
+  <p>Zum anderen hat er uns erklärt, dass sich die Bedingungen für gesponserte Arbeitnehmer in Australien zuletzt verbessert haben. Wenn man bei einem schlechten Arbeitgeber landet, hat man heute deutlich mehr Zeit, einen neuen Job zu finden, und darf in dieser Zeit weiterarbeiten. Früher war dieses Zeitfenster viel enger. Für uns als Familie, die viel auf diese eine Karte setzt, war das eine echte Erleichterung.</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">Gut zu wissen: Mehr Zeit für gesponserte Arbeitnehmer</p>
+    <p>Seit dem 1. Juli 2024 haben Menschen mit einem gesponserten Arbeitsvisum (Subclass 482, 457 oder 494) mehr Zeit, wenn das Arbeitsverhältnis endet: bis zu 180 Tage am Stück, um einen neuen Sponsor zu finden oder ein anderes Visum zu beantragen. Vorher waren es 60 Tage. In dieser Zeit darf man auch weiterarbeiten. Stand: Juni 2026. Verbindliche und aktuelle Informationen gibt das australische Department of Home Affairs.</p>
+  </div>
+
+  <p>Und er hat etwas gesagt, das hängengeblieben ist: Als ausgebildeter Koch habe ich realistisch gute Chancen, einen Arbeitgeber zu finden, der mich sponsert. Nichts davon hätten wir uns allein mit dieser Sicherheit zusammengereimt. Genau das war der Wert des Gesprächs. Nicht der Papierkram, sondern jemand, der das System kennt und sagt: Euer Fall ist machbar, und so sieht der Weg aus.</p>
+
+  <!-- Abschnitt 4 -->
+  <h2 id="unsere-liste">Das stand danach auf unserer Liste</h2>
+
+  <p>Eine ganz konkrete Sache haben wir aus dem Erstgespräch mitgenommen: eine klare Liste, was zu tun ist. Kein vages „Ihr braucht ein Visum", sondern echte Schritte in einer sinnvollen Reihenfolge. Aus dieser Liste ist unsere Roadmap geworden. So sieht sie heute aus, mit unserem aktuellen Stand:</p>
+
+  <table class="kosten-tabelle">
+    <thead>
+      <tr>
+        <th>Schritt</th>
+        <th>Worum es geht</th>
+        <th>Stand bei uns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Englisch-Test (PTE Academic)</td>
+        <td>Pflicht-Sprachnachweis für das Visum</td>
+        <td>Erledigt (März 2026)</td>
+      </tr>
+      <tr>
+        <td>Skill Assessment als Koch (TRA)</td>
+        <td>Anerkennung des Berufs für Australien</td>
+        <td>Erledigt</td>
+      </tr>
+      <tr>
+        <td>Tourist-Visum für die Einreise</td>
+        <td>damit die Familie überhaupt einreisen kann</td>
+        <td>Beantragt &amp; bestätigt 28.05.2026 (alle 4)</td>
+      </tr>
+      <tr>
+        <td>Sponsor-Arbeitgeber finden</td>
+        <td>Voraussetzung für das 186-Visum</td>
+        <td>Offen, ich suche ab Juni vor Ort</td>
+      </tr>
+      <tr>
+        <td>Health Check und Police Check</td>
+        <td>Gesundheits- und Führungszeugnis-Prüfung</td>
+        <td>Geplant vor dem Abflug</td>
+      </tr>
+      <tr>
+        <td>186-Antrag stellen (mit Johannes)</td>
+        <td>der eigentliche Visa-Antrag</td>
+        <td>Offen, sobald ein Job-Angebot steht</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Zu zwei dieser Schritte haben wir eigene, ausführliche Erfahrungsberichte geschrieben: zum <a href="/blog/pte-test-erfahrung-australien-visum">PTE Englisch-Test</a> und zum <a href="/blog/tra-skill-assessment-koch-australien">TRA Skill Assessment als Koch</a>. Beide waren aufwendiger, als wir am Anfang gedacht hatten. Genau deshalb war es gut, von vornherein zu wissen, dass sie auf der Liste stehen.</p>
+
+  <!-- Abschnitt 5 -->
+  <h2 id="was-der-agent-macht">Was ein Migration Agent für uns übernimmt</h2>
+
+  <p>Ehrlich gesagt hat Johannes bis jetzt noch gar nicht so viel gemacht. Das liegt daran, dass wir noch früh dran sind. Wir hatten das Erstgespräch, und das war es im Großen und Ganzen erst einmal.</p>
+
+  <p>Eine Sache fällt uns trotzdem schon positiv auf. Seit dem Gespräch haben wir ihm immer wieder einzelne Fragen per E-Mail geschickt, und er hat jede davon ausführlich beantwortet, ohne dafür extra etwas zu berechnen. Das ist eine Kleinigkeit, die viel ausmacht. Man steht zwischen den großen Schritten nicht allein da.</p>
+
+  <p>Die eigentliche Arbeit kommt später, und sie hat zwei Teile. Sobald ein Arbeitgeber Interesse zeigt, uns zu sponsern, übernimmt Johannes die Kommunikation und die Verhandlung mit diesem Arbeitgeber. Wir wollen das direkte 186, also das permanente Visum. Johannes hat uns erklärt, dass Arbeitgeber das direkte 186 seltener anbieten als die temporäre Variante, weil ein permanentes Visum den Arbeitnehmer nicht so lange an sie bindet. Da ist es gut, jemanden zu haben, der für uns verhandelt und weiß, worauf es ankommt.</p>
+
+  <p>Der zweite Teil ist der eigentliche Visa-Antrag. Den stellt Johannes für uns. Und das war einer der Hauptgründe, überhaupt einen Agent zu nehmen. Bei diesen Anträgen kann man Fehler machen, die einen am Ende den Antrag kosten. Wenn etwas Wichtiges falsch ausgefüllt ist, kann das zur Ablehnung führen. Wenn an einem Visum die ganze Zukunft der Familie hängt, ist es uns das wert, dass jemand das korrekt macht, der es jeden Tag tut.</p>
+
+  <!-- Abschnitt 6 -->
+  <h2 id="kosten">Was es kostet, ehrlich gesagt</h2>
+
+  <p>Jetzt der Teil, um den die meisten am Ende kreisen: Was kostet so ein Migration Agent?</p>
+
+  <p>Wir nennen die Zahl hier bewusst nicht. Das hat einen Grund. Johannes hat uns die Kosten im Erstgespräch genannt, als Teil seines Angebots. Wir finden es nicht richtig, die Preise von jemand anderem öffentlich auszubreiten. Das ist etwas, das man direkt bei ihm erfragen sollte, wenn man ernsthaft Interesse hat. So bekommt man auch gleich ein Angebot, das zur eigenen Situation passt.</p>
+
+  <p>Was wir sagen können: Ja, es kostet Geld, und es ist nicht nichts. Aber ehrlich gesagt hatten wir mit mehr gerechnet. Die Summe lag unter dem, worauf wir uns innerlich eingestellt hatten. Es ist nicht wenig, aber es ist auch nicht unfassbar viel. Es liegt in einem Rahmen, der für uns in Ordnung war.</p>
+
+  <p>Gemessen an dem, was wir dafür bekommen, fühlt es sich fair an. Wir haben einen sortierten Weg, einen festen Ansprechpartner und die Sicherheit, dass der Antrag am Ende nicht an einem Formfehler scheitert. Für uns war dieser Tausch in Ordnung.</p>
+
+  <!-- Fazit -->
+  <h2 id="fazit">Würden wir es wieder so machen?</h2>
+
+  <p>Für uns: ja, eindeutig.</p>
+
+  <p>Allein das Erstgespräch war das Geld wert, weil es uns von der Kante zurückgeholt hat, an der wir fast die ganze Auswanderung aufgegeben hätten. Das ist schwer aufzurechnen, aber es ist real.</p>
+
+  <p>Trotzdem, und das ist uns wichtig: Ein Agent nimmt einem nicht die Arbeit ab. Den Englisch-Test, das Skill Assessment, den Arbeitgeber, das müssen wir alles selbst machen. Ein Migration Agent besorgt einem keinen Job. Was er macht, ist, einem das System von den Schultern zu nehmen, damit man sich auf die Teile konzentrieren kann, die nur man selbst erledigen kann.</p>
+
+  <p>Für wen ergibt das Sinn? Das kann jeder nur für sich beantworten. Unsere Erfahrung ist: Wenn das Visa-Thema sich wie eine Wand anfühlt, wenn die Zeit oder die Nerven fehlen, sich durch Visa-Klassen und Berufslisten zu wühlen, dann kann ein Agent genau das sein, was den Traum am Leben hält. Wer dagegen gern recherchiert, Zeit hat und einen geradlinigen Fall, kommt vielleicht auch allein durch.</p>
+
+  <p>Wir können das für niemanden entscheiden. Wir können nur sagen: Für uns, mit zwei Kindern, einem festen Abflugdatum und einem geschlossenen Restaurant im Rücken, war es die richtige Entscheidung. Und wir sind froh, dass wir damals dieses eine Gespräch gebucht haben, statt die Wand gewinnen zu lassen.</p>
+
+  <p>Eins macht der Agent uns nicht weg: das Sponsor-Risiko. Auch mit Agent steht und fällt unser Weg damit, dass ich in den drei Tourist-Monaten vor Ort einen Sponsor finde. Klappt das nicht, fliegen wir zurück. Das ist uns bewusst, finanziell und mental. Der Agent macht den Antrags-Weg gangbar, der Sponsor-Teil bleibt unsere bewusste Wette.</p>
+
+  <p>Warum wir diesen ganzen Weg überhaupt auf uns nehmen, haben wir in <a href="/blog/vom-gemuesegarten-nach-australien-auswanderung-familie">unserer Geschichte vom Gemüsegarten nach Australien</a> erzählt.</p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Häufige Fragen</h2>
+
+  <h3>Braucht man für die Auswanderung nach Australien einen Migration Agent?</h3>
+  <p>Zwingend nötig ist er nicht. Wer gern recherchiert, genug Zeit und Nerven hat und einen geradlinigen Fall, kann den Visa-Weg auch selbst gehen. Unsere Erfahrung ist aber: Wenn das Visa-Thema sich wie eine unüberwindbare Wand anfühlt, kann ein Agent die Hilfe sein, die die Auswanderung überhaupt erst möglich macht.</p>
+
+  <h3>Was kostet ein Migration Agent für Australien?</h3>
+  <p>Wir nennen in diesem Beitrag bewusst keine konkrete Zahl, weil wir die Preise unseres Agenten nicht öffentlich ausbreiten möchten. Das Honorar erfragt man am besten direkt beim Agent, dann bekommt man auch gleich ein Angebot zur eigenen Situation. Für uns lag die Summe unter dem, womit wir gerechnet hatten: nicht wenig, aber in einem für uns vertretbaren Rahmen.</p>
+
+  <h3>Wie haben wir unseren Migration Agent gefunden?</h3>
+  <p>Über die Facebook-Gruppe „Auswandern nach Australien". Dort fragen viele Leute nach einem Migration Agent, und unter fast jedem dieser Beiträge fällt derselbe Name: Johannes Kunz. Diese vielen unabhängigen Empfehlungen haben für uns den Ausschlag gegeben.</p>
+
+  <h3>Was macht ein Migration Agent konkret?</h3>
+  <p>In unserem Fall war es bisher das Erstgespräch und das laufende, kostenlose Beantworten unserer Rückfragen per E-Mail. Die größeren Schritte kommen später: die Kommunikation und Verhandlung mit dem künftigen Sponsor-Arbeitgeber und das korrekte Stellen des eigentlichen Visa-Antrags.</p>
+
+  <h3>Was ist der Unterschied zwischen dem 186- und dem 482-Visum?</h3>
+  <p>Das 186, das Employer Nomination Scheme, ist ein permanentes, arbeitgeber-gesponsertes Visum. Das 482, heute „Skills in Demand" genannt, ist ein häufiger genutztes, temporäres Arbeitgeber-Visum. Wir streben das permanente 186 an. Verbindliche Details dazu gibt das australische Department of Home Affairs.</p>
+
+  <p><strong>Stand:</strong> Juni 2026. Wir sind noch mitten im Prozess. Ich fliege am 23. Juni vor, Lucy folgt mit den Kindern am 26. Juli. Sobald der Visa-Weg weitergeht, mit dem Sponsor und dem 186-Antrag, berichten wir hier weiter.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Beitrag beschreibt unsere persönliche Erfahrung mit einem
+      Migration Agent. Er ist keine Rechts- oder Migrationsberatung. Visa-Regeln ändern sich, und
+      jeder Fall ist anders. Verbindliche Auskünfte bekommst du beim australischen Department of
+      Home Affairs oder bei einem registrierten Migration Agent.
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 09.06.2026 · <strong>Quellen:</strong>
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">186 Employer Nomination Scheme</a>,
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482" target="_blank" rel="noopener">482 Skills in Demand</a>
+      (Australian Department of Home Affairs)
+    </p>
+  </div>
+
+  <!-- Update-Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">06.06.2026</span>
+      <span class="update-log__text">Tourist-Visum-Datum korrigiert: tatsächlich bewilligt am 28.05.2026 (laut Grant Notification).</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">04.06.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Hat dir das geholfen?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Neue Artikel, echte Erfahrungen, konkrete Zahlen, direkt in dein Postfach.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen (Das Wichtigste in Kürze, Gut zu wissen) ------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Roadmap-Tabelle ------------------------------------------- */
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,72 @@
+[
+  {
+    "original": "/assets/images/hero-family.jpg",
+    "breiteOriginal": 960,
+    "varianten": [
+      "/assets/images/opt/hero-family-480.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/wildgewachsen_logo.png",
+    "breiteOriginal": 2500,
+    "varianten": [
+      "/assets/images/opt/wildgewachsen_logo-480.webp",
+      "/assets/images/opt/wildgewachsen_logo-960.webp",
+      "/assets/images/opt/wildgewachsen_logo-1600.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/family-about.jpg",
+    "breiteOriginal": 4032,
+    "varianten": [
+      "/assets/images/opt/family-about-480.webp",
+      "/assets/images/opt/family-about-960.webp",
+      "/assets/images/opt/family-about-1600.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/au-byron-strand-ankunft-og.jpg",
+    "breiteOriginal": 1200,
+    "varianten": [
+      "/assets/images/opt/au-byron-strand-ankunft-og-480.webp",
+      "/assets/images/opt/au-byron-strand-ankunft-og-960.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/au-headland-blick-meer-og.jpg",
+    "breiteOriginal": 1200,
+    "varianten": [
+      "/assets/images/opt/au-headland-blick-meer-og-480.webp",
+      "/assets/images/opt/au-headland-blick-meer-og-960.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/krankenversicherung-australien-care-expatriate-og.jpg",
+    "breiteOriginal": 1200,
+    "varianten": [
+      "/assets/images/opt/krankenversicherung-australien-care-expatriate-og-480.webp",
+      "/assets/images/opt/krankenversicherung-australien-care-expatriate-og-960.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/family-story.jpg",
+    "breiteOriginal": 2773,
+    "varianten": [
+      "/assets/images/opt/family-story-480.webp",
+      "/assets/images/opt/family-story-960.webp",
+      "/assets/images/opt/family-story-1600.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/artikel-visum-186.jpg",
+    "breiteOriginal": 960,
+    "varianten": [
+      "/assets/images/opt/artikel-visum-186-480.webp"
+    ]
+  },
+  {
+    "original": "/assets/images/author.jpg",
+    "breiteOriginal": 480,
+    "varianten": []
+  }
+]

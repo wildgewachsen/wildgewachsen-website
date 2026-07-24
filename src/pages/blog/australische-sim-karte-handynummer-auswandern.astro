@@ -1,0 +1,675 @@
+---
+// SIM-Karten-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/blog/australische-sim-karte-handynummer-auswandern.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'schnellster-weg', label: 'Der schnellste Weg zur australischen Nummer' },
+  { id: 'prepaid-oder-vertrag', label: 'Prepaid oder Vertrag für Neuankömmlinge' },
+  { id: 'welches-netz', label: 'Welches Netz? Telstra, Optus, Vodafone' },
+  { id: 'was-kostet', label: 'Was kostet das wirklich, in Euro gerechnet' },
+  { id: 'sim-oder-esim', label: 'Physische SIM oder eSIM' },
+  { id: 'esim-schritt-fuer-schritt', label: 'eSIM einrichten, Schritt für Schritt' },
+  { id: 'konto-adresse-bonitaet', label: 'Konto, Adresse, Karte, was du brauchst' },
+  { id: 'mein-weg', label: 'Mein Weg vor Ort: warum ALDI scheiterte und felix funktioniert hat' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+const weiterlesen = [
+  {
+    href: '/blog/auswandern-australien-kosten-familie-guide',
+    meta: 'Geld & Kosten',
+    titel: 'Auswandern Australien: Was wir als Familie wirklich bezahlen (Kosten-Guide 2026)',
+  },
+  {
+    href: '/blog/fluege-nach-australien-kosten-familie',
+    meta: 'Geld & Kosten',
+    titel: 'Flüge nach Australien als Familie: Was wir wirklich bezahlt haben',
+  },
+  {
+    href: '/blog/tourist-visum-australien-evisitor-651',
+    meta: 'Visum & Migration',
+    titel: 'Tourist-Visum für Australien: eVisitor 651 für Familien',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Australische SIM-Karte und Handynummer für Auswanderer"
+  description="Australische SIM-Karte als Auswanderer: warum die ausländische Karte scheitern kann, welcher Anbieter funktioniert und welches Netz in Northern Rivers trägt."
+  lang="de"
+  eyebrow="Geld & Kosten"
+  datum="21. Juli 2026"
+  lesezeit="9 Min. Lesezeit · Zuletzt aktualisiert: 21.07.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/australian-sim-card-phone-number-newcomers" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Australische SIM-Karte und Handynummer für Auswanderer" />
+    <meta property="og:description" content="Warum meine ausländische Karte bei der SIM-Aktivierung scheiterte, welcher Anbieter funktioniert hat und welches Netz in Northern Rivers trägt." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/australische-sim-karte-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Australische SIM-Karte und Handynummer für Auswanderer" />
+    <meta name="twitter:description" content="Warum meine ausländische Karte bei der SIM-Aktivierung scheiterte, welcher Anbieter funktioniert hat und welches Netz in Northern Rivers trägt." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/australische-sim-karte-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Australische SIM-Karte und Handynummer für Auswanderer",
+    "description": "Australische SIM-Karte als Auswanderer: warum die ausländische Karte bei der Aktivierung scheitern kann, welcher Anbieter funktioniert, welches Netz in Northern Rivers trägt und was es in Euro kostet.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/australische-sim-karte-hero.jpg",
+      "caption": "Die felix-Mobile-App: Aktivierungs-Schritte, Ausweis-Check mit ausländischem Pass und die aktivierte eSIM (Nummer geschwärzt).",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": { "@type": "Organization", "name": "Wildgewachsen" },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": { "@type": "Organization", "name": "Wildgewachsen", "url": "https://wildgewachsen-australien.de/" },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-07-21T12:00:00+10:00",
+    "dateModified": "2026-07-21T12:00:00+10:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Australische Prepaid-SIM-Karte und Handynummer für Neuankömmlinge und Auswanderer"
+    },
+    "keywords": "australische SIM-Karte, australische Handynummer, Prepaid Australien, eSIM Australien, felix Mobile, Telstra Optus Vodafone, SIM ausländische Karte Australien, Handy Australien Northern Rivers"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie komme ich in Australien an eine Prepaid-SIM-Karte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prepaid-Starterpakete gibt es an Flughäfen, in Supermärkten wie Coles und Woolworths, in Anbieter-Shops und online als physische SIM oder als eSIM. Du brauchst dafür kein australisches Konto und keine Bonität, nur deinen Reisepass für die gesetzlich vorgeschriebene Identitätsprüfung. Für den Ausweis-Check mit ausländischem Pass musst du in der Regel schon in Australien und durch die Grenzkontrolle sein."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Warum funktioniert meine ausländische Kredit- oder Debitkarte bei der SIM-Aktivierung nicht?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Manche australischen Anbieter lehnen beim Anlegen des Zahlungskontos ausländische Karten ab, ohne das klar zu sagen. Bei mir scheiterte die Online-Aktivierung bei ALDI Mobile mehrfach genau daran, mit verschiedenen Debit- und Kreditkarten und mit PayPal. Ein Anbieter, der ausländische Karten ausdrücklich akzeptiert, löst das Problem. Bei mir war das felix Mobile, dort lief Zahlung und Ausweisprüfung mit deutschem Pass und ausländischer Karte durch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich die australische eSIM schon vor dem Abflug aus Deutschland einrichten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das eSIM-Profil lässt sich oft vorab installieren, aber die Ausweisprüfung mit ausländischem Pass verlangen die Anbieter meist erst, wenn du in Australien angekommen und durch die Grenzkontrolle bist. Aktiv wird die Nummer also praktisch nach der Landung. Für die ersten Stunden online überbrückst du mit einer Reise-eSIM, die nur Daten liefert und keine australische Nummer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Brauche ich für eine australische SIM-Karte ein Konto, eine Adresse oder Bonität?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Für Prepaid nein. Prepaid ist vorausbezahlt, deshalb gibt es keinen Bonitätscheck, du brauchst kein australisches Bankkonto und keine feste Adresse. Nötig ist eine Identitätsprüfung, für die als Nicht-Resident der Reisepass genügt. Ein Vertrag (Postpaid) setzt dagegen in der Regel australische Bonität, ein Bankkonto und eine Adresse voraus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welches Netz ist in Byron Bay und Northern Rivers am besten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es gibt drei physische Netze: Telstra, Optus und Vodafone (TPG). Telstra gilt im tiefsten ländlichen Raum weiter als das stärkste. Optus und Vodafone haben in der Fläche stark aufgeholt, unter anderem durch ein regionales Netzteilungs-Abkommen zwischen Optus und TPG von 2025. Für eine Region wie Northern Rivers mit einzelnen Funklöchern zählt der adressgenaue Coverage-Check beim Anbieter mehr als jede allgemeine Regel. Seit 30. Juni 2026 sind die Karten aller Anbieter nach denselben vier Kategorien vergleichbar."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Australische SIM-Karte und Handynummer für Auswanderer", "item": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/australische-sim-karte-hero.jpg"
+    alt="Die felix-Mobile-App auf drei Handy-Screens: die Aktivierungs-Schritte, der Ausweis-Check mit der Frage nach ausländischem Pass und Visum, und die aktivierte eSIM mit geschwärzter Nummer."
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Ich bin als Erster der Familie nach Australien vorgeflogen und jetzt seit drei Wochen hier, in Northern Rivers, in der Nähe von Byron Bay. Eine der ersten praktischen Sachen nach der Landung: eine australische Handynummer. Nicht nur Daten für ein paar Tage, sondern eine echte Nummer, unter der ich erreichbar bin, für die Job-Suche, für den Vermieter, für die Bank, für alles, was im neuen Land anläuft.
+  </p>
+
+  <p>
+    Was ich nicht wusste: Genau daran habe ich mir zwei Wochen die Zähne ausgebissen. Zum Aktivieren der eSIM muss man sich online verifizieren. Der Anbieter, den ich ursprünglich wollte, hat meine ausländische Kreditkarte bei der Aktivierung immer wieder abgelehnt, ohne zu sagen warum. Dieser Beitrag ist die Anleitung, die ich mir vorher gewünscht hätte: wie man als deutscher Auswanderer ohne australisches Konto an eine Nummer kommt, welcher Anbieter mit ausländischer Kreditkarte funktioniert, welches Netz in einer halb-ländlichen Region wirklich trägt und was das in Euro kostet.
+  </p>
+
+  <!-- Das Wichtigste in Kürze -->
+  <div class="info-box">
+    <p class="info-box__titel">Das Wichtigste in Kürze</p>
+    <ul>
+      <li>Für die Anfangszeit ist Prepaid klar sinnvoller als ein Vertrag: keine Bonität, kein Konto, keine feste Adresse nötig, nur der Reisepass.</li>
+      <li>Der teuerste Stolperstein ist unsichtbar: Manche Anbieter lehnen bei der Aktivierung ausländische Kreditkarten ab. Bei mir scheiterte ALDI Mobile daran, felix Mobile hat funktioniert.</li>
+      <li>Es gibt drei Netze: Telstra, Optus, Vodafone. Alle günstigen Marken mieten sich in eines davon ein. Telstra ist im tiefsten ländlichen Raum am stärksten, Optus und Vodafone haben stark aufgeholt.</li>
+      <li>Preis-Denkfehler: australische Dollar sind nicht gleich Euro. Mitte 2026 ist 1 AUD etwa 0,60 Euro. 30 AUD im Monat sind rund 18 Euro.</li>
+      <li>Eine Reise-eSIM (Saily, Airalo, Holafly) überbrückt die ersten Tage, liefert aber nur Daten und keine australische Nummer. Die echte Nummer kommt vom lokalen Anbieter.</li>
+    </ul>
+  </div>
+
+  <!-- Abschnitt 1 -->
+  <h2 id="schnellster-weg">Der schnellste Weg zur australischen Nummer</h2>
+
+  <p>Kurz und ohne Umweg, so würde ich es heute wieder machen:</p>
+
+  <p>Für die ersten Stunden nach der Landung eine Reise-eSIM, die du schon von Deutschland aus einrichtest. Ich habe dafür Saily genommen. In Minuten aktiv, nur eine E-Mail nötig, und du hast Daten für Karten, Messenger und WhatsApp-Anrufe. Eine australische Nummer gibt sie dir nicht, aber als Brücke für den Anfang ist sie ideal.</p>
+
+  <!-- AFFILIATE-PLATZHALTER Saily: Sobald das Saily-Affiliate-Programm (saily.com/affiliate
+       ODER Tradedoubler "Saily DE") beworben und ein Tracking-Link gezogen ist, hier
+       + in #sim-oder-esim + #mein-weg "Saily" auf rel="sponsored"-Sternchen-Link umstellen
+       und die M1-Werbung-Disclosure-Box am Artikel-Anfang ergaenzen. Aktuell nur ein
+       Creator-Code vorhanden, KEIN Tracking-Link -> bleibt redaktionell ohne Link, keine
+       Kennzeichnung noetig (Quelle: affiliates.json id=saily). -->
+
+  <p>Für die echte Nummer dann eine australische Prepaid-SIM, mit dem Reisepass registriert, entweder als physische Karte aus dem Supermarkt oder als eSIM in der App des Anbieters. Ein einziger Punkt entscheidet über Frust oder nicht: Nimm einen Anbieter, der ausländische Kreditkarten akzeptiert. Genau daran ist bei mir der erste Versuch gescheitert. Was das heißt und wie ich es gelöst habe, steht unten im persönlichen Abschnitt.</p>
+
+  <PullQuote lang="de">Nimm einen Anbieter, der ausländische Kreditkarten akzeptiert.</PullQuote>
+
+  <!-- Abschnitt 2 -->
+  <h2 id="prepaid-oder-vertrag">Prepaid oder Vertrag für Neuankömmlinge</h2>
+
+  <p>Kurz zur Klarstellung, weil das oft unklar ist: Ja, es gibt in Australien auch Verträge, nicht nur Prepaid. Der Vertrag heißt hier Postpaid, du bekommst am Monatsende die Rechnung. Das reicht vom Handy auf Raten bis zum reinen SIM-only-Tarif ohne Mindestlaufzeit, den man monatlich kündigen kann. Postpaid ist bei Einheimischen völlig normal und weit verbreitet.</p>
+
+  <p>Für den Tag eins als Neuankömmling ist Postpaid trotzdem meist der falsche Weg. Der Grund ist ein Bonitätscheck: Postpaid-Tarife verlangen in der Regel eine <a href="https://www.reviews.org/au/mobile/telstra-optus-vodafone-credit-checks/" target="_blank" rel="noopener">Kreditprüfung</a> und einen Identitätsnachweis. Wer frisch im Land ist und noch keine australische Kredithistorie hat, wird dabei oft abgelehnt. Diese Historie baut man sich erst über einige Monate auf.</p>
+
+  <p>Prepaid dreht das um. Du zahlst im Voraus, deshalb gibt es keinen Bonitätscheck. Kein australisches Konto nötig, keine feste Adresse, keine Vertragsbindung. Du behältst die volle Kostenkontrolle, weil nichts abgebucht wird, was du nicht vorher freigegeben hast. Mit dem Reisepass ist das sofort machbar. Genau deshalb ist Prepaid für die Anfangszeit die richtige Wahl. Ein Vertrag ist etwas, über das man frühestens nach ein paar Monaten nachdenkt, und viele bleiben ohnehin bei Prepaid, weil die Tarife heute fast alles bieten.</p>
+
+  <!-- Abschnitt 3 -->
+  <h2 id="welches-netz">Welches Netz? Telstra, Optus, Vodafone</h2>
+
+  <p>In Australien gibt es nur drei physische Mobilfunknetze: <strong>Telstra</strong>, <strong>Optus</strong> und <strong>Vodafone</strong> (betrieben von TPG). Alle anderen Marken, also Boost, ALDI Mobile, amaysim, felix, Lebara, Kogan und dutzende mehr, betreiben kein eigenes Netz. Sie mieten sich in eines der drei großen ein. Wenn du eine günstige Marke kaufst, kaufst du in Wahrheit das Netz, das dahintersteht.</p>
+
+  <p>Ein wichtiger Punkt noch: Die alten <strong>3G-Netze sind komplett abgeschaltet</strong>. Vodafone hat sein 3G schon Ende 2023 abgeschaltet, Telstra und Optus folgten am 28. Oktober 2024. Wer ein älteres Handy mitbringt, sollte kurz prüfen, ob es reines 4G und 5G kann, weil manche ältere Geräte danach nicht mehr funktionieren oder keinen Notruf mehr absetzen können.</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">Die drei Netze im Überblick (Stand Mitte 2026)</p>
+    <ul>
+      <li><strong>Telstra:</strong> das flächenmäßig größte Netz und im tiefsten ländlichen und entlegenen Raum weiter das stärkste. Telstra veröffentlicht seit den neuen Melderegeln keine Bevölkerungs-Prozentzahl mehr, argumentiert aber mit der Fläche (rund 2,14 Millionen Quadratkilometer).</li>
+      <li><strong>Optus:</strong> in Städten und größeren Regionalzentren praktisch gleichauf mit Telstra, rund 99 Prozent der Bevölkerung im 4G, gutes 5G in den Städten.</li>
+      <li><strong>Vodafone (TPG):</strong> hat in der Fläche stark aufgeholt. Durch ein regionales Netzteilungs-Abkommen mit Optus (2025) reicht Vodafone jetzt an rund 98 bis 99 Prozent der Bevölkerung. Der alte Ruf, Vodafone tauge auf dem Land nichts, stimmt so nicht mehr. Hier liegen oft die günstigsten Tarife.</li>
+    </ul>
+  </div>
+
+  <p>Für unsere Lage heißt das konkret: Wir wohnen nicht in der Großstadt, sondern halb-ländlich in Northern Rivers, wo es einzelne Funklöcher gibt. Früher war die Faustregel simpel „nimm Telstra". Heute ist es differenzierter, weil Optus und Vodafone in der Fläche aufgeholt haben. Mein eigener Anbieter felix läuft zum Beispiel im Vodafone/TPG-Netz, also genau in dem Netz, das durch das Optus-Abkommen den größten regionalen Sprung gemacht hat.</p>
+
+  <p><strong>Der einzige verlässliche Weg</strong> ist trotzdem nicht die Faustregel, sondern der adressgenaue Check. Seit 30. Juni 2026 müssen alle drei Netze (und ihre günstigen Marken) ihre Abdeckungskarten nach denselben vier Kategorien darstellen: <em>good, moderate, basic, no coverage</em>. Dadurch sind die Karten endlich direkt vergleichbar. Gib deine konkrete Adresse in den Coverage-Checker des jeweiligen Anbieters ein, bevor du dich festlegst. <a href="https://www.telstra.com.au/coverage-networks/our-coverage" target="_blank" rel="noopener">Telstra</a>, Optus und Vodafone haben dafür jeweils eigene Karten. Das ist der einzige Weg, vorher zu wissen, ob du im Wohnzimmer Empfang hast.</p>
+
+  <!-- Abschnitt 4 -->
+  <h2 id="was-kostet">Was kostet das wirklich, in Euro gerechnet</h2>
+
+  <p>Hier passiert der häufigste Denkfehler, und er kostet einen Moment Schreck im Supermarkt. Australische Dollar sind nicht gleich Euro. Mitte 2026 pendelt 1 AUD um die 0,60 Euro (der Kurs schwankt, vor der Buchung kurz bei einem Wechselkurs-Dienst wie <a href="https://wise.com/de/currency-converter/aud-to-eur-rate" target="_blank" rel="noopener">Wise</a> prüfen).</p>
+
+  <p>Das ändert die Wahrnehmung komplett:</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">AUD in Euro, Daumenwerte (Kurs ~0,60)</p>
+    <ul>
+      <li>15 AUD sind rund 9 Euro</li>
+      <li>25 AUD sind rund 15 Euro</li>
+      <li>30 AUD sind rund 18 Euro</li>
+      <li>40 AUD sind rund 24 Euro</li>
+    </ul>
+  </div>
+
+  <p>Ein Tarif, der mit 40 AUD erstmal teuer klingt, sind also keine 40 Euro, sondern eher 24. Wer das im Kopf hat, vergleicht die Preise realistischer.</p>
+
+  <p>Grobe Preis-Landschaft für Prepaid (die Zahlen ändern sich laufend, immer zum Zeitpunkt der Buchung prüfen): Die Netzbetreiber selbst sind am teuersten. Telstra-Tarife liegen grob bei 45 bis 55 AUD, Optus bei 35 bis 45, Vodafone bei 30 bis 40. Die günstigen Marken auf genau denselben Masten liegen eher bei 20 bis 30 AUD, also oft 30 bis 50 Prozent unter dem Netzbetreiber. Genau da wird es interessant.</p>
+
+  <p>Als konkretes Beispiel mein eigener Tarif, <a href="https://felixmobile.com.au/plan" target="_blank" rel="noopener">felix Mobile</a> (läuft im Vodafone/TPG-Netz). Diese Werte habe ich am 21. Juli 2026 direkt auf der felix-Seite geprüft:</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">felix Mobile (Vodafone/TPG-Netz), Stand 21.07.2026</p>
+    <ul>
+      <li>25 GB für 25 AUD im Monat (rund 15 Euro), die ersten 2 Monate zum halben Preis</li>
+      <li>50 GB für 30 AUD im Monat (rund 18 Euro), die ersten 3 Monate für 15 AUD (rund 9 Euro), mit Code FELIX50. Das ist mein Tarif.</li>
+      <li>Unlimited Daten für 40 AUD im Monat (rund 24 Euro), Tempo dann aber auf 40 Mbit/s gedrosselt</li>
+      <li>Bei allen: unbegrenzte Anrufe und SMS innerhalb Australiens, 5G/4G (bei den beiden Datentarifen bis 150 Mbit/s), ungenutztes Datenvolumen wird unbegrenzt in die nächste Periode übertragen, kein Lock-in, eSIM ohne Aufpreis.</li>
+      <li>Auslands-Telefonie ist nicht inklusive, lässt sich aber in der App zubuchen: unbegrenzte Anrufe und SMS in über 40 Länder (darunter Deutschland) für 5 AUD im Monat (rund 3 Euro), oder ein Roaming-Paket für 20 AUD.</li>
+    </ul>
+  </div>
+
+  <p>Wichtig als ehrlicher Hinweis: Ich empfehle felix, weil es bei mir funktioniert hat und preislich stark ist, nicht weil dahinter eine Provision steckt. Für die Anfangszeit zählt vor allem, dass die Aktivierung mit ausländischer Karte durchläuft, dazu gleich mehr. Wie wir Geld und Wechselkurse grundsätzlich handhaben, steht in unserem <a href="/blog/auswandern-australien-kosten-familie-guide">Kosten-Guide für die Auswanderung nach Australien</a>.</p>
+
+  <!-- Abschnitt 5 -->
+  <h2 id="sim-oder-esim">Physische SIM oder eSIM</h2>
+
+  <p>Beide Wege führen zu einer australischen Nummer. Der Unterschied liegt im Komfort und im Timing.</p>
+
+  <p><strong>Physische SIM.</strong> Die klassische Karte zum Einlegen. Gibt es an Anbieter-Ständen und Automaten an Flughäfen, in Supermärkten wie Coles und Woolworths und in den Shops der Anbieter. Vorteil: simpel und günstig, am Ende hast du eine echte australische Nummer. Ein Irrtum, den ich selbst hatte: dass man das Karten-Problem umgeht, wenn man die SIM einfach im Laden kauft. Stimmt nicht. Auch die physische SIM aus dem Supermarkt muss man online aktivieren, und dort kann dieselbe ausländische Kreditkarte scheitern. Ich habe es mit der physischen ALDI-SIM probiert, es ging genauso wenig. Nachteil außerdem: erst nach der Landung verfügbar.</p>
+
+  <p><strong>eSIM.</strong> Eine digitale SIM, die per QR-Code oder Anbieter-App aufs Handy kommt, ohne physische Karte. Voraussetzung: dein Handy muss eSIM-fähig sein. Mein iPhone kann das, geprüft vor der Abreise. Vorteil: du machst alles von zu Hause aus. Nachteil: der ganze Ablauf inklusive Zahlung läuft online, und genau da kann eine ausländische Kreditkarte hängen bleiben. Mehr dazu im nächsten Abschnitt.</p>
+
+  <p>Und es gibt eine dritte Variante, die man nicht verwechseln sollte: die <strong>Reise-eSIM</strong> von Anbietern wie Saily, Airalo oder Holafly. Die kaufst und installierst du vor dem Abflug, sie ist in Minuten aktiv und braucht oft keine ID, nur eine E-Mail. Im Kern liefert sie Daten. Manche Reise-eSIMs bieten optional eine Rufnummer mit Gesprächsminuten dazu, aber das ist dann eine ausländische Nummer (bei Saily zum Beispiel eine US-Nummer), keine australische. Für die ersten Stunden oder Tage online nach der Landung ist so eine eSIM perfekt. Eine echte australische Nummer bekommst du damit aber nicht, dafür brauchst du eine lokale Prepaid-SIM. Genau diesen Weg bin ich gegangen, mehr dazu unten.</p>
+
+  <!-- Abschnitt 6 -->
+  <h2 id="esim-schritt-fuer-schritt">eSIM einrichten, Schritt für Schritt</h2>
+
+  <p>Wer noch nie eine eSIM eingerichtet hat: Es ist einfacher, als es klingt. Der Ablauf ist bei den meisten australischen Prepaid-Anbietern ähnlich. Bei felix zum Beispiel läuft alles in der App, in vier Schritten.</p>
+
+  <figure class="screenshot-figur">
+    <img src="/assets/images/australische-sim-karte-felix-schritte.jpg" alt="Screenshot der felix-Mobile-App mit der Aktivierungs-Übersicht: vier Schritte untereinander, E-Mail bestätigen, Identität prüfen, eSIM einrichten und felix-Dienst aktivieren, dazu der Hinweis, während der Schritte im WLAN zu bleiben." />
+    <figcaption>Der Aktivierungsablauf in der felix-App: E-Mail, Identität, eSIM, Dienst. Alles in der App, ohne Laden.</figcaption>
+  </figure>
+
+  <div class="info-box">
+    <p class="info-box__titel">eSIM einrichten, der typische Ablauf</p>
+    <ul>
+      <li><strong>1. Handy prüfen:</strong> Unterstützt dein Gerät eSIM? Bei aktuellen iPhones und vielen Android-Geräten ja. Manche im Ausland gekauften Geräte sind bei australischen Anbietern nicht eSIM-kompatibel, also vorher prüfen.</li>
+      <li><strong>2. Tarif buchen und E-Mail bestätigen:</strong> online beim Anbieter oder in der App. Für die folgenden Schritte im WLAN bleiben.</li>
+      <li><strong>3. Identität prüfen:</strong> Ausweis-Check mit dem Reisepass. Wichtig: Für einen ausländischen Pass verlangen die Anbieter, dass du schon in Australien und durch die Grenzkontrolle bist. Vorab aus Deutschland geht dieser Schritt in der Regel nicht.</li>
+      <li><strong>4. eSIM aktivieren:</strong> Das Profil wird eingerichtet, danach ist die Nummer aktiv. Bei mir hat das ganze in wenigen Minuten geklappt, die Nummer wurde am Ende direkt angezeigt.</li>
+    </ul>
+  </div>
+
+  <p>Der Moment, in dem die australische Nummer zugeteilt wird, ist bei der App-Aktivierung ganz am Ende: Nach dem Einrichten zeigt die App die neue Nummer an, und der Tarif läuft ab da. Vorab aus Deutschland kann man das Profil zwar vorbereiten, aktiv wird die Nummer aber erst mit der Aktivierung vor Ort.</p>
+
+  <!-- Abschnitt 7 -->
+  <h2 id="konto-adresse-bonitaet">Konto, Adresse, Karte, was du brauchst</h2>
+
+  <p>Die gute Nachricht für alle, die frisch im Land sind: Für eine Prepaid-SIM brauchst du erstaunlich wenig.</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">Für eine Prepaid-SIM brauchst du</p>
+    <ul>
+      <li><strong>Kein australisches Bankkonto.</strong> Prepaid ist vorausbezahlt, es wird nichts abgebucht.</li>
+      <li><strong>Keine australische Bonität.</strong> Kein Credit-Check, weil du im Voraus zahlst.</li>
+      <li><strong>Keine feste australische Adresse.</strong> Für die SIM selbst nicht nötig, eine Kontakt- oder Unterkunfts-Adresse reicht.</li>
+      <li><strong>Den Reisepass.</strong> Für eine australische SIM ist eine Identitätsprüfung <a href="https://www.acma.gov.au/id-checks-prepaid-mobiles" target="_blank" rel="noopener">gesetzlich vorgeschrieben</a> (du gibst Name, Geburtsdatum und Adresse an). Als Nicht-Resident genügt der Reisepass, zum Beispiel wenn du mit dem <a href="/blog/tourist-visum-australien-evisitor-651">Tourist-Visum eVisitor 651</a> eingereist bist. Für den Check mit ausländischem Pass musst du schon in Australien und durch die Grenzkontrolle sein.</li>
+      <li><strong>Eine Zahlungsmethode, die akzeptiert wird.</strong> Und genau hier lag mein Problem.</li>
+    </ul>
+  </div>
+
+  <p><strong>Der unsichtbare Stolperstein: die ausländische Kreditkarte.</strong> Bei der Online-Aktivierung legst du ein Zahlungskonto an. Manche Anbieter akzeptieren dabei keine ausländischen Kreditkarten und sagen das nicht klar, sondern brechen einfach mit einer nichtssagenden Fehlermeldung ab. Wenn du noch keine australische Karte hast (die meisten Neuankömmlinge haben in den ersten Wochen keine), ist das ein echtes Hindernis. Und die physische SIM aus dem Laden hilft nicht weiter, auch die muss online aktiviert werden, und dort scheitert dieselbe Karte. Der einzige verlässliche Ausweg: gezielt einen Anbieter wählen, der ausländische Kreditkarten für die Aktivierung ausdrücklich akzeptiert. Bei mir war das felix. Im Ausweis-Check fragt die App sogar direkt ab, ob du mit ausländischem Pass schon in Australien bist, ausländische Kundschaft ist dort also eingeplant.</p>
+
+  <figure class="screenshot-figur">
+    <img src="/assets/images/australische-sim-karte-felix-ausweis.jpg" alt="Screenshot der felix-Mobile-App beim Ausweis-Check: Überschrift 'Are you in Australia yet?' mit dem Hinweis, dass man für die Prüfung mit ausländischem Reisepass und Visum schon in Australien und durch die Grenzkontrolle sein muss, plus Bestätigungs-Button 'I confirm'." />
+    <figcaption>felix fragt beim Ausweis-Check direkt nach ausländischem Pass und Visum. Genau das, was Neuankömmlinge brauchen.</figcaption>
+  </figure>
+
+  <!-- Abschnitt 8: First-Hand-Block -->
+  <h2 id="mein-weg">Mein Weg vor Ort: warum ALDI scheiterte und felix funktioniert hat</h2>
+
+  <p>So lief es bei mir. Drei Etappen: die Brücke, der Frust, die Lösung.</p>
+
+  <p><strong>Die Brücke: eine Reise-eSIM von Saily.</strong> Saily ist eine eSIM-App vom Team hinter NordVPN (Nord Security), unkompliziert und mit schöner App. Ich habe mir noch in Deutschland ein kleines Datenpaket gebucht, 3 GB für 6,99 Euro, und die eSIM direkt aufs Handy geladen. Das hat ohne Theater funktioniert. Nach der Landung war ich sofort online. Weil ich unterwegs wenig WLAN hatte, habe ich in den ersten drei Wochen dreimal die 3 GB nachgebucht, also grob 9 GB, und darüber WhatsApp-Anrufe und Videocalls mit Lucy und den Kindern gemacht und Handyvideos verschickt. Wichtig zur Einordnung: Saily liefert im Kern nur Daten. Man kann optional eine Rufnummer mit Minuten dazubuchen, aber das ist keine australische Nummer, bei Saily ist es eine US-Nummer. Als Brücke für den Anfang ist das genau richtig, mehr soll es nicht sein. Für reine Reisen ist es meine klare Empfehlung.</p>
+
+  <p><strong>Der Frust: zwei Wochen ALDI Mobile.</strong> Ursprünglich wollte ich ALDI Mobile, weil es im Telstra-Netz läuft. Die Online-Aktivierung brach aber jedes Mal ab, nachdem ich alle Daten und die Zahlung eingegeben hatte, nur eine kurze Fehlermeldung, keine Erklärung. Ich dachte erst, es liegt an meinen Karten, weil das Debitkarten sind. Also mehrere Karten probiert, PayPal probiert, am Ende sogar eine echte Kreditkarte meiner Eltern. Alles gescheitert. Nach einiger Recherche war klar: Es lag an der ausländischen Karte, ALDI konnte damit kein Zahlungskonto anlegen. Selbst der Prepaid-Voucher, den man im ALDI-Laden an der Kasse kaufen kann, muss online aktiviert werden, und dort kam derselbe Fehler. Nach zwei Wochen habe ich ALDI aufgegeben. Das ist keine generelle Abrechnung mit ALDI, das Telstra-Netz ist super. Aber für jemanden mit ausländischer Karte war es eine Sackgasse.</p>
+
+  <p><strong>Die Lösung: felix Mobile.</strong> Ich habe dann selbst weitergesucht und bin bei felix gelandet, vor allem weil dort ausdrücklich auf der Seite stand, dass die Verifizierung mit ausländischer Karte funktioniert. Und siehe da: Zahlung und Ausweis-Check mit deutschem Pass liefen ohne Probleme durch, die eSIM war in wenigen Minuten aktiv, und ich hatte meine australische Nummer. Dazu ist felix sogar günstiger als ALDI. Ich habe den 50-GB-Tarif für 30 AUD genommen, die ersten drei Monate für 15 AUD, mit unbegrenzten Anrufen und SMS innerhalb Australiens. 50 GB statt Unlimited habe ich bewusst gewählt, weil ich locker drunter bleibe, und ändern kann ich den Tarif jederzeit.</p>
+
+  <figure class="screenshot-figur">
+    <img src="/assets/images/australische-sim-karte-felix-aktiv.jpg" alt="Screenshot der felix-Mobile-App nach erfolgreicher Aktivierung: 'Your eSIM is active!', die neue australische Nummer ist aus Datenschutzgründen geschwärzt, dazu der Hinweis, dass der Tarif am 21. August 2026 automatisch verlängert wird." />
+    <figcaption>Nach ein paar Minuten in der App: eSIM aktiv, australische Nummer da (hier geschwärzt).</figcaption>
+  </figure>
+
+  <p>Ein Nachteil bleibt gegenüber dem ALDI-Tarif, den ich eigentlich wollte: Auslands-Telefonate sind bei felix nicht inklusive. Aber für 5 AUD im Monat, also rund 3 Euro, kann ich unbegrenzte Anrufe in über 40 Länder dazubuchen, Deutschland steht auf der Liste. Ich teste einen Monat, ob sich das gegenüber reinen WhatsApp-Anrufen lohnt, gerade unterwegs, wo der Empfang mal schlechter ist.</p>
+
+  <p><em>Was ich nachtrage, sobald ich felix ein paar Wochen im Alltag getestet habe: wie der Empfang unterwegs in Northern Rivers wirklich ist, und wie sich das 5-AUD-Auslandspaket im Vergleich zu WhatsApp-Anrufen schlägt. Das kommt als datiertes Update direkt hier rein.</em></p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Häufige Fragen</h2>
+
+  <h3>Wie komme ich in Australien an eine Prepaid-SIM-Karte?</h3>
+  <p>Prepaid-Starterpakete gibt es an Flughäfen, in Supermärkten wie Coles und Woolworths, in Anbieter-Shops und online als physische SIM oder als eSIM. Du brauchst dafür kein australisches Konto und keine Bonität, nur deinen Reisepass für die gesetzlich vorgeschriebene Identitätsprüfung. Für den Ausweis-Check mit ausländischem Pass musst du in der Regel schon in Australien und durch die Grenzkontrolle sein.</p>
+
+  <h3>Warum funktioniert meine ausländische Kredit- oder Debitkarte bei der SIM-Aktivierung nicht?</h3>
+  <p>Manche australischen Anbieter lehnen beim Anlegen des Zahlungskontos ausländische Karten ab, ohne das klar zu sagen. Bei mir scheiterte die Online-Aktivierung bei ALDI Mobile mehrfach genau daran, mit verschiedenen Debit- und Kreditkarten und mit PayPal. Ein Anbieter, der ausländische Karten ausdrücklich akzeptiert, löst das Problem. Bei mir war das felix Mobile, dort lief Zahlung und Ausweisprüfung mit deutschem Pass und ausländischer Karte durch. Alternativ die physische SIM im Laden kaufen und dort mit Karte oder bar zahlen.</p>
+
+  <h3>Kann ich die australische eSIM schon vor dem Abflug aus Deutschland einrichten?</h3>
+  <p>Das eSIM-Profil lässt sich oft vorab installieren, aber die Ausweisprüfung mit ausländischem Pass verlangen die Anbieter meist erst, wenn du in Australien angekommen und durch die Grenzkontrolle bist. Aktiv wird die Nummer also praktisch nach der Landung. Für die ersten Stunden online überbrückst du mit einer Reise-eSIM, die nur Daten liefert und keine australische Nummer.</p>
+
+  <h3>Brauche ich für eine australische SIM-Karte ein Konto, eine Adresse oder Bonität?</h3>
+  <p>Für Prepaid nein. Prepaid ist vorausbezahlt, deshalb gibt es keinen Bonitätscheck, du brauchst kein australisches Bankkonto und keine feste Adresse. Nötig ist eine Identitätsprüfung, für die als Nicht-Resident der Reisepass genügt. Ein Vertrag (Postpaid) setzt dagegen in der Regel australische Bonität, ein Bankkonto und eine Adresse voraus, also eher etwas für später.</p>
+
+  <h3>Welches Netz ist in Byron Bay und Northern Rivers am besten?</h3>
+  <p>Es gibt drei physische Netze: Telstra, Optus und Vodafone (TPG). Telstra gilt im tiefsten ländlichen Raum weiter als das stärkste. Optus und Vodafone haben in der Fläche stark aufgeholt, unter anderem durch ein regionales Netzteilungs-Abkommen zwischen Optus und TPG von 2025. Für eine Region wie Northern Rivers mit einzelnen Funklöchern zählt der adressgenaue Coverage-Check beim Anbieter mehr als jede allgemeine Regel. Seit 30. Juni 2026 sind die Karten aller Anbieter nach denselben vier Kategorien vergleichbar.</p>
+
+  <p><strong>Stand:</strong> 21. Juli 2026. Ich bin als Erster vorgeflogen, Lucy und die Kinder folgen Ende Juli. Den Empfangs-Erfahrungswert mit felix im Alltag ergänze ich, sobald ich ihn über mehrere Wochen getestet habe.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Beitrag beschreibt, wie man als Auswanderer in Australien an
+      eine Prepaid-SIM und eine Handynummer kommt. Tarife, Preise und Netz-Abdeckung ändern sich
+      laufend und sind regional unterschiedlich. Prüfe Preise und Abdeckung vor deiner Buchung
+      adressgenau beim jeweiligen Anbieter. Das ist keine Tarifberatung, sondern unsere Recherche
+      und Erfahrung.
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 21.07.2026 · <strong>Quellen:</strong>
+      Anbieter-Angaben felix Mobile (Tarife, Add-ons und Aktivierungsablauf geprüft am 21.07.2026),
+      Telstra, Optus, Vodafone und ALDI Mobile; ACMA (Ausweispflicht Prepaid, 3G-Abschaltung),
+      ACCC und ARN (Optus-TPG-Netzteilung 2025), Finder und WhistleOut (Netzabdeckung, neue
+      Vier-Kategorien-Karten); felix international-calls-Seite (über 40 Länder inkl. Deutschland); Saily-Angaben
+      (Kern nur Daten, optionales Rufnummer-Add-on ist eine US-Nummer); Finder und Reviews.org (Prepaid vs.
+      Postpaid, Bonitätscheck). Wechselkurs AUD/EUR über Wise (~0,60, Stand Mitte 2026). Persönliche
+      Erfahrungswerte im Abschnitt „Mein Weg vor Ort" stammen aus eigener Nutzung. Recherche-Details
+      im internen Report vom 21.07.2026.
+    </p>
+  </div>
+
+  <!-- Update-Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">21.07.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht. Enthält den realen Ablauf: Saily-Brücke, gescheiterte ALDI-Aktivierung mit ausländischer Karte, Wechsel zu felix Mobile.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016 bis 2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Hat dir das geholfen?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Neue Artikel, echte Erfahrungen, konkrete Zahlen, direkt in dein Postfach.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen ------------------------------------------------ */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- App-Screenshots (Hochkant-Figuren) ------------------------ */
+  .screenshot-figur {
+    margin-block: var(--space-6);
+    margin-inline: auto;
+    max-width: 300px;
+  }
+
+  .screenshot-figur img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+  }
+
+  .screenshot-figur figcaption {
+    margin-block-start: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

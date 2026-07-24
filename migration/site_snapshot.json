@@ -1,0 +1,2045 @@
+{
+  "createdAt": "2026-07-22T02:29:04.842Z",
+  "source": "Projekt_Wildgewachsen/website (lokaler Submodul-Stand)",
+  "pageCount": 45,
+  "sitemaps": {
+    "root": {
+      "urls": [
+        "https://wildgewachsen-australien.de/",
+        "https://wildgewachsen-australien.de/ueber-uns",
+        "https://wildgewachsen-australien.de/blog",
+        "https://wildgewachsen-australien.de/unsere-reise",
+        "https://wildgewachsen-australien.de/kontakt",
+        "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum",
+        "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide",
+        "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide",
+        "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien",
+        "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien",
+        "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie",
+        "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten",
+        "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung",
+        "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651",
+        "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie",
+        "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien",
+        "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien",
+        "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern",
+        "https://wildgewachsen-australien.de/impressum"
+      ],
+      "lastmod": [
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-16",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-16",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-16",
+        "2026-06-25",
+        "2026-07-04",
+        "2026-07-22",
+        "2026-05-18"
+      ]
+    },
+    "en": {
+      "urls": [
+        "https://wildgewachsen-australien.de/en/",
+        "https://wildgewachsen-australien.de/en/about",
+        "https://wildgewachsen-australien.de/en/blog",
+        "https://wildgewachsen-australien.de/en/our-journey",
+        "https://wildgewachsen-australien.de/en/contact",
+        "https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move",
+        "https://wildgewachsen-australien.de/en/cost-of-moving-to-australia-family-guide",
+        "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide",
+        "https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide",
+        "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide",
+        "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa",
+        "https://wildgewachsen-australien.de/en/tra-skill-assessment-chef-australia",
+        "https://wildgewachsen-australien.de/en/preparing-kids-for-english-australia",
+        "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia",
+        "https://wildgewachsen-australien.de/en/migration-agent-australia-our-experience",
+        "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651",
+        "https://wildgewachsen-australien.de/en/health-insurance-australia-moving-family",
+        "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia",
+        "https://wildgewachsen-australien.de/en/arrived-first-days-in-australia",
+        "https://wildgewachsen-australien.de/en/australian-sim-card-phone-number-newcomers",
+        "https://wildgewachsen-australien.de/en/privacy"
+      ],
+      "lastmod": [
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-02",
+        "2026-06-09",
+        "2026-06-16",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-16",
+        "2026-06-06",
+        "2026-06-03",
+        "2026-06-06",
+        "2026-06-06",
+        "2026-06-09",
+        "2026-06-09",
+        "2026-06-16",
+        "2026-06-25",
+        "2026-07-04",
+        "2026-07-22",
+        "2026-05-27"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "file": "blog.html",
+      "lang": "de",
+      "title": "Blog – Wildgewachsen",
+      "metaDescription": "Blog über unsere Auswanderung nach Australien – Visa, Vorbereitung, Erfahrungen und Tipps für Familien.",
+      "canonical": "https://wildgewachsen-australien.de/blog",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/blog"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/angekommen-erste-tage-australien",
+        "/blog/australische-sim-karte-handynummer-auswandern",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/entscheidung-auswandern-australien",
+        "/blog/fluege-nach-australien-kosten-familie",
+        "/blog/kinder-sprachlich-australien-vorbereiten",
+        "/blog/krankenversicherung-australien-auswandern-familie",
+        "/blog/letzte-wochen-vor-abflug-australien",
+        "/blog/migration-agent-australien-erfahrung",
+        "/blog/pte-test-erfahrung-australien-visum",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/angekommen-erste-tage-australien.html",
+      "lang": "de",
+      "title": "Angekommen in Australien: meine ersten Tage allein",
+      "metaDescription": "Allein in Australien angekommen: wie sich die ersten Tage wirklich anfühlten und was die erste Woche kostet, vom 64-AUD-Einkauf bis zum ersten eigenen Auto.",
+      "canonical": "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/arrived-first-days-in-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/au-byron-strand-ankunft-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-07-04T10:00:00+10:00",
+      "dateModified": "2026-07-04T10:00:00+10:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/entscheidung-auswandern-australien",
+        "/blog/fluege-nach-australien-kosten-familie",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/artikel-template-en.html",
+      "lang": "en",
+      "title": "[ARTICLE TITLE] – Wildgewachsen",
+      "metaDescription": "Wildgewachsen Blog – Experiences and tips on emigrating to Australia",
+      "canonical": "https://wildgewachsen-australien.de/en/{{EN_SLUG}}",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/{{DE_SLUG}}"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/{{EN_SLUG}}"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/{{DE_SLUG}}"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "[YYYY-MM-DD]T12:00:00+02:00",
+      "dateModified": "[YYYY-MM-DD]T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/artikel-template.html",
+      "lang": "de",
+      "title": "[ARTIKEL TITEL] – Wildgewachsen",
+      "metaDescription": "Wildgewachsen Blog – Erfahrungen und Tipps zur Auswanderung nach Australien",
+      "canonical": "https://wildgewachsen-australien.de/blog/artikel-template",
+      "hreflang": [],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "[JJJJ-MM-TT]T12:00:00+02:00",
+      "dateModified": "[JJJJ-MM-TT]T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/australische-sim-karte-handynummer-auswandern.html",
+      "lang": "de",
+      "title": "Australische SIM-Karte und Handynummer für Auswanderer",
+      "metaDescription": "Australische SIM-Karte als Auswanderer: warum die ausländische Karte scheitern kann, welcher Anbieter funktioniert und welches Netz in Northern Rivers trägt.",
+      "canonical": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/australian-sim-card-phone-number-newcomers"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/australische-sim-karte-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-07-21T12:00:00+10:00",
+      "dateModified": "2026-07-21T12:00:00+10:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/fluege-nach-australien-kosten-familie",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/auswandern-australien-kosten-familie-guide.html",
+      "lang": "de",
+      "title": "Auswandern Australien Familie: Was es wirklich kostet (2026)",
+      "metaDescription": "Auswandern Australien als Familie: bisher 6.900 € Vorbereitung plus 9.825 AUD Visa und 30.000 AUD Reserve. Unsere echten Zahlen, ehrlich aufgelistet.",
+      "canonical": "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/cost-of-moving-to-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide"
+        }
+      ],
+      "ogImage": "https://cdn.pixabay.com/photo/2021/02/13/03/29/money-6010252_1280.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-29T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/letzte-wochen-vor-abflug-australien",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/auswandern-australien-mit-kindern-vorbereitung.html",
+      "lang": "de",
+      "title": "Auswandern mit Kindern (2 und 6) nach Australien",
+      "metaDescription": "Wir wandern mit zwei Kindern (2 und 6) nach Australien aus. Wie wir sie vorbereiten, welche Fragen ein 6-Jähriger stellt und was wirklich hilft.",
+      "canonical": "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-09T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/kinder-sprachlich-australien-vorbereiten",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/entscheidung-auswandern-australien.html",
+      "lang": "de",
+      "title": "Die Entscheidung auszuwandern: Warum wir nach Australien gehen",
+      "metaDescription": "Wir wandern als Familie nach Australien aus. Wie diese Entscheidung wirklich fiel: über Jahre, mit Zweifeln, einem Tiefpunkt und einem Satz zu Lucy.",
+      "canonical": "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/au-headland-blick-meer-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-25T12:00:00+02:00",
+      "dateModified": "2026-06-25T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/migration-agent-australien-erfahrung",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/fluege-nach-australien-kosten-familie.html",
+      "lang": "de",
+      "title": "Flüge nach Australien als Familie: Echte Kosten (2026)",
+      "metaDescription": "Was kostet ein Flug nach Australien für eine Familie? Echte Zahlen: 467 € für mich, 3.061,80 € für Lucy + 2 Kinder, plus wie wir gebucht haben.",
+      "canonical": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList",
+        "TravelAction"
+      ],
+      "datePublished": "2026-05-21T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/letzte-wochen-vor-abflug-australien",
+        "/en/cost-of-flights-to-australia-family-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/kinder-sprachlich-australien-vorbereiten.html",
+      "lang": "de",
+      "title": "Kinder sprachlich auf Australien vorbereiten: Ohne Druck",
+      "metaDescription": "Joris (6) lernt Englisch vor Australien: StudyCat-App seit 23.03.2026, 17,99 €/Monat. Was wir machen und was im Alltag wirklich hilft.",
+      "canonical": "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/preparing-kids-for-english-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/englisch-lernen-kinder.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-28T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/letzte-wochen-vor-abflug-australien",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/en/preparing-kids-for-english-australia",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/krankenversicherung-australien-auswandern-familie.html",
+      "lang": "de",
+      "title": "Krankenversicherung Australien: Unsere Wahl und was für dich gilt (2026)",
+      "metaDescription": "Krankenversicherung Australien: unsere Wahl für die Tourist-Phase (Care Expatriate, 58 Euro/Monat) plus OVHC, OSHC, Medicare und die deutsche Anwartschaft.",
+      "canonical": "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/health-insurance-australia-moving-family"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/krankenversicherung-australien-care-expatriate-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-16T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/blog/visum-186-australien-familie-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/letzte-wochen-vor-abflug-australien.html",
+      "lang": "de",
+      "title": "Letzte Wochen vor Abflug nach Australien: Abschied, Schule",
+      "metaDescription": "Familie mit 2 Kindern wandert nach Byron Bay aus, Abflug 23.06.2026. Steiner-School-Bewerbung, Wohnungsauflösung, Abschied, ehrlicher Erfahrungsbericht.",
+      "canonical": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-16T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/en/final-weeks-before-moving-to-australia",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/migration-agent-australien-erfahrung.html",
+      "lang": "de",
+      "title": "Mit oder ohne Migration Agent für Australien? Erfahrung",
+      "metaDescription": "Wir wandern nach Australien aus und haben einen Migration Agent beauftragt: 250 AUD Erstgespräch, 6 Schritte. Warum, wer übernimmt was und unsere Erfahrung.",
+      "canonical": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/migration-agent-australia-our-experience"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/migration-agent-australien.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-04T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/pte-test-erfahrung-australien-visum",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/pte-test-erfahrung-australien-visum.html",
+      "lang": "de",
+      "title": "PTE Academic Test: 89 Punkte für Australien-Visum (2026)",
+      "metaDescription": "PTE Academic Test aus Hamburg: 89 Punkte, 270 €, 2 Monate Vorbereitung. Warum Proficient reicht und Superior nicht automatisch +20 Migration-Punkte bringt.",
+      "canonical": "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum"
+        }
+      ],
+      "ogImage": "https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-04T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/en/pte-test-experience-australia-visa",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/tourist-visum-australien-evisitor-651.html",
+      "lang": "de",
+      "title": "Tourist-Visum für Australien: eVisitor 651 für Familien",
+      "metaDescription": "Wir reisen 2026 mit dem kostenlosen eVisitor 651 nach Australien ein. Warum dieses Visum, nicht das Visitor 600, und wie der Antrag bei uns als Familie lief.",
+      "canonical": "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/visa-evisitor-651-paesse-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-09T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/fluege-nach-australien-kosten-familie",
+        "/blog/migration-agent-australien-erfahrung",
+        "/blog/visum-186-australien-familie-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/tra-skill-assessment-koch-australien.html",
+      "lang": "de",
+      "title": "TRA Skill Assessment als Koch: Echte Kosten + Selbstständig",
+      "metaDescription": "Koch + selbstständig + Australien-Visum: TRA Skill Assessment über ATTC, mit allen Kosten (~4.120 AUD), Interview-Ablauf und Unterschied für Selbstständige.",
+      "canonical": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/tra-skill-assessment-chef-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-09T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/migration-agent-australien-erfahrung",
+        "/blog/visum-186-australien-familie-guide",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/visum-186-australien-familie-guide.html",
+      "lang": "de",
+      "title": "Visum 186 Australien für Familien: Employer Sponsored (2026)",
+      "metaDescription": "Visum 186 Australien als Familie: Tourist-Visum-Einreise, Bridging Visa mit Arbeitsrecht, rund 9.825 AUD Antragsgebühren. Unser Weg und echte Kosten (2026).",
+      "canonical": "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-22T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/letzte-wochen-vor-abflug-australien",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/en/186-visa-australia-family-guide",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "blog/vom-gemuesegarten-nach-australien-auswanderung-familie.html",
+      "lang": "de",
+      "title": "Vom Gemüsegarten nach Australien: Auswandern als Familie",
+      "metaDescription": "Vom Gemüsegarten in Essen nach Northern Rivers, Australien: unsere ehrliche Geschichte als Familie – Visum 186, Hochzeit 2025, Abflug Juni 2026.",
+      "canonical": "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/family-story.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-08T21:30:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/tra-skill-assessment-koch-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "en/186-visa-australia-family-guide.html",
+      "lang": "en",
+      "title": "186 Visa Australia: Our Family Route, Employer Sponsored",
+      "metaDescription": "186 Visa Australia for families: tourist visa entry, bridging visa with work rights, ~9,825 AUD fees. Our route and real costs (2026).",
+      "canonical": "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-29T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/about.html",
+      "lang": "en",
+      "title": "About Us – Wildgewachsen",
+      "metaDescription": "We are Christian, Lucy, Joris and Linnea. A German family on the way to Australia. Seven years of restaurant, two years of growing our own food, and on 23 June 2026 we go.",
+      "canonical": "https://wildgewachsen-australien.de/en/about",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/ueber-uns"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/about"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/ueber-uns"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "Person",
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/arrived-first-days-in-australia.html",
+      "lang": "en",
+      "title": "Arriving in Australia: My First Days Alone",
+      "metaDescription": "Arriving in Australia alone: what the first days really felt like and what the first week costs, from a 64 AUD grocery run to buying a first car.",
+      "canonical": "https://wildgewachsen-australien.de/en/arrived-first-days-in-australia",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/arrived-first-days-in-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/angekommen-erste-tage-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/au-byron-strand-ankunft-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-07-04T10:00:00+10:00",
+      "dateModified": "2026-07-04T10:00:00+10:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-flights-to-australia-family-guide",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/the-decision-to-move-to-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/australia-tourist-visa-evisitor-651.html",
+      "lang": "en",
+      "title": "Tourist Visa for Australia: eVisitor 651 for Families",
+      "metaDescription": "We are entering Australia in 2026 with the free eVisitor 651. Why this visa, not the Visitor 600, and how the application went for us as a family.",
+      "canonical": "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/visa-evisitor-651-paesse-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-09T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-flights-to-australia-family-guide",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/migration-agent-australia-our-experience",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/australian-sim-card-phone-number-newcomers.html",
+      "lang": "en",
+      "title": "Australian SIM Card and Phone Number: A Newcomer's Guide",
+      "metaDescription": "Getting an Australian SIM card and phone number as a newcomer: why a foreign card can fail at activation, which provider worked and what it really costs.",
+      "canonical": "https://wildgewachsen-australien.de/en/australian-sim-card-phone-number-newcomers",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/australian-sim-card-phone-number-newcomers"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/australische-sim-karte-handynummer-auswandern"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/australische-sim-karte-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-07-21T12:00:00+10:00",
+      "dateModified": "2026-07-21T12:00:00+10:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-flights-to-australia-family-guide",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/blog.html",
+      "lang": "en",
+      "title": "Blog – Wildgewachsen",
+      "metaDescription": "Blog about our family move to Australia – visas, preparation, real experience and tips for families.",
+      "canonical": "https://wildgewachsen-australien.de/en/blog",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/blog"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/arrived-first-days-in-australia",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/australian-sim-card-phone-number-newcomers",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-flights-to-australia-family-guide",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/final-weeks-before-moving-to-australia",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/health-insurance-australia-moving-family",
+        "/en/migration-agent-australia-our-experience",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/preparing-kids-for-english-australia",
+        "/en/privacy",
+        "/en/pte-test-experience-australia-visa",
+        "/en/the-decision-to-move-to-australia",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/contact.html",
+      "lang": "en",
+      "title": "Contact – Wildgewachsen",
+      "metaDescription": "Get in touch – questions about moving to Australia? Send us a message.",
+      "canonical": "https://wildgewachsen-australien.de/en/contact",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/kontakt"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/contact"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/kontakt"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "ContactPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/cost-of-flights-to-australia-family-guide.html",
+      "lang": "en",
+      "title": "Cost of Flights to Australia: Real Family Bookings (2026)",
+      "metaDescription": "What does a flight to Australia cost for a family? Our real numbers: €467 for my flight, €3,061.80 for Lucy and the kids, plus how we booked. (2026)",
+      "canonical": "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList",
+        "TravelAction"
+      ],
+      "datePublished": "2026-06-01T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/final-weeks-before-moving-to-australia",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/cost-of-moving-to-australia-family-guide.html",
+      "lang": "en",
+      "title": "Cost of Moving to Australia as a Family: Our Real Numbers (2026)",
+      "metaDescription": "Moving to Australia as a family: ~6,900 € so far, plus ~9,825 AUD visa fees and 30,000 AUD reserve. Real numbers, honestly listed (2026).",
+      "canonical": "https://wildgewachsen-australien.de/en/cost-of-moving-to-australia-family-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/cost-of-moving-to-australia-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-kosten-familie-guide"
+        }
+      ],
+      "ogImage": "https://cdn.pixabay.com/photo/2021/02/13/03/29/money-6010252_1280.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-29T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/final-weeks-before-moving-to-australia",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/final-weeks-before-moving-to-australia.html",
+      "lang": "en",
+      "title": "Final Weeks Before Moving to Australia: Goodbyes + School",
+      "metaDescription": "Family with 2 kids moving to Byron Bay, departure 23 June 2026. Steiner School application, packing up the flat, saying goodbye, honest report.",
+      "canonical": "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-16T12:00:00+02:00",
+      "dateModified": "2026-06-06T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/from-vegetable-garden-to-australia-family-move.html",
+      "lang": "en",
+      "title": "From a Vegetable Garden to Australia: Moving as a Family",
+      "metaDescription": "From vegetable garden in Essen to Northern Rivers, Australia: ~6,900 € spent, October 2025 wedding, June 2026 departure. Our honest family story.",
+      "canonical": "https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/family-story.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-28T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/health-insurance-australia-moving-family.html",
+      "lang": "en",
+      "title": "Health Insurance for Australia: Our Choice, Your Options (2026)",
+      "metaDescription": "Moving to Australia health insurance: our tourist-phase pick (Care Expatriate, 58 euros a month), plus OVHC, OSHC, Medicare, and which global providers fit.",
+      "canonical": "https://wildgewachsen-australien.de/en/health-insurance-australia-moving-family",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/health-insurance-australia-moving-family"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/krankenversicherung-australien-auswandern-familie"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/krankenversicherung-australien-care-expatriate-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-16T12:00:00+02:00",
+      "dateModified": "2026-06-16T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/index.html",
+      "lang": "en",
+      "title": "Wildgewachsen – Moving to Australia with a Family",
+      "metaDescription": "Wildgewachsen – A German family moving from Germany to Byron Bay, Australia. Honest experience reports, real numbers, two kids, one plan.",
+      "canonical": "https://wildgewachsen-australien.de/en/",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/arrived-first-days-in-australia",
+        "/en/australian-sim-card-phone-number-newcomers",
+        "/en/blog",
+        "/en/blog?filter=ankommen-alltag",
+        "/en/blog?filter=byron-bay-region",
+        "/en/blog?filter=familie-kinder",
+        "/en/blog?filter=geld-kosten",
+        "/en/blog?filter=visum-migration",
+        "/en/blog?filter=vorbereitung-planung",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/the-decision-to-move-to-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/migration-agent-australia-our-experience.html",
+      "lang": "en",
+      "title": "Hiring a Migration Agent for Australia: Honest Experience",
+      "metaDescription": "We are moving to Australia with 2 kids and hired a registered migration agent: 250 AUD intake meeting, 6-step process. Why, what he covers, our experience.",
+      "canonical": "https://wildgewachsen-australien.de/en/migration-agent-australia-our-experience",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/migration-agent-australia-our-experience"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/migration-agent-australien-erfahrung"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/migration-agent-australien.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-04T12:00:00+02:00",
+      "dateModified": "2026-06-09T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/pte-test-experience-australia-visa",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/moving-to-australia-with-kids-family-guide.html",
+      "lang": "en",
+      "title": "Moving to Australia With Kids (2 and 6): Honest Family Prep",
+      "metaDescription": "Moving to Australia with two kids (2 and 6): how we prepare them, the questions Joris (6) asks, and what actually helps in everyday life.",
+      "canonical": "https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-29T12:00:00+02:00",
+      "dateModified": "2026-06-06T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/our-journey",
+        "/en/preparing-kids-for-english-australia",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/our-journey.html",
+      "lang": "en",
+      "title": "Our Journey – Wildgewachsen",
+      "metaDescription": "The timeline of our move to Australia – from the decision to a new life in Byron Bay.",
+      "canonical": "https://wildgewachsen-australien.de/en/our-journey",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/unsere-reise"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/our-journey"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/unsere-reise"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "WebPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/blog",
+        "/en/contact",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/preparing-kids-for-english-australia.html",
+      "lang": "en",
+      "title": "Preparing Kids for English Before Moving to Australia",
+      "metaDescription": "How we prepare Joris (6) for English before moving to Australia: StudyCat app (€17.99/month) since 23 March 2026, and what actually helps in everyday life.",
+      "canonical": "https://wildgewachsen-australien.de/en/preparing-kids-for-english-australia",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/preparing-kids-for-english-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/kinder-sprachlich-australien-vorbereiten"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/englisch-lernen-kinder.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-28T12:00:00+02:00",
+      "dateModified": "2026-06-06T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/final-weeks-before-moving-to-australia",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/privacy.html",
+      "lang": "en",
+      "title": "Privacy Notice – Wildgewachsen",
+      "metaDescription": "Privacy notice for wildgewachsen-australien.de (English courtesy translation).",
+      "canonical": "https://wildgewachsen-australien.de/en/privacy",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/impressum#datenschutz"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/privacy"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/impressum#datenschutz"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum",
+        "/impressum#datenschutz",
+        "javascript:if(window.klaro){klaro.show();}else{alert('Cookie banner is loading…');}"
+      ]
+    },
+    {
+      "file": "en/pte-test-experience-australia-visa.html",
+      "lang": "en",
+      "title": "PTE Academic Test: I Scored 89 for Australia (2026)",
+      "metaDescription": "PTE Academic test from Hamburg: 89 Overall, 270 EUR, 2 months of prep. Why Proficient is enough and Superior does not automatically mean +20 migration points.",
+      "canonical": "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum"
+        }
+      ],
+      "ogImage": "https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-05-04T12:00:00+02:00",
+      "dateModified": "2026-06-06T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/cost-of-moving-to-australia-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/tra-skill-assessment-chef-australia",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/the-decision-to-move-to-australia.html",
+      "lang": "en",
+      "title": "The Decision to Emigrate: Why We Are Moving to Australia",
+      "metaDescription": "We are moving to Australia as a family. How the decision really happened: over years, with doubts, a low point and one sentence I said to Lucy.",
+      "canonical": "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/au-headland-blick-meer-og.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-06-25T12:00:00+02:00",
+      "dateModified": "2026-06-25T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": false,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/about",
+        "/en/australia-tourist-visa-evisitor-651",
+        "/en/blog",
+        "/en/contact",
+        "/en/from-vegetable-garden-to-australia-family-move",
+        "/en/migration-agent-australia-our-experience",
+        "/en/our-journey",
+        "/en/privacy",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "en/tra-skill-assessment-chef-australia.html",
+      "lang": "en",
+      "title": "TRA Skill Assessment as a Chef: Real Costs + Self-Employed",
+      "metaDescription": "Chef, self-employed, Australia visa: how the TRA Skill Assessment runs via ATTC, total cost (~4,120 AUD), interview, and what is different if self-employed.",
+      "canonical": "https://wildgewachsen-australien.de/en/tra-skill-assessment-chef-australia",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/tra-skill-assessment-chef-australia"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "BlogPosting",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "datePublished": "2026-04-09T12:00:00+02:00",
+      "dateModified": "2026-06-03T12:00:00+02:00",
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/en/",
+        "/en/#newsletter",
+        "/en/186-visa-australia-family-guide",
+        "/en/about",
+        "/en/blog",
+        "/en/contact",
+        "/en/moving-to-australia-with-kids-family-guide",
+        "/en/our-journey",
+        "/en/privacy",
+        "/en/pte-test-experience-australia-visa",
+        "/impressum"
+      ]
+    },
+    {
+      "file": "google33b9e68b2006aa30.html",
+      "lang": null,
+      "title": null,
+      "metaDescription": null,
+      "canonical": null,
+      "hreflang": [],
+      "ogImage": null,
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": false,
+      "klaro": false,
+      "internalLinks": []
+    },
+    {
+      "file": "impressum.html",
+      "lang": "de",
+      "title": "Impressum & Datenschutz – Wildgewachsen",
+      "metaDescription": "Impressum von wildgewachsen-australien.de",
+      "canonical": "https://wildgewachsen-australien.de/impressum",
+      "hreflang": [],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise",
+        "javascript:if(window.klaro){klaro.show();}else{alert('Cookie-Banner wird geladen…');}"
+      ]
+    },
+    {
+      "file": "index.html",
+      "lang": "de",
+      "title": "Wildgewachsen – Auswandern nach Australien mit Familie",
+      "metaDescription": "Wildgewachsen – Eine deutsche Familie wandert nach Australien aus. Unsere Reise, unsere Erfahrungen, unser Abenteuer nach Byron Bay.",
+      "canonical": "https://wildgewachsen-australien.de/",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/blog",
+        "/blog/angekommen-erste-tage-australien",
+        "/blog/australische-sim-karte-handynummer-auswandern",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/entscheidung-auswandern-australien",
+        "/blog/visum-186-australien-familie-guide",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/blog?filter=ankommen-alltag",
+        "/blog?filter=byron-bay-region",
+        "/blog?filter=familie-kinder",
+        "/blog?filter=geld-kosten",
+        "/blog?filter=visum-migration",
+        "/blog?filter=vorbereitung-planung",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "kontakt.html",
+      "lang": "de",
+      "title": "Kontakt – Wildgewachsen",
+      "metaDescription": "Kontaktiere uns – Fragen zur Auswanderung nach Australien? Schreib uns eine Nachricht.",
+      "canonical": "https://wildgewachsen-australien.de/kontakt",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/kontakt"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/contact"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/kontakt"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "ueber-uns.html",
+      "lang": "de",
+      "title": "Über uns – Wildgewachsen",
+      "metaDescription": "Wir sind Christian, Lucy, Joris und Linnea. Eine deutsche Familie auf dem Weg nach Australien. 7 Jahre Restaurant, 2 Jahre Selbstversorgung, am 23. Juni 2026 geht es los.",
+      "canonical": "https://wildgewachsen-australien.de/ueber-uns",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/ueber-uns"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/about"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/ueber-uns"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [
+        "Person",
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/auswandern-australien-kosten-familie-guide",
+        "/blog/auswandern-australien-mit-kindern-vorbereitung",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/blog/vom-gemuesegarten-nach-australien-auswanderung-familie",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    },
+    {
+      "file": "unsere-reise.html",
+      "lang": "de",
+      "title": "Unsere Reise – Wildgewachsen",
+      "metaDescription": "Die Timeline unserer Auswanderung – von der Entscheidung bis zum neuen Leben in Australien.",
+      "canonical": "https://wildgewachsen-australien.de/unsere-reise",
+      "hreflang": [
+        {
+          "hreflang": "de",
+          "href": "https://wildgewachsen-australien.de/unsere-reise"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://wildgewachsen-australien.de/en/our-journey"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://wildgewachsen-australien.de/unsere-reise"
+        }
+      ],
+      "ogImage": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "jsonldTypes": [],
+      "datePublished": null,
+      "dateModified": null,
+      "goatcounter": true,
+      "klaro": true,
+      "internalLinks": [
+        "/",
+        "/#newsletter",
+        "/blog",
+        "/blog/tourist-visum-australien-evisitor-651",
+        "/impressum",
+        "/impressum#datenschutz",
+        "/kontakt",
+        "/ueber-uns",
+        "/unsere-reise"
+      ]
+    }
+  ]
+}

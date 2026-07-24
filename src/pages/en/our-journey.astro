@@ -1,0 +1,697 @@
+---
+// EN "Our Journey" als Story-Buehne, Spiegel des DE-Pendants unsere-reise.astro
+// (Master-Prompt v2 §3 Phase A Punkt 4). Alle sichtbaren Texte 1:1 aus
+// website/en/our-journey.html (Live-Stand) portiert. Head-Werte + JSON-LD
+// (WebPage + BreadcrumbList) verbatim aus dem Live-File.
+// Der inhaltlich tote Abflug-Countdown ist ersetzt durch die Flugroute als
+// Gepaeckanhaenger (Termine wortgleich aus der Timeline), Timeline =
+// Scrollytelling mit Polaroids, danach die ReiseKarte mit Ziel-Pin.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Scrollytelling from '../../components/Scrollytelling.astro';
+import ReiseKarte from '../../components/ReiseKarte.astro';
+import HandIcon from '../../components/HandIcon.astro';
+
+// Polaroid je Etappen-Index (web-optimierte Kopien aus dem Bild-Katalog,
+// additive neue Pfade; Etappen 1-3 = Papierkram, dort bleibt Foto 0 stehen).
+// Captions: CEO-freigegeben 24.07.2026 (Chat), EN-Spiegel der DE-Zeilen.
+const polaroids = [
+  {
+    schritt: 0,
+    name: 'de-feld-ernte-schubkarre',
+    breite: 720,
+    hoehe: 960,
+    caption: 'Where it all started: our field.',
+  },
+  {
+    schritt: 4,
+    name: 'de-abreise-gepaeck',
+    breite: 720,
+    hoehe: 960,
+    caption: 'All the luggage for the fresh start.',
+  },
+  {
+    schritt: 5,
+    name: 'au-kaenguru-mit-joey',
+    breite: 720,
+    hoehe: 960,
+    caption: 'Kangaroo with a joey.',
+  },
+  // family-story statt hero-family: hero-family zeigt visuell verifiziert
+  // EINE Person mit Surfboard (Dateiname taeuscht), family-story alle vier.
+  {
+    schritt: 6,
+    name: 'family-story',
+    breite: 640,
+    hoehe: 960,
+    caption: 'The four of us.',
+  },
+  {
+    schritt: 7,
+    name: 'au-byron-bay-welcome-schild',
+    breite: 960,
+    hoehe: 720,
+    caption: 'Welcome to Byron Bay.',
+  },
+];
+
+// Timeline stages - dates/titles/descriptions/status 1:1 von live
+const etappen = [
+  {
+    datum: '31 December 2025',
+    titel: 'Restaurant "die farm" closed',
+    desc: 'Seven years of our own restaurant. A hard but right step.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    datum: 'February 2026',
+    titel: 'PTE English test passed',
+    desc: 'Proficient is enough for the visa. It was not easy, but it worked.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    datum: 'February 2026',
+    titel: 'TRA Skill Assessment passed',
+    desc: 'Especially involved as a self-employed applicant. The documentation was the hardest part.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    datum: 'March 2026',
+    titel: 'Migration agent hired',
+    desc: 'Professional support for the visa process.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    datum: 'April 2026',
+    titel: 'Notice given on the flat',
+    desc: 'Move-out end of July. It is getting real.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    // Status aktualisiert 24.07.2026 (CEO-Freigabe im Chat): Abflug ist
+    // passiert, Ankunft 25.06. laut Arrived-Artikel/CONTEXT.
+    datum: '23 June 2026',
+    titel: 'Departure, Christian flies out first',
+    desc: 'Going ahead alone: find a job and a sponsor, sort out housing and a car.',
+    status: 'done',
+    statusLabel: 'Done',
+  },
+  {
+    datum: '26 July 2026',
+    titel: 'Family follows',
+    desc: 'Lucy, Joris and Linnea fly out to Australia. The family is together again.',
+    status: 'upcoming',
+    statusLabel: 'Planned',
+  },
+  {
+    datum: 'August 2026',
+    titel: 'New life in Byron Bay',
+    desc: 'Arriving, settling in, finding new routines. A new chapter begins.',
+    status: 'upcoming',
+    statusLabel: 'Planned',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Journey – Wildgewachsen"
+  description="The timeline of our move to Australia – from the decision to a new life in Byron Bay."
+  lang="en"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/our-journey" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/unsere-reise" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/our-journey" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/unsere-reise" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Our Journey – Wildgewachsen" />
+    <meta property="og:description" content="The timeline of our move to Australia – from the decision to a new life in Byron Bay." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/our-journey" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Our Journey – Wildgewachsen" />
+    <meta name="twitter:description" content="The timeline of our move to Australia – from the decision to a new life in Byron Bay." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: WebPage -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "inLanguage": "en",
+    "name": "Our Journey – Wildgewachsen",
+    "url": "https://wildgewachsen-australien.de/en/our-journey",
+    "description": "The timeline of our move to Australia – from the decision to a new life in Byron Bay.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "url": "https://wildgewachsen-australien.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    }
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Our Journey", "item": "https://wildgewachsen-australien.de/en/our-journey" }
+    ]
+  }
+    </script>
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Hero + Flugroute: Gepaeckanhaenger statt totem Countdown.
+       Termine wortgleich aus der Timeline, Akzent = Papierflieger ===== */}
+  <section class="section reise-hero texture-grid">
+    <div class="container reise-hero__inner">
+      <p class="eyebrow">Real-time documentation</p>
+      <h1>Our journey to Australia</h1>
+      <p class="reise-hero__lead">
+        Every step, every decision, every hurdle, from the idea to arriving in
+        Byron Bay.
+      </p>
+      <div class="flugroute">
+        <div class="flugroute__stempel">
+          <span class="flugroute__datum">23 June 2026</span>
+          <span class="flugroute__label">Departure, Christian flies out first</span>
+        </div>
+        <div class="flugroute__bogen" aria-hidden="true">
+          <svg viewBox="0 0 200 44" preserveAspectRatio="none">
+            <path
+              d="M 4 40 C 60 6, 140 6, 196 40"
+              fill="none"
+              stroke="var(--ink-soft)"
+              stroke-width="1.6"
+              stroke-dasharray="1 7"
+              stroke-linecap="round"></path>
+          </svg>
+          <span class="flugroute__flieger"><HandIcon name="flugzeug" groesse="26px" /></span>
+        </div>
+        <div class="flugroute__stempel">
+          <span class="flugroute__datum">26 July 2026</span>
+          <span class="flugroute__label">Family follows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Current chapter: Lese-Spalte, Akzent = Textlink ===== */}
+  <section class="section">
+    <div class="container container--text kapitel">
+      {/* Kapitel aktualisiert 24.07.2026 (CEO-Freigabe im Chat), Spiegel
+          des DE-Pendants; Fakten wortnah aus dem Arrived-Artikel. */}
+      <p class="eyebrow">Current chapter</p>
+      <h2>Arrived in Byron Bay</h2>
+      <p class="kapitel__text">
+        I have been here on my own since 25 June. The first days were an
+        emotional roller coaster; by now daily life has settled in: house
+        sitting in the hinterland, plus the job and sponsor search. On 26 July
+        Lucy and the kids follow, and then we are a family of four again.
+      </p>
+      <p class="kapitel__text kapitel__hinweis">
+        <strong>A note on the path:</strong> We're entering on a tourist visa (eVisitor 651) and looking for a 186 sponsor only after we arrive. If no sponsor is in place within three months, we fly back. It's a deliberate bet, not a recommendation. <a href="/en/australia-tourist-visa-evisitor-651">Why we're taking this path anyway</a>.
+      </p>
+    </div>
+  </section>
+
+  {/* ===== Timeline als Scrollytelling-Buehne: Etappen-Texte 1:1,
+       Polaroids aus dem Katalog crossfaden mit (Akzent = Aktiv-Marker
+       des Scrollytelling-Bausteins). Ohne JS/reduced-motion: normaler
+       Fluss, alle Fotos einmal sichtbar. ===== */}
+  <section class="section reise reise-scrolly">
+    <div class="container">
+      <Scrollytelling lang="en" medienRechts>
+        {
+          polaroids.map((p) => (
+            <figure slot="medien" class="polaroid" data-schritt={p.schritt}>
+              <picture>
+                <source srcset={`/assets/images/${p.name}-p960.webp`} type="image/webp" />
+                <img
+                  src={`/assets/images/${p.name}-p960.jpg`}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  width={p.breite}
+                  height={p.hoehe}
+                />
+              </picture>
+              <figcaption>{p.caption}</figcaption>
+            </figure>
+          ))
+        }
+        <ol class="reise__liste" role="list">
+          {
+            etappen.map((e, i) => {
+              // Mobil klebt das Polaroid inline bei seiner Etappe (die
+              // Sticky-Spalte ist einspaltig unsichtbar); Desktop blendet
+              // die Inline-Kopie aus. Gleiche Datei = ein Download.
+              const foto = polaroids.find((p) => p.schritt === i);
+              return (
+                <li class:list={['schritt', 'reise__etappe', `reise__etappe--${e.status}`]}>
+                  <span class="reise__nummer" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p class="reise__datum">{e.datum}</p>
+                  <h3 class="reise__titel">{e.titel}</h3>
+                  <p class="reise__desc">{e.desc}</p>
+                  <span class:list={['reise__status', `reise__status--${e.status}`]}>
+                    {e.statusLabel}
+                  </span>
+                  {foto && (
+                    <figure class="polaroid--mobil">
+                      <picture>
+                        <source srcset={`/assets/images/${foto.name}-p960.webp`} type="image/webp" />
+                        <img
+                          src={`/assets/images/${foto.name}-p960.jpg`}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          width={foto.breite}
+                          height={foto.hoehe}
+                        />
+                      </picture>
+                      <figcaption>{foto.caption}</figcaption>
+                    </figure>
+                  )}
+                </li>
+              );
+            })
+          }
+        </ol>
+      </Scrollytelling>
+    </div>
+  </section>
+
+  {/* ===== Ziel-Vignette: gezeichnete ReiseKarte, Pin = Byron Bay ===== */}
+  <section class="section">
+    <div class="container reise-ziel">
+      <ReiseKarte lang="en" route={false} orte={[{ name: 'Byron Bay', x: 47.5, y: 55 }]} />
+    </div>
+  </section>
+
+  {/* ===== Newsletter: Postkarte, Akzent = Abonnieren-Button ===== */}
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="card texture-grid newsletter">
+        {/* Briefmarke + Poststempel wie auf der Startseite (Sage; der eine
+            Terrakotta-Akzent der Sektion bleibt der Subscribe-Button) */}
+        <div class="newsletter__marke" aria-hidden="true">
+          <svg class="newsletter__briefmarke" viewBox="0 0 44 52" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="38" height="46" rx="2" fill="var(--surface)" stroke="var(--sage)" stroke-width="1.5" stroke-dasharray="0.5 5" stroke-linecap="round" />
+            <rect x="8" y="8" width="28" height="36" fill="none" stroke="var(--sage)" stroke-width="1" />
+            <path d="M12 26 C 15 23.6, 18 23.5, 21 25.6 C 24 27.7, 27 27.8, 32 25.7 M12 32 C 15 29.6, 18 29.5, 21 31.6 C 24 33.7, 27 33.8, 32 31.7" fill="none" stroke="var(--sage)" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="newsletter__poststempel" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--ink-soft)" stroke-linecap="round">
+            <circle cx="30" cy="30" r="24" stroke-width="1.4" stroke-dasharray="2.5 3.5" />
+            <path d="M8 44 C 20 40, 40 40, 54 43 M10 50 C 22 46, 40 46, 52 49" stroke-width="1.2" />
+          </svg>
+        </div>
+        <p class="eyebrow">Come along</p>
+        <h2>Want to know how it goes from here?</h2>
+        <p class="newsletter__text">
+          We send updates at every milestone. No spam, just real news.
+        </p>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">
+            Your email address
+          </label>
+          <input
+            id="newsletter-email"
+            class="newsletter__input"
+            type="email"
+            placeholder="Your email address"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="newsletter__hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Buttons (nur Tokens, Mono-Etiketten-Optik) --------------------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  /* --- Hero + Countdown ------------------------------------------------ */
+  .reise-hero__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .reise-hero__lead {
+    color: var(--ink-soft);
+    max-inline-size: 34rem;
+  }
+
+  /* Flugroute als Gepaeck-Etikett: Creme-Karte, gestrichelter Rand,
+     leicht verdreht wie ins Tagebuch geklebt. Ersetzt den toten Countdown. */
+  .flugroute {
+    display: grid;
+    grid-template-columns: auto minmax(80px, 220px) auto;
+    align-items: end;
+    gap: var(--space-4);
+    margin-block-start: var(--space-5);
+    background: var(--surface);
+    border: 1px dashed var(--ink-soft);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-4) var(--space-5);
+    rotate: -1deg;
+  }
+
+  .flugroute__stempel {
+    display: grid;
+    gap: var(--space-1);
+    justify-items: center;
+  }
+
+  .flugroute__datum {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+    line-height: 1.1;
+  }
+
+  .flugroute__label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    max-inline-size: 22ch;
+    text-align: center;
+  }
+
+  .flugroute__bogen {
+    position: relative;
+    align-self: stretch;
+  }
+
+  .flugroute__bogen svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Der EINE Terrakotta-Akzent der Hero-Sektion: der Papierflieger */
+  .flugroute__flieger {
+    position: absolute;
+    left: 50%;
+    top: -6px;
+    transform: translateX(-50%) rotate(14deg);
+    color: var(--accent-strong);
+  }
+
+  @media (max-width: 560px) {
+    .flugroute {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: var(--space-3);
+    }
+
+    .flugroute__bogen {
+      width: 120px;
+      height: 40px;
+      rotate: 90deg;
+    }
+  }
+
+  /* --- Current chapter ------------------------------------------------- */
+  .kapitel {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .kapitel__text {
+    color: var(--ink-soft);
+  }
+
+  .kapitel__hinweis {
+    font-size: var(--text--1);
+    line-height: 1.7;
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Timeline in der Scrollytelling-Buehne ---------------------------
+     Route/Punkte sind ersetzt durch den Aktiv-Marker des Bausteins;
+     jede Etappe traegt eine Stempel-Nummer im Etiketten-Look. */
+  .reise__liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .reise__etappe {
+    display: grid;
+    gap: var(--space-1);
+    justify-items: start;
+  }
+
+  .reise__nummer {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    border: 1px dashed var(--ink-soft);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    rotate: -1deg;
+    margin-block-end: var(--space-2);
+  }
+
+  /* Polaroid der Deutschland-Phase bleibt waehrend der Papierkram-Etappen
+     (Index 1-3, kein eigenes Foto) sichtbar statt ins Leere zu blenden. */
+  .reise-scrolly :global([data-scrolly][data-aktiv-index='1'] .polaroid[data-schritt='0']),
+  .reise-scrolly :global([data-scrolly][data-aktiv-index='2'] .polaroid[data-schritt='0']),
+  .reise-scrolly :global([data-scrolly][data-aktiv-index='3'] .polaroid[data-schritt='0']) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobil (<900px, einspaltig): die Sticky-Crossfade-Spalte saesse nur
+     einmal VOR der Liste und die Foto-Wechsel passierten unsichtbar.
+     Deshalb: Spalte aus, Polaroid klebt inline bei seiner Etappe. */
+  .reise-scrolly :global(.polaroid--mobil) {
+    margin: var(--space-3) 0 0;
+    max-inline-size: 300px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: -1deg;
+  }
+
+  .reise-scrolly :global(.reise__etappe:nth-child(even) .polaroid--mobil) {
+    rotate: 1deg;
+  }
+
+  .reise-scrolly :global(.polaroid--mobil img) {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+
+  .reise-scrolly :global(.polaroid--mobil figcaption) {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  @media (max-width: 899.98px) {
+    .reise-scrolly :global(.scrolly__medien) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .reise-scrolly :global(.polaroid--mobil) {
+      display: none;
+    }
+  }
+
+  .reise__datum {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .reise__titel {
+    font-size: var(--text-1);
+  }
+
+  .reise__desc {
+    color: var(--ink-soft);
+  }
+
+  /* Status als Mono-Etikett: erledigt = Salbei, geplant = Umriss */
+  .reise__status {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    margin-block-start: var(--space-2);
+    color: var(--ink-soft);
+  }
+
+  .reise__status--done {
+    color: var(--sage-text);
+    border-color: var(--sage);
+  }
+
+  /* --- Ziel-Vignette: ReiseKarte kompakt zentriert ---------------------- */
+  .reise-ziel {
+    max-width: 440px;
+  }
+
+  /* --- Newsletter-Postkarte -------------------------------------------- */
+  .newsletter {
+    position: relative;
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  /* Briefmarke oben rechts wie auf einer echten Postkarte, Poststempel
+     drueber. Dekorativ (aria-hidden), Sage statt Terrakotta. */
+  .newsletter__marke {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    width: 56px;
+  }
+
+  .newsletter__briefmarke {
+    display: block;
+    width: 100%;
+    rotate: 3deg;
+  }
+
+  .newsletter__poststempel {
+    position: absolute;
+    top: -16px;
+    right: -22px;
+    width: 72px;
+    opacity: 0.55;
+    rotate: -8deg;
+  }
+
+  @media (max-width: 520px) {
+    .newsletter__marke {
+      width: 42px;
+    }
+
+    .newsletter__poststempel {
+      width: 54px;
+      top: -12px;
+      right: -16px;
+    }
+  }
+
+  .newsletter__text {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter__input {
+    flex: 1 1 240px;
+    max-width: 320px;
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__hinweis {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flugroute,
+    .reise__nummer,
+    .newsletter__briefmarke,
+    .newsletter__poststempel {
+      rotate: 0deg;
+    }
+
+    .reise-scrolly :global(.polaroid--mobil),
+    .reise-scrolly :global(.reise__etappe:nth-child(even) .polaroid--mobil) {
+      rotate: 0deg;
+    }
+  }
+</style>

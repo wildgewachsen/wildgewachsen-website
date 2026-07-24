@@ -1,0 +1,257 @@
+---
+// Sticky-Inhaltsverzeichnis fuer lange Guides.
+// Ab 1100px: sticky in eigener Spalte (Parent-Layout stellt die Spalte, z.B. Grid).
+// Darunter: <details>-Aufklappbox ueber dem Artikel.
+// Scrollspy setzt aria-current="true" + Terrakotta-Marker (der EINE Akzent der Sektion).
+interface TocEintrag {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  eintraege: TocEintrag[];
+  lang?: 'de' | 'en';
+  titel?: string;
+}
+
+const { eintraege, lang = 'de', titel } = Astro.props;
+
+const t =
+  lang === 'de'
+    ? { nav: 'Inhaltsverzeichnis', titel: 'Inhalt' }
+    : { nav: 'Table of contents', titel: 'Contents' };
+
+const tocTitel = titel ?? t.titel;
+---
+
+<nav class="toc" aria-label={t.nav} data-sticky-toc>
+  <div class="toc__box toc__box--desktop">
+    <p class="toc__titel">{tocTitel}</p>
+    <ol class="toc__liste">
+      {
+        eintraege.map((eintrag) => (
+          <li>
+            <a href={`#${eintrag.id}`} data-toc-link>
+              {eintrag.label}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <details class="toc__box toc__box--mobile">
+    <summary class="toc__titel toc__summary">{tocTitel}</summary>
+    <ol class="toc__liste">
+      {
+        eintraege.map((eintrag) => (
+          <li>
+            <a href={`#${eintrag.id}`} data-toc-link>
+              {eintrag.label}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </details>
+</nav>
+
+<style>
+  /* Etikett-Optik: Creme-Flaeche, gestrichelter Rahmen */
+  .toc__box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .toc__box--desktop {
+    display: none;
+  }
+
+  .toc__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+
+  .toc__box--desktop .toc__titel {
+    margin-block-end: var(--space-3);
+  }
+
+  .toc__summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .toc__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Indikator dekorativ, fuer Screenreader stumm (Alt-Text-Syntax als Enhancement) */
+  .toc__summary::before {
+    content: '+';
+    content: '+' / '';
+    display: inline-block;
+    margin-inline-end: var(--space-2);
+    color: var(--ink-soft);
+  }
+
+  .toc__box--mobile[open] .toc__summary::before {
+    content: '-';
+    content: '-' / '';
+  }
+
+  .toc__box--mobile .toc__liste {
+    margin-block-start: var(--space-3);
+  }
+
+  .toc__liste {
+    list-style: none;
+    padding: 0;
+    counter-reset: toc;
+  }
+
+  .toc__liste li {
+    counter-increment: toc;
+  }
+
+  /* Gestrichelte Trennlinien wie auf einem Etikett */
+  .toc__liste li + li {
+    border-top: 1px dashed var(--line);
+  }
+
+  .toc__liste a {
+    display: block;
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+    border-left: 3px solid transparent;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .toc__liste a::before {
+    content: counter(toc, decimal-leading-zero) '  ';
+    color: var(--ink-soft);
+  }
+
+  .toc__liste a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Aktiver Eintrag: Terrakotta-Marker links = der EINE Akzent */
+  .toc__liste a[aria-current='true'] {
+    border-left-color: var(--accent);
+    color: var(--ink);
+  }
+
+  /* Marker-Uebergang nur ohne Reduced-Motion (base.css deckt zusaetzlich global ab) */
+  @media (prefers-reduced-motion: no-preference) {
+    .toc__liste a {
+      transition:
+        border-color 150ms ease,
+        color 150ms ease;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .toc {
+      position: sticky;
+      top: var(--space-5);
+      align-self: start;
+    }
+
+    .toc__box--desktop {
+      display: block;
+      max-height: calc(100dvh - var(--space-5) * 2);
+      overflow-y: auto;
+    }
+
+    .toc__box--mobile {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Scrollspy pro Instanz; via data-Attribut robust fuer mehrere TOCs pro Seite.
+  function initToc(root) {
+    const links = Array.from(root.querySelectorAll('[data-toc-link]'));
+    if (links.length === 0) return;
+
+    // Klick in der Aufklappbox schliesst sie
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        const details = link.closest('details');
+        if (details) details.open = false;
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const seen = new Set();
+    links.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      if (href.startsWith('#')) seen.add(href.slice(1));
+    });
+
+    const targets = Array.from(seen)
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (targets.length === 0) return;
+
+    const index = new Map(targets.map((el, i) => [el.id, i]));
+    let activeId = null;
+
+    const setActive = (id) => {
+      if (id === activeId) return;
+      activeId = id;
+      links.forEach((link) => {
+        if (id && link.getAttribute('href') === '#' + id) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    let primed = false;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          } else if (entry.target.id === activeId && entry.boundingClientRect.top > 0) {
+            // Beim Hochscrollen faellt die Ueberschrift unter die Lesezone:
+            // der vorherige Abschnitt wird aktiv
+            const i = index.get(entry.target.id) || 0;
+            setActive(i > 0 ? targets[i - 1].id : null);
+          }
+        });
+
+        // Startlage (z.B. Deeplink mitten in der Seite) einmalig bestimmen
+        if (!primed) {
+          primed = true;
+          if (!activeId) {
+            const above = targets.filter(
+              (el) => el.getBoundingClientRect().top < window.innerHeight * 0.4
+            );
+            if (above.length > 0) setActive(above[above.length - 1].id);
+          }
+        }
+      },
+      // Lesezone = oberste 40% des Viewports
+      { rootMargin: '0px 0px -60% 0px' }
+    );
+
+    targets.forEach((el) => io.observe(el));
+  }
+
+  document.querySelectorAll('[data-sticky-toc]').forEach(initToc);
+</script>

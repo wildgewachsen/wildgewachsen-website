@@ -1,0 +1,200 @@
+---
+// Header: Wortmarke als SVG (Phase 3), Nav-Ziele + Texte 1:1 von live.
+// Newsletter-CTA = der EINE Terrakotta-Akzent des Headers.
+import LogoWortmarke from './LogoWortmarke.astro';
+import HandIcon from './HandIcon.astro';
+import { sprachGegenstueck } from '../lib/sprachpaare.mjs';
+
+interface Props {
+  lang?: 'de' | 'en';
+}
+
+const { lang = 'de' } = Astro.props;
+
+// DE⇄EN-Etikett: exaktes Sprach-Gegenstueck aus dem hreflang-Snapshot,
+// Fallback Startseite der Zielsprache. Label + aria in der ZIELsprache
+// (Konvention fuer Sprachumschalter, hilft Screenreader-Nutzern der Zielsprache).
+const langZiel = sprachGegenstueck(Astro.url.pathname, lang);
+
+const nav =
+  lang === 'de'
+    ? [
+        { href: '/ueber-uns', label: 'Über uns' },
+        { href: '/blog', label: 'Blog' },
+        { href: '/unsere-reise', label: 'Unsere Reise' },
+        { href: '/kontakt', label: 'Kontakt' },
+      ]
+    : [
+        { href: '/en/about', label: 'About' },
+        { href: '/en/blog', label: 'Blog' },
+        { href: '/en/our-journey', label: 'Our Journey' },
+        { href: '/en/contact', label: 'Contact' },
+      ];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href={lang === 'de' ? '/' : '/en/'}>
+      <LogoWortmarke breite="150px" />
+    </a>
+    <nav aria-label={lang === 'de' ? 'Hauptnavigation' : 'Main navigation'}>
+      <ul class="site-header__nav">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li>
+          <a class="site-header__cta" href="#newsletter">Newsletter</a>
+        </li>
+        <li>
+          <a
+            class="site-header__lang"
+            href={langZiel}
+            lang={lang === 'de' ? 'en' : 'de'}
+            aria-label={lang === 'de' ? 'Read this page in English' : 'Diese Seite auf Deutsch lesen'}
+          >{lang === 'de' ? 'EN' : 'DE'}</a>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="site-header__theme"
+            data-theme-toggle
+            aria-label={lang === 'de' ? 'Dunkelmodus umschalten' : 'Toggle dark mode'}
+          >
+            {/* SVG statt ☾/☀-Glyphen: Mobil-Browser rendern die Unicode-
+                Zeichen als buntes Emoji (CEO-Befund 24.07.). Sichtbarkeit
+                schaltet CSS ueber html[data-theme], das Script pflegt nur
+                noch aria-pressed. */}
+            <span class="site-header__theme-mond" aria-hidden="true">
+              <HandIcon name="mond" groesse="16px" />
+            </span>
+            <span class="site-header__theme-sonne" aria-hidden="true">
+              <HandIcon name="sonne" groesse="16px" />
+            </span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-5);
+    padding-block: var(--space-4);
+  }
+
+  .site-header__brand {
+    color: var(--ink);
+    display: inline-flex;
+  }
+
+  /* Handstrich-Welle waere bei 150px sonst duenner als 1px: Stroke dickt
+     alle Linien der Wortmarke minimal auf (Einheiten im 2510er-viewBox) */
+  .site-header__brand :global(svg path) {
+    stroke: currentColor;
+    stroke-width: 8;
+  }
+
+  .site-header__theme {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-size: var(--text-0);
+    line-height: 1;
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+  }
+
+  .site-header__theme:hover {
+    border-color: var(--accent-strong);
+  }
+
+  .site-header__theme-mond,
+  .site-header__theme-sonne {
+    display: inline-flex;
+    pointer-events: none;
+  }
+
+  /* Hell zeigt den Mond (Ziel: dunkel), Dunkel die Sonne (Ziel: hell) */
+  .site-header__theme-sonne {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .site-header__theme-mond {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .site-header__theme-sonne {
+    display: inline-flex;
+  }
+
+  /* Sprach-Etikett: wie ein schief aufgeklebtes Preisschildchen. Bewusst
+     KEIN Terrakotta (der eine Akzent des Headers bleibt der Newsletter-CTA). */
+  .site-header__lang {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-2) var(--space-3);
+    line-height: 1;
+    rotate: 1.5deg;
+  }
+
+  .site-header__lang:hover {
+    border-color: var(--accent-strong);
+    text-decoration: none !important;
+  }
+
+  .site-header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-header__nav a {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .site-header__nav a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .site-header__cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--accent-contrast) !important;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-s);
+    rotate: -1deg;
+  }
+
+  .site-header__cta:hover {
+    background: var(--accent-strong);
+    text-decoration: none !important;
+  }
+</style>

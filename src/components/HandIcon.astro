@@ -1,0 +1,65 @@
+---
+/**
+ * Handgezeichnete Mini-Icons im Stil der Wortmarke: ein Strich, runde Kappen,
+ * bewusst leicht unregelmaessige Kurven statt geometrischer Perfektion.
+ * Ersetzen die Alt-Emojis der Themen-Karten (Master-Prompt v2, Playbook:
+ * "kein einziges Alt-Emoji, handgezeichnete SVG-Akzente im Stil der Wortmarke").
+ * Farbe uebernimmt das umgebende CSS via currentColor.
+ */
+interface Props {
+  name:
+    | 'flugzeug'
+    | 'liste'
+    | 'herz'
+    | 'muenze'
+    | 'haus'
+    | 'welle'
+    | 'mond'
+    | 'sonne';
+  groesse?: string;
+}
+
+const { name, groesse = '30px' } = Astro.props;
+
+// Ein d-String pro Icon, mehrere M-Subpfade erlaubt (reine Strich-Zeichnung).
+const pfade: Record<Props['name'], string> = {
+  // Papierflieger mit Faltlinie
+  flugzeug:
+    'M4.5 17.2 C 11 14.2, 19.5 10, 27.6 5.4 C 25.3 12.4, 23.2 19.6, 21.3 26.4 C 18.8 23.6, 16.3 21.2, 13.4 19.3 C 10.4 18.5, 7.4 17.8, 4.5 17.2 Z M13.4 19.3 C 18 14.8, 22.7 10.2, 27.6 5.4',
+  // Checkliste: Blatt, zwei Zeilen, Haken
+  liste:
+    'M8.2 5.6 C 8.1 4.8, 8.7 4.2, 9.5 4.2 L 22.6 4.3 C 23.4 4.3, 23.9 4.9, 23.9 5.7 L 23.8 26.5 C 23.8 27.3, 23.2 27.9, 22.4 27.8 L 9.4 27.7 C 8.6 27.7, 8.1 27.1, 8.1 26.3 Z M11.4 10.3 L 20.7 10.5 M11.3 14.9 C 14.4 14.8, 17.5 15, 20.6 15 M11.6 22.9 L 13.3 24.6 L 16.6 20.9',
+  // Herz in einem Zug
+  herz:
+    'M16 26.8 C 10.2 22.1, 5.3 17.6, 5.1 12.5 C 5 8.9, 7.7 6.3, 10.9 6.4 C 13.1 6.5, 15 7.9, 16 10 C 17.1 7.8, 19 6.3, 21.2 6.3 C 24.4 6.3, 27 9, 26.9 12.6 C 26.7 17.7, 21.8 22.2, 16 26.8 Z',
+  // Muenze mit $-Zug
+  muenze:
+    'M16 4.6 C 22.4 4.5, 27.5 9.7, 27.4 16 C 27.3 22.4, 22.3 27.5, 16 27.4 C 9.7 27.3, 4.6 22.2, 4.7 15.9 C 4.8 9.7, 9.8 4.7, 16 4.6 Z M19.6 11.6 C 18.9 10.1, 17.5 9.5, 16 9.6 C 14.3 9.7, 13 10.8, 13.1 12.3 C 13.2 13.8, 14.5 14.6, 16.1 15.1 C 17.8 15.6, 19.1 16.4, 19.1 17.9 C 19.1 19.6, 17.7 20.6, 16 20.6 C 14.4 20.6, 13.1 19.9, 12.5 18.6 M16.1 7.5 L 16.1 9.6 M16.1 20.6 L 16.1 22.7',
+  // Haus mit Tuer
+  haus:
+    'M6.5 15.8 C 9.6 12.8, 12.7 9.9, 16 7.1 C 19.3 9.9, 22.5 12.8, 25.6 15.7 M8.8 14.1 L 8.9 25.4 C 8.9 26.2, 9.5 26.8, 10.3 26.8 L 21.8 26.7 C 22.6 26.7, 23.2 26.1, 23.2 25.3 L 23.2 14 M14 26.7 L 14 20.6 C 14 19.8, 14.6 19.2, 15.4 19.2 L 16.8 19.2 C 17.6 19.2, 18.1 19.8, 18.1 20.6 L 18.1 26.7',
+  // Doppelwelle, Echo der Logo-Welle
+  welle:
+    'M4.5 14.5 C 7 12.6, 9.5 12.5, 12 14.2 C 14.5 15.9, 17 16, 19.5 14.3 C 22 12.6, 24.5 12.5, 27.5 14.4 M4.5 19.8 C 7 17.9, 9.5 17.8, 12 19.5 C 14.5 21.2, 17 21.3, 19.5 19.6 C 22 17.9, 24.5 17.8, 27.5 19.7',
+  // Mondsichel (Theme-Toggle: hell aktiv). SVG statt ☾-Glyphe, weil
+  // Mobil-Browser die Unicode-Zeichen als buntes Emoji rendern.
+  mond: 'M 19.5 4.8 C 12.6 6.1, 8.2 11.4, 8.8 17.6 C 9.4 23.6, 14.4 27.6, 20.3 27.1 C 22.1 26.9, 23.6 26.4, 24.8 25.6 C 19 24.6, 14.9 20.4, 14.7 15.2 C 14.5 11, 16.4 7.2, 19.5 4.8 Z',
+  // Sonne mit 8 Strahlen (Theme-Toggle: dunkel aktiv)
+  sonne:
+    'M16 11.2 C 18.7 11.1, 20.9 13.3, 20.8 16 C 20.7 18.7, 18.6 20.8, 16 20.7 C 13.4 20.6, 11.3 18.6, 11.4 16 C 11.5 13.4, 13.4 11.3, 16 11.2 Z M16 4.5 L 16 7.5 M16 24.5 L 16 27.5 M4.5 16 L 7.5 16 M24.5 16 L 27.5 16 M7.9 7.9 L 10 10 M22 22 L 24.1 24.1 M24.1 7.9 L 22 10 M10 22 L 7.9 24.1',
+};
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 32"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  style={`width: ${groesse}; height: ${groesse};`}
+>
+  <path d={pfade[name]}></path>
+</svg>

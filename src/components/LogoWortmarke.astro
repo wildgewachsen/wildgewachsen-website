@@ -1,0 +1,42 @@
+---
+/**
+ * Handgezeichnete Wortmarke "wild / ~~~ / gewachsen" als Inline-SVG.
+ *
+ * Quelle der Wahrheit: src/assets/logo-wortmarke.svg (getraced aus dem
+ * TIF-Master via tools/logo-preprocess.py + tools/logo-trace.mjs).
+ * Faerbung uebernimmt das umgebende CSS via currentColor -- z.B.
+ * `color: var(--ink)` im Header. Keine hartkodierten Farben.
+ */
+import svgRaw from '../assets/logo-wortmarke.svg?raw';
+
+interface Props {
+  /** Optionaler zugaenglicher Titel (zusaetzlich zum aria-label). */
+  title?: string;
+  /** CSS-Breite des Logos, z.B. '200px' oder 'clamp(140px, 20vw, 220px)'. */
+  breite?: string;
+}
+
+const { title, breite = '200px' } = Astro.props;
+
+const viewBox = svgRaw.match(/viewBox="([^"]+)"/)?.[1];
+const pathD = svgRaw.match(/ d="([^"]+)"/)?.[1];
+if (!viewBox || !pathD) {
+  throw new Error(
+    'logo-wortmarke.svg unlesbar -- node tools/logo-trace.mjs neu ausfuehren',
+  );
+}
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={viewBox}
+  fill="currentColor"
+  role="img"
+  aria-label="wildgewachsen"
+  style={`width: ${breite};`}
+>
+  {title && <title>{title}</title>}
+  {/* evenodd Pflicht: potrace-Trace wickelt alle Subpfade gleichsinnig,
+      die Buchstaben-Punzen sind nur mit evenodd Loecher. */}
+  <path fill-rule="evenodd" d={pathD}></path>
+</svg>

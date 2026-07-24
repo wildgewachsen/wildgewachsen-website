@@ -1,0 +1,324 @@
+---
+// Schriften-Vergleich fuer die CEO-Entscheidung.
+// Runde 2 (21.07., CEO-Feedback "zu plump, zu modern, lieber retro/vintage/alternativ"):
+// drei Retro-Kombis E/F/G, oben einsortiert. Runde 1 (A-D) bleibt als Referenz.
+// Alle kostenlos (Google Fonts, self-hosted via fontsource). Nur diese Seite laedt
+// die Kandidaten; der Rest der Site bleibt bei der Ist-Kombi, bis entschieden ist.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/newsreader';
+import '@fontsource/ibm-plex-mono';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/instrument-sans';
+import '@fontsource/young-serif';
+import '@fontsource-variable/alegreya';
+import '@fontsource-variable/vollkorn';
+import '@fontsource/special-elite';
+import '@fontsource/alfa-slab-one';
+import '@fontsource/courier-prime';
+import '@fontsource-variable/bitter';
+
+const runde2 = [
+  {
+    id: 'e',
+    name: 'E · Buchladen um die Ecke',
+    fonts: 'Young Serif + Alegreya + Courier Prime + Caveat',
+    warum:
+      'Young Serif ist knuffig und warm wie ein alter Buchdeckel, ohne wuchtig zu werden. Alegreya liest sich wie ein gut gesetztes Buch, mit leicht kalligrafischem Charakter. Courier Prime bringt den Schreibmaschinen-Ton in die Labels. Die leiseste der drei Retro-Richtungen.',
+  },
+  {
+    id: 'f',
+    name: 'F · Vintage-Magazin, aufgedreht',
+    fonts: 'Fraunces (wonky) + Vollkorn + Special Elite + Caveat',
+    warum:
+      'Fraunces mit voll aufgedrehtem Retro-Regler (weiche Kanten, schiefe Details, wie alte Cooper/Windsor-Schriften aus den 70ern). Vollkorn ist eine warme deutsche Brot-und-Butter-Buchschrift. Special Elite = echte Schreibmaschine fuer Eyebrows. Die mutigste Kombi, mein Favorit fuer den award-winning Anspruch.',
+  },
+  {
+    id: 'g',
+    name: 'G · Plakat-Slab, Roadtrip',
+    fonts: 'Alfa Slab One + Bitter + Courier Prime + Caveat',
+    warum:
+      'Alfa Slab One ist eine fette Plakat-Slab wie von alten Reise-Postern und Ladenschildern. Bitter traegt als Slab-Serife den Ton in den Fliesstext weiter. Am kraeftigsten, Achtung: gross eingesetzt dominiert es alles.',
+  },
+];
+
+const runde1 = [
+  {
+    id: 'a',
+    name: 'A · Erste Runde: Ist-Stand (Master-Prompt)',
+    fonts: 'Archivo + Lora + Space Mono + Caveat',
+    warum: 'Kam aus dem Video-Deck-Look. CEO-Feedback 21.07.: zu plump, zu modern.',
+  },
+  {
+    id: 'b',
+    name: 'B · Erste Runde: Editorial mit Charakter',
+    fonts: 'Fraunces (zahm) + Source Serif 4 + IBM Plex Mono + Caveat',
+    warum: 'Fraunces in der modernen Einstellung. Vergleiche mit F: gleiche Schrift, anderer Regler.',
+  },
+  {
+    id: 'c',
+    name: 'C · Erste Runde: Charakterkopf-Grotesk',
+    fonts: 'Bricolage Grotesque + Newsreader + IBM Plex Mono + Caveat',
+    warum: 'Grotesk mit Ecken, aber immer noch klar modern.',
+  },
+  {
+    id: 'd',
+    name: 'D · Erste Runde: Serifenlos modern',
+    fonts: 'Space Grotesk + Instrument Sans + IBM Plex Mono + Caveat',
+    warum: 'Der Gegenentwurf. Nach deinem Feedback vermutlich raus.',
+  },
+];
+
+const kombis = [...runde2, ...runde1];
+---
+
+<BaseLayout
+  title="Schriften-Vergleich – Retro-Runde"
+  description="Interner Font-Vergleich für die Redesign-Entscheidung."
+  lang="de"
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Styleguide · Schriften-Entscheidung · Runde 2</p>
+      <h1 class="page-title">Die Retro-Runde</h1>
+      <p class="lede">
+        Dein Feedback: zu plump, zu modern, lieber alternativ/retro/vintage.
+        Hier sind drei Richtungen genau dafür (E, F, G), die erste Runde bleibt
+        unten zum Vergleich stehen. Gleicher Text überall, Theme-Knopf für
+        hell/dunkel.
+      </p>
+      <button id="theme-toggle" class="toggle" type="button">
+        Theme: automatisch
+      </button>
+    </div>
+  </section>
+
+  {
+    kombis.map((k) => (
+      <section class={`section kombi kombi--${k.id}`} aria-labelledby={`h-${k.id}`}>
+        <div class="container">
+          <div class="kombi__kopf">
+            <h2 id={`h-${k.id}`} class="kombi__name">
+              {k.name}
+            </h2>
+            <p class="kombi__fonts">{k.fonts}</p>
+          </div>
+          <div class="card specimen">
+            <p class="spec-eyebrow">Visum · Kosten · Byron Bay</p>
+            <p class="spec-h1">Warum wir das Restaurant aufgegeben haben</p>
+            <p class="spec-h2">Was der Schritt wirklich bedeutet</p>
+            <p class="spec-body">
+              Wir haben drei, vier Monate Puffer. Danach muss es laufen. Das
+              klingt verrückt, ich weiß. Und das ist auch okay so. Ä, Ö, Ü und ß
+              sitzen in jedem Schnitt. Zahlen: 0123456789.
+            </p>
+            <p class="spec-hand">nicht perfekt, aber echt</p>
+          </div>
+          <p class="kombi__warum">{k.warum}</p>
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<script is:inline>
+  const btn = document.getElementById('theme-toggle');
+  const labels = { auto: 'automatisch', light: 'hell', dark: 'dunkel' };
+  let mode = 'auto';
+  btn?.addEventListener('click', () => {
+    mode = mode === 'auto' ? 'light' : mode === 'light' ? 'dark' : 'auto';
+    if (mode === 'auto') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = mode;
+    btn.textContent = 'Theme: ' + labels[mode];
+  });
+</script>
+
+<style>
+  .page-title {
+    margin-block-start: var(--space-3);
+  }
+
+  .lede {
+    max-inline-size: var(--measure);
+    margin-block-start: var(--space-4);
+    font-size: var(--text-1);
+  }
+
+  .toggle {
+    margin-block-start: var(--space-5);
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+  }
+
+  .kombi {
+    border-top: 1px solid var(--line);
+  }
+
+  .kombi__kopf {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .kombi__name {
+    font-size: var(--text-1);
+  }
+
+  .kombi__fonts {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .specimen {
+    margin-block-start: var(--space-5);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .kombi__warum {
+    margin-block-start: var(--space-4);
+    max-inline-size: var(--measure);
+    color: var(--ink-soft);
+  }
+
+  .spec-eyebrow {
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+
+  .spec-h1 {
+    font-size: var(--text-3);
+    line-height: var(--leading-tight);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .spec-h2 {
+    font-size: var(--text-2);
+    line-height: var(--leading-tight);
+    font-weight: 700;
+  }
+
+  .spec-body {
+    max-inline-size: var(--measure);
+    line-height: var(--leading-body);
+  }
+
+  .spec-hand {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--accent-strong);
+    rotate: -1.5deg;
+  }
+
+  /* E: Buchladen um die Ecke */
+  .kombi--e .spec-h1,
+  .kombi--e .spec-h2 {
+    font-family: 'Young Serif', serif;
+    font-weight: 400; /* Young Serif hat nur einen Schnitt, wirkt gross von selbst kraeftig */
+    letter-spacing: 0;
+  }
+  .kombi--e .spec-body {
+    font-family: 'Alegreya Variable', serif;
+  }
+  .kombi--e .spec-eyebrow {
+    font-family: 'Courier Prime', monospace;
+  }
+
+  /* F: Vintage-Magazin (Fraunces mit Retro-Reglern) */
+  .kombi--f .spec-h1,
+  .kombi--f .spec-h2 {
+    font-family: 'Fraunces Variable', serif;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+  .kombi--f .spec-body {
+    font-family: 'Vollkorn Variable', serif;
+  }
+  .kombi--f .spec-eyebrow {
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 0.12em;
+  }
+
+  /* G: Plakat-Slab */
+  .kombi--g .spec-h1,
+  .kombi--g .spec-h2 {
+    font-family: 'Alfa Slab One', serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .kombi--g .spec-body {
+    font-family: 'Bitter Variable', serif;
+  }
+  .kombi--g .spec-eyebrow {
+    font-family: 'Courier Prime', monospace;
+  }
+
+  /* A: Ist-Stand */
+  .kombi--a .spec-h1,
+  .kombi--a .spec-h2 {
+    font-family: 'Archivo Variable', sans-serif;
+  }
+  .kombi--a .spec-body {
+    font-family: 'Lora Variable', serif;
+  }
+  .kombi--a .spec-eyebrow {
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* B: Editorial (Fraunces zahm) */
+  .kombi--b .spec-h1,
+  .kombi--b .spec-h2 {
+    font-family: 'Fraunces Variable', serif;
+    font-variation-settings: 'SOFT' 60, 'WONK' 0;
+    letter-spacing: 0;
+  }
+  .kombi--b .spec-body {
+    font-family: 'Source Serif 4 Variable', serif;
+  }
+  .kombi--b .spec-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* C: Charakterkopf-Grotesk */
+  .kombi--c .spec-h1,
+  .kombi--c .spec-h2 {
+    font-family: 'Bricolage Grotesque Variable', sans-serif;
+  }
+  .kombi--c .spec-body {
+    font-family: 'Newsreader Variable', serif;
+  }
+  .kombi--c .spec-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* D: Serifenlos */
+  .kombi--d .spec-h1,
+  .kombi--d .spec-h2 {
+    font-family: 'Space Grotesk Variable', sans-serif;
+  }
+  .kombi--d .spec-body {
+    font-family: 'Instrument Sans Variable', sans-serif;
+  }
+  .kombi--d .spec-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>

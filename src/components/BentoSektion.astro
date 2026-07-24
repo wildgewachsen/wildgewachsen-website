@@ -1,0 +1,72 @@
+---
+// Bento-Grid-Sektion fuer Zahlen, Etappen und Kosten.
+// Kacheln kommen als <BentoKachel> in den Default-Slot.
+// Konvention (Reisetagebuch-Look): genau EINE Kachel pro Sektion
+// traegt akzent (Terrakotta-Flaeche) - per Prop, nicht erzwingbar in CSS.
+interface Props {
+  ueberschrift?: string;
+  eyebrow?: string;
+  lang?: 'de' | 'en';
+}
+
+const { ueberschrift, eyebrow, lang = 'de' } = Astro.props;
+
+// Eindeutige Heading-ID pro Instanz (mehrere Sektionen pro Seite moeglich)
+const headingId = ueberschrift
+  ? `bento-titel-${Math.random().toString(36).slice(2, 8)}`
+  : undefined;
+
+// Bedien-Label nur als Fallback, wenn keine sichtbare Ueberschrift da ist
+const regionLabel = lang === 'de' ? 'Zahlen und Fakten' : 'Facts and figures';
+---
+
+<section
+  class="bento"
+  aria-labelledby={headingId}
+  aria-label={ueberschrift ? undefined : regionLabel}
+>
+  {
+    (ueberschrift || eyebrow) && (
+      <header class="bento__kopf">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        {ueberschrift && (
+          <h2 class="bento__titel" id={headingId}>
+            {ueberschrift}
+          </h2>
+        )}
+      </header>
+    )
+  }
+  <div class="bento__grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .bento__kopf {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-end: var(--space-5);
+  }
+
+  .bento__titel {
+    /* Young Serif: Hierarchie ueber Groesse, Schnitt bleibt 400 */
+    font-size: var(--text-2);
+  }
+
+  .bento__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    grid-auto-rows: minmax(7.5rem, auto);
+    grid-auto-flow: dense; /* dichte Packung, Luecken werden gefuellt */
+    gap: var(--space-4);
+  }
+
+  /* Mobile: alles einspaltig. Breakpoint muss zu BentoKachel.astro passen. */
+  @media (max-width: 640px) {
+    .bento__grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+  }
+</style>

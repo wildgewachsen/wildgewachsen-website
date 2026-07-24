@@ -1,0 +1,300 @@
+---
+// Interner Sichtflug fuer die Phase-2-Komponenten-Bibliothek (Master-Prompt §7).
+// Jede Sektion zeigt einen Baustein mit realistischen Demo-Inhalten. Geht nie live.
+// Hinweis: Die Video-Bausteine haben noch KEIN echtes Video-Asset (Play zeigt 404),
+// Poster + Bedienung sind aber voll pruefbar.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AufklappBox from '../components/AufklappBox.astro';
+import KartenDeck from '../components/KartenDeck.astro';
+import FotoStory from '../components/FotoStory.astro';
+import VorherNachher from '../components/VorherNachher.astro';
+import Scrollytelling from '../components/Scrollytelling.astro';
+import VideoHero from '../components/VideoHero.astro';
+import InlineVideo from '../components/InlineVideo.astro';
+import ReiseKarte from '../components/ReiseKarte.astro';
+import BentoSektion from '../components/BentoSektion.astro';
+import BentoKachel from '../components/BentoKachel.astro';
+import Randnotiz from '../components/Randnotiz.astro';
+import PullQuote from '../components/PullQuote.astro';
+import StickyToc from '../components/StickyToc.astro';
+import WeiterlesenPfade from '../components/WeiterlesenPfade.astro';
+import InlineCta from '../components/InlineCta.astro';
+
+const toc = [
+  { id: 'k-bento', label: 'Bento-Sektion' },
+  { id: 'k-aufklapp', label: 'Aufklapp-Box' },
+  { id: 'k-deck', label: 'Karten-Deck' },
+  { id: 'k-fotostory', label: 'Foto-Story' },
+  { id: 'k-vorher', label: 'Vorher/Nachher' },
+  { id: 'k-scrolly', label: 'Scrollytelling' },
+  { id: 'k-karte', label: 'Reise-Karte' },
+  { id: 'k-notizen', label: 'Randnotiz + Pull-Quote' },
+  { id: 'k-video', label: 'Video-Bausteine' },
+  { id: 'k-weiter', label: 'Weiterlesen + CTA' },
+];
+---
+
+<BaseLayout
+  title="Komponenten – Sichtflug Phase 2"
+  description="Interne Demo aller Artikel-Bausteine im Retro-Look."
+  lang="de"
+>
+  <section class="section texture-grid">
+    <div class="container">
+      <p class="eyebrow">Styleguide · Phase 2 · Komponenten-Bibliothek</p>
+      <h1>Die Artikel-Bausteine</h1>
+      <p class="lede">
+        Alle Bausteine aus dem Bauplan, mit Demo-Inhalten gefüllt. Tastatur
+        funktioniert überall, Dark Mode auch: einfach Systemeinstellung wechseln
+        oder im <a href="/styleguide">Styleguide</a> umschalten.
+      </p>
+    </div>
+  </section>
+
+  <div class="container demo-layout section">
+    <StickyToc eintraege={toc} lang="de" titel="Die Bausteine" />
+    <div class="demo-inhalt">
+      <section id="k-bento" aria-labelledby="h-bento">
+        <h2 id="h-bento" class="demo-h">Bento-Sektion</h2>
+        <BentoSektion eyebrow="Etappe 01" ueberschrift="Unser Umzug in Zahlen" lang="de">
+          <BentoKachel groesse="l" zahl="25.06.2026" label="Ankunft in Byron Bay" akzent lang="de" />
+          <BentoKachel zahl="2" label="Erwachsene" lang="de" />
+          <BentoKachel zahl="2" label="Kinder" lang="de">
+            <p class="handnote">alle dabei!</p>
+          </BentoKachel>
+          <BentoKachel groesse="m" raster lang="de">
+            <img src="/assets/images/au-byron-bay-welcome-schild.jpg" alt="Willkommensschild von Byron Bay" loading="lazy" />
+          </BentoKachel>
+        </BentoSektion>
+      </section>
+
+      <section id="k-aufklapp" aria-labelledby="h-aufklapp">
+        <h2 id="h-aufklapp" class="demo-h">Aufklapp-Box</h2>
+        <AufklappBox titel="Kosten aufklappen" variante="kosten" lang="de">
+          <Fragment slot="betrag">$30 / Monat</Fragment>
+          <p>Der felix-Tarif deckt bei uns alles ab, was wir im Alltag brauchen.</p>
+          <ul>
+            <li>50 GB Daten pro Monat</li>
+            <li>Monatlich kündbar, keine Vertragsbindung</li>
+          </ul>
+        </AufklappBox>
+        <AufklappBox titel="Extra-Tipp für die Ankunft" lang="de">
+          <p>So sah der Empfang bei uns aus, direkt am Ortsschild.</p>
+          <img src="/assets/images/au-byron-bay-welcome-schild.jpg" alt="Welcome-Schild von Byron Bay" loading="lazy" />
+        </AufklappBox>
+      </section>
+
+      <section id="k-deck" aria-labelledby="h-deck">
+        <h2 id="h-deck" class="demo-h">Karten-Deck</h2>
+        <KartenDeck
+          lang="de"
+          karten={[
+            {
+              meta: 'Etappe 1',
+              titel: 'Abschied in Deutschland',
+              text: 'Restaurant abgegeben, Kisten gepackt und die letzten Wochen bewusst mit Familie und Freunden verbracht.',
+            },
+            {
+              meta: 'Etappe 2',
+              titel: 'Christian fliegt vor',
+              text: 'Seit dem 25. Juni ist Christian allein in Byron Bay und bereitet alles für die Ankunft der Familie vor.',
+            },
+            {
+              meta: 'Etappe 3',
+              titel: 'Die Familie folgt',
+              text: 'Am 26. Juli landen Lucy, Joris und Linnea in Australien. Ab dann sind wir wieder zu viert unterwegs.',
+            },
+          ]}
+        />
+      </section>
+
+      <section id="k-fotostory" aria-labelledby="h-fotostory">
+        <h2 id="h-fotostory" class="demo-h">Foto-Story</h2>
+        <FotoStory
+          lang="de"
+          ueberschrift="Von der Schubkarre zum Strand"
+          bilder={[
+            {
+              src: '/assets/images/de-feld-ernte-schubkarre.jpg',
+              alt: 'Ernte auf dem Feld in Deutschland, volle Schubkarre mit Gemüse',
+              caption: 'Wo alles angefangen hat: unser Feld in Deutschland',
+            },
+            {
+              src: '/assets/images/hero-family.jpg',
+              alt: 'Unsere Familie zusammen im Freien',
+              caption: 'Wir vier, kurz vor dem großen Schritt',
+            },
+            {
+              src: '/assets/images/au-byron-bay-welcome-schild.jpg',
+              alt: 'Ortsschild Welcome to Byron Bay in Australien',
+              caption: 'Angekommen! Byron Bay sagt Hallo',
+            },
+          ]}
+        />
+      </section>
+
+      <section id="k-vorher" aria-labelledby="h-vorher">
+        <h2 id="h-vorher" class="demo-h">Vorher/Nachher-Slider</h2>
+        <VorherNachher
+          lang="de"
+          startProzent={55}
+          vorher={{
+            src: '/assets/images/de-feld-ernte-schubkarre.jpg',
+            alt: 'Ernte mit Schubkarre auf dem Feld in Deutschland',
+            label: 'Deutschland',
+          }}
+          nachher={{
+            src: '/assets/images/au-byron-bay-welcome-schild.jpg',
+            alt: 'Willkommensschild von Byron Bay in Australien',
+            label: 'Australien',
+          }}
+        >
+          Vom Acker ans andere Ende der Welt
+        </VorherNachher>
+      </section>
+
+      <section id="k-scrolly" aria-labelledby="h-scrolly">
+        <h2 id="h-scrolly" class="demo-h">Scrollytelling</h2>
+        <Scrollytelling
+          lang="de"
+          label="Unser Weg nach Australien"
+          schritte={[
+            { titel: 'Der Abschied', text: 'Letzte Ernte auf dem Feld: Schubkarre voll, Herz schwer. Wir wussten, dass dieses Bild lange nachhallt.' },
+            { titel: 'Die Ankunft', text: 'Das Willkommensschild in Byron Bay war der Moment, in dem aus dem Plan Realität wurde.' },
+            { titel: 'Neuer Alltag', text: 'Aus vier Koffern wird langsam ein Zuhause. Nicht perfekt, aber unseres.' },
+          ]}
+        >
+          <figure slot="medien" class="polaroid" data-schritt="0">
+            <img src="/assets/images/de-feld-ernte-schubkarre.jpg" alt="Ernte auf dem Feld mit Schubkarre" loading="lazy" />
+            <figcaption>Letzter Sommer auf dem Feld</figcaption>
+          </figure>
+          <figure slot="medien" class="polaroid" data-schritt="1">
+            <img src="/assets/images/au-byron-bay-welcome-schild.jpg" alt="Willkommensschild von Byron Bay" loading="lazy" />
+            <figcaption>Angekommen in Byron Bay</figcaption>
+          </figure>
+          <figure slot="medien" class="polaroid" data-schritt="2">
+            <img src="/assets/images/hero-family.jpg" alt="Unsere Familie" loading="lazy" />
+            <figcaption>Wir vier, wildgewachsen</figcaption>
+          </figure>
+        </Scrollytelling>
+      </section>
+
+      <section id="k-karte" aria-labelledby="h-karte">
+        <h2 id="h-karte" class="demo-h">Reise-Karte (stilisiert, ohne externe Tiles)</h2>
+        <ReiseKarte
+          lang="de"
+          titel="Unsere Route an der Ostküste"
+          orte={[
+            { name: 'Cairns', x: 54, y: 16, text: 'Tropischer Norden, Tor zum Great Barrier Reef.' },
+            { name: 'Brisbane', x: 50, y: 52, text: 'Große Stadt am Brisbane River.' },
+            { name: 'Byron Bay', x: 47, y: 63, text: 'Seit Juni 2026 unser Zuhause.' },
+            { name: 'Sydney', x: 40, y: 83 },
+          ]}
+        >
+          <p class="handnote">Frei aus der Erinnerung gezeichnet, keine echte Landkarte</p>
+        </ReiseKarte>
+      </section>
+
+      <section id="k-notizen" aria-labelledby="h-notizen">
+        <h2 id="h-notizen" class="demo-h">Randnotiz + Pull-Quote</h2>
+        <div class="prose">
+          <p>
+            Die ersten Tage waren ein Mix aus Jetlag, Behördengängen und barfuß
+            am Strand stehen.
+          </p>
+          <Randnotiz ausrichtung="rechts" pfeil lang="de">
+            Tag 3: SIM-Karte endlich aktiv!
+          </Randnotiz>
+          <p>
+            Ohne australische Handynummer geht hier fast nichts: kein Bankkonto,
+            kein Mietvertrag, keine Schulanmeldung.
+          </p>
+          <PullQuote quelle="Christian, Woche 1 in Australien" lang="de">
+            Man wandert nicht an einem Tag aus, man wandert jeden Tag ein
+            bisschen mehr ein.
+          </PullQuote>
+          <p>
+            Was uns keiner gesagt hat: Die meisten Ämter wollen alles vorab
+            digital, Papier gibt es kaum noch.
+          </p>
+        </div>
+      </section>
+
+      <section id="k-video" aria-labelledby="h-video">
+        <h2 id="h-video" class="demo-h">Video-Bausteine (Poster-Demo, Video-Datei folgt in Phase 3)</h2>
+        <VideoHero src="/assets/videos/demo-loop.mp4" poster="/assets/images/hero-family.jpg" lang="de">
+          <p class="eyebrow">Auswandern nach Australien</p>
+          <p class="hero-titel">Als Familie neu verwurzelt</p>
+        </VideoHero>
+        <div class="prose video-prose">
+          <InlineVideo
+            src="/assets/videos/demo-ankunft.mp4"
+            poster="/assets/images/au-byron-bay-welcome-schild.jpg"
+            caption="Endlich da: die Ortseinfahrt von Byron Bay"
+            lang="de"
+          />
+        </div>
+      </section>
+
+      <section id="k-weiter" aria-labelledby="h-weiter">
+        <h2 id="h-weiter" class="demo-h">Weiterlesen-Pfade + Inline-CTA</h2>
+        <InlineCta
+          lang="de"
+          titel="Unser Auswander-Fahrplan als Guide"
+          text="Alle Schritte von der Entscheidung bis zur Ankunft in Byron Bay, sortiert und ohne Umwege."
+          buttonLabel="Guide ansehen"
+          href="/blog"
+          variante="akzent"
+        />
+        <WeiterlesenPfade
+          lang="de"
+          eyebrow="Weiterlesen"
+          artikel={[
+            { href: '/blog/angekommen-erste-tage-australien', titel: 'Angekommen in Byron Bay', teaser: 'Die ersten Tage allein in Australien.', meta: 'Juli 2026' },
+            { href: '/blog/auswandern-australien-kosten-familie-guide', titel: 'Was die Auswanderung kostet', teaser: 'Unser Kosten-Guide mit echten Zahlen.', meta: 'Guide' },
+            { href: '/blog/fluege-nach-australien-kosten-familie', titel: 'Flüge nach Australien', meta: 'Guide' },
+          ]}
+        />
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lede {
+    max-inline-size: var(--measure);
+    margin-block-start: var(--space-4);
+    font-size: var(--text-1);
+  }
+
+  @media (min-width: 1100px) {
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: var(--space-7);
+      align-items: start;
+    }
+  }
+
+  .demo-inhalt {
+    display: grid;
+    gap: var(--space-8);
+    min-width: 0;
+  }
+
+  .demo-h {
+    border-bottom: 1px dashed var(--line);
+    padding-block-end: var(--space-2);
+    margin-block-end: var(--space-5);
+  }
+
+  .hero-titel {
+    font-family: var(--font-display);
+    font-size: var(--text-3);
+    line-height: var(--leading-tight);
+  }
+
+  .video-prose {
+    margin-block-start: var(--space-5);
+  }
+</style>

@@ -1,0 +1,723 @@
+---
+// Flüge-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/blog/fluege-nach-australien-kosten-familie.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'zahlen', label: 'Was unsere Flüge gekostet haben' },
+  { id: 'one-way', label: 'Warum wir One-Way gebucht haben' },
+  { id: 'christian-flug', label: 'Mein Flug: 467 € durch einen spontanen Deal' },
+  { id: 'familie-flug', label: 'Der Flug von Lucy und den Kindern: warum er teurer wurde' },
+  { id: 'suche', label: 'Wie wir gesucht haben: Skyscanner, jeden Tag' },
+  { id: 'gepaeck', label: 'Gepäck, Sitzplätze und die Bahn zum Flughafen' },
+  { id: 'gelernt', label: 'Was wir beim Buchen gelernt haben' },
+  { id: 'faq', label: 'Häufig gestellte Fragen' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+const weiterlesen = [
+  {
+    href: '/blog/auswandern-australien-kosten-familie-guide',
+    meta: 'Geld & Kosten',
+    titel: 'Auswandern nach Australien als Familie: Was es wirklich kostet (2026)',
+  },
+  {
+    href: '/blog/letzte-wochen-vor-abflug-australien',
+    meta: 'Unsere Geschichte',
+    titel: 'Die letzten Wochen vor dem Abflug: Abschied, Schule und offene Fragen',
+  },
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    meta: 'Familie & Kinder',
+    titel: 'Auswandern nach Australien mit Kindern (2 und 6 Jahre): Unsere ehrliche Vorbereitung',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Flüge nach Australien buchen: Unsere echten Kosten als Familie (2026)"
+  seoTitle="Flüge nach Australien als Familie: Echte Kosten (2026)"
+  description="Was kostet ein Flug nach Australien für eine Familie? Echte Zahlen: 467 € für mich, 3.061,80 € für Lucy + 2 Kinder, plus wie wir gebucht haben."
+  lang="de"
+  eyebrow="Geld & Kosten"
+  datum="21. Mai 2026"
+  lesezeit="8 Min. Lesezeit · Zuletzt aktualisiert: 16.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Flüge nach Australien als Familie: Echte Kosten (2026)" />
+    <meta property="og:description" content="Was kostet ein Flug nach Australien für eine Familie? Echte Zahlen: 467 € für mich, 3.061,80 € für Lucy + 2 Kinder, plus wie wir gebucht haben." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Flüge nach Australien als Familie: Echte Kosten (2026)" />
+    <meta name="twitter:description" content="Was kostet ein Flug nach Australien für eine Familie? Echte Zahlen: 467 € für mich, 3.061,80 € für Lucy + 2 Kinder, plus wie wir gebucht haben." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Flüge nach Australien als Familie: Echte Kosten (2026)",
+    "description": "Was kostet ein Flug nach Australien für eine Familie? Echte Zahlen: 467 € für mich, 3.061,80 € für Lucy + 2 Kinder, plus wie wir gebucht haben.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+      "caption": "Christian mit den beiden Kindern und dem Gepäckwagen am Flughafen-Check-in vor dem One-Way-Flug nach Brisbane.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-05-21T12:00:00+02:00",
+    "dateModified": "2026-06-16T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Flüge nach Australien für eine auswandernde Familie"
+    },
+    "keywords": "Flüge Australien, Flug nach Australien Kosten, One-Way Australien, Auswandern Australien Familie, Flug buchen Australien, Skyscanner, China Southern, Emirates"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was kostet ein Flug nach Australien für eine Familie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir haben für unsere vierköpfige Familie zusammen rund 3.552 € bezahlt: 467 € für meinen Flug mit China Southern, 3.061,80 € für Lucy und die beiden Kinder mit Emirates und 22,90 € für die Bahn zum Flughafen. Alle Flüge One-Way nach Brisbane. Das sind unsere echten Buchungsbeträge vom Frühjahr 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sollte man One-Way oder Hin- und Rückflug nach Australien buchen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir haben alle Flüge One-Way gebucht, weil wir auswandern. Wir gehen, um zu bleiben. Ein Rückflugticket hätte für uns keinen Sinn ergeben. Wer nur befristet nach Australien geht, fährt mit einem Hin- und Rückflug oft besser. Für uns war One-Way die klare Entscheidung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wann bucht man Flüge nach Australien am besten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aus unserer Erfahrung: regelmäßig suchen und schnell zugreifen. Meinen Flug für 467 € habe ich sofort gebucht, als er auftauchte. Andere lagen bei rund 800 €. Bei Lucys Flug hat das Zögern wahrscheinlich Geld gekostet. Reisedaten in den Schulferien sind tendenziell teurer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mit welcher Airline kann man nach Australien fliegen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir fliegen mit zwei verschiedenen Airlines nach Brisbane: ich mit China Southern über Guangzhou, Lucy und die Kinder mit Emirates über Dubai. Das ist keine Empfehlung. Es ist schlicht das, was bei unserer Suche jeweils am besten gepasst hat: Preis, Datum und Route."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Braucht ein Kleinkind einen eigenen Flugsitz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ab dem zweiten Geburtstag ja. Unsere Tochter Linnea ist zwei. Sie braucht einen eigenen Sitzplatz und darf nicht mehr auf dem Schoß mitfliegen. Deshalb haben wir für Lucy, Joris und Linnea drei volle Tickets gebucht, ohne Kleinkind-Rabatt auf dem Schoß."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wo haben wir die Flüge nach Australien gebucht?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gesucht haben wir beide Flüge über Skyscanner, eine Flug-Suchmaschine. Gebucht wurde dann auf den Plattformen, zu denen Skyscanner weitergeleitet hat: mein Flug über Booking.com, der Flug von Lucy und den Kindern über Expedia."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Flüge nach Australien buchen: Unsere echten Kosten als Familie", "item": "https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: TravelAction (Reise-Etappe, Spec §11.3) -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAction",
+    "name": "One-Way-Flug der Familie nach Australien",
+    "fromLocation": {
+      "@type": "Place",
+      "name": "Deutschland"
+    },
+    "toLocation": {
+      "@type": "Place",
+      "name": "Brisbane, Australien"
+    }
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/artikel-fluege.jpg"
+    alt="Christian mit den beiden Kindern und dem Gepäckwagen am Flughafen-Check-in vor dem One-Way-Flug nach Brisbane"
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Das Wichtigste in Kürze -->
+  <div class="info-box">
+    <p class="info-box__titel">Das Wichtigste in Kürze</p>
+    <ul>
+      <li>Wir haben für vier Personen zusammen rund <strong>3.552 €</strong> bezahlt: 3.528,80 € reine Flugkosten plus 22,90 € Bahnanreise. Alle Flüge <strong>One-Way nach Brisbane</strong>.</li>
+      <li>Mein Flug (China Southern, ab Frankfurt) hat <strong>467 €</strong> gekostet. Er tauchte spontan als günstiges Angebot auf, vergleichbare Flüge lagen bei rund 800 €.</li>
+      <li>Lucys und der Kinder Flug (Emirates, ab Düsseldorf) kam auf <strong>3.061,80 €</strong> für drei Personen. Teurer wegen Reisedatum in den Sommerferien und einer verzögerten Buchung.</li>
+      <li>Gesucht haben wir über <strong>Skyscanner</strong>, gebucht über Booking.com und Expedia. Freigepäck war bei beiden Buchungen im Preis enthalten.</li>
+      <li>Alle Preise hier sind unsere echten Buchungsbeträge. Wo wir etwas vermuten statt sicher wissen, steht es ausdrücklich dabei.</li>
+    </ul>
+  </div>
+
+  <!-- Affiliate-Disclosure (global, Sternchen-Auflösung BGH-konform) -->
+  <div class="info-box">
+    <p class="info-box__titel">Hinweis zu Werbung</p>
+    <p>
+      Mit <sup>*</sup> markierte Links in diesem Artikel sind Affiliate-Links. Wenn du darüber etwas abschließt, bekommen wir eine kleine Provision. Für dich ändert sich am Preis nichts. Wir verlinken nur Optionen, die wir selbst genutzt oder recherchiert haben.
+    </p>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Wir wandern als Familie nach Australien aus. Ich fliege am 23. Juni alleine vor, Lucy und die beiden Kinder kommen am 26. Juli nach. Die Flüge sind gebucht. Drei Tickets nach Brisbane, alle One-Way. In diesem Artikel steht, was wir tatsächlich bezahlt haben: jede Buchung, jedes Datum, jede Plattform. Keine Durchschnittswerte aus einer Statistik, sondern unsere echten Zahlen vom Frühjahr 2026. Wenn du gerade selbst überlegst, wie teuer der Flug für eine vierköpfige Familie wird: Hier ist unser kompletter Kostenblock fürs Fliegen, inklusive der Buchung, bei der wir zu lange gezögert haben.
+  </p>
+
+  <!-- H2 1: Zahlen -->
+  <h2 id="zahlen">Was unsere Flüge gekostet haben</h2>
+  <p>
+    Unsere drei Buchungen für die Reise nach Brisbane haben zusammen rund <strong>3.552 €</strong> gekostet. 467 € für meinen Flug, 3.061,80 € für Lucy und die zwei Kinder, dazu 22,90 € für die Bahnfahrt zum Flughafen. Das ergibt einen Reiseblock von rund <strong>3.552 € für vier Personen</strong>, einmal um die halbe Welt. Alle Flüge sind One-Way, alle gehen nach Brisbane.
+  </p>
+
+  <table class="kosten-tabelle">
+    <thead>
+      <tr>
+        <th>Buchung</th>
+        <th>Personen</th>
+        <th>Preis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mein Flug (China Southern, ab Frankfurt)</td>
+        <td>1</td>
+        <td>467,00 €</td>
+      </tr>
+      <tr>
+        <td>Lucy + Joris + Linnea (Emirates, ab Düsseldorf)</td>
+        <td>3</td>
+        <td>3.061,80 €</td>
+      </tr>
+      <tr>
+        <td>Bahn zum Flughafen Frankfurt (ICE 17,90 € + Sitzplatz 5 €)</td>
+        <td>1</td>
+        <td>22,90 €</td>
+      </tr>
+      <tr>
+        <td><strong>Gesamt</strong></td>
+        <td><strong>4</strong></td>
+        <td><strong>3.551,70 €</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 620 250" role="img" aria-label="Balkendiagramm: Unsere Flugkosten nach Australien. Mein Flug für eine Person 467 Euro, der Flug für Lucy und die beiden Kinder zusammen 3.061,80 Euro." xmlns="http://www.w3.org/2000/svg" style="max-width: 620px; width: 100%; height: auto;">
+      <title>Was unsere Flüge nach Australien gekostet haben</title>
+      <text x="310" y="30" text-anchor="middle" font-family="Young Serif, serif" font-size="18" font-weight="700" fill="#33291F">Was unsere Flüge gekostet haben</text>
+      <text x="310" y="52" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F" letter-spacing="0.1em">DREI BUCHUNGEN NACH BRISBANE · ALLE ONE-WAY</text>
+
+      <!-- Bar 1: Mein Flug -->
+      <text x="30" y="104" font-family="Courier Prime, monospace" font-size="13" font-weight="600" fill="#33291F">Mein Flug</text>
+      <text x="30" y="121" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">1 Person · China Southern</text>
+      <rect x="200" y="88" width="59" height="38" fill="#7E8B6D" rx="2"/>
+      <text x="269" y="112" font-family="Courier Prime, monospace" font-size="14" font-weight="700" fill="#33291F">467 €</text>
+
+      <!-- Bar 2: Familie -->
+      <text x="30" y="174" font-family="Courier Prime, monospace" font-size="13" font-weight="600" fill="#33291F">Lucy + 2 Kinder</text>
+      <text x="30" y="191" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">3 Personen · Emirates</text>
+      <rect x="200" y="158" width="386" height="38" fill="#B5482A" rx="2"/>
+      <text x="574" y="182" text-anchor="end" font-family="Courier Prime, monospace" font-size="14" font-weight="700" fill="#FBF7EE">3.061,80 €</text>
+
+      <line x1="200" y1="214" x2="600" y2="214" stroke="#7E8B6D"/>
+      <text x="310" y="236" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">Plus 22,90 € Bahn zum Flughafen · Gesamt rund 3.552 € · Quelle: unsere Buchungsbestätigungen, Februar/März 2026</text>
+    </svg>
+  </figure>
+
+  <p>
+    Die Flüge sind nur ein Posten von vielen. Wie sich das in die große Rechnung einordnet, steht in <a href="/blog/auswandern-australien-kosten-familie-guide">unserem Überblick, was die Auswanderung nach Australien als Familie wirklich kostet</a>. Hier geht es nur ums Fliegen. Und um die Frage, warum eine Buchung 467 € kostet und die andere gut das Sechsfache.
+  </p>
+
+  <!-- H2 2: One-Way -->
+  <h2 id="one-way">Warum wir One-Way gebucht haben</h2>
+  <p>
+    Alle drei Flugtickets sind One-Way. Nur Hinflug, kein Rückflug. Das war eine bewusste Entscheidung und keine Sparmaßnahme. Wir wandern aus. Wir gehen nicht für ein paar Monate, wir gehen, um zu bleiben. Ein Rückflugticket hätte für uns schlicht keinen Sinn ergeben. Es gibt kein Datum, an dem wir wieder in Essen sein wollen.
+  </p>
+  <p>
+    Ehrlich gesagt fühlt es sich anders an, ein One-Way-Ticket zu buchen. Kein Rückreisedatum im Kalender, kein „und dann sind wir wieder zu Hause". Genau das ist der Punkt. Was diese letzten Wochen vor dem Abflug mit uns machen, haben wir in <a href="/blog/letzte-wochen-vor-abflug-australien">unserem Artikel über die letzten Wochen vor dem Abflug</a> aufgeschrieben.
+  </p>
+
+  <!-- H2 3: Christians Flug -->
+  <h2 id="christian-flug">Mein Flug: 467 € durch einen spontanen Deal</h2>
+  <p>
+    Meinen eigenen Flug haben wir am <strong>10. Februar 2026</strong> gebucht: China Southern, von Frankfurt über Guangzhou nach Brisbane, One-Way, <strong>467 €</strong>. Für einen Flug ans andere Ende der Welt ist das wenig. Und es war kein Trick, kein Verhandeln, kein Geheimtipp.
+  </p>
+  <p>
+    Der Flug ist einfach eines Morgens in der Skyscanner-Suche aufgetaucht. Die Verbindungen um mein Datum herum lagen sonst bei rund 800 €. Und dann plötzlich diese eine Verbindung für 467 €. Ich habe nicht lange überlegt und sofort gebucht. Die Buchung lief über Booking.com, dahin hatte Skyscanner mich weitergeleitet.
+  </p>
+  <PullQuote lang="de">Bei Flugpreisen gibt es kein „das schaue ich mir morgen nochmal an". Wenn ein guter Preis da ist, ist er jetzt da. Und morgen vielleicht nicht mehr.</PullQuote>
+  <p>
+    Hätte ich zwei Tage gewartet, wäre dieser Preis mit hoher Wahrscheinlichkeit wieder weg gewesen. Dass ich alleine vorfliege, hat dabei geholfen: Ich musste nur einen einzigen Sitzplatz finden, kein zusammenhängendes Vierer-Paket. Ein einzelner günstiger Platz taucht öfter auf als drei nebeneinander.
+  </p>
+
+  <!-- H2 4: Familien-Flug -->
+  <h2 id="familie-flug">Der Flug von Lucy und den Kindern: warum er teurer wurde</h2>
+  <p>
+    Bei Lucy und den Kindern lief es anders. Ihr Flug mit Emirates, von Düsseldorf über Dubai nach Brisbane, hat zusammen <strong>3.061,80 €</strong> gekostet. Für drei Personen, also im Schnitt gut 1.020 € pro Kopf. Mehr als das Doppelte pro Person im Vergleich zu meinem Flug. Dafür gab es zwei Gründe.
+  </p>
+  <p>
+    Der erste ist vermutlich das Reisedatum. Lucy und die Kinder fliegen am 26. Juli, mitten in der deutschen Sommerferienzeit. In den Ferien sind Flüge teurer, das ist bekannt. Sicher belegen können wir es für unseren Fall nicht. Es ist unsere Vermutung, aber sie passt zu dem, was wir bei der Suche gesehen haben.
+  </p>
+  <p>
+    Der zweite Grund war das Timing der Buchung. Lucys Flug haben wir erst am <strong>31. März</strong> gebucht, später als geplant. Ende März kam es zu einer militärischen Eskalation im Nahen Osten rund um den Iran. Niemand konnte uns sagen, ob Flüge über Dubai in den kommenden Monaten planmäßig stattfinden würden. Wir haben gezögert, und in dieser Zeit sind die Preise weiter gestiegen. Irgendwann haben wir entschieden: Wir buchen trotzdem. Stand heute sieht es so aus, als wären die Juli-Flüge kein Problem.
+  </p>
+  <p>
+    Im Rückblick hat uns das Zögern wahrscheinlich Geld gekostet. Aber in dem Moment, mit zwei Kindern auf dem Ticket, wollten wir keine Buchung machen, die am Ende vielleicht gar nicht abhebt. Das ist halt so. Manche Entscheidungen trifft man nicht nach dem Preis.
+  </p>
+
+  <!-- H2 5: Suche -->
+  <h2 id="suche">Wie wir gesucht haben: Skyscanner, jeden Tag</h2>
+  <p>
+    Gesucht haben wir beide Flüge hauptsächlich über <strong><a href="https://www.skyscanner.de" target="_blank" rel="nofollow noopener">Skyscanner</a></strong>. Wichtig zu verstehen: Skyscanner ist eine Suchmaschine, kein Reisebüro. Die Seite zeigt dir, welche Verbindungen es gibt und was sie kosten. Gebucht wird dann woanders.
+  </p>
+  <p>
+    Wir haben mehrmals am Tag reingeschaut. Nicht aus Spaß, sondern weil sich die Preise ständig bewegen. Genau dieses tägliche Mitschauen war der Grund, warum ich meinen 467-€-Flug überhaupt erwischt habe. Wer einmal pro Woche schaut, sieht solche Ausreißer nicht.
+  </p>
+  <p>
+    Gebucht wurde dann auf zwei verschiedenen Plattformen: mein Flug lief über <a href="https://www.dpbolvw.net/click-101762530-15734849" target="_blank" rel="sponsored noopener">Booking.com</a><sup>*</sup>, der Flug von Lucy und den Kindern über <a href="https://www.expedia.de" target="_blank" rel="nofollow noopener">Expedia</a>. Auf beide hat Skyscanner jeweils weitergeleitet. Die Plattform suchst du dir nicht aus, du nimmst die, die den Flug zu dem Preis anbietet.
+  </p>
+
+  <!-- H2 6: Gepäck -->
+  <h2 id="gepaeck">Gepäck, Sitzplätze und die Bahn zum Flughafen</h2>
+  <p>
+    Das <strong>Freigepäck</strong> war bei beiden Buchungen im Flugpreis enthalten. Kein Posten, den wir extra dazubuchen mussten. Ich habe 2 × 23 kg, Lucy und jedes Kind je 30 kg. Das ist für uns wichtig, weil wir ohne Container umziehen: Was nicht ins Flugzeug passt, geht später in nummerierten Kartons hinterher.
+  </p>
+  <p>
+    Ein Punkt, den man als Familie auf dem Schirm haben sollte: der <strong>Sitzplatz fürs Kleinkind</strong>. Unsere Tochter Linnea ist zwei. Ab dem zweiten Geburtstag braucht ein Kind einen eigenen Sitzplatz und darf nicht mehr auf dem Schoß mitfliegen. Für uns hieß das drei volle Tickets für Lucy, Joris und Linnea, keinen Kleinkind-Tarif auf dem Schoß. Wie wir die beiden Kinder sonst auf den Umzug vorbereiten, steht in <a href="/blog/auswandern-australien-mit-kindern-vorbereitung">unserem Artikel zum Auswandern mit Kindern</a>.
+  </p>
+  <p>
+    Und dann ist da noch die Anreise zum Flughafen. Ich fliege ab Frankfurt, wohne aber in Essen. Das Bahnticket von Essen zum Flughafen Frankfurt habe ich früh gebucht. Früh heißt hier <strong>17,90 €</strong>, dazu 5 € für die Sitzplatzreservierung. Zusammen 22,90 €. Ein kleiner Posten, aber er zeigt dasselbe Muster wie bei den Flügen: früh dran sein lohnt sich.
+  </p>
+
+  <!-- H2 7: Gelernt -->
+  <h2 id="gelernt">Was wir beim Buchen gelernt haben</h2>
+  <p>
+    Vier Dinge nehmen wir aus dem Flüge-Buchen mit. Erstens: <strong>schnell sein, wenn ein echter Deal auftaucht.</strong> Mein 467-€-Flug war so ein Moment. Zwei Tage Bedenkzeit, und er wäre weg gewesen. Zweitens: <strong>nicht zu lange zögern.</strong> Bei Lucys Flug hat genau das Geld gekostet, weil die Preise während unseres Wartens gestiegen sind.
+  </p>
+  <p>
+    Drittens: <strong>Ferienzeiten kosten extra.</strong> Wer beim Reisedatum flexibel ist, sollte um die deutschen Schulferien herumplanen. Wir konnten das nicht, unser Datum hängt am Schuljahr und an Lucys Studium. Viertens: <strong>täglich suchen.</strong> Die guten Preise sieht nur, wer regelmäßig draufschaut.
+  </p>
+  <p>
+    Würden wir etwas anders machen? Stand heute: nein. Aber ehrlich, die Flüge liegen noch vor uns. Der eigentliche Test, ein Langstreckenflug mit einer Zweijährigen und einem Sechsjährigen, kommt erst im Sommer. Wenn wir danach klüger sind, schreiben wir es hier dazu.
+  </p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Häufig gestellte Fragen</h2>
+
+  <h3>Was kostet ein Flug nach Australien für eine Familie?</h3>
+  <p>
+    Wir haben für unsere vierköpfige Familie zusammen rund 3.552 € bezahlt: 467 € für meinen Flug mit China Southern, 3.061,80 € für Lucy und die beiden Kinder mit Emirates und 22,90 € für die Bahn zum Flughafen. Alle Flüge One-Way nach Brisbane. Das sind unsere echten Buchungsbeträge vom Frühjahr 2026.
+  </p>
+
+  <h3>Sollte man One-Way oder Hin- und Rückflug nach Australien buchen?</h3>
+  <p>
+    Wir haben alle Flüge One-Way gebucht, weil wir auswandern. Wir gehen, um zu bleiben. Ein Rückflugticket hätte für uns keinen Sinn ergeben. Wer nur befristet nach Australien geht, fährt mit einem Hin- und Rückflug oft besser. Für uns war One-Way die klare Entscheidung.
+  </p>
+
+  <h3>Wann bucht man Flüge nach Australien am besten?</h3>
+  <p>
+    Aus unserer Erfahrung: regelmäßig suchen und schnell zugreifen. Meinen Flug für 467 € habe ich sofort gebucht, als er auftauchte. Andere lagen bei rund 800 €. Bei Lucys Flug hat das Zögern wahrscheinlich Geld gekostet. Reisedaten in den Schulferien sind tendenziell teurer.
+  </p>
+
+  <h3>Mit welcher Airline kann man nach Australien fliegen?</h3>
+  <p>
+    Wir fliegen mit zwei verschiedenen Airlines nach Brisbane: ich mit China Southern über Guangzhou, Lucy und die Kinder mit Emirates über Dubai. Das ist keine Empfehlung. Es ist schlicht das, was bei unserer Suche jeweils am besten gepasst hat: Preis, Datum und Route.
+  </p>
+
+  <h3>Braucht ein Kleinkind einen eigenen Flugsitz?</h3>
+  <p>
+    Ab dem zweiten Geburtstag ja. Unsere Tochter Linnea ist zwei. Sie braucht einen eigenen Sitzplatz und darf nicht mehr auf dem Schoß mitfliegen. Deshalb haben wir für Lucy, Joris und Linnea drei volle Tickets gebucht, ohne Kleinkind-Rabatt auf dem Schoß.
+  </p>
+
+  <h3>Wo haben wir die Flüge nach Australien gebucht?</h3>
+  <p>
+    Gesucht haben wir beide Flüge über Skyscanner, eine Flug-Suchmaschine. Gebucht wurde dann auf den Plattformen, zu denen Skyscanner weitergeleitet hat: mein Flug über Booking.com, der Flug von Lucy und den Kindern über Expedia.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Artikel beschreibt unsere persönlichen Flugbuchungen für die Auswanderung nach Australien. Alle Preise sind unsere echten Buchungsbeträge aus Februar und März 2026. Flugpreise ändern sich täglich und je nach Datum, Route und Buchungszeitpunkt. Unsere Zahlen sind kein Richtwert, sondern eine Momentaufnahme.
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 16.06.2026 · <strong>Grundlage:</strong> unsere eigenen Buchungsbestätigungen.
+    </p>
+  </div>
+
+  <!-- Update-Log (Spec §11.2) -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">16.06.2026</span>
+      <span class="update-log__text">Booking.com im Buchungs-Abschnitt als Partnerlink (Werbung) ergänzt.</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">01.06.2026</span>
+      <span class="update-log__text">Englische Version verfügbar unter <a href="/en/cost-of-flights-to-australia-family-guide">cost-of-flights-to-australia-family-guide</a>.</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">21.05.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay (Australien) und wandert im Sommer 2026 mit Lucy und den beiden Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Hat dir das geholfen?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Neue Artikel, echte Erfahrungen, konkrete Zahlen, direkt in dein Postfach.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen (Das Wichtigste in Kürze, Werbe-Hinweis) -------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Charts ---------------------------------------------------- */
+  /* Charts als "gedrucktes Papier": bewusst IMMER hell (feste Hexwerte statt
+     Tokens), damit die hell-fixierten SVG-Farben auch im Dark Mode lesbar
+     bleiben. Passt zum Retro-Look: ein eingeklebtes Chart im Reisetagebuch. */
+  .chart-figur {
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: var(--radius-m);
+    padding: var(--space-4);
+    overflow-x: auto;
+    box-shadow: var(--shadow-card);
+  }
+
+  .chart-figur svg {
+    margin-inline: auto;
+  }
+
+  /* --- Kosten-Tabelle -------------------------------------------- */
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

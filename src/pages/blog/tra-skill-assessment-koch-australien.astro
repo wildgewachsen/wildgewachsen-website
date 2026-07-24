@@ -1,0 +1,620 @@
+---
+// TRA-Skill-Assessment-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/blog/tra-skill-assessment-koch-australien.html
+// HINWEIS: Live-<title> ("Echte Kosten + Selbstständig") weicht vom Live-<h1> ab;
+// ArtikelLayout kennt nur EIN title-Prop (fuellt <title> UND <h1>). Hier gewinnt der
+// sichtbare H1-Wortlaut (Content 1:1). Fuer den exakten SEO-<title> braucht
+// ArtikelLayout ein optionales seoTitle-Prop — zentral nachziehen, siehe Report.
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'was-ist-tra', label: 'Was ist das TRA Skill Assessment?' },
+  { id: 'tra-oder-attc', label: 'TRA direkt oder über ATTC?' },
+  { id: 'pathway', label: 'Welcher Pathway passt zu dir?' },
+  { id: 'dokumente', label: 'Was du einreichen musst' },
+  { id: 'interview', label: 'Das Technical Interview' },
+  { id: 'kosten', label: 'Alle Kosten im Überblick' },
+  { id: 'timeline', label: 'Timeline: Wie lange dauert das?' },
+  { id: 'tipp', label: 'Mein wichtigster Tipp' },
+  { id: 'danach', label: 'Was kommt danach?' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+const weiterlesen = [
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    meta: 'Familie & Kinder',
+    titel: 'Auswandern nach Australien mit Kindern (2 und 6 Jahre): Unsere ehrliche Vorbereitung',
+  },
+  {
+    href: '/blog/visum-186-australien-familie-guide',
+    meta: 'Visum & Migration',
+    titel: 'Visum 186 Australien für Familien: Employer Sponsored (2026)',
+  },
+  {
+    href: '/blog/migration-agent-australien-erfahrung',
+    meta: 'Visum & Migration',
+    titel: 'Mit oder ohne Migration Agent für Australien? Unsere Erfahrung',
+  },
+];
+---
+
+<ArtikelLayout
+  title="TRA Skill Assessment als Koch: Was es wirklich kostet – besonders als Selbständiger"
+  seoTitle="TRA Skill Assessment als Koch: Echte Kosten + Selbstständig"
+  description="Koch + selbstständig + Australien-Visum: TRA Skill Assessment über ATTC, mit allen Kosten (~4.120 AUD), Interview-Ablauf und Unterschied für Selbstständige."
+  lang="de"
+  eyebrow="Visum &amp; Migration"
+  datum="9. April 2026"
+  lesezeit="10 Min. Lesezeit · Zuletzt aktualisiert: 01.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/tra-skill-assessment-chef-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="TRA Skill Assessment als Koch: Echte Kosten + Selbstständig" />
+    <meta property="og:description" content="Koch + selbstständig + Australien-Visum: TRA Skill Assessment über ATTC, mit allen Kosten (~4.120 AUD), Interview-Ablauf und Unterschied für Selbstständige." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TRA Skill Assessment als Koch: Echte Kosten + Selbstständig" />
+    <meta name="twitter:description" content="Koch + selbstständig + Australien-Visum: TRA Skill Assessment über ATTC, mit allen Kosten (~4.120 AUD), Interview-Ablauf und Unterschied für Selbstständige." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "TRA Skill Assessment als Koch: Echte Kosten + Selbstständig",
+    "description": "Koch + selbstständig + Australien-Visum: TRA Skill Assessment über ATTC, mit allen Kosten (~4.120 AUD), Interview-Ablauf und Unterschied für Selbstständige.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/hero-family.jpg",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-04-09T12:00:00+02:00",
+    "dateModified": "2026-06-03T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "TRA Skill Assessment für Köche (Trades Recognition Australia)"
+    },
+    "keywords": "TRA Skill Assessment, Koch Australien, ATTC, Trades Recognition Australia, Visa 186 Voraussetzungen, Selbstständiger Koch, Technical Interview, Pathway 1, Pathway 2"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist das TRA Skill Assessment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TRA steht für Trades Recognition Australia, die offizielle australische Regierungsbehörde, die Berufsqualifikationen aus dem Ausland bewertet. Für Köche und Chefs ist das TRA Skill Assessment Grundvoraussetzung für bestimmte Arbeitsvisa, unter anderem das Visum 186. Ohne TRA kein Visum."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sollte man TRA direkt oder über ATTC machen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ATTC ist deutlich schneller. Direkt über TRA kann der Prozess laut Erfahrung von Migration Agents über ein Jahr dauern. Über ATTC (Australian Trade Training College, eine autorisierte RTO) war unser gesamter Prozess in 3 Monaten abgeschlossen. Unser Migration Agent hat klar von TRA direkt abgeraten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Dokumente braucht ein selbstständiger Koch für das TRA Skill Assessment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Als Selbstständiger: Einkommenssteuerbescheide (mehrere Jahre), Gewerbeanmeldung, Gewinnermittlungen, Bestätigung des Steuerberaters und Kontoauszüge (3 Monate aus jeweils 3 Jahren). Wichtig: Alles muss beglaubigt übersetzt werden, pro Seite. Bei Kontoauszügen reichen 3 Seiten pro Auszug, das früh nachfragen spart hunderte AUD."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was wird im TRA Technical Interview gefragt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das Interview läuft online auf Englisch und wird von einem australischen Koch geführt. Drei Themenblöcke: (1) Fragen zum eigenen Restaurant, was gekocht wurde, wie der Betrieb aussah, (2) Fragen zu konkreten Gerichten aus den eingereichten Unterlagen, (3) technische Fragen: Temperaturen, Schneidebretter, Lagerung, Hygiene. Zu Beginn und mitten im Interview Raum-Check (Tablet drehen). Wer den Beruf wirklich gelernt hat, muss sich keine Sorgen machen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet das TRA Skill Assessment für Selbstständige?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In unserem Fall rund 4.120 AUD: Dokumentenbewertung (~1.120 AUD), Technical Interview Pathway 2 (~900 AUD), Übersetzungen Runde 1 (~1.200 AUD), Übersetzungen Runde 2 für Kontoauszüge (~900 AUD). Als Angestellter spart man die zweite Übersetzungsrunde, Differenz ca. 1.000–1.500 AUD."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert das TRA Skill Assessment über ATTC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gesamtprozess ca. 3 Monate. Ergebnis nach dem Interview: ca. 1 Woche. Im Vergleich dazu kann der direkte Weg über TRA laut Erfahrung von Migration Agents deutlich über ein Jahr dauern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie bereitet man sich auf das Technical Interview vor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Englisches Fachvokabular lernen, kein C1-Niveau nötig, aber Küchenutensilien, gängige Lebensmittel und grundlegende Kochtechniken auf Englisch sollten sitzen. Plus: YouTube-Suche nach 'technical interview chef Australia', aktuelle Videos von Köchen die das Assessment gemacht haben. Mehr Vorbereitung war in unserem Fall nicht nötig."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "TRA Skill Assessment Koch", "item": "https://wildgewachsen-australien.de/blog/tra-skill-assessment-koch-australien" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Wenn du als Koch nach Australien auswandern willst, kommst du am TRA Skill Assessment nicht vorbei. Zumindest nicht, wenn du den Weg über das Visa 186 gehst, so wie wir. Ich bin selbstständiger Koch, habe das Assessment Anfang 2026 durchgezogen und schreibe hier auf, was es gekostet hat, wie es abgelaufen ist und was ich vorher gerne gewusst hätte. Besonders der Teil mit den Übersetzungskosten hat mich kalt erwischt.
+  </p>
+
+  <p>
+    Dieser Artikel richtet sich an Köche, die auswandern möchten und sich fragen, was auf sie zukommt. Angestellte und Selbstständige, aber den Unterschied erkläre ich gleich.
+  </p>
+
+  <!-- Was ist TRA -->
+  <h2 id="was-ist-tra">Was ist das TRA Skill Assessment?</h2>
+
+  <p>TRA steht für <strong>Trades Recognition Australia</strong>, das ist die offizielle australische Regierungsbehörde, die Berufsqualifikationen aus dem Ausland bewertet. Für Köche und Chefs ist das TRA Skill Assessment eine Grundvoraussetzung für bestimmte Arbeitsvisa, unter anderem das Visa 186.</p>
+
+  <p>Das Assessment prüft, ob du als ausgebildeter Koch, auch wenn du deine Ausbildung in Deutschland gemacht hast, nach australischen Standards arbeitest. Kein TRA, kein Visa. So einfach ist das.</p>
+
+  <PullQuote lang="de">Kein TRA, kein Visa. So einfach ist das.</PullQuote>
+
+  <!-- TRA oder ATTC -->
+  <h2 id="tra-oder-attc">TRA direkt oder über ATTC?</h2>
+
+  <p>Hier ist ein Punkt, den viele nicht kennen: Du musst das Assessment <strong>nicht direkt über TRA</strong> machen.</p>
+
+  <p>TRA hat sogenannte <strong>RTOs (Registered Training Organisations)</strong> autorisiert, das Assessment in ihrem Auftrag durchzuführen. Eine davon ist das <strong>Australian Trade Training College, kurz ATTC</strong>.</p>
+
+  <p>Unser Migrationsagent hat uns klar davon abgeraten, direkt über TRA zu gehen. Der Grund: Die Bearbeitungszeit kann laut seiner Erfahrung <strong>über ein Jahr</strong> dauern. Über ATTC war unser gesamter Prozess in <strong>3 Monaten</strong> abgeschlossen.</p>
+
+  <p>ATTC bietet zwei Wege an, und welchen du nehmen kannst, hängt von deiner Qualifikation ab.</p>
+
+  <!-- Pathway -->
+  <h2 id="pathway">Welcher Pathway passt zu dir?</h2>
+
+  <p>Das ist entscheidend, auch für die Kosten.</p>
+
+  <p>Ich hatte bereits das <strong>Certificate III und IV in Commercial Cookery</strong>, das ich während meiner Zeit in Australien gemacht habe. Das hat mir ermöglicht, einen günstigeren Pathway zu nehmen.</p>
+
+  <p><strong>Pathway 1</strong> (ohne australische Qualifikation): Umfangreichere Bewertung, höhere Kosten für das Technical Interview.</p>
+
+  <p><strong>Pathway 2</strong> (mit australischer Qualifikation): Schlankerer Prozess, günstigeres Interview.</p>
+
+  <p>Welchen Pathway du nehmen kannst, klärst du am besten direkt beim Erstgespräch mit ATTC. Das geht unkompliziert.</p>
+
+  <!-- Dokumente -->
+  <h2 id="dokumente">Was du einreichen musst – und warum es als Selbstständiger richtig teuer wird</h2>
+
+  <p>Hier wird es interessant. Und teuer.</p>
+
+  <p><strong>Als Angestellter</strong> reichst du im Wesentlichen Lohnabrechnungen ein. Überschaubar.</p>
+
+  <p><strong>Als Selbstständiger</strong> ist es eine andere Welt. Ich musste einreichen:</p>
+
+  <ul>
+    <li>Einkommenssteuerbescheide (mehrere Jahre)</li>
+    <li>Gewerbeanmeldung</li>
+    <li>Gewinnermittlungen</li>
+    <li>Bestätigung meines Steuerberaters</li>
+    <li>Kontoauszüge (3 Monate aus jeweils 3 Jahren)</li>
+  </ul>
+
+  <p>Und jetzt kommt der Teil, der mir den Atem verschlagen hat: <strong>Alles muss beglaubigt übersetzt werden.</strong> Pro Seite. Bei Dokumenten, die über mehrere Jahre laufen und oft 20+ Seiten lang sind.</p>
+
+  <p>Meine erste Übersetzungsrunde hat <strong>1.200 AUD</strong> gekostet.</p>
+
+  <Randnotiz ausrichtung="rechts" pfeil lang="de">Es reichen 3 Seiten pro Auszug.</Randnotiz>
+
+  <p>Dann kam die Rückmeldung von ATTC: Sie brauchen noch Kontoauszüge aus je 3 Monaten über 3 Jahre. Ich hab kurz Panik bekommen, manche Auszüge waren 20 Seiten lang. Ich hab nachgefragt. Ergebnis: Es reichen <strong>3 Seiten pro Auszug</strong>.</p>
+
+  <p>Zweite Übersetzungsrunde: <strong>900 AUD</strong>.</p>
+
+  <p>Ehrlich gesagt: Ich hätte das früher fragen sollen. Merke dir das.</p>
+
+  <!-- Interview -->
+  <h2 id="interview">Das Technical Interview: Was wirklich gefragt wird</h2>
+
+  <p>Das Interview war online, es gibt keine ATTC-Stelle in meiner Nähe, also war das die einzige Option. Und es war professioneller als ich erwartet hatte.</p>
+
+  <p><strong>Zu Beginn:</strong> Raum-Check. Ich musste mein Tablet drehen und meinen Tisch filmen, damit sichergestellt ist, dass ich nicht spicke. Mitten im Interview, ohne Ankündigung, musste ich das nochmal machen. Das solltest du wissen.</p>
+
+  <p><strong>Das Interview selbst</strong> wurde von einem australischen Koch geführt. Daneben saß ein Mitarbeiter des TRA-Teams, der alles aufgezeichnet hat. Sprache: Englisch.</p>
+
+  <p>Die Fragen liefen in etwa so ab:</p>
+
+  <ol>
+    <li>Fragen zu meinem Restaurant, was ich gekocht habe, wie der Betrieb aussah</li>
+    <li>Fragen zu konkreten Gerichten aus meiner Akte, wie ich die zubereitet habe</li>
+    <li>Technische Fragen: Temperaturen, welche Schneidebretter wofür, Lagerung, Hygiene</li>
+  </ol>
+
+  <p>Es war klar: Die prüfen, ob die Angaben in deinen Unterlagen stimmen, und ob du wirklich Koch bist. Wer den Beruf gelernt hat und halbwegs solide Englischkenntnisse mitbringt, muss sich ehrlich gesagt keine großen Sorgen machen.</p>
+
+  <p><strong>Meine Vorbereitung:</strong> Ich habe mir auf YouTube ein paar Videos zum Thema "technical interview chef Australia" angeschaut. Mehr nicht. Das hat gereicht.</p>
+
+  <p>Ein wichtiger Hinweis: Es gibt Bereiche, wo australische Standards von deutschen abweichen. Wenn du dir bei einer Antwort nicht sicher bist, kannst du einfach sagen, dass das die deutschen Vorgaben sind. Die meisten Assessoren kennen das, kein Problem.</p>
+
+  <!-- Kosten -->
+  <h2 id="kosten">Alle Kosten im Überblick</h2>
+
+  <table class="kosten-tabelle">
+    <thead>
+      <tr>
+        <th>Was</th>
+        <th>Kosten</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Step 1: Dokumentenbewertung (ATTC)</td>
+        <td>~1.120 AUD</td>
+      </tr>
+      <tr>
+        <td>Step 2: Technical Interview (Pathway 2)</td>
+        <td>~900 AUD</td>
+      </tr>
+      <tr>
+        <td>Übersetzungen Runde 1</td>
+        <td>~1.200 AUD</td>
+      </tr>
+      <tr>
+        <td>Übersetzungen Runde 2 (Kontoauszüge)</td>
+        <td>~900 AUD</td>
+      </tr>
+      <tr>
+        <td><strong>Gesamt</strong></td>
+        <td><strong>~4.120 AUD</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Als Angestellter sparst du die zweite Übersetzungsrunde und hast insgesamt deutlich weniger Dokumente. Ich schätze, der Unterschied liegt bei 1.000–1.500 AUD.</p>
+
+  <p><strong>Kleiner Hinweis:</strong> ATTC bietet beim Erstgespräch einen optionalen Service an, bei dem deine Unterlagen vorab gecheckt werden. Das kostet extra. Ich habe es nicht gemacht und bereue es nicht. Wer sich sehr unsicher ist, kann das aber in Betracht ziehen.</p>
+
+  <!-- Timeline -->
+  <h2 id="timeline">Timeline: Wie lange dauert das?</h2>
+
+  <ul>
+    <li><strong>Gesamtprozess:</strong> ca. 3 Monate</li>
+    <li><strong>Ergebnis nach dem Interview:</strong> ca. 1 Woche</li>
+  </ul>
+
+  <p>Im Vergleich dazu: Direkt über TRA kann der Prozess nach Erfahrung unseres Migrationsagenten deutlich über ein Jahr dauern. Für uns war ATTC deshalb keine Frage.</p>
+
+  <!-- Tipp -->
+  <h2 id="tipp">Mein wichtigster Tipp</h2>
+
+  <p>Lern englisches Fachvokabular. Nicht für ein C1-Niveau, aber du solltest wissen, wie Küchenutensilien auf Englisch heißen, die gängigen Lebensmittel, grundlegende Kochtechniken.</p>
+
+  <p>Und dann: YouTube. Suche nach <strong>"technical interview chef Australia"</strong>, da findest du aktuelle Videos von Köchen, die das Assessment gemacht haben und über die Fragen sprechen. Das war die einzige Vorbereitung, die ich gemacht habe.</p>
+
+  <!-- Danach -->
+  <h2 id="danach">Was kommt danach?</h2>
+
+  <p>Das TRA Skill Assessment ist ein Baustein von vielen auf dem Weg zum Visa 186. Das Ergebnis, bestanden oder nicht bestanden, wird beim Visumsantrag eingereicht. Direkt danach brauchst du es noch nicht.</p>
+
+  <p>Wir sind gerade mittendrin im gesamten Prozess. Ich werde hier auf dem Blog weiter berichten, was als nächstes kommt, was es kostet und was wirklich funktioniert.</p>
+
+  <p>Wenn du Fragen hast, schreib sie in die Kommentare. Ich antworte.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Artikel beschreibt unsere persönliche Erfahrung aus dem Jahr 2026.
+      Er ist kein Migrationsrat und ersetzt keine professionelle Beratung.
+      Regelungen können sich ändern, überprüfe alle Angaben direkt bei den offiziellen Stellen.
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 01.06.2026 · <strong>Quellen:</strong>
+      <a href="https://attc.org.au" target="_blank" rel="noopener">ATTC (Australian Trade Training College)</a>,
+      <a href="https://www.tradesrecognitionaustralia.gov.au" target="_blank" rel="noopener">Trades Recognition Australia</a>
+    </p>
+  </div>
+
+  <!-- Update-Log (Spec §11.2) -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">01.06.2026</span>
+      <span class="update-log__text">Englische Version verfügbar unter <a href="/en/tra-skill-assessment-chef-australia">tra-skill-assessment-chef-australia</a>.</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">09.04.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Hat dir das geholfen?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Neue Artikel, echte Erfahrungen, konkrete Zahlen, direkt in dein Postfach.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Kosten-Tabelle -------------------------------------------- */
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,560 @@
+---
+// Blog-Uebersicht EN im neuen Look "Sonnengetrocknete Erde".
+// Alle sichtbaren Texte 1:1 aus website/en/blog.html (Live-Stand) portiert.
+// Head-Werte (canonical, hreflang, OG/Twitter, Favicons, Klaro) exakt wie live;
+// JSON-LD (CollectionPage + BreadcrumbList) verbatim aus dem Live-File.
+// Kategorie-Filter: Verhalten aus app.js initBlogFilters() als Inline-Script
+// nachgebaut (Basis-Pfad /en/blog, history.replaceState); ohne JS alle Karten sichtbar.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Filter-Pills - EN-Labels + data-filter-Slugs 1:1 von live
+const filter = [
+  { slug: 'alle', label: 'All' },
+  { slug: 'visum-migration', label: 'Visa & Migration' },
+  { slug: 'vorbereitung-planung', label: 'Preparation & Planning' },
+  { slug: 'familie-kinder', label: 'Family & Kids' },
+  { slug: 'geld-kosten', label: 'Money & Costs' },
+  { slug: 'ankommen-alltag', label: 'Arrival & Daily Life' },
+  { slug: 'byron-bay-region', label: 'Byron Bay & Region' },
+  { slug: 'unsere-geschichte', label: 'Our Story' },
+];
+
+// Alle 15 Artikel-Karten 1:1 von live (Reihenfolge, Links, Kategorien,
+// Titel, Datum/Lesezeit, Bildpfade). Lokale Bilder root-relativ wie ueberall
+// im Redesign (Live nutzt relative Pfade, gleiche Dateien).
+const artikel = [
+  {
+    href: '/en/australian-sim-card-phone-number-newcomers',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Money & Costs',
+    titel: "Australian SIM Card and Phone Number: A Newcomer's Guide",
+    meta: '22 July 2026 · 9 min read',
+    bild: '/assets/images/australische-sim-karte-og.jpg',
+  },
+  {
+    href: '/en/arrived-first-days-in-australia',
+    kategorie: 'ankommen-alltag',
+    kategorieLabel: 'Arriving & Everyday Life',
+    titel: 'Arriving in Australia: My First Days Alone',
+    meta: '4 July 2026 · 7 min read',
+    bild: '/assets/images/au-byron-strand-ankunft-og.jpg',
+  },
+  {
+    href: '/en/the-decision-to-move-to-australia',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Our Story',
+    titel: 'The Decision to Emigrate: Why We Are Moving to Australia',
+    meta: '25 June 2026 · 8 min read',
+    bild: '/assets/images/au-headland-blick-meer-og.jpg',
+  },
+  {
+    href: '/en/health-insurance-australia-moving-family',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Money & Costs',
+    titel: 'Health Insurance for Australia: Our Choice and What Applies to You (2026)',
+    meta: '16 June 2026 · 12 min read',
+    bild: '/assets/images/krankenversicherung-australien-care-expatriate-og.jpg',
+  },
+  {
+    href: '/en/australia-tourist-visa-evisitor-651',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visa & Migration',
+    titel: 'Tourist Visa for Australia: eVisitor 651 for Families',
+    meta: '9 June 2026 · 7 min read',
+    bild: '/assets/images/visa-evisitor-651-paesse.jpg',
+  },
+  {
+    href: '/en/migration-agent-australia-our-experience',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visa & Migration',
+    titel: 'Hiring a Migration Agent for Australia: Our Honest Experience',
+    meta: '4 June 2026 · 8 min read',
+    bild: '/assets/images/migration-agent-australien.jpg',
+  },
+  {
+    href: '/en/cost-of-flights-to-australia-family-guide',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Money & Costs',
+    titel: 'Booking Flights to Australia: What It Really Costs for a Family of Four (2026)',
+    meta: '1 June 2026 · 8 min read',
+    bild: '/assets/images/artikel-fluege.jpg',
+  },
+  {
+    href: '/en/pte-test-experience-australia-visa',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visa & Migration',
+    titel: 'PTE Academic Test Experience: How I, a German Chef, Scored 89 for Australia (2026)',
+    meta: '1 June 2026 · 14 min read',
+    bild: 'https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    href: '/en/tra-skill-assessment-chef-australia',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visa & Migration',
+    titel:
+      'TRA Skill Assessment as a Chef: What It Really Costs, Especially as a Self-Employed Applicant',
+    meta: '1 June 2026 · 10 min read',
+    bild: '/assets/images/artikel-tra.jpg',
+  },
+  {
+    href: '/en/preparing-kids-for-english-australia',
+    kategorie: 'familie-kinder',
+    kategorieLabel: 'Family & Kids',
+    titel: 'Preparing Our Kids for English in Australia: Learning Without Pressure',
+    meta: '1 June 2026 · 7 min read',
+    bild: '/assets/images/englisch-lernen-kinder.jpg',
+  },
+  {
+    href: '/en/final-weeks-before-moving-to-australia',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Our Story',
+    titel: 'The Final Weeks Before Moving to Australia: Goodbyes, School and Open Questions',
+    meta: '1 June 2026 · 7 min read',
+    bild: '/assets/images/artikel-abflug.jpg',
+  },
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Money & Costs',
+    titel:
+      'Moving to Australia as a Family: What It Really Costs, Our Real Numbers (2026)',
+    meta: '29 May 2026 · 13 min read',
+    bild: 'https://cdn.pixabay.com/photo/2021/02/13/03/29/money-6010252_640.jpg',
+  },
+  {
+    href: '/en/186-visa-australia-family-guide',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visa & Migration',
+    titel:
+      "186 Visa Australia: Our Family's Path to the Employer Sponsored Visa (2026)",
+    meta: '29 May 2026 · 12 min read',
+    bild: '/assets/images/artikel-visum-186.jpg',
+  },
+  {
+    href: '/en/moving-to-australia-with-kids-family-guide',
+    kategorie: 'familie-kinder',
+    kategorieLabel: 'Family & Kids',
+    titel: 'Moving to Australia with Kids (Ages 2 and 6): Our Honest Preparation',
+    meta: '29 May 2026 · 8 min read',
+    bild: '/assets/images/artikel-kinder.jpg',
+  },
+  {
+    href: '/en/from-vegetable-garden-to-australia-family-move',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Our Story',
+    titel: 'From a Vegetable Garden to Australia: Our Family Move',
+    meta: '28 May 2026 · 14 min read',
+    bild: '/assets/images/family-story.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog – Wildgewachsen"
+  description="Blog about our family move to Australia – visas, preparation, real experience and tips for families."
+  lang="en"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/blog" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/blog" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog – Wildgewachsen" />
+    <meta property="og:description" content="Blog about our family move to Australia – visas, preparation, real experience and tips for families." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog – Wildgewachsen" />
+    <meta name="twitter:description" content="Blog about our family move to Australia – visas, preparation, real experience and tips for families." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: CollectionPage -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "inLanguage": "en",
+    "name": "Blog – Wildgewachsen",
+    "url": "https://wildgewachsen-australien.de/en/blog",
+    "description": "All our articles on moving to Australia as a family.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "url": "https://wildgewachsen-australien.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    }
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/en/blog" }
+    ]
+  }
+    </script>
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Blog-Kopf + Filter: Akzent der Sektion = aktive Filter-Pill ===== */}
+  <section class="section blog-kopf">
+    <div class="container">
+      <header class="blog-kopf__text">
+        <p class="eyebrow">From the blog</p>
+        <h1>Honest experience, real numbers, actual decisions.</h1>
+        <p class="blog-kopf__intro">
+          Everything we learn on the way to Australia, written down so you do not have to go through it again.
+        </p>
+      </header>
+
+      <div class="blog-filters" role="group" aria-label="Filter articles by category">
+        {
+          filter.map((f) => (
+            <button
+              class:list={['blog-filter', { active: f.slug === 'alle' }]}
+              data-filter={f.slug}
+            >
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Artikel: Postkarten-Grid, Akzent = Hover-Titel/Pfeil ===== */}
+  <section class="section blog-artikel" aria-label="All articles">
+    <div class="container">
+      <ul class="artikel__grid" role="list">
+        {
+          artikel.map((a) => (
+            <li class="card artikel__karte" data-category={a.kategorie}>
+              <figure class="artikel__bild">
+                <img src={a.bild} alt="" loading="lazy" onerror="this.style.display='none'" />
+              </figure>
+              <p class="artikel__kategorie">{a.kategorieLabel}</p>
+              <h3 class="artikel__titel">
+                <a class="artikel__link" href={a.href}>
+                  {a.titel}
+                </a>
+                <span class="artikel__pfeil" aria-hidden="true">
+                  &rarr;
+                </span>
+              </h3>
+              <p class="artikel__meta">{a.meta}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Newsletter: Postkarte, Akzent = Abonnieren-Button ===== */}
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="card texture-grid newsletter">
+        <p class="eyebrow">Do not miss out</p>
+        <h2>New articles straight to your inbox</h2>
+        <p class="newsletter__text">
+          Every week new experience, tips and honest insights.
+        </p>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">
+            Your email address
+          </label>
+          <input
+            id="newsletter-email"
+            class="newsletter__input"
+            type="email"
+            placeholder="Your email address"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="newsletter__hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Kategorie-Filter, Verhalten 1:1 aus dem Live-app.js initBlogFilters():
+    // Pill aktivieren, Karten per data-category zeigen/verstecken,
+    // URL ohne Reload sauber halten (?filter=... bzw. /en/blog bei "All"),
+    // Filter-Param beim Laden anwenden. Ohne JS: alle Karten sichtbar.
+    (function () {
+      var filters = document.querySelectorAll('.blog-filter');
+      if (!filters.length) return;
+
+      function applyFilter(filter, updateUrl) {
+        filters.forEach(function (b) {
+          b.classList.toggle('active', b.dataset.filter === filter);
+        });
+
+        var articles = document.querySelectorAll('.artikel__karte[data-category]');
+        articles.forEach(function (card) {
+          if (filter === 'alle' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (updateUrl) {
+          if (filter === 'alle') {
+            history.replaceState(null, '', '/en/blog');
+          } else {
+            history.replaceState(null, '', '/en/blog?filter=' + filter);
+          }
+        }
+      }
+
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyFilter(btn.dataset.filter, true);
+        });
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      applyFilter(params.get('filter') || 'alle', false);
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  /* --- Buttons (nur Tokens, Mono-Etiketten-Optik) --------------------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  /* --- Blog-Kopf ------------------------------------------------------- */
+  .blog-kopf {
+    padding-block-end: var(--space-5);
+  }
+
+  .blog-kopf__text {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .blog-kopf__text h1 {
+    font-size: var(--text-3);
+    max-inline-size: 24ch;
+  }
+
+  .blog-kopf__intro {
+    color: var(--ink-soft);
+    max-inline-size: 48ch;
+  }
+
+  /* --- Filter-Pills: Gepaeck-Etiketten, Akzent = aktive Pill ----------- */
+  .blog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-block-start: var(--space-5);
+  }
+
+  .blog-filter {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: var(--space-2) var(--space-4);
+    cursor: pointer;
+  }
+
+  .blog-filter:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .blog-filter.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  /* --- Artikel-Postkarten ---------------------------------------------- */
+  .blog-artikel {
+    padding-block-start: var(--space-4);
+  }
+
+  .artikel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .artikel__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .artikel__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .artikel__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .artikel__karte:hover,
+  .artikel__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  .artikel__bild {
+    margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0;
+  }
+
+  .artikel__bild img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  .artikel__kategorie,
+  .artikel__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .artikel__meta {
+    margin-block-start: auto;
+  }
+
+  .artikel__titel {
+    font-size: var(--text-1);
+  }
+
+  .artikel__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Ganze Karte klickbar (stretched link) */
+  .artikel__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .artikel__karte:hover .artikel__link,
+  .artikel__karte:focus-within .artikel__link {
+    color: var(--accent-strong);
+  }
+
+  .artikel__pfeil {
+    color: var(--accent-strong);
+    margin-inline-start: var(--space-1);
+  }
+
+  /* --- Newsletter-Postkarte -------------------------------------------- */
+  .newsletter {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  .newsletter__text {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter__input {
+    flex: 1 1 240px;
+    max-width: 320px;
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__hinweis {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .artikel__karte,
+    .artikel__karte:nth-child(odd),
+    .artikel__karte:nth-child(even) {
+      rotate: 0deg;
+      transition: none;
+    }
+  }
+</style>

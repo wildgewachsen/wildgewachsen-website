@@ -1,0 +1,625 @@
+---
+// EN-Story-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/en/the-decision-to-move-to-australia.html
+// Hinweis: Live-File hat KEINE Klaro-Tags -> hier auch keine (Regel: wie im Live-File).
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'never-left', label: 'Australia never quite left us' },
+  { id: '2025-question', label: '2025: The question that would not go away' },
+  { id: 'almost-let-go', label: 'We almost let it go' },
+  { id: 'field-gone', label: 'The day the field had to go' },
+  { id: 'same-page', label: 'Why we were on the same page' },
+  { id: 'became-real', label: 'When it became real' },
+  { id: 'again', label: 'Would we decide the same way again?' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/from-vegetable-garden-to-australia-family-move',
+    meta: 'Our Story',
+    titel: 'From a Vegetable Garden to Australia: Moving as a Family',
+  },
+  {
+    href: '/en/migration-agent-australia-our-experience',
+    meta: 'Visa & Migration',
+    titel: 'With or Without a Migration Agent for Australia? Our Experience',
+  },
+  {
+    href: '/en/australia-tourist-visa-evisitor-651',
+    meta: 'Visa & Migration',
+    titel: 'Tourist Visa for Australia: eVisitor 651 for Families',
+  },
+];
+---
+
+<ArtikelLayout
+  title="The Decision to Emigrate: Why We Are Moving to Australia"
+  description="We are moving to Australia as a family. How the decision really happened: over years, with doubts, a low point and one sentence I said to Lucy."
+  lang="en"
+  eyebrow="Our Story"
+  datum="25 June 2026"
+  lesezeit="8 min read · Last updated: 25 June 2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/entscheidung-auswandern-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Decision to Emigrate: Why We Are Moving to Australia" />
+    <meta property="og:description" content="We are moving to Australia as a family. How the decision really happened: over years, with doubts, a low point and one sentence I said to Lucy." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-headland-blick-meer-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Decision to Emigrate: Why We Are Moving to Australia" />
+    <meta name="twitter:description" content="How our decision to move to Australia really happened: over years, with doubts, a low point and one sentence I said to Lucy." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-headland-blick-meer-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "The Decision to Emigrate: Why We Are Moving to Australia",
+    "description": "We are moving to Australia as a family. How the decision really happened: over years, with doubts, a low point and one sentence I said to Lucy.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/au-headland-blick-meer-og.jpg",
+      "caption": "A bay on the Australian coast, the life we are returning to.",
+      "creditText": "Wildgewachsen",
+      "copyrightNotice": "© Wildgewachsen",
+      "creator": {
+        "@type": "Person",
+        "name": "Christian Schippel"
+      },
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/en/contact"
+    },
+    "datePublished": "2026-06-25T12:00:00+02:00",
+    "dateModified": "2026-06-25T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "A family's decision to emigrate from Germany to Australia"
+    },
+    "keywords": "moving to Australia decision, why move to Australia, emigrating with family, now or never decision, Byron Bay Northern Rivers, doubts about emigrating"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When did we decide to move to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The decision did not happen in a single day. Australia was a quiet wish for years that grew more pressing in 2025. The concrete trigger came in early September 2025, when we had to tear down our vegetable field. Soon after, it was clear to us that we would take the step now."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why Australia and not another country?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lucy and I had already lived in Byron Bay and the region for two years about ten years ago. It is the mix of life by the sea, the easygoing people, the climate, the hinterland and the nature. This was the life we wanted to show our kids one day. Whenever we thought about alternatives, we kept landing back at Australia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was the decision clear from the start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It was a process over years, and we were even close to dropping the whole thing because of the difficult visa. It took a first consultation with a migration agent to show us that there are workable paths. Even today the doubts are not entirely gone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What was the concrete trigger for the decision?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In early September 2025 we had to tear down our vegetable field. The farm it stood on was sold, and the environmental authority banned us from continuing. After many setbacks, all that was left was exhaustion. That day, at home, the sentence fell: why don't we just do the Australia thing?"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you have doubts about whether the decision was right?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, and right before departure they are growing rather than shrinking. Our plan is risky: if it goes badly, we have to come back in three months. We stand by it anyway. Giving up the restaurant, by now, feels clearly right."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/en/blog" },
+      { "@type": "ListItem", "position": 3, "name": "The Decision to Emigrate: Why We Are Moving to Australia", "item": "https://wildgewachsen-australien.de/en/the-decision-to-move-to-australia" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero image (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/au-headland-blick-meer.jpg"
+    alt="Woman stands on a green headland looking out over a windswept bay toward the sea"
+  />
+
+  <!-- Table of contents: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    We are moving to Australia in the summer of 2026, as a family with two kids. The question we hear most often is not how or where. It is: why are you putting yourselves through this? This article is the honest answer. How this decision actually happened. Not on one big day with a drumroll, but over years, with doubts, a low point and one sentence I said to Lucy. This is not a how-to and not a feel-good piece. It is our story, for anyone standing at the same crossroads.
+  </p>
+
+  <!-- The short version -->
+  <div class="info-box">
+    <p class="info-box__titel">The short version</p>
+    <ul>
+      <li>The decision did not happen in a day. Australia was a quiet wish for years that grew louder in 2025.</li>
+      <li>The concrete trigger came in early September 2025: we had to tear down our vegetable field.</li>
+      <li>We were close to dropping the whole thing because of the difficult visa. A first consultation with a migration agent turned that around.</li>
+      <li>Lucy and I agreed. On this topic, we always have.</li>
+      <li>The doubts are not gone, even now. Right before departure they are growing. We stand by it anyway.</li>
+    </ul>
+  </div>
+
+  <!-- Section 1 -->
+  <h2 id="never-left">Australia never quite left us</h2>
+
+  <p>Lucy and I lived in Australia for two years about ten years ago, in Byron Bay and the surrounding region. I did my chef training there, Lucy came for two semesters abroad. That time never quite left us.</p>
+
+  <figure class="artikel-figur">
+    <img src="/assets/images/au-byron-bay-welcome-schild.jpg" alt="Lucy and Christian standing at a wooden sign reading Welcome to Byron Bay" loading="lazy" decoding="async" />
+    <figcaption>Lucy and me at the entrance to Byron Bay, the region where we lived for two years.</figcaption>
+  </figure>
+
+  <p>It is hard to say in one sentence why this region in particular. It is the mix. Life by the sea, being able to go to the beach whenever you want. The easygoing way people are there, that live and let live feeling I often miss here. The climate, still 18 to 20 degrees and sun in winter. The hinterland with its hills, the rainforest and the waterfalls, which simply feels magical. The markets, by the beach and deep in the forest.</p>
+
+  <p>And the animals. We would wake up in the morning and there were colourful birds sitting in the trees outside the window. On my way home from work I saw small kangaroos in the bushes almost every day. This was the life we wanted to show our kids one day.</p>
+
+  <figure class="artikel-figur">
+    <img src="/assets/images/au-vanlife-camper-rav4.jpg" alt="Woman lying in the converted boot of an SUV set up as a camper with a mattress, in the forest" loading="lazy" decoding="async" />
+    <figcaption>Travelling and living out of the car, from our time in Australia together.</figcaption>
+  </figure>
+
+  <p>For a long time it was not a plan, more of a quiet wish. We even thought about simply spending the winter in Australia more often. At the restaurant we work pretty much non-stop through the summer, so January and February would have been free in theory. It never happened. As a self-employed person you are never really free, and a trip like that for four people is incredibly expensive. Even that compromise was never realistic for us. To be honest, that made us a little sad every time.</p>
+
+  <!-- Section 2 -->
+  <h2 id="2025-question">2025: The question that would not go away</h2>
+
+  <p>In 2025, the quiet wish turned into something more pressing. We did a lot of thinking.</p>
+
+  <p>The questions were always the same. Do we really want to keep doing the restaurant long term? Do we want to keep working through every summer and giving up that time with the kids? And if so, why exactly? Who is it worth it for? The restaurant gave us a lot. But it also took almost all of our time, especially in the months when other families are outside.</p>
+
+  <p>Whenever we went through the alternatives, we kept landing at the same point. The only direction that truly felt right for us was back to Australia. Not somewhere else. There.</p>
+
+  <!-- Section 3 -->
+  <h2 id="almost-let-go">We almost let it go</h2>
+
+  <p>There was a point where we were close to burying the whole idea. The reason was the visa.</p>
+
+  <p>From our time in Byron Bay we still knew quite well how hard it is to get a visa for Australia. The more we read, the bigger the wall got. Different visa classes, points, occupation lists. We did not even really understand where to start. The wish was there, and in front of it stood a topic that felt impossible.</p>
+
+  <p>Out of a mix of frustration and a stubborn let's just see, we booked a paid first consultation with a migration agent. That was still before the decision had really been made. And honestly: without that conversation, it probably never would have been. The agent took the fear away and showed us paths we had not known about. How it went, and whether a step like that is worth it, we wrote down in our <a href="/en/migration-agent-australia-our-experience">experience with a migration agent</a>.</p>
+
+  <!-- Section 4 -->
+  <h2 id="field-gone">The day the field had to go</h2>
+
+  <p>The final push came, of all things, from a patch of field.</p>
+
+  <figure class="artikel-figur artikel-figur--hochformat">
+    <img src="/assets/images/de-feld-ernte-schubkarre.jpg" alt="Toddler pulling a wheelbarrow full of pumpkins, courgettes and basil across a meadow" loading="lazy" decoding="async" />
+    <figcaption>Our daughter Linnea with a harvest from the field that Wildgewachsen grew out of over the years.</figcaption>
+  </figure>
+
+  <p>A farmer had let us use a small piece of pasture, maybe 200 square metres out of several hectares, where the cows usually stand. On it we had set up our vegetable field. The field was part of our restaurant concept. It was meant not only to supply us, but also to yield something for the kitchen, our own vegetables and regional ingredients for our restaurant. Out of that garden, Wildgewachsen grew over the years. Then the whole farm was sold. In the process there were authorities on site constantly, and the lower environmental authority took issue with a lot on the property. In the end they banned us from running the field any longer. We got a letter telling us to tear it down within a few weeks. Then they came by and made sure it was really gone.</p>
+
+  <p>What did I feel that day? Honestly, almost nothing anymore. We had taken so many setbacks, had so many pointless discussions with the authorities, that in the end all that was left was exhaustion and resignation. All the work, the motivation, the hopeful outlook on a future with our own vegetables and fresh, regional ingredients for our restaurant, none of it worked out the way we had wished.</p>
+
+  <p>That very day I came home. I think I just said to Lucy: why don't we just do the Australia thing? I cannot remember it a hundred percent, but I think that is how it was. What had been two separate things, the doubts about the restaurant and the old wish for Australia, came together in that moment. It was no longer a plan for someday. It was now or never.</p>
+
+  <!-- Optional Y4 decision-video embed goes here later -->
+  <p>We also filmed the day the field had to go, on our channel: <a href="https://www.youtube.com/watch?v=67OLkGf0_x4" target="_blank" rel="noopener">Our field is gone</a> (in German).</p>
+
+  <!-- Section 5 -->
+  <h2 id="same-page">Why we were on the same page</h2>
+
+  <p>Once I had actually said it out loud, Lucy was in straight away. No long discussion, no weighing it up over weeks.</p>
+
+  <p>We do not agree on everything, quite the opposite. But when it comes to Australia, we have been on the same wavelength for years. And I believe that is the only way a step like this can work. If one of you has serious doubts, or does not really want it, a plan like this is doomed. We pull in the same direction here. That is maybe the most important thing of all.</p>
+
+  <!-- Section 6 -->
+  <h2 id="became-real">When it became real</h2>
+
+  <p>A decision in your head is one thing. It becomes real on the day money first changes hands.</p>
+
+  <p>For us that was the moment we commissioned the first translations for the skill assessment, the recognition of my chef qualification for Australia. That was the first time we really spent money and set concrete steps in motion. From then on the process was running. Soon after, the date for closing die farm was set: 31 December 2025.</p>
+
+  <p>We talked to close friends fairly early, then to family. I waited longer than Lucy, to be honest, because I struggled to bring myself to do it. But the conversation itself was more pleasant than expected. My parents were sad, of course, but in the same breath they were already thinking about when they could come and visit. Not everyone around us thinks the step is right. But they support us as best they can.</p>
+
+  <p>What feels strange right now is the clearing out. We are selling furniture we bought over the years, giving things away, sorting things out. There is no sugar-coating it. It hurts to give up, piece by piece, a life you built here.</p>
+
+  <!-- Conclusion -->
+  <h2 id="again">Would we decide the same way again?</h2>
+
+  <p>Yes. But not without doubt.</p>
+
+  <p>We have asked ourselves more than once whether this is right. We still ask. Right now, as it counts down to my departure, the doubts are growing rather than shrinking. I fly out alone on 23 June, Lucy and the kids follow on 26 July. Our plan is risky. If it goes badly, we have to come back in three months. And then the question would be whether it was a mistake.</p>
+
+  <p>But then things keep coming up that feel right. My biggest fear was giving up the restaurant and regretting it afterwards. I still don't. By now I am firmly convinced that this decision, at least, was the right one. We believe in ourselves, in the plan, and that we are on the right track, even when it hurts.</p>
+
+  <figure class="artikel-figur">
+    <img src="/assets/images/au-strand-duenenweg.jpg" alt="Woman walking up a sandy path from the beach, with surf and a forested headland behind" loading="lazy" decoding="async" />
+    <figcaption>The life by the sea we want to show our kids.</figcaption>
+  </figure>
+
+  <PullQuote lang="en">
+    If you feel that something is not right, you have to look honestly. Is this just a snapshot, or is something fundamentally wrong?
+  </PullQuote>
+
+  <p>If I take one thing away from all of this, it is this. Ask yourself honestly whether you can live with the situation long term, or whether it is just a bad month. No one can answer that for you. And in the end, everyone has to decide for themselves whether they are ready to change something and take a risk. We were.</p>
+
+  <p>Why we are taking on this whole journey in the first place, we told in <a href="/en/from-vegetable-garden-to-australia-family-move">our story from a vegetable garden to Australia</a>.</p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>When did we decide to move to Australia?</h3>
+  <p>The decision did not happen in a single day. Australia was a quiet wish for years that grew more pressing in 2025. The concrete trigger came in early September 2025, when we had to tear down our vegetable field. Soon after, it was clear to us that we would take the step now.</p>
+
+  <h3>Why Australia and not another country?</h3>
+  <p>Lucy and I had already lived in Byron Bay and the region for two years about ten years ago. It is the mix of life by the sea, the easygoing people, the climate, the hinterland and the nature. This was the life we wanted to show our kids one day. Whenever we thought about alternatives, we kept landing back at Australia.</p>
+
+  <h3>Was the decision clear from the start?</h3>
+  <p>No. It was a process over years, and we were even close to dropping the whole thing because of the difficult visa. It took a first consultation with a migration agent to show us that there are workable paths. Even today the doubts are not entirely gone.</p>
+
+  <h3>What was the concrete trigger for the decision?</h3>
+  <p>In early September 2025 we had to tear down our vegetable field. The farm it stood on was sold, and the environmental authority banned us from continuing. After many setbacks, all that was left was exhaustion. That day, at home, the sentence fell: why don't we just do the Australia thing?</p>
+
+  <h3>Do you have doubts about whether the decision was right?</h3>
+  <p>Yes, and right before departure they are growing rather than shrinking. Our plan is risky: if it goes badly, we have to come back in three months. We stand by it anyway. Giving up the restaurant, by now, feels clearly right.</p>
+
+  <p><strong>As of:</strong> June 2026. We are in the middle of clearing out and preparing. Christian flies out on 23 June, Lucy follows with the kids on 26 July. We will keep sharing here, step by step.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article tells our personal story and decision. It is not legal or
+      migration advice. Where we mention the visa, it is about our own experience. For binding
+      information on emigrating, contact the
+      <a href="https://immi.homeaffairs.gov.au/" target="_blank" rel="noopener">Australian Department of Home Affairs</a>
+      or a registered migration agent.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 25 June 2026
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">25 June 2026</span>
+      <span class="update-log__text">Article published (English version, alongside the original German version).</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to Northern Rivers in the summer of 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Related articles: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter section, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We send updates</h2>
+        <p>New articles, real experience, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    max-block-size: 75vh;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Artikel-Fotos: eingeklebte Polaroids (Retro-Leitlinie) -----
+     Fotos aus dem Live-Artikel als Polaroid mit Handschrift-Caption;
+     Caveat = der EINE Terrakotta-Akzent der jeweiligen Sektion.
+     Hochformat (live: figure-portrait-left) schmaler und zentriert. */
+  .artikel-figur {
+    margin-block: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: -1deg;
+  }
+
+  .artikel-figur:nth-of-type(even) {
+    rotate: 1deg;
+  }
+
+  /* Linksbuendig an der Textkante statt zentriert (CEO-Feedback 24.07.) */
+  .artikel-figur--hochformat {
+    max-inline-size: 420px;
+    margin-inline: 0;
+  }
+
+  .artikel-figur img {
+    width: 100%;
+    border-radius: var(--radius-s);
+  }
+
+  .artikel-figur figcaption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box (The short version) ------------------------------ */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

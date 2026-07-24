@@ -1,0 +1,303 @@
+---
+// FotoStory: klickbare Bildergeschichte im Polaroid-Look.
+// Ohne JS: alle Bilder untereinander sichtbar (voll zugaenglich).
+// Mit JS: Slideshow mit Vor/Zurueck, Punkten und Pfeiltasten.
+interface Bild {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  bilder: Bild[];
+  lang?: 'de' | 'en';
+  ueberschrift?: string;
+}
+
+const { bilder, lang = 'de', ueberschrift } = Astro.props;
+
+// Bedien-Labels intern zweisprachig, nie hartkodiert im Markup
+const t =
+  lang === 'de'
+    ? {
+        region: 'Bildergeschichte',
+        prev: 'Vorheriges Bild',
+        next: 'Nächstes Bild',
+        dots: 'Bild auswählen',
+        slide: (i: number, n: number) => `Bild ${i} von ${n}`,
+        goto: (i: number, n: number) => `Zu Bild ${i} von ${n}`,
+      }
+    : {
+        region: 'Photo story',
+        prev: 'Previous image',
+        next: 'Next image',
+        dots: 'Select image',
+        slide: (i: number, n: number) => `Image ${i} of ${n}`,
+        goto: (i: number, n: number) => `Go to image ${i} of ${n}`,
+      };
+
+const total = bilder.length;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<section
+  class="foto-story"
+  data-foto-story
+  aria-roledescription={t.region}
+  aria-label={ueberschrift ?? t.region}
+>
+  {ueberschrift && <h2 class="foto-story__heading">{ueberschrift}</h2>}
+
+  <div class="foto-story__stage" data-fs-stage>
+    {
+      bilder.map((bild, i) => (
+        <figure
+          class:list={[
+            'foto-story__slide',
+            i % 2 === 0 ? 'foto-story__slide--tilt-l' : 'foto-story__slide--tilt-r',
+          ]}
+          data-fs-slide
+          data-active={i === 0 ? '' : undefined}
+          aria-label={t.slide(i + 1, total)}
+        >
+          <img
+            src={bild.src}
+            alt={bild.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+          {bild.caption && (
+            <figcaption class="foto-story__caption">{bild.caption}</figcaption>
+          )}
+        </figure>
+      ))
+    }
+  </div>
+
+  <div class="foto-story__controls" data-fs-controls hidden>
+    <button type="button" class="foto-story__arrow" data-fs-prev aria-label={t.prev}>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+    </button>
+
+    <div class="foto-story__dots" role="group" aria-label={t.dots}>
+      {
+        bilder.map((_, i) => (
+          <button
+            type="button"
+            class="foto-story__dot"
+            data-fs-dot
+            aria-label={t.goto(i + 1, total)}
+            aria-current={i === 0 ? 'true' : undefined}
+          />
+        ))
+      }
+    </div>
+
+    <button type="button" class="foto-story__arrow" data-fs-next aria-label={t.next}>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+    </button>
+
+    <span class="foto-story__counter" data-fs-counter aria-hidden="true">
+      {pad(1)} / {pad(total)}
+    </span>
+  </div>
+</section>
+
+<style>
+  .foto-story__heading {
+    font-size: var(--text-2);
+    margin-block-end: var(--space-5);
+  }
+
+  /* Ohne JS: alle Polaroids untereinander. Mit JS ([data-fs-ready])
+     stapeln alle Slides in derselben Grid-Zelle (Crossfade-Buehne). */
+  .foto-story__stage {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+    padding: var(--space-2);
+  }
+
+  /* Polaroid: Creme-Rahmen, unten dicker, minimale Rotation je Index */
+  .foto-story__slide {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-5);
+  }
+
+  .foto-story__slide--tilt-l {
+    rotate: -1deg;
+  }
+
+  .foto-story__slide--tilt-r {
+    rotate: 1deg;
+  }
+
+  .foto-story__slide img {
+    width: 100%;
+  }
+
+  /* Handschrift-Caption: Caveat immer Terrakotta (der EINE Akzent der Sektion) */
+  .foto-story__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  [data-fs-ready] .foto-story__slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s;
+  }
+
+  [data-fs-ready] .foto-story__slide[data-active] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .foto-story__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: var(--space-4);
+  }
+
+  /* display:flex wuerde das hidden-Attribut ueberstimmen, deshalb Guard */
+  .foto-story__controls[hidden] {
+    display: none;
+  }
+
+  /* Stempel-Optik: runde Buttons mit gestrichelter Border */
+  .foto-story__arrow {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border: 1px dashed var(--ink-soft);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .foto-story__arrow:hover {
+    border-color: var(--ink);
+    background: var(--surface);
+  }
+
+  .foto-story__dots {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .foto-story__dot {
+    display: grid;
+    place-items: center;
+    inline-size: 1.5rem;
+    block-size: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .foto-story__dot::before {
+    content: '';
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+    border-radius: 50%;
+    border: 1px solid var(--ink-soft);
+    background: transparent;
+  }
+
+  .foto-story__dot:hover::before {
+    background: var(--line);
+  }
+
+  .foto-story__dot[aria-current='true']::before {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .foto-story__counter {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  /* Reduced Motion: kein Crossfade, harter Wechsel */
+  @media (prefers-reduced-motion: reduce) {
+    .foto-story__slide {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Robust fuer mehrere Instanzen pro Seite: alles per data-Attribut,
+  // Events pro Root gebunden, keine IDs.
+  const initFotoStory = (root: HTMLElement) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-fs-slide]'));
+    if (slides.length < 2) return; // ein Bild braucht keine Navigation
+
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-fs-dot]'));
+    const controls = root.querySelector<HTMLElement>('[data-fs-controls]');
+    const counter = root.querySelector<HTMLElement>('[data-fs-counter]');
+    const stage = root.querySelector<HTMLElement>('[data-fs-stage]');
+    let index = 0;
+
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        if (i === index) slide.setAttribute('data-active', '');
+        else slide.removeAttribute('data-active');
+      });
+      dots.forEach((dot, i) => {
+        if (i === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      if (counter) counter.textContent = `${pad(index + 1)} / ${pad(slides.length)}`;
+    };
+
+    root.addEventListener('click', (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLElement>(
+        '[data-fs-prev], [data-fs-next], [data-fs-dot]'
+      );
+      // Schutz fuer den (theoretischen) Fall verschachtelter Instanzen
+      if (!btn || btn.closest('[data-foto-story]') !== root) return;
+      if (btn.hasAttribute('data-fs-prev')) show(index - 1);
+      else if (btn.hasAttribute('data-fs-next')) show(index + 1);
+      else show(dots.indexOf(btn as HTMLButtonElement));
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        show(index - 1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        show(index + 1);
+      }
+    });
+
+    // Erst jetzt in den Slideshow-Modus schalten (Progressive Enhancement)
+    stage?.setAttribute('aria-live', 'polite');
+    if (controls) controls.hidden = false;
+    root.setAttribute('data-fs-ready', '');
+    show(0);
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-foto-story]').forEach(initFotoStory);
+</script>

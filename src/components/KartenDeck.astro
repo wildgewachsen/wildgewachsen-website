@@ -1,0 +1,262 @@
+---
+// Klickbares Karten-Deck im Postkarten-Stapel-Look (Reisetagebuch).
+// Bedienung: Vor/Zurueck-Knoepfe + Pfeiltasten (Deck fokussiert),
+// Fortschritt "3 / 7" als aria-live-Region. Ohne JS: alle Karten untereinander.
+interface Karte {
+  titel: string;
+  text: string;
+  meta?: string;
+}
+
+interface Props {
+  karten: Karte[];
+  lang?: 'de' | 'en';
+  startIndex?: number;
+  /* Zugaenglicher Name des Decks (aria-label), Default je nach lang */
+  deckLabel?: string;
+}
+
+const { karten, lang = 'de', startIndex = 0, deckLabel } = Astro.props;
+
+const texte = {
+  de: { deck: 'Karten-Deck', zurueck: 'Vorherige Karte', vor: 'Nächste Karte' },
+  en: { deck: 'Card deck', zurueck: 'Previous card', vor: 'Next card' },
+}[lang];
+
+const start = Math.min(Math.max(startIndex, 0), Math.max(karten.length - 1, 0));
+
+// Stapel-Position: aktive Karte + 2 sichtbar versetzt dahinter, Rest weg
+const posFuer = (i: number) =>
+  i === start ? 'aktiv' : i === start + 1 ? 'hinter-1' : i === start + 2 ? 'hinter-2' : 'weg';
+---
+
+<div class="karten-deck" data-karten-deck data-start-index={start}>
+  <div class="karten-deck__stapel" role="group" tabindex="0" aria-label={deckLabel ?? texte.deck}>
+    {
+      karten.map((karte, i) => (
+        <article
+          class="card texture-paper karten-deck__karte"
+          data-karte
+          data-titel={karte.titel}
+          data-pos={posFuer(i)}
+          aria-hidden={i === start ? undefined : 'true'}
+        >
+          {karte.meta && <p class="karten-deck__meta">{karte.meta}</p>}
+          <h3 class="karten-deck__titel">{karte.titel}</h3>
+          <p class="karten-deck__text">{karte.text}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="karten-deck__steuerung">
+    <button
+      type="button"
+      class="karten-deck__knopf"
+      data-zurueck
+      aria-label={texte.zurueck}
+      aria-disabled={start === 0 ? 'true' : 'false'}
+    >
+      <span aria-hidden="true">&larr;</span>
+    </button>
+    <p class="karten-deck__fortschritt" aria-live="polite">
+      <span data-fortschritt>{start + 1} / {karten.length}</span>
+      <span class="visually-hidden" data-fortschritt-titel>{karten[start]?.titel}</span>
+    </p>
+    <button
+      type="button"
+      class="karten-deck__knopf"
+      data-vor
+      aria-label={texte.vor}
+      aria-disabled={start >= karten.length - 1 ? 'true' : 'false'}
+    >
+      <span aria-hidden="true">&rarr;</span>
+    </button>
+  </div>
+</div>
+
+<!-- Fallback ohne JS: Karten als normale Spalte, Steuerung weg -->
+<noscript>
+  <style>
+    .karten-deck__stapel {
+      display: block !important;
+    }
+    .karten-deck__karte {
+      visibility: visible !important;
+      transform: none !important;
+      margin-block-end: var(--space-4);
+    }
+    .karten-deck__steuerung {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
+<style>
+  .karten-deck {
+    max-inline-size: 36rem;
+  }
+
+  .karten-deck__stapel {
+    display: grid;
+    /* Luft fuer die versetzt herausschauenden Karten dahinter */
+    padding-block-end: var(--space-5);
+    padding-inline: var(--space-2);
+    border-radius: var(--radius-s);
+  }
+
+  .karten-deck__karte {
+    grid-area: 1 / 1;
+    /* Polaroid-Anmutung: eckiger Rahmen, unten dicker Rand */
+    border-radius: var(--radius-s);
+    padding: var(--space-5) var(--space-5) var(--space-7);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .karten-deck__karte[data-pos='aktiv'] {
+    z-index: 3;
+  }
+
+  .karten-deck__karte[data-pos='hinter-1'] {
+    z-index: 2;
+    transform: translate(9px, 10px) rotate(1.2deg);
+  }
+
+  .karten-deck__karte[data-pos='hinter-2'] {
+    z-index: 1;
+    transform: translate(-7px, 18px) rotate(-0.8deg);
+  }
+
+  .karten-deck__karte[data-pos='weg'] {
+    visibility: hidden;
+  }
+
+  /* Stempel-Etikett: der EINE Terrakotta-Akzent der Sektion */
+  .karten-deck__meta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-strong);
+    border: 1px dashed var(--accent-strong);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    rotate: -1deg;
+    margin-block-end: var(--space-4);
+  }
+
+  .karten-deck__titel {
+    font-size: var(--text-1);
+    margin-block-end: var(--space-3);
+  }
+
+  .karten-deck__text {
+    max-inline-size: var(--measure);
+  }
+
+  .karten-deck__steuerung {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-block-start: var(--space-5);
+    padding-inline: var(--space-2);
+  }
+
+  .karten-deck__knopf {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .karten-deck__knopf:not([aria-disabled='true']):hover {
+    border-color: var(--ink-soft);
+  }
+
+  .karten-deck__knopf[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .karten-deck__fortschritt {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  /* Reduced Motion: harter Kartenwechsel statt Slide */
+  @media (prefers-reduced-motion: reduce) {
+    .karten-deck__karte {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Rein data-Attribut-basiert, dadurch beliebig viele Decks pro Seite.
+  const POS = ['aktiv', 'hinter-1', 'hinter-2'];
+
+  function stelle(root: HTMLElement, index: number) {
+    const karten = root.querySelectorAll<HTMLElement>('[data-karte]');
+    const max = karten.length - 1;
+    index = Math.min(Math.max(index, 0), Math.max(max, 0));
+    karten.forEach((karte, i) => {
+      const abstand = i - index;
+      karte.dataset.pos = abstand >= 0 && abstand <= 2 ? POS[abstand] : 'weg';
+      if (i === index) karte.removeAttribute('aria-hidden');
+      else karte.setAttribute('aria-hidden', 'true');
+    });
+    root.dataset.index = String(index);
+    root.querySelector('[data-zurueck]')?.setAttribute('aria-disabled', index === 0 ? 'true' : 'false');
+    root.querySelector('[data-vor]')?.setAttribute('aria-disabled', index >= max ? 'true' : 'false');
+    const zahl = root.querySelector('[data-fortschritt]');
+    if (zahl) zahl.textContent = `${index + 1} / ${karten.length}`;
+    const titel = root.querySelector('[data-fortschritt-titel]');
+    if (titel) titel.textContent = karten[index]?.dataset.titel ?? '';
+  }
+
+  function schritt(root: HTMLElement, delta: number) {
+    stelle(root, Number(root.dataset.index ?? root.dataset.startIndex ?? '0') + delta);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-karten-deck]').forEach((root) => {
+    if (root.dataset.bereit === '1') return;
+    root.dataset.bereit = '1';
+    root.dataset.index = root.dataset.startIndex ?? '0';
+
+    root.addEventListener('click', (ev) => {
+      const knopf = (ev.target as HTMLElement).closest('[data-zurueck], [data-vor]');
+      if (!knopf || knopf.getAttribute('aria-disabled') === 'true') return;
+      schritt(root, knopf.hasAttribute('data-vor') ? 1 : -1);
+    });
+
+    root.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowRight') {
+        ev.preventDefault();
+        schritt(root, 1);
+      } else if (ev.key === 'ArrowLeft') {
+        ev.preventDefault();
+        schritt(root, -1);
+      } else if (ev.key === 'Home') {
+        ev.preventDefault();
+        stelle(root, 0);
+      } else if (ev.key === 'End') {
+        ev.preventDefault();
+        stelle(root, Number.MAX_SAFE_INTEGER);
+      }
+    });
+  });
+</script>

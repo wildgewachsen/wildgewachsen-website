@@ -1,0 +1,130 @@
+---
+// Basis-Layout: Head-Skelett + Header/Footer.
+// SEO-Werte (canonical, hreflang, Schema) kommen NICHT von hier, sondern
+// werden ab Phase 3/4 pro Seite aus migration/site_snapshot.json gesetzt.
+import '@fontsource/young-serif';
+import '@fontsource-variable/alegreya';
+import '@fontsource/courier-prime';
+import '@fontsource-variable/caveat';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'de' | 'en';
+}
+
+const { title, description, lang = 'de' } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <script is:inline>
+      // Hell ist Standard; Dunkel nur wenn der Nutzer es per Toggle gewaehlt hat.
+      // Laeuft vor dem ersten Paint, damit nichts flackert.
+      if (localStorage.getItem('wg-theme') === 'dark')
+        document.documentElement.dataset.theme = 'dark';
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}
+    </a>
+    <SiteHeader lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter lang={lang} />
+    <script is:inline>
+      // Newsletter (Buttondown), 1:1 portiert aus dem Live-app.js handleNewsletter.
+      // Bindet alle form[data-newsletter]; Texte + Verhalten wie live.
+      (function () {
+        var messages = {
+          de: {
+            success: 'Danke! Bitte bestätige deine E-Mail.',
+            error: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
+            network: 'Verbindungsfehler. Bitte versuche es erneut.',
+          },
+          en: {
+            success: 'Thanks! Please confirm your email.',
+            error: 'Something went wrong. Please try again.',
+            network: 'Connection error. Please try again.',
+          },
+        };
+        document.querySelectorAll('form[data-newsletter]').forEach(function (form) {
+          form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            var input = form.querySelector('input[type="email"]');
+            var btn = form.querySelector('button[type="submit"]');
+            var origText = btn.textContent;
+            var lang = (document.documentElement.lang || 'de').toLowerCase().startsWith('en') ? 'en' : 'de';
+            btn.textContent = '...';
+            btn.disabled = true;
+            try {
+              var res = await fetch('https://buttondown.com/api/emails/embed-subscribe/wildgewachsen', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'email=' + encodeURIComponent(input.value) + '&tag=' + lang,
+              });
+              if (res.ok || res.status === 201) {
+                form.innerHTML = '<p style="color:inherit;font-size:0.95rem;">' + messages[lang].success + '</p>';
+              } else {
+                btn.textContent = origText;
+                btn.disabled = false;
+                alert(messages[lang].error);
+              }
+            } catch (err) {
+              btn.textContent = origText;
+              btn.disabled = false;
+              alert(messages[lang].network);
+            }
+          });
+        });
+      })();
+      // Theme-Toggle (Header): hell <-> dunkel, Wahl bleibt gespeichert.
+      // Icon-Wechsel macht CSS ueber html[data-theme] (SVG-Icons im Button);
+      // hier wird nur noch der aria-Zustand gepflegt.
+      (function () {
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        function apply() {
+          var dark = document.documentElement.dataset.theme === 'dark';
+          btns.forEach(function (b) {
+            b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+          });
+        }
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (document.documentElement.dataset.theme === 'dark') {
+              delete document.documentElement.dataset.theme;
+              localStorage.removeItem('wg-theme');
+            } else {
+              document.documentElement.dataset.theme = 'dark';
+              localStorage.setItem('wg-theme', 'dark');
+            }
+            apply();
+          });
+        });
+        apply();
+      })();
+    </script>
+    {
+      /* GoatCounter 1:1 wie Ist (ungated, Zaehlkontinuitaet), nur im Prod-Build */
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          data-goatcounter="https://wildgewachsen.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
+      )
+    }
+  </body>
+</html>

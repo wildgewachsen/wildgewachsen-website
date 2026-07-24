@@ -1,0 +1,643 @@
+---
+// EN-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/en/australia-tourist-visa-evisitor-651.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'four-clicks', label: 'Four clicks, granted in seconds' },
+  { id: 'why-tourist', label: 'Why we are entering on a tourist visa at all' },
+  { id: 'evisitor-vs-visitor', label: 'eVisitor 651 or Visitor 600, the difference' },
+  { id: 'application', label: 'How the application went for us' },
+  { id: 'what-it-says', label: 'What the visa says, in our specific case' },
+  { id: 'what-allowed', label: 'What we can do with it and what we cannot' },
+  { id: 'bridge-186', label: 'What comes after the tourist visa' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/migration-agent-australia-our-experience',
+    meta: 'Visa & Migration',
+    titel: 'Hiring a Migration Agent for Australia: Our Honest Experience',
+  },
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Moving to Australia: What We Are Actually Paying as a Family (Cost Guide 2026)',
+  },
+  {
+    href: '/en/cost-of-flights-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Flights to Australia as a Family: What We Actually Paid',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Tourist Visa for Australia: eVisitor 651 for Families"
+  description="We are entering Australia in 2026 with the free eVisitor 651. Why this visa, not the Visitor 600, and how the application went for us as a family."
+  lang="en"
+  eyebrow="Visa & Migration"
+  datum="9 June 2026"
+  lesezeit="7 min read · Last updated: 09.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/tourist-visum-australien-evisitor-651" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tourist Visa for Australia: eVisitor 651 for Families" />
+    <meta property="og:description" content="We are entering Australia in 2026 with the free eVisitor 651. Why this visa, not the Visitor 600, and how the application went for us as a family." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/visa-evisitor-651-paesse-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tourist Visa for Australia: eVisitor 651 for Families" />
+    <meta name="twitter:description" content="We are entering Australia in 2026 with the free eVisitor 651. Why this visa, not the Visitor 600, and how the application went for us as a family." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/visa-evisitor-651-paesse-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "Tourist Visa for Australia: eVisitor 651 for Families",
+    "description": "We are entering Australia in 2026 with the free eVisitor 651. Why this visa, not the Visitor 600, and how the application went for us as a family.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/visa-evisitor-651-paesse.jpg",
+      "caption": "Our four German passports, fanned out on a stone table, after all four eVisitor 651 Grant Notifications arrived on 28 May 2026.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-06-09T12:00:00+02:00",
+    "dateModified": "2026-06-09T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Using the eVisitor Subclass 651 as an entry visa for a family move to Australia"
+    },
+    "keywords": "tourist visa Australia, eVisitor 651, Visitor 600, Australia visa family, ImmiAccount, entering Australia, moving to Australia"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between the eVisitor 651 and the Visitor 600 for Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The eVisitor 651 is the free online version of the Australian tourist visa, available only to holders of passports from a fixed list of mostly European countries. The Visitor 600 is the paid general version, open to all nationalities, with different streams. As a German family we could use the eVisitor 651, so there was no application fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the eVisitor 651 for Australia cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The eVisitor 651 is free of charge with the Australian Department of Home Affairs. At the end of the application process no payment was requested, and the Grant Notification does not show a visa fee. Other costs may come up, for example for travel health insurance or flights, but those are not visa fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long can you stay in Australia on an eVisitor 651?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Up to three months per entry. The visa is valid for twelve months from the date of grant and allows multiple entries. In our case the Grant Notification states: Date of grant 28 May 2026, Must not arrive after 28 May 2027, Length of stay 3 month(s) from the date of each arrival, Travel Multiple entries."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you work in Australia on an eVisitor 651?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The visa carries Condition 8115, business visitor activity. Allowed are business visits such as meetings and conferences, not regular paid work. Anyone who actually wants to work needs a different visa, for example a sponsored work visa or a permanent visa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you apply for a permanent visa onshore on an eVisitor 651?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That is exactly our plan: enter on the eVisitor, find a sponsoring employer onshore, then apply for the 186 visa. It is a deliberate risk. If we do not find a sponsor within three months, we fly back. The actual onshore application will be handled by our migration agent. The formal rules sit with the Australian Department of Home Affairs, and case-specific advice comes from a registered professional."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Tourist Visa for Australia: eVisitor 651 for Families", "item": "https://wildgewachsen-australien.de/en/australia-tourist-visa-evisitor-651" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild: unsere vier Paesse nach dem Grant (Original-Pfad wie live) -->
+  <figure class="artikel-figur">
+    <img
+      class="artikel-bild"
+      src="/assets/images/visa-evisitor-651-paesse.jpg"
+      alt="Four closed burgundy German passports stacked and slightly fanned out on a grey stone surface. A wooden pen with a silver clip sits in the upper left. The frontmost passport clearly shows the German federal eagle emblem and the lettering REISEPASS PASSPORT, BUNDESREPUBLIK DEUTSCHLAND, EUROPÄISCHE UNION."
+    />
+    <figcaption>
+      Our four passports after all four eVisitor 651 Grant Notifications had arrived on 28 May 2026.
+    </figcaption>
+  </figure>
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    We are moving to Australia in the summer of 2026, as a family of four. Before the permanent 186 visa runs, we need a visa that lets us enter the country in the first place. In our case that turned out to be the eVisitor 651. Free of charge, applied for online, granted in seconds. This article explains why we picked this route rather than the often-cited Visitor 600 or going straight for the 186. It also covers how the application actually went for us and what the conditions on the visa mean in plain language. This is not legal or migration advice. It is our experience as a German family with German passports. And: what we describe here is a deliberate, risky bet. We are entering Australia without long-term residence security and making the next three months depend on whether we can find a sponsor onshore. If we cannot find one, we fly back. We know that. More on this in the next section.
+  </p>
+
+  <p>
+    Why a tourist visa at all instead of going directly for the 186, we have covered in our article <a href="/en/migration-agent-australia-our-experience">Hiring a migration agent for Australia</a>. This article here picks up one step earlier: the concrete question of which tourist visa a German family uses to enter, and what the application looks like.
+  </p>
+
+  <!-- Key Takeaways -->
+  <div class="info-box">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>We are entering on the eVisitor Subclass 651. This is the free tourist visa variant available to German passport holders.</li>
+      <li>Granted on 28 May 2026. Application and confirmation took seconds.</li>
+      <li>Stay of three months per entry, valid for twelve months from grant, multiple entries allowed.</li>
+      <li>Work is not permitted, only tourism and business visits. For the actual move we will need a different visa later.</li>
+      <li>All four applications were filed through a single ImmiAccount, each with the appropriate receiving email per person.</li>
+    </ul>
+  </div>
+
+  <!-- H2 1 -->
+  <h2 id="four-clicks">Four clicks, granted in seconds</h2>
+
+  <p>We had braced ourselves for everything. Long forms, waiting times, the kind of gut feeling we still remembered from the first time around in Byron Bay in 2016. Instead it went like this:</p>
+
+  <p>On the morning of 28 May I log into my old ImmiAccount. I have had it since my chef days in Byron Bay, it is roughly ten years old and still works. I start a new visa application, pick eVisitor 651, fill in the fields, upload a passport scan, click submit. Seconds later the confirmation arrives by email: visa granted. The second application, for Lucy, takes the same time. The applications for our kids Joris and Linnea, the same again. Four times the same experience.</p>
+
+  <p>We had mentally set aside hours for this. In the end we were done within a few minutes at the computer. The best part: no fee, no service charge. The visa itself costs nothing.</p>
+
+  <!-- H2 2 -->
+  <h2 id="why-tourist">Why we are entering on a tourist visa at all</h2>
+
+  <p>The obvious question: why not go straight for the 186, the permanent visa we are aiming at in the end?</p>
+
+  <p>The answer comes down to the sponsor. The 186, the Employer Nomination Scheme, requires an employer who nominates you. We do not have one yet. I am flying out alone on 23 June and looking onshore. Only once a sponsor is in place does the 186 application start. Until then we still need a way to enter the country at all.</p>
+
+  <p>Theoretically we could have gone the opposite route: wait it out in Germany, find a sponsor from home, lodge the 186 from offshore, wait for the grant. In theory that sounds safer and more logical. In practice it means: sponsors are reluctant to hire people who are not in the country yet. And the wait for a 186 grant can stretch over months, in many cases longer. You do not get a Bridging Visa.</p>
+
+  <p>A tourist visa is meant for holidays and family visits. For our situation it still works: it legally bridges the gap between leaving Germany and getting a job offer in Australia. This is not unusual, plenty of people moving over do it this way. Our migration agent confirmed the plan in the initial consultation: enter on a tourist visa, find a sponsor onshore, then lodge the actual application. What comes after that, meaning the transition into the next visa stage, is our migration agent's job once we get there. We are not getting ahead of him here.</p>
+
+  <p>We want to be clear about what this route is and what it is not. It is risky. We are leaving Germany without long-term residence security and making the next three months depend on whether I can find a sponsor onshore. If I cannot find one, we fly back. That is hard, financially and mentally. It is not a recommendation. Every family has different reserves, different visa options, different time windows. Anyone with more patience may prefer to wait for a 186 grant from offshore. Anyone who can line up a job remotely does not need the detour. For us it was the best, and honestly the only, compromise.</p>
+
+  <!-- H2 3 -->
+  <h2 id="evisitor-vs-visitor">eVisitor 651 or Visitor 600, the difference</h2>
+
+  <p>During our research we kept running into the Visitor 600. That is not wrong, it is just not the only option.</p>
+
+  <p>For passports from a defined list of countries, mainly European ones, there is the eVisitor 651. German passports are on that list. In terms of content the two visas overlap a lot: tourism, family visits, business visits, three months of stay, twelve months of validity. The key difference sits in the price and the application path.</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">eVisitor 651 vs Visitor 600 at a glance</p>
+    <ul>
+      <li><strong>eVisitor 651:</strong> only for passports from a fixed country list (German passport included), application fully online through ImmiAccount, free of charge, in our case granted in seconds.</li>
+      <li><strong>Visitor 600:</strong> open to all nationalities, application through ImmiAccount with different streams (Tourist, Sponsored, Business), paid, longer processing times possible.</li>
+      <li><strong>Stay and validity:</strong> for both, the standard is three months per entry, and on the 600 a stay of six or twelve months is possible depending on the stream.</li>
+      <li><strong>Binding overview:</strong> at the <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651" target="_blank" rel="noopener">Australian Department of Home Affairs</a>, where you also find the full eVisitor country list.</li>
+    </ul>
+  </div>
+
+  <p>For us the choice was clear. When both deliver the same thing and one of them is free, we take the free one. On top of that, applying through the existing ImmiAccount was a familiar path.</p>
+
+  <!-- H2 4 -->
+  <h2 id="application">How the application went for us</h2>
+
+  <p>In concrete terms it looked like this. We worked out one thing in advance: which account do we apply from, and where do the confirmations go?</p>
+
+  <p>My ImmiAccount already existed. It dates back to before our first stint in Byron Bay roughly ten years ago. The platform looks pretty much the same as back then, a few updates newer maybe. It feels plain, but it works. Anyone without an account creates one online at <a href="https://online.immi.gov.au/ola/app" target="_blank" rel="noopener">online.immi.gov.au/ola/app</a>.</p>
+
+  <p>From one ImmiAccount you can manage applications for several people. Each application is filled in separately, no one takes that off your hands. The data they ask for is the usual: name as on the passport, date of birth, passport number, issuing country, validity, photo. Then the questions on health and criminal record, four yes-or-no fields. And finally an email address that will receive the Grant Notification.</p>
+
+  <p>This is where the one small trick came in for us: for Lucy's application and for the kids' applications, I entered Lucy's email address, not mine. That way the three confirmation emails land cleanly in her inbox, and mine lands in mine. If we need a confirmation later at the airport or at check-in, each of us has their own document at hand. Otherwise I would have four confirmation emails in my inbox and Lucy none.</p>
+
+  <p>For each application all we had to upload was the data page of the passport, meaning the page with photo and personal details. No extra photo from a photographer was needed. No further documents, bookings or insurance papers were asked for inside the application. After the last submit we were done.</p>
+
+  <!-- H2 5 -->
+  <h2 id="what-it-says">What the visa says, in our specific case</h2>
+
+  <p>The Grant Notification is a two-page PDF that arrives as an email attachment. Below is the top of it (sensitive data redacted), followed by the same fields written out in plain language.</p>
+
+  <figure class="grant-figur">
+    <img
+      src="/assets/images/visa-evisitor-651-grant-notification.jpg"
+      alt="Redacted excerpt of the eVisitor 651 Grant Notification dated 28 May 2026: Australian Government Department of Home Affairs, status Granted, four visa conditions, length of stay and travel window visible, personal data blacked out."
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>
+      Our eVisitor 651 Grant Notification, issued on 28 May 2026 (sensitive data redacted). Source: Australian Department of Home Affairs.
+    </figcaption>
+  </figure>
+
+  <div class="info-box">
+    <p class="info-box__titel">What our eVisitor 651 actually says</p>
+    <ul>
+      <li><strong>Application status:</strong> eVisitor (subclass 651), Granted.</li>
+      <li><strong>Date of grant:</strong> 28 May 2026.</li>
+      <li><strong>Must not arrive after:</strong> 28 May 2027. That is the travel window, twelve months.</li>
+      <li><strong>Length of stay:</strong> 3 month(s) from the date of each arrival. Three months of stay per entry.</li>
+      <li><strong>Travel:</strong> Multiple entries. During the travel window we can come and go more than once.</li>
+      <li><strong>Visa conditions:</strong> 8115, 8201, 8527, 8528 (see next section).</li>
+    </ul>
+  </div>
+
+  <p>That is the formal side. It has a bureaucratic feel to it, but it is surprisingly readable once you know what the four conditions mean.</p>
+
+  <!-- H2 6 -->
+  <h2 id="what-allowed">What we can do with it and what we cannot</h2>
+
+  <p>The four conditions on an eVisitor 651 are standard. We summarise them here in plain language, because they tend to get lost between the bureaucratic phrasing.</p>
+
+  <p><strong>Condition 8115, business visitor activity.</strong> Meaning: work is not permitted. What is allowed are classic business activities: meetings, negotiations, conferences, a job interview onshore. What is not allowed is regular paid work. Anyone working on a tourist visa risks visa cancellation and re-entry bans. We stick to it.</p>
+
+  <p><strong>Condition 8201, maximum three months study.</strong> Studying is allowed, but capped at three months total. Not relevant in our case, Joris will only start school in Australia once we are on a different visa.</p>
+
+  <p><strong>Condition 8527, tuberculosis free.</strong> On entry you have to be free of tuberculosis. For German passports this is not a practical issue, no health check is required for the 651. Under suspicion or with symptoms the rules look different.</p>
+
+  <p><strong>Condition 8528, no criminal convictions.</strong> No criminal convictions with a combined sentence of twelve months or more at the time of entry. No police check is required for the application here either.</p>
+
+  <p>We read all this as follows: the visa is meant for travel, family visits and business meetings. It is not meant for living and working in the country long-term. That is exactly why for us it is only a bridge. The next visa stage has to follow.</p>
+
+  <!-- H2 7 -->
+  <h2 id="bridge-186">What comes after the tourist visa</h2>
+
+  <p>Our plan from August onwards runs like this: I enter on the eVisitor 651 and look for a sponsoring employer in Northern Rivers. As soon as a sponsor is in place, the actual 186 application begins. That application will be handled by our migration agent. How exactly the transition from eVisitor 651 into the application process for a permanent visa works is his side of the table. We hand that over to him because he does it every day and we do not.</p>
+
+  <p>So for this article: we describe only what actually happened up to 28 May 2026, meaning the tourist visa itself. We will write about the jump to the 186 once we have actually done it. We do not want to write things we have not lived through yet.</p>
+
+  <p>If you want to read up on the destination visa, the permanent one, you will find it all in our <a href="/en/186-visa-australia-family-guide">comprehensive guide to the 186 visa for families</a>.</p>
+
+  <p>And if you are considering a similar route yourself: plan for the worst case. Be clear about what you will do if the plan does not work out. We had thought that through before we booked the tickets.</p>
+
+  <!-- H2 8: FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>What is the difference between the eVisitor 651 and the Visitor 600 for Australia?</h3>
+  <p>The eVisitor 651 is the free online version of the Australian tourist visa, available only to holders of passports from a fixed list of mostly European countries. The Visitor 600 is the paid general version, open to all nationalities, with different streams. As a German family we could use the eVisitor 651, so there was no application fee.</p>
+
+  <h3>What does the eVisitor 651 for Australia cost?</h3>
+  <p>The eVisitor 651 is free of charge with the Australian Department of Home Affairs. At the end of the application process no payment was requested, and the Grant Notification does not show a visa fee. Other costs may come up, for example for travel health insurance or flights, but those are not visa fees.</p>
+
+  <h3>How long can you stay in Australia on an eVisitor 651?</h3>
+  <p>Up to three months per entry. The visa is valid for twelve months from the date of grant and allows multiple entries. In our case the Grant Notification states: Date of grant 28 May 2026, Must not arrive after 28 May 2027, Length of stay 3 month(s) from the date of each arrival, Travel Multiple entries.</p>
+
+  <h3>Can you work in Australia on an eVisitor 651?</h3>
+  <p>No. The visa carries Condition 8115, business visitor activity. Allowed are business visits such as meetings and conferences, not regular paid work. Anyone who actually wants to work needs a different visa, for example a sponsored work visa or a permanent visa.</p>
+
+  <h3>Can you apply for a permanent visa onshore on an eVisitor 651?</h3>
+  <p>That is exactly our plan: enter on the eVisitor, find a sponsoring employer onshore, then apply for the 186 visa. It is a deliberate risk. If we do not find a sponsor within three months, we fly back. The actual onshore application will be handled by our migration agent. The formal rules sit with the Australian Department of Home Affairs, and case-specific advice comes from a registered professional.</p>
+
+  <p><strong>Status:</strong> June 2026. I fly out alone on 23 June, Lucy follows with the kids on 26 July. As soon as we have taken the next visa step, we will add it here or write a dedicated article about it.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article describes our personal experience with the eVisitor 651 visa for Australia. It is not legal or migration advice. Visa rules change, and every case is different. For binding information, contact the Australian Department of Home Affairs or a registered migration agent.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 09.06.2026 · <strong>Sources:</strong>
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651" target="_blank" rel="noopener">eVisitor Subclass 651</a>,
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600" target="_blank" rel="noopener">Visitor Subclass 600</a>,
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">186 Employer Nomination Scheme</a>
+      (Australian Department of Home Affairs). Visa-specific details in this article (Date of grant, Conditions, length of stay) come from our own Grant Notification dated 28.05.2026.
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">09.06.2026</span>
+      <span class="update-log__text">Article published (English version, alongside the original German version).</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to Northern Rivers in the summer of 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We send updates</h2>
+        <p>New articles, real experience, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  /* --- Hero-Bild (Paesse-Foto) mit Bildunterschrift -------------- */
+  .artikel-figur {
+    margin: 0;
+  }
+
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  .artikel-figur figcaption {
+    margin-block-start: var(--space-2);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  /* --- Grant-Notification-Figur (Dokument-Scan, wie live volle Breite) --- */
+  .grant-figur {
+    margin: var(--space-5) 0;
+  }
+
+  .grant-figur img {
+    width: 100%;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .grant-figur figcaption {
+    margin-block-start: var(--space-2);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen (Key takeaways, Vergleich, Grant-Fakten) ------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

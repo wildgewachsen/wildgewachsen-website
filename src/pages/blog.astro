@@ -1,0 +1,530 @@
+---
+// Blog-Uebersicht DE im neuen Look "Sonnengetrocknete Erde".
+// Alle sichtbaren Texte 1:1 aus website/blog.html (Live-Stand) portiert.
+// Head-Werte (canonical, hreflang, OG/Twitter, Favicons, Klaro) exakt wie live;
+// die Live-Seite hat KEIN JSON-LD, deshalb hier bewusst keins ergaenzt.
+// Kategorie-Filter: Verhalten aus app.js initBlogFilters() als Inline-Script
+// nachgebaut (?filter=..., history.replaceState); ohne JS bleiben alle Karten sichtbar.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Filter-Pills - Beschriftung + data-filter-Slugs 1:1 von live
+const filter = [
+  { slug: 'alle', label: 'Alle' },
+  { slug: 'visum-migration', label: 'Visum & Migration' },
+  { slug: 'vorbereitung-planung', label: 'Vorbereitung & Planung' },
+  { slug: 'familie-kinder', label: 'Familie & Kinder' },
+  { slug: 'geld-kosten', label: 'Geld & Kosten' },
+  { slug: 'ankommen-alltag', label: 'Ankommen & Alltag' },
+  { slug: 'byron-bay-region', label: 'Byron Bay & Region' },
+  { slug: 'unsere-geschichte', label: 'Unsere Geschichte' },
+];
+
+// Alle 15 Artikel-Karten 1:1 von live (Reihenfolge, Links, Kategorien,
+// Titel, Datum/Lesezeit, Bildpfade). Lokale Bilder root-relativ wie ueberall
+// im Redesign (Live nutzt relative Pfade, gleiche Dateien).
+const artikel = [
+  {
+    href: '/blog/australische-sim-karte-handynummer-auswandern',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Geld & Kosten',
+    titel: 'Australische SIM-Karte und Handynummer für Auswanderer',
+    meta: '22. Juli 2026 · 9 Min. Lesezeit',
+    bild: '/assets/images/australische-sim-karte-og.jpg',
+  },
+  {
+    href: '/blog/angekommen-erste-tage-australien',
+    kategorie: 'ankommen-alltag',
+    kategorieLabel: 'Ankommen & Alltag',
+    titel: 'Angekommen in Australien: meine ersten Tage allein',
+    meta: '4. Juli 2026 · 7 Min. Lesezeit',
+    bild: '/assets/images/au-byron-strand-ankunft-og.jpg',
+  },
+  {
+    href: '/blog/entscheidung-auswandern-australien',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Unsere Geschichte',
+    titel: 'Die Entscheidung auszuwandern: Warum wir nach Australien gehen',
+    meta: '25. Juni 2026 · 8 Min. Lesezeit',
+    bild: '/assets/images/au-headland-blick-meer-og.jpg',
+  },
+  {
+    href: '/blog/krankenversicherung-australien-auswandern-familie',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Geld & Kosten',
+    titel: 'Krankenversicherung Australien: Unsere Wahl und was für dich gilt (2026)',
+    meta: '16. Juni 2026 · 11 Min. Lesezeit',
+    bild: '/assets/images/krankenversicherung-australien-care-expatriate-og.jpg',
+  },
+  {
+    href: '/blog/tourist-visum-australien-evisitor-651',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visum & Migration',
+    titel: 'Tourist-Visum für Australien: eVisitor 651 für Familien',
+    meta: '9. Juni 2026 · 7 Min. Lesezeit',
+    bild: '/assets/images/visa-evisitor-651-paesse.jpg',
+  },
+  {
+    href: '/blog/migration-agent-australien-erfahrung',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visum & Migration',
+    titel: 'Mit oder ohne Migration Agent für Australien? Erfahrung',
+    meta: '4. Juni 2026 · 8 Min. Lesezeit',
+    bild: '/assets/images/migration-agent-australien.jpg',
+  },
+  {
+    href: '/blog/kinder-sprachlich-australien-vorbereiten',
+    kategorie: 'familie-kinder',
+    kategorieLabel: 'Familie & Kinder',
+    titel: 'Kinder sprachlich auf Australien vorbereiten: Englisch lernen ohne Druck',
+    meta: '28. Mai 2026 · 7 Min. Lesezeit',
+    bild: '/assets/images/englisch-lernen-kinder.jpg',
+  },
+  {
+    href: '/blog/fluege-nach-australien-kosten-familie',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Geld & Kosten',
+    titel: 'Flüge nach Australien buchen: Unsere echten Kosten als Familie (2026)',
+    meta: '21. Mai 2026 · 8 Min. Lesezeit',
+    bild: '/assets/images/artikel-fluege.jpg',
+  },
+  {
+    href: '/blog/vom-gemuesegarten-nach-australien-auswanderung-familie',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Unsere Geschichte',
+    titel: 'Vom Gemüsegarten nach Australien: Unsere Auswanderung als Familie',
+    meta: '10. Mai 2026 · 14 Min. Lesezeit',
+    bild: '/assets/images/family-story.jpg',
+  },
+  {
+    href: '/blog/pte-test-erfahrung-australien-visum',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visum & Migration',
+    titel:
+      'PTE Academic Test Erfahrung: Wie ich als deutscher Koch 89 Punkte für Australien geschafft habe (2026)',
+    meta: '4. Mai 2026 · 14 Min. Lesezeit',
+    bild: 'https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    href: '/blog/auswandern-australien-kosten-familie-guide',
+    kategorie: 'geld-kosten',
+    kategorieLabel: 'Geld & Kosten',
+    titel:
+      'Auswandern nach Australien als Familie: Was es wirklich kostet — unsere echten Zahlen (2026)',
+    meta: '29. April 2026 · 13 Min. Lesezeit',
+    bild: 'https://cdn.pixabay.com/photo/2021/02/13/03/29/money-6010252_640.jpg',
+  },
+  {
+    href: '/blog/visum-186-australien-familie-guide',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visum & Migration',
+    titel:
+      'Visum 186 Australien: Unser Familien-Weg zum Employer Sponsored Visa (2026)',
+    meta: '22. April 2026 · 12 Min. Lesezeit',
+    bild: '/assets/images/artikel-visum-186.jpg',
+  },
+  {
+    href: '/blog/letzte-wochen-vor-abflug-australien',
+    kategorie: 'unsere-geschichte',
+    kategorieLabel: 'Unsere Geschichte',
+    titel: 'Die letzten Wochen vor dem Abflug: Abschied, Schule und offene Fragen',
+    meta: '16. April 2026 · 7 Min. Lesezeit',
+    bild: '/assets/images/artikel-abflug.jpg',
+  },
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    kategorie: 'familie-kinder',
+    kategorieLabel: 'Familie & Kinder',
+    titel:
+      'Auswandern nach Australien mit Kindern (2 und 6 Jahre): Unsere ehrliche Vorbereitung',
+    meta: '9. April 2026 · 8 Min. Lesezeit',
+    bild: '/assets/images/artikel-kinder.jpg',
+  },
+  {
+    href: '/blog/tra-skill-assessment-koch-australien',
+    kategorie: 'visum-migration',
+    kategorieLabel: 'Visum & Migration',
+    titel:
+      'TRA Skill Assessment als Koch: Was es wirklich kostet – besonders als Selbständiger',
+    meta: '9. April 2026 · 10 Min. Lesezeit',
+    bild: '/assets/images/artikel-tra.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog – Wildgewachsen"
+  description="Blog über unsere Auswanderung nach Australien – Visa, Vorbereitung, Erfahrungen und Tipps für Familien."
+  lang="de"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/blog" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog – Wildgewachsen" />
+    <meta property="og:description" content="Blog über unsere Auswanderung nach Australien – Visa, Vorbereitung, Erfahrungen und Tipps für Familien." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog – Wildgewachsen" />
+    <meta name="twitter:description" content="Blog über unsere Auswanderung nach Australien – Visa, Vorbereitung, Erfahrungen und Tipps für Familien." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Blog-Kopf + Filter: Akzent der Sektion = aktive Filter-Pill ===== */}
+  <section class="section blog-kopf">
+    <div class="container">
+      <header class="blog-kopf__text">
+        <p class="eyebrow">Aus dem Blog</p>
+        <h1>Ehrliche Erfahrungen, konkrete Zahlen, echte Entscheidungen.</h1>
+        <p class="blog-kopf__intro">
+          Alles was wir auf dem Weg nach Australien lernen – aufgeschrieben,
+          damit du es nicht nochmal durchmachen musst.
+        </p>
+      </header>
+
+      <div class="blog-filters" role="group" aria-label="Artikel nach Kategorie filtern">
+        {
+          filter.map((f) => (
+            <button
+              class:list={['blog-filter', { active: f.slug === 'alle' }]}
+              data-filter={f.slug}
+            >
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Artikel: Postkarten-Grid, Akzent = Hover-Titel/Pfeil ===== */}
+  <section class="section blog-artikel" aria-label="Alle Artikel">
+    <div class="container">
+      <ul class="artikel__grid" role="list">
+        {
+          artikel.map((a) => (
+            <li class="card artikel__karte" data-category={a.kategorie}>
+              <figure class="artikel__bild">
+                <img src={a.bild} alt="" loading="lazy" onerror="this.style.display='none'" />
+              </figure>
+              <p class="artikel__kategorie">{a.kategorieLabel}</p>
+              <h3 class="artikel__titel">
+                <a class="artikel__link" href={a.href}>
+                  {a.titel}
+                </a>
+                <span class="artikel__pfeil" aria-hidden="true">
+                  &rarr;
+                </span>
+              </h3>
+              <p class="artikel__meta">{a.meta}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Newsletter: Postkarte, Akzent = Abonnieren-Button ===== */}
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="card texture-grid newsletter">
+        <p class="eyebrow">Nichts verpassen</p>
+        <h2>Neue Artikel direkt in dein Postfach</h2>
+        <p class="newsletter__text">
+          Jede Woche neue Erfahrungen, Tipps und ehrliche Einblicke.
+        </p>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">
+            Deine E-Mail-Adresse
+          </label>
+          <input
+            id="newsletter-email"
+            class="newsletter__input"
+            type="email"
+            placeholder="Deine E-Mail-Adresse"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Abonnieren</button>
+        </form>
+        <p class="newsletter__hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Kategorie-Filter, Verhalten 1:1 aus dem Live-app.js initBlogFilters():
+    // Pill aktivieren, Karten per data-category zeigen/verstecken,
+    // URL ohne Reload sauber halten (?filter=... bzw. /blog bei "Alle"),
+    // Filter-Param beim Laden anwenden. Ohne JS: alle Karten sichtbar.
+    (function () {
+      var filters = document.querySelectorAll('.blog-filter');
+      if (!filters.length) return;
+
+      function applyFilter(filter, updateUrl) {
+        filters.forEach(function (b) {
+          b.classList.toggle('active', b.dataset.filter === filter);
+        });
+
+        var articles = document.querySelectorAll('.artikel__karte[data-category]');
+        articles.forEach(function (card) {
+          if (filter === 'alle' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (updateUrl) {
+          if (filter === 'alle') {
+            history.replaceState(null, '', '/blog');
+          } else {
+            history.replaceState(null, '', '/blog?filter=' + filter);
+          }
+        }
+      }
+
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyFilter(btn.dataset.filter, true);
+        });
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      applyFilter(params.get('filter') || 'alle', false);
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  /* --- Buttons (nur Tokens, Mono-Etiketten-Optik) --------------------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  /* --- Blog-Kopf ------------------------------------------------------- */
+  .blog-kopf {
+    padding-block-end: var(--space-5);
+  }
+
+  .blog-kopf__text {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .blog-kopf__text h1 {
+    font-size: var(--text-3);
+    max-inline-size: 24ch;
+  }
+
+  .blog-kopf__intro {
+    color: var(--ink-soft);
+    max-inline-size: 48ch;
+  }
+
+  /* --- Filter-Pills: Gepaeck-Etiketten, Akzent = aktive Pill ----------- */
+  .blog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-block-start: var(--space-5);
+  }
+
+  .blog-filter {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: var(--space-2) var(--space-4);
+    cursor: pointer;
+  }
+
+  .blog-filter:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .blog-filter.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  /* --- Artikel-Postkarten ---------------------------------------------- */
+  .blog-artikel {
+    padding-block-start: var(--space-4);
+  }
+
+  .artikel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .artikel__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .artikel__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .artikel__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .artikel__karte:hover,
+  .artikel__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  .artikel__bild {
+    margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0;
+  }
+
+  .artikel__bild img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  .artikel__kategorie,
+  .artikel__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .artikel__meta {
+    margin-block-start: auto;
+  }
+
+  .artikel__titel {
+    font-size: var(--text-1);
+  }
+
+  .artikel__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Ganze Karte klickbar (stretched link) */
+  .artikel__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .artikel__karte:hover .artikel__link,
+  .artikel__karte:focus-within .artikel__link {
+    color: var(--accent-strong);
+  }
+
+  .artikel__pfeil {
+    color: var(--accent-strong);
+    margin-inline-start: var(--space-1);
+  }
+
+  /* --- Newsletter-Postkarte -------------------------------------------- */
+  .newsletter {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  .newsletter__text {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter__input {
+    flex: 1 1 240px;
+    max-width: 320px;
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__hinweis {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .artikel__karte,
+    .artikel__karte:nth-child(odd),
+    .artikel__karte:nth-child(even) {
+      rotate: 0deg;
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,645 @@
+---
+// EN-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/en/final-weeks-before-moving-to-australia.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'intro', label: 'Where we are right now' },
+  { id: 'christian-first', label: 'Why is Christian flying a month ahead of the family?' },
+  { id: 'jo', label: 'What does emigrating do to a child who has just turned six?' },
+  { id: 'school', label: 'Steiner School or State School' },
+  { id: 'linny', label: 'How is Linny handling the changes?' },
+  { id: 'flat', label: 'Giving notice on the flat, packing boxes' },
+  { id: 'open-questions', label: 'The biggest open questions' },
+  { id: 'lessons', label: 'What we have learnt from the final weeks' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 2 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/moving-to-australia-with-kids-family-guide',
+    meta: 'Family & Kids · 9 April 2026',
+    titel: 'Moving to Australia with Kids: Our Honest Preparation',
+  },
+  {
+    href: '/en/tra-skill-assessment-chef-australia',
+    meta: 'Visa & Migration · 9 April 2026',
+    titel: 'TRA Skill Assessment as a Chef: What It Really Costs',
+  },
+];
+---
+
+<ArtikelLayout
+  title="The Final Weeks Before Moving to Australia: Goodbyes, School and Open Questions"
+  seoTitle="Final Weeks Before Moving to Australia: Goodbyes + School"
+  description="Family with 2 kids moving to Byron Bay, departure 23 June 2026. Steiner School application, packing up the flat, saying goodbye, honest report."
+  lang="en"
+  eyebrow="Our Story"
+  datum="16 April 2026"
+  lesezeit="8 min read · Last updated: 6 June 2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Final Weeks Before Moving to Australia: Goodbyes + School" />
+    <meta property="og:description" content="Family with 2 kids moving to Byron Bay, departure 23 June 2026. Steiner School application, packing up the flat, saying goodbye, honest report." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Final Weeks Before Moving to Australia: Goodbyes + School" />
+    <meta name="twitter:description" content="Family with 2 kids moving to Byron Bay, departure 23 June 2026. Steiner School application, packing up the flat, saying goodbye, honest report." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "Final Weeks Before Moving to Australia: Goodbyes + School",
+    "description": "Family with 2 kids moving to Byron Bay, departure 23 June 2026. Steiner School application, packing up the flat, saying goodbye, honest report.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg",
+      "caption": "The final weeks before flying to Australia.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-04-16T12:00:00+02:00",
+    "dateModified": "2026-06-06T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Final weeks before moving to Australia"
+    },
+    "keywords": "moving to Australia, Byron Bay, Steiner School, Mullumbimby, Northern Rivers, packing up flat, goodbyes, family moving abroad"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When is the family moving to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Christian flies out first on 23 June 2026 to Byron Bay in the Northern Rivers Region, NSW. Lucy follows with Jo (6) and Linny (2) on 26 July 2026. The staggered departure gives Christian time to find accommodation and organise first steps on the ground."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which school will Jo attend in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The family has applied to Steiner Schools in Mullumbimby and Byron Bay. A place is not guaranteed. The fallback would be a state school in NSW, where allocation depends on home address. The Australian school year starts in January, so Jo will likely only start then."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why a Steiner School and not a regular school?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lucy comes from a family with an anthroposophical background. Her siblings attended Waldorf schools, her mother works as a childminder with a similar pedagogical approach. Waldorf education is not an experiment for the family, it is lived conviction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you prepare small children for emigration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With Jo (6) we are deliberately waiting for the right moment for the goodbye talk. He is already asking questions about toys, his bike and his school enrolment. With Linny (2) it is less about explanations and more about quickly rebuilding routines and familiar rhythms in Australia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where exactly is the family moving in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The destination is the Northern Rivers Region in New South Wales, specifically Byron Bay and surroundings. The final home address is not yet fixed. Christian will look for suitable accommodation on the ground before Lucy and the kids follow."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Final Weeks Before Moving to Australia", "item": "https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/artikel-abflug.jpg"
+    alt="The final weeks before moving to Australia"
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Key Takeaways (id="intro" wie live: TOC-Anker) -->
+  <div class="info-box" id="intro">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>Christian flies out on 23 June 2026 to Byron Bay. Lucy, Jo (6) and Linny (2) follow on 26 July.</li>
+      <li>Application to Steiner Schools in Mullumbimby and Byron Bay is in. A school place is not guaranteed.</li>
+      <li>The Australian school year starts in January. Jo will likely only start then.</li>
+      <li>Notice is given on the flat, move-out end of July. In parallel: saying goodbye, packing boxes, letting go.</li>
+    </ul>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    We are packing boxes, giving notice on the flat, and trying at the same time to explain to a six-year-old why his best friend will start school without him. In a few weeks Christian flies out. Lucy and the kids follow a month later. In between is everything that feels like pressing pause on an entire life, and at the same time pressing fast-forward.
+  </p>
+  <p>
+    This is not a guide with checklists. This is our diary. Honest, sometimes chaotic, with more open questions than answers.
+  </p>
+
+  <!-- Why Christian first -->
+  <h2 id="christian-first">Why is Christian flying a month ahead of the family?</h2>
+  <p>
+    Christian goes first. On 23 June 2026 he sits on the plane to Australia, alone. No family adventure at the airport, no arriving together. Instead: a chef who lands in Byron Bay and gets everything ready before his family follows.
+  </p>
+  <p>
+    The plan is pragmatic. Somebody has to find a place to stay. Somebody has to be on the ground so we even have an address. And somebody has to start working. That somebody is Christian.
+  </p>
+  <p>
+    Lucy is still in the middle of her master's thesis, interior architecture, last polish. With a six-year-old and a two-year-old on the side. Just flying out together was not an option.
+  </p>
+  <p>
+    But honestly? It still feels strange. A month apart while everything is dissolving here. The flat, the routines, the familiar life. Christian builds something new in Australia. Lucy holds everything together here until it is time.
+  </p>
+  <p>
+    On 26 July 2026 Lucy, Jo and Linny board the plane. Then we are complete. Until then: FaceTime evenings and the trust that the plan works.
+  </p>
+  <p>
+    <a href="/en/tra-skill-assessment-chef-australia">Christian's path as a chef to Australia, Skill Assessment experience report</a>
+  </p>
+
+  <!-- Jo -->
+  <h2 id="jo">What does emigrating do to a child who has just turned six?</h2>
+  <p>
+    Jo is six. Old enough to understand that something big is changing. Too small to grasp what that really means. And honestly: we do not fully grasp it ourselves yet.
+  </p>
+  <p>
+    His best friend was supposed to start school with him. Here in Germany, at the school around the corner. That was the plan, Jo's plan at least. Now his friend will go into year one without him. And Jo will be on the other side of the world.
+  </p>
+  <p>
+    He asks questions. Lots of questions. "What about my toys?" "Can I take my bike with me?" "But I am enrolled at the school here." Every question is fair. To some we have good answers. To others we do not.
+  </p>
+  <p>
+    What we notice: Jo has become more clingy in the last weeks. He wants to cuddle longer in the evenings. He wants to come into the kitchen when Christian cooks. As if he is gathering time before everything changes. And maybe that is exactly what he is doing.
+  </p>
+  <p>
+    We have deliberately decided not to have the actual goodbye talk yet. Not out of avoidance. We want to wait for the right moment. When it happens, it should be honest. Not a hollow "it will be fine". A real conversation that takes his feelings seriously.
+  </p>
+  <p>
+    How do you explain to a six-year-old that goodbye and beginning can happen at the same time?
+  </p>
+
+  <!-- School -->
+  <h2 id="school">Steiner School or State School: which school for Jo in Australia?</h2>
+  <p>
+    The Australian school year starts in January. Jo will most likely only start school in January 2027, no matter which school it will be. That gives us some time. But the school place question is on the table now.
+  </p>
+  <p>
+    We have applied to two Steiner Schools, one in Mullumbimby and one in Byron Bay. Lucy contacted the Mullumbimby school directly and explained our anthroposophical background. Her siblings attended Waldorf schools. Her mother works as a childminder with a similar pedagogical approach. That is no coincidence. Waldorf education is not a trend for us, it is family tradition.
+  </p>
+  <p>
+    Even so, a guaranteed place is not on the cards. The schools in the Northern Rivers Region are popular. Many families around Byron Bay are looking for exactly this kind of school.
+  </p>
+  <p>
+    And if it does not work out? Then it will be a state school in New South Wales. Which exact one depends on the home address, the so-called catchment area. And we do not have that yet.
+  </p>
+  <p>
+    For anyone who wants to read up on the NSW school system, the official site of the NSW Department of Education has all the details: <a href="https://education.nsw.gov.au" target="_blank" rel="noopener">education.nsw.gov.au</a>.
+  </p>
+  <p>
+    Sounds like a lot of uncertainty? It is. But we have learnt: moving abroad with a family, you cannot clarify everything in advance. Some things only sort themselves out on the ground.
+  </p>
+
+  <!-- Linny -->
+  <h2 id="linny">How is Linny handling the changes?</h2>
+  <p>
+    Linny is two. She does not understand moving boxes. She does not know what "Australia" means. But she feels it when the energy in the house shifts.
+  </p>
+  <p>
+    Right now Linny has the perfect world. Monday to Friday she goes to the childminder. That is Lucy's mother, so grandma. Four kids in the group. Linny's best friend is among them. She knows every step, every routine. Arriving in the morning, breakfast together, playing, midday nap. Everything familiar.
+  </p>
+  <p>
+    And then there is Christian in the kitchen. Linny sits next to him on the worktop while he cooks. That is her thing. Her ritual. Father and daughter, side by side, while dinner is starting to smell of itself.
+  </p>
+  <p>
+    All of that will change. The childminder stays in Germany. The best friend too. The kitchen will be a different one. Will she remember? Probably not in any concrete way. But the transition will still be felt, for her and for us.
+  </p>
+  <p>
+    With Linny we worry less about explanations and more about stability. Kids at that age need familiar faces and steady rhythms. In Australia we will have to rebuild both. Fast.
+  </p>
+
+  <!-- Packing up -->
+  <h2 id="flat">Giving notice on the flat, packing boxes: how do you dissolve a life?</h2>
+  <p>
+    Notice is given on the flat. Move-out end of July. That sounds like one sentence. In reality it is a hundred decisions a day.
+  </p>
+  <p>
+    What do we take? What do we sell? What do we give away? What goes into the container, what into the suitcase, what into the bin?
+  </p>
+  <p>
+    Every piece of furniture has a story. The table where Jo painted his first pictures. The shelf Christian built himself. Linny's cot, which she has long outgrown, but which is still hard to let go of.
+  </p>
+  <p>
+    And in between: everyday life. Daycare pick-ups. Writing a master's thesis. Cooking. Bedtime. Packing boxes once the kids are asleep. There is no pause button for normal life while you are planning a new one in parallel.
+  </p>
+  <blockquote>
+    <strong>What we learnt:</strong> the biggest mistake would have been to push everything into the last two weeks. We started early, room by room. Not perfect, not systematic. But in motion.
+  </blockquote>
+  <p>
+    What helps us: priorities. Not everything has to be solved before take-off. Some things are better sorted from a distance. And some things sort themselves out as soon as you let go.
+  </p>
+
+  <!-- Open Questions -->
+  <h2 id="open-questions">What are the biggest open questions just before take-off?</h2>
+  <p>
+    We want to be honest. There is a list of things that are not sorted yet. And that is okay. Here are the biggest ones:
+  </p>
+  <p>
+    <strong>Housing in Australia:</strong> Christian will look on the ground. But the rental market in Byron Bay and the Northern Rivers Region is tight. Without a fixed address, no state school allocation. Without an address, no settled everyday life.
+  </p>
+  <p>
+    <strong>School place:</strong> Steiner School application is in. No guaranteed place. The fallback depends on the address. Jo most likely only starts in January.
+  </p>
+  <p>
+    <strong>Childcare for Linny:</strong> In Germany she has grandma. In Australia we have to find something new. Childcare in Australia is expensive and waiting lists are long.
+  </p>
+  <p>
+    <strong>Lucy's master's thesis:</strong> Has to be finished before the plane leaves. No plan B.
+  </p>
+  <p>
+    <strong>The goodbye talk with Jo:</strong> Still ahead of us. Deliberately. But it will come.
+  </p>
+  <p>
+    Sounds like a lot? It is. But we have got used to living with uncertainty. That is part of moving abroad. Not everything has to be solved today. Some things are allowed to stay open.
+  </p>
+
+  <!-- Lessons -->
+  <h2 id="lessons">What we have learnt from the final weeks</h2>
+  <p>
+    The weeks before a move to the other side of the world are not a checklist phase. They are emotional. Chaotic. And surprisingly beautiful.
+  </p>
+  <p>
+    Because you suddenly notice what really counts. It is not the furniture. It is Jo's hand reaching for yours when he goes to bed at night. Linny laughing on the kitchen worktop. The feeling of taking a big step together, even if half of it is still unclear.
+  </p>
+  <p>
+    We document all of this. Not because we are experts. Because we know that other families are facing the same questions. And because honest stories help more than perfect guides.
+  </p>
+  <p>
+    If you are in the same situation right now: you are not alone. It is normal that it feels exciting and frightening at the same time. It is normal not to have answers to everything. And it is normal that sometimes you doubt all of it.
+  </p>
+  <p>
+    Keep going anyway. Step by step. Box by box.
+  </p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>When is the family moving to Australia?</h3>
+  <p>
+    Christian flies out first on 23 June 2026 to Byron Bay in the Northern Rivers Region, NSW. Lucy follows with Jo (6) and Linny (2) on 26 July 2026. The staggered departure gives Christian time to find accommodation and organise first steps on the ground.
+  </p>
+
+  <h3>Which school will Jo attend in Australia?</h3>
+  <p>
+    The family has applied to Steiner Schools in Mullumbimby and Byron Bay. A place is not guaranteed. The fallback would be a state school in NSW, where allocation depends on home address. The Australian school year starts in January, so Jo will likely only start then.
+  </p>
+
+  <h3>Why a Steiner School and not a regular school?</h3>
+  <p>
+    Lucy comes from a family with an anthroposophical background. Her siblings attended Waldorf schools, her mother works as a childminder with a similar pedagogical approach. Waldorf education is not an experiment for the family, it is lived conviction.
+  </p>
+
+  <h3>How do you prepare small children for emigration?</h3>
+  <p>
+    With Jo (6) we are deliberately waiting for the right moment for the goodbye talk. He is already asking questions about toys, his bike and his school enrolment. With Linny (2) it is less about explanations and more about quickly rebuilding routines and familiar rhythms in Australia.
+  </p>
+
+  <h3>Where exactly is the family moving in Australia?</h3>
+  <p>
+    The destination is the Northern Rivers Region in New South Wales, specifically Byron Bay and surroundings. The final home address is not yet fixed. Christian will look for suitable accommodation on the ground before Lucy and the kids follow.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This post is a personal experience report. It does not replace professional advice on topics like emigration, school law or childcare in Australia.
+      For official information on the school system in New South Wales we recommend the
+      <a href="https://education.nsw.gov.au" target="_blank" rel="noopener">NSW Department of Education</a>.
+      Our story is our story. Yours can look different.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 6 June 2026
+    </p>
+  </div>
+
+  <!-- Update-Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">1 June 2026</span>
+      <span class="update-log__text">Article published (English version of the German original from 16 April 2026).</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to Northern Rivers with Lucy and two kids in the summer of 2026. Writes here about visas, costs and everything that happens on the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 2 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We send updates</h2>
+        <p>New articles, real experience, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box (Key takeaways) ---------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Einordnungs-Box (blockquote): eingeklebte Notiz ----------- */
+  blockquote {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

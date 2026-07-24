@@ -1,0 +1,213 @@
+---
+// Interner Styleguide: zeigt Tokens, Typo, Spacing, Texturen in Light + Dark.
+// Nur fuer die Abnahme-Vorschau, geht nie live.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const farbenLight = [
+  { name: 'Sand', varName: '--bg', hex: '#F3E9D6', rolle: 'Haupt-Hintergrund' },
+  { name: 'Creme', varName: '--surface', hex: '#FBF7EE', rolle: 'Cards, erhöhte Flächen' },
+  { name: 'Tinten-Braun', varName: '--ink', hex: '#33291F', rolle: 'Text, Headlines' },
+  { name: 'Meta-Braun', varName: '--ink-soft', hex: '#695A48', rolle: 'Meta, Labels' },
+  { name: 'Terrakotta', varName: '--accent', hex: '#B5482A', rolle: 'EIN Akzent pro Sektion' },
+  { name: 'Terrakotta Text', varName: '--accent-strong', hex: '#A63E22', rolle: 'Links, Text in Lesegröße' },
+  { name: 'Eukalyptus', varName: '--sage', hex: '#7E8B6D', rolle: 'Ruhige Akzente, dekorativ' },
+  { name: 'Eukalyptus Text', varName: '--sage-text', hex: '#5C6850', rolle: 'Sage in Lesegröße' },
+];
+---
+
+<BaseLayout
+  title="Styleguide – Sonnengetrocknete Erde"
+  description="Interner Styleguide des Wildgewachsen-Redesigns."
+  lang="de"
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Styleguide · Palette A</p>
+      <h1>Sonnengetrocknete Erde</h1>
+      <p class="lede">
+        Der Look bringt das Reisetagebuch aus den Videos auf die Website: warme
+        Erdtöne, Millimeterpapier nur als Hauch, eine Handschrift für die
+        Randnotizen. Mit dem Knopf rechts testest du Hell und Dunkel.
+      </p>
+      <button id="theme-toggle" class="toggle" type="button">
+        Theme: automatisch
+      </button>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-farben">
+    <div class="container">
+      <h2 id="h-farben">Farben</h2>
+      <div class="swatches">
+        {
+          farbenLight.map((f) => (
+            <div class="swatch card">
+              <div class="swatch__chip" style={`background: var(${f.varName})`} />
+              <p class="swatch__name">{f.name}</p>
+              <p class="swatch__meta">
+                {f.varName} · Light {f.hex}
+              </p>
+              <p class="swatch__meta">{f.rolle}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-typo">
+    <div class="container">
+      <h2 id="h-typo">Typografie</h2>
+      <div class="typo card">
+        <p class="eyebrow">Eyebrow · Courier Prime · 0.18em Letterspacing</p>
+        <p class="t4">Young Serif für die großen Momente</p>
+        <p class="t2">Young Serif in H2, warm und kräftig</p>
+        <p class="body">
+          Alegreya trägt den Fließtext: 16 bis 18 Pixel, Zeilenhöhe 1,75,
+          maximal 70 Zeichen pro Zeile. Eine Buch-Serife mit Charakter, die auch
+          bei langen Auswanderungs-Guides nicht ermüdet. Umlaute sitzen: Ä, Ö,
+          Ü, ß.
+        </p>
+        <p class="handnote">Caveat für Randnotizen, immer in Terrakotta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-flaechen">
+    <div class="container">
+      <h2 id="h-flaechen">Flächen und Texturen</h2>
+      <div class="flaechen">
+        <div class="card texture-grid flaeche">
+          <p class="eyebrow">Millimeterpapier</p>
+          <p>Raster nur als Hauch, nie aufdringlich.</p>
+        </div>
+        <div class="card texture-paper flaeche">
+          <p class="eyebrow">Papierkorn</p>
+          <p>Feines Rauschen, kaum sichtbar.</p>
+        </div>
+        <div class="card flaeche flaeche--accent">
+          <p class="eyebrow eyebrow--on-accent">Terrakotta-Fläche</p>
+          <p>Creme-Text auf Terrakotta, für CTAs.</p>
+        </div>
+      </div>
+      <p class="hinweis">
+        Demo-Artikel mit dem Lese-Layout:
+        <a href="/styleguide-artikel">zum Artikel-Beispiel</a> ·
+        Schriften-Entscheidung: <a href="/styleguide-fonts">4 Kombis im Vergleich</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  // Theme-Toggle: automatisch -> hell -> dunkel. Stampft data-theme aufs Root.
+  const btn = document.getElementById('theme-toggle');
+  const labels = { auto: 'automatisch', light: 'hell', dark: 'dunkel' };
+  let mode = 'auto';
+  btn?.addEventListener('click', () => {
+    mode = mode === 'auto' ? 'light' : mode === 'light' ? 'dark' : 'auto';
+    if (mode === 'auto') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = mode;
+    btn.textContent = 'Theme: ' + labels[mode];
+  });
+</script>
+
+<style>
+  .lede {
+    max-inline-size: var(--measure);
+    margin-block-start: var(--space-4);
+    font-size: var(--text-1);
+  }
+
+  .toggle {
+    margin-block-start: var(--space-5);
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+  }
+
+  .toggle:hover {
+    border-color: var(--accent-strong);
+  }
+
+  .swatches {
+    margin-block-start: var(--space-5);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .swatch__chip {
+    height: 72px;
+    border-radius: var(--radius-m);
+    border: 1px solid var(--line);
+  }
+
+  .swatch__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-block-start: var(--space-3);
+  }
+
+  .swatch__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .typo {
+    margin-block-start: var(--space-5);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .t4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-4);
+    line-height: var(--leading-tight);
+  }
+
+  .t2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-2);
+    line-height: var(--leading-tight);
+  }
+
+  .body {
+    max-inline-size: var(--measure);
+  }
+
+  .flaechen {
+    margin-block-start: var(--space-5);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .flaeche {
+    min-height: 140px;
+  }
+
+  .flaeche--accent {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border-color: var(--accent);
+  }
+
+  .eyebrow--on-accent {
+    color: var(--accent-contrast);
+  }
+
+  .hinweis {
+    margin-block-start: var(--space-5);
+  }
+</style>

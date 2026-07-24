@@ -1,0 +1,122 @@
+---
+// Aufklapp-Box auf details/summary-Basis, Etikett-/Stempel-Optik.
+// Nativ tastaturbedienbar, kein JS. Kein name-Attribut: Boxen einer
+// Seite schliessen sich NICHT gegenseitig.
+interface Props {
+  titel: string;
+  lang?: 'de' | 'en';
+  variante?: 'standard' | 'kosten';
+}
+
+const { titel, lang = 'de', variante = 'standard' } = Astro.props;
+
+// Screenreader-Kontext vor dem Betrags-Slot (nur Variante "kosten")
+const betragLabel = lang === 'de' ? 'Betrag:' : 'Amount:';
+const hatBetrag = variante === 'kosten' && Astro.slots.has('betrag');
+---
+
+<details class:list={['aufklapp', { 'aufklapp--kosten': variante === 'kosten' }]}>
+  <summary class="aufklapp__summary">
+    <svg
+      class="aufklapp__chevron"
+      viewBox="0 0 16 16"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M5.5 3l5 5-5 5"></path>
+    </svg>
+    <span class="aufklapp__titel">{titel}</span>
+    {
+      hatBetrag && (
+        <span class="aufklapp__betrag">
+          <span class="visually-hidden">{betragLabel}</span>
+          <slot name="betrag" />
+        </span>
+      )
+    }
+  </summary>
+  <div class="aufklapp__inhalt">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .aufklapp {
+    background: var(--surface);
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-s);
+    margin-block: var(--space-4);
+  }
+
+  /* Etiketten-Label: Courier Prime, uppercase, nativer Marker raus */
+  .aufklapp__summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    user-select: none;
+  }
+
+  .aufklapp__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .aufklapp__summary:hover .aufklapp__titel {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  /* Chevron dreht bei offen; Transition wird von der globalen
+     reduced-motion-Regel in base.css auf 0 gesetzt */
+  .aufklapp__chevron {
+    flex: none;
+    width: 0.85em;
+    height: 0.85em;
+    color: var(--ink-soft);
+    transition: rotate 0.25s ease;
+  }
+
+  .aufklapp[open] > .aufklapp__summary .aufklapp__chevron {
+    rotate: 90deg;
+  }
+
+  /* Betrags-Stempel rechts (der EINE Terrakotta-Akzent der Box) */
+  .aufklapp__betrag {
+    margin-inline-start: auto;
+    padding: 0 var(--space-2);
+    font-size: var(--text--1);
+    text-transform: none;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--accent-strong);
+    border: 1px dashed var(--accent-strong);
+    border-radius: var(--radius-s);
+    rotate: -1deg;
+  }
+
+  /* Inhalt zurueck auf Lese-Typo (summary vererbt Mono/Uppercase) */
+  .aufklapp__inhalt {
+    padding: var(--space-4);
+    border-top: 1px dashed var(--line);
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    line-height: var(--leading-body);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .aufklapp__inhalt > :global(* + *) {
+    margin-block-start: var(--space-3);
+  }
+</style>

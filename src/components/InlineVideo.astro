@@ -1,0 +1,211 @@
+---
+// Video im Textfluss mit Polaroid-Rahmen (Creme, unten dicker, leicht
+// rotiert) + optionaler Caveat-Caption. Stummer Loop, Poster-first,
+// Autoplay nur sichtbar + ohne reduced-motion (sonst Poster + Button).
+interface Props {
+  src: string;
+  poster: string;
+  caption?: string;
+  lang?: 'de' | 'en';
+  /* CSS aspect-ratio des Videos, verhindert Layout-Shift vor dem Laden */
+  aspectRatio?: string;
+}
+
+const { src, poster, caption, lang = 'de', aspectRatio = '16 / 9' } = Astro.props;
+
+const labels =
+  lang === 'de'
+    ? { play: 'Video abspielen', pause: 'Video pausieren' }
+    : { play: 'Play video', pause: 'Pause video' };
+---
+
+<figure
+  class:list={['inline-video', { 'inline-video--plain': !caption }]}
+  data-inline-video
+  data-state="paused"
+  data-label-play={labels.play}
+  data-label-pause={labels.pause}
+>
+  <div class="inline-video__stage" style={`aspect-ratio: ${aspectRatio};`}>
+    <video
+      class="inline-video__media"
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsinline
+      preload="none"
+    ></video>
+
+    <button class="inline-video__toggle" type="button" data-toggle aria-label={labels.play}>
+      <svg
+        class="inline-video__icon inline-video__icon--play"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M8 5v14l11-7z"></path>
+      </svg>
+      <svg
+        class="inline-video__icon inline-video__icon--pause"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M7 5h4v14H7zM13 5h4v14h-4z"></path>
+      </svg>
+    </button>
+  </div>
+
+  {caption && <figcaption class="inline-video__caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  /* Polaroid: Creme-Rahmen, unten dicker, leichte Rotation (statisch) */
+  .inline-video {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3);
+    rotate: -0.6deg;
+    max-width: 100%;
+  }
+
+  /* Ohne Caption bleibt der klassisch dicke Polaroid-Boden */
+  .inline-video--plain {
+    padding-block-end: var(--space-6);
+  }
+
+  .inline-video__stage {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inline-video__media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* EIN Terrakotta-Akzent pro Sektion: die Caption. Button = Surface/Ink. */
+  .inline-video__toggle {
+    position: absolute;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .inline-video__toggle:hover {
+    border-color: var(--ink-soft);
+  }
+
+  .inline-video__icon--pause {
+    display: none;
+  }
+
+  [data-state='playing'] .inline-video__icon--pause {
+    display: block;
+  }
+
+  [data-state='playing'] .inline-video__icon--play {
+    display: none;
+  }
+
+  /* Handschrift-Caption, Caveat IMMER Terrakotta */
+  .inline-video__caption {
+    margin-block-start: var(--space-2);
+    padding-block: var(--space-1) var(--space-2);
+    text-align: center;
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+  }
+</style>
+
+<script>
+  // Laeuft 1x pro Seite, initialisiert alle Instanzen (data-Attribute,
+  // keine IDs -> mehrfach pro Seite robust).
+  function setupInlineVideo(root: HTMLElement) {
+    if (root.dataset.videoInit) return;
+    root.dataset.videoInit = '1';
+
+    const video = root.querySelector('video');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]');
+    if (!video || !toggle) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let userPaused = false;
+    let userStarted = false;
+
+    const sync = () => {
+      const playing = !video.paused;
+      root.dataset.state = playing ? 'playing' : 'paused';
+      const label = playing ? root.dataset.labelPause : root.dataset.labelPlay;
+      if (label) toggle.setAttribute('aria-label', label);
+    };
+
+    const tryPlay = () => {
+      video.muted = true;
+      const p = video.play();
+      if (p) p.catch(() => {});
+    };
+
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+
+    toggle.addEventListener('click', () => {
+      if (video.paused) {
+        userPaused = false;
+        userStarted = true;
+        tryPlay();
+      } else {
+        userPaused = true;
+        video.pause();
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              // Expliziter Nutzer-Start gewinnt ueber reduced-motion
+              if (!userPaused && (userStarted || !reduced.matches)) tryPlay();
+            } else if (!video.paused) {
+              video.pause();
+            }
+          }
+        },
+        { threshold: 0.3 }
+      );
+      io.observe(root);
+    }
+
+    reduced.addEventListener('change', () => {
+      if (reduced.matches) {
+        userStarted = false;
+        if (!video.paused) video.pause();
+      }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-inline-video]').forEach(setupInlineVideo);
+</script>

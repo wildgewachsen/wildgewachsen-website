@@ -1,0 +1,1129 @@
+---
+// EN-Port des PTE-Artikels im neuen Look (Content + SEO strikt 1:1).
+// Quelle: website/en/pte-test-experience-australia-visa.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'why-pte', label: 'Why we chose PTE instead of IELTS' },
+  { id: 'score-requirements', label: 'Which score is enough for which visa (2026)' },
+  { id: 'test-format', label: 'How the PTE Academic test runs' },
+  { id: 'my-score', label: 'My result: 89 Overall, and why that was only Proficient' },
+  { id: 'prep', label: 'Two months of prep: what actually worked' },
+  { id: 'test-day', label: 'Test day in Hamburg: what really happens' },
+  { id: 'costs', label: 'Costs and booking in Germany' },
+  { id: 'do-different', label: 'What I would do differently today' },
+  { id: 'whats-next', label: 'How things continue for us' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/186-visa-australia-family-guide',
+    meta: 'Visa & Migration',
+    titel: "186 Visa Australia: Our Family's Path to the Employer Sponsored Visa (2026)",
+  },
+  {
+    href: '/en/tra-skill-assessment-chef-australia',
+    meta: 'Visa & Migration',
+    titel: 'TRA Skill Assessment as a Chef: What It Really Costs, Especially as a Self-Employed Applicant',
+  },
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Moving to Australia as a Family: What It Really Costs, Our Real Numbers (2026)',
+  },
+];
+---
+
+<ArtikelLayout
+  title="PTE Academic Test Experience: How I, a German Chef, Scored 89 for Australia (2026)"
+  seoTitle="PTE Academic Test: I Scored 89 for Australia (2026)"
+  description="PTE Academic test from Hamburg: 89 Overall, 270 EUR, 2 months of prep. Why Proficient is enough and Superior does not automatically mean +20 migration points."
+  lang="en"
+  eyebrow="Visa &amp; Migration"
+  datum="4 May 2026"
+  lesezeit="14 min read · Last updated: 6 June 2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/pte-test-erfahrung-australien-visum" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="PTE Academic Test: I Scored 89 for Australia (2026)" />
+    <meta property="og:description" content="PTE Academic test from Hamburg: 89 Overall, 270 EUR, 2 months of prep. Why Proficient is enough and Superior does not automatically mean +20 migration points." />
+    <meta property="og:image" content="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PTE Academic Test: I Scored 89 for Australia (2026)" />
+    <meta name="twitter:description" content="PTE Academic test from Hamburg: 89 Overall, 270 EUR, 2 months of prep. Why Proficient is enough and Superior does not automatically mean +20 migration points." />
+    <meta name="twitter:image" content="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "PTE Academic Test: I Scored 89 for Australia (2026)",
+    "description": "PTE Academic test from Hamburg: 89 Overall, 270 EUR, 2 months of prep. Why Proficient is enough and Superior does not automatically mean +20 migration points.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "caption": "Person with headphones at a computer, symbol image for the computer-based PTE Academic test.",
+      "creditText": "Pexels",
+      "copyrightNotice": "Pexels License",
+      "creator": {
+        "@type": "Organization",
+        "name": "Pexels",
+        "url": "https://www.pexels.com/"
+      },
+      "license": "https://www.pexels.com/license/",
+      "acquireLicensePage": "https://www.pexels.com/license/"
+    },
+    "datePublished": "2026-05-04T12:00:00+02:00",
+    "dateModified": "2026-06-06T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "PTE Academic English test for the Australian visa"
+    },
+    "keywords": "PTE Academic, PTE test experience, English test Australia visa, Proficient English, Superior English, PTE points Australia, PTE vs IELTS, migration points"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How hard is the PTE Academic test really?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With solid school English and a bit of Australia experience you are well placed on the Speaking side. Writing and Reading time management are the real stumbling blocks. For Competent (L 47 / R 48 / W 51 / S 54) a few days of prep are enough. For Superior (L 69 / R 70 / W 85 / S 88) you realistically need 6 to 12 weeks as a German B2 or C1 speaker."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does PTE preparation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We took 2 months, roughly three times a week, 2 to 3 hours each, so about 50 to 70 hours total. That was enough for Proficient with Overall 89. For Superior, with the component-specific requirement of 85+ in Writing and 70+ in Reading, considerably more practice would have been needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does the PTE test cost in Germany?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We paid 270 EUR in Hamburg in March 2026. Pearson officially lists about 275 USD, depending on the centre and exchange rate it lands between 248 and 275 USD, roughly 230 to 260 EUR. Last-minute bookings under 48 hours before the test can rise to as much as 310 EUR (source: Pearson PTE Test Centers and Fees)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PTE or IELTS better?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For us, clearly PTE. 100% computer-based, Speaking is scored by AI (no day-form risk with a human examiner), result in under 48 hours. IELTS has the Speaking part as a live interview with a human and takes 3 to 13 days for the result. Both are recognised by the Department of Home Affairs as equivalent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which PTE scores do you need for Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Since the update of 7 August 2025, component-specific thresholds apply. For Competent (eligibility for 186/482): L 47 / R 48 / W 51 / S 54. For Proficient (+10 migration points): L 58 / R 59 / W 69 / S 76. For Superior (+20 points): L 69 / R 70 / W 85 / S 88. All four values must be reached at the same time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can you take the PTE in Germany?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pearson lists test centres in Berlin (Pearson Professional Center / New Horizons), Frankfurt am Main (Pearson Professional Center, main location), Hamburg (Berlitz Deutschland GmbH, where we tested), Munich (GFN GmbH) and partly Stuttgart. Availability varies, three months of lead time is usually plenty."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is the PTE result valid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pearson issues the Score Report with two years of validity. For Australian visa applications, the Department of Home Affairs generally accepts tests taken within the last three years before lodging. When in doubt, check with a migration agent before lodging, the rules can change."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Proficient English mean in PTE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Proficient English gives you +10 migration points in the EOI points test. You reach it when all four components hit their thresholds at the same time: Listening 58, Reading 59, Writing 69, Speaking 76. With my score (L 83 / R 66 / W 75 / S 90) I have Proficient. For Superior, Reading and Writing would have needed to be higher."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you retake the PTE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, as often as you like. Pearson requires at least 24 hours between two attempts, but recommends two weeks so the Score Report is actually rebuilt. We are not planning a second test before take-off, possibly directly in Australia for the +20 migration points (Superior), if plan B (189/190/491) becomes necessary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the PTE recognised in Germany?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For Australian visa applications, yes, fully and on par with IELTS, recognised by the Department of Home Affairs. Pearson has test centres in Berlin, Frankfurt, Hamburg, Munich and partly Stuttgart in Germany. You do not need to fly to Australia to take the test."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "PTE Academic Test Experience", "item": "https://wildgewachsen-australien.de/en/pte-test-experience-australia-visa" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild (Pexels, Original-URL wie live) -->
+  <img
+    class="artikel-bild"
+    src="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg?auto=compress&cs=tinysrgb&w=1280"
+    alt="Man with headphones in front of a computer monitor, symbol image for the computer-based PTE Academic test I took for my Australian visa in Hamburg"
+  />
+
+  <!-- Affiliate marker pending: data-affiliate-pending="apeuni" -->
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="info-box">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>I sat the PTE Academic test in Hamburg on <strong>11 March 2026</strong>, Overall <strong>89 / 90</strong>, classified as <strong>Proficient English</strong> (= +10 migration points for the EOI).</li>
+      <li><strong>89 Overall sounds like Superior. It is not.</strong> Since the <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">DHA update of 7 August 2025</a>, <strong>component-specific thresholds</strong> apply. My Reading 66 and Writing 75 were below the Superior marks (70 and 85 respectively).</li>
+      <li>Preparation: <strong>2 months, roughly 3 times per week, 2 to 3 hours each</strong>, mostly YouTube tutorials and the <strong>APEUni</strong> app (mock tests with AI score estimation). No paid all-in courses.</li>
+      <li>Test cost: <strong>270 EUR</strong>, booked 3 months in advance at the Berlitz test centre in Hamburg. Result came back in under 24 hours.</li>
+      <li>Honest marker: <strong>✓</strong> = own experience, <strong>📊</strong> = external source (Pearson, Department of Home Affairs, migration lawyers).</li>
+    </ul>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    I am 37, a trained chef, and in 8 weeks we are moving to Australia with two small kids. For our target visa (Subclass 186) we need an English-language proof. Three options exist: IELTS, TOEFL or PTE Academic. We chose PTE, I prepared for two months, drove to Hamburg, and came out with Overall 89. Sounds like top performance. On the migration points account, however, only +10 landed, not +20. Why is the one thing nobody on the German web explains cleanly. That gives this article its thread.
+  </p>
+
+  <div class="info-box">
+    <p class="info-box__titel">Status &amp; update logic</p>
+    <p>
+      <strong>Status:</strong> May 2026. My Score Report is valid with Pearson until <strong>11 March 2028</strong>. Visa score requirements change. The Department of Home Affairs last adjusted the component-specific thresholds on 7 August 2025. Before any visa application, check current values directly with <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">DHA</a> or a registered migration agent.
+    </p>
+    <p>
+      <strong>Update rhythm:</strong> We update this article quarterly and add to it when I retake the test in Australia or when new DHA rule changes come in.
+    </p>
+  </div>
+
+  <!-- H2 1: Why PTE -->
+  <h2 id="why-pte">Why we chose PTE instead of IELTS</h2>
+  <p>
+    PTE Academic has been recognised for years as an English proof for Australian visas, on par with IELTS and TOEFL at the <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">Department of Home Affairs</a> (as of 2026). We compared both tests and went with PTE. The main reason was simple.
+  </p>
+
+  <blockquote>
+    "I chose PTE because the test runs on a computer. No random factor. Easier to prepare for and easier to study for."
+  </blockquote>
+
+  <p>
+    With IELTS you sit across from a real examiner during the Speaking part. Day-form, dialect, sympathy, three variables you do not control. With PTE you speak into a microphone, and AI scores all four skills. That sounds at first like "soulless machine". For us it was exactly the point that made the test more predictable. You can train specifically for what the AI hears.
+  </p>
+
+  <p>
+    On top of that, the practical side: the <strong>result is usually online within 48 hours</strong> (<a href="https://www.pearsonpte.com/articles/migrate-australia-new-zealand/" target="_blank" rel="noopener">Pearson PTE</a>, 2026). With IELTS you wait 3 to 13 days. When you are working towards a visa deadline like we are, that is a real difference.
+  </p>
+
+  <p>
+    Here are the key differences at a glance. Before you decide on a test, it is worth looking at the scoring mechanism. Both are accepted in Australia. That is not the point. The point is which test fits your learning style better.
+  </p>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 620 360" role="img" aria-label="Comparison table PTE Academic, IELTS and TOEFL: format, scoring, result time and cost in Germany 2026" xmlns="http://www.w3.org/2000/svg" style="max-width: 620px; width: 100%; height: auto;">
+      <title>PTE vs. IELTS vs. TOEFL, the practical comparison</title>
+      <text x="310" y="28" text-anchor="middle" font-family="Young Serif, serif" font-size="18" font-weight="700" fill="#33291F">PTE Academic vs. IELTS vs. TOEFL</text>
+      <text x="310" y="48" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F" letter-spacing="0.1em">THREE ENGLISH TESTS FOR THE AUSTRALIAN VISA</text>
+
+      <!-- Header row -->
+      <rect x="20" y="70" width="140" height="34" fill="#FBF7EE" stroke="#ddd3bc"/>
+      <rect x="160" y="70" width="150" height="34" fill="#B5482A"/>
+      <rect x="310" y="70" width="150" height="34" fill="#FBF7EE" stroke="#ddd3bc"/>
+      <rect x="460" y="70" width="140" height="34" fill="#FBF7EE" stroke="#ddd3bc"/>
+      <text x="90" y="92" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="600" fill="#33291F" letter-spacing="0.1em">CRITERION</text>
+      <text x="235" y="92" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="700" fill="#FBF7EE" letter-spacing="0.1em">PTE ACADEMIC</text>
+      <text x="385" y="92" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F" letter-spacing="0.1em">IELTS</text>
+      <text x="530" y="92" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F" letter-spacing="0.1em">TOEFL iBT</text>
+
+      <!-- Row 1: Format -->
+      <line x1="20" y1="104" x2="600" y2="104" stroke="#ddd3bc"/>
+      <text x="30" y="128" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Format</text>
+      <text x="235" y="128" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">100% computer</text>
+      <text x="385" y="128" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">Computer/paper</text>
+      <text x="530" y="128" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">Computer</text>
+
+      <!-- Row 2: Scoring -->
+      <line x1="20" y1="142" x2="600" y2="142" stroke="#ddd3bc"/>
+      <text x="30" y="166" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Scoring</text>
+      <text x="235" y="166" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">AI</text>
+      <text x="385" y="166" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">Human (Speaking)</text>
+      <text x="530" y="166" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">AI + human</text>
+
+      <!-- Row 3: Result time -->
+      <line x1="20" y1="180" x2="600" y2="180" stroke="#ddd3bc"/>
+      <text x="30" y="204" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Result after</text>
+      <text x="235" y="204" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="700" fill="#33291F">&lt; 48 hours</text>
+      <text x="385" y="204" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">3–13 days</text>
+      <text x="530" y="204" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">4–8 days</text>
+
+      <!-- Row 4: Duration -->
+      <line x1="20" y1="218" x2="600" y2="218" stroke="#ddd3bc"/>
+      <text x="30" y="242" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Test duration</text>
+      <text x="235" y="242" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">~2 hours</text>
+      <text x="385" y="242" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">~2h 45min</text>
+      <text x="530" y="242" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">~2 hours</text>
+
+      <!-- Row 5: Cost DE 2026 -->
+      <line x1="20" y1="256" x2="600" y2="256" stroke="#ddd3bc"/>
+      <text x="30" y="280" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Cost DE (2026)</text>
+      <text x="235" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">~248–275 USD</text>
+      <text x="385" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">~250–280 EUR</text>
+      <text x="530" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">~245 USD</text>
+
+      <!-- Row 6: AU visa acceptance -->
+      <line x1="20" y1="294" x2="600" y2="294" stroke="#ddd3bc"/>
+      <text x="30" y="318" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">AU visa acceptance</text>
+      <text x="235" y="318" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">✓ all visas</text>
+      <text x="385" y="318" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">✓ all visas</text>
+      <text x="530" y="318" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" fill="#33291F">✓ all visas</text>
+
+      <line x1="20" y1="332" x2="600" y2="332" stroke="#ddd3bc"/>
+      <text x="310" y="350" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">Sources: Pearson PTE, IELTS, ETS, Department of Home Affairs · As of May 2026</text>
+    </svg>
+  </figure>
+
+  <p>
+    Anyone more used to classical school English or finding live conversation easier will do well with IELTS. Anyone who, like us, prefers structured learning, regular self-measurement, and a fast result: PTE.
+  </p>
+
+  <!-- H2 2: Score requirements -->
+  <h2 id="score-requirements">Which score is enough for which visa (2026)</h2>
+  <p>
+    Since <strong>7 August 2025</strong>, the Australian Department of Home Affairs has restructured the English requirements. Instead of a single overall minimum, there are now <strong>component-specific thresholds</strong> for Listening, Reading, Writing and Speaking (<a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">DHA, English language requirements</a>, 2026). Writing and Speaking bars went up, Listening and Reading slightly down. That changes who ends up actually getting the +10 or +20 migration points.
+  </p>
+
+  <p>
+    Here are the thresholds you need to hit in each single component, all four at the same time, otherwise the next-lower level applies:
+  </p>
+
+  <div class="tabelle-halter">
+    <table class="kosten-tabelle">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Listening</th>
+          <th>Reading</th>
+          <th>Writing</th>
+          <th>Speaking</th>
+          <th>Migration points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Competent</strong> (eligibility 186/482)</td>
+          <td>47</td>
+          <td>48</td>
+          <td>51</td>
+          <td>54</td>
+          <td>0 (precondition only)</td>
+        </tr>
+        <tr>
+          <td><strong>Proficient</strong></td>
+          <td>58</td>
+          <td>59</td>
+          <td>69</td>
+          <td>76</td>
+          <td><strong>+10</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Superior</strong></td>
+          <td>69</td>
+          <td>70</td>
+          <td>85</td>
+          <td>88</td>
+          <td><strong>+20</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="quelle-notiz">
+    Sources: <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language/competent-english" target="_blank" rel="noopener">DHA Competent English</a> · <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language/superior-english" target="_blank" rel="noopener">DHA Superior English</a> · <a href="https://www.pearsonpte.com/destination-australia/visas/" target="_blank" rel="noopener">Pearson PTE, Australia Visas</a>
+  </p>
+
+  <p>
+    What does that mean in practice? It depends on which visa you target:
+  </p>
+
+  <ul>
+    <li><strong>Subclass 186 (Employer Nomination Scheme):</strong> the Direct Entry stream requires <em>Competent English</em>. The thresholds are the lowest. Anyone with reasonably solid English can clear that without much preparation.</li>
+    <li><strong>Subclass 482 (Skills in Demand):</strong> <em>Vocational English</em> is enough (L 33 / R 36 / W 29 / S 24) (<a href="https://www.hannantew.com.au/blogs/employer-sponsored/skills-in-demand/what-are-the-english-language-requirements-for-sid-subclass-482-visas/" target="_blank" rel="noopener">Hannan Tew Lawyers</a>, 2025). Even more relaxed.</li>
+    <li><strong>Subclasses 189 / 190 / 491 (Skilled Migration EOI):</strong> this is where it gets serious. Competent is just the entry ticket to lodge an Expression of Interest. The +10 or +20 migration points from Proficient or Superior often decide whether you get invited. Successful invitations in 2024/25 mostly sat at 85 to 95 points overall. Without Superior, it gets tight.</li>
+  </ul>
+
+  <p>
+    That is the strategic question before you even start studying for PTE: <strong>which visa is your main goal?</strong> Anyone aiming at 186 like us can get away with less preparation. Anyone who has plan B as the EOI route should train straight for Superior, otherwise you end up studying twice.
+  </p>
+
+  <!-- H2 3: Test format -->
+  <h2 id="test-format">How the PTE Academic test runs</h2>
+  <p>
+    The test officially lasts about two hours (<a href="https://www.pearsonpte.com/pte-academic/test-format/" target="_blank" rel="noopener">Pearson PTE Test Format</a>, 2026). I was through in just over one and a half hours. It is split into three sections that run back to back: Speaking &amp; Writing, Reading, Listening. 20 task types in total, all on the computer, all AI-scored.
+  </p>
+
+  <p>
+    What makes the PTE special, and what many underestimate, is the <strong>cross-scoring</strong>. A single task counts towards several skills at once. "Repeat Sentence" counts towards Speaking <em>and</em> Listening. "Re-tell Lecture" too. "Summarize Written Text" counts towards Reading <em>and</em> Writing. Mess up one task and it pulls down not one but two score areas.
+  </p>
+
+  <p>
+    The task types to watch out for most:
+  </p>
+
+  <ul>
+    <li><strong>Repeat Sentence</strong> (Speaking + Listening): you hear a sentence between 3 and 9 seconds long, exactly once, and have to repeat it word for word. Remember content, hit pronunciation, speak fluently. All at the same time.</li>
+    <li><strong>Re-tell Lecture</strong> (Speaking + Listening): listen to a 60 to 90 second talk while taking notes, then summarise for 40 seconds. Anyone who freezes here loses points in both skills.</li>
+    <li><strong>Describe Image</strong> (Speaking): describe a chart or photo for 40 seconds. Pauses are point killers.</li>
+    <li><strong>Write from Dictation</strong> (Listening): hear a sentence, type it exactly. Highest point density in the whole test, but every typo costs.</li>
+    <li><strong>Re-order Paragraphs</strong> (Reading): put sentences in the right order. Time eater, best left to the end of the Reading section.</li>
+  </ul>
+
+  <p>
+    For German native speakers there are a few typical pronunciation traps the AI does in fact catch: the <strong>W-V problem</strong> ("wine" turns into "vine"), the <strong>TH sound</strong> (often becomes "t" or "d"), the difference between "pet" and "pat" (<a href="https://pronunciationstudio.com/10-english-pronunciation-errors-german-speakers/" target="_blank" rel="noopener">Pronunciation Studio</a>, 2024). Most people know this, but practising consistently is tedious because our ears often do not hear the differences cleanly in the first place.
+  </p>
+
+  <!-- H2 4: My score -->
+  <h2 id="my-score">My result: 89 Overall, and why that was only Proficient</h2>
+  <p>
+    My Score Report from Hamburg, sat on <strong>11 March 2026, 9:00 am</strong>: Overall <strong>89 / 90</strong>. Listening 83, Reading 66, Speaking 90, Writing 75. Sounds like a top result. On the migration points side, however, what I had hoped for did not arrive. Exactly the point that no German source explains cleanly so far.
+  </p>
+
+  <p>
+    Let us look at what that means in detail. Here are my four values against the component-specific thresholds for Proficient and Superior, because the Overall is not what counts, every single component is:
+  </p>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 640 420" role="img" aria-label="Bar chart: my PTE score components Listening 83, Reading 66, Speaking 90, Writing 75 against the component-specific thresholds for Proficient and Superior. Listening and Speaking meet both levels. Reading and Writing meet only Proficient, not Superior." xmlns="http://www.w3.org/2000/svg" style="max-width: 640px; width: 100%; height: auto;">
+      <title>My score per component, Proficient confirmed, Superior narrowly missed</title>
+      <text x="320" y="28" text-anchor="middle" font-family="Young Serif, serif" font-size="18" font-weight="700" fill="#33291F">My score per component</text>
+      <text x="320" y="48" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F" letter-spacing="0.1em">PROFICIENT CONFIRMED, SUPERIOR NARROWLY MISSED</text>
+
+      <!-- Y-Axis labels -->
+      <text x="50" y="285" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">0</text>
+      <text x="50" y="220" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">50</text>
+      <text x="50" y="155" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">90</text>
+
+      <!-- Grid baseline -->
+      <line x1="60" y1="280" x2="620" y2="280" stroke="#ddd3bc"/>
+
+      <!-- Bar group: Listening -->
+      <rect x="100" y="159" width="60" height="121" fill="#7E8B6D"/>
+      <text x="130" y="178" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" font-weight="700" fill="#FBF7EE">83</text>
+      <text x="130" y="300" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">Listening</text>
+      <text x="130" y="320" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" fill="#33291F">Prof. 58 ✓ &#160;·&#160; Sup. 69 ✓</text>
+      <text x="130" y="338" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="700" fill="#33291F">both met</text>
+
+      <!-- Bar group: Reading -->
+      <rect x="220" y="194" width="60" height="86" fill="#B5482A"/>
+      <text x="250" y="213" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" font-weight="700" fill="#FBF7EE">66</text>
+      <text x="250" y="300" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">Reading</text>
+      <text x="250" y="320" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" fill="#33291F">Prof. 59 ✓ &#160;·&#160; Sup. 70 ✗</text>
+      <text x="250" y="338" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="700" fill="#B5482A">Show-stopper</text>
+
+      <!-- Bar group: Speaking -->
+      <rect x="350" y="150" width="60" height="130" fill="#7E8B6D"/>
+      <text x="380" y="169" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" font-weight="700" fill="#FBF7EE">90</text>
+      <text x="380" y="300" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">Speaking</text>
+      <text x="380" y="320" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" fill="#33291F">Prof. 76 ✓ &#160;·&#160; Sup. 88 ✓</text>
+      <text x="380" y="338" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="700" fill="#33291F">both met</text>
+
+      <!-- Bar group: Writing -->
+      <rect x="480" y="183" width="60" height="97" fill="#B5482A"/>
+      <text x="510" y="202" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" font-weight="700" fill="#FBF7EE">75</text>
+      <text x="510" y="300" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" font-weight="600" fill="#33291F">Writing</text>
+      <text x="510" y="320" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" fill="#33291F">Prof. 69 ✓ &#160;·&#160; Sup. 85 ✗</text>
+      <text x="510" y="338" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="700" fill="#B5482A">Show-stopper</text>
+
+      <!-- Legend -->
+      <rect x="180" y="368" width="14" height="10" fill="#7E8B6D" rx="1"/>
+      <text x="200" y="378" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">Bar = my score</text>
+      <text x="320" y="378" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">✓ threshold met</text>
+      <text x="450" y="378" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">✗ threshold missed</text>
+
+      <text x="320" y="405" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">Source: my own Pearson PTE Score Report (11 March 2026) · DHA component thresholds since 7 August 2025</text>
+    </svg>
+  </figure>
+
+  <p>
+    Speaking 90 and Listening 83 are comfortably above every threshold. <strong>Reading 66</strong> is below the Superior mark (70). And <strong>Writing 75</strong> is clearly below the Superior mark (85). That triggers Proficient, all four components are above the Proficient thresholds, which is +10 migration points.
+  </p>
+
+  <p>
+    What did this insight cost me? In the points test, those are the small extras that would have made our plan B (Skilled Migration without a sponsor) really strong, 20 instead of 10 points is often the difference between an invitation and a waiting list. For our main goal <a href="/en/186-visa-australia-family-guide">Subclass 186 Direct Entry</a>, Proficient is comfortably enough. The migration agent had still advised us to "aim for Superior in case we need it". He was right. We did not have it. It has not hurt us so far.
+  </p>
+
+  <p>
+    <strong>The lesson for everyone coming after me:</strong> do not look at the Overall, look at <em>each</em> component. Anyone with 78 Overall, three components above 85 and one at 60, does not have Superior, at best they have Competent.
+  </p>
+
+  <!-- H2 5: Preparation -->
+  <h2 id="prep">Two months of prep: what actually worked</h2>
+  <p>
+    I did advanced English (LK) at A-Levels in 2008 and lived in Australia between 2016 and 2018. Chef training, then two years as a chef in a French restaurant in Tintenbar and Ballina. Speaking is not the problem. The problem was something else:
+  </p>
+
+  <blockquote>
+    "I speak very good English. The problem was that here it is not only about speaking, but also about writing, grammar etc. I just have not done that in years."
+  </blockquote>
+
+  <p>
+    My plan: <strong>2 months, roughly 3 times per week, 2 to 3 hours each</strong>. That works out to 50 to 70 hours, maybe a bit more, because I went longer the closer the date got. I paid for exactly one thing: the <a href="https://www.apeuni.com/" target="_blank" rel="noopener" data-affiliate-pending="apeuni">APEUni</a> app. Everything else was YouTube and self-study.
+  </p>
+
+  <p>
+    <strong>What worked, in order of contribution to the score:</strong>
+  </p>
+
+  <ol>
+    <li><strong>YouTube, understanding the test.</strong> The biggest lever was simply grasping how the AI scores. What it hears, what it values, what it ignores. My two top picks: <a href="https://www.youtube.com/@LanguageAcademyPTE" target="_blank" rel="noopener">Language Academy PTE</a> and <a href="https://www.youtube.com/@skillspteacademic" target="_blank" rel="noopener">SKILLS PTE ACADEMIC</a>. Both channels explain every task type, show typical mistakes, and crack open the AI logic. Before every session I would watch first, then practise.</li>
+    <li><strong>APEUni for mock tests.</strong> The app simulates real tests realistically and gives back AI score estimates. That is exactly what is missing from free material: a score that shows whether your practice is working. APEUni has a free base version with limited tasks and VIP subscriptions between 16 and 70+ USD depending on length (regional variation). For me it clearly paid off, without those mock tests I would have walked into the centre blind.</li>
+    <li><strong>Sentence structures, not templates.</strong> Important: since the 2024 scoring update, the AI detects generic templates and can punish them with up to 30% score loss (<a href="https://sumlingo.com/blog/updated-scoring-criteria-pte-writing-section/" target="_blank" rel="noopener">Sumlingo Updated Scoring Criteria</a>, 2024). Full templates like "I see a beautiful image in front of me" are out. What works: <em>structures</em>, same paragraph layout, same connectors, same logic, but with individual content. I had a fixed scheme for "Describe Image" and for "Write Essay", but not a single rote-learned sentence cluster.</li>
+  </ol>
+
+  <p>
+    <strong>The hardest part, honestly:</strong>
+  </p>
+
+  <blockquote>
+    "Repeat Sentence was hard because you have to remember a whole sentence after hearing it only once and at the same time focus on how the sentence went and on pronouncing it correctly. On top, I had too little time later in the Reading part of the test. That is why only the 66 score."
+  </blockquote>
+
+  <p>
+    That is the honest crux: Reading 66 was not about understanding but about <strong>time management</strong>. In mock tests I often had a better Reading score than in the actual test, because at home I take more time than the exam allows. Anyone aiming for Superior has to practise the Reading section <em>under time pressure</em>, not relaxed on the sofa.
+  </p>
+
+  <figure class="inline-bild">
+    <img src="https://images.pexels.com/photos/7120933/pexels-photo-7120933.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Woman with headphones focused at a laptop, symbol image for the computer-based PTE preparation with mock tests and AI score estimation" />
+  </figure>
+
+  <p>
+    A rule of thumb from my experience and the research: for <strong>Competent</strong> (51 Overall), a few days of preparation are enough if you are at B2. For <strong>Proficient</strong> as a German B2 speaker plan 3 to 6 weeks, as a C1 speaker 1 to 2 weeks. For <strong>Superior</strong>, realistically 6 to 12 weeks at B2 or 2 to 4 weeks at C1, and the component you will lose most time on is Writing. That is where most people fail the 85 mark.
+  </p>
+
+  <!-- H2 6: Test day -->
+  <h2 id="test-day">Test day in Hamburg: what really happens</h2>
+  <p>
+    I took the test at the <strong>Berlitz Center Hamburg</strong>, one of the four official Pearson test centres in Germany (Berlin, Frankfurt, Hamburg, Munich, partly Stuttgart). I had booked three months in advance for a 9 am slot. There were plenty of spaces. Even on the test day there was still capacity. Three months of lead time is generous. Anyone with less time will usually still find something, especially in Frankfurt as the main location.
+  </p>
+
+  <p>
+    I travelled by ICE train and slept at my brother's place in Hamburg the night before. That was worth its weight in gold. Instead of an early-train stress in the morning, a relaxed coffee at breakfast, short walk to the centre, done. If you have a longer journey, plan an overnight stop. The test is taxing enough, you do not need a sleep deficit on top.
+  </p>
+
+  <p>
+    What you need on test day:
+  </p>
+
+  <ul>
+    <li><strong>Passport</strong> (physical, no digital pass, name must match the booking exactly) (<a href="https://www.pearsonpte.com/policy-center/identification-policy/" target="_blank" rel="noopener">Pearson Identification Policy</a>, 2026)</li>
+    <li><strong>30 minutes buffer time</strong> before the test start, for check-in, photo, security scan</li>
+    <li><strong>No own equipment</strong>, headset, microphone and computer are provided by the centre</li>
+  </ul>
+
+  <p>
+    What many describe as a problem in forums: that all participants do their Speaking tasks at the same time, so the room is full of parallel voices. For me that was surprisingly uncritical. The others spoke very quietly, no one was shouting, the headset insulated well. If you have trained normally, that does not distract. Even so, practising in a café or a lightly noisy place before the test helps, in case your centre is less considerate.
+  </p>
+
+  <p>
+    Test duration in practice: I was completely through after <strong>about one and a half hours</strong>, faster than the official two hours. Result came back <strong>less than 24 hours later</strong> via email with a link to the Score Report in the myPTE portal. That was one of the best parts about PTE: no long wait, no speculation, the number is there.
+  </p>
+
+  <!-- H2 7: Costs -->
+  <h2 id="costs">Costs and booking in Germany</h2>
+  <p>
+    I paid <strong>270 EUR</strong> for my test in Hamburg. Pearson officially lists about 275 USD. Depending on booking time and centre you end up between 248 and 275 USD (<a href="https://www.pearsonpte.com/test-centers-and-fees/" target="_blank" rel="noopener">Pearson PTE Test Centers and Fees</a>, 2026), roughly 230 to 260 EUR. If you book short-notice (under 48 hours before the test), it can go up to 310 EUR. My tip: book three months in advance, that way you get the cheapest rate and free choice of slot.
+  </p>
+
+  <p>
+    Important before booking, the cancellation and rescheduling rules are strict:
+  </p>
+
+  <div class="tabelle-halter">
+    <table class="kosten-tabelle">
+      <thead>
+        <tr>
+          <th>Time before test</th>
+          <th>Cancellation</th>
+          <th>Rescheduling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>≥ 14 days</td>
+          <td>100% refund</td>
+          <td>free</td>
+        </tr>
+        <tr>
+          <td>8–13 days</td>
+          <td>50% refund</td>
+          <td>50% fee</td>
+        </tr>
+        <tr>
+          <td>≤ 7 days</td>
+          <td><strong>No refund</strong></td>
+          <td>not possible</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="quelle-notiz">
+    Source: <a href="https://www.pearsonpte.com/policy-center/cancellations-rescheduling/" target="_blank" rel="noopener">Pearson PTE Cancellations &amp; Rescheduling</a> · <a href="https://www.pearsonpte.com/policy-center/refund-policy/" target="_blank" rel="noopener">Refund Policy</a>
+  </p>
+
+  <p>
+    If you need to retake: technically 24 hours between two attempts is enough. Pearson recommends two weeks so the new Score Report is actually recalculated and published. The number of attempts is not capped.
+  </p>
+
+  <p>
+    Here is the migration points lever per English level, so the test price is set in relation to the actual value for your visa:
+  </p>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 560 320" role="img" aria-label="Bar chart: migration points per English level. Competent 0 points, Proficient 10 points, Superior 20 points. EOI eligibility threshold sits at 65 total points." xmlns="http://www.w3.org/2000/svg" style="max-width: 560px; width: 100%; height: auto;">
+      <title>Migration points per PTE level</title>
+      <text x="280" y="28" text-anchor="middle" font-family="Young Serif, serif" font-size="18" font-weight="700" fill="#33291F">Migration points per English level</text>
+      <text x="280" y="48" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F" letter-spacing="0.1em">POINTS TEST FOR SKILLED MIGRATION VISAS</text>
+
+      <!-- Y-Axis -->
+      <text x="50" y="265" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">0</text>
+      <text x="50" y="205" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">10</text>
+      <text x="50" y="145" text-anchor="end" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F">20</text>
+
+      <!-- Baseline -->
+      <line x1="60" y1="260" x2="540" y2="260" stroke="#ddd3bc"/>
+
+      <!-- Competent: 0 -->
+      <rect x="100" y="260" width="100" height="0" fill="#FBF7EE" stroke="#33291F" stroke-width="1"/>
+      <text x="150" y="255" text-anchor="middle" font-family="Courier Prime, monospace" font-size="14" font-weight="700" fill="#33291F">0</text>
+      <text x="150" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Competent</text>
+      <text x="150" y="298" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">L 47 / R 48 / W 51 / S 54</text>
+
+      <!-- Proficient: +10 -->
+      <rect x="230" y="200" width="100" height="60" fill="#7E8B6D"/>
+      <text x="280" y="220" text-anchor="middle" font-family="Courier Prime, monospace" font-size="14" font-weight="700" fill="#FBF7EE">+10</text>
+      <text x="280" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Proficient</text>
+      <text x="280" y="298" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">L 58 / R 59 / W 69 / S 76</text>
+
+      <!-- Superior: +20 -->
+      <rect x="360" y="140" width="100" height="120" fill="#B5482A"/>
+      <text x="410" y="160" text-anchor="middle" font-family="Courier Prime, monospace" font-size="14" font-weight="700" fill="#FBF7EE">+20</text>
+      <text x="410" y="280" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Superior</text>
+      <text x="410" y="298" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">L 69 / R 70 / W 85 / S 88</text>
+
+      <!-- Christian marker -->
+      <circle cx="280" cy="200" r="8" fill="none" stroke="#33291F" stroke-width="2"/>
+      <text x="280" y="184" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="600" fill="#33291F">Christian</text>
+
+      <text x="280" y="318" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">Source: DHA Points Calculator · Thresholds since 7 Aug 2025 · My score = Proficient (+10)</text>
+    </svg>
+  </figure>
+
+  <p>
+    For 270 EUR in test costs, picking up 10 migration points is a good ratio. For 20 points I would probably have had to invest another two months, and the migration agent said that would have been strategically smart for our plan. It has not hurt us so far. But anyone planning the Skilled Migration route from the start should not skimp on preparation time.
+  </p>
+
+  <!-- H2 8: Do differently -->
+  <h2 id="do-different">What I would do differently today</h2>
+  <p>
+    Looking back I am overall happy with the result. In the mock tests before the day I sometimes had lower values, the pressure in the centre worked on me more as focus than as freeze. Even so, there are three things I would approach differently:
+  </p>
+
+  <ol>
+    <li><strong>Practise Reading under time pressure.</strong> My biggest weak point was not understanding, but that I got stuck too long on "Re-order Paragraphs" and "Multiple Choice Multiple Answers". The AI punishes wrong answers in "Multiple Answers" with point deductions. Anyone who guesses out of time pressure loses twice. In the last two weeks I should have trained only with a stopwatch.</li>
+    <li><strong>More writing volume.</strong> Writing had been dead for me for years. Cooking demands a different kind of English than essays. Three extra "Write Essay" exercises per week would probably have brought me 5 to 10 more points, and with that Superior within reach.</li>
+    <li><strong>Stricter with templates.</strong> I was already cautious, but in hindsight I should have gone even more radical on <em>individual</em> content. Even "sentence structures" can stand out when used too mechanically. Better a varied solution with a few pauses than three perfectly identical structures in a row.</li>
+  </ol>
+
+  <p>
+    What I would do exactly the same again: paying for APEUni. Small investment, clearly measurable mock-test scores, AI feedback. Anyone who, like me, just knows in their gut that they "can speak English fine", needs the objective mirror. Otherwise you wonder at the real test about numbers nobody saw coming.
+  </p>
+
+  <!-- H2 9: What next -->
+  <h2 id="whats-next">How things continue for us</h2>
+  <p>
+    My score is comfortably enough for our main goal, the Subclass 186 Direct Entry. What we are missing are the small extras for plan B (Skilled Migration without a sponsor, Subclasses 189/190/491). The question: retake the test in Germany before take-off?
+  </p>
+
+  <blockquote>
+    "Before departure we are not planning it any more. There is simply too little time and too much to do."
+  </blockquote>
+
+  <p>
+    I fly out on 23 June, Lucy and the kids follow on 26 July. Until then: packing up the flat in Essen, applying for tourist visas, Lucy finishing her master's thesis, packing half a life into boxes. Pushing PTE again in this phase is not realistic, and also not necessary, because the current score is enough for 186.
+  </p>
+
+  <p>
+    What is likely to come: a <strong>retake in Australia</strong>, once we are there and I have to run the numbers on plan B concretely. The Score Report is valid with Pearson until 11 March 2028, so I have time. If we cannot pull off the sponsor route for the 186 and have to switch to Skilled Migration, Superior suddenly becomes essential.
+  </p>
+
+  <p>
+    If you are walking a similar path: look early at which score really fits your visa. Plan a three-month buffer rather than retaking under time pressure. And do not underestimate Reading and Writing, those two are the show-stoppers where most people end up at Proficient instead of Superior.
+  </p>
+
+  <p>
+    For more on the visa requirements from our family perspective, see our <a href="/en/186-visa-australia-family-guide">family guide to Subclass 186</a>. Anyone emigrating as a chef or other trained tradesperson should read our experience report on the <a href="/en/tra-skill-assessment-chef-australia">TRA Skill Assessment</a>, that is usually the first step before the visa can even be lodged. And if you are calculating the overall budget: in <a href="/en/cost-of-moving-to-australia-family-guide">our cost overview for families</a> every line item is listed honestly.
+  </p>
+
+  <!-- H2 10: FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>How hard is the PTE Academic test really?</h3>
+  <p>
+    With solid school English and a bit of Australia experience you are well placed on the Speaking side. Writing and Reading time management are the real stumbling blocks. For Competent (L 47 / R 48 / W 51 / S 54) a few days of prep are enough. For Superior (L 69 / R 70 / W 85 / S 88) you realistically need 6 to 12 weeks as a German B2 or C1 speaker.
+  </p>
+
+  <h3>How long does PTE preparation take?</h3>
+  <p>
+    We took 2 months, roughly three times a week, 2 to 3 hours each, so about 50 to 70 hours total. That was enough for Proficient with Overall 89. For Superior, with the component-specific requirement of 85+ in Writing and 70+ in Reading, considerably more practice would have been needed.
+  </p>
+
+  <h3>How much does the PTE test cost in Germany?</h3>
+  <p>
+    I paid <strong>270 EUR</strong> in Hamburg in March 2026. Pearson officially lists about 275 USD. Depending on the centre and exchange rate it lands between 248 and 275 USD (roughly 230 to 260 EUR). Last-minute bookings under 48 hours before the test can rise to as much as 310 EUR (<a href="https://www.pearsonpte.com/test-centers-and-fees/" target="_blank" rel="noopener">Pearson PTE Test Centers and Fees</a>).
+  </p>
+
+  <h3>Is PTE or IELTS better?</h3>
+  <p>
+    For us, clearly PTE: 100% computer-based, Speaking is scored by AI (no day-form risk with a human examiner), result in under 48 hours. IELTS has the Speaking part as a live interview with a human and takes 3 to 13 days for the result. Both are recognised by the Department of Home Affairs as equivalent.
+  </p>
+
+  <h3>Which PTE scores do you need for Australia?</h3>
+  <p>
+    Since the update of 7 August 2025, component-specific thresholds apply. For Competent (eligibility for 186/482): L 47 / R 48 / W 51 / S 54. For Proficient (+10 migration points): L 58 / R 59 / W 69 / S 76. For Superior (+20 points): L 69 / R 70 / W 85 / S 88. All four values must be reached at the same time.
+  </p>
+
+  <h3>Where can you take the PTE in Germany?</h3>
+  <p>
+    Pearson lists test centres in Berlin (Pearson Professional Center / New Horizons), Frankfurt am Main (Pearson Professional Center, main location), Hamburg (Berlitz Deutschland GmbH, where we tested), Munich (GFN GmbH) and partly Stuttgart. Availability varies, three months of lead time is usually plenty.
+  </p>
+
+  <h3>How long is the PTE result valid?</h3>
+  <p>
+    Pearson issues the Score Report with two years of validity. For Australian visa applications, the Department of Home Affairs generally accepts tests taken within the last three years before lodging. When in doubt, check with a migration agent before lodging, the rules can change.
+  </p>
+
+  <h3>What does Proficient English mean in PTE?</h3>
+  <p>
+    Proficient English gives you +10 migration points in the EOI points test. You reach it when all four components hit their thresholds at the same time: Listening 58, Reading 59, Writing 69, Speaking 76. With my score (L 83 / R 66 / W 75 / S 90) I have Proficient. For Superior, Reading and Writing would have needed to be higher.
+  </p>
+
+  <h3>Can you retake the PTE?</h3>
+  <p>
+    Yes, as often as you like. Pearson requires at least 24 hours between two attempts, but recommends two weeks so the Score Report is actually rebuilt. We are not planning a second test before take-off, possibly directly in Australia for the +20 migration points (Superior), if plan B (189/190/491) becomes necessary.
+  </p>
+
+  <h3>Is the PTE recognised in Germany?</h3>
+  <p>
+    For Australian visa applications, yes, fully and on par with IELTS, recognised by the <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">Department of Home Affairs</a>. Pearson has test centres in Berlin, Frankfurt, Hamburg, Munich and partly Stuttgart in Germany. You do not need to fly to Australia to take the test.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article describes my personal PTE experience and my concrete Score Report from March 2026. It is not migration or language consulting content and does not replace professional advice from a registered migration agent. Score requirements, test fees, component thresholds and visa rules change. Binding information is available directly from the Department of Home Affairs, from Pearson PTE or from a qualified migration agent.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 6 June 2026 · <strong>Score Report valid until:</strong> 11 March 2028 · <strong>Quarterly update:</strong> after retake in Australia or on DHA rule changes.
+    </p>
+    <p>
+      <strong>Sources:</strong>
+      <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language" target="_blank" rel="noopener">Department of Home Affairs, English Language Requirements</a>,
+      <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language/competent-english" target="_blank" rel="noopener">DHA Competent English</a>,
+      <a href="https://immi.homeaffairs.gov.au/help-support/meeting-our-requirements/english-language/superior-english" target="_blank" rel="noopener">DHA Superior English</a>,
+      <a href="https://www.pearsonpte.com/destination-australia/visas/" target="_blank" rel="noopener">Pearson PTE Australia Visas</a>,
+      <a href="https://www.pearsonpte.com/pte-academic/test-format/" target="_blank" rel="noopener">Pearson PTE Test Format</a>,
+      <a href="https://www.pearsonpte.com/test-centers-and-fees/" target="_blank" rel="noopener">Pearson PTE Test Centers and Fees</a>,
+      <a href="https://www.pearsonpte.com/policy-center/cancellations-rescheduling/" target="_blank" rel="noopener">Pearson Cancellations &amp; Rescheduling</a>,
+      <a href="https://www.pearsonpte.com/policy-center/identification-policy/" target="_blank" rel="noopener">Pearson Identification Policy</a>,
+      <a href="https://www.hannantew.com.au/blogs/employer-sponsored/skills-in-demand/what-are-the-english-language-requirements-for-sid-subclass-482-visas/" target="_blank" rel="noopener">Hannan Tew Lawyers, 482/SID English Requirements</a>,
+      <a href="https://pronunciationstudio.com/10-english-pronunciation-errors-german-speakers/" target="_blank" rel="noopener">Pronunciation Studio, German Speaker Errors</a>
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">1 June 2026</span>
+      <span class="update-log__text">Article published (English version of the German original from 4 May 2026).</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay (Australia) from 2016 to 2018 and is moving back with the family.
+        PTE Academic taken in Hamburg on 11 March 2026 with Overall 89.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We send updates</h2>
+        <p>New articles, real experience, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen (Key takeaways, Status & update logic) --------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Zitat-Bloecke (O-Toene): eingeklebte Notiz ---------------- */
+  blockquote {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-card);
+    font-style: italic;
+  }
+
+  /* --- Charts ---------------------------------------------------- */
+  /* Charts als "gedrucktes Papier": bewusst IMMER hell (feste Hexwerte statt
+     Tokens), damit die hell-fixierten SVG-Farben auch im Dark Mode lesbar
+     bleiben. Passt zum Retro-Look: ein eingeklebtes Chart im Reisetagebuch. */
+  .chart-figur {
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: var(--radius-m);
+    padding: var(--space-4);
+    overflow-x: auto;
+    box-shadow: var(--shadow-card);
+  }
+
+  .chart-figur svg {
+    margin-inline: auto;
+  }
+
+  /* --- Inline-Bild (Prep-Sektion) -------------------------------- */
+  .inline-bild {
+    margin-block: var(--space-6);
+    text-align: center;
+  }
+
+  .inline-bild img {
+    width: 100%;
+    max-width: 760px;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Tabellen (Score-Thresholds, Storno-Regeln) ---------------- */
+  .tabelle-halter {
+    overflow-x: auto;
+  }
+
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Quellen-Notiz unter Tabellen ------------------------------ */
+  .quelle-notiz {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,286 @@
+---
+// Kontakt-Seite im neuen Look "Sonnengetrocknete Erde".
+// Alle sichtbaren Texte 1:1 aus website/kontakt.html (Live-Stand) portiert.
+// Head-Werte (canonical, hreflang, OG/Twitter, Favicons) exakt wie live;
+// das Live-File hat KEIN JSON-LD, daher hier bewusst keins ergaenzt.
+// Klaro-Consent 1:1 wie live, app.js bewusst NICHT portiert.
+// Kontaktformular: Formspree-Endpoint stammt aus dem Inline-Script des
+// Live-Files (https://formspree.io/f/xbdqglad) und wird hier als form action
+// verwendet (klassischer POST statt AJAX-Handler).
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Social-Links - Texte + URLs 1:1 von live
+const social = [
+  { href: 'https://www.youtube.com/@die_farm', label: 'YouTube – @die_farm' },
+  {
+    href: 'https://www.instagram.com/wildgewachsen_australien/',
+    label: 'Instagram – @wildgewachsen_australien',
+  },
+  { href: 'https://www.tiktok.com/@wildgewachsen', label: 'TikTok – @wildgewachsen' },
+];
+---
+
+<BaseLayout
+  title="Kontakt – Wildgewachsen"
+  description="Kontaktiere uns – Fragen zur Auswanderung nach Australien? Schreib uns eine Nachricht."
+  lang="de"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/kontakt" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/kontakt" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/contact" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/kontakt" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kontakt – Wildgewachsen" />
+    <meta property="og:description" content="Kontaktiere uns – Fragen zur Auswanderung nach Australien? Schreib uns eine Nachricht." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/kontakt" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kontakt – Wildgewachsen" />
+    <meta name="twitter:description" content="Kontaktiere uns – Fragen zur Auswanderung nach Australien? Schreib uns eine Nachricht." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Kontakt: Kopf zentriert, danach Formular-Postkarte + Info-Spalte.
+       Der EINE Terrakotta-Akzent der Sektion = Senden-Button
+       (Info-Links deshalb bewusst in Ink gehalten). ===== */}
+  <section class="section">
+    <div class="container kontakt">
+      <header class="sektion-kopf sektion-kopf--mitte">
+        <p class="eyebrow">Schreib uns</p>
+        <h1>Kontakt</h1>
+        <p class="kontakt__intro">
+          Fragen, Ideen, Kooperationen – wir freuen uns von dir zu hören.
+        </p>
+      </header>
+
+      <div class="kontakt__grid">
+        {/* --- Kontaktformular: wie eine Postkarte zum Ausfuellen --- */}
+        <form
+          class="card texture-paper kontakt-form"
+          id="contact-form"
+          action="https://formspree.io/f/xbdqglad"
+          method="POST"
+        >
+          <div class="kontakt-form__feld">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Dein Name" required />
+          </div>
+          <div class="kontakt-form__feld">
+            <label for="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Deine E-Mail-Adresse"
+              required
+            />
+          </div>
+          <div class="kontakt-form__feld">
+            <label for="message">Nachricht</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Was möchtest du uns sagen?"
+              required></textarea>
+          </div>
+          <input
+            type="hidden"
+            name="_subject"
+            value="Neue Nachricht über wildgewachsen-australien.de"
+          />
+          <button type="submit" class="btn btn--primary">Nachricht senden</button>
+        </form>
+
+        {/* --- Info-Spalte: direkte Wege, kein Akzent --- */}
+        <div class="kontakt-info">
+          <h3>Direkt erreichen</h3>
+          <p>
+            <strong>E-Mail:</strong><br />
+            <a class="kontakt-info__link" href="mailto:info@wildgewachsen-australien.de"
+              >info@wildgewachsen-australien.de</a
+            >
+          </p>
+
+          <h3>Social Media</h3>
+          <p class="kontakt-info__social">
+            {
+              social.map((s) => (
+                <a class="kontakt-info__link" href={s.href} target="_blank" rel="noopener">
+                  {s.label}
+                </a>
+              ))
+            }
+          </p>
+
+          <h3>Kooperationen</h3>
+          <p class="kontakt-info__koop">
+            Wir arbeiten gerne mit Marken zusammen die zu unserer Geschichte passen.
+            Schreib uns einfach mit deiner Idee – wir melden uns.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Button (nur Tokens, Mono-Etiketten-Optik wie Startseite) -------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  /* --- Kopf + Rahmen ---------------------------------------------------- */
+  .kontakt {
+    max-width: 880px;
+  }
+
+  .sektion-kopf {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-end: var(--space-6);
+  }
+
+  .sektion-kopf--mitte {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .kontakt__intro {
+    color: var(--ink-soft);
+    max-inline-size: 480px;
+  }
+
+  /* --- Zwei Spalten: Formular-Postkarte + Info -------------------------- */
+  .kontakt__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .kontakt__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  /* --- Formular: Postkarte mit Etiketten-Labels ------------------------- */
+  .kontakt-form {
+    display: grid;
+    gap: var(--space-4);
+    rotate: -0.5deg;
+  }
+
+  .kontakt-form__feld {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .kontakt-form__feld label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .kontakt-form__feld input,
+  .kontakt-form__feld textarea {
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+  }
+
+  .kontakt-form__feld textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  .kontakt-form__feld input::placeholder,
+  .kontakt-form__feld textarea::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .kontakt-form .btn {
+    justify-self: start;
+  }
+
+  /* --- Info-Spalte ------------------------------------------------------- */
+  .kontakt-info {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .kontakt-info h3 {
+    margin-block-start: var(--space-3);
+  }
+
+  .kontakt-info h3:first-child {
+    margin-block-start: 0;
+  }
+
+  /* Links in Ink halten: der Akzent der Sektion ist der Senden-Button */
+  .kontakt-info__link {
+    color: var(--ink);
+  }
+
+  .kontakt-info__link:hover {
+    color: var(--accent-strong);
+  }
+
+  .kontakt-info__social {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+
+  .kontakt-info__koop {
+    color: var(--ink-soft);
+    font-size: var(--text--1);
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kontakt-form {
+      rotate: 0deg;
+    }
+  }
+</style>

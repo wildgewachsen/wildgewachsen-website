@@ -1,0 +1,726 @@
+---
+// EN-Flug-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/en/cost-of-flights-to-australia-family-guide.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'numbers', label: 'What our flights cost' },
+  { id: 'one-way', label: 'Why we booked one-way' },
+  { id: 'my-flight', label: 'My flight: €467 from a spontaneous deal' },
+  { id: 'family-flight', label: "Lucy and the kids' flight: why it was more expensive" },
+  { id: 'searching', label: 'How we searched: Skyscanner, every day' },
+  { id: 'luggage', label: 'Luggage, seats and the train to the airport' },
+  { id: 'learnt', label: 'What we learnt from booking' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Cost of Moving to Australia as a Family: Our Real Numbers (2026)',
+  },
+  {
+    href: '/en/186-visa-australia-family-guide',
+    meta: 'Visa & Migration',
+    titel: '186 Visa Australia: Our Family Route to the Employer Sponsored Visa (2026)',
+  },
+  {
+    href: '/en/moving-to-australia-with-kids-family-guide',
+    meta: 'Family & Kids',
+    titel: 'Moving to Australia With Kids (2 and 6 yrs): Our Honest Preparation',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Cost of Flights to Australia: Real Family Bookings (2026)"
+  description="What does a flight to Australia cost for a family? Our real numbers: €467 for my flight, €3,061.80 for Lucy and the kids, plus how we booked. (2026)"
+  lang="en"
+  eyebrow="Money & Costs"
+  datum="1 June 2026"
+  lesezeit="8 min read · Last updated: 16.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/fluege-nach-australien-kosten-familie" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cost of Flights to Australia: Real Family Bookings (2026)" />
+    <meta property="og:description" content="What does a flight to Australia cost for a family? Our real numbers: €467 for my flight, €3,061.80 for Lucy and the kids, plus how we booked. (2026)" />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cost of Flights to Australia: Real Family Bookings (2026)" />
+    <meta name="twitter:description" content="What does a flight to Australia cost for a family? Our real numbers: €467 for my flight, €3,061.80 for Lucy and the kids, plus how we booked. (2026)" />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "Cost of Flights to Australia: Real Family Bookings (2026)",
+    "description": "What does a flight to Australia cost for a family? Our real numbers: €467 for my flight, €3,061.80 for Lucy and the kids, plus how we booked. (2026)",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-fluege.jpg",
+      "caption": "Christian with the two kids and the luggage trolley at airport check-in before the one-way flight to Brisbane.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-06-01T12:00:00+02:00",
+    "dateModified": "2026-06-16T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Flights to Australia for an emigrating family"
+    },
+    "keywords": "flights to Australia, cost of flight to Australia, one-way Australia, moving to Australia family, booking flights Australia, Skyscanner, China Southern, Emirates"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a flight to Australia cost for a family?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our family of four paid around €3,552 in total: €467 for my flight with China Southern, €3,061.80 for Lucy and the two kids with Emirates, and €22.90 for the train to the airport. All flights one-way to Brisbane. These are our real booking amounts from spring 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should you book one-way or return flights to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We booked all flights one-way because we are emigrating. We are going to stay. A return ticket wouldn't have made sense for us. If you are going to Australia for a limited time, a return flight is often the better option. For us, one-way was the clear decision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the best time to book flights to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "From our experience: search regularly and book quickly. I booked my €467 flight straight away the moment it appeared. Other flights sat at around €800. With Lucy's flight, hesitating probably cost us money. Travel dates within school holidays tend to be more expensive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which airlines fly to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We are flying to Brisbane with two different airlines: I am going with China Southern via Guangzhou, Lucy and the kids with Emirates via Dubai. This is not a recommendation. It is simply what fitted best in our searches each time: price, date and route."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a toddler need their own seat on the plane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "From the second birthday onwards, yes. Our daughter Linnea is two. She needs her own seat and can no longer fly on a lap. That's why we booked three full tickets for Lucy, Joris and Linnea, with no infant-on-lap discount."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where did we book the flights to Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We searched for both flights on Skyscanner, a flight search engine. Booking then happened on the platforms Skyscanner redirected us to: my flight via Booking.com, Lucy and the kids' flight via Expedia."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "inLanguage": "en",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog (English)", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 3, "name": "Cost of Flights to Australia as a Family", "item": "https://wildgewachsen-australien.de/en/cost-of-flights-to-australia-family-guide" }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: TravelAction -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAction",
+    "inLanguage": "en",
+    "name": "Family one-way flight to Australia",
+    "fromLocation": {
+      "@type": "Place",
+      "name": "Germany"
+    },
+    "toLocation": {
+      "@type": "Place",
+      "name": "Brisbane, Australia"
+    }
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero image (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/artikel-fluege.jpg"
+    alt="Christian with the two kids and the luggage trolley at airport check-in before the one-way flight to Brisbane"
+  />
+
+  <!-- Table of contents: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="info-box">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>For our family of four we paid around <strong>€3,552</strong> in total: €3,528.80 in pure flight costs plus €22.90 for the train. All flights <strong>one-way to Brisbane</strong>.</li>
+      <li>My flight (China Southern, departing Frankfurt) cost <strong>€467</strong>. It appeared as a spontaneous deal; comparable flights sat at around €800.</li>
+      <li>Lucy and the kids' flight (Emirates, departing Düsseldorf) came to <strong>€3,061.80</strong> for three people. More expensive because of a travel date during the German summer holidays and a delayed booking.</li>
+      <li>We searched on <strong>Skyscanner</strong>, booked via Booking.com and Expedia. Checked baggage was included in both bookings.</li>
+      <li>Every price here is our real booking amount. Where we suspect something rather than know it, we say so explicitly.</li>
+    </ul>
+  </div>
+
+  <!-- Affiliate disclosure (global, asterisk explanation BGH-compliant) -->
+  <div class="info-box">
+    <p class="info-box__titel">A note on advertising</p>
+    <p>
+      Links marked with <sup>*</sup> in this article are affiliate links. If you sign up or book through them, we receive a small commission. The price for you doesn't change. We only link options we've used or researched ourselves.
+    </p>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    We are emigrating to Australia as a family. I fly out alone on 23 June, Lucy and the two kids follow on 26 July. The flights are booked. Three tickets to Brisbane, all one-way. This article shows what we actually paid: every booking, every date, every platform. Not averages from a statistic, but our real numbers from spring 2026. If you are sitting there working out how much the flight will cost for a family of four, here is our complete flight bill, including the booking where we hesitated too long.
+  </p>
+
+  <!-- H2 1: Numbers -->
+  <h2 id="numbers">What our flights cost</h2>
+  <p>
+    Our three bookings for the trip to Brisbane came to around <strong>€3,552</strong> in total. €467 for my flight, €3,061.80 for Lucy and the two kids, plus €22.90 for the train to the airport. That makes a travel block of roughly <strong>€3,552 for four people</strong>, halfway around the world. All flights are one-way, all going to Brisbane.
+  </p>
+
+  <table class="kosten-tabelle">
+    <thead>
+      <tr>
+        <th>Booking</th>
+        <th>People</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>My flight (China Southern, ex Frankfurt)</td>
+        <td>1</td>
+        <td>€467.00</td>
+      </tr>
+      <tr>
+        <td>Lucy + Joris + Linnea (Emirates, ex Düsseldorf)</td>
+        <td>3</td>
+        <td>€3,061.80</td>
+      </tr>
+      <tr>
+        <td>Train to Frankfurt Airport (ICE €17.90 + seat reservation €5)</td>
+        <td>1</td>
+        <td>€22.90</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>4</strong></td>
+        <td><strong>€3,551.70</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 620 250" role="img" aria-label="Bar chart: Our flight costs to Australia. My flight for one person €467, the flight for Lucy and the two kids €3,061.80 together." xmlns="http://www.w3.org/2000/svg" style="max-width: 620px; width: 100%; height: auto;">
+      <title>What our flights to Australia cost</title>
+      <text x="310" y="30" text-anchor="middle" font-family="Young Serif, serif" font-size="18" font-weight="700" fill="#33291F">What our flights cost</text>
+      <text x="310" y="50" text-anchor="middle" font-family="Courier Prime, monospace" font-size="11" font-weight="300" fill="#33291F" letter-spacing="0.1em">THREE BOOKINGS TO BRISBANE · ALL ONE-WAY</text>
+
+      <!-- Bar 1: My flight -->
+      <text x="30" y="104" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">My flight</text>
+      <text x="30" y="121" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">1 person · China Southern</text>
+      <rect x="200" y="88" width="59" height="38" fill="#7E8B6D" rx="2"/>
+      <text x="269" y="112" font-family="Courier Prime, monospace" font-size="14" font-weight="600" fill="#33291F">€467</text>
+
+      <!-- Bar 2: Family -->
+      <text x="30" y="174" font-family="Courier Prime, monospace" font-size="13" fill="#33291F">Lucy + 2 kids</text>
+      <text x="30" y="191" font-family="Courier Prime, monospace" font-size="11" fill="#33291F">3 people · Emirates</text>
+      <rect x="200" y="158" width="386" height="38" fill="#B5482A" rx="2"/>
+      <text x="574" y="182" text-anchor="end" font-family="Courier Prime, monospace" font-size="14" font-weight="600" fill="#FBF7EE">€3,061.80</text>
+
+      <line x1="200" y1="214" x2="600" y2="214" stroke="#7E8B6D" stroke-width="1"/>
+      <text x="310" y="236" text-anchor="middle" font-family="Courier Prime, monospace" font-size="10" font-weight="300" fill="#33291F">Plus €22.90 train to airport · Total around €3,552 · Source: our booking confirmations, February/March 2026</text>
+    </svg>
+  </figure>
+
+  <p>
+    The flights are only one line item among many. How that fits into the bigger picture is in <a href="/en/cost-of-moving-to-australia-family-guide">our overview of what moving to Australia as a family really costs</a>. This article is only about flying. And about the question of why one booking costs €467 and the other roughly six times that.
+  </p>
+
+  <!-- H2 2: One-Way -->
+  <h2 id="one-way">Why we booked one-way</h2>
+  <p>
+    All three flight tickets are one-way. Outbound only, no return. That was a deliberate decision, not a money-saving move. We are emigrating. We are not going for a few months, we are going to stay. A return ticket wouldn't have made sense for us. There is no date by which we want to be back in Essen.
+  </p>
+  <p>
+    Honestly, it feels different to book a one-way ticket. No return date in the calendar, no "and then we'll be home again". That is exactly the point. What these last weeks before departure are doing to us is in our piece about the last weeks before the move: <a href="/en/final-weeks-before-moving-to-australia">The Final Weeks Before Moving</a>.
+  </p>
+
+  <!-- H2 3: My flight -->
+  <h2 id="my-flight">My flight: €467 from a spontaneous deal</h2>
+  <p>
+    We booked my own flight on <strong>10 February 2026</strong>: China Southern, from Frankfurt via Guangzhou to Brisbane, one-way, <strong>€467</strong>. For a flight to the other side of the world, that is little. And it wasn't a trick, no negotiation, no secret tip.
+  </p>
+  <p>
+    The flight simply showed up one morning in the Skyscanner search. The other connections around my date were sitting at around €800. And then suddenly this one connection at €467. I didn't think long, I booked straight away. The booking ran via Booking.com, where Skyscanner had forwarded me.
+  </p>
+  <PullQuote lang="en">
+    With flight prices there is no "I'll have another look tomorrow". When a good price is there, it is there now. And tomorrow it might be gone.
+  </PullQuote>
+  <p>
+    If I had waited two days, this price would very likely have been gone again. The fact that I am flying out alone helped: I only needed a single seat, not four seats together. A single cheap seat appears more often than three side by side.
+  </p>
+
+  <!-- H2 4: Family flight -->
+  <h2 id="family-flight">Lucy and the kids' flight: why it was more expensive</h2>
+  <p>
+    With Lucy and the kids it played out differently. Their flight with Emirates, from Düsseldorf via Dubai to Brisbane, came to <strong>€3,061.80</strong> together. For three people, that is just over €1,020 each on average. More than double per person compared to my flight. There were two reasons for that.
+  </p>
+  <p>
+    The first is probably the travel date. Lucy and the kids fly on 26 July, right in the middle of the German summer holidays. Flights are more expensive in school holidays, that is well known. We can't prove it for our case. It is our suspicion, but it fits what we saw in the searches.
+  </p>
+  <p>
+    The second reason was the timing of the booking. We only booked Lucy's flight on <strong>31 March</strong>, later than planned. At the end of March there was a military escalation in the Middle East around Iran. No one could tell us whether flights via Dubai would run on schedule in the months ahead. We hesitated, and in that time prices kept rising. Eventually we decided to book anyway. As of today, it looks like the July flights are not a problem.
+  </p>
+  <p>
+    In hindsight, the hesitation probably cost us money. But in that moment, with two kids on the ticket, we didn't want to book something that might not take off in the end. It is what it is. Some decisions you don't make based on the price.
+  </p>
+
+  <!-- H2 5: Searching -->
+  <h2 id="searching">How we searched: Skyscanner, every day</h2>
+  <p>
+    We searched for both flights mainly on <strong><a href="https://www.skyscanner.com" target="_blank" rel="nofollow noopener">Skyscanner</a></strong>. Important to understand: Skyscanner is a search engine, not a travel agent. The site shows you which connections exist and what they cost. Booking then happens elsewhere.
+  </p>
+  <p>
+    We looked in several times a day. Not for fun, but because prices move constantly. Exactly this daily checking was the reason I caught my €467 flight at all. Anyone who looks once a week doesn't see outliers like that.
+  </p>
+  <p>
+    Booking then happened on two different platforms: my flight via <a href="https://www.dpbolvw.net/click-101762530-15734849" target="_blank" rel="sponsored noopener">Booking.com</a><sup>*</sup>, Lucy and the kids' flight via <a href="https://www.expedia.com" target="_blank" rel="nofollow noopener">Expedia</a>. Skyscanner forwarded to both. You don't pick the platform, you take the one offering the flight at that price.
+  </p>
+
+  <!-- H2 6: Luggage -->
+  <h2 id="luggage">Luggage, seats and the train to the airport</h2>
+  <p>
+    <strong>Checked baggage</strong> was included in the flight price for both bookings. Not a line item we had to add. I have 2 × 23 kg, Lucy and each child 30 kg. That matters to us because we are moving without a shipping container: anything that doesn't fit on the plane goes later in numbered cardboard boxes.
+  </p>
+  <p>
+    One point a family should keep on the radar: the <strong>seat for the toddler</strong>. Our daughter Linnea is two. From the second birthday onwards, a child needs their own seat and can no longer fly on a lap. For us that meant three full tickets for Lucy, Joris and Linnea, no infant-on-lap fare. How we are otherwise preparing the two kids for the move is in <a href="/en/moving-to-australia-with-kids-family-guide">our article on moving to Australia with kids</a>.
+  </p>
+  <p>
+    And then there is getting to the airport. I am flying from Frankfurt but live in Essen. I booked the train ticket from Essen to Frankfurt Airport early. Early meant <strong>€17.90</strong>, plus €5 for the seat reservation. €22.90 together. A small line, but it shows the same pattern as with the flights: being early pays.
+  </p>
+
+  <!-- H2 7: Learnt -->
+  <h2 id="learnt">What we learnt from booking</h2>
+  <p>
+    Four things we take away from booking the flights. First: <strong>be fast when a real deal shows up.</strong> My €467 flight was such a moment. Two days of thinking, and it would have been gone. Second: <strong>don't hesitate too long.</strong> With Lucy's flight, exactly that cost us money, because prices rose while we were waiting.
+  </p>
+  <p>
+    Third: <strong>school holidays cost extra.</strong> Anyone with flexibility on the travel date should plan around the German school holidays. We couldn't, our date hangs off the school year and Lucy's studies. Fourth: <strong>search daily.</strong> Only those who check regularly see the good prices.
+  </p>
+  <p>
+    Would we do anything differently? As of today: no. But honestly, the flights are still ahead of us. The real test, a long-haul flight with a two-year-old and a six-year-old, only comes this summer. If we are wiser afterwards, we will add it here.
+  </p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>What does a flight to Australia cost for a family?</h3>
+  <p>
+    Our family of four paid around €3,552 in total: €467 for my flight with China Southern, €3,061.80 for Lucy and the two kids with Emirates, and €22.90 for the train to the airport. All flights one-way to Brisbane. These are our real booking amounts from spring 2026.
+  </p>
+
+  <h3>Should you book one-way or return flights to Australia?</h3>
+  <p>
+    We booked all flights one-way because we are emigrating. We are going to stay. A return ticket wouldn't have made sense for us. If you are going to Australia for a limited time, a return flight is often the better option. For us, one-way was the clear decision.
+  </p>
+
+  <h3>When is the best time to book flights to Australia?</h3>
+  <p>
+    From our experience: search regularly and book quickly. I booked my €467 flight straight away the moment it appeared. Other flights sat at around €800. With Lucy's flight, hesitating probably cost us money. Travel dates within school holidays tend to be more expensive.
+  </p>
+
+  <h3>Which airlines fly to Australia?</h3>
+  <p>
+    We are flying to Brisbane with two different airlines: I am going with China Southern via Guangzhou, Lucy and the kids with Emirates via Dubai. This is not a recommendation. It is simply what fitted best in our searches each time: price, date and route.
+  </p>
+
+  <h3>Does a toddler need their own seat on the plane?</h3>
+  <p>
+    From the second birthday onwards, yes. Our daughter Linnea is two. She needs her own seat and can no longer fly on a lap. That's why we booked three full tickets for Lucy, Joris and Linnea, with no infant-on-lap discount.
+  </p>
+
+  <h3>Where did we book the flights to Australia?</h3>
+  <p>
+    We searched for both flights on Skyscanner, a flight search engine. Booking then happened on the platforms Skyscanner redirected us to: my flight via Booking.com, Lucy and the kids' flight via Expedia.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article describes our personal flight bookings for our move to Australia. Every price is our real booking amount from February and March 2026. Flight prices change daily and vary with date, route and booking timing. Our numbers are not a benchmark, they are a snapshot.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 16.06.2026 · <strong>Basis:</strong> our own booking confirmations.
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">16 June 2026</span>
+      <span class="update-log__text">Added Booking.com as an affiliate link (advertising) in the booking section.</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">1 June 2026</span>
+      <span class="update-log__text">Article published (English version of the German original from May 2026).</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to the Northern Rivers in summer 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Related articles: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter section, Texte 1:1 wie live -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We will send you updates</h2>
+        <p>New articles, real experiences, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Boxen (Key takeaways, Werbe-Hinweis) ----------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Charts ---------------------------------------------------- */
+  /* Charts als "gedrucktes Papier": bewusst IMMER hell (feste Hexwerte statt
+     Tokens), damit die hell-fixierten SVG-Farben auch im Dark Mode lesbar
+     bleiben. Passt zum Retro-Look: ein eingeklebtes Chart im Reisetagebuch. */
+  .chart-figur {
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: var(--radius-m);
+    padding: var(--space-4);
+    overflow-x: auto;
+    box-shadow: var(--shadow-card);
+  }
+
+  .chart-figur svg {
+    margin-inline: auto;
+  }
+
+  /* --- Kosten-Tabelle (frei im Lesefluss) ------------------------ */
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+    margin-block: var(--space-5);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

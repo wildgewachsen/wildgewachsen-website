@@ -1,0 +1,65 @@
+---
+// Artikel-Basis-Layout (Phase 1): ruhiger Ein-Spalten-Lesefluss,
+// Hero-Slot fuer Foto/Video (Phase 2/3), Meta-Zeile in Space Mono.
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  /** Browser-/SEO-<title>, falls er vom sichtbaren H1 abweicht (Default: title). */
+  seoTitle?: string;
+  description?: string;
+  lang?: 'de' | 'en';
+  eyebrow?: string;
+  datum?: string;
+  lesezeit?: string;
+}
+
+const { title, seoTitle, description, lang = 'de', eyebrow, datum, lesezeit } = Astro.props;
+---
+
+<BaseLayout title={seoTitle ?? title} description={description} lang={lang}>
+  <slot name="head" slot="head" />
+  <article>
+    <header class="artikel-hero section texture-grid">
+      <div class="container container--text">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {
+          (datum || lesezeit) && (
+            <p class="artikel-hero__meta">
+              {datum && <span>{datum}</span>}
+              {datum && lesezeit && <span aria-hidden="true"> · </span>}
+              {lesezeit && <span>{lesezeit}</span>}
+            </p>
+          )
+        }
+      </div>
+      <slot name="hero" />
+    </header>
+    <div class="container container--text section">
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .artikel-hero {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .artikel-hero h1 {
+    margin-block-start: var(--space-3);
+    max-inline-size: 22ch;
+  }
+
+  .artikel-hero__meta {
+    margin-block-start: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+</style>

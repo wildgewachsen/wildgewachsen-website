@@ -1,0 +1,478 @@
+---
+// Impressum & Datenschutz im neuen Look "Sonnengetrocknete Erde".
+// Rechtstexte 1:1 WORTGLEICH aus website/impressum.html (Live-Stand) portiert,
+// nichts gekuerzt. Anker #datenschutz + #bildrechte unveraendert erhalten.
+// Head-Werte (robots noindex, canonical, OG/Twitter, Favicons) exakt wie live;
+// live hat KEINE hreflang-Tags auf dieser Seite, daher hier auch nicht.
+// Klaro-Consent 1:1 wie live (wird vom Klaro-Widerrufs-Link in Abschnitt 9
+// gebraucht), app.js bewusst NICHT portiert.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Impressum & Datenschutz – Wildgewachsen"
+  description="Impressum von wildgewachsen-australien.de"
+  lang="de"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://wildgewachsen-australien.de/impressum" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Impressum & Datenschutz – Wildgewachsen" />
+    <meta property="og:description" content="Impressum von wildgewachsen-australien.de" />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/impressum" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Impressum & Datenschutz – Wildgewachsen" />
+    <meta name="twitter:description" content="Impressum von wildgewachsen-australien.de" />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Auftakt: nur der Seitentitel, kein Akzent ===== */}
+  <section class="section auftakt texture-grid">
+    <div class="container container--text">
+      <h1>Impressum & Datenschutz</h1>
+    </div>
+  </section>
+
+  {/* ===== Rechtstexte: schmale Lese-Spalte, Akzent = Links ===== */}
+  <section class="section legal">
+    <div class="container container--text prose">
+      <h2>Impressum</h2>
+      <h3>Anbieter</h3>
+      <p>
+        Christian Schippel<br />
+        Arndtstr. 6<br />
+        45219 Essen<br />
+        Deutschland
+      </p>
+
+      <h3>Kontakt</h3>
+      <p>E-Mail: info@wildgewachsen-australien.de</p>
+
+      <h3>Verantwortlich für den Inhalt</h3>
+      <p>
+        Christian Schippel<br />
+        Arndtstr. 6, 45219 Essen
+      </p>
+
+      <h3>Haftungsausschluss</h3>
+      <p>
+        Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt.
+        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir
+        jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir
+        für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+      </p>
+      <p>
+        <strong>Wichtiger Hinweis:</strong> Die Inhalte dieses Blogs stellen keine
+        Rechts-, Migrations- oder Finanzberatung dar. Wir teilen unsere persönlichen
+        Erfahrungen. Für verbindliche Auskünfte wende dich bitte an die zuständigen
+        Behörden oder einen qualifizierten Berater.
+      </p>
+
+      <h3>Affiliate-Links</h3>
+      <p>
+        Einige Links auf dieser Website sind sogenannte Affiliate-Links. Wenn du über
+        diese Links ein Produkt kaufst, erhalten wir eine kleine Provision. Der Preis
+        ändert sich für dich dadurch nicht. Affiliate-Links sind als solche gekennzeichnet.
+      </p>
+
+      <h3 id="bildrechte">Bildrechte</h3>
+      <p>
+        <strong>Eigene Fotos:</strong> Alle Fotos auf dieser Website, die uns,
+        unsere Familie oder unseren Alltag zeigen, sind eigene Aufnahmen.
+        © 2026 Wildgewachsen, alle Rechte vorbehalten. Eine Nachnutzung
+        außerhalb dieser Website ist ohne unsere ausdrückliche Zustimmung
+        nicht gestattet.
+      </p>
+      <p>
+        <strong>Stockfotos:</strong> Einzelne Symbolbilder stammen von Pexels
+        (verwendet unter der <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels-Lizenz</a>)
+        oder Pixabay (verwendet unter der <a href="https://pixabay.com/service/license-summary/" target="_blank" rel="noopener">Pixabay Content License</a>).
+        Diese sind im jeweiligen Bild-Schema über das Feld <code>creditText</code>
+        als „Pexels" bzw. „Pixabay" gekennzeichnet.
+      </p>
+      <p>Rückfragen zu Bildrechten: info@wildgewachsen-australien.de</p>
+
+      {/* ===== Datenschutz ===== */}
+
+      <h2 id="datenschutz">Datenschutzerklärung</h2>
+      <p><em>Stand: 26.05.2026</em></p>
+
+      <h3>1. Verantwortlicher</h3>
+      <p>
+        Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website
+        im Sinne der Datenschutz-Grundverordnung (DSGVO) und des Bundesdatenschutzgesetzes
+        (BDSG) ist:
+      </p>
+      <p>
+        Christian Schippel<br />
+        Arndtstr. 6<br />
+        45219 Essen<br />
+        Deutschland<br />
+        E-Mail: info@wildgewachsen-australien.de
+      </p>
+
+      <h3>2. Datenschutzbeauftragter</h3>
+      <p>
+        Es wurde kein Datenschutzbeauftragter benannt. Diese Website wird von einer
+        Einzelperson („Solo-Operator") betrieben. Die Voraussetzungen für eine
+        Pflicht zur Benennung gemäß Art. 37 DSGVO und § 38 BDSG sind nicht erfüllt
+        (keine umfangreiche regelmäßige Beobachtung, keine besonderen Datenkategorien
+        als Kerngeschäft, weniger als 20 mit der automatisierten Verarbeitung beschäftigte
+        Personen).
+      </p>
+
+      <h3>3. Verarbeitungszwecke und Rechtsgrundlagen</h3>
+      <p>Wir verarbeiten personenbezogene Daten zu folgenden Zwecken:</p>
+      <ul>
+        <li>
+          <strong>Bereitstellung der Website (Server-Logs):</strong>{' '}
+          Beim Aufruf werden technische Daten erfasst (IP-Adresse, Datum, Uhrzeit,
+          Browsertyp, Betriebssystem, Referrer-URL).{' '}
+          <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
+          an Betrieb und IT-Sicherheit der Website).
+        </li>
+        <li>
+          <strong>Reichweiten-Messung (GoatCounter):</strong>{' '}
+          Anonyme, cookielose Statistik über Seitenaufrufe.{' '}
+          <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
+          an statistischer Auswertung); zusätzlich § 25 Abs. 2 Nr. 2 TDDDG, da keine
+          Informationen im Endgerät gespeichert oder ausgelesen werden, die nicht
+          unbedingt erforderlich sind.
+        </li>
+        <li>
+          <strong>Newsletter-Versand (Buttondown):</strong>{' '}
+          Verarbeitung der E-Mail-Adresse zum Versand des Newsletters im Double-Opt-In-Verfahren.{' '}
+          <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) sowie
+          Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Newsletter-Vertrags).
+        </li>
+        <li>
+          <strong>Affiliate-Tracking (Wise, SafetyWing, World Nomads, Booking.com):</strong>{' '}
+          Wenn du der Verarbeitung im Cookie-Banner zustimmst, werden Klicks auf
+          Affiliate-Links über Cookies der jeweiligen Partner erkannt, damit
+          Provisionen korrekt zugeordnet werden können.{' '}
+          <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG
+          (jeweils ausdrückliche Einwilligung über den Klaro-Cookie-Banner).
+        </li>
+        <li>
+          <strong>Kontaktanfragen:</strong>{' '}
+          Verarbeitung deiner Angaben zur Beantwortung deiner Anfrage.{' '}
+          <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. b DSGVO (vorvertraglich/Vertrag)
+          bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Kommunikation).
+        </li>
+      </ul>
+
+      <h3>4. Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO)</h3>
+      <ul>
+        <li>Server-Logs: Aufrechterhaltung der technischen Funktionsfähigkeit und
+          Sicherheit gegen Angriffe/Missbrauch.</li>
+        <li>Reichweiten-Messung: Verständnis darüber, welche Inhalte Leser*innen
+          erreichen, um die Website redaktionell zu verbessern. Wir verwenden mit
+          GoatCounter ein Tool, das keine Cookies setzt und keine IP-Adressen
+          speichert.</li>
+      </ul>
+
+      <h3>5. Empfänger personenbezogener Daten</h3>
+      <p>
+        Folgende externe Dienstleister verarbeiten in unserem Auftrag oder als
+        gemeinsame Verantwortliche personenbezogene Daten. Die jeweilige
+        Datenschutzerklärung der Anbieter ist verlinkt; Stand der Anbieter-Angaben
+        ist der 26.05.2026.
+      </p>
+      <div class="tabelle-scroll">
+        <table class="legal-tabelle">
+          <thead>
+            <tr>
+              <th>Anbieter</th>
+              <th>Sitz</th>
+              <th>Funktion</th>
+              <th>Datenkategorie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cloudflare, Inc.</td>
+              <td>USA</td>
+              <td>Hosting (Cloudflare Pages), CDN, DNS</td>
+              <td>IP-Adresse, Verbindungsdaten</td>
+            </tr>
+            <tr>
+              <td>GoatCounter (Martin Tournoij)</td>
+              <td>EU (Niederlande)</td>
+              <td>Cookielose Reichweiten-Messung</td>
+              <td>Anonymisierte Seitenaufrufe</td>
+            </tr>
+            <tr>
+              <td>Buttondown, LLC</td>
+              <td>USA (Richmond, Virginia)</td>
+              <td>Newsletter-Versand</td>
+              <td>E-Mail, Opt-In-Zeitpunkt, ggf. Vorname</td>
+            </tr>
+            <tr>
+              <td>Wise (Wise Payments Limited)</td>
+              <td>Vereinigtes Königreich</td>
+              <td>Affiliate-Tracking</td>
+              <td>Cookie-ID, Klick-Daten</td>
+            </tr>
+            <tr>
+              <td>SafetyWing (Managing General Agent) Ltd.</td>
+              <td>Turks- und Caicosinseln; EU-Vertreter in Larnaca, Zypern</td>
+              <td>Affiliate-Tracking</td>
+              <td>Cookie-ID, Klick-Daten</td>
+            </tr>
+            <tr>
+              <td>World Nomads</td>
+              <td>Australien</td>
+              <td>Affiliate-Tracking</td>
+              <td>Cookie-ID, Klick-Daten</td>
+            </tr>
+            <tr>
+              <td>Booking.com B.V.</td>
+              <td>Niederlande (Amsterdam)</td>
+              <td>Affiliate-Tracking</td>
+              <td>Cookie-ID, Klick-Daten</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6. Datenübermittlung in Drittländer</h3>
+      <p>
+        Einige Empfänger sitzen in Ländern außerhalb des EWR. Wir stützen
+        Übermittlungen wie folgt ab:
+      </p>
+      <ul>
+        <li>
+          <strong>USA (Cloudflare, Buttondown):</strong>{' '}
+          Übermittlung auf Basis des EU-US Data Privacy Frameworks (Angemessenheitsbeschluss
+          der EU-Kommission vom 10.07.2023, soweit die Anbieter zertifiziert sind)
+          und/oder Standardvertragsklauseln (SCC) gemäß Art. 46 Abs. 2 lit. c DSGVO.
+        </li>
+        <li>
+          <strong>Vereinigtes Königreich (Wise):</strong>{' '}
+          Angemessenheitsbeschluss der EU-Kommission vom 28.06.2021.
+        </li>
+        <li>
+          <strong>Australien (World Nomads):</strong>{' '}
+          Übermittlung auf Basis von Standardvertragsklauseln gemäß
+          Art. 46 Abs. 2 lit. c DSGVO; kein Angemessenheitsbeschluss.
+        </li>
+        <li>
+          <strong>Turks- und Caicosinseln (SafetyWing):</strong>{' '}
+          Übermittlung auf Basis von Standardvertragsklauseln gemäß
+          Art. 46 Abs. 2 lit. c DSGVO; kein Angemessenheitsbeschluss.
+          EU-Vertreter gemäß Art. 27 DSGVO ist benannt.
+        </li>
+      </ul>
+      <p>
+        Drittland-Übermittlungen sind mit Risiken verbunden (z.B. weitergehende
+        Zugriffsmöglichkeiten staatlicher Stellen, mögliche eingeschränkte Durchsetzung
+        Betroffenenrechte). Du hast die Wahl, der Verarbeitung durch
+        Affiliate-Anbieter über den Cookie-Banner zu widersprechen.
+      </p>
+
+      <h3>7. Speicherdauer</h3>
+      <ul>
+        <li><strong>Server-Logs (Cloudflare):</strong> Speicherung gemäß Cloudflare-Default;
+          nach unserer Kenntnis maximal 7 Tage. Details:
+          <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.</li>
+        <li><strong>Klaro-Cookie („wildgewachsen-klaro"):</strong> 365 Tage ab Setzung
+          oder bis zum Widerruf der Einwilligung.</li>
+        <li><strong>Affiliate-Cookies:</strong> Speicherdauer wird vom jeweiligen
+          Anbieter festgelegt; siehe verlinkte Datenschutzerklärungen.</li>
+        <li><strong>Newsletter-Daten:</strong> bis zur Abmeldung. Nach Abmeldung
+          wird der Datensatz bei Buttondown entfernt.</li>
+        <li><strong>Kontaktanfragen:</strong> bis zur abschließenden Bearbeitung
+          bzw. solange gesetzliche Aufbewahrungsfristen das erfordern.</li>
+      </ul>
+
+      <h3>8. Deine Rechte</h3>
+      <p>Du hast unter den Voraussetzungen der DSGVO folgende Rechte:</p>
+      <ul>
+        <li>Auskunft (Art. 15 DSGVO)</li>
+        <li>Berichtigung (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen Verarbeitungen auf Basis von Art. 6 Abs. 1 lit. f DSGVO
+          (Art. 21 DSGVO)</li>
+        <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
+      </ul>
+      <p>
+        <strong>Zuständige Aufsichtsbehörde</strong> für unseren Sitz in Essen
+        (Nordrhein-Westfalen) ist:
+      </p>
+      <p>
+        Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br />
+        Postfach 20 04 44, 40102 Düsseldorf<br />
+        <a href="https://www.ldi.nrw.de/" target="_blank" rel="noopener">https://www.ldi.nrw.de/</a>
+      </p>
+
+      <h3>9. Widerruf der Einwilligung</h3>
+      <p>
+        Eingewilligte Verarbeitungen (z.B. Affiliate-Tracking, Newsletter) kannst du
+        jederzeit mit Wirkung für die Zukunft widerrufen. Der Widerruf ist möglich
+        über:
+      </p>
+      <ul>
+        <li>Cookie-Einstellungen: Klick auf
+          <a href="javascript:if(window.klaro){klaro.show();}else{alert('Cookie-Banner wird geladen…');}">Cookie-Einstellungen öffnen</a>
+          (öffnet den Klaro-Dialog).</li>
+        <li>Newsletter: Abmeldelink in jeder Newsletter-Mail.</li>
+        <li>Sonstige Rechte: info@wildgewachsen-australien.de</li>
+      </ul>
+
+      <h3>10. Cookie-Übersicht</h3>
+      <div class="tabelle-scroll">
+        <table class="legal-tabelle">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Anbieter</th>
+              <th>Zweck</th>
+              <th>Speicherdauer</th>
+              <th>Typ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>wildgewachsen-klaro</td>
+              <td>Wildgewachsen (First-Party)</td>
+              <td>Speichert deine Cookie-Auswahl</td>
+              <td>365 Tage</td>
+              <td>technisch erforderlich (Consent)</td>
+            </tr>
+            <tr>
+              <td>wise*</td>
+              <td>Wise</td>
+              <td>Affiliate-Tracking</td>
+              <td>laut Anbieter</td>
+              <td>Einwilligung erforderlich</td>
+            </tr>
+            <tr>
+              <td>safetywing*, sw_*</td>
+              <td>SafetyWing</td>
+              <td>Affiliate-Tracking</td>
+              <td>laut Anbieter</td>
+              <td>Einwilligung erforderlich</td>
+            </tr>
+            <tr>
+              <td>worldnomads*, wn_*</td>
+              <td>World Nomads</td>
+              <td>Affiliate-Tracking</td>
+              <td>laut Anbieter</td>
+              <td>Einwilligung erforderlich</td>
+            </tr>
+            <tr>
+              <td>aid, booking*</td>
+              <td>Booking.com</td>
+              <td>Affiliate-Tracking</td>
+              <td>laut Anbieter</td>
+              <td>Einwilligung erforderlich</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <em>Hinweis:</em> GoatCounter setzt nach eigener Aussage keine Cookies.
+        Detaillierte Cookie-Listen der jeweiligen Affiliate-Anbieter findest du
+        in deren Datenschutzerklärungen.
+      </p>
+
+      <h3>11. Automatisierte Entscheidungen / Profiling</h3>
+      <p>
+        Es findet keine automatisierte Entscheidungsfindung einschließlich Profiling
+        gemäß Art. 22 DSGVO statt.
+      </p>
+
+      <h3>12. Newsletter im Detail</h3>
+      <p>
+        Wir versenden unseren Newsletter über Buttondown, LLC (406 W Franklin St. #201,
+        Richmond, VA 23221, USA). Beim Abonnement bestätigst du deine Anmeldung über
+        das Double-Opt-In-Verfahren (Bestätigungslink per E-Mail). Wir speichern deine
+        E-Mail-Adresse, den Zeitpunkt der Einwilligung und ggf. einen optionalen
+        Vornamen. Du kannst dich jederzeit über den Abmeldelink am Ende jeder
+        Newsletter-Mail abmelden; die Verarbeitung deiner E-Mail-Adresse wird dann
+        eingestellt. Die Übermittlung in die USA erfolgt auf Basis des EU-US Data
+        Privacy Frameworks und/oder Standardvertragsklauseln.
+        <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener">Datenschutzerklärung Buttondown</a>.
+      </p>
+
+      <h3>13. Änderungen dieser Datenschutzerklärung</h3>
+      <p>
+        Wir passen diese Datenschutzerklärung an, wenn sich technische oder
+        rechtliche Rahmenbedingungen ändern. Die jeweils aktuelle Fassung findest du
+        auf dieser Seite. Stand: 26.05.2026.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Auftakt: kompakter Seitenkopf ---------------------------------- */
+  .auftakt {
+    border-block-end: 1px solid var(--line);
+    padding-block: var(--space-7);
+  }
+
+  /* --- Rechtstexte ------------------------------------------------------ */
+  .legal h2 {
+    /* Anker (#datenschutz) landen nicht unterm Header-Rand */
+    scroll-margin-top: var(--space-7);
+  }
+
+  .legal h3 {
+    scroll-margin-top: var(--space-7);
+  }
+
+  .legal code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: 0 var(--space-1);
+  }
+
+  /* --- Tabellen: Etiketten-Optik mit Tokens, horizontal scrollbar ------ */
+  .tabelle-scroll {
+    overflow-x: auto;
+  }
+
+  .legal-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+    line-height: 1.5;
+  }
+
+  .legal-tabelle th,
+  .legal-tabelle td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .legal-tabelle thead tr {
+    background: var(--surface);
+  }
+
+  .legal-tabelle th {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+</style>

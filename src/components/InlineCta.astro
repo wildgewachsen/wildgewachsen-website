@@ -1,0 +1,108 @@
+---
+// Ruhiger CTA-Kasten (Guide/Newsletter). Kein Popup, kein JS.
+// variante 'leise' = Creme-Karte mit gestrichelter Border (Default),
+// variante 'akzent' = Terrakotta-Flaeche, maximal EINE pro Seite.
+interface Props {
+  titel: string;
+  text?: string;
+  buttonLabel: string;
+  href: string;
+  lang?: 'de' | 'en';
+  variante?: 'leise' | 'akzent';
+}
+
+const {
+  titel,
+  text,
+  buttonLabel,
+  href,
+  lang = 'de',
+  variante = 'leise',
+} = Astro.props;
+
+// Internes Landmark-Label (nicht sichtbar), beide Sprachen im Code
+const regionLabel = lang === 'de' ? 'Empfehlung' : 'Recommendation';
+---
+
+<aside class={`inline-cta inline-cta--${variante}`} aria-label={regionLabel}>
+  <p class="inline-cta__titel">{titel}</p>
+  {text && <p class="inline-cta__text">{text}</p>}
+  <a class="inline-cta__button" href={href}>{buttonLabel}</a>
+</aside>
+
+<style>
+  .inline-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-6);
+    margin-block: var(--space-6);
+    border-radius: var(--radius-m);
+  }
+
+  /* Etiketten-Optik: Creme + gestrichelte Border */
+  .inline-cta--leise {
+    background: var(--surface);
+    border: 2px dashed var(--line);
+  }
+
+  .inline-cta--akzent {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    box-shadow: var(--shadow-card);
+  }
+
+  .inline-cta__titel {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-1);
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+  }
+
+  .inline-cta__text {
+    color: var(--ink-soft);
+    max-inline-size: var(--measure);
+  }
+
+  .inline-cta--akzent .inline-cta__text {
+    color: var(--accent-contrast);
+  }
+
+  .inline-cta__button {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-s);
+  }
+
+  /* leise: der EINE Terrakotta-Akzent der Sektion ist der Button */
+  .inline-cta--leise .inline-cta__button {
+    border: 1.5px solid var(--accent-strong);
+    color: var(--accent-strong);
+  }
+
+  .inline-cta--leise .inline-cta__button:hover {
+    background: var(--accent-strong);
+    color: var(--accent-contrast);
+  }
+
+  .inline-cta--akzent .inline-cta__button {
+    background: var(--accent-contrast);
+    color: var(--accent-strong);
+  }
+
+  .inline-cta--akzent .inline-cta__button:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Fokusring auf Terrakotta-Flaeche braucht hellen Kontrast */
+  .inline-cta--akzent .inline-cta__button:focus-visible {
+    outline-color: var(--accent-contrast);
+  }
+</style>

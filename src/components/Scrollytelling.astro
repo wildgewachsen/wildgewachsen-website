@@ -1,0 +1,284 @@
+---
+// Scrollytelling: sticky Medien-Flaeche + durchscrollende Text-Schritte.
+// Progressive Enhancement: ohne JS / ohne IO / bei reduced-motion fliesst
+// alles normal untereinander und bleibt komplett lesbar. Erst wenn das
+// Script erfolgreich initialisiert, setzt es data-js-aktiv auf die Sektion
+// und aktiviert Sticky-Crossfade + Schritt-Dimmen.
+//
+// Schritte kommen ENTWEDER als Prop `schritte` ODER als Slot-Kinder mit
+// class="schritt". Medien-Kinder mit data-schritt="N" (direkte Slot-Kinder
+// von slot="medien") werden automatisch zum aktiven Schritt gecrossfadet.
+// Nach aussen: CustomEvent "schrittwechsel" (bubbles) mit { index, schritt }
+// plus data-aktiv-index auf der Sektion fuer eigenes CSS.
+interface Schritt {
+  titel?: string;
+  text: string;
+}
+
+interface Props {
+  lang?: 'de' | 'en';
+  /** Sichtbarer Landmark-Name der Sektion; ohne Angabe uebersetzter Default. */
+  label?: string;
+  /** Alternative zum Default-Slot: Schritte als Daten. */
+  schritte?: Schritt[];
+  /** Stempel-Nummern (01, 02, ...) an Prop-Schritten anzeigen. */
+  nummern?: boolean;
+  /** Medien-Spalte ab 900px rechts statt links. */
+  medienRechts?: boolean;
+}
+
+const {
+  lang = 'de',
+  label,
+  schritte,
+  nummern = true,
+  medienRechts = false,
+} = Astro.props;
+
+const texte = {
+  de: { sektion: 'Bebilderte Erzaehlung' },
+  en: { sektion: 'Illustrated story' },
+} as const;
+
+const sektionLabel = label ?? texte[lang].sektion;
+---
+
+<section
+  class:list={['scrolly', { 'scrolly--medien-rechts': medienRechts }]}
+  data-scrolly
+  aria-label={sektionLabel}
+>
+  <div class="scrolly__medien" data-scrolly-medien>
+    <div class="scrolly__medien-sticky">
+      <slot name="medien" />
+    </div>
+  </div>
+
+  <div class="scrolly__schritte" data-scrolly-schritte>
+    {
+      schritte ? (
+        <ol class="scrolly__liste" role="list">
+          {schritte.map((s, i) => (
+            <li class="schritt">
+              {nummern && (
+                <span class="scrolly__nummer" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              )}
+              {s.titel && <h3 class="scrolly__titel">{s.titel}</h3>}
+              <p class="scrolly__text">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <slot />
+      )
+    }
+  </div>
+</section>
+
+<script>
+  // Ein Modul fuer alle Instanzen: pro [data-scrolly] eigener Observer,
+  // keine IDs, mehrfach pro Seite sicher. Re-Init-Guard fuer View Transitions.
+  const initScrolly = () => {
+    const reduziert = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduziert || !('IntersectionObserver' in window)) return;
+
+    document.querySelectorAll('[data-scrolly]').forEach((wurzel) => {
+      if (wurzel.hasAttribute('data-scrolly-init')) return;
+      wurzel.setAttribute('data-scrolly-init', '');
+
+      const box = wurzel.querySelector('[data-scrolly-schritte]');
+      if (!box) return;
+      // Nur Schritte dieser Instanz (schuetzt vor verschachtelten Sektionen)
+      const schritte = Array.from(box.querySelectorAll('.schritt')).filter(
+        (el) => el.closest('[data-scrolly]') === wurzel
+      );
+      if (schritte.length === 0) return;
+
+      const medien = Array.from(
+        wurzel.querySelectorAll('[data-scrolly-medien] [data-schritt]')
+      ).filter((el) => el.closest('[data-scrolly]') === wurzel);
+
+      wurzel.setAttribute('data-js-aktiv', '');
+
+      let aktiv = -1;
+      const setzeAktiv = (index) => {
+        if (index === aktiv || index < 0) return;
+        aktiv = index;
+        schritte.forEach((el, i) => el.toggleAttribute('data-aktiv', i === index));
+        medien.forEach((el) =>
+          el.toggleAttribute('data-aktiv', Number(el.getAttribute('data-schritt')) === index)
+        );
+        wurzel.setAttribute('data-aktiv-index', String(index));
+        wurzel.dispatchEvent(
+          new CustomEvent('schrittwechsel', {
+            detail: { index, schritt: schritte[index] },
+            bubbles: true,
+          })
+        );
+      };
+
+      // Aktiv = Schritt im mittleren Viewport-Band
+      const io = new IntersectionObserver(
+        (eintraege) => {
+          eintraege.forEach((e) => {
+            if (e.isIntersecting) setzeAktiv(schritte.indexOf(e.target));
+          });
+        },
+        { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+      );
+      schritte.forEach((el) => io.observe(el));
+      setzeAktiv(0);
+    });
+  };
+
+  initScrolly();
+  document.addEventListener('astro:page-load', initScrolly);
+</script>
+
+<style>
+  .scrolly {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 900px) {
+    .scrolly {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-7);
+      /* KEIN align-items: start hier: die Medien-Spalte muss die volle
+         Zeilenhoehe aufspannen (default stretch), sonst endet der
+         Sticky-Laufweg nach dem ersten Foto und die Polaroids scrollen
+         aus dem Bild (CEO-Befund 24.07., Unsere-Reise-Buehne). */
+    }
+
+    .scrolly--medien-rechts .scrolly__medien {
+      order: 2;
+    }
+  }
+
+  /* --- Medien-Flaeche ------------------------------------------ */
+
+  @media (min-width: 900px) {
+    .scrolly__medien-sticky {
+      position: sticky;
+      top: var(--space-6);
+    }
+  }
+
+  /* Crossfade nur wenn JS initialisiert hat; sonst normaler Fluss,
+     alle Medien sichtbar untereinander (reduced-motion / no-IO / no-JS). */
+  .scrolly[data-js-aktiv] .scrolly__medien-sticky {
+    display: grid;
+  }
+
+  .scrolly[data-js-aktiv] .scrolly__medien-sticky > :global([data-schritt]) {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.5s ease,
+      visibility 0.5s;
+  }
+
+  .scrolly[data-js-aktiv] .scrolly__medien-sticky > :global([data-schritt][data-aktiv]) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Polaroid-Rahmen fuer Fotos in der Medien-Flaeche: Creme, unten
+     dicker, Handschrift-Unterschrift in Terrakotta (Pflicht fuer Caveat). */
+  .scrolly__medien :global(.polaroid) {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-5);
+    rotate: 0.8deg;
+  }
+
+  .scrolly__medien :global(.polaroid:nth-child(even)) {
+    rotate: -1deg;
+  }
+
+  .scrolly__medien :global(.polaroid img) {
+    border-radius: 2px;
+    width: 100%;
+  }
+
+  .scrolly__medien :global(.polaroid figcaption) {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Schritte -------------------------------------------------- */
+
+  .scrolly__liste {
+    list-style: none;
+    padding: 0;
+  }
+
+  .scrolly__schritte :global(.schritt) {
+    max-inline-size: var(--measure);
+    /* Aktiv-Marker: der EINE Terrakotta-Akzent der Sektion */
+    border-inline-start: 3px solid transparent;
+    padding-inline-start: var(--space-4);
+  }
+
+  .scrolly__schritte :global(.schritt + .schritt) {
+    margin-block-start: var(--space-8);
+  }
+
+  @media (min-width: 900px) {
+    .scrolly__schritte :global(.schritt) {
+      min-height: 55vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  /* Dimmen der inaktiven Schritte nur mit laufendem JS;
+     Fallback bleibt voll deckend und lesbar. */
+  .scrolly[data-js-aktiv] .scrolly__schritte :global(.schritt) {
+    opacity: 0.45;
+    transition:
+      opacity 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  .scrolly[data-js-aktiv] .scrolly__schritte :global(.schritt[data-aktiv]) {
+    opacity: 1;
+    border-inline-start-color: var(--accent);
+  }
+
+  /* Stempel-Nummer im Etiketten-Look */
+  .scrolly__nummer {
+    display: inline-block;
+    align-self: start;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    border: 1px dashed var(--ink-soft);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    rotate: -1deg;
+    margin-block-end: var(--space-3);
+  }
+
+  .scrolly__titel {
+    /* Young Serif kommt ueber h3-Basisstil, immer Schnitt 400 */
+    font-size: var(--text-2);
+    margin-block-end: var(--space-3);
+  }
+
+  .scrolly__text {
+    font-size: var(--text-0);
+  }
+</style>

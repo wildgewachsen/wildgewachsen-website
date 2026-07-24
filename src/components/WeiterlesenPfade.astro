@@ -1,0 +1,145 @@
+---
+// "Mehr aus unserer Reise": 2-3 Artikel-Karten im Postkarten-Look
+// am Artikelende. EIN Terrakotta-Akzent pro Sektion: Pfeil + Hover-Titel.
+interface Artikel {
+  href: string;
+  titel: string;
+  teaser?: string;
+  meta?: string;
+}
+
+interface Props {
+  lang?: 'de' | 'en';
+  /* Sichtbare Ueberschrift; Default je Sprache */
+  ueberschrift?: string;
+  eyebrow?: string;
+  /* 2-3 Artikel */
+  artikel: Artikel[];
+}
+
+const { lang = 'de', eyebrow, artikel } = Astro.props;
+
+const defaultUeberschrift = {
+  de: 'Mehr aus unserer Reise',
+  en: 'More from our journey',
+};
+const ueberschrift = Astro.props.ueberschrift ?? defaultUeberschrift[lang];
+
+// Eindeutige Heading-ID, damit mehrere Instanzen pro Seite nicht kollidieren
+const headingId = `weiterlesen-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<nav class="weiterlesen" aria-labelledby={headingId}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 class="weiterlesen__titel" id={headingId}>{ueberschrift}</h2>
+  <ul class="weiterlesen__grid" role="list">
+    {
+      artikel.map((a) => (
+        <li class="card weiterlesen__karte">
+          {a.meta && <p class="weiterlesen__meta">{a.meta}</p>}
+          <h3 class="weiterlesen__karten-titel">
+            <a class="weiterlesen__link" href={a.href}>
+              {a.titel}
+            </a>
+            <span class="weiterlesen__pfeil" aria-hidden="true">
+              &rarr;
+            </span>
+          </h3>
+          {a.teaser && <p class="weiterlesen__teaser">{a.teaser}</p>}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .weiterlesen {
+    padding-block: var(--space-7);
+  }
+
+  .weiterlesen__titel {
+    font-size: var(--text-2);
+    margin-block: var(--space-2) var(--space-5);
+  }
+
+  .weiterlesen__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Postkarte: leicht verdreht abgelegt, Hover legt sie gerade */
+  .weiterlesen__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .weiterlesen__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .weiterlesen__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .weiterlesen__karte:hover,
+  .weiterlesen__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Poststempel-Zeile */
+  .weiterlesen__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .weiterlesen__karten-titel {
+    font-size: var(--text-1);
+  }
+
+  .weiterlesen__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Ganze Karte klickbar (stretched link) */
+  .weiterlesen__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .weiterlesen__karte:hover .weiterlesen__link,
+  .weiterlesen__karte:focus-within .weiterlesen__link {
+    color: var(--accent-strong);
+  }
+
+  .weiterlesen__pfeil {
+    color: var(--accent-strong);
+    margin-inline-start: var(--space-1);
+  }
+
+  .weiterlesen__teaser {
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .weiterlesen__karte,
+    .weiterlesen__karte:nth-child(odd),
+    .weiterlesen__karte:nth-child(even) {
+      rotate: 0deg;
+      transition: none;
+    }
+  }
+</style>

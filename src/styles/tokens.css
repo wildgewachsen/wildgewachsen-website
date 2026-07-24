@@ -1,0 +1,109 @@
+/* ============================================================
+   Wildgewachsen Design-Tokens, Palette A "Sonnengetrocknete Erde"
+   Quelle: Master-Prompt 2026-07-21 §4 (Startwerte, kontrast-feinjustiert,
+   Beleg: tools/contrast.mjs muss PASS liefern).
+
+   Gestaltungsregeln (verbindlich, aus dem Reisetagebuch-Look):
+   - Genau EIN Terrakotta-Akzent pro Sektion.
+   - Texturen (Millimeterpapier/Papierkorn) nur subtil, nie aufdringlich.
+   - Keine Neon-Effekte, keine kitschigen Verlaeufe, keine Text-Schatten.
+   - Caveat (Handschrift) IMMER in Terrakotta.
+   - --accent nur grafisch/grosse Typo; fuer Links/Text in Lesegroesse
+     --accent-strong verwenden (AA-Kontrast).
+   - --sage nur dekorativ/grossflaechig; fuer Text --sage-text.
+   ============================================================ */
+
+:root {
+  /* Farben, Light */
+  --bg: #f3e9d6;            /* Sand, Haupt-Hintergrund */
+  --surface: #fbf7ee;       /* Creme, Cards/erhoehte Flaechen */
+  --ink: #33291f;           /* Tinten-Braun, Text + Headlines */
+  --ink-soft: #695a48;      /* Meta, Labels (AA auf Sand) */
+  --accent: #b5482a;        /* Terrakotta, grafisch/gross */
+  --accent-strong: #a63e22; /* Terrakotta fuer Lesegroesse (AA auf Sand) */
+  --accent-contrast: #fbf7ee; /* Text AUF Terrakotta-Flaechen */
+  --sage: #7e8b6d;          /* Eukalyptus, dekorativ */
+  --sage-text: #5c6850;     /* Eukalyptus in Lesegroesse (AA) */
+  --line: #ddd3bc;          /* Borders, Divider */
+  --grid-line: rgba(51, 41, 31, 0.055); /* Millimeterpapier-Linien */
+
+  /* Typografie, Kombi E (CEO-Entscheidung 21.07.: retro/vintage statt modern).
+     Young Serif hat NUR Schnitt 400: Hierarchie ueber Groesse, nie Faux-Bold. */
+  --font-display: 'Young Serif', 'Iowan Old Style', georgia, serif;
+  --font-body: 'Alegreya Variable', 'Alegreya', georgia, serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+  --font-hand: 'Caveat Variable', 'Caveat', cursive;
+
+  /* Fluid-Typo-Skala (Body 16-18px lt. Spec) */
+  --text--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
+  --text-0: clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  --text-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-2: clamp(1.56rem, 1.35rem + 1vw, 2rem);
+  --text-3: clamp(1.95rem, 1.55rem + 1.9vw, 2.9rem);
+  --text-4: clamp(2.44rem, 1.8rem + 3.1vw, 4rem);
+  --leading-body: 1.75;
+  --leading-tight: 1.15;
+  --measure: 70ch; /* Zeilenbreite 60-80 Zeichen */
+
+  /* Spacing (4px-Basis) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-section: clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* Form */
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+  --shadow-card: 0 2px 20px rgba(51, 41, 31, 0.08);
+  --shadow-float: 0 8px 40px rgba(51, 41, 31, 0.14);
+
+  /* Layout */
+  --container: 1200px;
+  --container-text: 760px;
+
+  color-scheme: light;
+}
+
+/* Dark Mode: eigens designt, warme tiefe Erdtoene, kein reines Schwarz.
+   CEO-Entscheidung 2026-07-22: HELL ist der Standard beim Seitenaufruf,
+   Dunkel gibt es NUR ueber den Toggle (data-theme='dark' + localStorage).
+   prefers-color-scheme schaltet bewusst NICHT mehr automatisch um. */
+:root[data-theme='light'] {
+  --bg: #f3e9d6;
+  --surface: #fbf7ee;
+  --ink: #33291f;
+  --ink-soft: #695a48;
+  --accent: #b5482a;
+  --accent-strong: #a63e22;
+  --accent-contrast: #fbf7ee;
+  --sage: #7e8b6d;
+  --sage-text: #5c6850;
+  --line: #ddd3bc;
+  --grid-line: rgba(51, 41, 31, 0.055);
+  --shadow-card: 0 2px 20px rgba(51, 41, 31, 0.08);
+  --shadow-float: 0 8px 40px rgba(51, 41, 31, 0.14);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #211a13;
+  --surface: #2b2118;
+  --ink: #efe6d3;
+  --ink-soft: #bdae97;
+  --accent: #e0714b;
+  --accent-strong: #e0714b;
+  --accent-contrast: #211a13;
+  --sage: #98a588;
+  --sage-text: #a8b499;
+  --line: #3e3325;
+  --grid-line: rgba(239, 230, 211, 0.05);
+  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.35);
+  --shadow-float: 0 8px 40px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}

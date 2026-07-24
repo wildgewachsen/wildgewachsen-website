@@ -1,0 +1,142 @@
+---
+// Einzelne Bento-Kachel (Kind von BentoSektion).
+// Baut auf der globalen .card-Utility auf (base.css).
+// akzent: Terrakotta-Flaeche + leichte Rotation - max. EINE pro Sektion.
+// raster: Millimeterpapier-Textur (.texture-grid) - nur auf Nicht-Akzent-Kacheln.
+interface Props {
+  groesse?: 's' | 'm' | 'l';
+  zahl?: string;
+  label?: string;
+  akzent?: boolean;
+  raster?: boolean;
+  // Konsistent zur Sektion; aktuell keine internen Bedien-Labels noetig.
+  lang?: 'de' | 'en';
+}
+
+const {
+  groesse = 's',
+  zahl,
+  label,
+  akzent = false,
+  raster = false,
+  lang = 'de',
+} = Astro.props;
+
+const hatKopf = Boolean(zahl || label);
+const hatInhalt = Astro.slots.has('default');
+---
+
+<div
+  class:list={[
+    'card',
+    'bento-kachel',
+    `bento-kachel--${groesse}`,
+    {
+      'bento-kachel--akzent': akzent,
+      'texture-grid': raster && !akzent,
+    },
+  ]}
+>
+  {zahl && <p class="bento-kachel__zahl">{zahl}</p>}
+  {label && <p class="bento-kachel__label">{label}</p>}
+  {
+    hatInhalt && (
+      <div
+        class:list={[
+          'bento-kachel__body',
+          { 'bento-kachel__body--getrennt': hatKopf },
+        ]}
+      >
+        <slot />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .bento-kachel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Groessen-Spans; dichte Packung der Sektion ordnet die Luecken */
+  .bento-kachel--m {
+    grid-column: span 2;
+  }
+
+  .bento-kachel--l {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  /* Grosse Zahl: Young Serif, nur Schnitt 400, Hierarchie ueber Groesse */
+  .bento-kachel__zahl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-3);
+    line-height: var(--leading-tight);
+    color: var(--ink);
+  }
+
+  .bento-kachel--l .bento-kachel__zahl {
+    font-size: var(--text-4);
+  }
+
+  /* Etiketten-Optik: Mono-Label, sparsam */
+  .bento-kachel__label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+
+  .bento-kachel__body {
+    margin-block-start: auto; /* Zusatz-Inhalt sitzt unten in der Kachel */
+  }
+
+  .bento-kachel__body--getrennt {
+    border-block-start: 1px dashed var(--line);
+    padding-block-start: var(--space-3);
+  }
+
+  .bento-kachel__body :global(img) {
+    border-radius: var(--radius-s);
+  }
+
+  /* Akzent-Kachel: der EINE Terrakotta-Akzent der Sektion.
+     Rotation NUR hier (statisch, kein Motion-Thema). */
+  .bento-kachel--akzent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+    rotate: -1deg;
+  }
+
+  .bento-kachel--akzent .bento-kachel__zahl,
+  .bento-kachel--akzent .bento-kachel__label {
+    color: var(--accent-contrast);
+  }
+
+  .bento-kachel--akzent .bento-kachel__body--getrennt {
+    border-block-start-color: var(--accent-contrast);
+  }
+
+  /* Lesbarkeit auf Terrakotta: Links und Handschrift kippen auf
+     die Kontrastfarbe (accent-strong waere hier unsichtbar). */
+  .bento-kachel--akzent :global(a),
+  .bento-kachel--akzent :global(.handnote) {
+    color: var(--accent-contrast);
+  }
+
+  /* Mobile einspaltig: Spans zuruecksetzen.
+     Breakpoint muss zu BentoSektion.astro passen. */
+  @media (max-width: 640px) {
+    .bento-kachel--m,
+    .bento-kachel--l {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+</style>

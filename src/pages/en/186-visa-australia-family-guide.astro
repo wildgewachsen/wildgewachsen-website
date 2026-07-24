@@ -1,0 +1,821 @@
+---
+// EN-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/en/186-visa-australia-family-guide.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'what-is-186', label: 'What is the 186 visa?' },
+  { id: 'streams', label: 'The three streams – which one we take' },
+  { id: 'strategy', label: 'Our strategy: tourist visa, then 186 onshore' },
+  { id: 'requirements', label: 'Requirements: Skill Assessment, PTE, age' },
+  { id: 'migration-agent', label: 'The Migration Agent: why we got advice' },
+  { id: 'costs', label: "Cost breakdown: what we've paid so far" },
+  { id: 'sponsor', label: 'Finding a sponsor: why we look on the ground' },
+  { id: 'family', label: 'Family on the 186: Lucy and the kids as dependants' },
+  { id: 'timeline', label: 'Timeline: where we stand today' },
+  { id: 'lessons', label: "What we've learnt so far" },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+const weiterlesen = [
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Cost of Moving to Australia as a Family: Our Real Numbers (2026)',
+  },
+  {
+    href: '/en/moving-to-australia-with-kids-family-guide',
+    meta: 'Family & Kids',
+    titel: 'Moving to Australia With Kids (2 and 6 yrs): Our Honest Preparation',
+  },
+  {
+    href: '/en/from-vegetable-garden-to-australia-family-move',
+    meta: 'Our Story',
+    titel: 'From a Vegetable Garden to Australia: Moving as a Family',
+  },
+];
+---
+
+<ArtikelLayout
+  title="186 Visa Australia: Our Family Route, Employer Sponsored"
+  description="186 Visa Australia for families: tourist visa entry, bridging visa with work rights, ~9,825 AUD fees. Our route and real costs (2026)."
+  lang="en"
+  eyebrow="Visa & Migration"
+  datum="29 May 2026"
+  lesezeit="12 min read · Last updated: 9 June 2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/186-visa-australia-family-guide" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/186-visa-australia-family-guide" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="186 Visa Australia: Our Family Route, Employer Sponsored" />
+    <meta property="og:description" content="186 Visa Australia for families: tourist visa entry, bridging visa with work rights, ~9,825 AUD fees. Our route and real costs (2026)." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/186-visa-australia-family-guide" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="186 Visa Australia: Our Family Route, Employer Sponsored" />
+    <meta name="twitter:description" content="186 Visa Australia for families: tourist visa entry, bridging visa with work rights, ~9,825 AUD fees. Our route and real costs (2026)." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "186 Visa Australia: Our Family Route, Employer Sponsored",
+    "description": "186 Visa Australia for families: tourist visa entry, bridging visa with work rights, ~9,825 AUD fees. Our route and real costs (2026).",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg",
+      "caption": "Surfer at sunrise on a beach in the Byron Bay region, New South Wales.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-05-29T12:00:00+02:00",
+    "dateModified": "2026-06-09T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Australia 186 Visa (Employer Nomination Scheme)"
+    },
+    "keywords": "186 visa, Australia migration, Employer Sponsored Visa, bridging visa, Migration Agent, Skill Assessment chef, eVisitor 651, Northern Rivers, family migration"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does the 186 visa realistically take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Processing time varies a lot. Our Migration Agent told us that a 186 application in the Direct Entry stream from offshore can in a bad case take more than a year. We are budgeting 9 to 15 months after lodgement. The Department of Home Affairs publishes current indicative times regularly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I work on a bridging visa in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In our case yes, because we are lodging the 186 onshore and our Migration Agent sets the bridging visa up with work rights accordingly. The exact rights depend on the type of bridging visa (A, B or C). On a pure tourist visa you cannot work, only after lodging the 186 does the bridge kick in."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I really need a Migration Agent for the 186 visa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It's not compulsory. But a 186 application with a family is complex, stream choice, document list, deadlines, communication with the Department. We chose a German-speaking agent because the first consultation (~250 AUD) cleared up more than a month of own research. With kids, we'd advise against starting without an agent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if no sponsor is found on the ground?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Then the eVisitor expires after three months and we have to decide again. In theory: extension via a Visitor Visa (subclass 600) or switching to a 482 sponsored work visa as an interim step. Realistic for us: flying back. We keep that in the back of our minds. We're not banking on it, because sponsor chances in the region and especially as a chef are real, but we're going in prepared to return."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the 186 visa cost in total for a family from Germany?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Official application fees change regularly. On top come Skill Assessment, PTE Academic, Migration Agent fee, health checks and police clearance. For a family of four we are conservatively budgeting a low five-figure euro amount, clearly above 10,000 €. Verify with the Department of Home Affairs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why not a points-tested visa (189 or 190) instead of 186?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The points-tested visas are independent of an employer, but require very high point scores, and for cooks, competition on the Skilled Occupation List is tight. We are considering a parallel EOI for 189/190, especially if we push PTE up to Superior. Right now the 186 via a sponsor is the more realistic main route."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the three streams of the 186 visa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Direct Entry Stream (for applicants who have not previously worked on a 482 in Australia), Temporary Residence Transition Stream (after at least 2 years on a 482 with the same employer) and Labour Agreement Stream (special case with an industry agreement). We are going via Direct Entry."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "inLanguage": "en",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog (English)", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 3, "name": "186 Visa Australia Family Guide", "item": "https://wildgewachsen-australien.de/en/186-visa-australia-family-guide" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/artikel-visum-186.jpg"
+    alt="Surfer at sunrise on a beach in Byron Bay, Australia"
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="info-box">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>We are not lodging the 186 visa from Germany, we enter on a free eVisitor (651) and lodge onshore, which triggers a bridging visa that lets Christian work.</li>
+      <li>Skill Assessment as a chef (~4,120 AUD), PTE Academic (250 €) and the first consultation with the Migration Agent (~250 AUD) are done, the 186 application fees only come at lodgement.</li>
+      <li>Finding a sponsor from Germany is very unrealistic in hospitality. Christian is searching on the ground from June 2026 in the Northern Rivers region, NSW.</li>
+      <li>Lucy and the kids ride along as dependants on the same application, but no PR means we pay for school and Medicare ourselves in the first years.</li>
+    </ul>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    We are moving to Australia as a family in 2026. Target visa: the 186, officially called "Employer Nomination Scheme". This is not a visa you quickly apply for online, it's a multi-stage process that doesn't work without a sponsoring employer. We are right in the middle of it. This article is not a manual, it's our logbook: what we've decided, why, what it has cost and where we stand today. For families with a similar route ahead of them.
+  </p>
+
+  <p>
+    Quick intro: Christian is 37, a trained chef with seven years of self-employment. Lucy is 30 and currently writing her Master's thesis in interior architecture. Joris is six, Linnea two. Target region is the Northern Rivers in New South Wales, Byron Bay and surrounds. Christian flies out on 23 June 2026. Lucy and the kids follow on 26 July.
+  </p>
+
+  <!-- What is the 186 -->
+  <h2 id="what-is-186">What is the 186 visa?</h2>
+
+  <p>
+    The 186 visa is a permanent work visa for which an Australian employer has to nominate you. Official name: "Employer Nomination Scheme (subclass 186)". The Department of Home Affairs lists it in their current visa overview as one of the standard routes to permanent residency when migrating through a job (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026).
+  </p>
+
+  <p>
+    What that concretely means: without an employer who nominates you, there is no 186. Without 186, no permanent residency through this route. And the employer has to offer a position on the official occupation list, for cooks that's the case. The list is called the "Core Skills Occupation List" and is updated regularly.
+  </p>
+
+  <p>
+    Important for us: the 186 is directly permanent. No interim visas, no time-limited work permit. Once it's granted, we are permanent residents of Australia. The route to get there, though, is long.
+  </p>
+
+  <!-- Streams -->
+  <h2 id="streams">The three streams – which one we take</h2>
+
+  <p>
+    The 186 visa has three variants, officially called "streams". According to the Department of Home Affairs these are: Direct Entry Stream, Temporary Residence Transition Stream and Labour Agreement Stream (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Which one fits depends on whether you have already worked in Australia.
+  </p>
+
+  <h3>Direct Entry Stream</h3>
+
+  <p>
+    This is our route. Direct Entry is for people who were not previously in Australia on a 482 work visa. If you come from offshore directly into the 186, this is the stream. Requirements: passed Skill Assessment, demonstrated English, employer nomination.
+  </p>
+
+  <h3>Temporary Residence Transition Stream</h3>
+
+  <p>
+    For people who have worked at least two years with the same employer on a 482 visa. A slimmer process, because you've already proven yourself in Australia. Not relevant for us, we come directly from outside.
+  </p>
+
+  <h3>Labour Agreement Stream</h3>
+
+  <p>
+    A special case. Applies when there's an individual agreement between employer and government, usually because the industry has a labour shortage. Doesn't apply to us.
+  </p>
+
+  <!-- Strategy -->
+  <h2 id="strategy">Our strategy: tourist visa, then 186 onshore</h2>
+
+  <p>
+    This is the part we thought about longest. We deliberately decided against the direct route, against lodging the 186 from Germany. The reason: processing times. Our Migration Agent told us a 186 process can in a bad case take more than a year. Sitting and waiting for a year, with the flat cancelled, the restaurant closed and the kids in limbo, that was not an option.
+  </p>
+
+  <p>
+    So we re-planned. Our route now looks like this:
+  </p>
+
+  <ol>
+    <li>Enter on a free <strong>eVisitor (651)</strong> tourist visa. Available for EU citizens, applied for online, usually granted within days. Stays of up to three months at a time, no work rights.</li>
+    <li>Find a sponsoring employer on the ground. Christian has three months for that.</li>
+    <li>Once the sponsor is in place: lodge the 186 onshore, together with our Migration Agent.</li>
+    <li>With the lodgement we automatically get a <strong>bridging visa</strong>. It covers the wait until the 186 decision. Important: on the bridging visa we are allowed to work.</li>
+  </ol>
+
+  <p>
+    The downside is obvious: in the three tourist visa months Christian is not allowed to work. That means the budget has to last, rental car, accommodation, food, all out of savings. At the same time the search for a sponsor and a place to live runs in parallel.
+  </p>
+
+  <p>
+    The upside, though, is decisive: once the 186 is lodged and the bridging visa kicks in, we're allowed to work and don't have to wait any more. Instead of hanging on a year from Germany, we build our life in parallel.
+  </p>
+
+  <PullQuote lang="en">Instead of hanging on a year from Germany, we build our life in parallel.</PullQuote>
+
+  <blockquote>
+    <strong>Our take:</strong> This decision rides on a single assumption: that we actually find a sponsor in the three tourist months. If it doesn't work out, we fly back. We're aware of that, financially and mentally. This isn't a recommendation, it's our deliberate choice. Every family has different reserves, different visa options, a different time horizon. People with more patience may prefer to wait for a 186 approval from offshore. We're taking this route because we've been on the ground before. We have contacts we can talk to. We have a rough sense of how the whole thing can play out. And we know what can go wrong.
+  </blockquote>
+
+  <!-- Requirements -->
+  <h2 id="requirements">Requirements: Skill Assessment, PTE, age</h2>
+
+  <p>
+    For the 186 in the Direct Entry Stream, the Department of Home Affairs requires three core conditions: a Skill Assessment in your occupation, demonstrated English and an age below 45 (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Here's where we stand:
+  </p>
+
+  <h3>Skill Assessment as a chef – done</h3>
+
+  <p>
+    Christian passed the TRA Skill Assessment in early 2026. As a self-employed applicant it was particularly involved, because we additionally had to get tax assessments, bank statements and profit calculations translated. We've documented the whole process in a separate article: <a href="/en/tra-skill-assessment-chef-australia">Skill Assessment as a Chef in Australia: Our Experience as a Self-Employed Applicant</a>. The full cost breakdown is in there too.
+  </p>
+
+  <h3>PTE Academic – Proficient passed</h3>
+
+  <p>
+    Christian sat the PTE Academic in Hamburg and reached Proficient. We narrowly missed Superior, individual skill scores were just below the threshold. Proficient is enough for the 186, no need to optimise. The test costs around 250 € (April 2026, per <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a>), plus travel and accommodation if needed – in our case ICE to Hamburg, staying at Christian's brother's, so manageable.
+  </p>
+
+  <p>
+    We are considering retaking for Superior. Not for the 186, but as a safety net for a parallel EOI (Expression of Interest) on a points-tested visa. Superior gives extra points there. Whether we do it, we'll decide once the 186 route is stable.
+  </p>
+
+  <h3>Age</h3>
+
+  <p>
+    The age limit per the Department of Home Affairs is 45, at the time of invitation to apply. Christian (37) and Lucy (30) are clearly under. For families emigrating later in life, this is the critical point: the closer you get to 45, the tighter the timeline becomes.
+  </p>
+
+  <!-- Migration Agent -->
+  <h2 id="migration-agent">The Migration Agent: why we got advice</h2>
+
+  <p>
+    So far we've had one first consultation with Johannes Kunz, a German-speaking Migration Agent. Cost: around 250 AUD (roughly 200 €). The conversation ran long, he took his time, explained everything and answered uncomfortable questions directly. What helped us most: he didn't sell us, he stress-tested us. Which risks at which route, which stream variant for our case, where the typical pitfalls sit.
+  </p>
+
+  <p>
+    After the consultation we could keep asking questions by email. So far we've had an answer every time without additional cost. That convinced us. We'd recommend Johannes Kunz any day.
+  </p>
+
+  <p>
+    The next costs only come when he lodges the 186 application with us. How much exactly depends on the case, he invoices by time spent, not flat fee. As soon as we have the concrete number, we'll add it here.
+  </p>
+
+  <blockquote>
+    <strong>Our experience:</strong> A Migration Agent is not mandatory, but for a 186 application with a family we wouldn't try it without one a second time. The cost of mistakes, say wrong stream choice or incomplete paperwork, is higher than the fee.
+  </blockquote>
+
+  <!-- Costs -->
+  <h2 id="costs">Cost breakdown: what we've paid so far</h2>
+
+  <p>
+    We are not making up numbers here, we are showing actual receipts. The big 186 cost items only come at lodgement, we don't have those yet. What's gone out so far:
+  </p>
+
+  <div class="tabellen-halter">
+    <table class="kosten-tabelle">
+      <thead>
+        <tr>
+          <th>What</th>
+          <th>Cost</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TRA Skill Assessment as a chef (incl. translations)</td>
+          <td>~4,120 AUD</td>
+          <td>✓ paid</td>
+        </tr>
+        <tr>
+          <td>PTE Academic test (Hamburg)</td>
+          <td>~250 €</td>
+          <td>✓ paid</td>
+        </tr>
+        <tr>
+          <td>Travel + accommodation PTE (manageable for us)</td>
+          <td>individual</td>
+          <td>✓ paid</td>
+        </tr>
+        <tr>
+          <td>First consultation Migration Agent (Johannes Kunz)</td>
+          <td>~250 AUD</td>
+          <td>✓ paid</td>
+        </tr>
+        <tr>
+          <td>eVisitor (651) tourist visa</td>
+          <td>0 €</td>
+          <td>in preparation</td>
+        </tr>
+        <tr>
+          <td>186 application fees + agent lodgement</td>
+          <td>to follow</td>
+          <td>⏳ after sponsor confirmation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The official 186 application fees are not trivial. They are adjusted regularly by the Department of Home Affairs and apply per family member separately (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Right now we are budgeting for the total visa costs for the four of us to land in the low five-figure euro range – including agent fee, health checks and police clearance. The full numbers including every step are broken down in our cost article: <a href="/en/cost-of-moving-to-australia-family-guide">Cost of Moving to Australia as a Family: Our Real Numbers (2026)</a>.
+  </p>
+
+  <!-- Sponsor -->
+  <h2 id="sponsor">Finding a sponsor: why we look on the ground</h2>
+
+  <p>
+    We spent months trying to find a sponsor from Germany. Facebook groups, job sites like Seek and Indeed, cold emails to restaurants in the region. What we've now learnt: in hospitality this very rarely works. Most places have a staffing gap, but no one hires a chef who can't at least come in for a trial shift. And no trial shift without being on the ground.
+  </p>
+
+  <p>
+    It's different if you work for an international corporation with an Australian arm. Then internal HR can often issue a visa nomination without you being there in person. In self-employed hospitality? Practically never.
+  </p>
+
+  <p>
+    That's why Christian flies out first. He has three months on a tourist visa, in which he walks into restaurants, hands over a CV in person and asks for a conversation. That route is completely normal in Australia, dropping CVs by hand counts as engaged, not old-fashioned. Online search keeps running in parallel, in case someone in Germany answers after all.
+  </p>
+
+  <p>
+    What the on-the-ground search means practically: where does Christian live in that time? How does he stay mobile? The answer is housesitting, rental car and later a car purchase, we've described that elsewhere. In short: first two weeks rental car, then used car, accommodation through Aussie House Sitters and Facebook groups.
+  </p>
+
+  <!-- Family -->
+  <h2 id="family">Family on the 186: Lucy and the kids as dependants</h2>
+
+  <p>
+    A big plus of the 186: family members ride along as dependants on the same application. According to the Department of Home Affairs, spouses or de facto partners and children under 18 count as "secondary applicants" (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). For us that means: Christian is the primary applicant, Lucy, Joris and Linnea are along for the ride.
+  </p>
+
+  <p>
+    That has practical advantages. Lucy doesn't need to build her own visa route, the kids don't either. Once the 186 is granted, all four of us are permanent residents of Australia. The application fees do apply per person, that's the downside, but a joint process is still faster and cheaper than four separate ones.
+  </p>
+
+  <p>
+    What the 186 does <strong>not</strong> include: school and Medicare in the first years. As long as we don't yet have PR in hand, we pay school fees and health insurance ourselves. How we plan that with Joris starting school and Linnea's care is in this article: <a href="/en/moving-to-australia-with-kids-family-guide">Moving to Australia With Kids: Our Honest Preparation</a>.
+  </p>
+
+  <!-- Timeline -->
+  <h2 id="timeline">Timeline: where we stand today</h2>
+
+  <p>
+    We officially started the process in December 2025, with the first consultation at the Migration Agent. Interim status April 2026:
+  </p>
+
+  <ul>
+    <li><strong>December 2025:</strong> first consultation Migration Agent, planning the stream choice</li>
+    <li><strong>January to March 2026:</strong> Skill Assessment chef (documents, translations, technical interview), passed ✓</li>
+    <li><strong>February 2026:</strong> PTE Academic in Hamburg, Proficient ✓</li>
+    <li><strong>April 2026:</strong> eVisitor (651) to be applied for in the coming days</li>
+    <li><strong>23 June 2026:</strong> Christian flies out</li>
+    <li><strong>July to September 2026:</strong> sponsor search on the ground</li>
+    <li><strong>Best case from September 2026:</strong> 186 lodgement onshore + bridging visa + work rights</li>
+    <li><strong>186 grant:</strong> depending on processing time, no firm date</li>
+  </ul>
+
+  <p>
+    That's the optimistic path. The realistic one: everything can shift. We've prepared ourselves mentally for the possibility that a year or more sits between arrival and 186 grant.
+  </p>
+
+  <!-- Lessons -->
+  <h2 id="lessons">What we've learnt so far</h2>
+
+  <Randnotiz ausrichtung="rechts" pfeil lang="en">Without TRA, no 186.</Randnotiz>
+
+  <p>
+    Three things we wish we'd known earlier:
+  </p>
+
+  <h3>1. Clarify stream choice early</h3>
+
+  <p>
+    The difference between Direct Entry and Transition looks small on paper, in the process it's huge. We only really understood this at the first consultation with the agent. Whoever runs off with a wrongly assumed stream, loses months.
+  </p>
+
+  <h3>2. Skill Assessment before anything else</h3>
+
+  <p>
+    Without TRA, no 186. And the TRA can, depending on the route, take months. We did it through ATTC because that's faster. Details are in our Skill Assessment article (linked above). Anyone who starts with everything else and tacks the Skill Assessment on at the end, loses time.
+  </p>
+
+  <h3>3. Don't try to force a sponsor from Germany</h3>
+
+  <p>
+    We tried for a long time to push the entire 186 application through from Germany. Are there people for whom that works? Yes, but rarely, and almost only in corporations with an Australian arm. In self-employed hospitality: don't. Saves your nerves.
+  </p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>How long does the 186 visa realistically take?</h3>
+  <p>
+    Processing time varies a lot. Our Migration Agent told us that a 186 application in the Direct Entry stream from offshore can in a bad case take more than a year. The Department of Home Affairs publishes current indicative times regularly (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). We are budgeting 9 to 15 months after lodgement.
+  </p>
+
+  <h3>Can I work on a bridging visa in Australia?</h3>
+  <p>
+    In our case yes, because we are lodging the 186 onshore and our Migration Agent sets the bridging visa up with work rights accordingly. The exact rights depend on the type of bridging visa (Bridging Visa A, B or C). Which one you get is clarified by your agent. On a pure tourist visa you cannot work, only after lodging the 186 does the bridge kick in.
+  </p>
+
+  <h3>Do I really need a Migration Agent?</h3>
+  <p>
+    It's not compulsory. But a 186 application with a family is complex, stream choice, document list, deadlines, communication with the Department. We chose Johannes Kunz because the first consultation (~250 AUD) cleared up more than a month of own research. For a clear, simple single case without a family, a self-application can work. With kids, we'd advise against.
+  </p>
+
+  <h3>What happens if Christian doesn't find a sponsor on the ground?</h3>
+  <p>
+    Then the eVisitor expires after three months and we have to decide again. In theory: extension via a Visitor Visa (subclass 600) or switching to a 482 sponsored work visa as an interim step. Realistic for us: flying back. We keep that in the back of our minds. We're not banking on it, because sponsor chances in the region and especially as a chef are real, but we're going in prepared to return.
+  </p>
+
+  <h3>What does the 186 visa cost in total for a family?</h3>
+  <p>
+    Official application fees change regularly. On top come Skill Assessment, PTE, Migration Agent, health checks and police clearance. For a family of four we are conservatively budgeting a low five-figure euro amount – clearly above 10,000 €. The currently official fee overview is at the <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Department of Home Affairs</a>. Once our bill is in, we'll add it here.
+  </p>
+
+  <h3>Why not a points-tested visa (189 or 190)?</h3>
+  <p>
+    The points-tested visas are independent of an employer, but require very high point scores, and for cooks, competition on the Skilled Occupation List is tight. We are considering a parallel EOI for 189/190, especially if we push PTE up to Superior. Right now the 186 via a sponsor is the more realistic main route.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article describes our personal experience and the state of our ongoing application as of April 2026. It is not migration advice and does not replace consultation with a registered Migration Agent or lawyer. Regulations, costs and processing times can change at short notice, binding information only comes directly from the Australian Department of Home Affairs or a qualified adviser.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 9 June 2026 · <strong>Sources:</strong>
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs – Visa 186</a>,
+      <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE Academic</a>,
+      <a href="https://www.tradesrecognitionaustralia.gov.au" target="_blank" rel="noopener">Trades Recognition Australia</a>
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">29 May 2026</span>
+      <span class="update-log__text">Article published (English version of the German original from April 2026).</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to the Northern Rivers in summer 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We will send you updates</h2>
+        <p>New articles, real experiences, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box (Key takeaways) ---------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Einordnungs-Boxen (blockquote): eingeklebte Notiz --------- */
+  blockquote {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* --- Kosten-Tabelle -------------------------------------------- */
+  .tabellen-halter {
+    overflow-x: auto;
+  }
+
+  .kosten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text--1);
+  }
+
+  .kosten-tabelle th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kosten-tabelle td {
+    padding: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .kosten-tabelle tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

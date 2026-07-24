@@ -1,0 +1,75 @@
+---
+// Grosses Handschrift-Zitat (Caveat, Terrakotta) als Pull-Quote im Artikel.
+// Semantik: figure > blockquote (+ optional figcaption > cite).
+// Anfuehrungszeichen rein dekorativ (aria-hidden), je nach Sprache de/en.
+// Kein JS.
+interface Props {
+  quelle?: string;
+  lang?: 'de' | 'en';
+}
+
+const { quelle, lang = 'de' } = Astro.props;
+
+// Oeffnendes Anfuehrungszeichen als Deko: deutsch unten, englisch oben
+const mark = lang === 'de' ? '„' : '“';
+---
+
+<figure class="pullquote">
+  <span class="pullquote__mark" aria-hidden="true">{mark}</span>
+  <blockquote class="pullquote__quote">
+    <slot />
+  </blockquote>
+  {
+    quelle && (
+      <figcaption class="pullquote__quelle">
+        <cite>{quelle}</cite>
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .pullquote {
+    position: relative;
+    margin-block: var(--space-7);
+    margin-inline: 0;
+    padding-inline-start: var(--space-6);
+    rotate: -0.5deg;
+  }
+
+  /* Dekoratives Anfuehrungszeichen: grafisch gross, daher --accent erlaubt */
+  .pullquote__mark {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: -0.35em;
+    font-family: var(--font-hand);
+    font-size: var(--text-4);
+    line-height: 1;
+    color: var(--accent);
+    user-select: none;
+  }
+
+  /* Caveat immer in --accent-strong (Lesegroesse, AA-Kontrast) */
+  .pullquote__quote {
+    margin: 0;
+    font-family: var(--font-hand);
+    font-size: var(--text-3);
+    line-height: 1.25;
+    color: var(--accent-strong);
+    text-wrap: balance;
+    max-inline-size: 24ch;
+  }
+
+  .pullquote__quelle {
+    margin-block-start: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+
+  .pullquote__quelle cite {
+    font-style: normal;
+  }
+</style>

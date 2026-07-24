@@ -1,0 +1,647 @@
+---
+// Story-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
+// Quelle: website/blog/letzte-wochen-vor-abflug-australien.html
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+const toc = [
+  { id: 'intro', label: 'Wo wir gerade stehen' },
+  { id: 'christian-voraus', label: 'Warum fliegt Christian einen Monat vor der Familie?' },
+  { id: 'jo', label: 'Was macht das Auswandern mit einem Kind, das gerade sechs geworden ist?' },
+  { id: 'schule', label: 'Steiner School oder State School' },
+  { id: 'linny', label: 'Wie geht Linny mit den Veränderungen um?' },
+  { id: 'wohnung', label: 'Wohnung kündigen, Kartons packen' },
+  { id: 'offene-fragen', label: 'Die größten offenen Fragen' },
+  { id: 'gelernt', label: 'Was wir aus den letzten Wochen gelernt haben' },
+  { id: 'faq', label: 'Häufig gestellte Fragen' },
+];
+
+// Gleiche 2 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+const weiterlesen = [
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    meta: 'Familie & Kinder',
+    titel: 'Auswandern nach Australien mit Kindern: Unsere ehrliche Vorbereitung',
+    teaser: '9. April 2026',
+  },
+  {
+    href: '/blog/tra-skill-assessment-koch-australien',
+    meta: 'Visum & Migration',
+    titel: 'TRA Skill Assessment als Koch: Was es wirklich kostet',
+    teaser: '9. April 2026',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Die letzten Wochen vor dem Abflug: Abschied, Schule und offene Fragen"
+  seoTitle="Letzte Wochen vor Abflug nach Australien: Abschied, Schule"
+  description="Familie mit 2 Kindern wandert nach Byron Bay aus, Abflug 23.06.2026. Steiner-School-Bewerbung, Wohnungsauflösung, Abschied, ehrlicher Erfahrungsbericht."
+  lang="de"
+  eyebrow="Unsere Geschichte"
+  datum="16. April 2026"
+  lesezeit="8 Min. Lesezeit · Zuletzt aktualisiert: 01.06.2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/final-weeks-before-moving-to-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Letzte Wochen vor Abflug nach Australien: Abschied, Schule" />
+    <meta property="og:description" content="Familie mit 2 Kindern wandert nach Byron Bay aus, Abflug 23.06.2026. Steiner-School-Bewerbung, Wohnungsauflösung, Abschied, ehrlicher Erfahrungsbericht." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Letzte Wochen vor Abflug nach Australien: Abschied, Schule" />
+    <meta name="twitter:description" content="Familie mit 2 Kindern wandert nach Byron Bay aus, Abflug 23.06.2026. Steiner-School-Bewerbung, Wohnungsauflösung, Abschied, ehrlicher Erfahrungsbericht." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Letzte Wochen vor Abflug nach Australien: Abschied, Schule",
+    "description": "Familie mit 2 Kindern wandert nach Byron Bay aus, Abflug 23.06.2026. Steiner-School-Bewerbung, Wohnungsauflösung, Abschied, ehrlicher Erfahrungsbericht.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/artikel-abflug.jpg",
+      "caption": "Die letzten Wochen vor dem Abflug nach Australien.",
+      "creditText": "Wildgewachsen",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": {
+        "@type": "Organization",
+        "name": "Wildgewachsen",
+        "url": "https://wildgewachsen-australien.de/"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum#bildrechte",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
+    },
+    "datePublished": "2026-04-16T12:00:00+02:00",
+    "dateModified": "2026-06-03T12:00:00+02:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Letzte Wochen vor der Auswanderung nach Australien"
+    },
+    "keywords": "Auswandern Australien, Byron Bay, Steiner School, Mullumbimby, Northern Rivers, Wohnungsauflösung, Abschied, Familie auswandern"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wann wandert die Familie nach Australien aus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Christian fliegt am 23. Juni 2026 vor nach Byron Bay in der Northern Rivers Region, NSW. Lucy folgt mit Jo (6) und Linny (2) am 26. Juli 2026. Der versetzte Abflug gibt Christian Zeit, vor Ort eine Unterkunft zu finden und erste Schritte zu organisieren."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "In welche Schule kommt Jo in Australien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Familie hat sich bei Steiner Schools in Mullumbimby und Byron Bay beworben. Ein Platz ist nicht garantiert. Alternativ käme eine staatliche Schule in NSW in Frage, die Zuweisung hängt von der Wohnadresse ab. Das australische Schuljahr beginnt im Januar, Jo wird voraussichtlich erst dann starten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Warum eine Steiner School und keine normale Schule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lucy kommt aus einer Familie mit anthroposophischem Hintergrund. Ihre Geschwister besuchten Waldorfschulen, ihre Mutter arbeitet als Tagesmutter mit einem ähnlichen pädagogischen Ansatz. Waldorfpädagogik ist für die Familie kein Experiment, sondern gelebte Überzeugung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie bereitet man kleine Kinder auf eine Auswanderung vor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bei Jo (6) warten die Eltern bewusst auf den richtigen Moment für das Abschiedsgespräch. Er stellt bereits Fragen über Spielsachen, Fahrrad und Schulanmeldung. Bei Linny (2) geht es weniger um Erklärungen und mehr darum, schnell neue Routinen und vertraute Abläufe in Australien aufzubauen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wohin genau zieht die Familie in Australien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das Ziel ist die Northern Rivers Region in New South Wales, konkret Byron Bay und Umgebung. Die endgültige Wohnadresse steht noch nicht fest. Christian wird vor Ort nach einer passenden Unterkunft suchen, bevor Lucy und die Kinder nachkommen."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Letzte Wochen vor dem Abflug", "item": "https://wildgewachsen-australien.de/blog/letzte-wochen-vor-abflug-australien" }
+    ]
+  }
+    </script>
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/artikel-abflug.jpg"
+    alt="Die letzten Wochen vor dem Abflug nach Australien"
+  />
+
+  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Key Takeaways (Anker "intro" wie live) -->
+  <div class="info-box" id="intro">
+    <p class="info-box__titel">Key Takeaways</p>
+    <ul>
+      <li>Christian fliegt am 23. Juni 2026 vor nach Byron Bay. Lucy, Jo (6) und Linny (2) folgen am 26. Juli.</li>
+      <li>Bewerbung bei Steiner Schools in Mullumbimby und Byron Bay läuft, ein Schulplatz ist aber nicht garantiert.</li>
+      <li>Das australische Schuljahr startet im Januar. Jo wird voraussichtlich erst dann eingeschult.</li>
+      <li>Die Wohnung ist gekündigt, Auszug Ende Juli. Parallel: Abschied nehmen, Kartons packen, loslassen.</li>
+    </ul>
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Wir packen Kartons, kündigen die Wohnung und versuchen gleichzeitig, einem Sechsjährigen zu erklären, warum sein bester Freund ohne ihn eingeschult wird. In wenigen Wochen fliegt Christian vor. Lucy und die Kinder folgen einen Monat später. Dazwischen liegt alles, was sich anfühlt wie ein ganzes Leben auf Pause drücken, und gleichzeitig auf Vorspulen.
+  </p>
+  <p>
+    Das hier ist kein Ratgeber mit Checklisten. Das ist unser Tagebuch. Ehrlich, manchmal chaotisch und mit mehr offenen Fragen als Antworten.
+  </p>
+
+  <!-- Warum Christian voraus -->
+  <h2 id="christian-voraus">Warum fliegt Christian einen Monat vor der Familie?</h2>
+  <p>
+    Christian geht als Erster. Am 23. Juni 2026 sitzt er im Flieger nach Australien, allein. Kein Familienabenteuer am Flughafen, kein gemeinsames Ankommen. Stattdessen: ein Koch, der in Byron Bay landet und erstmal alles klarmacht, bevor seine Familie nachkommt.
+  </p>
+  <p>
+    Der Plan ist pragmatisch. Jemand muss eine Bleibe finden. Jemand muss vor Ort sein, damit wir überhaupt eine Adresse haben. Und jemand muss anfangen zu arbeiten. Das ist Christian.
+  </p>
+  <p>
+    Lucy ist noch mitten in ihrer Masterarbeit, Innenarchitektur, letzter Schliff. Mit einem Sechsjährigen und einer Zweijährigen nebenbei. Einfach zusammen losfliegen war keine Option.
+  </p>
+  <p>
+    Aber ehrlich? Es fühlt sich trotzdem komisch an. Einen Monat getrennt, während sich hier alles auflöst. Die Wohnung, die Routinen, das bekannte Leben. Christian baut in Australien was Neues auf. Lucy hält hier alles zusammen, bis es soweit ist.
+  </p>
+  <p>
+    Am 26. Juli 2026 steigen Lucy, Jo und Linny in den Flieger. Dann sind wir komplett. Bis dahin: FaceTime-Abende und das Vertrauen, dass der Plan funktioniert.
+  </p>
+  <p>
+    <a href="/blog/tra-skill-assessment-koch-australien">Christians Weg als Koch nach Australien, Skill Assessment Erfahrungsbericht</a>
+  </p>
+
+  <!-- Jo -->
+  <h2 id="jo">Was macht das Auswandern mit einem Kind, das gerade sechs geworden ist?</h2>
+  <p>
+    Jo ist sechs. Alt genug, um zu verstehen, dass sich etwas Großes ändert. Zu klein, um zu begreifen, was das wirklich bedeutet. Und ehrlich gesagt: Wir verstehen es ja selbst noch nicht ganz.
+  </p>
+  <p>
+    Sein bester Freund sollte mit ihm zusammen eingeschult werden. Hier in Deutschland, an der Schule um die Ecke. Das war der Plan, jedenfalls Jos Plan. Jetzt wird sein Freund ohne ihn in die erste Klasse gehen. Und Jo wird auf der anderen Seite der Welt sein.
+  </p>
+  <p>
+    Er stellt Fragen. Viele Fragen. „Was ist mit meinen Spielsachen?" „Kann ich mein Fahrrad mitnehmen?" „Aber ich bin doch hier an der Schule angemeldet." Jede Frage ist berechtigt. Auf manche haben wir gute Antworten. Auf andere nicht.
+  </p>
+  <p>
+    Was wir merken: Jo ist in den letzten Wochen anhänglicher geworden. Er will abends länger kuscheln. Er will mit in die Küche, wenn Christian kocht. Als ob er Zeit sammelt, bevor sich alles verändert. Und vielleicht tut er genau das.
+  </p>
+  <p>
+    Wir haben uns bewusst entschieden, das konkrete Abschiedsgespräch noch nicht zu führen. Nicht aus Vermeidung. Sondern weil wir den richtigen Moment abwarten wollen. Wenn es soweit ist, soll es ehrlich sein. Kein „Wird schon" ohne Substanz. Sondern ein echtes Gespräch, das seine Gefühle ernst nimmt.
+  </p>
+  <p>
+    Wie erklärt man einem Sechsjährigen, dass Abschied und Anfang gleichzeitig passieren können?
+  </p>
+
+  <!-- Schule -->
+  <h2 id="schule">Steiner School oder State School, Welche Schule für Jo in Australien?</h2>
+  <p>
+    Das australische Schuljahr beginnt im Januar. Jo wird also voraussichtlich erst im Januar 2027 eingeschult, egal welche Schule es wird. Das gibt uns etwas Zeit. Aber die Schulplatzfrage ist trotzdem jetzt schon Thema.
+  </p>
+  <p>
+    Wir haben uns bei zwei Steiner Schools beworben: eine in Mullumbimby und eine in Byron Bay. Lucy hat die Schule in Mullumbimby direkt kontaktiert und unseren anthroposophischen Hintergrund erklärt. Ihre Geschwister waren auf Waldorfschulen. Ihre Mutter arbeitet als Tagesmutter mit einem ähnlichen pädagogischen Ansatz. Das ist kein Zufall, Waldorfpädagogik ist für uns kein Trend, sondern Familientradition.
+  </p>
+  <p>
+    Trotzdem: Ein garantierter Platz ist das nicht. Die Schulen in der Northern Rivers Region sind beliebt. Viele Familien in der Gegend um Byron Bay suchen genau diese Art von Schule.
+  </p>
+  <p>
+    Und wenn es nicht klappt? Dann wird es eine staatliche Schule in New South Wales. Welche genau, hängt von der Wohnadresse ab, dem sogenannten Catchment Area. Und die haben wir noch nicht.
+  </p>
+  <p>
+    Wer sich über das Schulsystem in NSW informieren will, findet auf der offiziellen Seite des NSW Department of Education alle Details: <a href="https://education.nsw.gov.au" target="_blank" rel="noopener">education.nsw.gov.au</a>.
+  </p>
+  <p>
+    Das klingt nach viel Ungewissheit? Ist es auch. Aber wir haben gelernt: Beim Auswandern mit Familie kann man nicht alles vorab klären. Manche Dinge ergeben sich erst vor Ort.
+  </p>
+
+  <!-- Linny -->
+  <h2 id="linny">Wie geht Linny mit den Veränderungen um?</h2>
+  <p>
+    Linny ist zwei. Sie versteht keine Umzugskartons. Sie weiß nicht, was „Australien" bedeutet. Aber sie spürt, wenn sich die Energie im Haus verändert.
+  </p>
+  <p>
+    Gerade hat Linny die perfekte Welt. Montag bis Freitag geht sie zur Tagesmutter, das ist Lucys Mutter, also Oma. Vier Kinder in der Gruppe. Linnys beste Freundin ist dabei. Sie kennt jeden Ablauf, jede Routine. Morgens Ankommen, gemeinsam Frühstücken, Spielen, Mittagsschlaf. Alles vertraut.
+  </p>
+  <p>
+    Und dann ist da Christian in der Küche. Linny sitzt neben ihm auf der Arbeitsplatte, während er kocht. Das ist ihr Ding. Ihr Ritual. Vater und Tochter, nebeneinander, während es nach Abendessen duftet.
+  </p>
+  <p>
+    All das wird sich ändern. Die Tagesmutter bleibt in Deutschland. Die beste Freundin auch. Die Küche wird eine andere sein. Wird sie sich erinnern? Wahrscheinlich nicht konkret. Aber der Übergang wird trotzdem spürbar sein, für sie und für uns.
+  </p>
+  <p>
+    Bei Linny machen wir uns weniger Sorgen um Erklärungen und mehr um Stabilität. Kinder in dem Alter brauchen vertraute Gesichter und feste Abläufe. In Australien werden wir beides neu aufbauen müssen. Schnell.
+  </p>
+
+  <!-- Wohnung auflösen -->
+  <h2 id="wohnung">Wohnung kündigen, Kartons packen, Wie löst man ein Leben auf?</h2>
+  <p>
+    Die Wohnung ist gekündigt. Auszug Ende Juli. Das klingt nach einem Satz. In Wahrheit ist es hundert Entscheidungen am Tag.
+  </p>
+  <p>
+    Was nehmen wir mit? Was verkaufen wir? Was verschenken wir? Was kommt in den Container, was in den Koffer, was in den Müll?
+  </p>
+  <p>
+    Jedes Möbelstück hat eine Geschichte. Der Tisch, an dem Jo seine ersten Bilder gemalt hat. Das Regal, das Christian selbst gebaut hat. Linnys Gitterbett, das sie längst nicht mehr braucht, das aber trotzdem schwer loszulassen ist.
+  </p>
+  <p>
+    Und dazwischen: der Alltag. Kita-Abholungen. Masterarbeit schreiben. Kochen. Ins Bett bringen. Kartons packen, wenn die Kinder schlafen. Es gibt keinen Pausenknopf für das normale Leben, während man parallel ein neues plant.
+  </p>
+  <blockquote class="erfahrung-zitat">
+    <strong>Unsere Erfahrung:</strong> Der größte Fehler wäre, alles auf die letzten zwei Wochen zu schieben. Wir haben früh angefangen, Raum für Raum. Nicht perfekt, nicht systematisch. Aber in Bewegung.
+  </blockquote>
+  <p>
+    Was uns hilft: Prioritäten. Nicht alles muss vor dem Abflug gelöst sein. Manche Dinge klärt man besser aus der Ferne. Und manche Dinge klären sich von selbst, wenn man sie loslässt.
+  </p>
+
+  <!-- Offene Fragen -->
+  <h2 id="offene-fragen">Was sind die größten offenen Fragen kurz vor dem Abflug?</h2>
+  <p>
+    Wir wollen ehrlich sein. Es gibt eine Liste von Dingen, die noch nicht geklärt sind. Und das ist okay. Hier die größten:
+  </p>
+  <p>
+    <strong>Wohnung in Australien:</strong> Christian sucht vor Ort. Aber der Mietmarkt in Byron Bay und der Northern Rivers Region ist angespannt. Ohne feste Adresse keine State School Zuweisung. Ohne Adresse kein fester Alltag.
+  </p>
+  <p>
+    <strong>Schulplatz:</strong> Steiner School Bewerbung läuft. Kein garantierter Platz. Fallback hängt von der Adresse ab. Jo startet voraussichtlich erst im Januar.
+  </p>
+  <p>
+    <strong>Kinderbetreuung für Linny:</strong> In Deutschland hat sie Oma. In Australien müssen wir etwas Neues finden. Childcare in Australien ist teuer und Wartelisten sind lang.
+  </p>
+  <p>
+    <strong>Lucys Masterarbeit:</strong> Muss fertig werden, bevor der Flieger geht. Kein Plan B.
+  </p>
+  <p>
+    <strong>Das Abschiedsgespräch mit Jo:</strong> Steht noch aus. Bewusst. Aber es wird kommen.
+  </p>
+  <p>
+    Klingt nach viel? Ist es. Aber wir haben uns daran gewöhnt, mit Unsicherheit zu leben. Das gehört zum Auswandern dazu. Nicht alles muss heute gelöst sein. Manches darf offen bleiben.
+  </p>
+
+  <!-- Gelernt -->
+  <h2 id="gelernt">Was wir aus den letzten Wochen gelernt haben</h2>
+  <p>
+    Die Wochen vor einem Umzug ans andere Ende der Welt sind keine Checklisten-Phase. Sie sind emotional. Chaotisch. Und überraschend schön.
+  </p>
+  <p>
+    Weil man plötzlich merkt, was wirklich zählt. Es sind nicht die Möbel. Es ist Jos Hand, die nach deiner greift, wenn er abends ins Bett geht. Linnys Lachen auf der Küchentheke. Das Gefühl, gemeinsam etwas Großes zu wagen, auch wenn die Hälfte noch unklar ist.
+  </p>
+  <p>
+    Wir dokumentieren das alles. Nicht weil wir Experten sind. Sondern weil wir wissen, dass andere Familien vor den gleichen Fragen stehen. Und weil ehrliche Geschichten mehr helfen als perfekte Anleitungen.
+  </p>
+  <p>
+    Falls ihr gerade in der gleichen Situation seid: Ihr seid nicht allein. Es ist normal, dass es sich gleichzeitig aufregend und beängstigend anfühlt. Es ist normal, keine Antwort auf alles zu haben. Und es ist normal, dass ihr manchmal an allem zweifelt.
+  </p>
+  <p>
+    Macht trotzdem weiter. Schritt für Schritt. Karton für Karton.
+  </p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Häufig gestellte Fragen</h2>
+
+  <h3>Wann wandert die Familie nach Australien aus?</h3>
+  <p>
+    Christian fliegt am 23. Juni 2026 vor nach Byron Bay in der Northern Rivers Region, NSW. Lucy folgt mit Jo (6) und Linny (2) am 26. Juli 2026. Der versetzte Abflug gibt Christian Zeit, vor Ort eine Unterkunft zu finden und erste Schritte zu organisieren.
+  </p>
+
+  <h3>In welche Schule kommt Jo in Australien?</h3>
+  <p>
+    Die Familie hat sich bei Steiner Schools in Mullumbimby und Byron Bay beworben. Ein Platz ist nicht garantiert. Alternativ käme eine staatliche Schule in NSW in Frage, die Zuweisung hängt von der Wohnadresse ab. Das australische Schuljahr beginnt im Januar, Jo wird voraussichtlich erst dann starten.
+  </p>
+
+  <h3>Warum eine Steiner School und keine normale Schule?</h3>
+  <p>
+    Lucy kommt aus einer Familie mit anthroposophischem Hintergrund. Ihre Geschwister besuchten Waldorfschulen, ihre Mutter arbeitet als Tagesmutter mit einem ähnlichen pädagogischen Ansatz. Waldorfpädagogik ist für die Familie kein Experiment, sondern gelebte Überzeugung.
+  </p>
+
+  <h3>Wie bereitet man kleine Kinder auf eine Auswanderung vor?</h3>
+  <p>
+    Bei Jo (6) warten die Eltern bewusst auf den richtigen Moment für das Abschiedsgespräch. Er stellt bereits Fragen über Spielsachen, Fahrrad und Schulanmeldung. Bei Linny (2) geht es weniger um Erklärungen und mehr darum, schnell neue Routinen und vertraute Abläufe in Australien aufzubauen.
+  </p>
+
+  <h3>Wohin genau zieht die Familie in Australien?</h3>
+  <p>
+    Das Ziel ist die Northern Rivers Region in New South Wales, konkret Byron Bay und Umgebung. Die endgültige Wohnadresse steht noch nicht fest. Christian wird vor Ort nach einer passenden Unterkunft suchen, bevor Lucy und die Kinder nachkommen.
+  </p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Beitrag ist ein persönlicher Erfahrungsbericht. Er ersetzt keine professionelle Beratung zu Themen wie Auswanderung, Schulrecht oder Kinderbetreuung in Australien.
+      Für offizielle Informationen zum Schulsystem in New South Wales empfehlen wir die Seite des
+      <a href="https://education.nsw.gov.au" target="_blank" rel="noopener">NSW Department of Education</a>.
+      Unsere Geschichte ist unsere Geschichte, eure kann anders aussehen.
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 01.06.2026
+    </p>
+  </div>
+
+  <!-- Update-Log (Spec §11.2) -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">01.06.2026</span>
+      <span class="update-log__text">Englische Version verfügbar unter <a href="/en/final-weeks-before-moving-to-australia">final-weeks-before-moving-to-australia</a>.</span>
+    </div>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">16.04.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Verwandte Artikel: gleiche 2 Ziele + Texte wie live -->
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Hat dir das geholfen?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Neue Artikel, echte Erfahrungen, konkrete Zahlen, direkt in dein Postfach.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Inhaltsverzeichnis ---------------------------------------
+     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
+     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
+     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box (Key Takeaways) ---------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Erfahrungs-Zitat (Blockquote) ------------------------------
+     EIN Terrakotta-Akzent der Wohnungs-Sektion: die Zitat-Kante. */
+  .erfahrung-zitat {
+    border-inline-start: 3px solid var(--accent);
+    padding-inline-start: var(--space-4);
+    padding-block: var(--space-2);
+    color: var(--ink-soft);
+  }
+
+  /* --- Trust Box ------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------ */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

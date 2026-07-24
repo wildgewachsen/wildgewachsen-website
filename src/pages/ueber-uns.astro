@@ -1,0 +1,650 @@
+---
+// Ueber-uns-Seite im neuen Look "Sonnengetrocknete Erde".
+// Alle sichtbaren Texte 1:1 aus website/ueber-uns.html (Live-Stand) portiert.
+// Head-Werte (canonical, hreflang, OG/Twitter, Favicons) exakt wie live,
+// JSON-LD (Person/Organization/BreadcrumbList) verbatim uebernommen.
+// Klaro-Consent 1:1 wie live, app.js bewusst NICHT portiert.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Die Familie - Texte 1:1 von live
+const familie = [
+  {
+    name: 'Christian',
+    rolle: 'Koch · Restaurantbetreiber · Filmemacher',
+    text: 'Ausgebildeter Koch, sieben Jahre eigenes Restaurant (die farm, Essen). Koch-Ausbildung in Australien gemacht. Surfer wenn die Wellen stimmen. Steht vor der Kamera und erzählt wie es ist, nicht wie es sein sollte.',
+  },
+  {
+    name: 'Lucy',
+    rolle: 'Innenarchitektin · Masterstudentin · Co-Host',
+    text: 'Studiert Innenarchitektur-Raumkunst (Master). Abschluss Juli 2026. Hat Byron Bay-Architekturprojekte im Blick. Aktiv vor der Kamera, hält den Laden zusammen während Christian plant.',
+  },
+  {
+    name: 'Joris',
+    rolle: '6 Jahre',
+    text: 'Kommt in Australien in die Schule. Lernt spielerisch Englisch und findet das großartig. Stellt die harten Fragen, die Erwachsene sich nicht trauen. Wird spürbar anhänglicher, aber freut sich aufs Abenteuer.',
+  },
+  {
+    name: 'Linnea',
+    rolle: '2 Jahre',
+    text: 'Noch zu klein um zu verstehen was passiert, aber groß genug um überall gute Laune zu verbreiten. Wird aktiv integriert, auch wenn sie es noch nicht merkt.',
+  },
+];
+
+// Credential-Tags - Texte + Reihenfolge 1:1 von live
+const credentials = [
+  'Koch-Ausbildung in Australien',
+  '7 Jahre Restaurantbetrieb',
+  'PTE-Test bestanden',
+  'Skill Assessment bestanden',
+  'Migration Agent beauftragt',
+  'Tourist-Visum in Vorbereitung',
+  'Visum 186: Sponsor-Suche läuft',
+  'Flüge gebucht',
+];
+
+// Themen-Schwerpunkte (Hub-Anker) - Texte + Links 1:1 von live
+const schwerpunkte = [
+  {
+    href: '/blog/auswandern-australien-kosten-familie-guide',
+    eyebrow: 'Kosten',
+    titel: 'Australien Kosten 2026',
+    text: 'Was eine vierköpfige Familie wirklich braucht. Flüge, Visum, Versicherung, erste Monate vor Ort. Mit echten Zahlen, nicht Schätzungen aus dem Netz.',
+  },
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    eyebrow: 'Mit Kindern',
+    titel: 'Auswandern mit Kindern',
+    text: 'Vorbereitung, Sprache, Schule, Abschied. Was bei uns funktioniert hat und was wir unterschätzt haben.',
+  },
+  {
+    href: '/blog/vom-gemuesegarten-nach-australien-auswanderung-familie',
+    eyebrow: 'Unser Weg',
+    titel: 'Vom Gemüsegarten nach Australien',
+    text: 'Wie wir vom Restaurant über zwei abgerissene Selbstversorgungs-Felder zur Auswanderung gekommen sind. Die ganze Geschichte.',
+  },
+];
+---
+
+<BaseLayout
+  title="Über uns – Wildgewachsen"
+  description="Wir sind Christian, Lucy, Joris und Linnea. Eine deutsche Familie auf dem Weg nach Australien. 7 Jahre Restaurant, 2 Jahre Selbstversorgung, am 23. Juni 2026 geht es los."
+  lang="de"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/ueber-uns" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/ueber-uns" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/about" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/ueber-uns" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Über uns – Wildgewachsen" />
+    <meta property="og:description" content="Wir sind Christian, Lucy, Joris und Linnea. Eine deutsche Familie auf dem Weg nach Australien. 7 Jahre Restaurant, 2 Jahre Selbstversorgung, am 23. Juni 2026 geht es los." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/ueber-uns" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Über uns – Wildgewachsen" />
+    <meta name="twitter:description" content="Wir sind Christian, Lucy, Joris und Linnea. Eine deutsche Familie auf dem Weg nach Australien. 7 Jahre Restaurant, 2 Jahre Selbstversorgung, am 23. Juni 2026 geht es los." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- JSON-LD: Person (Author) -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Christian Schippel",
+    "jobTitle": "Koch",
+    "description": "Ausgebildeter Koch, sieben Jahre eigenes Restaurant in Essen (die farm), Koch-Ausbildung in Australien. Dokumentiert mit seiner Familie die Auswanderung nach Byron Bay.",
+    "url": "https://wildgewachsen-australien.de/ueber-uns",
+    "image": "https://wildgewachsen-australien.de/assets/images/family-story.jpg",
+    "sameAs": [
+      "https://www.youtube.com/@die_farm",
+      "https://www.instagram.com/wildgewachsen_australien/",
+      "https://www.tiktok.com/@wildgewachsen"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "url": "https://wildgewachsen-australien.de/"
+    },
+    "knowsAbout": [
+      "Auswanderung nach Australien",
+      "186 Employer Nomination Scheme Visum",
+      "PTE Academic",
+      "TRA Skill Assessment",
+      "Selbstversorgung",
+      "Byron Bay"
+    ]
+  }
+    </script>
+
+    <!-- JSON-LD: Organization (Publisher) -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Wildgewachsen",
+    "url": "https://wildgewachsen-australien.de/",
+    "logo": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png",
+    "description": "Eine deutsche Familie dokumentiert ihre Auswanderung nach Australien. Ehrlich, ungefiltert, in Echtzeit.",
+    "sameAs": [
+      "https://www.youtube.com/@die_farm",
+      "https://www.instagram.com/wildgewachsen_australien/",
+      "https://www.tiktok.com/@wildgewachsen"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Christian Schippel"
+    }
+  }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://wildgewachsen-australien.de/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Über uns",
+        "item": "https://wildgewachsen-australien.de/ueber-uns"
+      }
+    ]
+  }
+    </script>
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Auftakt: Titelseite im Reisetagebuch, kein Akzent ===== */}
+  <section class="section auftakt texture-grid">
+    <div class="container auftakt__inner">
+      <p class="eyebrow">Unsere Geschichte</p>
+      <h1>Vier Menschen. Ein Neuanfang.</h1>
+      <p class="auftakt__intro">
+        Wir haben sieben Jahre ein Restaurant betrieben, zwei Jahre lang unser
+        eigenes Gemüse angebaut, und dann entschieden: Wir fangen nochmal von
+        vorne an. In Australien.
+      </p>
+    </div>
+  </section>
+
+  {/* ===== Warum Australien: Polaroid-Foto + Text, kein Akzent ===== */}
+  <section class="section">
+    <div class="container geschichte">
+      <figure class="geschichte__foto">
+        <img src="/assets/images/family-story.jpg" alt="Unsere Familie" loading="lazy" />
+      </figure>
+      <div class="geschichte__text">
+        <p class="eyebrow">Die kurze Version</p>
+        <h2>Warum Australien?</h2>
+        <p>
+          Wir haben schon mal in Byron Bay gelebt. Dort wurde die Koch-Ausbildung gemacht,
+          dort hat sich angefühlt was "richtig" heißt. Nach sieben Jahren Restaurant in Essen,
+          einem abgerissenen Gemüsefeld und der Frage "Wenn nicht jetzt, wann dann?",
+          haben wir gebucht.
+        </p>
+        <p>
+          Flüge sind gebucht. Am 23. Juni 2026 geht es los. Erst alleine voraus,
+          im Juli folgt die Familie. Kein Sicherheitsnetz, 3-4 Monate Puffer. Das ist genau so
+          wie es klingt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Wie es dazu kam: schmale Lese-Spalte, Akzent = Weiterlese-Link ===== */}
+  <section class="section">
+    <div class="container container--text">
+      <div class="momente">
+        <p class="eyebrow">Wie es dazu kam</p>
+        <h2>Zwei Momente, ohne die das hier nicht passiert wäre</h2>
+        <p>
+          Wir haben uns vor rund zehn Jahren kennengelernt, wenige Monate bevor Christian für seine
+          Koch-Ausbildung nach Australien ging. Lucy hat sich spontan entschieden, mitzukommen, und
+          aus dem geplanten einen Semester wurden zwei. Ohne diese eine Spontan-Entscheidung gäbe
+          es weder die Beziehung noch die Kinder, noch das, was du gerade liest.
+        </p>
+        <p>
+          Die konkrete Auswanderungs-Entscheidung fiel Anfang September 2025. Das zweite
+          Selbstversorgungs-Feld musste abgerissen werden, im Hintergrund lief längst die Frage,
+          ob das Restaurant so weitergehen soll. Beide Linien sind an einem Tag zusammengelaufen.
+          Nicht hintereinander, gleichzeitig. Restaurant schließen, nach Australien zurück, mit
+          den Kindern dieses Mal.
+        </p>
+        <p>
+          <a href="/blog/vom-gemuesegarten-nach-australien-auswanderung-familie">
+            Die ganze Geschichte: Vom Gemüsegarten nach Australien →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Die Familie: Postkarten, Akzent = Rollen-Stempel ===== */}
+  <section class="section" aria-labelledby="familie-heading">
+    <div class="container">
+      <header class="sektion-kopf">
+        <p class="eyebrow">Die Familie</p>
+        <h2 id="familie-heading">Wer steckt hinter Wildgewachsen?</h2>
+      </header>
+      <ul class="familie__grid" role="list">
+        {
+          familie.map((person) => (
+            <li class="card texture-paper familie__karte">
+              <h3 class="familie__name">{person.name}</h3>
+              <p class="familie__rolle">{person.rolle}</p>
+              <p class="familie__text">{person.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Der Kanal: zentrierte Lese-Spalte + Stempel-Leiste,
+       Akzent = Link im Hinweis ===== */}
+  <section class="section" aria-labelledby="kanal-heading">
+    <div class="container container--text kanal">
+      <header class="sektion-kopf sektion-kopf--mitte">
+        <p class="eyebrow">Der Kanal</p>
+        <h2 id="kanal-heading">Warum wir das dokumentieren</h2>
+      </header>
+      <p class="kanal__text">
+        Wir dokumentieren für uns, unsere Familie und glauben, dass andere das auch
+        gerade durchmachen. Die gleichen Fragen, die gleichen Ängste, die gleichen Excel-Tabellen
+        um drei Uhr nachts. Wenn unsere Erfahrung jemandem hilft eine bessere Entscheidung
+        zu treffen, dann hat sich das gelohnt.
+      </p>
+      <ul class="kanal__stempel" role="list">
+        {credentials.map((tag) => <li class="kanal__tag">{tag}</li>)}
+      </ul>
+      <p class="kanal__hinweis">
+        <strong>Hinweis zum Weg:</strong> Wir reisen mit Tourist-Visum (eVisitor 651) ein und
+        suchen erst vor Ort einen Sponsor für das Visum 186. Steht in drei Monaten kein Sponsor,
+        fliegen wir zurück. Das ist eine bewusste Wette, keine Empfehlung.
+        <a href="/blog/tourist-visum-australien-evisitor-651">Warum wir den Weg trotzdem gehen</a>.
+      </p>
+    </div>
+  </section>
+
+  {/* ===== Themen-Schwerpunkte: Postkarten-Raster,
+       Akzent = Pfeil/Hover-Titel ===== */}
+  <section class="section texture-grid" aria-labelledby="schwerpunkte-heading">
+    <div class="container">
+      <header class="sektion-kopf">
+        <p class="eyebrow">Themen-Schwerpunkte</p>
+        <h2 id="schwerpunkte-heading">Was wir hier dokumentieren</h2>
+      </header>
+      <ul class="schwerpunkte__grid" role="list">
+        {
+          schwerpunkte.map((s) => (
+            <li class="card schwerpunkte__karte">
+              <p class="eyebrow">{s.eyebrow}</p>
+              <h3 class="schwerpunkte__titel">
+                <a class="schwerpunkte__link" href={s.href}>
+                  {s.titel}
+                </a>
+                <span class="schwerpunkte__pfeil" aria-hidden="true">
+                  &rarr;
+                </span>
+              </h3>
+              <p class="schwerpunkte__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Newsletter: Postkarte, Akzent = Abonnieren-Button ===== */}
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="card texture-grid newsletter">
+        <p class="eyebrow">Dabei sein</p>
+        <h2>Unsere Reise mitverfolgen</h2>
+        <p class="newsletter__text">
+          Wir schicken Updates wenn es weitergeht. Kein Spam, nur echte Neuigkeiten.
+        </p>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">
+            Deine E-Mail-Adresse
+          </label>
+          <input
+            id="newsletter-email"
+            class="newsletter__input"
+            type="email"
+            placeholder="Deine E-Mail-Adresse"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Abonnieren</button>
+        </form>
+        <p class="newsletter__hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Button (nur Tokens, Mono-Etiketten-Optik wie Startseite) -------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  /* --- Auftakt: Titelseite auf Millimeterpapier ------------------------ */
+  .auftakt__inner {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .auftakt__intro {
+    color: var(--ink-soft);
+    font-size: var(--text-1);
+    max-inline-size: 600px;
+  }
+
+  /* --- Warum Australien: Polaroid + Text ------------------------------- */
+  .geschichte {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  /* Polaroid: Creme-Rahmen, unten dicker Rand, leicht verdreht */
+  .geschichte__foto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-6);
+    rotate: -1deg;
+  }
+
+  .geschichte__foto img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .geschichte__text > * + * {
+    margin-block-start: var(--space-3);
+  }
+
+  @media (max-width: 800px) {
+    .geschichte {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+
+  /* --- Wie es dazu kam ------------------------------------------------- */
+  .momente > * + * {
+    margin-block-start: var(--space-4);
+  }
+
+  /* --- Sektions-Koepfe -------------------------------------------------- */
+  .sektion-kopf {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-end: var(--space-5);
+  }
+
+  .sektion-kopf--mitte {
+    justify-items: center;
+    text-align: center;
+  }
+
+  /* --- Die Familie: Postkarten mit Rollen-Stempel ----------------------- */
+  .familie__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .familie__karte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .familie__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .familie__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .familie__karte:hover {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  .familie__name {
+    font-size: var(--text-1);
+  }
+
+  /* Rollen-Stempel: der EINE Terrakotta-Akzent der Sektion */
+  .familie__rolle {
+    align-self: start;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.08em;
+    color: var(--accent-strong);
+    border: 1px dashed var(--accent-strong);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    rotate: -1deg;
+  }
+
+  .familie__text {
+    color: var(--ink-soft);
+    font-size: var(--text--1);
+    line-height: 1.7;
+  }
+
+  /* --- Der Kanal: Stempel-Leiste --------------------------------------- */
+  .kanal__text {
+    text-align: center;
+    color: var(--ink-soft);
+  }
+
+  .kanal__stempel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2) var(--space-3);
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--space-6);
+  }
+
+  .kanal__tag {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    border: 1px dashed var(--ink-soft);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    background: var(--surface);
+  }
+
+  .kanal__tag:nth-child(odd) {
+    rotate: -0.6deg;
+  }
+
+  .kanal__tag:nth-child(even) {
+    rotate: 0.6deg;
+  }
+
+  .kanal__hinweis {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: var(--text--1);
+    line-height: 1.7;
+    margin-block-start: var(--space-6);
+  }
+
+  /* --- Themen-Schwerpunkte: klickbare Postkarten ------------------------ */
+  .schwerpunkte__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .schwerpunkte__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .schwerpunkte__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .schwerpunkte__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .schwerpunkte__karte:hover,
+  .schwerpunkte__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  .schwerpunkte__titel {
+    font-size: var(--text-1);
+  }
+
+  .schwerpunkte__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Ganze Karte klickbar (stretched link) */
+  .schwerpunkte__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .schwerpunkte__karte:hover .schwerpunkte__link,
+  .schwerpunkte__karte:focus-within .schwerpunkte__link {
+    color: var(--accent-strong);
+  }
+
+  .schwerpunkte__pfeil {
+    color: var(--accent-strong);
+    margin-inline-start: var(--space-1);
+  }
+
+  .schwerpunkte__text {
+    color: var(--ink-soft);
+    font-size: var(--text--1);
+    line-height: 1.7;
+  }
+
+  /* --- Newsletter-Postkarte -------------------------------------------- */
+  .newsletter {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  .newsletter__text {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter__input {
+    flex: 1 1 240px;
+    max-width: 320px;
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__hinweis {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .geschichte__foto,
+    .familie__karte,
+    .familie__karte:nth-child(odd),
+    .familie__karte:nth-child(even),
+    .kanal__tag,
+    .schwerpunkte__karte,
+    .schwerpunkte__karte:nth-child(odd),
+    .schwerpunkte__karte:nth-child(even) {
+      rotate: 0deg;
+      transition: none;
+    }
+  }
+</style>

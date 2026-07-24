@@ -1,0 +1,895 @@
+---
+// EN-Startseite im neuen Look "Sonnengetrocknete Erde".
+// Alle sichtbaren Texte 1:1 aus website/en/index.html (Live-Stand) portiert.
+// Head-Werte (canonical, hreflang, OG/Twitter, Favicons) exakt wie live.
+// JSON-LD (WebSite + BreadcrumbList) verbatim aus dem Live-File.
+// Klaro-Consent 1:1 uebernommen (public/js + public/css), app.js bewusst NICHT.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoHero from '../../components/VideoHero.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import HandIcon from '../../components/HandIcon.astro';
+
+// Latest articles (newest first, max. 3) - Texte 1:1 von live
+const neuesteArtikel = [
+  {
+    href: '/en/australian-sim-card-phone-number-newcomers',
+    meta: 'Money & Costs',
+    titel: "Australian SIM Card and Phone Number: A Newcomer's Guide",
+    teaser: '22 July 2026 · 9 min read',
+  },
+  {
+    href: '/en/arrived-first-days-in-australia',
+    meta: 'Arriving & Everyday Life',
+    titel: 'Arriving in Australia: My First Days Alone',
+    teaser: '4 July 2026 · 7 min read',
+  },
+  {
+    href: '/en/the-decision-to-move-to-australia',
+    meta: 'Our Story',
+    titel: 'The Decision to Emigrate: Why We Are Moving to Australia',
+    teaser: '25 June 2026 · 8 min read',
+  },
+];
+
+// Hub pillars ("Dive deeper") - Texte + Bildpfade 1:1 von live
+const wegweiser = [
+  {
+    href: '/en/from-vegetable-garden-to-australia-family-move',
+    kategorie: 'Our Story',
+    titel: 'From a Vegetable Garden to Australia: Our Family Move',
+    meta: 'Guide · 14 min read',
+    bild: '/assets/images/family-story.jpg',
+  },
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    kategorie: 'Money & Costs',
+    titel:
+      'Moving to Australia as a Family: What It Really Costs, Our Real Numbers (2026)',
+    meta: 'Guide · 13 min read',
+    bild: 'https://cdn.pixabay.com/photo/2021/02/13/03/29/money-6010252_640.jpg',
+  },
+  {
+    href: '/en/186-visa-australia-family-guide',
+    kategorie: 'Visa & Migration',
+    titel:
+      "186 Visa Australia: Our Family's Path to the Employer Sponsored Visa (2026)",
+    meta: 'Guide · 12 min read',
+    bild: '/assets/images/artikel-visum-186.jpg',
+  },
+];
+
+// Topic cards - Texte + Filter-Links 1:1 von live.
+// Icons: handgezeichnete HandIcon-Namen statt der Alt-Emojis (v2 Playbook).
+const themen = [
+  {
+    href: '/en/blog?filter=visum-migration',
+    icon: 'flugzeug',
+    name: 'Visa & Migration',
+    desc: 'Skill Assessment, PTE Academic test, 186 visa, dealing with the Department of Home Affairs',
+  },
+  {
+    href: '/en/blog?filter=vorbereitung-planung',
+    icon: 'liste',
+    name: 'Preparation & Planning',
+    desc: 'Checklists, timelines, documents, decisions',
+  },
+  {
+    href: '/en/blog?filter=familie-kinder',
+    icon: 'herz',
+    name: 'Family & Kids',
+    desc: 'Preparing the kids, school, family life in transition',
+  },
+  {
+    href: '/en/blog?filter=geld-kosten',
+    icon: 'muenze',
+    name: 'Money & Costs',
+    desc: 'Budget, real numbers, banking, what it actually costs',
+  },
+  {
+    href: '/en/blog?filter=ankommen-alltag',
+    icon: 'haus',
+    name: 'Arrival & Daily Life',
+    desc: 'First weeks, housing, settling in, a new life',
+  },
+  {
+    href: '/en/blog?filter=byron-bay-region',
+    icon: 'welle',
+    name: 'Byron Bay & Region',
+    desc: 'Local info, housing, infrastructure, Northern Rivers',
+  },
+] as const;
+
+// Timeline "From Essen to Byron Bay" - Texte 1:1 von live.
+// Status aktualisiert Stand 24.07.2026 (CEO-Freigabe im Chat; Fakten:
+// Abflug 23.06. + Ankunft 25.06. laut Arrived-Artikel/CONTEXT,
+// Familie folgt 26.07. = aktuelle Etappe).
+const etappen = [
+  { datum: 'Dec 2025', label: 'Restaurant closed', status: 'done' },
+  {
+    datum: 'Feb 2026',
+    label: 'PTE & Skill Assessment passed',
+    status: 'done',
+  },
+  { datum: 'April 2026', label: 'Preparation & wind-down', status: 'done' },
+  { datum: '23 June 2026', label: 'Departure', status: 'done' },
+  { datum: '26 July 2026', label: 'Family follows', status: 'current' },
+];
+---
+
+<BaseLayout
+  title="Wildgewachsen – Moving to Australia with a Family"
+  description="Wildgewachsen – A German family moving from Germany to Byron Bay, Australia. Honest experience reports, real numbers, two kids, one plan."
+  lang="en"
+>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/assets/videos/hero-loop-poster.jpg" fetchpriority="high" />
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wildgewachsen – Moving to Australia with a Family" />
+    <meta property="og:description" content="Wildgewachsen – A German family moving from Germany to Byron Bay, Australia. Honest experience reports, real numbers, two kids, one plan." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Wildgewachsen – Moving to Australia with a Family" />
+    <meta name="twitter:description" content="Wildgewachsen – A German family moving from Germany to Byron Bay, Australia. Honest experience reports, real numbers, two kids, one plan." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/hero-family.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: WebSite -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "inLanguage": "en",
+    "name": "Wildgewachsen",
+    "url": "https://wildgewachsen-australien.de/en/",
+    "description": "A German family moving from Germany to Byron Bay, Australia. Honest, unfiltered, in real time.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "url": "https://wildgewachsen-australien.de/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    }
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" }
+    ]
+  }
+    </script>
+    <!-- Klaro Consent, 1:1 wie live (defer-Reihenfolge: Config vor Klaro) -->
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Hero: Video-Buehne, EIN Terrakotta-Akzent = Haupt-CTA ===== */}
+  <VideoHero
+    src="/assets/videos/hero-loop.mp4"
+    poster="/assets/videos/hero-loop-poster.jpg"
+    lang="en"
+  >
+    <p class="eyebrow">Real-time documentation</p>
+    <h1 class="hero-titel">We are moving to Australia with two kids.</h1>
+    <p>
+      We document our move from Germany to Byron Bay in real time.
+      Four people, two kids, one plan. No sugar-coating, just honest answers
+      to real questions.
+    </p>
+    <p class="hero-aktionen">
+      <a class="btn btn--primary" href="#newsletter">Follow our journey</a>
+      <a class="btn btn--licht" href="/en/about">Our story</a>
+    </p>
+  </VideoHero>
+
+  {/* ===== Trust-Leiste: Gepaeckband-Streifen, kein Akzent ===== */}
+  <div class="trust">
+    <ul class="container trust__liste" role="list">
+      <li class="trust__item">Real-time documentation</li>
+      <li class="trust__item">Departure: 23 June 2026</li>
+      <li class="trust__item">Byron Bay, NSW</li>
+      <li class="trust__item">Two kids (2 &amp; 6)</li>
+    </ul>
+  </div>
+
+  {/* ===== About-Teaser: Foto + Text, Akzent = CTA-Button ===== */}
+  <section class="section">
+    <div class="container ueber-teaser">
+      <figure class="ueber-teaser__foto">
+        <img src="/assets/images/family-about.jpg" alt="Our family" loading="lazy" />
+      </figure>
+      <div class="ueber-teaser__text">
+        <p class="eyebrow">Who we are</p>
+        <h2>Chef, interior designer, two kids and a plan.</h2>
+        <p>
+          Seven years of our own restaurant, two years of growing our own vegetables,
+          and then the decision that changes everything. We pack up our life in Essen
+          and start again in Australia. Here we tell you why, and how.
+        </p>
+        <p><a class="btn btn--primary" href="/en/about">More about us</a></p>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== Latest articles: Postkarten-Deck (Akzent = Pfeil/Hover im
+       WeiterlesenPfade-Bauteil) ===== */}
+  <div class="container">
+    <WeiterlesenPfade
+      lang="en"
+      eyebrow="From the blog"
+      ueberschrift="Latest articles"
+      artikel={neuesteArtikel}
+    />
+    <p class="text-mitte artikel-mehr">
+      <a class="btn btn--umriss" href="/en/blog">Read all articles</a>
+    </p>
+  </div>
+
+  {/* ===== Dive deeper (Hub-Pillars): Postkarten mit Bild,
+       Akzent = Pfeil/Hover-Titel ===== */}
+  <section class="section" aria-labelledby="hubs-heading">
+    <div class="container">
+      <header class="sektion-kopf">
+        <p class="eyebrow">Dive deeper</p>
+        <h2 id="hubs-heading">Our guideposts</h2>
+        <p class="sektion-kopf__intro">
+          The big collection articles on moving to Australia, everything you need in one place. We update them quarterly.
+        </p>
+      </header>
+      <ul class="wegweiser__grid" role="list">
+        {
+          wegweiser.map((w) => (
+            <li class="card wegweiser__karte">
+              <figure class="wegweiser__bild">
+                <img src={w.bild} alt="" loading="lazy" />
+                <p class="wegweiser__kategorie">{w.kategorie}</p>
+              </figure>
+              <h3 class="wegweiser__titel">
+                <a class="wegweiser__link" href={w.href}>
+                  {w.titel}
+                </a>
+                <span class="wegweiser__pfeil" aria-hidden="true">
+                  &rarr;
+                </span>
+              </h3>
+              <p class="wegweiser__meta">{w.meta}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Topics: Etiketten-Raster, Akzent = Hover-Titel ===== */}
+  <section class="section themen texture-grid">
+    <div class="container">
+      <header class="sektion-kopf">
+        <p class="eyebrow">What to expect here</p>
+        <h2>Our topics</h2>
+      </header>
+      <ul class="themen__grid" role="list">
+        {
+          themen.map((t) => (
+            <li class="card themen__karte">
+              <p class="themen__icon" aria-hidden="true">
+                <HandIcon name={t.icon} />
+              </p>
+              <h3 class="themen__name">
+                <a class="themen__link" href={t.href}>
+                  {t.name}
+                </a>
+              </h3>
+              <p class="themen__desc">{t.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* ===== Reise-Etappen: Route wie im Reisetagebuch,
+       Akzent = aktueller Etappen-Punkt ===== */}
+  <section class="section" aria-labelledby="reise-heading">
+    <div class="container">
+      <header class="sektion-kopf">
+        <p class="eyebrow">Our path</p>
+        <h2 id="reise-heading">From Essen to Byron Bay</h2>
+      </header>
+      <ol class="reise__liste" role="list">
+        {
+          etappen.map((e) => (
+            <li class:list={['reise__etappe', `reise__etappe--${e.status}`]}>
+              <span class="reise__punkt" aria-hidden="true" />
+              <span class="reise__datum">{e.datum}</span>
+              <span class="reise__label">{e.label}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="text-mitte">
+        <a class="btn btn--umriss" href="/en/our-journey">See the whole journey</a>
+      </p>
+    </div>
+  </section>
+
+  {/* ===== Newsletter: Postkarte, Akzent = Abonnieren-Button ===== */}
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="card texture-grid newsletter">
+        {/* Briefmarke + Poststempel: rein dekorativ, Sage (der eine
+            Terrakotta-Akzent der Sektion bleibt der Subscribe-Button) */}
+        <div class="newsletter__marke" aria-hidden="true">
+          <svg class="newsletter__briefmarke" viewBox="0 0 44 52" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="38" height="46" rx="2" fill="var(--surface)" stroke="var(--sage)" stroke-width="1.5" stroke-dasharray="0.5 5" stroke-linecap="round" />
+            <rect x="8" y="8" width="28" height="36" fill="none" stroke="var(--sage)" stroke-width="1" />
+            <path d="M12 26 C 15 23.6, 18 23.5, 21 25.6 C 24 27.7, 27 27.8, 32 25.7 M12 32 C 15 29.6, 18 29.5, 21 31.6 C 24 33.7, 27 33.8, 32 31.7" fill="none" stroke="var(--sage)" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="newsletter__poststempel" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--ink-soft)" stroke-linecap="round">
+            <circle cx="30" cy="30" r="24" stroke-width="1.4" stroke-dasharray="2.5 3.5" />
+            <path d="M8 44 C 20 40, 40 40, 54 43 M10 50 C 22 46, 40 46, 52 49" stroke-width="1.2" />
+          </svg>
+        </div>
+        <p class="eyebrow">Come along</p>
+        <h2>Follow our journey</h2>
+        <p class="newsletter__text">
+          We send updates whenever something new happens. No spam, no advertising, just real news from our move to Australia.
+        </p>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">
+            Your email address
+          </label>
+          <input
+            id="newsletter-email"
+            class="newsletter__input"
+            type="email"
+            placeholder="Your email address"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="newsletter__hinweis">
+          You can unsubscribe any time. We promise.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Buttons (nur Tokens, Mono-Etiketten-Optik) --------------------- */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  .btn--umriss {
+    background: transparent;
+    border-color: var(--ink-soft);
+    color: var(--ink);
+  }
+
+  .btn--umriss:hover {
+    border-color: var(--ink);
+  }
+
+  /* Heller Umriss-Button fuer die dunkle Hero-Flaeche (Panel = Ink) */
+  .btn--licht {
+    background: transparent;
+    border-color: var(--bg);
+    color: var(--bg);
+  }
+
+  .btn--licht:hover {
+    background: color-mix(in srgb, var(--bg) 14%, transparent);
+  }
+
+  .text-mitte {
+    text-align: center;
+  }
+
+  /* --- Hero-Overlay --------------------------------------------------- */
+  .hero-titel {
+    font-size: var(--text-3);
+  }
+
+  .hero-aktionen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: var(--space-4);
+  }
+
+  /* --- Trust-Leiste (Gepaeckband) ------------------------------------- */
+  .trust {
+    border-block: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .trust__liste {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2) var(--space-6);
+    list-style: none;
+    padding-block: var(--space-3);
+  }
+
+  .trust__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .trust__item::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  /* --- About-Teaser ---------------------------------------------------- */
+  .ueber-teaser {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  /* Foto wie ins Tagebuch geklebt: Creme-Rahmen, leicht verdreht */
+  .ueber-teaser__foto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3);
+    rotate: -1deg;
+  }
+
+  .ueber-teaser__foto img {
+    border-radius: var(--radius-s);
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .ueber-teaser__text > * + * {
+    margin-block-start: var(--space-3);
+  }
+
+  @media (max-width: 800px) {
+    .ueber-teaser {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+
+  /* --- Latest articles: Button haengt unter dem Karten-Deck ----------- */
+  .artikel-mehr {
+    margin-block-start: calc(-1 * var(--space-5));
+    padding-block-end: var(--space-6);
+  }
+
+  /* --- Sektions-Koepfe ------------------------------------------------- */
+  .sektion-kopf {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-end: var(--space-5);
+  }
+
+  .sektion-kopf__intro {
+    color: var(--ink-soft);
+    max-inline-size: 55ch;
+  }
+
+  /* --- Wegweiser (Hub-Pillars): Postkarten mit Bild -------------------- */
+  .wegweiser__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .wegweiser__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .wegweiser__karte:nth-child(odd) {
+    rotate: -0.5deg;
+  }
+
+  .wegweiser__karte:nth-child(even) {
+    rotate: 0.5deg;
+  }
+
+  .wegweiser__karte:hover,
+  .wegweiser__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  .wegweiser__bild {
+    position: relative;
+    margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0;
+  }
+
+  .wegweiser__bild img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  .wegweiser__kategorie,
+  .wegweiser__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  /* Kategorie als schief aufgeklebtes Etikett auf dem Postkarten-Foto */
+  .wegweiser__kategorie {
+    position: absolute;
+    left: var(--space-3);
+    bottom: calc(-1 * var(--space-2));
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-1) var(--space-3);
+    box-shadow: var(--shadow-card);
+    rotate: -2deg;
+  }
+
+  .wegweiser__meta {
+    margin-block-start: auto;
+  }
+
+  .wegweiser__titel {
+    font-size: var(--text-1);
+  }
+
+  .wegweiser__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Ganze Karte klickbar (stretched link) */
+  .wegweiser__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .wegweiser__karte:hover .wegweiser__link,
+  .wegweiser__karte:focus-within .wegweiser__link {
+    color: var(--accent-strong);
+  }
+
+  .wegweiser__pfeil {
+    color: var(--accent-strong);
+    margin-inline-start: var(--space-1);
+  }
+
+  /* --- Topics: Etiketten-Raster ---------------------------------------- */
+  .themen__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .themen__karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    transition:
+      rotate 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  /* Etiketten-Gefuehl: minimal schief aufgeklebt, richtet sich beim Hover */
+  .themen__karte:nth-child(odd) {
+    rotate: -0.4deg;
+  }
+
+  .themen__karte:nth-child(even) {
+    rotate: 0.4deg;
+  }
+
+  .themen__karte:hover,
+  .themen__karte:focus-within {
+    rotate: 0deg;
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Icon als Stempel-Abdruck: gestrichelter Kreis, Sage, leicht verkantet */
+  .themen__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    color: var(--sage-text);
+    background: var(--bg);
+    border: 1px dashed var(--sage);
+    border-radius: 50%;
+    rotate: -3deg;
+  }
+
+  .themen__karte:nth-child(even) .themen__icon {
+    rotate: 2.5deg;
+  }
+
+  .themen__name {
+    font-size: var(--text-1);
+  }
+
+  .themen__link {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .themen__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .themen__karte:hover .themen__link,
+  .themen__karte:focus-within .themen__link {
+    color: var(--accent-strong);
+  }
+
+  .themen__desc {
+    color: var(--ink-soft);
+    font-size: var(--text--1);
+  }
+
+  /* --- Reise-Etappen: gestrichelte Route ------------------------------- */
+  .reise__liste {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    margin-block-end: var(--space-6);
+  }
+
+  /* Routenlinie hinter den Punkten */
+  .reise__liste::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 10%;
+    right: 10%;
+    border-block-start: 2px dashed var(--line);
+  }
+
+  .reise__etappe {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  .reise__punkt {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--ink-soft);
+    background: var(--bg);
+  }
+
+  .reise__etappe--done .reise__punkt {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+
+  /* Der EINE Terrakotta-Akzent der Sektion: die aktuelle Etappe */
+  .reise__etappe--current .reise__punkt {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .reise__etappe--current .reise__datum {
+    color: var(--accent-strong);
+  }
+
+  .reise__datum {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .reise__label {
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  @media (max-width: 720px) {
+    .reise__liste {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      padding-inline-start: var(--space-2);
+    }
+
+    /* Route kippt vertikal */
+    .reise__liste::before {
+      top: 8px;
+      bottom: 8px;
+      left: calc(var(--space-2) + 7px);
+      right: auto;
+      border-block-start: 0;
+      border-inline-start: 2px dashed var(--line);
+    }
+
+    .reise__etappe {
+      grid-template-columns: 16px auto;
+      justify-items: start;
+      text-align: left;
+      column-gap: var(--space-4);
+    }
+
+    .reise__punkt {
+      grid-row: 1 / span 2;
+      margin-block-start: 2px;
+    }
+
+    .reise__datum,
+    .reise__label {
+      grid-column: 2;
+    }
+  }
+
+  /* --- Newsletter-Postkarte -------------------------------------------- */
+  .newsletter {
+    position: relative;
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  /* Briefmarke oben rechts wie auf einer echten Postkarte, Poststempel
+     drueber. Dekorativ (aria-hidden), Sage statt Terrakotta. */
+  .newsletter__marke {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    width: 56px;
+  }
+
+  .newsletter__briefmarke {
+    display: block;
+    width: 100%;
+    rotate: 3deg;
+  }
+
+  .newsletter__poststempel {
+    position: absolute;
+    top: -16px;
+    right: -22px;
+    width: 72px;
+    opacity: 0.55;
+    rotate: -8deg;
+  }
+
+  @media (max-width: 520px) {
+    .newsletter__marke {
+      width: 42px;
+    }
+
+    .newsletter__poststempel {
+      width: 54px;
+      top: -12px;
+      right: -16px;
+    }
+  }
+
+  .newsletter__text {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter__input {
+    flex: 1 1 240px;
+    max-width: 320px;
+    font-family: var(--font-body);
+    font-size: var(--text-0);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .newsletter__hinweis {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wegweiser__karte,
+    .wegweiser__karte:nth-child(odd),
+    .wegweiser__karte:nth-child(even),
+    .themen__karte,
+    .themen__karte:nth-child(odd),
+    .themen__karte:nth-child(even) {
+      rotate: 0deg;
+      transition: none;
+    }
+
+    .ueber-teaser__foto {
+      rotate: 0deg;
+    }
+  }
+</style>

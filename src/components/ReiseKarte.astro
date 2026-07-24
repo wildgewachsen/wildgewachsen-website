@@ -1,0 +1,405 @@
+---
+// Selbstgezeichnete Retro-Reisekarte (Inline-SVG, keine externen Karten-Tiles).
+// Ostkueste Australiens rein stilisiert, keine geografische Genauigkeit.
+// Pins = echte HTML-Buttons als Overlay (Koordinaten in viewBox-Prozent,
+// viewBox 0 0 100 100 + aspect-ratio 1:1 => x/y-Prozent decken sich exakt).
+interface Ort {
+  name: string;
+  /** 0-100, Prozent von links */
+  x: number;
+  /** 0-100, Prozent von oben */
+  y: number;
+  /** Popover-Text; ohne text wird der Pin statisch (kein Button) */
+  text?: string;
+}
+
+interface Props {
+  orte: Ort[];
+  lang?: 'de' | 'en';
+  /** Optionale Karten-Ueberschrift (Caveat-Handschrift) */
+  titel?: string;
+  /** Gestrichelte Route durch alle Orte in Array-Reihenfolge */
+  route?: boolean;
+}
+
+const { orte, lang = 'de', titel, route = true } = Astro.props;
+
+const labels = {
+  de: {
+    hinweis: 'Stilisierte Reisekarte, nicht maßstabsgetreu',
+    orte: 'Stationen der Reise',
+  },
+  en: {
+    hinweis: 'Stylised travel map, not to scale',
+    orte: 'Stops on the journey',
+  },
+}[lang];
+
+// Eindeutiger Praefix pro Instanz, damit aria-controls-IDs nie kollidieren
+const uid = 'rk-' + Math.random().toString(36).slice(2, 8);
+
+const rund = (n: number) => Math.round(n * 10) / 10;
+
+// Sanfte Kurve durch alle Orte (Quadratic ueber Mittelpunkte)
+let routePfad = '';
+if (route && orte.length >= 2) {
+  const teile = [`M ${rund(orte[0].x)} ${rund(orte[0].y)}`];
+  for (let i = 1; i < orte.length; i++) {
+    if (i < orte.length - 1) {
+      const mx = rund((orte[i].x + orte[i + 1].x) / 2);
+      const my = rund((orte[i].y + orte[i + 1].y) / 2);
+      teile.push(`Q ${rund(orte[i].x)} ${rund(orte[i].y)} ${mx} ${my}`);
+    } else {
+      teile.push(`L ${rund(orte[i].x)} ${rund(orte[i].y)}`);
+    }
+  }
+  routePfad = teile.join(' ');
+}
+
+// Popover-Seite je nach Pin-Lage (oben/unten, links/rechts geklappt)
+const ortKlassen = (ort: Ort) => [
+  'reise-karte__ort',
+  {
+    'reise-karte__ort--unten': ort.y < 28,
+    'reise-karte__ort--links': ort.x < 18,
+    'reise-karte__ort--rechts': ort.x > 82,
+  },
+];
+---
+
+<figure class="reise-karte card" data-reise-karte>
+  {titel && <figcaption class="reise-karte__titel handnote">{titel}</figcaption>}
+  <span class="visually-hidden">{labels.hinweis}</span>
+
+  <div class="reise-karte__flaeche texture-grid texture-paper">
+    <svg
+      class="reise-karte__svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- Landmasse (Sage), rein stilisierte Ostkuesten-Silhouette -->
+      <path
+        d="M 0 0 L 58 0 C 55 6 60 11 55 15 C 50 20 59 27 57 33 C 55 40 47 45 49 52 C 51 59 44 64 45 71 C 46 79 39 84 38 90 C 37 95 33 97 31 100 L 0 100 Z"
+        fill="var(--sage)"
+        fill-opacity="0.35"
+      ></path>
+      <!-- Kuestenlinie als eigener Strich (ohne Kartenrand) -->
+      <path
+        d="M 58 0 C 55 6 60 11 55 15 C 50 20 59 27 57 33 C 55 40 47 45 49 52 C 51 59 44 64 45 71 C 46 79 39 84 38 90 C 37 95 33 97 31 100"
+        fill="none"
+        stroke="var(--sage-text)"
+        stroke-width="0.8"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      ></path>
+      <!-- Kleine Insel + Wellen-Kringel im Ozean, dezent -->
+      <ellipse cx="66" cy="76" rx="2" ry="1" fill="var(--sage)" fill-opacity="0.4"></ellipse>
+      <path
+        d="M 72 38 q 3 -2 6 0 q 3 2 6 0"
+        fill="none"
+        stroke="var(--ink-soft)"
+        stroke-width="0.5"
+        stroke-linecap="round"
+        opacity="0.45"
+      ></path>
+      <path
+        d="M 68 56 q 3 -2 6 0 q 3 2 6 0"
+        fill="none"
+        stroke="var(--ink-soft)"
+        stroke-width="0.5"
+        stroke-linecap="round"
+        opacity="0.45"
+      ></path>
+      <!-- Kompass (dekorativ) -->
+      <g opacity="0.7">
+        <line x1="88" y1="18" x2="88" y2="9" stroke="var(--ink-soft)" stroke-width="0.6"></line>
+        <path d="M 88 6.5 l -1.8 4 h 3.6 z" fill="var(--ink-soft)"></path>
+        <text
+          x="88"
+          y="25"
+          text-anchor="middle"
+          font-size="4.5"
+          fill="var(--ink-soft)"
+          style="font-family: var(--font-mono);">N</text>
+      </g>
+      {
+        routePfad && (
+          <path
+            class="reise-karte__route"
+            d={routePfad}
+            fill="none"
+            stroke="var(--ink-soft)"
+            stroke-width="0.7"
+            stroke-dasharray="2.4 2.6"
+            stroke-linecap="round"
+            opacity="0.85"
+          />
+        )
+      }
+    </svg>
+
+    <ul class="reise-karte__pins" aria-label={labels.orte}>
+      {
+        orte.map((ort, i) => (
+          <li class:list={ortKlassen(ort)} style={`left:${rund(ort.x)}%; top:${rund(ort.y)}%;`}>
+            {ort.text ? (
+              <>
+                <button
+                  type="button"
+                  class="reise-karte__pin"
+                  aria-expanded="false"
+                  aria-controls={`${uid}-pop-${i}`}
+                  data-pin-button
+                >
+                  <span class="reise-karte__marker" aria-hidden="true" />
+                  <span class="reise-karte__name">{ort.name}</span>
+                </button>
+                <div class="reise-karte__popover" id={`${uid}-pop-${i}`} hidden>
+                  <p class="reise-karte__popover-name">{ort.name}</p>
+                  <p class="reise-karte__popover-text">{ort.text}</p>
+                </div>
+              </>
+            ) : (
+              <span class="reise-karte__pin reise-karte__pin--statisch">
+                <span class="reise-karte__marker" aria-hidden="true" />
+                <span class="reise-karte__name">{ort.name}</span>
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  {
+    Astro.slots.has('default') && (
+      <div class="reise-karte__fussnote">
+        <slot />
+      </div>
+    )
+  }
+</figure>
+
+<script>
+  // Disclosure-Logik pro Karten-Instanz, robust bei mehreren Karten pro Seite
+  function initKarte(root: HTMLElement) {
+    if (root.dataset.rkInit === '1') return;
+    root.dataset.rkInit = '1';
+
+    const buttons = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[data-pin-button]')
+    );
+
+    const alleSchliessen = () => {
+      for (const btn of buttons) {
+        btn.setAttribute('aria-expanded', 'false');
+        const pop = btn.nextElementSibling;
+        if (pop instanceof HTMLElement) pop.hidden = true;
+      }
+    };
+
+    for (const btn of buttons) {
+      btn.addEventListener('click', () => {
+        const warOffen = btn.getAttribute('aria-expanded') === 'true';
+        alleSchliessen();
+        if (!warOffen) {
+          btn.setAttribute('aria-expanded', 'true');
+          const pop = btn.nextElementSibling;
+          if (pop instanceof HTMLElement) pop.hidden = false;
+        }
+      });
+    }
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const offener = buttons.find((b) => b.getAttribute('aria-expanded') === 'true');
+      if (offener) {
+        alleSchliessen();
+        offener.focus();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target instanceof Node && !root.contains(e.target)) alleSchliessen();
+    });
+  }
+
+  const initAlle = () =>
+    document
+      .querySelectorAll<HTMLElement>('[data-reise-karte]')
+      .forEach(initKarte);
+
+  initAlle();
+  // Fuer den Fall, dass spaeter View Transitions aktiviert werden
+  document.addEventListener('astro:page-load', initAlle);
+</script>
+
+<style>
+  .reise-karte__titel {
+    font-size: var(--text-2);
+    margin-block-end: var(--space-3);
+  }
+
+  /* Quadratische Flaeche => viewBox-Prozent == CSS-Prozent fuer die Pins */
+  .reise-karte__flaeche {
+    position: relative;
+    aspect-ratio: 1;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-m);
+  }
+
+  .reise-karte__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .reise-karte__pins {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* li = 0x0-Ankerpunkt an der Pin-Koordinate */
+  .reise-karte__ort {
+    position: absolute;
+  }
+
+  .reise-karte__pin {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    position: relative;
+  }
+
+  .reise-karte__pin--statisch {
+    cursor: default;
+  }
+
+  .reise-karte__marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--accent-strong);
+    display: grid;
+    place-items: center;
+  }
+
+  .reise-karte__marker::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-strong);
+  }
+
+  .reise-karte__pin[aria-expanded='true'] .reise-karte__marker {
+    background: var(--accent-strong);
+  }
+
+  .reise-karte__pin[aria-expanded='true'] .reise-karte__marker::after {
+    background: var(--accent-contrast);
+  }
+
+  /* Caveat-Ortsname, immer Terrakotta (Design-Regel), leicht rotiert */
+  .reise-karte__name {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1.5deg);
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.1;
+    color: var(--accent-strong);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Popover im Etiketten-Look: gestrichelter Rand, minimale Rotation */
+  .reise-karte__popover {
+    position: absolute;
+    z-index: 5;
+    bottom: 16px;
+    left: 0;
+    transform: translateX(-50%) rotate(-0.8deg);
+    width: max-content;
+    max-width: min(240px, 62vw);
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .reise-karte__ort--unten .reise-karte__popover {
+    bottom: auto;
+    top: 20px;
+  }
+
+  .reise-karte__ort--links .reise-karte__popover {
+    left: -10px;
+    transform: rotate(-0.8deg);
+  }
+
+  .reise-karte__ort--rechts .reise-karte__popover {
+    left: auto;
+    right: -10px;
+    transform: rotate(0.8deg);
+  }
+
+  .reise-karte__popover-name {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-1);
+  }
+
+  .reise-karte__popover-text {
+    font-size: var(--text--1);
+    line-height: 1.5;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .reise-karte__fussnote {
+    margin-block-start: var(--space-4);
+  }
+
+  /* Bewegung nur ohne Reduced-Motion-Wunsch; sonst gar keine Pin-Animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .reise-karte__marker {
+      transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+    }
+
+    button.reise-karte__pin:hover .reise-karte__marker,
+    button.reise-karte__pin:focus-visible .reise-karte__marker {
+      transform: scale(1.2);
+    }
+
+    .reise-karte__popover {
+      animation: rk-pop 0.16s ease-out;
+    }
+
+    @keyframes rk-pop {
+      from {
+        opacity: 0;
+      }
+    }
+  }
+</style>
