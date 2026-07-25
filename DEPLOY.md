@@ -1,7 +1,16 @@
-# Deploy-Vorbereitung (Phase 6, NUR nach ausdruecklicher CEO-Freigabe)
+# Deploy — Astro-Cutover VOLLZOGEN (Go-Live 26.07.2026)
 
-> Push ins Website-Submodul/-Repo `wildgewachsen-website` = Live-Deploy via Cloudflare Pages.
-> Bis zur Freigabe passiert hier NICHTS Richtung Live. Dieses Dokument bereitet nur vor.
+> ✅ **GO-LIVE ERFOLGT 26.07.2026 (Option A).** Das Astro-Projekt liegt jetzt direkt
+> in diesem Repo, Cloudflare Pages baut es selbst. Live-Verifikation bestanden:
+> 42/42 Sitemap-URLs HTTP 200, hreflang reziprok, Favicon neu, Datums-Bumps live,
+> GSC-Sitemaps neu eingereicht (0 Fehler). Submodul-Commit `ca5e44f`.
+>
+> **Aktive Cloudflare-Pages-Settings (Projekt `wildgewachsen-australien`):**
+> Build-Command `npm run build`, Output `dist`, `NODE_VERSION=22`, Build system v3,
+> Production-Branch `main`, Automatic deployments an.
+>
+> Push ins `website/`-Repo = Live-Deploy. Weiterhin TABU ohne CEO-Freigabe.
+> Der Abschnitt unten dokumentiert die damalige Vorbereitung (Historie).
 
 ## Build-Parameter (Astro)
 - Build-Command: `npm run build`
