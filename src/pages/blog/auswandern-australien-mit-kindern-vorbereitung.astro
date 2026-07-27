@@ -72,7 +72,7 @@ const kinderfragen = [
   title="Auswandern mit Kindern (2 und 6) nach Australien"
   description="Auswandern mit Kindern (2 und 6) nach Australien: wie wir sie vorbereitet haben, wie der Abschied wirklich war und welche Fragen ein 6-Jähriger stellt."
   lang="de"
-  eyebrow="Familie &amp; Kinder"
+  eyebrow="Familie & Kinder"
   datum="9. April 2026"
   lesezeit="12 Min. Lesezeit · Zuletzt aktualisiert: 27.07.2026"
 >
@@ -260,12 +260,14 @@ const kinderfragen = [
   </p>
 
   <!-- Die Auswanderung in Zahlen -->
-  <BentoSektion lang="de" eyebrow="Zum Einordnen" ueberschrift="Unsere Auswanderung in Zahlen">
-    <BentoKachel groesse="s" zahl="6 &amp; 2" label="Jahre alt sind unsere Kinder" raster />
-    <BentoKachel groesse="s" zahl="~1 Jahr" label="hat Joris von der Idee bis zum Abflug davon gehört" />
-    <BentoKachel groesse="s" zahl="5 Wochen" label="sind Papa und Kinder getrennt" akzent />
-    <BentoKachel groesse="s" zahl="Januar 2027" label="startet Joris in die australische Schule" raster />
-  </BentoSektion>
+  <div class="zahlen-bento">
+    <BentoSektion lang="de" eyebrow="Zum Einordnen" ueberschrift="Unsere Auswanderung in Zahlen">
+      <BentoKachel groesse="s" zahl="6 und 2" label="Jahre alt sind unsere Kinder" raster />
+      <BentoKachel groesse="s" zahl="~1 Jahr" label="hat Joris von der Idee bis zum Abflug davon gehört" raster />
+      <BentoKachel groesse="s" zahl="5 Wochen" label="sind Papa und Kinder getrennt" akzent />
+      <BentoKachel groesse="s" zahl="Januar 2027" label="startet Joris in die australische Schule" raster />
+    </BentoSektion>
+  </div>
 
   <!-- Abschnitt 1 -->
   <h2 id="warum-wir-das-unseren-kindern-antun">Warum wir das unseren Kindern "antun"</h2>
@@ -778,6 +780,17 @@ const kinderfragen = [
       inset-inline-start: calc(-240px - var(--space-7));
       width: 240px;
       margin: 0;
+    }
+  }
+
+  /* --- Zahlen-Bento: ruhiges 2x2 statt 3+1 (CEO-Regel wie Angekommen) --- */
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
     }
   }
 

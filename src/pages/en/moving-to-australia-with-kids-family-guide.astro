@@ -69,7 +69,7 @@ const kinderfragen = [
   title="Moving to Australia With Kids (2 and 6): Honest Family Prep"
   description="Moving to Australia with kids (2 and 6): how we prepared them, what the farewell was really like and the questions a 6-year-old asks."
   lang="en"
-  eyebrow="Family &amp; Kids"
+  eyebrow="Family & Kids"
   datum="29 May 2026"
   lesezeit="12 min read · Last updated: 27 July 2026"
 >
@@ -260,12 +260,14 @@ const kinderfragen = [
   </p>
 
   <!-- The move in numbers -->
-  <BentoSektion lang="en" eyebrow="For context" ueberschrift="Our move in numbers">
-    <BentoKachel groesse="s" zahl="6 &amp; 2" label="years old are our kids" raster lang="en" />
-    <BentoKachel groesse="s" zahl="~1 year" label="Joris heard about it before departure" lang="en" />
-    <BentoKachel groesse="s" zahl="5 weeks" label="Dad and kids are apart" akzent lang="en" />
-    <BentoKachel groesse="s" zahl="January 2027" label="Joris starts Australian school" raster lang="en" />
-  </BentoSektion>
+  <div class="zahlen-bento">
+    <BentoSektion lang="en" eyebrow="For context" ueberschrift="Our move in numbers">
+      <BentoKachel groesse="s" zahl="6 and 2" label="years old are our kids" raster lang="en" />
+      <BentoKachel groesse="s" zahl="~1 year" label="Joris heard about it before departure" raster lang="en" />
+      <BentoKachel groesse="s" zahl="5 weeks" label="Dad and kids are apart" akzent lang="en" />
+      <BentoKachel groesse="s" zahl="January 2027" label="Joris starts Australian school" raster lang="en" />
+    </BentoSektion>
+  </div>
 
   <!-- Section 1 -->
   <h2 id="why-doing-this">Why we are "putting our kids through this"</h2>
@@ -772,6 +774,17 @@ const kinderfragen = [
       inset-inline-start: calc(-240px - var(--space-7));
       width: 240px;
       margin: 0;
+    }
+  }
+
+  /* --- Zahlen-Bento: ruhiges 2x2 statt 3+1 (CEO-Regel wie Angekommen) --- */
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
     }
   }
 
