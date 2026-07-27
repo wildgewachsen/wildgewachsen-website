@@ -1,24 +1,36 @@
 ---
-// Kinder-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
-// Quelle: website/blog/auswandern-australien-mit-kindern-vorbereitung.html
+// Kinder-Artikel, Phase-C-Unikat (27.07.2026): Zwei-Zeitebenen-Umbau.
+// Vorbereitungs-Text (April) bleibt als Bericht, datierte Nachtrag-Blöcke
+// erzählen den echten Verlauf (Abschied 23.06., 5 Wochen Trennung).
+// Fakten-Quelle: Projekt_Wildgewachsen/CONTEXT.md (Tagebuch-Stände 25.05.-27.07.).
 import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
 import StickyToc from '../../components/StickyToc.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
 
-// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+// Bestehende IDs bleiben 1:1 (extern verlinkbare Anker), neue kommen dazu.
+// "Wie wir das Thema eingeführt haben" rückt VOR die Joris-Abschnitte
+// (chronologisch korrekt: erst der Prozess, dann die Reaktionen).
 const toc = [
   { id: 'warum-wir-das-unseren-kindern-antun', label: 'Warum wir das unseren Kindern "antun"' },
+  { id: 'wie-wir-das-thema-eingefuehrt-haben', label: 'Wie wir das Thema eingeführt haben' },
   { id: 'joris-6-er-versteht-es-und-das-macht-es-kompliziert', label: 'Joris (6): Er versteht es – und das macht es kompliziert' },
   { id: 'die-frage-die-uns-getroffen-hat', label: 'Die Frage die uns getroffen hat' },
   { id: 'linnea-2-zu-klein-zum-verstehen-trotzdem-dabei', label: 'Linnea (2): Zu klein zum Verstehen, trotzdem dabei' },
-  { id: 'wie-wir-das-thema-eingefuehrt-haben', label: 'Wie wir das Thema eingeführt haben' },
   { id: 'englisch-lernen-studycat-statt-vokabellisten', label: 'Englisch lernen: StudyCat statt Vokabellisten' },
+  { id: 'schule-unser-stand', label: 'Schule in Australien: unser Stand' },
   { id: 'die-reaktionen-aus-dem-umfeld', label: 'Die Reaktionen aus dem Umfeld' },
   { id: 'was-wir-joris-nicht-gesagt-haben', label: 'Was wir Joris nicht gesagt haben' },
-  { id: 'fazit', label: 'Unser Fazit nach Monaten der Vorbereitung' },
+  { id: 'der-abschied-so-war-er-wirklich', label: 'Der Abschied: so war er wirklich' },
+  { id: 'fuenf-wochen-ohne-papa', label: 'Fünf Wochen ohne Papa' },
+  { id: 'fazit', label: 'Unsere Zwischenbilanz' },
 ];
 
-// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+// Gleiche 3 Ziele + Texte wie bisher
 const weiterlesen = [
   {
     href: '/blog/tra-skill-assessment-koch-australien',
@@ -36,15 +48,33 @@ const weiterlesen = [
     titel: 'Auswandern nach Australien als Familie: Was es wirklich kostet (2026)',
   },
 ];
+
+// Joris' echte Fragen als Umdreh-Zettel (Frage vorne, unsere Antwort hinten).
+// Wortlaut der Fragen aus dem Artikel-Bestand, Antworten wortnah.
+const kinderfragen = [
+  {
+    frage: 'Kommt dann keiner mehr zu meinem Geburtstag?',
+    antwort:
+      'Wir reden trotzdem mit allen. Es gibt von allen Geschenke. Aber wir feiern anders und eingeschränkter als hier. Dafür erleben wir an dem Tag tolle Sachen zu viert.',
+  },
+  {
+    frage: 'Kann Oma und Opa uns besuchen?',
+    antwort: 'Ja, können sie. Und sie planen es auch schon.',
+  },
+  {
+    frage: 'Haben die da auch meinen Lieblingsladen?',
+    antwort: 'Nicht genau den. Aber ähnliche Sachen.',
+  },
+];
 ---
 
 <ArtikelLayout
   title="Auswandern mit Kindern (2 und 6) nach Australien"
-  description="Wir wandern mit zwei Kindern (2 und 6) nach Australien aus. Wie wir sie vorbereiten, welche Fragen ein 6-Jähriger stellt und was wirklich hilft."
+  description="Auswandern mit Kindern (2 und 6) nach Australien: wie wir sie vorbereitet haben, wie der Abschied wirklich war und welche Fragen ein 6-Jähriger stellt."
   lang="de"
   eyebrow="Familie &amp; Kinder"
   datum="9. April 2026"
-  lesezeit="8 Min. Lesezeit · Zuletzt aktualisiert: 02.06.2026"
+  lesezeit="12 Min. Lesezeit · Zuletzt aktualisiert: 27.07.2026"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung" />
@@ -53,7 +83,7 @@ const weiterlesen = [
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung" />
     <!-- Open Graph -->
     <meta property="og:title" content="Auswandern mit Kindern (2 und 6) nach Australien" />
-    <meta property="og:description" content="Wir wandern mit zwei Kindern (2 und 6) nach Australien aus. Wie wir sie vorbereiten, welche Fragen ein 6-Jähriger stellt und was wirklich hilft." />
+    <meta property="og:description" content="Auswandern mit Kindern (2 und 6) nach Australien: wie wir sie vorbereitet haben, wie der Abschied wirklich war und welche Fragen ein 6-Jähriger stellt." />
     <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg" />
     <meta property="og:url" content="https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung" />
     <meta property="og:type" content="article" />
@@ -61,7 +91,7 @@ const weiterlesen = [
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Auswandern mit Kindern (2 und 6) nach Australien" />
-    <meta name="twitter:description" content="Wir wandern mit zwei Kindern (2 und 6) nach Australien aus. Wie wir sie vorbereiten, welche Fragen ein 6-Jähriger stellt und was wirklich hilft." />
+    <meta name="twitter:description" content="Auswandern mit Kindern (2 und 6) nach Australien: wie wir sie vorbereitet haben, wie der Abschied wirklich war und welche Fragen ein 6-Jähriger stellt." />
     <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -72,7 +102,7 @@ const weiterlesen = [
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Auswandern mit Kindern (2 und 6) nach Australien",
-    "description": "Wir wandern mit zwei Kindern (2 und 6) nach Australien aus. Wie wir sie vorbereiten, welche Fragen ein 6-Jähriger stellt und was wirklich hilft.",
+    "description": "Auswandern mit Kindern (2 und 6) nach Australien: wie wir sie vorbereitet haben, wie der Abschied wirklich war und welche Fragen ein 6-Jähriger stellt.",
     "image": {
       "@type": "ImageObject",
       "url": "https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg",
@@ -91,7 +121,7 @@ const weiterlesen = [
       "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
     },
     "datePublished": "2026-04-09T12:00:00+02:00",
-    "dateModified": "2026-06-03T12:00:00+02:00",
+    "dateModified": "2026-07-27T12:00:00+10:00",
     "author": {
       "@type": "Person",
       "name": "Christian Schippel",
@@ -113,7 +143,7 @@ const weiterlesen = [
       "@type": "Thing",
       "name": "Auswandern mit Kindern nach Australien"
     },
-    "keywords": "Auswandern mit Kindern, Australien, Byron Bay, Kinder vorbereiten, Englisch lernen Kinder, Steiner School, Northern Rivers, Familienauswanderung"
+    "keywords": "Auswandern mit Kindern, Australien, Byron Bay, Kinder vorbereiten, Englisch lernen Kinder, Schulstart Australien, Abschied, Northern Rivers, Familienauswanderung"
   }
     </script>
 
@@ -128,7 +158,7 @@ const weiterlesen = [
         "name": "Warum wandert eine Familie mit kleinen Kindern nach Australien aus?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Drei Hauptgründe: Mehr Verbundenheit zur Natur (das Leben findet in Australien draußen statt), eine grundsätzlich positivere Stimmung im Alltag, und weniger Sorge um Zukunftsperspektiven. Wir glauben, dass es langfristig das Richtige für Joris und Linnea ist, auch wenn wir uns ehrlich eingestehen, dass wir das auch für uns selbst machen."
+          "text": "Drei Hauptgründe: Mehr Verbundenheit zur Natur (das Leben findet in Australien draußen statt), eine grundsätzlich positivere Stimmung im Alltag, und weniger Sorge um Zukunftsperspektiven. Wir glauben, dass es langfristig das Richtige für Joris und Linnea ist, auch wenn wir uns eingestehen, dass wir das auch für uns selbst machen."
         }
       },
       {
@@ -136,7 +166,7 @@ const weiterlesen = [
         "name": "Wie reagiert ein 6-jähriges Kind auf die Auswanderung?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Es gibt nicht den einen Moment, wo das Kind es 'kapiert', es ist ein langsames Realisieren über Wochen und Monate. Joris ist deutlich anhänglicher geworden, will weniger weg aus unserer Nähe. Er stellt viele Fragen, manche praktisch (Können Oma und Opa uns besuchen?), manche emotional (Kommt dann keiner mehr zu meinem Geburtstag?). Was funktioniert: ehrliche Antworten statt Schönreden."
+          "text": "Es gab nicht den einen Moment, wo das Kind es 'kapiert', es war ein langsames Realisieren über Wochen und Monate. Joris wurde in der Vorbereitungszeit deutlich anhänglicher, wollte weniger weg aus unserer Nähe. Später kam echte Vorfreude dazu: Auf die Info, dass es in drei Monaten losgeht, fragte er 'Warum erst so spät?'. Was funktioniert hat: ehrliche Antworten statt Schönreden."
         }
       },
       {
@@ -144,7 +174,7 @@ const weiterlesen = [
         "name": "Wie lernen Kinder vor dem Auswandern Englisch?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Wir nutzen die App StudyCat, kleine Mini-Games, kein Zwang. Joris merkt sich die Wörter erstaunlich schnell. Zusätzlich: Beim Autofahren englische Lieder analysieren, gelegentlich Fragen auf Englisch stellen mit Wörtern die er kennt. Kein Vokabel-Drill, sondern Neugier nutzen."
+          "text": "Wir haben die App StudyCat genutzt, kleine Mini-Games, kein Zwang. Joris merkt sich die Wörter erstaunlich schnell. Zusätzlich: beim Autofahren englische Lieder analysieren, gelegentlich Fragen auf Englisch stellen mit Wörtern die er kennt. Kein Vokabel-Drill, sondern Neugier nutzen."
         }
       },
       {
@@ -152,15 +182,23 @@ const weiterlesen = [
         "name": "Was sagen Familie und Freunde zur Auswanderung mit Kindern?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die Reaktionen sind sehr gemischt. Häufig: 'Ihr nehmt den Kindern die Großeltern weg', 'Das ist eine überstürzte Entscheidung', 'Ihr schafft das nicht ohne Familie'. Andere reagieren verständnisvoll und planen schon den ersten Besuch. Was hilft: beide Familien bitten, sensibel mit dem Thema umzugehen, vor allem vor den Kindern."
+          "text": "Die Reaktionen waren sehr gemischt. Häufig: 'Ihr nehmt den Kindern die Großeltern weg', 'Das ist eine überstürzte Entscheidung', 'Ihr schafft das nicht ohne Familie'. Andere reagierten verständnisvoll und planen schon den ersten Besuch. Was half: beide Familien bitten, sensibel mit dem Thema umzugehen, vor allem vor den Kindern."
         }
       },
       {
         "@type": "Question",
-        "name": "Wann fliegt die Familie nach Australien?",
+        "name": "Wann ist die Familie nach Australien geflogen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Christian fliegt am 23. Juni 2026 vor nach Byron Bay in der Northern Rivers Region, NSW. Lucy folgt mit Joris (6) und Linnea (2) am 26. Juli 2026. Der versetzte Abflug gibt Christian Zeit, vor Ort eine Unterkunft zu finden."
+          "text": "Christian ist am 23. Juni 2026 vorgeflogen und am 25. Juni in Brisbane gelandet, weiter nach Byron Bay in der Northern Rivers Region, NSW. Lucy ist mit Joris (6) und Linnea (2) am 26. Juli 2026 gefolgt. Der versetzte Abflug gab Christian Zeit, vor Ort anzukommen und die erste Unterkunft zu regeln."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wann kommt ein 6-jähriges Kind in Australien in die Schule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das australische Schuljahr beginnt im Januar. Joris startet deshalb im Januar 2027 in die Schule. Bis dahin ist Lucy primär bei den Kindern; die Betreuung für Linnea (2) ist noch nicht final geklärt."
         }
       },
       {
@@ -168,7 +206,7 @@ const weiterlesen = [
         "name": "Ist es egoistisch, mit Kindern auszuwandern?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Vielleicht, ein bisschen, wir machen das auch für uns. Aber wir glauben, dass es auch für die Kinder langfristig das Richtige ist: mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Wir wissen, dass Joris das eines Tages anders sehen wird, wahrscheinlich beides, je nach Lebensphase. Was wir ihm mitgeben wollen: Dass man sein Leben so gestalten kann, wie man es sich vorstellt."
+          "text": "Vielleicht, ein bisschen, wir machen das auch für uns. Aber wir glauben, dass es auch für die Kinder langfristig das Richtige ist: mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Die fünf Wochen allein in Australien haben Christian vor allem eins gezeigt: wie sehr die Familie sein Zuhause ist."
         }
       }
     ]
@@ -199,6 +237,18 @@ const weiterlesen = [
     alt="Unsere Kinder im Garten beim Bilderbuch-Lesen unter einem Sonnenschirm"
   />
 
+  <!-- Update-Zettel: erklärt die zwei Zeitebenen des Artikels -->
+  <aside class="nachtrag nachtrag--auftakt" aria-label="Update Juli 2026">
+    <p class="nachtrag__stempel">Update · 27. Juli 2026</p>
+    <p>
+      Dieser Artikel ist im April entstanden, als die Auswanderung noch vor uns lag.
+      Inzwischen ist sie passiert: Ich bin seit Ende Juni in Byron Bay, Lucy und die
+      Kinder sind am 26. Juli losgeflogen. Der ursprüngliche Text bleibt, wie er war.
+      Dazwischen stehen jetzt datierte Nachträge, wie es wirklich gekommen ist. Du
+      erkennst sie an diesem Zettel-Look.
+    </p>
+  </aside>
+
   <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
   <div class="toc-halter">
     <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
@@ -206,8 +256,16 @@ const weiterlesen = [
 
   <!-- Intro -->
   <p>
-    Wir wandern im Sommer 2026 mit unseren zwei Kindern (6 und 2 Jahre) nach Australien aus, genauer gesagt in die Region Byron Bay / Northern Rivers. Dieser Beitrag beschreibt, wie wir Joris und Linnea auf diesen großen Schritt vorbereiten. Was funktioniert, was schwierig ist, welche Fragen ein 6-Jähriger stellt und wie wir damit umgehen. Keine Anleitung, sondern unsere echte Erfahrung. Für Familien die Ähnliches planen, oder sich fragen ob sie verrückt wären es zu tun.
+    Wir wandern in diesem Sommer mit unseren zwei Kindern (6 und 2 Jahre) nach Australien aus, genauer gesagt in die Region Byron Bay / Northern Rivers. Dieser Beitrag beschreibt, wie wir Joris und Linnea auf diesen großen Schritt vorbereitet haben, und wie es dann wirklich gelaufen ist. Was funktioniert hat, was schwierig war, welche Fragen ein 6-Jähriger stellt und wie wir damit umgehen. Keine Anleitung, sondern unsere echte Erfahrung. Für Familien die Ähnliches planen, oder sich fragen ob sie verrückt wären es zu tun.
   </p>
+
+  <!-- Die Auswanderung in Zahlen -->
+  <BentoSektion lang="de" eyebrow="Zum Einordnen" ueberschrift="Unsere Auswanderung in Zahlen">
+    <BentoKachel groesse="s" zahl="6 &amp; 2" label="Jahre alt sind unsere Kinder" raster />
+    <BentoKachel groesse="s" zahl="~1 Jahr" label="hat Joris von der Idee bis zum Abflug davon gehört" />
+    <BentoKachel groesse="s" zahl="5 Wochen" label="sind Papa und Kinder getrennt" akzent />
+    <BentoKachel groesse="s" zahl="Januar 2027" label="startet Joris in die australische Schule" raster />
+  </BentoSektion>
 
   <!-- Abschnitt 1 -->
   <h2 id="warum-wir-das-unseren-kindern-antun">Warum wir das unseren Kindern "antun"</h2>
@@ -218,7 +276,7 @@ const weiterlesen = [
 
   <p>Das klingt hart. Ist es auch.</p>
 
-  <p>Sieben Jahre habe ich ein Restaurant betrieben. Die Sommer waren besonders brutal, ich war quasi nicht zuhause. Das hat die Kinder betroffen, auch wenn sie es nicht direkt gesagt haben. Jetzt, wo das Restaurant geschlossen ist, merke ich erst richtig was wir verpasst haben.</p>
+  <p>Sieben Jahre habe ich ein Restaurant betrieben. Die Sommer waren besonders brutal, ich war quasi nicht zuhause. Das hat die Kinder betroffen, auch wenn sie es nicht direkt gesagt haben. Die Frage, ob wir weiter so viel Familienzeit für das Restaurant opfern wollen, wurde in der zweiten Jahreshälfte 2025 immer drängender. Jetzt, wo das Restaurant geschlossen ist, merke ich erst richtig was wir verpasst haben.</p>
 
   <h3>Was wir uns für die Kinder erhoffen</h3>
 
@@ -230,28 +288,76 @@ const weiterlesen = [
 
   <p><strong>Weniger Sorge um die Zukunft.</strong> Nicht nur innenpolitisch, auch außenpolitisch sehen wir viele Dinge in Deutschland schlechter werden. Gerade was Perspektiven für die Kinder betrifft. Das mag dramatisch klingen. Aber es ist ein ehrlicher Grund.</p>
 
-  <!-- Abschnitt 2 -->
+  <figure class="polaroid polaroid--links">
+    <img
+      src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
+      srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp"
+      alt="Kleinkind zieht eine gelbe Schubkarre voller geernteter Kürbisse und Gemüse über eine Wiese"
+      loading="lazy"
+      width="960"
+      height="720"
+    />
+    <figcaption class="polaroid__caption">Draußen aufwachsen: Ernte-Hilfe auf unserem Feld.</figcaption>
+  </figure>
+
+  <!-- Abschnitt 2 (vorgezogen: erst der Prozess, dann die Reaktionen) -->
+  <h2 id="wie-wir-das-thema-eingefuehrt-haben">Wie wir das Thema eingeführt haben</h2>
+
+  <p>Unser Ansatz war: <strong>Keine große Ankündigung, sondern langsames Einweben in den Alltag.</strong></p>
+
+  <p>Da Lucy und ich viel über die Auswanderung sprechen, ist das Ganze ganz von allein Thema geworden. Anfangs nur wenn wir allein waren. Aber irgendwann wurde es auch im Familienalltag präsent.</p>
+
+  <p><strong>Timeline:</strong> Am Ende hat Joris fast ein Jahr lang davon gehört, bevor es wirklich losging. Ein gradueller Prozess statt einem einzigen großen Gespräch.</p>
+
+  <p>Das hat Vor- und Nachteile. Vorteil: Kein Schock, keine plötzliche Überforderung. Nachteil: Die Ungewissheit zieht sich. Aber für uns war das der richtige Weg.</p>
+
+  <aside class="nachtrag" aria-label="Nachtrag von Ende Mai 2026">
+    <p class="nachtrag__stempel">Nachtrag · Ende Mai 2026</p>
+    <p>
+      Beim Ausräumen der Wohnung wurden die Kinder Teil der Auflösung, statt nur zuzuschauen.
+      Aussortiertes stellten wir auf einen geliehenen Anhänger vor die Haustür, "zu verschenken".
+      Joris stand begeistert daneben und schaute, wer was mitnimmt. Zwei Jugendliche holten einen
+      alten Monitor und kamen mit Schokolade als Dank zurück. Die erste komplett fertige Kiste im
+      Kistensystem: Zeichnungen und Bilder der Kinder, von Lucy sortiert, eingelagert bei ihrem Vater.
+      Und als das Kinderzimmer renoviert werden musste, bauten wir ein Behelfs-Kinderzimmer im
+      Wohnzimmer auf. Die Kinder fanden ihr "neues Kinderzimmer" überraschend gut.
+    </p>
+  </aside>
+
+  <!-- Abschnitt 3 -->
   <h2 id="joris-6-er-versteht-es-und-das-macht-es-kompliziert">Joris (6): Er versteht es – und das macht es kompliziert</h2>
 
   <p>Joris wird im November sieben, den Geburtstag feiert er schon in Australien. Als wir ihm das gesagt haben, war seine Reaktion typisch Kind: Er freut sich, weil er endlich mal im Sommer Geburtstag hat.</p>
 
-  <p>Aber es ist nicht nur Vorfreude.</p>
+  <p>Aber es war nicht nur Vorfreude.</p>
 
   <h3>Es war ein Prozess, kein Moment</h3>
 
-  <p>Den einen Moment, wo er es "kapiert" hat, gab es nicht. Es war eher ein langsames Realisieren über Wochen und Monate. Er freut sich auf das Abenteuer, aber man merkt ihm auch an, dass eine gewisse Last aufkommt.</p>
+  <p>Den einen Moment, wo er es "kapiert" hat, gab es nicht. Es war eher ein langsames Realisieren über Wochen und Monate. Er freute sich auf das Abenteuer, aber man merkte ihm auch an, dass eine gewisse Last aufkam.</p>
 
-  <p><strong>Wie sich das zeigt:</strong> Er ist deutlich anhänglicher geworden. Normale Dinge wie morgens in den Kindergarten gehen sind plötzlich schwieriger, obwohl er eigentlich gerne hingeht und vorher alles gut war. Er möchte nicht mehr so viel weg aus unserer Nähe.</p>
+  <p><strong>Wie sich das zeigte:</strong> Er wurde deutlich anhänglicher. Normale Dinge wie morgens in den Kindergarten gehen waren plötzlich schwieriger, obwohl er eigentlich gerne hinging und vorher alles gut war. Er wollte nicht mehr so viel weg aus unserer Nähe.</p>
 
-  <p>Das ist anstrengend. Aber auch verständlich. Sein ganzes kleines Leben verändert sich gerade, und er spürt das.</p>
+  <p>Das war anstrengend. Aber auch verständlich. Sein ganzes kleines Leben veränderte sich gerade, und er spürte das.</p>
 
-  <h3>Was wir ihm zeigen</h3>
+  <h3>Was wir ihm gezeigt haben</h3>
 
-  <p>Wir zeigen ihm viele alte Fotos von uns aus der Zeit als wir selbst in Byron Bay gelebt haben. Dazu aktuelle Videos wie es dort aussieht. Wir sprechen über die Tierwelt, die Pflanzen, die Bäume.</p>
+  <p>Wir haben ihm viele alte Fotos von uns aus der Zeit gezeigt, als wir selbst in Byron Bay gelebt haben. Dazu aktuelle Videos wie es dort aussieht. Wir haben über die Tierwelt gesprochen, die Pflanzen, die Bäume.</p>
 
-  <p>Dabei muss man natürlich aufpassen, die Erwartungen nicht zu hoch zu stecken. Im Endeffekt führen wir dort auch ein ganz normales Leben mit ganz normalem Alltag. Nicht jeder Moment ist ein Abenteuer. Das versuchen wir ihm auch zu vermitteln.</p>
+  <p>Dabei muss man natürlich aufpassen, die Erwartungen nicht zu hoch zu stecken. Im Endeffekt führen wir dort auch ein ganz normales Leben mit ganz normalem Alltag. Nicht jeder Moment ist ein Abenteuer. Das haben wir versucht ihm zu vermitteln.</p>
 
-  <!-- Abschnitt 3 -->
+  <h3>Von "Warum erst so spät?" bis zum eigenen Plan</h3>
+
+  <p>Im April, drei Monate vor dem Abflug, kam der Moment, der uns gezeigt hat wie weit er inzwischen war. Wir sagten ihm, dass es in drei Monaten losgeht. Seine Antwort:</p>
+
+  <PullQuote lang="de" quelle="Joris, im April 2026">Warum erst so spät?</PullQuote>
+
+  <p>Aus der anfänglichen Unsicherheit war Vorfreude geworden.</p>
+
+  <p>An Pfingstmontag, gut vier Wochen vor dem Abflug, haben wir über "in zehn Jahren" gesprochen. Da hat er gemerkt: In zehn Jahren leben wir ja in Australien, gar nicht mehr in Deutschland. Seine Reaktion, wörtlich: <em>"Okay, ist ein bisschen komisch, aber ich möchte dann auf jeden Fall viel mit meinem Freund telefonieren."</em></p>
+
+  <p>Er hält das Distanz-Thema selbst aus und denkt aktiv Lösungen mit. Mehr können wir uns von einem 6-Jährigen nicht wünschen.</p>
+
+  <!-- Abschnitt 4 -->
   <h2 id="die-frage-die-uns-getroffen-hat">Die Frage die uns getroffen hat</h2>
 
   <p>Irgendwann fragte Joris: <em>"Kommt dann keiner mehr zu meinem Geburtstag?"</em></p>
@@ -264,51 +370,74 @@ const weiterlesen = [
 
   <h3>Die Fragen die er seitdem stellt</h3>
 
-  <p>Joris stellt viele Fragen. Manche praktisch, manche emotional:</p>
+  <p>Joris stellt viele Fragen. Manche praktisch, manche emotional. Die drei, die uns am meisten beschäftigt haben, kannst du hier umdrehen, so wie wir sie beantwortet haben:</p>
 
-  <ul>
-    <li><em>"Kann Oma und Opa uns besuchen?"</em>, Ja, können sie. Und sie planen es auch schon.</li>
-    <li><em>"Haben die da auch [sein Lieblingsladen]?"</em>, Nicht genau den. Aber ähnliche Sachen.</li>
-    <li>Fragen über Tiere, über das Meer, über sein zukünftiges Zimmer.</li>
-  </ul>
+  <div class="fragezettel-wand" role="list" aria-label="Joris' Fragen und unsere Antworten">
+    {
+      kinderfragen.map((k, i) => (
+        <details class:list={['fragezettel', `fragezettel--${i + 1}`]} role="listitem">
+          <summary class="fragezettel__frage">
+            <span class="fragezettel__fragetext">{k.frage}</span>
+            <span class="fragezettel__hinweis" aria-hidden="true">Zettel umdrehen</span>
+          </summary>
+          <div class="fragezettel__antwort">
+            <p class="fragezettel__antwort-label">Unsere Antwort:</p>
+            <p>{k.antwort}</p>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+
+  <p>Dazu kommen laufend Fragen über Tiere, über das Meer, über sein zukünftiges Zimmer.</p>
 
   <p>Was wir gelernt haben: Ehrlichkeit funktioniert besser als Schönreden. Wenn wir sagen "das wissen wir noch nicht genau", akzeptiert er das. Kinder merken wenn man ihnen etwas vormacht.</p>
 
-  <!-- Abschnitt 4 -->
+  <!-- Abschnitt 5 -->
   <h2 id="linnea-2-zu-klein-zum-verstehen-trotzdem-dabei">Linnea (2): Zu klein zum Verstehen, trotzdem dabei</h2>
 
   <p>Linnea ist zwei. Sie versteht die Komplexität des Ganzen natürlich noch nicht. Für sie ist wichtig, dass Mama, Papa und Joris dabei sind. Der Rest ist abstrakt.</p>
 
-  <p>Trotzdem wird sie komplett mit einbezogen. Sie kriegt auch Bilder gezeigt, sitzt dabei wenn wir über Australien sprechen, hört die Gespräche mit.</p>
+  <p>Trotzdem wurde sie komplett mit einbezogen. Sie hat auch Bilder gezeigt bekommen, saß dabei wenn wir über Australien sprachen, hörte die Gespräche mit.</p>
 
-  <p>Hier müssen wir einfach schauen wie es dann dort wird. Ich denke, dass wir gerade alles tun um beide so gut wie möglich vorzubereiten. Mehr können wir nicht machen.</p>
-
-  <!-- Abschnitt 5 -->
-  <h2 id="wie-wir-das-thema-eingefuehrt-haben">Wie wir das Thema eingeführt haben</h2>
-
-  <p>Unser Ansatz war: <strong>Keine große Ankündigung, sondern langsames Einweben in den Alltag.</strong></p>
-
-  <p>Da Lucy und ich viel über die Auswanderung sprechen, ist das Ganze ganz von allein Thema geworden. Anfangs nur wenn wir allein waren. Aber irgendwann wurde es auch im Familienalltag präsent.</p>
-
-  <p><strong>Timeline:</strong> Joris hört jetzt seit mehr als 8 Monaten davon. Kein "Wir-müssen-reden"-Gespräch, sondern ein gradueller Prozess.</p>
-
-  <p>Das hat Vor- und Nachteile. Vorteil: Kein Schock, keine plötzliche Überforderung. Nachteil: Die Ungewissheit zieht sich. Aber für uns war das der richtige Weg.</p>
+  <aside class="nachtrag" aria-label="Nachtrag von Ende Mai 2026">
+    <p class="nachtrag__stempel">Nachtrag · Ende Mai 2026</p>
+    <p>
+      Sie versteht mehr, als wir dachten. Ein paar Wochen vor dem Abflug fing Linnea an, selbst zu
+      fragen, wann es endlich in die neue Wohnung geht, und wurde traurig, als Lucy sagte "das dauert
+      noch". Sie sprach von sich aus über Sachen, die sie mitnehmen möchte, ihren Puppenwagen zum
+      Beispiel. Und bei vielen Dingen, die ich benutzt habe, fragte sie, wo die hingehören sollen:
+      "Wo sollen wir das aufhängen?" Es kommt bei ihr an. Und sie geht erstaunlich konstruktiv damit
+      um, nicht überfordert.
+    </p>
+  </aside>
 
   <!-- Abschnitt 6 -->
   <h2 id="englisch-lernen-studycat-statt-vokabellisten">Englisch lernen: StudyCat statt Vokabellisten</h2>
 
-  <p>Joris lernt seit dem Frühjahr 2026 Englisch. Nicht mit Vokabellisten oder Unterricht, sondern spielerisch: über eine Kinder-Lern-App (wir nutzen <a href="https://studycat.com/products/english/" target="_blank" rel="noopener">StudyCat</a>) und einfache englische Sätze, die wir im Alltag einbauen. Kein Druck, kein Zwang.</p>
+  <p>Joris lernt seit dem Frühjahr 2026 Englisch. Nicht mit Vokabellisten oder Unterricht, sondern spielerisch: über eine Kinder-Lern-App (wir nutzen <a href="https://studycat.com/products/english/" target="_blank" rel="noopener">StudyCat</a>) und einfache englische Sätze, die wir in den Alltag eingebaut haben. Kein Druck, kein Zwang.</p>
 
   <p>Wie das genau aussieht, welche App wir nutzen, was sie kostet, wie wir mit Linnea (2) umgehen und was uns beim Thema Sprache wirklich Sorgen macht, haben wir in einem eigenen Beitrag ausführlich aufgeschrieben: <a href="/blog/kinder-sprachlich-australien-vorbereiten">Kinder sprachlich auf Australien vorbereiten: Englisch lernen ohne Druck</a>.</p>
 
-  <!-- Abschnitt 7 -->
+  <!-- Abschnitt 7 (neu) -->
+  <h2 id="schule-unser-stand">Schule in Australien: unser Stand</h2>
+
+  <p>Eine Frage fehlt bis hierhin komplett: die Schule.</p>
+
+  <p>Der für uns wichtigste Fakt: <strong>Das australische Schuljahr beginnt im Januar.</strong> Joris startet deshalb erst im Januar 2027 in die Schule, nicht mitten im Schuljahr als der Neue, der die Sprache noch nicht kann. Bis dahin hat er ein halbes Jahr Zeit, im Alltag anzukommen und Englisch aufzuschnappen.</p>
+
+  <p>Lucy ist in den ersten Monaten primär bei den Kindern. Die Betreuung für Linnea ist noch nicht final geklärt, das gehört zu den Dingen, die wir vor Ort regeln.</p>
+
+  <p>Mehr können wir zur Schule noch nicht aus erster Hand sagen, wir haben sie schlicht noch nicht erlebt. Sobald die Anmeldung und der Schulstart durch sind, bekommt das Thema hier einen eigenen Beitrag.</p>
+
+  <!-- Abschnitt 8 -->
   <h2 id="die-reaktionen-aus-dem-umfeld">Die Reaktionen aus dem Umfeld</h2>
 
-  <p>Die Reaktionen auf unsere Auswanderung sind gemischt. Sehr gemischt.</p>
+  <p>Die Reaktionen auf unsere Auswanderung waren gemischt. Sehr gemischt.</p>
 
-  <h3>Was wir oft hören</h3>
+  <h3>Was wir oft gehört haben</h3>
 
-  <ul>
+  <ul class="vorwurf-zettel" aria-label="Sätze aus unserem Umfeld">
     <li><em>"Ihr nehmt den Kindern die Großeltern weg."</em></li>
     <li><em>"Das ist eine überstürzte und unüberlegte Entscheidung."</em></li>
     <li><em>"Ihr schafft das gar nicht ohne Familie."</em></li>
@@ -318,17 +447,21 @@ const weiterlesen = [
 
   <p>Das sitzt. Vor allem der Vorwurf der Undankbarkeit.</p>
 
-  <p>Die Ironie: Wir planen das seit fast einem Jahr. Überstürzt ist es definitiv nicht. Aber das sehen nicht alle so.</p>
+  <p>Die Ironie: Am Ende haben wir das mehr als ein Jahr lang geplant. Überstürzt war es definitiv nicht. Aber das sehen nicht alle so.</p>
+
+  <Randnotiz lang="de" ausrichtung="rechts" pfeil>
+    Beide Familien leben im Ruhrgebiet. Die Entfernung ist für alle neu.
+  </Randnotiz>
 
   <h3>Was hilft</h3>
 
   <p>Manche reagieren anders. Verständnisvoll. Planen schon den ersten Besuch in Australien. Freuen sich mit uns, auch wenn sie traurig sind.</p>
 
-  <p>Wir haben beide Familien gebeten, sensibel mit dem Thema umzugehen, vor allem vor Joris. Nicht ständig "ihr geht ja bald weg" erwähnen. Das klappt mal besser, mal schlechter.</p>
+  <p>Wir haben beide Familien gebeten, sensibel mit dem Thema umzugehen, vor allem vor Joris. Nicht ständig "ihr geht ja bald weg" erwähnen. Das klappte mal besser, mal schlechter.</p>
 
   <p>Ich habe meinen Eltern ehrlich gesagt erst recht spät davon erzählt, weil ich Angst vor der Reaktion hatte. Die war dann doch besser als befürchtet. Natürlich würden sie es sich anders wünschen. Aber sie versuchen, damit positiv umzugehen.</p>
 
-  <!-- Abschnitt 8 -->
+  <!-- Abschnitt 9 -->
   <h2 id="was-wir-joris-nicht-gesagt-haben">Was wir Joris nicht gesagt haben</h2>
 
   <p>Wir haben Joris nicht gesagt: "Wenn es nicht klappt, kommen wir zurück."</p>
@@ -339,45 +472,160 @@ const weiterlesen = [
 
   <p>Vor Joris sieht der Plan so aus wie er ist: Wir wollen uns dort ein Leben aufbauen. Punkt.</p>
 
-  <!-- Fazit -->
-  <h2 id="fazit">Unser Fazit nach Monaten der Vorbereitung</h2>
+  <!-- Abschnitt 10 (neu): der echte Abschied -->
+  <h2 id="der-abschied-so-war-er-wirklich">Der Abschied: so war er wirklich</h2>
+
+  <p>Bis hierhin war dieser Artikel Vorbereitung. Ab hier ist er Verlauf.</p>
+
+  <p>Am 23. Juni war es so weit: mein Abflug, fünf Wochen vor dem Rest der Familie. Der versetzte Start war geplant, damit ich vor Ort ankommen und die erste Unterkunft regeln kann, bevor Lucy und die Kinder landen.</p>
+
+  <p>Verabschiedet haben wir uns nicht am Flughafen, sondern am Essener Hauptbahnhof. Dienstag früh, bevor Lucy die Kinder zu Kindergarten und Tagesmutter brachte. Wir hatten vorher abgesprochen, den Abschied so normal und emotionsarm wie möglich zu halten, damit die Kinder es besser verkraften. Kein großes Drama am Gate, sondern: <em>"Wir sehen uns ja in fünf Wochen."</em></p>
+
+  <p>Fotos gemacht, lange Umarmung, das war's.</p>
+
+  <Randnotiz lang="de" ausrichtung="rechts">
+    Nicht am Flughafen. Ein normaler Dienstagmorgen, mit Absicht.
+  </Randnotiz>
+
+  <p>Für die Kinder hat das funktioniert. Für Lucy und mich war es schwer, aber wir haben es uns gegenseitig nicht anmerken lassen.</p>
+
+  <figure class="polaroid polaroid--rechts">
+    <img
+      src="/assets/images/de-abreise-gepaeck-p960.jpg"
+      srcset="/assets/images/de-abreise-gepaeck-p960.webp"
+      alt="Gepacktes Reisegepäck für den Abflug nach Australien"
+      loading="lazy"
+      width="960"
+      height="720"
+    />
+    <figcaption class="polaroid__caption">23. Juni: zwei Koffer, ein Abschied.</figcaption>
+  </figure>
+
+  <aside class="nachtrag" aria-label="Nachtrag von Ende Juni 2026">
+    <p class="nachtrag__stempel">Nachtrag · Ende Juni 2026, Byron Bay</p>
+    <p>
+      Was ich erst hinterher verstanden habe: Ich hätte mir für die Abschiede mehr Zeit nehmen
+      sollen. Besonders der Abschied von meinen eigenen Eltern war extrem schwer und ging im Stress
+      der letzten Wochen unter. In den ersten Tagen in Byron Bay, zum ersten Mal seit Monaten mit
+      Ruhe zum Nachdenken, habe ich auf Strandspaziergängen geweint wie noch nie in meinem Leben.
+      Die Realisierung, enge Menschen künftig nur noch alle paar Jahre zu sehen statt jede Woche,
+      kam erst dort an. Wenn du das nachmachst: Plan die Abschiede wie einen Termin. Sie sind wichtiger
+      als jede Kiste.
+    </p>
+  </aside>
+
+  <!-- Abschnitt 11 (neu): die Trennung -->
+  <h2 id="fuenf-wochen-ohne-papa">Fünf Wochen ohne Papa</h2>
+
+  <p>Wie erleben ein 6-Jähriger und eine 2-Jährige fünf Wochen Trennung vom Papa, mitten im Auswanderungs-Stress? Kurzfassung: besser als wir.</p>
+
+  <p><strong>Der Rhythmus, der sich eingespielt hat:</strong> Die Kinder rufen morgens direkt nach dem Aufwachen per Videocall an. Gemeinsames Frühstück mit laufendem Handy, sie in Essen, ich in Byron Bay. Abends ruft Lucy noch mal allein an, wenn die Kinder schlafen.</p>
+
+  <p>In Deutschland kam eine Hitzewelle mit fast 40 Grad, die Kinder waren tagsüber viel bei Oma am Pool. Super glücklich und entspannt, gut abgelenkt. Das hat es allen leichter gemacht, auch mir am anderen Ende der Welt.</p>
+
+  <figure class="tafel" aria-label="Nachgezeichnete Tafel: Tage bis zum Abflug">
+    <svg viewBox="0 0 560 300" role="img" aria-labelledby="tafel-titel tafel-desc">
+      <title id="tafel-titel">Die Tafel mit den abgekreuzten Tagen</title>
+      <desc id="tafel-desc">Nachgezeichnet: eine Kindertafel mit einem Raster aus 35 Feldern für die Tage bis zum Abflug. Nur die ersten vier Felder sind mit Kreide-Kreuzen abgekreuzt.</desc>
+      <!-- Tafel-Fläche -->
+      <rect x="8" y="8" width="544" height="284" rx="10" fill="#2E3A34" stroke="#8A6F52" stroke-width="6" />
+      <!-- Kreide-Überschrift -->
+      <text x="280" y="52" text-anchor="middle" class="tafel__schrift tafel__schrift--gross">Tage bis zum Abflug</text>
+      <!-- Raster: 5 Reihen x 7 Kästchen, leicht krumm wie von Hand -->
+      {
+        Array.from({ length: 35 }, (_, i) => {
+          const reihe = Math.floor(i / 7);
+          const spalte = i % 7;
+          const x = 52 + spalte * 68 + (reihe % 2 === 0 ? 1.5 : -1.5);
+          const y = 78 + reihe * 42 + (spalte % 3 === 0 ? 1 : -1);
+          return (
+            <rect
+              x={x}
+              y={y}
+              width="46"
+              height="30"
+              rx="3"
+              fill="none"
+              stroke="#F5EFE2"
+              stroke-width="1.6"
+              opacity="0.75"
+              transform={`rotate(${(i % 5) - 2} ${x + 23} ${y + 15})`}
+            />
+          );
+        })
+      }
+      <!-- 4 Kreide-Kreuze auf den ersten 4 Kästchen -->
+      {
+        Array.from({ length: 4 }, (_, i) => {
+          const x = 52 + i * 68;
+          const y = 78;
+          return (
+            <g stroke="#F5EFE2" stroke-width="3.4" stroke-linecap="round" opacity="0.95">
+              <path d={`M${x + 9} ${y + 6} L${x + 38} ${y + 25}`} transform={`rotate(${i - 1.5} ${x + 23} ${y + 15})`} />
+              <path d={`M${x + 37} ${y + 5} L${x + 10} ${y + 24}`} transform={`rotate(${1.5 - i} ${x + 23} ${y + 15})`} />
+            </g>
+          );
+        })
+      }
+    </svg>
+    <figcaption class="tafel__caption">Erst vier Tage abgekreuzt, "obwohl es sich viel länger anfühlt".</figcaption>
+  </figure>
+
+  <p>Und trotzdem: Joris fragte öfter, wie lange es noch dauert. Er kreuzte mit Lucy die Tage bis zum Abflug auf einer Tafel ab, und stellte nach den ersten Tagen fest, dass erst vier abgekreuzt waren, obwohl es sich viel länger anfühlte. Diese Tafel ist für mich das Bild dieser fünf Wochen.</p>
+
+  <p>Und ich? Ich hatte insgeheim erwartet, dass die Zeit allein auch mal eine Pause von den Kindern ist. Das Gegenteil war der Fall. Allein einschlafen, allein aufwachen, allein essen: Das Alleinsein hat mir vor allem gezeigt, wie sehr die drei mein Zuhause sind. Schön und traurig zugleich.</p>
+
+  <!-- Zwischenbilanz -->
+  <h2 id="fazit">Unsere Zwischenbilanz</h2>
 
   <p>Ist es egoistisch, mit Kindern auszuwandern?</p>
 
   <p>Vielleicht. Ein bisschen. Wir machen das auch für uns, nicht nur für die Kinder.</p>
 
-  <p>Aber wir glauben, dass es auch für Joris und Linnea langfristig das Richtige ist. Mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Weniger von dieser schweren Stimmung die uns hier runterzieht.</p>
+  <p>Aber wir glauben, dass es auch für Joris und Linnea langfristig das Richtige ist. Mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Weniger von dieser schweren Stimmung die uns in Deutschland runtergezogen hat.</p>
 
   <p>Joris wird das eines Tages anders sehen als wir. Vielleicht wird er dankbar sein. Vielleicht wird er sauer sein, dass wir ihn von seinen Freunden getrennt haben. Wahrscheinlich beides, je nach Lebensphase.</p>
 
   <p>Was wir ihm mitgeben wollen: Dass man sein Leben so gestalten kann, wie man es sich vorstellt. Nicht wie andere es erwarten.</p>
 
-  <p>Der Rest wird sich zeigen.</p>
+  <p>Nach fünf Wochen allein weiß ich dazu mehr als im April: Ohne die drei ist das hier nur ein schöner Ort.</p>
 
-  <p><strong>Stand:</strong> April 2026, Wir sind noch in Deutschland. Abreise: 23. Juni (ich allein), 26. Juli (Lucy mit den Kindern). Updates folgen.</p>
+  <p><strong>Stand:</strong> 27. Juli 2026. Ich bin in Byron Bay, Lucy und die Kinder sind am 26. Juli losgeflogen. Wie die Ankunft und die ersten gemeinsamen Wochen laufen, schreiben wir hier rein, sobald wir sie erlebt haben.</p>
 
-  <p><em>Dieser Beitrag beschreibt unsere persönliche Erfahrung. Jede Familie ist anders, jedes Kind reagiert anders. Was bei uns funktioniert muss nicht für euch passen. Das hier ist kein Ratgeber, sondern ein ehrlicher Bericht.</em></p>
+  <p><em>Dieser Beitrag beschreibt unsere persönliche Erfahrung. Jede Familie ist anders, jedes Kind reagiert anders. Was bei uns funktioniert muss nicht für euch passen. Das hier ist kein Ratgeber, sondern ein Bericht.</em></p>
 
   <!-- H2 FAQ -->
   <h2 id="faq">Häufig gestellte Fragen</h2>
 
-  <h3>Warum wandert eine Familie mit kleinen Kindern nach Australien aus?</h3>
-  <p>Drei Hauptgründe: Mehr Verbundenheit zur Natur (das Leben findet in Australien draußen statt), eine grundsätzlich positivere Stimmung im Alltag, und weniger Sorge um Zukunftsperspektiven. Wir glauben, dass es langfristig das Richtige für Joris und Linnea ist, auch wenn wir uns ehrlich eingestehen, dass wir das auch für uns selbst machen.</p>
+  <div class="faq-liste">
+    <AufklappBox lang="de" titel="Warum wandert eine Familie mit kleinen Kindern nach Australien aus?">
+      <p>Drei Hauptgründe: Mehr Verbundenheit zur Natur (das Leben findet in Australien draußen statt), eine grundsätzlich positivere Stimmung im Alltag, und weniger Sorge um Zukunftsperspektiven. Wir glauben, dass es langfristig das Richtige für Joris und Linnea ist, auch wenn wir uns eingestehen, dass wir das auch für uns selbst machen.</p>
+    </AufklappBox>
 
-  <h3>Wie reagiert ein 6-jähriges Kind auf die Auswanderung?</h3>
-  <p>Es gibt nicht den einen Moment, wo das Kind es „kapiert", es ist ein langsames Realisieren über Wochen und Monate. Joris ist deutlich anhänglicher geworden, will weniger weg aus unserer Nähe. Er stellt viele Fragen, manche praktisch (Können Oma und Opa uns besuchen?), manche emotional (Kommt dann keiner mehr zu meinem Geburtstag?). Was funktioniert: ehrliche Antworten statt Schönreden.</p>
+    <AufklappBox lang="de" titel="Wie reagiert ein 6-jähriges Kind auf die Auswanderung?">
+      <p>Es gab nicht den einen Moment, wo das Kind es „kapiert", es war ein langsames Realisieren über Wochen und Monate. Joris wurde in der Vorbereitungszeit deutlich anhänglicher, wollte weniger weg aus unserer Nähe. Später kam echte Vorfreude dazu: Auf die Info, dass es in drei Monaten losgeht, fragte er „Warum erst so spät?". Was funktioniert hat: ehrliche Antworten statt Schönreden.</p>
+    </AufklappBox>
 
-  <h3>Wie lernen Kinder vor dem Auswandern Englisch?</h3>
-  <p>Wir nutzen die App StudyCat – kleine Mini-Games, kein Zwang. Joris merkt sich die Wörter erstaunlich schnell. Zusätzlich: Beim Autofahren englische Lieder analysieren, gelegentlich Fragen auf Englisch stellen mit Wörtern die er kennt. Kein Vokabel-Drill, sondern Neugier nutzen. Tiefer ins Thema: <a href="/blog/kinder-sprachlich-australien-vorbereiten">Kinder sprachlich auf Australien vorbereiten: Englisch lernen ohne Druck</a>.</p>
+    <AufklappBox lang="de" titel="Wie lernen Kinder vor dem Auswandern Englisch?">
+      <p>Wir haben die App StudyCat genutzt, kleine Mini-Games, kein Zwang. Joris merkt sich die Wörter erstaunlich schnell. Zusätzlich: beim Autofahren englische Lieder analysieren, gelegentlich Fragen auf Englisch stellen mit Wörtern die er kennt. Kein Vokabel-Drill, sondern Neugier nutzen. Tiefer ins Thema: <a href="/blog/kinder-sprachlich-australien-vorbereiten">Kinder sprachlich auf Australien vorbereiten: Englisch lernen ohne Druck</a>.</p>
+    </AufklappBox>
 
-  <h3>Was sagen Familie und Freunde zur Auswanderung mit Kindern?</h3>
-  <p>Die Reaktionen sind sehr gemischt. Häufig: „Ihr nehmt den Kindern die Großeltern weg", „Das ist eine überstürzte Entscheidung", „Ihr schafft das nicht ohne Familie". Andere reagieren verständnisvoll und planen schon den ersten Besuch. Was hilft: beide Familien bitten, sensibel mit dem Thema umzugehen, vor allem vor den Kindern.</p>
+    <AufklappBox lang="de" titel="Was sagen Familie und Freunde zur Auswanderung mit Kindern?">
+      <p>Die Reaktionen waren sehr gemischt. Häufig: „Ihr nehmt den Kindern die Großeltern weg", „Das ist eine überstürzte Entscheidung", „Ihr schafft das nicht ohne Familie". Andere reagierten verständnisvoll und planen schon den ersten Besuch. Was half: beide Familien bitten, sensibel mit dem Thema umzugehen, vor allem vor den Kindern.</p>
+    </AufklappBox>
 
-  <h3>Wann fliegt die Familie nach Australien?</h3>
-  <p>Christian fliegt am 23. Juni 2026 vor nach Byron Bay in der Northern Rivers Region, NSW. Lucy folgt mit Joris (6) und Linnea (2) am 26. Juli 2026. Der versetzte Abflug gibt Christian Zeit, vor Ort eine Unterkunft zu finden. Wie wir das Visum 186 planen, steht im <a href="/blog/visum-186-australien-familie-guide">186-Visum-Artikel</a>, die Kosten-Aufstellung findest du im <a href="/blog/auswandern-australien-kosten-familie-guide">Kosten-Guide</a>.</p>
+    <AufklappBox lang="de" titel="Wann ist die Familie nach Australien geflogen?">
+      <p>Christian ist am 23. Juni 2026 vorgeflogen und am 25. Juni in Brisbane gelandet, weiter nach Byron Bay in der Northern Rivers Region, NSW. Lucy ist mit Joris (6) und Linnea (2) am 26. Juli 2026 gefolgt. Der versetzte Abflug gab Christian Zeit, vor Ort anzukommen und die erste Unterkunft zu regeln. Wie wir das Visum 186 planen, steht im <a href="/blog/visum-186-australien-familie-guide">186-Visum-Artikel</a>, die Kosten-Aufstellung findest du im <a href="/blog/auswandern-australien-kosten-familie-guide">Kosten-Guide</a>.</p>
+    </AufklappBox>
 
-  <h3>Ist es egoistisch, mit Kindern auszuwandern?</h3>
-  <p>Vielleicht, ein bisschen, wir machen das auch für uns. Aber wir glauben, dass es auch für die Kinder langfristig das Richtige ist: mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Wir wissen, dass Joris das eines Tages anders sehen wird, wahrscheinlich beides, je nach Lebensphase. Was wir ihm mitgeben wollen: Dass man sein Leben so gestalten kann, wie man es sich vorstellt.</p>
+    <AufklappBox lang="de" titel="Wann kommt ein 6-jähriges Kind in Australien in die Schule?">
+      <p>Das australische Schuljahr beginnt im Januar. Joris startet deshalb im Januar 2027 in die Schule. Bis dahin ist Lucy primär bei den Kindern; die Betreuung für Linnea (2) ist noch nicht final geklärt.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="de" titel="Ist es egoistisch, mit Kindern auszuwandern?">
+      <p>Vielleicht, ein bisschen, wir machen das auch für uns. Aber wir glauben, dass es auch für die Kinder langfristig das Richtige ist: mehr Natur, mehr Leichtigkeit, mehr gemeinsame Zeit. Die fünf Wochen allein in Australien haben mir vor allem eins gezeigt: wie sehr die Familie mein Zuhause ist.</p>
+    </AufklappBox>
+  </div>
 
   <!-- Trust Box -->
   <div class="trust-box">
@@ -387,13 +635,17 @@ const weiterlesen = [
       wende dich an die zuständigen Behörden oder einen qualifizierten Berater.
     </p>
     <p>
-      <strong>Zuletzt aktualisiert:</strong> 02.06.2026
+      <strong>Zuletzt aktualisiert:</strong> 27.07.2026
     </p>
   </div>
 
-  <!-- Update-Log (Spec §11.2) -->
+  <!-- Update-Log -->
   <div class="update-log">
     <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">27.07.2026</span>
+      <span class="update-log__text">Großes Update: der echte Abschied, fünf Wochen Trennung, Schul-Stand, Joris' und Linneas Entwicklung ergänzt; Zeitformen an den tatsächlichen Verlauf angepasst.</span>
+    </div>
     <div class="update-log__eintrag">
       <span class="update-log__datum">29.05.2026</span>
       <span class="update-log__text">Englische Version verfügbar unter <a href="/en/moving-to-australia-with-kids-family-guide">moving-to-australia-with-kids-family-guide</a>.</span>
@@ -412,7 +664,7 @@ const weiterlesen = [
     <div>
       <p class="author-box__name">Christian Schippel</p>
       <p class="author-box__bio">
-        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Seit Juni 2026 wieder dort, Lucy und die Kinder folgen im Juli. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
         <a href="/ueber-uns">Mehr über uns</a>
       </p>
     </div>
@@ -527,6 +779,261 @@ const weiterlesen = [
       width: 240px;
       margin: 0;
     }
+  }
+
+  /* --- Nachtrag-Zettel (Zwei-Zeitebenen-Unikat) -------------------
+     Datierte "so war es wirklich"-Blöcke: eingeklebter Notizzettel
+     mit Klebestreifen oben und Datums-Stempel in Mono. */
+  .nachtrag {
+    position: relative;
+    background: var(--surface);
+    border: 1px dashed var(--line-strong, var(--line));
+    border-radius: var(--radius-s);
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    margin-block: var(--space-6);
+    rotate: -0.4deg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .nachtrag:nth-of-type(even) {
+    rotate: 0.4deg;
+  }
+
+  /* Klebestreifen oben mittig */
+  .nachtrag::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -10px;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    width: 92px;
+    height: 20px;
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 26%, transparent);
+    rotate: -2deg;
+    border-radius: 2px;
+  }
+
+  .nachtrag__stempel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+    margin-block-end: var(--space-2);
+  }
+
+  .nachtrag--auftakt {
+    margin-block-start: var(--space-5);
+  }
+
+  /* --- Frage-Zettel (Umdreh-Unikat) --------------------------------
+     details/summary: Frage in Handschrift vorne, Antwort klappt als
+     "Rückseite" auf. Nativ tastaturbedienbar, kein JS. */
+  .fragezettel-wand {
+    display: grid;
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+
+  @media (min-width: 720px) {
+    .fragezettel-wand {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+  }
+
+  .fragezettel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .fragezettel--1 {
+    rotate: -1.2deg;
+  }
+
+  .fragezettel--2 {
+    rotate: 0.8deg;
+  }
+
+  .fragezettel--3 {
+    rotate: -0.6deg;
+  }
+
+  .fragezettel__frage {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .fragezettel__frage::-webkit-details-marker {
+    display: none;
+  }
+
+  .fragezettel__frage:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+  }
+
+  .fragezettel__fragetext {
+    font-family: var(--font-hand);
+    font-size: var(--text-2);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .fragezettel__fragetext::before {
+    content: '„';
+  }
+
+  .fragezettel__fragetext::after {
+    content: '"';
+  }
+
+  .fragezettel__hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+  }
+
+  .fragezettel[open] .fragezettel__hinweis {
+    visibility: hidden;
+  }
+
+  .fragezettel__antwort {
+    border-top: 1px dashed var(--line);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 8%, var(--surface));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fragezettel[open] .fragezettel__antwort {
+      animation: fragezettel-umdrehen 0.35s ease-out;
+      transform-origin: top center;
+    }
+  }
+
+  @keyframes fragezettel-umdrehen {
+    from {
+      transform: rotateX(-70deg);
+      opacity: 0;
+    }
+    to {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  .fragezettel__antwort-label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .fragezettel__antwort p:last-child {
+    margin: 0;
+    font-size: var(--text--1);
+    line-height: 1.55;
+  }
+
+  /* --- Vorwurf-Zettel: nüchterner Kontrast zu den Kinderzetteln --- */
+  .vorwurf-zettel {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-4);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .vorwurf-zettel li {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-inline-start: 3px solid var(--line-strong, var(--line));
+    border-radius: 2px;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text--1);
+  }
+
+  .vorwurf-zettel li:nth-child(odd) {
+    translate: 4px 0;
+  }
+
+  /* --- Polaroids --------------------------------------------------- */
+  .polaroid {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-2);
+    margin-block: var(--space-6);
+    margin-inline: 0;
+    max-width: 420px;
+  }
+
+  .polaroid--links {
+    rotate: -1.4deg;
+  }
+
+  .polaroid--rechts {
+    rotate: 1.2deg;
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .polaroid__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--ink);
+    padding-block: var(--space-2);
+    text-align: center;
+  }
+
+  /* --- Tafel (nachgezeichnet) -------------------------------------- */
+  .tafel {
+    margin-block: var(--space-6);
+    margin-inline: 0;
+  }
+
+  .tafel svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-s);
+  }
+
+  .tafel__schrift {
+    font-family: var(--font-hand);
+    fill: #f5efe2;
+  }
+
+  .tafel__schrift--gross {
+    font-size: 30px;
+  }
+
+  .tafel__caption {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- FAQ-Liste ---------------------------------------------------- */
+  .faq-liste {
+    display: grid;
+    gap: var(--space-3);
+    margin-block: var(--space-5);
   }
 
   /* --- Trust Box ------------------------------------------------- */

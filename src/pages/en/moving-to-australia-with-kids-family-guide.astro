@@ -1,26 +1,34 @@
 ---
-// Family & Kids article, EN (Port des Live-Artikels, Content + SEO strikt 1:1).
-// Quelle: website/en/moving-to-australia-with-kids-family-guide.html
+// Family & Kids article, EN. Phase-C rebuild (27.07.2026), mirrors the German
+// two-timeline structure: April preparation text + dated "how it really went" notes.
+// Fact source: Projekt_Wildgewachsen/CONTEXT.md (diary states 25.05.-27.07.).
 import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
 import StickyToc from '../../components/StickyToc.astro';
 import PullQuote from '../../components/PullQuote.astro';
 import Randnotiz from '../../components/Randnotiz.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
 
-// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+// Existing IDs stay 1:1 (externally linkable anchors), new ones added.
+// "How we introduced the topic" moves BEFORE the Joris sections.
 const toc = [
   { id: 'why-doing-this', label: 'Why we are "putting our kids through this"' },
+  { id: 'introducing', label: 'How we introduced the topic' },
   { id: 'joris-understands', label: 'Joris (6): he understands it – and that makes it complicated' },
   { id: 'the-question', label: 'The question that hit us' },
   { id: 'linnea-too-small', label: 'Linnea (2): too small to understand, still part of it' },
-  { id: 'introducing', label: 'How we introduced the topic' },
   { id: 'english', label: 'Learning English: StudyCat instead of vocabulary lists' },
+  { id: 'school-our-status', label: 'School in Australia: where we stand' },
   { id: 'reactions', label: 'The reactions from our environment' },
   { id: 'not-told-joris', label: "What we didn't tell Joris" },
-  { id: 'conclusion', label: 'Our conclusion after months of preparation' },
+  { id: 'the-farewell-how-it-really-went', label: 'The farewell: how it really went' },
+  { id: 'five-weeks-without-dad', label: 'Five weeks without Dad' },
+  { id: 'conclusion', label: 'Our interim conclusion' },
 ];
 
-// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
+// Same 3 targets + texts as before
 const weiterlesen = [
   {
     href: '/en/from-vegetable-garden-to-australia-family-move',
@@ -38,15 +46,32 @@ const weiterlesen = [
     titel: 'Cost of Moving to Australia as a Family: Our Real Numbers (2026)',
   },
 ];
+
+// Joris' real questions as flip notes (question on the front, our answer behind).
+const kinderfragen = [
+  {
+    frage: 'Will no one come to my birthday any more?',
+    antwort:
+      "We'll still talk to everyone. There will be presents from everyone. But we'll celebrate differently and more limited than here. In return we'll do great things together on the day, just the four of us.",
+  },
+  {
+    frage: 'Can Grandma and Grandpa visit us?',
+    antwort: 'Yes, they can. And they are already planning to.',
+  },
+  {
+    frage: 'Do they have my favourite shop there?',
+    antwort: 'Not that exact one. But similar things.',
+  },
+];
 ---
 
 <ArtikelLayout
   title="Moving to Australia With Kids (2 and 6): Honest Family Prep"
-  description="Moving to Australia with two kids (2 and 6): how we prepare them, the questions Joris (6) asks, and what actually helps in everyday life."
+  description="Moving to Australia with kids (2 and 6): how we prepared them, what the farewell was really like and the questions a 6-year-old asks."
   lang="en"
   eyebrow="Family &amp; Kids"
   datum="29 May 2026"
-  lesezeit="8 min read · Last updated: 6 June 2026"
+  lesezeit="12 min read · Last updated: 27 July 2026"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide" />
@@ -55,7 +80,7 @@ const weiterlesen = [
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/auswandern-australien-mit-kindern-vorbereitung" />
     <!-- Open Graph -->
     <meta property="og:title" content="Moving to Australia With Kids (2 and 6): Honest Family Prep" />
-    <meta property="og:description" content="Moving to Australia with two kids (2 and 6): how we prepare them, the questions Joris (6) asks, and what actually helps in everyday life." />
+    <meta property="og:description" content="Moving to Australia with kids (2 and 6): how we prepared them, what the farewell was really like and the questions a 6-year-old asks." />
     <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg" />
     <meta property="og:url" content="https://wildgewachsen-australien.de/en/moving-to-australia-with-kids-family-guide" />
     <meta property="og:type" content="article" />
@@ -64,7 +89,7 @@ const weiterlesen = [
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Moving to Australia With Kids (2 and 6): Honest Family Prep" />
-    <meta name="twitter:description" content="Moving to Australia with two kids (2 and 6): how we prepare them, the questions Joris (6) asks, and what actually helps in everyday life." />
+    <meta name="twitter:description" content="Moving to Australia with kids (2 and 6): how we prepared them, what the farewell was really like and the questions a 6-year-old asks." />
     <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -76,7 +101,7 @@ const weiterlesen = [
     "@type": "BlogPosting",
     "inLanguage": "en",
     "headline": "Moving to Australia With Kids (2 and 6): Honest Family Prep",
-    "description": "Moving to Australia with two kids (2 and 6): how we prepare them, the questions Joris (6) asks, and what actually helps in everyday life.",
+    "description": "Moving to Australia with kids (2 and 6): how we prepared them, what the farewell was really like and the questions a 6-year-old asks.",
     "image": {
       "@type": "ImageObject",
       "url": "https://wildgewachsen-australien.de/assets/images/artikel-kinder.jpg",
@@ -95,7 +120,7 @@ const weiterlesen = [
       "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
     },
     "datePublished": "2026-05-29T12:00:00+02:00",
-    "dateModified": "2026-06-06T12:00:00+02:00",
+    "dateModified": "2026-07-27T12:00:00+10:00",
     "author": {
       "@type": "Person",
       "name": "Christian Schippel",
@@ -117,7 +142,7 @@ const weiterlesen = [
       "@type": "Thing",
       "name": "Moving to Australia with kids"
     },
-    "keywords": "moving to Australia with kids, Australia migration family, Byron Bay, preparing kids, English learning kids, Steiner School, Northern Rivers, family emigration"
+    "keywords": "moving to Australia with kids, Australia migration family, Byron Bay, preparing kids, English learning kids, school start Australia, farewell, Northern Rivers, family emigration"
   }
     </script>
 
@@ -133,7 +158,7 @@ const weiterlesen = [
         "name": "Why does a family with small kids move to Australia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Three main reasons: more connection to nature (life in Australia happens outdoors), a fundamentally more positive mood in everyday life, and less worry about future prospects. We believe long term it's the right thing for Joris and Linnea, even though we admit honestly that we are doing it for ourselves too."
+          "text": "Three main reasons: more connection to nature (life in Australia happens outdoors), a fundamentally more positive mood in everyday life, and less worry about future prospects. We believe long term it's the right thing for Joris and Linnea, even though we admit that we are doing it for ourselves too."
         }
       },
       {
@@ -141,7 +166,7 @@ const weiterlesen = [
         "name": "How does a 6-year-old child react to the move abroad?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "There isn't one moment where the child 'gets it', it's a slow realisation over weeks and months. Joris has become noticeably clingier, wants to be away from us less. He asks a lot of questions, some practical (can Grandma and Grandpa visit?), some emotional (will no one come to my birthday any more?). What works: honest answers instead of sugar-coating."
+          "text": "There wasn't one moment where the child 'gets it', it was a slow realisation over weeks and months. During the preparation phase Joris became noticeably clingier, wanted to be away from us less. Later real anticipation kicked in: when we told him we'd fly in three months, he asked 'Why not sooner?'. What worked: honest answers instead of sugar-coating."
         }
       },
       {
@@ -149,7 +174,7 @@ const weiterlesen = [
         "name": "How do kids learn English before emigrating?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We use the StudyCat app, small mini-games, no pressure. Joris picks up the words surprisingly quickly. On top: in the car we analyse English songs, sometimes I ask questions in English using words he knows. No vocabulary drill, just using curiosity."
+          "text": "We used the StudyCat app, small mini-games, no pressure. Joris picks up the words surprisingly quickly. On top: in the car we analyse English songs, sometimes I ask questions in English using words he knows. No vocabulary drill, just using curiosity."
         }
       },
       {
@@ -157,15 +182,23 @@ const weiterlesen = [
         "name": "What do family and friends say about emigrating with kids?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Reactions are very mixed. Common ones: 'You are taking the grandparents away from the kids', 'This is a rushed decision', 'You won't manage without family'. Others react with understanding and are already planning the first visit. What helps: asking both families to be sensitive with the topic, especially in front of the kids."
+          "text": "Reactions were very mixed. Common ones: 'You are taking the grandparents away from the kids', 'This is a rushed decision', 'You won't manage without family'. Others reacted with understanding and are already planning the first visit. What helped: asking both families to be sensitive with the topic, especially in front of the kids."
         }
       },
       {
         "@type": "Question",
-        "name": "When does the family fly to Australia?",
+        "name": "When did the family fly to Australia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Christian flies out on 23 June 2026 to Byron Bay in the Northern Rivers region, NSW. Lucy follows with Joris (6) and Linnea (2) on 26 July 2026. The staggered departure gives Christian time to find accommodation on the ground."
+          "text": "Christian flew out on 23 June 2026 and landed in Brisbane on 25 June, then on to Byron Bay in the Northern Rivers region, NSW. Lucy followed with Joris (6) and Linnea (2) on 26 July 2026. The staggered departure gave Christian time to arrive and sort out the first accommodation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does a 6-year-old start school in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Australian school year starts in January. Joris therefore starts school in January 2027. Until then Lucy is primarily with the kids; childcare for Linnea (2) is not finalised yet."
         }
       },
       {
@@ -173,7 +206,7 @@ const weiterlesen = [
         "name": "Is it selfish to emigrate with kids?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Maybe, a little, we are doing it for ourselves too. But we believe it's also the right thing for the kids long term: more nature, more lightness, more shared time. We know Joris will see it differently one day, probably both, depending on the phase of his life. What we want to pass on to him: that you can shape your life the way you imagine it."
+          "text": "Maybe, a little, we are doing it for ourselves too. But we believe it's also the right thing for the kids long term: more nature, more lightness, more shared time. The five weeks alone in Australia showed Christian one thing above all: how much the family is his home."
         }
       }
     ]
@@ -205,6 +238,17 @@ const weiterlesen = [
     alt="Our kids in the garden, reading a picture book under a parasol"
   />
 
+  <!-- Update note: explains the two timelines of this article -->
+  <aside class="nachtrag nachtrag--auftakt" aria-label="Update July 2026">
+    <p class="nachtrag__stempel">Update · 27 July 2026</p>
+    <p>
+      This article was written in April, when the move was still ahead of us. It has
+      happened since: I have been in Byron Bay since late June, Lucy and the kids took
+      off on 26 July. The original text stays as it was. In between you'll now find
+      dated notes on how it really went. You'll recognise them by this note look.
+    </p>
+  </aside>
+
   <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
   <div class="toc-halter">
     <StickyToc eintraege={toc} lang="en" titel="Contents" />
@@ -212,8 +256,16 @@ const weiterlesen = [
 
   <!-- Intro -->
   <p>
-    We are moving to Australia in summer 2026 with our two kids (6 and 2), more precisely to the Byron Bay / Northern Rivers region. This piece describes how we are preparing Joris and Linnea for this big step. What works, what's difficult, what questions a 6-year-old asks and how we deal with it. Not a manual, our real experience. For families planning something similar, or wondering if they'd be mad to do it.
+    We are moving to Australia this summer with our two kids (6 and 2), more precisely to the Byron Bay / Northern Rivers region. This piece describes how we prepared Joris and Linnea for this big step, and how it then actually went. What worked, what was difficult, what questions a 6-year-old asks and how we deal with it. Not a manual, our real experience. For families planning something similar, or wondering if they'd be mad to do it.
   </p>
+
+  <!-- The move in numbers -->
+  <BentoSektion lang="en" eyebrow="For context" ueberschrift="Our move in numbers">
+    <BentoKachel groesse="s" zahl="6 &amp; 2" label="years old are our kids" raster lang="en" />
+    <BentoKachel groesse="s" zahl="~1 year" label="Joris heard about it before departure" lang="en" />
+    <BentoKachel groesse="s" zahl="5 weeks" label="Dad and kids are apart" akzent lang="en" />
+    <BentoKachel groesse="s" zahl="January 2027" label="Joris starts Australian school" raster lang="en" />
+  </BentoSektion>
 
   <!-- Section 1 -->
   <h2 id="why-doing-this">Why we are "putting our kids through this"</h2>
@@ -224,7 +276,7 @@ const weiterlesen = [
 
   <p>That sounds harsh. It is.</p>
 
-  <p>For seven years I ran a restaurant. The summers were especially brutal, I was basically not at home. That affected the kids, even if they didn't say it directly. Now that the restaurant is closed, I really notice what we missed.</p>
+  <p>For seven years I ran a restaurant. The summers were especially brutal, I was basically not at home. That affected the kids, even if they didn't say it directly. The question of whether we wanted to keep sacrificing this much family time for the restaurant became more and more pressing in the second half of 2025. Now that the restaurant is closed, I really notice what we missed.</p>
 
   <h3>What we hope for the kids</h3>
 
@@ -236,37 +288,81 @@ const weiterlesen = [
 
   <p><strong>Less worry about the future.</strong> Not only domestically, but internationally too, we see many things in Germany going downhill. Especially what it means for the kids' prospects. That may sound dramatic. But it's an honest reason.</p>
 
-  <!-- Section 2 -->
+  <figure class="polaroid polaroid--links">
+    <img
+      src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
+      srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp"
+      alt="Toddler pulling a yellow wheelbarrow full of harvested pumpkins and vegetables across a meadow"
+      loading="lazy"
+      width="960"
+      height="720"
+    />
+    <figcaption class="polaroid__caption">Growing up outdoors: harvest help on our field.</figcaption>
+  </figure>
+
+  <!-- Section 2 (moved up: first the process, then the reactions) -->
+  <h2 id="introducing">How we introduced the topic</h2>
+
+  <p>Our approach was: <strong>no big announcement, but slowly weaving it into everyday life.</strong></p>
+
+  <p>Since Lucy and I talk about the move a lot, it became a topic all by itself. At first only when we were alone. But at some point it became present in normal family life too.</p>
+
+  <p><strong>Timeline:</strong> In the end Joris heard about it for almost a year before it actually started. A gradual process instead of one big conversation.</p>
+
+  <p>That has pros and cons. Pro: no shock, no sudden overload. Con: the uncertainty drags on. But for us this was the right way.</p>
+
+  <aside class="nachtrag" aria-label="Note from late May 2026">
+    <p class="nachtrag__stempel">Note · Late May 2026</p>
+    <p>
+      While clearing out the flat, the kids became part of the wind-down instead of just watching.
+      We put things we sorted out on a borrowed trailer in front of the house, "free to take".
+      Joris stood next to it, thrilled, watching who took what. Two teenagers picked up an old
+      monitor and came back with chocolate as a thank-you. The first completely finished box in our
+      box system: the kids' drawings and pictures, sorted by Lucy, stored at her dad's place. And
+      when the kids' room had to be renovated, we built a makeshift kids' room in the living room.
+      The kids found their "new room" surprisingly good.
+    </p>
+  </aside>
+
+  <!-- Section 3 -->
   <h2 id="joris-understands">Joris (6): he understands it – and that makes it complicated</h2>
 
   <p>Joris turns seven in November, he'll be celebrating that birthday in Australia. When we told him, his reaction was classic kid: he's happy he finally gets a summer birthday.</p>
 
-  <p>But it's not just looking forward to it.</p>
+  <p>But it wasn't just looking forward to it.</p>
 
   <h3>It was a process, not a moment</h3>
 
-  <p>There wasn't one moment where he "got it". It was more a slow realisation over weeks and months. He's looking forward to the adventure, but you can also tell something heavy is starting to sit on him.</p>
+  <p>There wasn't one moment where he "got it". It was more a slow realisation over weeks and months. He was looking forward to the adventure, but you could also tell something heavy was starting to sit on him.</p>
 
-  <p><strong>How that shows:</strong> He's become noticeably clingier. Normal things like going to kindergarten in the morning are suddenly harder, even though he actually likes it and everything used to be fine. He doesn't want to be away from us as much any more.</p>
+  <p><strong>How that showed:</strong> He became noticeably clingier. Normal things like going to kindergarten in the morning were suddenly harder, even though he actually liked it and everything used to be fine. He didn't want to be away from us as much any more.</p>
 
-  <Randnotiz ausrichtung="rechts" pfeil lang="en">His whole little life is shifting right now, and he feels it.</Randnotiz>
+  <p>That was exhausting. But it was also understandable. His whole little life was shifting, and he felt it.</p>
 
-  <p>That's exhausting. But it's also understandable. His whole little life is shifting right now, and he feels it.</p>
+  <h3>What we showed him</h3>
 
-  <h3>What we show him</h3>
+  <p>We showed him lots of old photos from when we lived in Byron Bay ourselves. Plus current videos of what it looks like there. We talked about the animals, the plants, the trees.</p>
 
-  <p>We show him lots of old photos from when we lived in Byron Bay ourselves. Plus current videos of what it looks like there. We talk about the animals, the plants, the trees.</p>
+  <p>You have to be careful not to set expectations too high. In the end we'll lead a perfectly normal life there too, with a perfectly normal everyday routine. Not every moment is an adventure. We tried to get that across to him as well.</p>
 
-  <p>You have to be careful not to set expectations too high. In the end we'll lead a perfectly normal life there too, with a perfectly normal everyday routine. Not every moment is an adventure. We try to get that across to him as well.</p>
+  <h3>From "Why not sooner?" to his own plan</h3>
 
-  <!-- Section 3 -->
+  <p>In April, three months before departure, came the moment that showed us how far he had come. We told him it would start in three months. His answer:</p>
+
+  <PullQuote lang="en" quelle="Joris, April 2026">Why not sooner?</PullQuote>
+
+  <p>The early uncertainty had turned into anticipation.</p>
+
+  <p>On Whit Monday, a good four weeks before departure, we talked about "in ten years". That's when he realised: in ten years we'll be living in Australia, not in Germany any more. His reaction, word for word: <em>"Okay, that's a bit strange, but then I definitely want to call my friend a lot."</em></p>
+
+  <p>He handles the distance topic himself and actively thinks up solutions. We couldn't ask more of a 6-year-old.</p>
+
+  <!-- Section 4 -->
   <h2 id="the-question">The question that hit us</h2>
 
   <p>At some point Joris asked: <em>"Will no one come to my birthday any more?"</em></p>
 
   <p>That landed.</p>
-
-  <PullQuote lang="en">Will no one come to my birthday any more?</PullQuote>
 
   <p>We told him that of course we'll still talk to everyone. That there will be presents from everyone. But also honestly: that we'll celebrate differently and more limited than here. In return we'll do great things together on the day, just the four of us.</p>
 
@@ -274,51 +370,74 @@ const weiterlesen = [
 
   <h3>The questions he's been asking since</h3>
 
-  <p>Joris asks a lot of questions. Some practical, some emotional:</p>
+  <p>Joris asks a lot of questions. Some practical, some emotional. The three that stayed with us most you can flip over here, along with how we answered them:</p>
 
-  <ul>
-    <li><em>"Can Grandma and Grandpa visit us?"</em>, Yes, they can. And they are already planning to.</li>
-    <li><em>"Do they have [his favourite shop] there?"</em>, Not that exact one. But similar things.</li>
-    <li>Questions about animals, about the ocean, about his future bedroom.</li>
-  </ul>
+  <div class="fragezettel-wand" role="list" aria-label="Joris' questions and our answers">
+    {
+      kinderfragen.map((k, i) => (
+        <details class:list={['fragezettel', `fragezettel--${i + 1}`]} role="listitem">
+          <summary class="fragezettel__frage">
+            <span class="fragezettel__fragetext">{k.frage}</span>
+            <span class="fragezettel__hinweis" aria-hidden="true">Flip the note</span>
+          </summary>
+          <div class="fragezettel__antwort">
+            <p class="fragezettel__antwort-label">Our answer:</p>
+            <p>{k.antwort}</p>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+
+  <p>On top of that, a steady stream of questions about animals, about the ocean, about his future bedroom.</p>
 
   <p>What we've learnt: honesty works better than sugar-coating. When we say "we don't quite know yet", he accepts it. Kids notice when you're putting on a show.</p>
 
-  <!-- Section 4 -->
+  <!-- Section 5 -->
   <h2 id="linnea-too-small">Linnea (2): too small to understand, still part of it</h2>
 
   <p>Linnea is two. She doesn't yet understand the complexity of all this. For her, what matters is that Mum, Dad and Joris are there. The rest is abstract.</p>
 
-  <p>Still, she's fully included. She also gets shown pictures, sits in on conversations when we talk about Australia, hears it all.</p>
+  <p>Still, she was fully included. She also got shown pictures, sat in on conversations when we talked about Australia, heard it all.</p>
 
-  <p>Here we'll simply have to see how it plays out once we're there. I think we are doing everything we can to prepare both of them as well as possible. More than that we can't do.</p>
-
-  <!-- Section 5 -->
-  <h2 id="introducing">How we introduced the topic</h2>
-
-  <p>Our approach was: <strong>no big announcement, but slowly weaving it into everyday life.</strong></p>
-
-  <p>Since Lucy and I talk about the move a lot, it became a topic all by itself. At first only when we were alone. But at some point it became present in normal family life too.</p>
-
-  <p><strong>Timeline:</strong> Joris has been hearing about it for more than 8 months now. No "we need to talk" conversation, but a gradual process.</p>
-
-  <p>That has pros and cons. Pro: no shock, no sudden overload. Con: the uncertainty drags on. But for us this was the right way.</p>
+  <aside class="nachtrag" aria-label="Note from late May 2026">
+    <p class="nachtrag__stempel">Note · Late May 2026</p>
+    <p>
+      She understands more than we thought. A few weeks before departure Linnea started asking on
+      her own when we'd finally move into the new home, and got sad when Lucy said "that will take
+      a while". She started talking about things she wants to take with her, her doll's pram for
+      example. And with many things I used, she asked where they should go: "Where shall we hang
+      that up?" It registers with her. And she handles it surprisingly constructively, not
+      overwhelmed.
+    </p>
+  </aside>
 
   <!-- Section 6 -->
   <h2 id="english">Learning English: StudyCat instead of vocabulary lists</h2>
 
-  <p>Joris has been learning English since early 2026. Not with vocabulary lists or lessons, but playfully: through a kids' learning app (we use <a href="https://studycat.com/products/english/" target="_blank" rel="noopener">StudyCat</a>) and simple English sentences we drop into the day. No pressure, no force.</p>
+  <p>Joris has been learning English since early 2026. Not with vocabulary lists or lessons, but playfully: through a kids' learning app (we use <a href="https://studycat.com/products/english/" target="_blank" rel="noopener">StudyCat</a>) and simple English sentences we dropped into the day. No pressure, no force.</p>
 
   <p>What that looks like in detail, which app we use, what it costs, how we handle Linnea (2) and what really worries us about language is in a dedicated piece: <a href="/en/preparing-kids-for-english-australia">Preparing Kids for English Before Moving to Australia</a>.</p>
 
-  <!-- Section 7 -->
+  <!-- Section 7 (new) -->
+  <h2 id="school-our-status">School in Australia: where we stand</h2>
+
+  <p>One question is completely missing up to this point: school.</p>
+
+  <p>The most important fact for us: <strong>the Australian school year starts in January.</strong> Joris therefore starts school in January 2027, not in the middle of a school year as the new kid who doesn't speak the language yet. Until then he has half a year to settle into everyday life and pick up English.</p>
+
+  <p>Lucy is primarily with the kids in the first months. Childcare for Linnea is not finalised yet, that's one of the things we'll sort out on the ground.</p>
+
+  <p>More than that we can't say about school first-hand yet, we simply haven't lived it. Once enrolment and the school start are done, the topic gets its own piece here.</p>
+
+  <!-- Section 8 -->
   <h2 id="reactions">The reactions from our environment</h2>
 
-  <p>Reactions to our emigration are mixed. Very mixed.</p>
+  <p>Reactions to our emigration were mixed. Very mixed.</p>
 
-  <h3>What we hear a lot</h3>
+  <h3>What we heard a lot</h3>
 
-  <ul>
+  <ul class="vorwurf-zettel" aria-label="Sentences from the people around us">
     <li><em>"You are taking the grandparents away from the kids."</em></li>
     <li><em>"This is a rushed and impulsive decision."</em></li>
     <li><em>"You won't manage without family."</em></li>
@@ -328,17 +447,21 @@ const weiterlesen = [
 
   <p>That lands. Especially the accusation of being ungrateful.</p>
 
-  <p>The irony: we've been planning this for almost a year. Rushed it definitely isn't. But not everyone sees it that way.</p>
+  <p>The irony: in the end we planned this for more than a year. Rushed it definitely wasn't. But not everyone sees it that way.</p>
+
+  <Randnotiz lang="en" ausrichtung="rechts" pfeil>
+    Both families live in the Ruhr area. The distance is new for everyone.
+  </Randnotiz>
 
   <h3>What helps</h3>
 
   <p>Some people react differently. With understanding. Already planning their first visit to Australia. Happy for us, even when they are sad.</p>
 
-  <p>We've asked both families to be sensitive about the topic, especially in front of Joris. Not constantly saying "you're going away soon". Sometimes that works, sometimes not.</p>
+  <p>We've asked both families to be sensitive about the topic, especially in front of Joris. Not constantly saying "you're going away soon". Sometimes that worked, sometimes not.</p>
 
   <p>I told my parents about it honestly, but quite late, because I was afraid of their reaction. The reaction was actually better than expected. Of course they'd wish for it to be different. But they are trying to handle it positively.</p>
 
-  <!-- Section 8 -->
+  <!-- Section 9 -->
   <h2 id="not-told-joris">What we didn't tell Joris</h2>
 
   <p>We didn't tell Joris: "If it doesn't work, we'll come back."</p>
@@ -349,45 +472,159 @@ const weiterlesen = [
 
   <p>In front of Joris the plan looks the way it is: we want to build a life there. Full stop.</p>
 
-  <!-- Conclusion -->
-  <h2 id="conclusion">Our conclusion after months of preparation</h2>
+  <!-- Section 10 (new): the real farewell -->
+  <h2 id="the-farewell-how-it-really-went">The farewell: how it really went</h2>
+
+  <p>Up to here, this article was preparation. From here on, it's what actually happened.</p>
+
+  <p>On 23 June it was time: my departure, five weeks ahead of the rest of the family. The staggered start was planned so I could arrive and sort out the first accommodation before Lucy and the kids land.</p>
+
+  <p>We didn't say goodbye at the airport, but at Essen central station. Tuesday morning, before Lucy took the kids to kindergarten and the childminder. We had agreed beforehand to keep the farewell as normal and low-key as possible, so the kids would cope better. No big drama at the gate, just: <em>"We'll see each other in five weeks."</em></p>
+
+  <p>Photos taken, one long hug, that was it.</p>
+
+  <Randnotiz lang="en" ausrichtung="rechts">
+    Not at the airport. An ordinary Tuesday morning, on purpose.
+  </Randnotiz>
+
+  <p>For the kids, it worked. For Lucy and me it was hard, but we didn't let each other see it.</p>
+
+  <figure class="polaroid polaroid--rechts">
+    <img
+      src="/assets/images/de-abreise-gepaeck-p960.jpg"
+      srcset="/assets/images/de-abreise-gepaeck-p960.webp"
+      alt="Packed luggage for the flight to Australia"
+      loading="lazy"
+      width="960"
+      height="720"
+    />
+    <figcaption class="polaroid__caption">23 June: two suitcases, one goodbye.</figcaption>
+  </figure>
+
+  <aside class="nachtrag" aria-label="Note from late June 2026">
+    <p class="nachtrag__stempel">Note · Late June 2026, Byron Bay</p>
+    <p>
+      What I only understood afterwards: I should have taken more time for the goodbyes. The
+      farewell from my own parents especially was extremely hard and got lost in the stress of the
+      final weeks. In my first days in Byron Bay, with room to think for the first time in months,
+      I cried on beach walks like never before in my life. The realisation that I'll now see the
+      people closest to me every few years instead of every week only landed there. If you are
+      doing this after us: plan the goodbyes like an appointment. They matter more than any box.
+    </p>
+  </aside>
+
+  <!-- Section 11 (new): the separation -->
+  <h2 id="five-weeks-without-dad">Five weeks without Dad</h2>
+
+  <p>How do a 6-year-old and a 2-year-old experience five weeks apart from their dad, in the middle of the stress of emigrating? Short version: better than us.</p>
+
+  <p><strong>The rhythm that settled in:</strong> The kids call by video right after waking up. Shared breakfast with the phone running, them in Essen, me in Byron Bay. In the evening Lucy calls again on her own, once the kids are asleep.</p>
+
+  <p>Germany got a heatwave with temperatures close to 40 degrees, so the kids spent their days at Grandma's pool. Super happy and relaxed, well distracted. That made it easier for everyone, including me on the other side of the world.</p>
+
+  <figure class="tafel" aria-label="Redrawn chalkboard: days until departure">
+    <svg viewBox="0 0 560 300" role="img" aria-labelledby="tafel-titel tafel-desc">
+      <title id="tafel-titel">The chalkboard with the crossed-off days</title>
+      <desc id="tafel-desc">Redrawn: a kids' chalkboard with a grid of 35 boxes for the days until departure. Only the first four boxes are crossed off in chalk.</desc>
+      <!-- Board surface -->
+      <rect x="8" y="8" width="544" height="284" rx="10" fill="#2E3A34" stroke="#8A6F52" stroke-width="6" />
+      <!-- Chalk heading -->
+      <text x="280" y="52" text-anchor="middle" class="tafel__schrift tafel__schrift--gross">Days until departure</text>
+      <!-- Grid: 5 rows x 7 boxes, slightly crooked like hand-drawn -->
+      {
+        Array.from({ length: 35 }, (_, i) => {
+          const reihe = Math.floor(i / 7);
+          const spalte = i % 7;
+          const x = 52 + spalte * 68 + (reihe % 2 === 0 ? 1.5 : -1.5);
+          const y = 78 + reihe * 42 + (spalte % 3 === 0 ? 1 : -1);
+          return (
+            <rect
+              x={x}
+              y={y}
+              width="46"
+              height="30"
+              rx="3"
+              fill="none"
+              stroke="#F5EFE2"
+              stroke-width="1.6"
+              opacity="0.75"
+              transform={`rotate(${(i % 5) - 2} ${x + 23} ${y + 15})`}
+            />
+          );
+        })
+      }
+      <!-- 4 chalk crosses on the first 4 boxes -->
+      {
+        Array.from({ length: 4 }, (_, i) => {
+          const x = 52 + i * 68;
+          const y = 78;
+          return (
+            <g stroke="#F5EFE2" stroke-width="3.4" stroke-linecap="round" opacity="0.95">
+              <path d={`M${x + 9} ${y + 6} L${x + 38} ${y + 25}`} transform={`rotate(${i - 1.5} ${x + 23} ${y + 15})`} />
+              <path d={`M${x + 37} ${y + 5} L${x + 10} ${y + 24}`} transform={`rotate(${1.5 - i} ${x + 23} ${y + 15})`} />
+            </g>
+          );
+        })
+      }
+    </svg>
+    <figcaption class="tafel__caption">Only four days crossed off, "even though it feels much longer".</figcaption>
+  </figure>
+
+  <p>And still: Joris kept asking how much longer. He crossed off the days until departure on a chalkboard with Lucy, and noticed after the first stretch that only four days were crossed off, even though it felt much longer. That chalkboard is my image of these five weeks.</p>
+
+  <p>And me? I had secretly expected the time alone to also be a bit of a break from the kids. The opposite was true. Falling asleep alone, waking up alone, eating alone: being on my own mostly showed me how much the three of them are my home. Beautiful and sad at the same time.</p>
+
+  <!-- Interim conclusion -->
+  <h2 id="conclusion">Our interim conclusion</h2>
 
   <p>Is it selfish to emigrate with kids?</p>
 
   <p>Maybe. A bit. We are doing it for ourselves too, not only for the kids.</p>
 
-  <p>But we believe it's also the right thing for Joris and Linnea long term. More nature, more lightness, more shared time. Less of this heavy mood that's dragging us down here.</p>
+  <p>But we believe it's also the right thing for Joris and Linnea long term. More nature, more lightness, more shared time. Less of this heavy mood that dragged us down in Germany.</p>
 
   <p>Joris will see this differently one day than we do. Maybe he'll be grateful. Maybe he'll be angry that we cut him off from his friends. Probably both, depending on the phase of his life.</p>
 
   <p>What we want to pass on to him: that you can shape your life the way you imagine it. Not the way others expect it.</p>
 
-  <p>The rest will show itself.</p>
+  <p>After five weeks alone I know more about that than I did in April: without the three of them, this is just a pretty place.</p>
 
-  <p><strong>Status:</strong> April 2026, we are still in Germany. Departure: 23 June (me alone), 26 July (Lucy with the kids). Updates to follow.</p>
+  <p><strong>Status:</strong> 27 July 2026. I am in Byron Bay, Lucy and the kids took off on 26 July. How the arrival and the first weeks together go, we'll write down here once we have lived them.</p>
 
-  <p><em>This piece describes our personal experience. Every family is different, every child reacts differently. What works for us doesn't have to work for you. This is not a manual, it's an honest report.</em></p>
+  <p><em>This piece describes our personal experience. Every family is different, every child reacts differently. What works for us doesn't have to work for you. This is not a manual, it's a report.</em></p>
 
   <!-- H2 FAQ -->
   <h2 id="faq">Frequently asked questions</h2>
 
-  <h3>Why does a family with small kids move to Australia?</h3>
-  <p>Three main reasons: more connection to nature (life in Australia happens outdoors), a fundamentally more positive mood in everyday life, and less worry about future prospects. We believe long term it's the right thing for Joris and Linnea, even though we admit honestly that we are doing it for ourselves too.</p>
+  <div class="faq-liste">
+    <AufklappBox lang="en" titel="Why does a family with small kids move to Australia?">
+      <p>Three main reasons: more connection to nature (life in Australia happens outdoors), a fundamentally more positive mood in everyday life, and less worry about future prospects. We believe long term it's the right thing for Joris and Linnea, even though we admit that we are doing it for ourselves too.</p>
+    </AufklappBox>
 
-  <h3>How does a 6-year-old child react to the move abroad?</h3>
-  <p>There isn't one moment where the child "gets it", it's a slow realisation over weeks and months. Joris has become noticeably clingier, wants to be away from us less. He asks a lot of questions, some practical (can Grandma and Grandpa visit?), some emotional (will no one come to my birthday any more?). What works: honest answers instead of sugar-coating.</p>
+    <AufklappBox lang="en" titel="How does a 6-year-old child react to the move abroad?">
+      <p>There wasn't one moment where the child "gets it", it was a slow realisation over weeks and months. During the preparation phase Joris became noticeably clingier, wanted to be away from us less. Later real anticipation kicked in: when we told him we'd fly in three months, he asked "Why not sooner?". What worked: honest answers instead of sugar-coating.</p>
+    </AufklappBox>
 
-  <h3>How do kids learn English before emigrating?</h3>
-  <p>We use the StudyCat app, small mini-games, no pressure. Joris picks up the words surprisingly quickly. On top: in the car we analyse English songs, sometimes I ask questions in English using words he knows. No vocabulary drill, just using curiosity. Deeper dive: <a href="/en/preparing-kids-for-english-australia">Preparing Kids for English Before Moving to Australia</a>.</p>
+    <AufklappBox lang="en" titel="How do kids learn English before emigrating?">
+      <p>We used the StudyCat app, small mini-games, no pressure. Joris picks up the words surprisingly quickly. On top: in the car we analyse English songs, sometimes I ask questions in English using words he knows. No vocabulary drill, just using curiosity. Deeper dive: <a href="/en/preparing-kids-for-english-australia">Preparing Kids for English Before Moving to Australia</a>.</p>
+    </AufklappBox>
 
-  <h3>What do family and friends say about emigrating with kids?</h3>
-  <p>Reactions are very mixed. Common ones: "You are taking the grandparents away from the kids", "This is a rushed decision", "You won't manage without family". Others react with understanding and are already planning the first visit. What helps: asking both families to be sensitive with the topic, especially in front of the kids.</p>
+    <AufklappBox lang="en" titel="What do family and friends say about emigrating with kids?">
+      <p>Reactions were very mixed. Common ones: "You are taking the grandparents away from the kids", "This is a rushed decision", "You won't manage without family". Others reacted with understanding and are already planning the first visit. What helped: asking both families to be sensitive with the topic, especially in front of the kids.</p>
+    </AufklappBox>
 
-  <h3>When does the family fly to Australia?</h3>
-  <p>Christian flies out on 23 June 2026 to Byron Bay in the Northern Rivers region, NSW. Lucy follows with Joris (6) and Linnea (2) on 26 July 2026. The staggered departure gives Christian time to find accommodation on the ground. How we are planning the 186 visa is covered in our <a href="/en/186-visa-australia-family-guide">186 Visa article</a>, and the cost breakdown sits in the <a href="/en/cost-of-moving-to-australia-family-guide">Cost Guide</a>.</p>
+    <AufklappBox lang="en" titel="When did the family fly to Australia?">
+      <p>Christian flew out on 23 June 2026 and landed in Brisbane on 25 June, then on to Byron Bay in the Northern Rivers region, NSW. Lucy followed with Joris (6) and Linnea (2) on 26 July 2026. The staggered departure gave Christian time to arrive and sort out the first accommodation. How we are planning the 186 visa is covered in our <a href="/en/186-visa-australia-family-guide">186 Visa article</a>, and the cost breakdown sits in the <a href="/en/cost-of-moving-to-australia-family-guide">Cost Guide</a>.</p>
+    </AufklappBox>
 
-  <h3>Is it selfish to emigrate with kids?</h3>
-  <p>Maybe, a little, we are doing it for ourselves too. But we believe it's also the right thing for the kids long term: more nature, more lightness, more shared time. We know Joris will see it differently one day, probably both, depending on the phase of his life. What we want to pass on to him: that you can shape your life the way you imagine it.</p>
+    <AufklappBox lang="en" titel="When does a 6-year-old start school in Australia?">
+      <p>The Australian school year starts in January. Joris therefore starts school in January 2027. Until then Lucy is primarily with the kids; childcare for Linnea (2) is not finalised yet.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="Is it selfish to emigrate with kids?">
+      <p>Maybe, a little, we are doing it for ourselves too. But we believe it's also the right thing for the kids long term: more nature, more lightness, more shared time. The five weeks alone in Australia showed me one thing above all: how much the family is my home.</p>
+    </AufklappBox>
+  </div>
 
   <!-- Trust Box -->
   <div class="trust-box">
@@ -395,13 +632,17 @@ const weiterlesen = [
       <strong>Note:</strong> This article is based on our personal experience and does not constitute legal or migration advice. For binding information, contact the relevant authorities or a qualified adviser.
     </p>
     <p>
-      <strong>Last updated:</strong> 6 June 2026
+      <strong>Last updated:</strong> 27 July 2026
     </p>
   </div>
 
   <!-- Update-Log -->
   <div class="update-log">
     <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">27 July 2026</span>
+      <span class="update-log__text">Major update: the real farewell, five weeks apart, school status, Joris' and Linnea's development added; tenses adjusted to what actually happened.</span>
+    </div>
     <div class="update-log__eintrag">
       <span class="update-log__datum">29 May 2026</span>
       <span class="update-log__text">Article published (English version of the German original from April 2026).</span>
@@ -416,7 +657,7 @@ const weiterlesen = [
     <div>
       <p class="author-box__name">Christian Schippel</p>
       <p class="author-box__bio">
-        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to the Northern Rivers in summer 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Back in the Northern Rivers since June 2026, Lucy and the kids follow in July. Writes here about visas, costs and everything that happens along the way.
         <a href="/en/about">More about us</a>
       </p>
     </div>
@@ -446,6 +687,54 @@ const weiterlesen = [
     </div>
   </section>
 </ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
 
 <style>
   .artikel-bild {
@@ -483,6 +772,256 @@ const weiterlesen = [
       width: 240px;
       margin: 0;
     }
+  }
+
+  /* --- Nachtrag-Zettel (Zwei-Zeitebenen-Unikat) ------------------- */
+  .nachtrag {
+    position: relative;
+    background: var(--surface);
+    border: 1px dashed var(--line-strong, var(--line));
+    border-radius: var(--radius-s);
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    margin-block: var(--space-6);
+    rotate: -0.4deg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .nachtrag:nth-of-type(even) {
+    rotate: 0.4deg;
+  }
+
+  .nachtrag::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -10px;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    width: 92px;
+    height: 20px;
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 26%, transparent);
+    rotate: -2deg;
+    border-radius: 2px;
+  }
+
+  .nachtrag__stempel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+    margin-block-end: var(--space-2);
+  }
+
+  .nachtrag--auftakt {
+    margin-block-start: var(--space-5);
+  }
+
+  /* --- Frage-Zettel (Umdreh-Unikat) -------------------------------- */
+  .fragezettel-wand {
+    display: grid;
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+
+  @media (min-width: 720px) {
+    .fragezettel-wand {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+  }
+
+  .fragezettel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .fragezettel--1 {
+    rotate: -1.2deg;
+  }
+
+  .fragezettel--2 {
+    rotate: 0.8deg;
+  }
+
+  .fragezettel--3 {
+    rotate: -0.6deg;
+  }
+
+  .fragezettel__frage {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .fragezettel__frage::-webkit-details-marker {
+    display: none;
+  }
+
+  .fragezettel__frage:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+  }
+
+  .fragezettel__fragetext {
+    font-family: var(--font-hand);
+    font-size: var(--text-2);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .fragezettel__fragetext::before {
+    content: '“';
+  }
+
+  .fragezettel__fragetext::after {
+    content: '”';
+  }
+
+  .fragezettel__hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+  }
+
+  .fragezettel[open] .fragezettel__hinweis {
+    visibility: hidden;
+  }
+
+  .fragezettel__antwort {
+    border-top: 1px dashed var(--line);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 8%, var(--surface));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fragezettel[open] .fragezettel__antwort {
+      animation: fragezettel-umdrehen 0.35s ease-out;
+      transform-origin: top center;
+    }
+  }
+
+  @keyframes fragezettel-umdrehen {
+    from {
+      transform: rotateX(-70deg);
+      opacity: 0;
+    }
+    to {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  .fragezettel__antwort-label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .fragezettel__antwort p:last-child {
+    margin: 0;
+    font-size: var(--text--1);
+    line-height: 1.55;
+  }
+
+  /* --- Vorwurf-Zettel: nüchterner Kontrast ------------------------- */
+  .vorwurf-zettel {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-4);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .vorwurf-zettel li {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-inline-start: 3px solid var(--line-strong, var(--line));
+    border-radius: 2px;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text--1);
+  }
+
+  .vorwurf-zettel li:nth-child(odd) {
+    translate: 4px 0;
+  }
+
+  /* --- Polaroids --------------------------------------------------- */
+  .polaroid {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-2);
+    margin-block: var(--space-6);
+    margin-inline: 0;
+    max-width: 420px;
+  }
+
+  .polaroid--links {
+    rotate: -1.4deg;
+  }
+
+  .polaroid--rechts {
+    rotate: 1.2deg;
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .polaroid__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--ink);
+    padding-block: var(--space-2);
+    text-align: center;
+  }
+
+  /* --- Tafel (redrawn chalkboard) ----------------------------------- */
+  .tafel {
+    margin-block: var(--space-6);
+    margin-inline: 0;
+  }
+
+  .tafel svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-s);
+  }
+
+  .tafel__schrift {
+    font-family: var(--font-hand);
+    fill: #f5efe2;
+  }
+
+  .tafel__schrift--gross {
+    font-size: 30px;
+  }
+
+  .tafel__caption {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- FAQ-Liste ---------------------------------------------------- */
+  .faq-liste {
+    display: grid;
+    gap: var(--space-3);
+    margin-block: var(--space-5);
   }
 
   /* --- Trust Box ------------------------------------------------- */
@@ -554,53 +1093,6 @@ const weiterlesen = [
 
   .author-box__bio {
     margin-block-start: var(--space-2);
-    font-size: var(--text--1);
-    color: var(--ink-soft);
-  }
-
-  /* --- Newsletter ------------------------------------------------ */
-  .newsletter-karte {
-    display: grid;
-    gap: var(--space-3);
-    rotate: -0.5deg;
-  }
-
-  .newsletter-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-block-start: var(--space-2);
-  }
-
-  .newsletter-form input {
-    flex: 1;
-    min-width: 220px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-s);
-    padding: var(--space-3) var(--space-4);
-    font-family: var(--font-body);
-    color: var(--ink);
-  }
-
-  .newsletter-form button {
-    background: var(--accent);
-    color: var(--accent-contrast);
-    border: none;
-    border-radius: var(--radius-s);
-    padding: var(--space-3) var(--space-5);
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-  }
-
-  .newsletter-form button:hover {
-    background: var(--accent-strong);
-  }
-
-  .newsletter-hinweis {
-    font-family: var(--font-mono);
     font-size: var(--text--1);
     color: var(--ink-soft);
   }
