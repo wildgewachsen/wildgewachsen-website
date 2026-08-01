@@ -1,0 +1,966 @@
+---
+// Car article, English version (NEW 02.08.2026, published directly in the Astro repo).
+// Text 1:1 from the CEO-approved draft blog-drafts/buying-a-car-in-australia-used-car-registration.html
+// (content approved 23.07.2026), presentation mirrors the German page (Playbook v2 §4).
+// Unique element: the rebuilt Service NSW receipt next to the real receipt photo.
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
+import InlineCta from '../../components/InlineCta.astro';
+
+const toc = [
+  { id: 'fastest-way', label: 'The fastest way to your own car' },
+  { id: 'where-to-buy', label: 'Where to buy: private or dealer' },
+  { id: 'ppsr', label: 'The 2-dollar check everyone should do' },
+  { id: 'transfer-nsw', label: 'Transferring rego in NSW: 14 days, fee, stamp duty' },
+  { id: 'pink-green-slip', label: 'Pink slip and green slip' },
+  { id: 'interstate-trap', label: 'The expensive trap: a QLD car in NSW' },
+  { id: 'real-cost', label: 'What it really costs' },
+  { id: 'my-experience', label: 'Our story: the Jeep for 4,500 dollars' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+const weiterlesen = [
+  {
+    href: '/en/australian-sim-card-phone-number-newcomers',
+    meta: 'Arriving & Everyday Life',
+    titel: "Australian SIM Card and Phone Number: A Newcomer's Guide",
+  },
+  {
+    href: '/en/cost-of-moving-to-australia-family-guide',
+    meta: 'Money & Costs',
+    titel: 'Moving to Australia: What We Really Pay as a Family (Cost Guide 2026)',
+  },
+  {
+    href: '/en/australia-tourist-visa-evisitor-651',
+    meta: 'Visa & Migration',
+    titel: 'Tourist Visa for Australia: eVisitor 651 for Families',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Buying a Car in Australia: Used Cars, Registration and the Costs"
+  seoTitle="Buying a Car in Australia: Used Cars and Registration"
+  description="Buying a used car in Australia as a newcomer: where to buy, the 2-dollar PPSR check, transferring rego in NSW, stamp duty, and the costly interstate trap."
+  lang="en"
+  eyebrow="Arriving & Everyday Life"
+  datum="2 August 2026"
+  lesezeit="10 min read · Last updated: 2 August 2026"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/buying-a-car-in-australia-used-car-registration" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/auto-kaufen-australien-gebrauchtwagen-ummelden" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/buying-a-car-in-australia-used-car-registration" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/auto-kaufen-australien-gebrauchtwagen-ummelden" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Buying a Car in Australia: Used Cars and Registration" />
+    <meta property="og:description" content="How we bought and registered a used car in NSW as newcomers: where to buy, the PPSR check, stamp duty, pink slip and the costly interstate trap." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-jeep-grand-cherokee-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/buying-a-car-in-australia-used-car-registration" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buying a Car in Australia: Used Cars and Registration" />
+    <meta name="twitter:description" content="How we bought and registered a used car in NSW as newcomers: where to buy, the PPSR check, stamp duty, pink slip and the costly interstate trap." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-jeep-grand-cherokee-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "inLanguage": "en",
+    "headline": "Buying a Car in Australia: Used Cars and Registration",
+    "description": "Buying a used car in Australia as a newcomer: where to find cars, the 2-dollar PPSR check, transferring registration in NSW with the 14-day deadline and stamp duty, pink slip and green slip, the expensive interstate trap and what it all costs.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/au-jeep-grand-cherokee-og.jpg",
+      "caption": "Our used Jeep Grand Cherokee, bought in the Northern Rivers and registered in NSW.",
+      "creditText": "Wildgewachsen",
+      "copyrightNotice": "© 2026 Wildgewachsen",
+      "creator": { "@type": "Person", "name": "Christian Schippel" },
+      "copyrightHolder": { "@type": "Organization", "name": "Wildgewachsen" },
+      "license": "https://wildgewachsen-australien.de/impressum",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/en/contact"
+    },
+    "datePublished": "2026-08-02T09:00:00+10:00",
+    "dateModified": "2026-08-02T09:00:00+10:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/buying-a-car-in-australia-used-car-registration"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Buying and registering a used car in Australia (New South Wales) for newcomers"
+    },
+    "keywords": "buying a car Australia, used car Australia, car registration transfer NSW, stamp duty car NSW, pink slip green slip, PPSR check, car Byron Bay, interstate car QLD NSW"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is the best place to buy a used car in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The common marketplaces are Gumtree, Facebook Marketplace and Carsales, plus dealer websites. Private sales are buyer beware, so a PPSR check before the purchase and an independent inspection matter a lot. Dealers add statutory warranties in some cases depending on the state and the vehicle, but the price is usually higher."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I transfer a car registration in New South Wales after buying?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In NSW the buyer must transfer the registration into their name within 14 days. The seller lodges a notice of disposal in parallel. The transfer fee is 42 AUD within the 14 days and rises to 193 AUD afterwards. The online transfer only works if the seller has lodged the notice of disposal, you hold a NSW driver licence and the car is registered in NSW. Otherwise you do it in person at a Service NSW centre."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the PPSR check and why does it matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The PPSR is a national register of security interests. A search for 2 AUD shows whether the car still carries finance or debt, and can also show if it is recorded as stolen or written off. It matters because private sellers do not have to disclose outstanding finance. If you buy a car with a debt on it and the previous owner stops paying, the finance company can repossess the car."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does registration transfer and stamp duty cost for a used car in NSW?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The transfer fee is 42 AUD within 14 days. On top comes vehicle stamp duty: for a value up to 44,999 AUD it is 3 AUD per 100 AUD, calculated on the higher of the purchase price or the market value. For us it came to 135 AUD, because the purchase price was 4,500 AUD and 3 AUD per 100 AUD makes exactly 135 AUD. For the next rego renewal, cars over five years old also need a safety inspection (pink slip, up to 52 AUD) and a compulsory green slip insurance whose price varies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I watch for when registering a Queensland car in NSW?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That is the expensive special case. A car from another state is not a simple transfer in NSW but a new registration as an interstate vehicle, in person at a Service NSW centre. Instead of the cheaper pink slip (52 AUD) you need a blue slip, an AUVIS inspection (82 AUD), you need new NSW plates and a new NSW green slip, and NSW stamp duty applies again. The interstate exemption only applies if the car was already registered in your own name and duty was already paid on it, not when you buy from a stranger."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a car in NSW need a safety inspection like a roadworthy or MOT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most light vehicles older than five years need a safety inspection report, the pink slip, once a year before the rego renewal in NSW. It costs up to 52 AUD and is valid for six months. Only authorised inspection stations (AIS) can issue it. If the car has faults, you have to fix them before it passes, and that is where real repair costs can appear."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long can I drive in NSW on my overseas licence?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As a temporary visa holder living in NSW, up to six months from arrival. After that you need a NSW licence to keep driving. If your licence is not written in English, you must also carry an English translation or an International Driving Permit while driving."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/en/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Buying a Car in Australia: Used Cars and Registration", "item": "https://wildgewachsen-australien.de/en/buying-a-car-in-australia-used-car-registration" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero: our Jeep, own photo (number plate anonymised) -->
+  <img
+    class="artikel-bild"
+    src="/assets/images/au-jeep-grand-cherokee.jpg"
+    alt="Our used dark grey Jeep Grand Cherokee with bull bar and spotlights, parked in front of rainforest green in the Northern Rivers"
+  />
+
+  <!-- Table of contents: collapsible on mobile, sticky side column from 1440px -->
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    A clock started ticking after landing. I <a href="/en/arrived-first-days-in-australia">flew out to Australia ahead of the rest of my family</a>, the rental was a small car, and it had to go back after a few days. Without your own car you do not get far in the Northern Rivers: distances are long, public transport is thin, and my surfboard did not even fit in the rental because it had no roof rack. So: find a used car quickly, before the rental is gone and before Lucy and the kids arrive.
+  </p>
+
+  {/* Sat-nav polaroid: frame from the rental-car video, 25 June (IMG_1630) */}
+  <figure class="artikel-figur artikel-figur--quer">
+    <img src="/assets/images/au-mietwagen-navi-byron.jpg" alt="CarPlay display in the rental car showing the navigation destination Byron Bay, 2 hours 1 minute and 175 kilometres" loading="lazy" decoding="async" width="1200" height="675" />
+    <figcaption>25 June, in the rental: destination Byron Bay.</figcaption>
+  </figure>
+
+  <p>
+    What I learned along the way is more than just pick a car. In Australia a car purchase comes with deadlines, fees and a safety inspection that work differently from Germany. And right on the border with Queensland, where we live, there is an expensive trap that many people only notice when it is too late. This article is the guide I wish I had had: where to buy, how to protect yourself, how the transfer works in New South Wales, and what actually ends up on the bill.
+  </p>
+
+  <!-- The short version -->
+  <div class="info-box">
+    <p class="info-box__titel">The short version</p>
+    <ul>
+      <li>Most used cars are sold on Gumtree, Facebook Marketplace and Carsales. Private is cheaper, but at your own risk.</li>
+      <li>The most important step costs 2 AUD: the PPSR check shows whether the car still has debt on it, or is recorded as stolen or written off. We did not do it. That was careless.</li>
+      <li>In NSW you have 14 days to transfer the registration after buying. Within the window the transfer costs 42 AUD, after it 193 AUD.</li>
+      <li>On top comes stamp duty: for a value up to 44,999 AUD it is 3 AUD per 100 AUD. On a 4,500 AUD purchase price that is 135 AUD.</li>
+      <li>The real cost is often not the purchase price but the safety inspection (pink slip) and whatever the car needs to pass it.</li>
+      <li>Watch out near the QLD border: registering a Queensland car in NSW is not a simple transfer but a more expensive new registration.</li>
+    </ul>
+  </div>
+
+  <!-- Section 1 -->
+  <h2 id="fastest-way">The fastest way to your own car</h2>
+
+  <p>Short and without detours, this is how I would do it again today:</p>
+
+  <p>Search on Gumtree, Facebook Marketplace or Carsales, and check dealers too. For every serious candidate, two things before you commit: a <a href="#ppsr">PPSR check</a> for 2 AUD so you do not buy someone else's finance along with the car, and an inspection, ideally with someone who knows cars. On price, do not only look at the sticker but at what comes after: the transfer, stamp duty and above all the safety inspection.</p>
+
+  <p>After the sale, you have <strong>14 days</strong> in NSW for the transfer. The seller reports the sale, you move the registration into your name. Miss the deadline and you pay 193 AUD instead of 42 AUD. It sounds trivial, but in the first hectic weeks it is easily missed. How it works in detail is further down. And if you are around Byron Bay or the Gold Coast: watch the number plate. A car from Queensland can cost you noticeably more in NSW, there is a section on that below.</p>
+
+  <!-- Section 2 -->
+  <h2 id="where-to-buy">Where to buy: private or dealer</h2>
+
+  <p>The usual places for used cars are <strong>Gumtree</strong>, <strong>Facebook Marketplace</strong> and <strong>Carsales</strong>, plus dealer sites. We bought privately because it is simply cheaper. For a first car we deliberately did not want to spend much. If everything here falls apart, we could have to head back to Germany after just three months, and then an expensive car would be left sitting in Australia. But the difference is not only the price.</p>
+
+  <p><strong>Private sale.</strong> In Australia this is buyer beware, at your own risk. The seller owes you nothing after the sale. So all the protection is on you: the PPSR check against hidden debt and an honest inspection. I looked at three cars before we bought. That costs time and nerves, but it is the phase where you prevent bad purchases.</p>
+
+  <p><strong>Dealer.</strong> More expensive, but usually with more certainty. Depending on the state and the vehicle there are statutory warranties, and the dealer often handles the paperwork and the safety inspection. For someone fresh in the country with no mate who knows cars, that can be the better option.</p>
+
+  <p>Whichever route you take: the price in the ad is only the start. Factor in the extra costs from the beginning, otherwise the apparent bargain quickly turns into something else.</p>
+
+  <p>The timing is on your side right now, though: in mid 2026, Australian used car prices have been <a href="https://www.carexpert.com.au/car-news/australias-used-car-prices-have-been-falling-for-six-straight-months" target="_blank" rel="noopener">falling for six months in a row</a>, so it is more of a buyer's market, with more choice and a bit of room to negotiate.</p>
+
+  {/* Margin note: verbatim key sentence from the paragraph below */}
+  <Randnotiz lang="en" ausrichtung="rechts" pfeil>So always ask how long the car is registered for.</Randnotiz>
+
+  <p>And one item that is never in bold in any ad but is worth real money: the remaining registration period. In Australia the rego is attached to the car and paid in advance. If you buy a car with many months of rego left, you save yourself the next renewal for exactly that long, so the rego fee, the compulsory insurance and the safety inspection with any repairs. If the rego is about to expire, that whole block lands almost immediately. So always ask how long the car is registered for, and count a short remaining period as a hidden surcharge. You will see what that means below, with our Jeep.</p>
+
+  <!-- Section 3 -->
+  <h2 id="ppsr">The 2-dollar check everyone should do</h2>
+
+  <p>If I take one thing from this car purchase, it is this: the <strong>PPSR check</strong>. PPSR stands for Personal Property Securities Register, a national online register of security interests in movable property. For car buyers it is the single most important pre-purchase check, and it costs <strong>2 AUD</strong>.</p>
+
+  <p>A search on <a href="https://www.ppsr.gov.au/" target="_blank" rel="noopener">ppsr.gov.au</a> shows whether the vehicle is recorded as debt-free. It can also show whether it is registered as stolen or written off. Why it matters: private sellers do not have to disclose outstanding finance. If you buy a car with a debt on it and the previous owner stops paying, the finance company can repossess the car. Then your money is gone and so is the car.</p>
+
+  <p>We did not do this check. I say that openly, because it is exactly the mistake that is easy to make when it has to be quick and your gut feeling about the seller is good. For the equivalent of about one euro I could have made sure there was no debt on the car. Next time the PPSR check goes right to the top of the list, before the test drive.</p>
+
+  <!-- Section 4 -->
+  <h2 id="transfer-nsw">Transferring rego in NSW: 14 days, fee, stamp duty</h2>
+
+  <p>We live in New South Wales, so I describe the transfer here for NSW. In other states the logic is similar, but the numbers and forms differ.</p>
+
+  <p><strong>The deadline: 14 days.</strong> After the sale, two steps run in parallel. The seller lodges a <em>notice of disposal</em> with Transport for NSW. As the buyer, you transfer the registration into your name within 14 days. Miss the deadline and it gets more expensive.</p>
+
+  {/* Deadline duo as stamp labels (values verbatim from the draft block) */}
+  <div class="frist-stempel" role="group" aria-label="Transfer fee in NSW">
+    <p class="frist-stempel__titel">Transfer fee in NSW</p>
+    <div class="frist-stempel__reihe">
+      <div class="frist-stempel__feld frist-stempel__feld--ok">
+        <span class="frist-stempel__label">Within 14 days</span>
+        <span class="frist-stempel__wert">42 AUD</span>
+      </div>
+      <div class="frist-stempel__feld frist-stempel__feld--spaet">
+        <span class="frist-stempel__label">After 14 days</span>
+        <span class="frist-stempel__wert">193 AUD</span>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>Online or in person?</strong> The cheap online transfer only works if three things line up: the seller has lodged the notice of disposal, you hold a NSW driver licence, and the car is registered in NSW. As a newcomer without a NSW licence the online route usually drops out, and the transfer happens in person at a Service NSW centre. It also has to be in person if you buy from a seller in another state, more on that shortly.</p>
+
+  <p><strong>And your driver licence?</strong> For the driving itself there is a deadline many people miss: as a temporary visa holder living in NSW, you can drive on your overseas licence for <strong>six months</strong> from arrival. After that you need a NSW licence, otherwise you are officially driving unlicensed. And while you are driving on a non-English licence, you must also carry an English translation or an International Driving Permit. The details are on <a href="https://www.service.nsw.gov.au/transaction/apply-for-a-nsw-licence-as-a-temporary-overseas-visitor" target="_blank" rel="noopener">Service NSW for temporary overseas visitors</a>.</p>
+
+  <p><strong>Stamp duty.</strong> Buying a used car in NSW attracts vehicle stamp duty, calculated on the <strong>higher of the purchase price or the market value</strong>. For cars up to a value of 44,999 AUD it is <strong>3 AUD per 100 AUD</strong>. For us it came to <strong>135 AUD</strong>: we paid 4,500 AUD, and 3 AUD per 100 AUD makes exactly 135 AUD. From a value of 45,000 AUD the rate rises, but that barely affects anyone looking for a cheap first car. Transport for NSW collects the duty on behalf of Revenue NSW, and you pay it as part of the transfer.</p>
+
+  <p>One detail that makes the start easier: for a car already registered in NSW, the existing green slip compulsory insurance carries over to you as the new owner automatically. So you do not have to sort that at the transfer, only at the next rego renewal. What green slip and pink slip actually are is in the next section.</p>
+
+  <!-- Section 5 -->
+  <h2 id="pink-green-slip">Pink slip and green slip</h2>
+
+  <p>Two terms you hear constantly with cars in Australia, and that are easy to mix up at first. Both are tied to the registration, the rego.</p>
+
+  <p><strong>Pink slip (safety inspection).</strong> This is the Australian relative of a roadworthy or MOT. Most light vehicles <strong>older than five years</strong> need a safety inspection report once a year before the rego renewal, the pink slip. It costs <strong>up to 52 AUD</strong>, is valid for six months, and only authorised inspection stations (AIS) can issue it. Important: if the car has faults, you have to fix them before it passes. This is often where the real cost sits, not in the 52 AUD for the check itself, but in the repairs it demands.</p>
+
+  <p><strong>Green slip (compulsory insurance).</strong> The green slip is the CTP insurance (Compulsory Third Party), it covers injury to third parties and must be in place before a car can be registered in NSW. The price is <strong>not fixed</strong>: it depends on the insurer, the vehicle, the location and the driver profile. There is no official single price, so I deliberately give no fixed figure here. NSW has an official comparison tool for it, the <a href="https://www.service.nsw.gov.au/transaction/use-the-green-slip-price-check" target="_blank" rel="noopener">Green Slip Price Check</a>. When you buy a car already registered in NSW, you take over the previous owner's running green slip at first, and only need your own at the next renewal.</p>
+
+  <!-- Section 6 -->
+  <h2 id="interstate-trap">The expensive trap: a QLD car in NSW</h2>
+
+  <p>This is the point that affects us directly, because we live just across the border from Queensland. I landed in Brisbane and drove down to Byron Bay, and many cars around here are registered in Queensland, recognisable by the plate. Sounds irrelevant, but it is not.</p>
+
+  <p>Registering a car from another state in NSW is <strong>not a simple transfer but a new registration as an interstate vehicle</strong>. You cannot use the cheap online transfer and have to go to a Service NSW centre in person. And then it gets more expensive:</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">What an interstate car costs extra</p>
+    <ul>
+      <li><strong>Blue slip instead of pink slip.</strong> The car needs a stricter AUVIS inspection (blue slip) instead of the normal pink slip. The blue slip costs <strong>82 AUD instead of 52 AUD</strong> and also checks identity and design standards. It is valid for 42 days.</li>
+      <li><strong>Stamp duty again.</strong> NSW stamp duty applies once more. The interstate exemption only applies if the car was already registered in your own name and you already paid duty on it, so when you move with your own car, not when you buy from a stranger's Queensland registration.</li>
+      <li><strong>New NSW plates and a new green slip.</strong> Instead of a simple transfer you register the car completely afresh, with new plates and your own NSW green slip, which you arrange in advance.</li>
+    </ul>
+  </div>
+
+  <p>Our Jeep was registered in NSW, so this whole block did not apply, it was a normal transfer. But anyone eyeing a car from the Gold Coast or Brisbane should factor it in. A Queensland car that looks cheaper on paper can end up more expensive than a slightly dearer NSW car once you add the blue slip, double stamp duty and new registration. The official details are on <a href="https://www.service.nsw.gov.au/transaction/transfer-or-register-an-interstate-vehicle" target="_blank" rel="noopener">Service NSW for interstate registration</a>.</p>
+
+  <!-- Section 7 -->
+  <h2 id="real-cost">What it really costs</h2>
+
+  <p>A quick note on the numbers here: they are Australian dollars. One Australian dollar is worth clearly less than one US dollar, and in mid 2026 it sat around 0.60 euro (the rate moves, so check it against your currency at a converter like <a href="https://wise.com/gb/currency-converter/" target="_blank" rel="noopener">Wise</a>). So 4,500 AUD is not 4,500 in your home currency, it is meaningfully less.</p>
+
+  <p>This is how the extra costs around buying and transferring in NSW add up (government fees, several as of 01.07.2026, always check the current figures):</p>
+
+  <div class="info-box">
+    <p class="info-box__titel">Extra costs when buying a used car in NSW</p>
+    <ul>
+      <li><strong>PPSR check:</strong> 2 AUD, before the purchase</li>
+      <li><strong>Transfer fee:</strong> 42 AUD within 14 days, otherwise 193 AUD</li>
+      <li><strong>Stamp duty:</strong> 3 AUD per 100 AUD of value up to 44,999 AUD, 135 AUD for us (on a 4,500 AUD price)</li>
+      <li><strong>Pink slip:</strong> up to 52 AUD, plus any repairs needed to pass it</li>
+      <li><strong>Green slip (CTP):</strong> variable, compare via the official price check</li>
+      <li><strong>Rego fee:</strong> 84 AUD per year, plus a weight-based motor vehicle tax. For renewals between 1 September 2026 and 31 August 2027, NSW deducts a one-off <strong>100 AUD rebate</strong> from the annual rego</li>
+    </ul>
+  </div>
+
+  <p>The item that ends up dominating the bill is not on this list: it is the repairs an older car needs to pass the safety inspection. In our case that is the reason a 4,500-dollar car ends up nearer 5,500 to 6,000. More on that in the next section.</p>
+
+  <p>How we handle exchange rates, a bank account and transferring money to Australia in general is covered in our <a href="/en/cost-of-moving-to-australia-family-guide">cost guide for moving to Australia</a>. And the other first-week job, an Australian phone number, we wrote up here: <a href="/en/australian-sim-card-phone-number-newcomers">Australian SIM card and phone number for newcomers</a>.</p>
+
+  <!-- Section 8: first-hand block -->
+  <h2 id="my-experience">Our story: the Jeep for 4,500 dollars</h2>
+
+  <figure class="artikel-figur">
+    <img src="/assets/images/au-jeep-front-dreiviertel-p960.jpg" alt="Our Jeep Grand Cherokee from the front three-quarter angle, with roof racks and a light bar, on a street in front of rainforest green" loading="lazy" decoding="async" width="960" height="1280" />
+    <figcaption>The Jeep for 4,500 dollars.</figcaption>
+  </figure>
+
+  <p>Here is how it went for us. The starting point was pressure: the rental had to go back, I was on my own, and without a car you barely get from A to B in the Northern Rivers. Plus the small but real thing with the surfboard that did not fit in the rental. I badly wanted to get in the water and needed something with space.</p>
+
+  <p><strong>The search.</strong> I looked at three used cars, and a couple of good candidates were among them. We had capped the budget beforehand at a maximum of 5,000 AUD, roughly 3,000 euro. Not a nice new car, but a solid first family car that runs and fits the board, the kids and the gear.</p>
+
+  {/* Margin note: Christian's spoken words from his video of 23 July (IMG_2158, translated) */}
+  <Randnotiz lang="en" ausrichtung="links">"It's not a car forever, but it will definitely get us through this first stretch."</Randnotiz>
+
+  <p><strong>The purchase.</strong> It became a <strong>Jeep Grand Cherokee, built in 2011, for 4,500 AUD</strong>, bought privately, registered in NSW. Because it was on NSW plates, the transfer was a normal one, not an expensive interstate case. That is done and paid, the car is in our name. What tipped the scales: 4WD, beach-capable, a camping setup already in it, exactly what we wanted for the start. In return it has around 300,000 kilometres on the clock, which is not unusual in Australia for cars of this age.</p>
+
+  {/* Surfboard in the Jeep's boot (IMG_1991) */}
+  <figure class="artikel-figur">
+    <img src="/assets/images/au-surfboard-kofferraum-p960.jpg" alt="Surfboard lying lengthwise in the Jeep's boot with the back seats folded down, wrapped in towels" loading="lazy" decoding="async" width="960" height="1280" />
+    <figcaption>It fits: the board in the Jeep's boot.</figcaption>
+  </figure>
+
+  {/* Number cluster as a calm 2x2 bento; all values appear verbatim in the text */}
+  <div class="zahlen-bento">
+    <BentoSektion lang="en">
+      <BentoKachel zahl="4,500 AUD" label="purchase price: Jeep Grand Cherokee, built in 2011" akzent lang="en" />
+      <BentoKachel zahl="209 AUD" label="the complete transfer, fee plus stamp duty" raster lang="en" />
+      <BentoKachel zahl="2 AUD" label="the PPSR check we did not do" raster lang="en" />
+      <BentoKachel zahl="5,000 AUD" label="our budget cap for the first car" raster lang="en" />
+    </BentoSektion>
+  </div>
+
+  <p>The transfer itself cost 209 AUD, broken down like this:</p>
+
+  {/* Unique element of this article: the Service NSW receipt, rebuilt as a
+      glued-in docket (Space Mono, torn edge), next to the photo of the real
+      receipt. Values verbatim from the registration receipt of 22 July 2026. */}
+  <div class="beleg-duo">
+    <div class="kassenzettel" role="group" aria-label="What we paid for the transfer, 22 July 2026">
+      <p class="kassenzettel__kopf">Service NSW · 22 July 2026</p>
+      <p class="kassenzettel__titel">What we paid for the transfer</p>
+      <dl class="kassenzettel__posten">
+        <div><dt>Transfer fee (TRN Vehicles)</dt><dd>42 AUD</dd></div>
+        <div><dt>Stamp duty (on a 4,500 AUD price)</dt><dd>135 AUD</dd></div>
+        <div><dt>Plate content transfer</dt><dd>32 AUD</dd></div>
+        <div class="kassenzettel__summe"><dt>Total</dt><dd>209 AUD</dd></div>
+      </dl>
+      <p class="kassenzettel__fuss">around 125 euro</p>
+    </div>
+
+    <figure class="artikel-figur artikel-figur--beleg">
+      <img src="/assets/images/auto-kaufen-ummeldung-beleg.jpg" alt="Extract from our NSW certificate of registration: payment details showing transfer fee 42 AUD, stamp duty 135 AUD, plate content transfer 32 AUD and a total of 209 AUD." loading="lazy" decoding="async" />
+      <figcaption>The payment part of our NSW registration receipt. Personal details are deliberately left out of the image.</figcaption>
+    </figure>
+  </div>
+
+  <p><strong>The catch.</strong> The real chunk did not come at the purchase, it is still ahead. A mechanic's check found that a few small things are due before the next rego, roughly <strong>1,000 to 1,500 AUD</strong>. And the rego only ran until early September, while we registered the car at the end of July. So that appointment was almost immediate. In NSW the rego renewal for a car over five years old hangs on the safety inspection, and for that the car has to be up to scratch. All in, with the purchase price and the work we end up around 5,500 to 6,000 AUD, well above the 4,500 sticker. In hindsight that is the key lesson: with a used car in Australia, the sticker price is rarely the final price. The one thing I would do differently is the PPSR check up front. Not because anything went wrong, but because for 2 AUD it is pointless to take the risk at all.</p>
+
+  {/* Pull quote verbatim from the paragraph above (playbook requirement) */}
+  <PullQuote lang="en">With a used car in Australia, the sticker price is rarely the final price.</PullQuote>
+
+  <p><em>What I will add once the car is through its next rego: what the safety inspection actually required, what the repairs really cost, and how the Jeep holds up day to day on the roads in the hinterland. That will come as a dated update right here.</em></p>
+
+  {/* One quiet newsletter invitation, tied to the open rego update */}
+  <InlineCta
+    lang="en"
+    variante="leise"
+    titel="Will the Jeep pass its rego?"
+    text="What the safety inspection demands and what the repairs really cost, we tell our newsletter first."
+    buttonLabel="Get the updates"
+    href="#newsletter"
+  />
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <div class="faq-liste">
+    <AufklappBox lang="en" titel="Where is the best place to buy a used car in Australia?">
+      <p>The common marketplaces are Gumtree, Facebook Marketplace and Carsales, plus dealer websites. Private sales are buyer beware, so a PPSR check before the purchase and an independent inspection matter a lot. Dealers add statutory warranties in some cases depending on the state and the vehicle, but the price is usually higher.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="How do I transfer a car registration in New South Wales after buying?">
+      <p>In NSW the buyer must transfer the registration into their name within 14 days. The seller lodges a notice of disposal in parallel. The transfer fee is 42 AUD within the 14 days and rises to 193 AUD afterwards. The online transfer only works if the seller has lodged the notice of disposal, you hold a NSW driver licence and the car is registered in NSW. Otherwise you do it in person at a Service NSW centre.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="What is the PPSR check and why does it matter?">
+      <p>The PPSR is a national register of security interests. A search for 2 AUD shows whether the car still carries finance or debt, and can also show if it is recorded as stolen or written off. It matters because private sellers do not have to disclose outstanding finance. If you buy a car with a debt on it and the previous owner stops paying, the finance company can repossess the car.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="What does registration transfer and stamp duty cost for a used car in NSW?">
+      <p>The transfer fee is 42 AUD within 14 days. On top comes vehicle stamp duty: for a value up to 44,999 AUD it is 3 AUD per 100 AUD, calculated on the higher of the purchase price or the market value. For us it came to 135 AUD, because the purchase price was 4,500 AUD and 3 AUD per 100 AUD makes exactly 135 AUD. For the next rego renewal, cars over five years old also need a safety inspection (pink slip, up to 52 AUD) and a compulsory green slip insurance whose price varies.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="What should I watch for when registering a Queensland car in NSW?">
+      <p>That is the expensive special case. A car from another state is not a simple transfer in NSW but a new registration as an interstate vehicle, in person at a Service NSW centre. Instead of the cheaper pink slip (52 AUD) you need a blue slip, an AUVIS inspection (82 AUD), you need new NSW plates and a new NSW green slip, and NSW stamp duty applies again. The interstate exemption only applies if the car was already registered in your own name and duty was already paid on it, not when you buy from a stranger.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="Does a car in NSW need a safety inspection like a roadworthy or MOT?">
+      <p>Most light vehicles older than five years need a safety inspection report, the pink slip, once a year before the rego renewal in NSW. It costs up to 52 AUD and is valid for six months. Only authorised inspection stations (AIS) can issue it. If the car has faults, you have to fix them before it passes, and that is where real repair costs can appear.</p>
+    </AufklappBox>
+
+    <AufklappBox lang="en" titel="How long can I drive in NSW on my overseas licence?">
+      <p>As a temporary visa holder living in NSW, up to six months from arrival. After that you need a NSW licence to keep driving. If your licence is not written in English, you must also carry an English translation or an International Driving Permit while driving.</p>
+    </AufklappBox>
+  </div>
+
+  <p><strong>As of:</strong> 2 August 2026. I flew out ahead, Lucy and the kids have since arrived. I will add the experience of the next rego and the repairs once the Jeep is through.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This article describes how we bought and registered a used car as newcomers
+      in New South Wales. Fees, rates and deadlines are set by the authorities, but they change and some
+      apply only from 01.07.2026. Check the specific figures for your situation with the official bodies
+      before you act (Service NSW, Revenue NSW, and for Queensland qld.gov.au). This is not legal or tax
+      advice, it is our research and experience.
+    </p>
+    <p>
+      <strong>Last updated:</strong> 2 August 2026 · <strong>Sources:</strong>
+      Service NSW (transfer a vehicle registration, interstate registration, pink slip, blue slip,
+      Green Slip Price Check); Revenue NSW (motor vehicle duty and exemptions); nsw.gov.au (registration
+      and inspection fees, as of 01.07.2026); qld.gov.au (registration transfer, duty, safety certificates,
+      for comparison); ppsr.gov.au (2 AUD search); Service NSW and nsw.gov.au (NSW licence for temporary
+      overseas visitors, translation requirement, 100 AUD rego rebate 2026/27); carexpert.com.au (used
+      car price trend, mid 2026). Exchange rate AUD/EUR via Wise (~0.60, mid 2026).
+      Personal experience in the section "Our story" is from our own purchase. Research details in the
+      internal report dated 13.07.2026.
+    </p>
+  </div>
+
+  <!-- Update Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">2 August 2026</span>
+      <span class="update-log__text">Article published (English version, alongside the original German version). Covers our real purchase: a Jeep Grand Cherokee for 4,500 AUD, bought privately and registered in NSW, a normal transfer, plus the rego costs still to come.</span>
+    </div>
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to Northern Rivers in the summer of 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Related articles -->
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter section (handler central in BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Did this help?</p>
+        <h2 id="newsletter-h">We send updates</h2>
+        <p>New articles, real experience, concrete numbers, straight to your inbox.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    max-block-size: 75vh;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  /* --- Artikel-Fotos: eingeklebte Polaroids (Retro-Leitlinie) ----- */
+  .artikel-figur {
+    max-inline-size: 420px;
+    margin-inline: 0;
+    margin-block: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: -1deg;
+  }
+
+  .artikel-figur:nth-of-type(even) {
+    rotate: 1deg;
+  }
+
+  .artikel-figur img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-s);
+  }
+
+  .artikel-figur figcaption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  /* Querformat-Einkleber (Navi-Frame) etwas breiter als die Polaroids */
+  .artikel-figur--quer {
+    max-inline-size: 520px;
+  }
+
+  /* --- Frist-Stempel ---------------------------------------------- */
+  .frist-stempel {
+    margin-block: var(--space-6);
+  }
+
+  /* Scroll-Stempel: reine CSS Scroll-Driven Animation, Fallback und
+     prefers-reduced-motion zeigen den fertigen Stempel. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .frist-stempel__feld {
+        animation: stempel-auf linear both;
+        animation-timeline: view();
+        animation-range: entry 10% entry 70%;
+      }
+
+      .frist-stempel__feld--spaet {
+        animation-range: entry 25% entry 90%;
+      }
+
+      @keyframes stempel-auf {
+        from {
+          opacity: 0;
+          scale: 1.35;
+        }
+
+        to {
+          opacity: 1;
+          scale: 1;
+        }
+      }
+    }
+  }
+
+  .frist-stempel__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .frist-stempel__reihe {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 560px) {
+    .frist-stempel__reihe {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .frist-stempel__feld {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+  }
+
+  .frist-stempel__feld--ok {
+    border: 2px solid var(--line);
+    rotate: -1deg;
+  }
+
+  .frist-stempel__feld--spaet {
+    border: 2px dashed var(--accent-strong);
+    rotate: 1.2deg;
+  }
+
+  .frist-stempel__label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+
+  .frist-stempel__wert {
+    font-family: var(--font-display);
+    font-size: var(--text-3);
+    color: var(--ink);
+  }
+
+  .frist-stempel__feld--spaet .frist-stempel__wert {
+    color: var(--accent-strong);
+  }
+
+  /* --- Unikat: Kassenzettel neben dem echten Beleg ----------------
+     Immer hell (feste Papier-Farben statt Tokens, lesbar in beiden Modi). */
+  .beleg-duo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+    margin-block: var(--space-6);
+  }
+
+  @media (max-width: 720px) {
+    .beleg-duo {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .kassenzettel {
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: 2px;
+    padding: var(--space-4) var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-card);
+    rotate: -0.8deg;
+    font-family: var(--font-mono);
+    color: #33291f;
+    clip-path: polygon(
+      0 0, 100% 0, 100% calc(100% - 8px),
+      95% 100%, 90% calc(100% - 7px), 85% 100%, 80% calc(100% - 7px),
+      75% 100%, 70% calc(100% - 7px), 65% 100%, 60% calc(100% - 7px),
+      55% 100%, 50% calc(100% - 7px), 45% 100%, 40% calc(100% - 7px),
+      35% 100%, 30% calc(100% - 7px), 25% 100%, 20% calc(100% - 7px),
+      15% 100%, 10% calc(100% - 7px), 5% 100%, 0 calc(100% - 8px)
+    );
+  }
+
+  .kassenzettel__kopf {
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #7d7263;
+    text-align: center;
+    border-block-end: 1px dashed #ddd3bc;
+    padding-block-end: var(--space-2);
+    margin-block-end: var(--space-3);
+  }
+
+  .kassenzettel__titel {
+    font-size: var(--text--1);
+    text-align: center;
+    margin-block-end: var(--space-3);
+  }
+
+  .kassenzettel__posten {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .kassenzettel__posten > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    font-size: var(--text--1);
+  }
+
+  .kassenzettel__posten dt {
+    font-weight: normal;
+  }
+
+  .kassenzettel__posten dd {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .kassenzettel__summe {
+    border-block-start: 1px dashed #ddd3bc;
+    padding-block-start: var(--space-2);
+    font-weight: bold;
+  }
+
+  .kassenzettel__summe dd {
+    color: #a63e22;
+  }
+
+  .kassenzettel__fuss {
+    font-size: var(--text--1);
+    color: #7d7263;
+    text-align: end;
+    margin-block-start: var(--space-2);
+  }
+
+  .beleg-duo .artikel-figur {
+    margin-block: 0;
+    max-inline-size: none;
+  }
+
+  /* --- Zahlen-Bento als ruhiges 2x2 ------------------------------ */
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- FAQ-Liste -------------------------------------------------- */
+  .faq-liste {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  /* --- Inhaltsverzeichnis ----------------------------------------- */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box ---------------------------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Trust Box ---------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ---------------------------------------------------- */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box ---------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
