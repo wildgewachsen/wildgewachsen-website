@@ -11,7 +11,7 @@ interface Props {
 
 const { lang = 'de' } = Astro.props;
 
-// DE⇄EN-Etikett: exaktes Sprach-Gegenstueck aus dem hreflang-Snapshot,
+// DE⇄EN-Etikett: exaktes Sprach-Gegenstueck aus den hreflang-Tags der Seiten,
 // Fallback Startseite der Zielsprache. Label + aria in der ZIELsprache
 // (Konvention fuer Sprachumschalter, hilft Screenreader-Nutzern der Zielsprache).
 const langZiel = sprachGegenstueck(Astro.url.pathname, lang);
