@@ -1,27 +1,40 @@
 ---
-// EN-Artikel im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
-// Quelle: website/en/from-vegetable-garden-to-australia-family-move.html
+// EN mirror of the "Our Way" story hub - Phase C rework (05.08.2026).
+// Same staging as the DE original: two time layers, stage register (Etappen),
+// glued-in evidence pieces. EN anchor IDs of existing sections preserved.
 import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
 import StickyToc from '../../components/StickyToc.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
+import InlineVideo from '../../components/InlineVideo.astro';
 
-// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
 const toc = [
   { id: 'who-we-are', label: 'Who we are' },
-  { id: 'how-it-began', label: 'How it began (2016)' },
-  { id: 'return-restaurant', label: 'The return in 2018 and the restaurant die farm' },
-  { id: 'decision', label: 'The moment of decision (spring 2024)' },
+  { id: 'how-it-began', label: 'How it began (2017)' },
+  { id: 'return-restaurant', label: 'The return and the restaurant die farm' },
+  { id: 'decision', label: 'The moment of decision (September 2025)' },
   { id: 'why-australia', label: 'Why Australia – and why now' },
   { id: 'preparation', label: 'How we prepared' },
   { id: 'giving-up', label: 'What it means to give it all up' },
-  { id: 'what-happens-next', label: 'How it continues' },
-  { id: 'why-anyway', label: 'Why we do it anyway' },
+  { id: 'the-flight', label: 'The goodbye and the flight' },
+  { id: 'five-weeks-alone', label: 'Five weeks alone in Byron Bay' },
+  { id: 'family-lands', label: 'The family lands' },
+  { id: 'what-happens-next', label: 'Where we stand now' },
+  { id: 'why-anyway', label: 'Would we do it again?' },
   { id: 'fact-matrix', label: 'Fact matrix at a glance' },
   { id: 'faq', label: 'Frequently asked questions' },
 ];
 
-// Gleiche 3 Ziele + Texte wie der Live-Block "You might also like"
 const weiterlesen = [
+  {
+    href: '/en/arrived-first-days-in-australia',
+    meta: 'Our Story',
+    titel: 'Arrived in Australia: My First Days Alone',
+  },
   {
     href: '/en/cost-of-moving-to-australia-family-guide',
     meta: 'Money & Costs',
@@ -32,21 +45,16 @@ const weiterlesen = [
     meta: 'Visa & Migration',
     titel: '186 Visa Australia: Our Family Route to the Employer Sponsored Visa (2026)',
   },
-  {
-    href: '/en/tra-skill-assessment-chef-australia',
-    meta: 'Visa & Migration',
-    titel: 'TRA Skill Assessment as a Chef: What It Really Costs, Especially as a Self-Employed Applicant',
-  },
 ];
 ---
 
 <ArtikelLayout
   title="From a Vegetable Garden to Australia: Moving as a Family"
-  description="From vegetable garden in Essen to Northern Rivers, Australia: ~6,900 € spent, October 2025 wedding, June 2026 departure. Our honest family story."
+  description="From a vegetable garden in Essen to the other side of the world: the decision, the goodbye, five weeks apart, and life in Australia as a family since July 2026."
   lang="en"
   eyebrow="Our Story"
   datum="28 May 2026"
-  lesezeit="14 min read · Last updated: 9 June 2026"
+  lesezeit="18 min read · Last updated: 5 August 2026"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move" />
@@ -55,8 +63,8 @@ const weiterlesen = [
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/vom-gemuesegarten-nach-australien-auswanderung-familie" />
     <!-- Open Graph -->
     <meta property="og:title" content="From a Vegetable Garden to Australia: Moving as a Family" />
-    <meta property="og:description" content="From vegetable garden in Essen to Northern Rivers, Australia: ~6,900 € spent, October 2025 wedding, June 2026 departure. Our honest family story." />
-    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/family-story.jpg" />
+    <meta property="og:description" content="From a vegetable garden in Essen to the other side of the world: the decision, the goodbye, five weeks apart, and life in Australia as a family since July 2026." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-erstes-familien-selfie-byron-p960.jpg" />
     <meta property="og:url" content="https://wildgewachsen-australien.de/en/from-vegetable-garden-to-australia-family-move" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_GB" />
@@ -64,8 +72,8 @@ const weiterlesen = [
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="From a Vegetable Garden to Australia: Moving as a Family" />
-    <meta name="twitter:description" content="From vegetable garden in Essen to Northern Rivers, Australia: ~6,900 € spent, October 2025 wedding, June 2026 departure. Our honest family story." />
-    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/family-story.jpg" />
+    <meta name="twitter:description" content="From a vegetable garden in Essen to the other side of the world: the decision, the goodbye, five weeks apart, and life in Australia as a family since July 2026." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-erstes-familien-selfie-byron-p960.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
 
@@ -76,11 +84,11 @@ const weiterlesen = [
     "@type": "BlogPosting",
     "inLanguage": "en",
     "headline": "From a Vegetable Garden to Australia: Moving as a Family",
-    "description": "From vegetable garden in Essen to Northern Rivers, Australia: ~6,900 € spent, October 2025 wedding, June 2026 departure. Our honest family story.",
+    "description": "From a vegetable garden in Essen to the other side of the world: the decision, the goodbye, five weeks apart, and life in Australia as a family since July 2026.",
     "image": {
       "@type": "ImageObject",
-      "url": "https://wildgewachsen-australien.de/assets/images/family-story.jpg",
-      "caption": "Christian, Lucy, Joris and Linnea at their wedding in Essen, October 2025.",
+      "url": "https://wildgewachsen-australien.de/assets/images/au-erstes-familien-selfie-byron-p960.jpg",
+      "caption": "The first family selfie of the four of us in Australia – Byron Bay dunes, July 2026.",
       "creditText": "Wildgewachsen",
       "copyrightHolder": {
         "@type": "Organization",
@@ -96,7 +104,7 @@ const weiterlesen = [
       "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
     },
     "datePublished": "2026-05-28T12:00:00+02:00",
-    "dateModified": "2026-06-09T12:00:00+02:00",
+    "dateModified": "2026-08-05T17:00:00+10:00",
     "author": {
       "@type": "Person",
       "name": "Christian Schippel",
@@ -118,7 +126,7 @@ const weiterlesen = [
       "@type": "Thing",
       "name": "Moving to Australia as a family"
     },
-    "keywords": "moving to Australia as a family, German family Australia, Byron Bay, Northern Rivers, 186 visa, leaving a restaurant behind, Wildgewachsen"
+    "keywords": "moving to Australia as a family, German family Australia, Byron Bay, Northern Rivers, 186 visa, chef sponsorship Australia, leaving a restaurant behind, Wildgewachsen"
   }
     </script>
 
@@ -134,7 +142,7 @@ const weiterlesen = [
         "name": "Why are you moving to Australia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In 2016 we flew together to Byron Bay, me for my chef apprenticeship, Lucy for what was meant to be a single semester abroad. Two semesters turned into two full years in the region, and we felt at home there. Since coming back to Germany at the end of 2018 the wish to return has never gone away. In 2026, Lucy's Master's degree, Joris starting school and our restaurant fatigue all line up at the same point, a one-off window."
+          "text": "In January 2017 I flew to Byron Bay for my chef apprenticeship, Lucy followed in February for her semester abroad. One semester became two, almost two years in the region in which we felt at home. Since returning to Germany at the end of 2018 the wish to go back never fully went away, but for years it stayed a pipe dream without serious ambition. In 2026, Lucy's Master's degree, Joris starting school and our restaurant fatigue all lined up at the same point."
         }
       },
       {
@@ -142,7 +150,7 @@ const weiterlesen = [
         "name": "What was the concrete trigger for the decision?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In spring 2024, I told Lucy at the kitchen table for the first time, seriously, that I couldn't keep running the restaurant. Too much work, too little family time, especially in summer. Lucy was nearing her Master's, Joris was approaching school age, three levers at once. We decided together: if not now, then never."
+          "text": "In early September 2025 we had to clear our second vegetable field. Again a lot of work that wasn't rewarded, again a plan that didn't work out. In that moment the doubts about the restaurant and the old Australia idea flowed together: now or never. The decision to close the restaurant and the decision to emigrate were made together, not one after the other."
         }
       },
       {
@@ -155,18 +163,18 @@ const weiterlesen = [
       },
       {
         "@type": "Question",
-        "name": "Which visa are you using, and why?",
+        "name": "How did you find a sponsoring employer as a chef in Australia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We are going via the 186 visa (Employer Nomination Scheme), that requires a sponsoring employer in Australia, who I'll be looking for on the ground as a trained chef. Skill Assessment as a cook is complete, PTE Academic passed with score 89 (Proficient), Migration Agent Johannes Kunz engaged. The full 186 route is described in a separate article."
+          "text": "Not online, but on the ground. The tip from the German expat meetup in Byron Bay: walk around, be open, talk to people, hospitality is always hiring. That's exactly how it went. I walked into restaurants in person and introduced myself. In the end we found each other with Threeways of the Valley, a cafe-restaurant in the Byron Bay hinterland rainforest. After many evenings talking about plans and visions, the team there is now working on their part of my 186 application, the nomination."
         }
       },
       {
         "@type": "Question",
-        "name": "Why is Christian travelling alone first?",
+        "name": "Why did Christian fly alone first?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "I fly on 23 June 2026 alone, Lucy and the kids follow on 26 July. In those four weeks I'll be looking for a sponsor, a car and a place to live in the Northern Rivers region. Job and sponsor are the key to everything, visa, accommodation, family reunification. When Lucy and the kids arrive, the frame should be in place."
+          "text": "I flew ahead on 23 June 2026, Lucy and the kids landed in Brisbane on 28 July. In the five weeks in between I sorted sponsor, car and accommodation: a job perspective with a sponsorship commitment, a Jeep Grand Cherokee for 4,500 AUD, two housesits and an Airbnb as a bridge. When the three of them arrived, the frame was in place. That was exactly the plan, and it worked."
         }
       },
       {
@@ -174,7 +182,23 @@ const weiterlesen = [
         "name": "What does it cost to move to Australia as a family?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "By early May 2026 we had spent around 6,900 € on preparation in Germany (biggest item: family flights). The 186 visa application fees for four people come to roughly 9,825 AUD. For the start in Australia we have a 30,000 AUD reserve. The full breakdown, paid, estimated, with sources, is in our cost article."
+          "text": "By early May 2026 we had spent around 6,900 € on preparation in Germany, the biggest item being the family flights. The 186 visa application fees for four people were raised on 1 July 2026 to roughly 12,280 AUD (previously roughly 9,825 AUD). For the start in Australia we had a 30,000 AUD reserve. The full breakdown is in our cost article."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you regret emigrating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One week into being a family of four here, it is too early for that question. Right now we have a very good feeling, it feels right. We are honest about it: this is not everyday life yet, it feels more like a holiday. The distance to our families in Germany is hard, daily video calls make it okay. If the visa doesn't work out, we fly back, that has been part of the plan from the start."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which visa are you using, and what is the status?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We all entered on the free eVisitor (subclass 651). The goal is the permanent 186 visa (Employer Nomination Scheme). It is a two-stage process: first the employer lodges the nomination, then I lodge my visa application, supported by our migration agent Johannes Kunz. The nomination is currently in progress. After the 186 application the whole family receives a bridging visa; the eVisitor carries no no-further-stay condition."
         }
       }
     ]
@@ -214,14 +238,24 @@ const weiterlesen = [
     <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
   </Fragment>
 
-  <!-- Hero-Bild (Original-Pfad wie live) -->
+  <!-- Hero image: our wedding at die farm, October 2025 (where the story starts) -->
   <img
     class="artikel-bild"
     src="/assets/images/family-story.jpg"
     alt="Christian, Lucy, Joris and Linnea at their own wedding at die farm in Essen, October 2025, two months before the restaurant closed and half a year before moving to Australia"
   />
 
-  <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
+  <!-- Update note: explains the two time layers -->
+  <aside class="nachtrag nachtrag--auftakt" aria-label="Note on this update">
+    <p class="nachtrag__stempel">Continued · 5 August 2026</p>
+    <p>
+      We wrote this article in May 2026, six weeks before departure. Now, one week after Lucy and
+      the kids landed, we have continued it: the first stages tell the road here, the last ones
+      how it actually turned out.
+    </p>
+  </aside>
+
+  <!-- Table of contents -->
   <div class="toc-halter">
     <StickyToc eintraege={toc} lang="en" titel="Contents" />
   </div>
@@ -230,322 +264,551 @@ const weiterlesen = [
   <div class="info-box">
     <p class="info-box__titel">Key takeaways</p>
     <ul>
-      <li>We are moving to Australia as a family of four in summer 2026. I fly out on <strong>23 June</strong> alone, Lucy and the kids follow on <strong>26 July 2026</strong>.</li>
-      <li>Restaurant die farm in Essen, lease from <strong>1 February 2019</strong> to <strong>31 December 2025</strong>. In October 2025 we celebrated our own wedding there.</li>
-      <li>Visa target: <strong>186 Employer Nomination Scheme</strong>. PTE Academic 89 (Proficient) ✓, Skill Assessment as a cook ✓, Migration Agent Johannes Kunz engaged.</li>
+      <li>We moved to Australia as a family of four in summer 2026. I flew ahead on <strong>23 June</strong>, Lucy and the kids landed in Brisbane on <strong>28 July 2026</strong>.</li>
+      <li>Restaurant die farm in Essen, lease from <strong>1 February 2019</strong> to <strong>31 December 2025</strong>. The decision to emigrate was made in <strong>early September 2025</strong>, when our second field had to be cleared.</li>
+      <li>Visa route: eVisitor 651 (free) → sponsor found on the ground → <strong>186 Employer Nomination Scheme</strong>. My employer's nomination is currently in progress.</li>
       <li>For context throughout the article: <strong>✓</strong> = personal experience, <strong>📊</strong> = verified external source, <strong>⏳</strong> = our own estimate.</li>
     </ul>
   </div>
 
   <!-- Intro -->
   <p>
-    Anyone researching whether their family should move to Australia mostly finds polished travel reels in the German-speaking corner of the internet, and migration agencies who have never emigrated themselves. We want to do this differently. Here is the full story, how two years in Byron Bay a decade ago slowly turned into a family, how a restaurant in Essen became a vegetable garden, and how a kitchen-table conversation in spring 2024 became the decision to give everything up and start again on a different continent, with two small kids, without permanent residency, with three to four months of financial runway. If you are weighing up whether your own family emigration project is realistic: this text is an honest comparison sheet. As of May 2026, six weeks before Christian's departure.
+    A week ago I stood in the arrivals hall of Brisbane airport at eight in the morning, staring at a sliding door. Behind it: Lucy with a luggage trolley full of duffel bags, Joris pushing the stroller, Linnea in it, fast asleep. We hadn't seen each other for five weeks. Up to that moment, our emigration was a plan with open ends. Since then, it is our life.
+  </p>
+  <p>
+    Anyone researching whether their family should move to Australia mostly finds polished travel reels and migration agencies that have never emigrated themselves. We want to do this differently. Here is the whole story: how two years in Byron Bay almost a decade ago slowly turned into a family, how a restaurant in Essen became a vegetable garden, how a cleared field in September 2025 triggered the decision, and what it was really like to give everything up, fly separately and come back together on the other side of the world. If you are weighing up whether your own family emigration project is realistic: this text is a comparison sheet, not an advert.
   </p>
 
   <div class="info-box">
     <p class="info-box__titel">Status &amp; note</p>
     <p>
-      Status: <strong>May 2026</strong>, just over six weeks before my departure. We update this article quarterly, especially after arriving in Australia, when "this is the plan" turns into "this is how it actually went".
+      Status: <strong>5 August 2026</strong>, a good week after Lucy and the kids arrived. We keep updating this article quarterly, next when visa, housing and school start have become concrete.
     </p>
     <p>
       <strong>We are not migration advisers.</strong> What's written here is our experience. Authority facts are linked; binding information only comes directly from the <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Department of Home Affairs</a> or a registered Migration Agent.
     </p>
   </div>
 
-  <!-- H2 1 -->
+  <!-- H2 1 (prologue, before the stages) -->
   <h2 id="who-we-are">Who we are</h2>
   <p>
-    We are a family of four from Essen, Christian (37), Lucy (30), Joris (6) and Linnea (2), and we are moving to Australia in summer 2026. I am a trained chef and ran the restaurant die farm in Essen until the end of 2025. Lucy is currently finishing her Master's thesis in interior architecture. This story is ours, not migration advice, not a TV format, but what is actually happening.
+    We are a family of four from Essen: Christian (37), Lucy (30), Joris (6) and Linnea (2). Since 28 July 2026 the four of us live in the Northern Rivers region on Australia's east coast. I am a trained chef and ran the restaurant die farm in Essen until the end of 2025. Lucy finished and passed her Master's thesis in interior architecture this summer, in the middle of the move. This story is ours, not migration advice, not a TV format, but what actually happened and keeps happening.
   </p>
   <p>
-    <strong>I</strong> (Christian, born 4 February 1989) spend May 2026 shuttling between childcare and renovation work in the flat; in the evenings I sit at research, blog and videos. <strong>Lucy</strong> (born 27 January 1995) has her Master's thesis as a solo project in front of her and runs the camera for many of our pieces on the side.
-  </p>
-  <p>
-    <strong>Joris</strong> starts school in Australia in January 2027 and is already picking up English in play. What does he say about all of this? When we told him "we fly in three months", he answered: <em>"Why so late?"</em> That's his own voice. <strong>Linnea</strong> is still too small to understand the scale, but she is right in the middle of it, and that's a good thing.
+    <strong>Joris</strong> starts school in Australia in early February 2027 and is already picking up English in play. What did he say when we told him we'd fly in three months? <em>"Why so late?"</em> That's his own voice. <strong>Linnea</strong> was too small to understand the scale, but she was right in the middle of it from the start, and that's a good thing.
   </p>
   <p>
     <em>For context: ✓ personal experience. We are not migration advisers, we share what we are doing, not what you should do.</em>
   </p>
 
-  <!-- H2 2 -->
-  <h2 id="how-it-began">How it began (2016)</h2>
+  <!-- STAGE 1 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 1 · Essen → Byron Bay → Essen</span>
+    <span class="etappe__jahr">2016–2018</span>
+    <span class="etappe__notiz">where it all starts</span>
+  </div>
+
+  <h2 id="how-it-began">How it began</h2>
   <p>
-    <!-- [PERSONAL EXPERIENCE] -->
-    In 2016 we flew to Byron Bay together, me for my chef apprenticeship, Lucy for a semester abroad that she had organised at short notice. One semester turned into two. Two semesters turned into a few extra weeks. That one gut decision back then is the origin of everything that follows, without Lucy's spontaneous yes, we wouldn't exist as a couple, neither would Joris or Linnea, neither would Wildgewachsen nor this blog.
+    Lucy and I met in 2016, a few months before I left for Australia. In <strong>January 2017</strong> I flew to Byron Bay for my chef apprenticeship. Lucy followed in February, for a semester abroad she had organised at short notice. One semester became two. That one spontaneous gut decision is the origin of everything that follows: without Lucy's yes back then, we wouldn't exist as a couple, neither would Joris or Linnea, neither would Wildgewachsen nor this blog.
+  </p>
+  <Randnotiz ausrichtung="rechts" pfeil lang="en">
+    Me flying ahead, Lucy following: 2026 was not the first time. We just repeated it the other way round.
+  </Randnotiz>
+  <p>
+    After Lucy's study time, we flew back to Germany together for a home visit. Lucy then stayed in Germany because she wanted to continue her studies. I went back to Byron Bay on my own to finish my apprenticeship. In total I lived there for almost two years; at the end of 2018, I returned to Germany for good.
   </p>
   <p>
-    After Lucy's study time, we both flew back to Germany together for a home visit. Lucy then stayed in Germany because she wanted to continue her studies. I went back to Byron Bay on my own to finish my apprenticeship. In total I lived there for almost two years; at the end of 2018, I returned to Germany for good.
+    What no one had on their radar: the goodbye from family, friends, and especially from Lucy at the end of the home visit was hard. Not "a bit difficult". Hard. That fed into the decision to return at the end of 2018. We knew Australia as a place to live, we knew the region, we had built a daily life there. But in the end Germany was closer: family, language, a restaurant to take over.
   </p>
   <p>
-    What no one had on their radar: the goodbye from family, friends, and especially from Lucy, at the end of the home visit was hard. Not "a bit difficult". Hard. That fed into the decision to return at the end of 2018, years later. We knew Australia as a place to live, we knew the region, we had a daily life there. But in the end Germany was closer, family, language, a chance to take over a restaurant.
+    Who would have thought that a spontaneous gut decision in a travel agency would become the line everything in our lives hangs on ten years later? Not us.
   </p>
   <p>
-    Who would have thought that a gut decision in a travel agency in 2016 would become the line everything in our lives ten years later hangs on? Not us.
-  </p>
-  <p>
-    <em>For context: ✓ personal experience. Dates roughly (~2016 to end of 2018), exact days we don't keep in a calendar.</em>
+    <em>For context: ✓ personal experience. Departure January 2017, return at the end of 2018.</em>
   </p>
 
-  <!-- H2 3 -->
-  <h2 id="return-restaurant">The return in 2018 and the restaurant die farm</h2>
+  <!-- STAGE 2 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 2 · Essen, Rutherhof</span>
+    <span class="etappe__jahr">2019–2025</span>
+    <span class="etappe__notiz">seven years of die farm</span>
+  </div>
+
+  <h2 id="return-restaurant">The return and the restaurant die farm</h2>
   <p>
     We returned to Germany at the end of 2018. The lease and business registration for the restaurant die farm in Essen followed on <strong>1 February 2019</strong>, the first renovation work we already started in December 2018. Seven years later, on <strong>31 December 2025</strong>, we closed the restaurant. Between those two dates lies the story from which the brand Wildgewachsen was born.
   </p>
   <p>
-    Homesickness was one factor, for family, for a language in which you can also discuss tax forms. The other factor was concrete: we could take over a restaurant in Essen. A one-off chance we didn't want to let slip.
+    Homesickness was one factor: for family, for a language in which you can also discuss tax forms. The other factor was concrete: we could take over a restaurant in Essen. A one-off chance we didn't want to let slip.
   </p>
   <p>
-    The restaurant sat on the Rutherhof in Essen, a complex with swing golf and football golf. We only ran the restaurant, not the whole complex. The concept was a countryside restaurant with ostrich meat as the speciality: steak, goulash, stroganoff, burgers. 60 seats inside, 60 outside. Through the games on the grounds, the restaurant was simultaneously an events venue, birthdays, company parties, weddings. One of those weddings was our own.
+    The restaurant sits on the Rutherhof in Essen, a complex with swing golf and football golf. We only ran the restaurant, not the whole complex. The concept was a countryside restaurant with ostrich meat as the speciality: steak, goulash, stroganoff, burgers. 60 seats inside, 60 outside. Through the games on the grounds, the restaurant was simultaneously an events venue: birthdays, company parties, weddings. One of those weddings was our own.
   </p>
   <p>
-    In October 2025 we got married in our own restaurant, two months before closing. The cover image of this article is from that day; Christian, Lucy, Joris and Linnea, in the place where we worked for seven years. Shortly after, we locked the doors.
+    In October 2025 we got married in our own restaurant, two months before closing. The cover image of this article is from that day: Christian, Lucy, Joris and Linnea, in the place where we worked for seven years. Shortly after, we locked the doors.
   </p>
   <p>
-    In the last two years, something grew alongside it that no one had planned at the start: our own vegetable garden on the restaurant grounds. A piece of garden became proper market gardening, a hobby became a content format, and the content format became Wildgewachsen – our <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YouTube channel</a> and this blog. Whoever follows us knows the garden more than the restaurant. That's no accident: the restaurant was the job, the garden was what we would have done even without pay.
+    In the last two years, something grew alongside it that no one had planned at the start: our own vegetable garden on the restaurant grounds. A piece of garden became proper market gardening, a hobby became a content format, and the content format became Wildgewachsen: our <a href="https://www.youtube.com/@die_farm" target="_blank" rel="noopener">YouTube channel</a> and this blog. Whoever follows us knows the garden more than the restaurant. That's no accident: the restaurant was the job, the garden was what we would have done even without pay.
   </p>
   <p>
-    Our team, by the way, was loyal and well-rehearsed over the years, the full-time crew stable in the final years, turnover only among casuals. Staff shortages were never the acute pain for us; the awareness that it could become critical at any time was always there. We didn't stop because the team fell apart. We stopped because we wanted to move to Australia.
+    Our team was loyal and well-rehearsed over the years, the full-time crew stable in the final years, turnover only among casuals. Staff shortages were never the acute pain for us. We didn't stop because the team fell apart. We stopped because we wanted to move to Australia.
   </p>
   <p>
     <em>For context: ✓ personal experience. Restaurant closed on 31 December 2025.</em>
   </p>
 
-  <!-- H2 4 -->
-  <h2 id="decision">The moment of decision (spring 2024)</h2>
+  <!-- STAGE 3 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 3 · The field</span>
+    <span class="etappe__jahr">September 2025</span>
+    <span class="etappe__notiz">the moment</span>
+  </div>
+
+  <h2 id="decision">The moment of decision</h2>
   <p>
-    Spring 2024, a good two years before departure, I sat at the kitchen table with Lucy for the first time seriously and said: I think I can't keep running the restaurant. Not "I need a break", not "I want a sabbatical", but: I don't see how this can work well for another ten years. Out of that conversation, over several weeks, came the joint decision to move to Australia.
+    The honest answer to "when did you decide": <strong>early September 2025</strong>, and the trigger was a field.
   </p>
   <p>
-    The factors were sober: too much work for a small family. Too little time for the kids, especially in summer, when I was basically never home. A quality of life Lucy was also no longer willing to quietly accept. There was no single moment of breaking, more like many small ones that summed up to a picture.
+    For years, Australia was a kind of pipe dream for us. A fondly remembered chapter of life and the recurring thought of experiencing it with the kids one day, but without serious ambition. Every time the idea came up, it failed at the same point: family and friends are here. It wasn't a dream we worked towards. It was a "someday" that never quite went away.
   </p>
   <p>
-    But in that same spring, three levers were on the table at the same time, opening a window: Lucy was approaching her Master's. Joris was about a year and a half away from school, exactly the window in which a school move abroad is easiest (he starts school over there, instead of switching out of a German school halfway through). Linnea was small enough that she wouldn't cling to Germany. If not now, then not for another ten years, and I'd be 47 by then, Joris 16. Three levers, one window.
+    In parallel, another question was running in the background, and it grew more pressing in the second half of 2025: how much longer do we want to sacrifice this much family time for the restaurant? Too much work, too little time with the kids, especially in the summer months when I was basically never home.
   </p>
   <p>
-    <!-- [PERSONAL EXPERIENCE] -->
-    We didn't decide logically. There was no spreadsheet in which "pro Australia" won. There were many evening conversations and, at one point, a shared clarity: if not now, then never. That clarity hasn't faded since, not even in the hardest weeks of preparation.
+    In early September 2025 came the push that shoved both together: our <strong>second vegetable field had to be cleared</strong>. Again. Again a lot of work that wasn't rewarded, again a plan that didn't work out. At exactly that point the restaurant doubts and the old Australia idea ran into each other, and "someday" became a joint decision: now or never. The decision to give up the restaurant and the decision to emigrate were made together. Not one after the other.
+  </p>
+  <a class="video-etikett" href="https://www.youtube.com/watch?v=67OLkGf0_x4" target="_blank" rel="noopener">
+    <span class="video-etikett__play" aria-hidden="true">▶</span>
+    <span class="video-etikett__text">This moment exists as a video (in German): <strong>"Unser Feld ist weg. Schon wieder."</strong> on our YouTube channel</span>
+  </a>
+  <p>
+    That the timing objectively made sense is something we only sorted out afterwards. Three levers were on the table at the same time: Lucy was approaching her Master's. Joris was a year and a half away from school, exactly the window in which a school move abroad is easiest: he starts school over there instead of switching out of a German school halfway through. Linnea was small enough that she wouldn't cling to Germany. If not now, then not for another ten years, and I'd be 47 by then, Joris 16. Three levers, one window.
   </p>
   <p>
-    How do you decide to give up a restaurant you've built over six years? Not with a spreadsheet, but with a gut feeling you ignored so long that it became loud enough to listen to.
+    We didn't decide logically. There was no spreadsheet in which "pro Australia" won. There were many evening conversations and, at one point, a shared clarity: if not now, then never. That clarity hasn't faded since, not even in the hardest weeks.
   </p>
   <p>
-    <em>For context: ✓ personal experience. This was emotional, not sober. A gut decision with a clear trigger.</em>
+    <em>For context: ✓ personal experience. A gut decision with a very concrete trigger.</em>
   </p>
 
-  <!-- H2 5 -->
   <h2 id="why-australia">Why Australia – and why now</h2>
   <p>
-    Australia for us is not a researched wish, we know the region. Two years in Byron Bay are not a backpacking trip, they are lived daily life with bureaucracy, accommodation, laundry. Three family windows happen to fall on the same point right now: Lucy's Master's, Joris starting school, my restaurant fatigue. This constellation gives us a window that won't open again like this after 2026.
+    Australia was not a researched wish for us, we knew the region. Two years in Byron Bay are not a backpacking trip, they are lived daily life with bureaucracy, housing, laundry. "Why now" had three layers: the family one (Master's, school entry, Linnea's age), the professional one (I'd had enough of the restaurant, Lucy had a concrete direction with her interior architecture in a region full of interesting building projects) and the timing one (every extra year in Germany would have made the school switch harder for Joris).
   </p>
   <p>
-    "Why now" has three layers. The family layer: Lucy's Master's is almost done, Joris is right before school, Linnea is at the right age. The professional layer: I've had enough of the restaurant, Lucy has a concrete direction with her interior architecture in a region with many interesting building projects. The time layer: every extra year in Germany would make the school switch for Joris harder, and slowly close the window.
+    On where to live, we were realistic from the start: Byron Bay itself, the expensive inner-suburb wish, was not guaranteed with two kids and no fixed job. <strong>Mullumbimby</strong> was the favourite on paper, the criterion: 35 to 40 minutes between home and workplace, no further. As of today we actually live in exactly that area, in the hinterland near Murwillumbah, and are looking for our first proper home within exactly that radius. We were never married to a town, we are married to a region.
   </p>
   <p>
-    We are realistic about it. Byron Bay directly, the expensive inner-suburb wish, is within reach with two kids and without a fixed job, but not guaranteed. <strong>Mullumbimby</strong> is currently our favourite for the first place: school, infrastructure, commuting radius, the criterion is 35 to 40 minutes between home and my possible workplace, no further. If Mullumbimby doesn't work out, we look further in the area (Northern Rivers). We are not married to a town, we are married to a region.
+    What we were looking for in Australia: more family time without shift culture. A climate you feel as a gift, not a burden. A work culture in which being a chef doesn't mean not seeing my own child for three weekends in a row in summer.
   </p>
   <p>
-    What are we concretely looking for in Australia? More family time without shift culture. A climate you feel as a gift, not a burden. A work culture in which being a chef doesn't mean I don't see my own child for three weekends in a row in summer.
-  </p>
-  <p>
-    <em>For context: ✓ personal experience of the region (two years BB) + ⏳ our own estimate on first place to live.</em>
+    <em>For context: ✓ personal experience of the region (two years BB) + ⏳ estimate on the first place to live, since overtaken by reality.</em>
   </p>
 
-  <!-- H2 6 -->
+  <!-- STAGE 4 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 4 · Dissolving everything</span>
+    <span class="etappe__jahr">Oct 2025 – June 2026</span>
+    <span class="etappe__notiz">lists, boxes, paperwork</span>
+  </div>
+
   <h2 id="preparation">How we prepared</h2>
   <p>
-    <!-- [ORIGINAL DATA] -->
-    By early May 2026 we had ticked off most of the pre-bureaucracy steps: visa strategy in place (186 Employer Nomination Scheme), PTE Academic ✓ (score 89, Proficient, 270 € on 11 March 2026 in Hamburg with Berlitz Deutschland GmbH), Skill Assessment as a cook ✓, Migration Agent engaged. Still ahead of us: tourist visa application for all four in the next few days, then my departure on 23 June and the sponsor search on the ground.
+    Between the decision in September 2025 and my departure lay barely ten months. By early May 2026 we had ticked off most of the pre-bureaucracy steps: visa strategy (186 Employer Nomination Scheme), PTE Academic passed, Skill Assessment as a cook completed, migration agent engaged. Then came the entry visas, and after that everything moved faster than the mountain had felt beforehand.
+  </p>
+  <AufklappBox titel="The complete tick-off list in detail" lang="en">
+    <ul>
+      <li><strong>Visa strategy:</strong> the goal is the <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">186 visa (Employer Nomination Scheme)</a>. That requires a sponsoring employer in Australia; we found one, as planned, on the ground.</li>
+      <li><strong>PTE Academic ✓:</strong> sat on 11 March 2026 in Hamburg with <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a>, cost 270 €. Overall score 89, classified as Proficient (+10 EOI points). Clearly enough for 186 Direct Entry. Reading 66 and Writing 75 were below the Superior threshold (70/85); if we need +20 EOI points as a safety net, we'll retake the test in Australia.</li>
+      <li><strong>Skill Assessment as a cook ✓:</strong> completed through <a href="https://www.tradesrecognitionaustralia.gov.au/" target="_blank" rel="noopener">Trades Recognition Australia (TRA)</a>. Laborious and expensive, especially the documentation as a self-employed person. The item that cost us the most nerves.</li>
+      <li><strong>Migration agent ✓:</strong> we work with <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz of JK Migrate</a>, the most frequent recommendation in the German "Auswandern nach Australien" Facebook group. We had done little research of our own beforehand and were close to dropping the whole project over the visa complexity. The paid first consultation took the fear away: he explained the visa routes we didn't know and gave us a concrete step list. In hindsight a very good decision.</li>
+      <li><strong>Restaurant closed ✓</strong> on 31 December 2025.</li>
+      <li><strong>Flat notice given ✓</strong>, moving out end of July 2026, follow-up tenants found, taking over the kitchen.</li>
+      <li><strong>eVisitor 651 ✓:</strong> issued on 28 May 2026 for all four of us, free, entirely online via my old ImmiAccount from my apprenticeship days. All four confirmations arrived within seconds by email. The eVisitor is valid for 12 months, with a maximum stay of 3 months per entry.</li>
+      <li><strong>Flights booked ✓:</strong> Christian 23 June 2026 (China Southern via Guangzhou, 467 €), Lucy + kids 26 July 2026 (Emirates via Dubai).</li>
+    </ul>
+  </AufklappBox>
+  <p>
+    One update belongs here because it costs money: when we wrote this article in May, the 186 application fees for the four of us were around 9,825 AUD. <strong>On 1 July 2026 they were raised: roughly 12,280 AUD</strong> for two adults and two children (main applicant 6,140 AUD). Whoever could lodge before the cut-off paid the old fee; ours wasn't ready yet. That's how honestly you have to budget: between planning and lodging, the fees can rise.
   </p>
   <p>
-    Concretely, what we've ticked off:
-  </p>
-  <ul>
-    <li><strong>Visa strategy:</strong> the goal is the <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">186 visa (Employer Nomination Scheme)</a>. That requires a sponsoring employer in Australia – we'll find one on the ground. Sponsor search out of a tourist visa is the plan.</li>
-    <li><strong>PTE Academic ✓:</strong> sat on 11 March 2026 in Hamburg with <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a>, cost 270 €. Overall score 89, classified as Proficient (+10 EOI points). Clearly enough for 186 Direct Entry. Reading 66 and Writing 75 were below the Superior threshold (70/85); if we need +20 EOI points as a safety net, we'll retake the test in Australia.</li>
-    <li><strong>Skill Assessment as a cook ✓:</strong> completed through <a href="https://www.tradesrecognitionaustralia.gov.au/" target="_blank" rel="noopener">Trades Recognition Australia (TRA)</a> – laborious and expensive, especially the documentation as a self-employed person. The item that cost us the most nerves.</li>
-    <li><strong>Migration Agent ✓:</strong> we work with <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz of JK Migrate</a>. Very nice, good work. His first conversation cleared up more than a month of own research – if you're thinking about an agent yourself, this is a point where we make the recommendation.</li>
-    <li><strong>Restaurant closed ✓</strong> on 31 December 2025.</li>
-    <li><strong>Flat notice given ✓</strong>, moving out end of July 2026, follow-up tenants found, taking over the kitchen.</li>
-    <li><strong>Tourist visa application:</strong> all four apply together in the next few days. The tourist visa is valid for 12 months and activates a 3-month stay on entry. As soon as we lodge the 186 application, the whole family receives a <em>bridging visa</em>, family reunification is not in question.</li>
-    <li><strong>Flights booked ✓</strong>, Christian 23 June 2026, Lucy + kids 26 July 2026.</li>
-  </ul>
-  <p>
-    The flat clear-out is running, and it's hard: sorting wardrobes, sorting kids' things, selling furniture. <strong>What doesn't fit in the plane</strong> goes into our crate system: numbered cardboard boxes, precisely documented, stored at Lucy's father's place, sent to Australia on demand. The estimate: around 110 € per 10 kg box, around 170 € per 20 kg box (quotes we have, final price varies). Container service was not in the running for our volume; too expensive.
+    The flat clear-out was the tougher part: wardrobes, kids' things, furniture. <strong>What didn't fit in the plane</strong> went into our crate system: numbered boxes, precisely documented, stored at Lucy's father's place, shipped to Australia on demand. The estimate: around 110 € per 10 kg box, around 170 € per 20 kg box (quotes we had, final price varies). A container service was not in the running for our volume; too expensive.
   </p>
   <p>
-    If you're interested in the <strong>full costs</strong> – what's paid, what's estimated, what's planned – everything is broken down in our cost article: <a href="/en/cost-of-moving-to-australia-family-guide">Cost of Moving to Australia as a Family: Our Real Numbers (2026)</a>.
+    If you're interested in the <strong>full costs</strong>, what was paid, estimated and planned: everything is broken down in our cost article <a href="/en/cost-of-moving-to-australia-family-guide">Cost of Moving to Australia as a Family: Our Real Numbers</a>. The detailed <strong>186 visa route as a family</strong> is described here: <a href="/en/186-visa-australia-family-guide">186 Visa Australia: Our Family Route to the Employer Sponsored Visa</a>. And the <strong>Skill Assessment as a self-employed chef</strong> with all its documentation pitfalls is here: <a href="/en/tra-skill-assessment-chef-australia">TRA Skill Assessment as a Chef</a>.
   </p>
   <p>
-    For the detailed <strong>186 visa route as a family</strong> – streams, requirements, sponsor strategy, timeline – we've written it here: <a href="/en/186-visa-australia-family-guide">186 Visa Australia: Our Family Route to the Employer Sponsored Visa (2026)</a>.
-  </p>
-  <p>
-    And the <strong>Skill Assessment as a self-employed chef</strong> with all the documentation pitfalls – the detailed write-up is here: <a href="/en/tra-skill-assessment-chef-australia">TRA Skill Assessment as a Chef</a>.
-  </p>
-  <p>
-    <em>For context: ✓ personal experience for all steps. Visa fees and conditions change all the time – binding information directly from the <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Department of Home Affairs</a>.</em>
+    <em>For context: ✓ personal experience for all steps. Visa fees and conditions change all the time, binding information directly from the <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Department of Home Affairs</a>.</em>
   </p>
 
-  <!-- H2 7 -->
   <h2 id="giving-up">What it means to give it all up</h2>
   <p>
-    May 2026 is not relaxed. Both of us are stressed, many fronts at once, all roughly equally heavy. Lucy is writing her Master's thesis full-time and has set herself a self-imposed deadline: 23 June, my departure. Officially the submission would be mid-July, but realistically that's not going to work: as soon as I'm gone, Lucy is alone with two kids and the rest of the flat. Her professor backs the pace, but it's tight.
+    May 2026 was not relaxed. We were both stressed, many fronts at once, all roughly equally heavy. Lucy was writing her Master's thesis full-time, with a self-imposed deadline: 23 June, my departure. Officially the submission would have been mid-July, but realistically that wasn't going to work: as soon as I was gone, Lucy was alone with two kids and the rest of the flat. Her professor backed the pace, tight it was anyway.
   </p>
   <p>
-    I'm researching during the day between childcare, which often falls through right now, and renovation work in the flat (painting, smaller repairs, everything that has to be done before handing the keys over). In the evenings I write blog, edit videos, work through <em>Aussie House Sitters</em> and Facebook groups. The realisation is setting in that in Australia a lot will fall on my shoulders at once: without a job no sponsor, without a sponsor no visa, without a visa no bringing the family. That chain is what keeps me awake at night.
+    During the day I researched between childcare, which often fell through, and renovation work in the flat; in the evenings I wrote the blog, edited videos, worked through housesitting portals and Facebook groups. And at some point the realisation set in that in Australia a huge amount would hang on me at once: without a job no sponsor, without a sponsor no visa, without a visa no bringing the family over. That chain was what kept me awake at night.
+  </p>
+  <aside class="nachtrag" aria-label="Note added at the end of June 2026">
+    <p class="nachtrag__stempel">Added · end of June 2026</p>
+    <p>
+      On the evening of 29 June, Lucy uploaded what was finished and sat the examination. She
+      passed, with a result she can be proud of after a spring like this. We overcommitted with the
+      double load, that is the honest assessment. But the item is ticked off, and the Master's
+      degree isn't flying away from us anymore.
+    </p>
+  </aside>
+  <p>
+    Sorting out the flat, we had a clear division: I would have separated more radically, stored less. Lucy spent years lovingly sourcing the kids' things at flea markets; each piece a conscious choice. With the kids' things, I gave my opinion and left Lucy the decision. That was fair, because she chose those things back then and knows what she wants to keep as memories for the kids.
+  </p>
+  <Randnotiz ausrichtung="rechts" lang="en">
+    "Cycling was part of our identity." Cargo bike, e-bike, kids' bike: all stayed in Germany. Batteries and size made shipping impossible.
+  </Randnotiz>
+  <p>
+    There was one moment in those weeks that stuck with me: cycling with the kids, when it hit me that the bikes would stay behind. A cargo bike and e-bikes with their batteries are practically impossible to ship. We cycled almost daily. Small losses like that gave the departure more weight than any big paperwork.
   </p>
   <p>
-    <!-- [PERSONAL EXPERIENCE] -->
-    Sorting out the flat, we have a clear division: I would prefer to throw more out, separate more radically, store less. Lucy spent years lovingly sourcing kids' clothes at flea markets; each piece a conscious choice, not mass-market. With the kids' things, I give my opinion but leave Lucy the decision. That's fair, because she chose those things back then, and it's fair because she knows what she wants to keep as memory for the kids.
+    In that phase we talked more about the project and the planning than about ourselves. We knew it, and we held on, because it was a baseline with an end date. But this is not a TV format: it was exhausting, sometimes sad, sometimes simply loud.
   </p>
   <p>
-    We talk honestly about what this phase is doing to us. Little time for each other right now. Few shared conversations that aren't simultaneously logistics. As a couple we are solid, we don't doubt the decision, we know this is a phase we go through together, and that things will be different in Australia. But this isn't a TV format. This is exhausting, sometimes sad, sometimes simply loud.
+    Three days before my departure came an evening we hadn't planned this way: the wedding of one of my closest friends. It became, quite incidentally, the goodbye to my circle of friends and our last celebration together as a family in Germany. All four of us dressed up once more, warm evening light, and the suitcases already in our heads.
   </p>
+  <figure class="polaroid polaroid--links">
+    <img
+      src="/assets/images/de-letzte-feier-familie-p960.jpg"
+      srcset="/assets/images/de-letzte-feier-familie-p960.webp"
+      alt="Christian, Lucy, Joris and Linnea dressed up on a stone staircase at a friend's wedding, three days before departing for Australia"
+      loading="lazy"
+      width="960"
+      height="967"
+    />
+    <figcaption class="polaroid__caption">Three days before departure: our last celebration in Germany.</figcaption>
+  </figure>
   <p>
-    What happens inside a family when you have to hold together a flat, a restaurant closure, visa bureaucracy and a second life on the other side of the world for months at the same time? Answer: you talk more about the project and the planning than about yourselves. You know it. And you hold on anyway, because that's the baseline that ends in two months.
-  </p>
-  <p>
-    The month between 23 June and 26 July will be the most honest strain: Lucy alone with both kids, in parallel the last weeks of the Master's thesis, in parallel the rest of the moving out. We have a safety net, both families live in Essen and Mülheim, friends step in, Lucy's parents are close logistically and mentally. None of that changes the fact that this month will be hard. We write this here so clearly because we know that many family emigration stories shrink the weeks before the flight down to two sentences. That's not honest.
-  </p>
-  <p>
-    <em>For context: ✓ personal experience, personal low point. As of: early May 2026, departure in seven weeks.</em>
+    <em>For context: ✓ personal experience, the most exhausting phase of the whole project.</em>
   </p>
 
-  <!-- H2 8 -->
-  <h2 id="what-happens-next">How it continues</h2>
+  <!-- STAGE 5 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 5 · Essen → Guangzhou → Brisbane</span>
+    <span class="etappe__jahr">23 June 2026</span>
+    <span class="etappe__notiz">one flies ahead</span>
+  </div>
+
+  <h2 id="the-flight">The goodbye and the flight</h2>
   <p>
-    I fly out on <strong>23 June 2026</strong> alone. In the first two to four weeks I look for a sponsoring employer, a car and a place to live in the Northern Rivers region. Lucy and the kids follow on <strong>26 July 2026</strong>. Joris starts school in January 2027, the Australian school year begins in January, Linnea's childcare is not 100% settled.
+    We said goodbye on 23 June at Essen central station, on a Tuesday morning, before Lucy took the kids to kindergarten and the childminder. We had deliberately agreed on this beforehand: as normal and unexcited as possible, so the kids would cope well. "We'll see each other in five weeks." Photos taken, one long hug, done. It worked. For Lucy and me it was hard anyway, we just didn't let it show.
   </p>
-  <h3 id="plan-christian">My plan for the first weeks</h3>
+  <figure class="polaroid polaroid--rechts">
+    <img
+      src="/assets/images/de-abschied-selfie-kofferraum-p960.jpg"
+      srcset="/assets/images/de-abschied-selfie-kofferraum-p960.webp"
+      alt="Family selfie at the open car boot on departure day: Christian with a hat, Lucy, Joris with a cap and Linnea, all laughing into the camera"
+      loading="lazy"
+      width="960"
+      height="1280"
+    />
+    <figcaption class="polaroid__caption">23 June, just before the goodbye: one last photo of the four of us for five weeks.</figcaption>
+  </figure>
+  <p>
+    One thing I would do differently today, and it belongs in every honest emigration report: I should have taken more time for the goodbyes. Especially the goodbye to my own parents was far too short in the stress of the final weeks, and that caught up with me in the first days in Australia more than anything else. If you are facing the same step: plan the goodbyes like an appointment. They matter more than the last box.
+  </p>
+  <p>
+    The flight itself was the best of my four Australia flights so far: China Southern via Guangzhou, with a night in the airline's hotel, seven hours of sleep, a shower, a big bed. In Guangzhou I sent the kids one more video message before their evening and my second flight coincided:
+  </p>
+  <PullQuote quelle="Video message to Joris and Linnea, Guangzhou airport, 24 June 2026" lang="en">
+    When you go to bed in a moment, I'll be on the plane. I still wanted to say good night. We'll talk tomorrow when I've arrived. Take good care of Mum.
+  </PullQuote>
+  <figure class="beweis">
+    <img
+      src="/assets/images/au-flugkarte-frankfurt-guangzhou.jpg"
+      srcset="/assets/images/au-flugkarte-frankfurt-guangzhou.webp"
+      alt="Seatback monitor showing the flight map Frankfurt to Guangzhou, route across eastern Europe"
+      loading="lazy"
+      width="1280"
+      height="720"
+    />
+    <figcaption class="beweis__caption">Evidence · seatback monitor, flight 1 of 2: Frankfurt → Guangzhou</figcaption>
+  </figure>
+  <p>
+    On <strong>25 June at 8:30 am local time</strong> I landed in Brisbane, unusually quickly through immigration, by ten I was sitting in the rental car. "The suitcase is here, now out to the rental car. I am in Australia." That was all I managed to say into the camera in that moment.
+  </p>
+  <InlineVideo
+    src="/assets/videos/au-landung-brisbane-loop.mp4"
+    poster="/assets/images/au-landung-brisbane-loop-poster.jpg"
+    caption="Approach into Brisbane, 25 June 2026, 8:30 am."
+    lang="en"
+    aspectRatio="16 / 9"
+  />
+  <p>
+    The two-hour drive to Byron Bay I then cried through almost entirely. It was a highly emotional drive, the first time in months with room to think: "At first it was really sad, because there are so many things we simply won't experience for a very long time, or maybe forever." And then, from about Byron onwards, tears from the exact opposite: what we had worked towards for six months was coming true right there. The first thing I did at the beach: boots off.
+  </p>
+  <figure class="polaroid polaroid--links">
+    <img
+      src="/assets/images/au-barfuss-boots-byron-p960.jpg"
+      srcset="/assets/images/au-barfuss-boots-byron-p960.webp"
+      alt="Bare foot in the sand of Byron Bay right next to the just-removed leather boots"
+      loading="lazy"
+      width="720"
+      height="1280"
+    />
+    <figcaption class="polaroid__caption">First stop, first official act: barefoot.</figcaption>
+  </figure>
+  <p>
+    <em>For context: ✓ personal experience. The complete first week alone, with all its ups and downs, has its own article: <a href="/en/arrived-first-days-in-australia">Arrived in Australia: My First Days Alone</a>.</em>
+  </p>
+
+  <h2 id="five-weeks-alone">Five weeks alone in Byron Bay</h2>
+  <p>
+    The mission for the five weeks was clear: sponsor, car, accommodation. That was the order on paper; in reality everything ran at once.
+  </p>
+  <p>
+    <strong>Accommodation:</strong> the first nights a basic room found via Facebook, 300 AUD a week, not well kept, but a roof. From 2 July the first housesit: three weeks in a beautiful house with two dogs, hidden in the rainforest hinterland near Mullumbimby. Then an Airbnb in Byron Bay as a bridge, deliberately booked so something solid would be in place when the family arrived. Housesitting saved our start; from Germany we had collected nothing but rejections for months, on the ground that flipped.
+  </p>
+  <p>
+    <strong>Car:</strong> in week two we bought an old Jeep Grand Cherokee for <strong>4,500 AUD</strong>, our ceiling was 5,000. How buying a used car in New South Wales works in detail, with rego, stamp duty and all costs, is in its own article: <a href="/en/buying-a-car-in-australia-used-car-registration">Buying a Car in Australia</a>.
+  </p>
+  <p>
+    <strong>Sponsor:</strong> at the German expat meetup in Byron Bay, a few days after arriving, I was given the line that turned out to be completely right: walk around, be open, talk to people, hospitality is always hiring. That's exactly how it went. I walked into restaurants in person, introduced myself and was open about my visa status. In the end we found each other with <a href="https://www.threeways.store/" target="_blank" rel="noopener">Threeways of the Valley</a>, a cafe-restaurant in the middle of the Byron Bay hinterland rainforest. We sat together over many evenings talking about plans and visions, and it fit on both sides. The team there is now working on their part of my 186 application: the nomination. Once it's through, I lodge my own application with Johannes' help.
+  </p>
+  <Randnotiz ausrichtung="rechts" pfeil lang="en">
+    For the record: the sponsor did not come from a single application sent from Germany. It came from walking in.
+  </Randnotiz>
+  <p>
+    And in between: the everyday life of a long-distance family. Joris and Linnea called every morning when they woke up, we had breakfast together with the phone propped up, in the evening Lucy called once more on her own. Meanwhile a heatwave in Germany kept the kids at grandma's pool while Lucy carried thesis, the remains of the flat and solo parenting all at once. That month was harder for her than for me, and that belongs here just as much.
+  </p>
+  <p>
+    <em>For context: ✓ personal experience. On the sponsor process: only a granted visa is binding; we describe the status, not a success that doesn't exist yet.</em>
+  </p>
+
+  <!-- STAGE 6 -->
+  <div class="etappe">
+    <span class="etappe__label">Stage 6 · Brisbane, arrivals hall</span>
+    <span class="etappe__jahr">28 July 2026</span>
+    <span class="etappe__notiz">four again</span>
+  </div>
+
+  <h2 id="family-lands">The family lands</h2>
+  <p>
+    On 28 July, shortly after eight in the morning, the sliding door in Brisbane opened, 35 days after the goodbye at Essen central station. Joris pushed the stroller, in it Linnea, who simply slept through the big moment. Lucy behind them with a luggage trolley stacked with olive-green duffel bags: the whole life of three people, pressed into checked luggage. We hugged each other so tightly. What you say in a moment like that, I don't remember; it wasn't much.
+  </p>
+  <figure class="polaroid polaroid--rechts">
+    <img
+      src="/assets/images/au-familie-gepaeckwagen-brisbane-p960.jpg"
+      srcset="/assets/images/au-familie-gepaeckwagen-brisbane-p960.webp"
+      alt="Luggage trolley stacked with olive-green duffel bags in the arrivals hall of Brisbane airport, Joris in profile next to it"
+      loading="lazy"
+      width="960"
+      height="540"
+    />
+    <figcaption class="polaroid__caption">Three lives in duffel bags, Brisbane airport, 28 July, shortly after eight.</figcaption>
+  </figure>
+  <p>
+    Welcome to Australia: after that we stood in traffic for two hours. The kids took it better than we did. Arrived in Byron Bay, we briefly dropped the bags at the Airbnb, and then we did the only right thing: we went straight to the beach. First family afternoon at the Pacific, Linnea sorting finds out of the sand, Joris chasing the outgoing wave.
+  </p>
+  <p>
+    The following evening, the photo was taken that we had been working towards for six months without knowing it: our first family selfie in Australia.
+  </p>
+  <figure class="polaroid polaroid--links polaroid--gross">
+    <img
+      src="/assets/images/au-erstes-familien-selfie-byron-p960.jpg"
+      srcset="/assets/images/au-erstes-familien-selfie-byron-p960.webp"
+      alt="First family selfie of the four in Australia: Christian, Lucy with Linnea on her arm and Joris at the dune edge of Byron Bay in evening light, beach and surf behind them"
+      loading="lazy"
+      width="1280"
+      height="960"
+    />
+    <figcaption class="polaroid__caption">The four of us, Byron Bay dunes, 29 July 2026.</figcaption>
+  </figure>
+  <p>
+    <em>For context: ✓ personal experience. Family arrival: 28 July 2026, around 8 am local time, Brisbane.</em>
+  </p>
+
+  <h2 id="what-happens-next">Where we stand now</h2>
+  <p>
+    As of 5 August 2026: since 31 July we have been living in a housesit in the hinterland near Murwillumbah for four weeks. A large, well-kept property, two easy-going dogs, chickens, a wood stove for the winter evenings. The kids can simply walk out the front door and play. For arriving, this house is a stroke of luck: four weeks without moving, four weeks to plan everything else.
+  </p>
+  <InlineVideo
+    src="/assets/videos/au-waesche-housesit-loop.mp4"
+    poster="/assets/images/au-waesche-housesit-loop-poster.jpg"
+    caption="Housesit everyday life: taking down the washing against a rainforest backdrop."
+    lang="en"
+    aspectRatio="16 / 9"
+  />
+  <p>
+    As I write this paragraph, Lucy is in the kitchen and the kids are out on the property with their walkie-talkies, reporting in between what they are up to. It is so good to see them move freely and play outside together. Back home we had a lovely flat, but no garden; a property like this is the exception in Germany, here it is almost standard as long as you don't live in the middle of a big city. The vegetable garden this story started with, we still miss. But the kids are growing up right now exactly the way we hoped this country would let them.
+  </p>
+  <p>
+    Yesterday we were in Murwillumbah, the small town nearby. School classes outside everywhere: bike training, skate lessons, basketball, kids in shorts in the middle of the Australian winter, everyone moving. That is exactly one of the things we find so good here. And the birds have their own fan now: after a walk, Joris sat down and drew all the birds he had seen, from the cockatoo to the brush turkey.
+  </p>
+  <figure class="beweis">
+    <img
+      src="/assets/images/au-joris-vogelbild-p960.jpg"
+      srcset="/assets/images/au-joris-vogelbild-p960.webp"
+      alt="Joris' coloured pencil drawing of Australian birds in trees with an orange sun, a cockatoo and a brush turkey"
+      loading="lazy"
+      width="1100"
+      height="825"
+    />
+    <figcaption class="beweis__caption">Evidence · Joris' bird inventory of the first week, coloured pencil on A4</figcaption>
+  </figure>
+  <p>
+    What is still open, in all honesty:
+  </p>
   <ul>
-    <li><strong>Mobility:</strong> first two weeks a rental car. Within that time, buy a used car, in Australia that goes relatively quickly and uncomplicated if you know what to look for.</li>
-    <li><strong>Accommodation</strong> in priority order: 1. Housesitting (Aussie House Sitters has been running since early 2026, so far only rejections because of missing reviews and "still in Germany"; Facebook groups come into play before departure). 2. A room in a share house. 3. A hostel as a last option.</li>
-    <li><strong>Job + sponsor:</strong> walk into restaurants in person, drop off a CV, in Australia that's the expected route in hospitality. Online search runs in parallel, but on the ground has the better odds. With a tourist visa, working is not allowed; having conversations, visiting restaurants, sounding out commitments is fine. The formal sponsor engagement only happens after a successful 186 application.</li>
-    <li><strong>Place for four</strong>, in parallel to the job hunt, from mid-July with concrete viewings, as soon as the area becomes clearer.</li>
-    <li><strong>Content</strong> we keep producing, we film the arrival, the first weeks, the search. Surf whenever it's possible.</li>
-  </ul>
-  <h3 id="plan-lucy">Lucy's plan for the first months</h3>
-  <ul>
-    <li><strong>Childcare as the priority:</strong> Joris doesn't start until January 2027, Linnea's care is open. Until that's settled, Lucy is primarily with the kids.</li>
-    <li><strong>Reactivating architecture contacts in parallel:</strong> from the Byron Bay days, Lucy still has contacts in the area. "Hey, here I am", those emails go out as soon as we are on the ground, maybe even shortly before departure.</li>
-    <li><strong>Possible part-time projects:</strong> if enquiries come in, we check whether it fits with childcare.</li>
-    <li><strong>Once care is in place:</strong> Lucy wants to go at least part-time back into architecture, that was one of the drivers for moving to Australia, not away from architecture, but towards a region with building projects she finds interesting.</li>
+    <li><strong>Visa:</strong> the nomination sits with my future employer, the one part of the process we don't hold in our own hands. After that comes my own 186 application with Johannes.</li>
+    <li><strong>Housing:</strong> the search is on. We viewed a lovely cabin in Mullumbimby and didn't get it. An option near my future workplace is in sight, but nothing is fixed. Without a permanent job the housing market here is tough; we knew that beforehand, and it still feels different once you're in it.</li>
+    <li><strong>School and childcare:</strong> Joris' first school day is 3 February 2027, which school depends on where we live. Linnea's childcare is still open. Until then Lucy is primarily with the kids and reactivating her architecture contacts from the Byron Bay days in parallel.</li>
+    <li><strong>Car:</strong> the Jeep needs repairs before the next rego, estimated 1,000 to 1,500 AUD. We'll tackle that in the coming weeks.</li>
   </ul>
   <p>
-    <em>For context: ✓ personal experience (plan) + ⏳ our own estimate (order of the first weeks). We don't know how quickly the job and sponsor will work, we hope for two to six weeks, we plan financially with three to four months of runway. Worst case would be flying back, that's part of our plan.</em>
+    For Lucy, the start was the harder one: the first days were too much at once, especially with the kids, and that weighed on her mood. Understandably. Making decisions about the future is hard when nothing that was self-evident at home is self-evident here yet. The beginning is exhausting because you can't do anything in your usual rhythms. And still, in many small moments, we notice what life here could be like. It is good to see that Joris and Linnea feel this much at home, and that all of it is less hard than we expected beforehand. The kids are content because they are here with us.
+  </p>
+  <p>
+    <em>For context: ✓ personal experience, as of 5 August 2026. More articles on everyday life will follow once moments have turned into experience.</em>
   </p>
 
-  <!-- H2 9 -->
-  <h2 id="why-anyway">Why we do it anyway</h2>
+  <h2 id="why-anyway">Would we do it again?</h2>
   <p>
-    We want the kids to grow up in a setting we feel is good for them, beach, garden, less shift work culture, more shared time. We want shared evenings not to be an earned weekend moment but everyday life. We want Lucy working on architecture projects she finds interesting, and we want me to be able to cook again without it using me up as a person.
+    The question behind all questions, in every search statistic on emigrating too: do you regret it? The answer, one week into being four again: <strong>it is too early for a verdict. But right now we have a very good feeling.</strong> It feels right.
   </p>
   <p>
-    We promise nobody anything. We don't know if it will work. If the sponsor doesn't materialise in the first three months, it gets tight. We don't have a big buffer, three to four months of runway, then money has to come in. No PR means: school and Medicare we pay for ourselves. Lucy can't work full-time at first. I have to work as a chef for the first two years for visa reasons. We know all of that. If no sponsor materialises by the end of the three tourist months, we fly back. We're aware of that, financially and mentally. It's not a recommendation, it's our deliberate bet: we're going this route because we know the region and we have contacts from our Byron Bay time. Every family has different reserves, different visa options, a different time horizon.
+    We'll say what carries that feeling at the moment: we are basically on holiday right now. I still have time off, Joris isn't in school yet, we do something every day. The everyday life that really decides "regret or not" is still ahead. But one point is already no holiday effect: it is winter, and we are outside every day anyway. Nights get cold, days are pleasantly warm as soon as the sun comes out. That alone is almost worth the whole thing for us, because it is exactly the lifestyle we came here for.
   </p>
   <p>
-    Even so: this is our path. We share it on YouTube, Instagram and on this blog, not to produce travel inspiration, but because we want other families who are facing a similar decision to find honest numbers and honest stories instead of polished influencer versions. If that interests you, read along. We keep writing.
+    The other side remains: the distance to our families is hard. Daily video calls make it okay, but hard it stays. And the risk hasn't gone: no permanent visa, the nomination not in our hands, three to four months of financial runway, Lucy can't work full-time yet, I have to work as a chef for the first two years for visa reasons. If it doesn't work out, we fly back. That has been part of the plan from the start, financially and mentally, and that hasn't changed. It is not a recommendation, it is our deliberate bet, with the advantage that we knew the region.
+  </p>
+  <p>
+    This is our path. We share it on YouTube, Instagram and this blog, not to produce travel inspiration, but so families facing the same decision find real numbers and real stories instead of polished influencer versions. If that interests you, read along. We keep writing, now from the other side of the world.
   </p>
 
-  <!-- Fact Matrix -->
+  <!-- Numbers bento -->
+  <div class="zahlen-bento">
+    <BentoSektion lang="en" eyebrow="For scale" ueberschrift="Our way in numbers">
+      <BentoKachel groesse="s" zahl="35 days" label="lay between the goodbye and the reunion" akzent />
+      <BentoKachel groesse="s" zahl="4,500 AUD" label="is what our Jeep Grand Cherokee cost" raster />
+      <BentoKachel groesse="s" zahl="12,280 AUD" label="are the 186 application fees for the four of us since July 2026" raster />
+      <BentoKachel groesse="s" zahl="2 + 1" label="housesits and one Airbnb carried our start" raster />
+    </BentoSektion>
+  </div>
+
+  <!-- Fact matrix -->
   <h2 id="fact-matrix">Fact matrix at a glance</h2>
-  <table class="schritte-tabelle">
-    <thead>
-      <tr>
-        <th>Key fact</th>
-        <th>Value</th>
-        <th>Source / classification</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Family</td>
-        <td>4 people, Christian (37), Lucy (30), Joris (6), Linnea (2)</td>
-        <td>✓ personal experience</td>
-      </tr>
-      <tr>
-        <td>Restaurant lease</td>
-        <td>1 February 2019 – 31 December 2025</td>
-        <td>✓ personal experience</td>
-      </tr>
-      <tr>
-        <td>Restaurant concept</td>
-        <td>Countryside restaurant with ostrich meat, 60 + 60 seats</td>
-        <td>✓ personal experience</td>
-      </tr>
-      <tr>
-        <td>Our wedding in the restaurant</td>
-        <td>October 2025 (cover image of this article)</td>
-        <td>✓ personal experience</td>
-      </tr>
-      <tr>
-        <td>PTE Academic English test</td>
-        <td>11 March 2026, Berlitz Hamburg, 270 €, score 89 (Proficient)</td>
-        <td>✓ personal experience · 📊 <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a></td>
-      </tr>
-      <tr>
-        <td>Skill Assessment as a cook</td>
-        <td>Completed via Trades Recognition Australia</td>
-        <td>✓ personal experience · 📊 <a href="https://www.tradesrecognitionaustralia.gov.au/" target="_blank" rel="noopener">TRA</a></td>
-      </tr>
-      <tr>
-        <td>Migration Agent</td>
-        <td>Johannes Kunz, <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">JK Migrate</a></td>
-        <td>✓ personal experience, recommendation</td>
-      </tr>
-      <tr>
-        <td>Visa target</td>
-        <td>186 (Employer Nomination Scheme), sponsor search on the ground</td>
-        <td>📊 <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">DHA Visa 186</a></td>
-      </tr>
-      <tr>
-        <td>Tourist visa</td>
-        <td>All 4 apply together, 12 months valid, 3-month stay on entry</td>
-        <td>✓ personal experience · 📊 DHA</td>
-      </tr>
-      <tr>
-        <td>Christian, departure</td>
-        <td>23 June 2026</td>
-        <td>✓ flight booked</td>
-      </tr>
-      <tr>
-        <td>Lucy + kids, follow-on flight</td>
-        <td>26 July 2026</td>
-        <td>✓ flight booked</td>
-      </tr>
-      <tr>
-        <td>Target region</td>
-        <td>Northern Rivers, NSW (favourite: Mullumbimby)</td>
-        <td>✓ personal experience of region · ⏳ estimate on first place</td>
-      </tr>
-      <tr>
-        <td>Joris, school start AU</td>
-        <td>January 2027 (Australian school year)</td>
-        <td>⏳ expected, not finally confirmed</td>
-      </tr>
-      <tr>
-        <td>Financial runway</td>
-        <td>3 to 4 months without income</td>
-        <td>⏳ our own estimate</td>
-      </tr>
-      <tr>
-        <td>Shipping boxes</td>
-        <td>10 kg ≈ 110 € · 20 kg ≈ 170 €</td>
-        <td>✓ personal experience (quotes May 2026)</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="tabelle-halter">
+    <table class="kosten-tabelle">
+      <thead>
+        <tr>
+          <th>Key fact</th>
+          <th>Value</th>
+          <th>Source / classification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Family</td>
+          <td>4 people, Christian (37), Lucy (30), Joris (6), Linnea (2)</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>First Australia years</td>
+          <td>Christian from January 2017, Lucy from February 2017 – end of 2018</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Restaurant lease</td>
+          <td>1 February 2019 – 31 December 2025</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Our wedding in the restaurant</td>
+          <td>October 2025 (cover image of this article)</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Decision to emigrate</td>
+          <td>Early September 2025, trigger: clearing of the second field</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>PTE Academic English test</td>
+          <td>11 March 2026, Berlitz Hamburg, 270 €, score 89 (Proficient)</td>
+          <td>✓ personal experience · 📊 <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a></td>
+        </tr>
+        <tr>
+          <td>Skill Assessment as a cook</td>
+          <td>Completed via Trades Recognition Australia</td>
+          <td>✓ personal experience · 📊 <a href="https://www.tradesrecognitionaustralia.gov.au/" target="_blank" rel="noopener">TRA</a></td>
+        </tr>
+        <tr>
+          <td>Migration agent</td>
+          <td>Johannes Kunz, <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">JK Migrate</a></td>
+          <td>✓ personal experience, recommendation</td>
+        </tr>
+        <tr>
+          <td>Entry visa</td>
+          <td>eVisitor 651 for all 4, issued 28 May 2026, free, 12 months, 3 months per entry</td>
+          <td>✓ personal experience · 📊 <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651" target="_blank" rel="noopener">DHA eVisitor</a></td>
+        </tr>
+        <tr>
+          <td>Visa goal + status</td>
+          <td>186 (Employer Nomination Scheme), employer's nomination in progress</td>
+          <td>✓ personal experience · 📊 <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">DHA Visa 186</a></td>
+        </tr>
+        <tr>
+          <td>186 application fees (2 adults + 2 kids)</td>
+          <td>roughly 12,280 AUD since 1 July 2026 (previously roughly 9,825 AUD)</td>
+          <td>📊 DHA visa pricing, as of 4 August 2026</td>
+        </tr>
+        <tr>
+          <td>Christian: departure / landing</td>
+          <td>23 June / 25 June 2026, 8:30 am, Brisbane</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Lucy + kids: landing</td>
+          <td>28 July 2026, around 8:00 am, Brisbane</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Car</td>
+          <td>Jeep Grand Cherokee, 4,500 AUD (+ upcoming repairs 1,000–1,500 AUD)</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Accommodation so far</td>
+          <td>Room → housesit (2–19 July) → Airbnb → family housesit (31 July–28 August)</td>
+          <td>✓ personal experience</td>
+        </tr>
+        <tr>
+          <td>Joris, school start AU</td>
+          <td>first school day 3 February 2027 (NSW Term 1)</td>
+          <td>📊 <a href="https://education.nsw.gov.au/schooling/calendars" target="_blank" rel="noopener">education.nsw.gov.au</a></td>
+        </tr>
+        <tr>
+          <td>Financial runway</td>
+          <td>3 to 4 months without income</td>
+          <td>⏳ our own estimate</td>
+        </tr>
+        <tr>
+          <td>Shipping boxes</td>
+          <td>10 kg ≈ 110 € · 20 kg ≈ 170 €</td>
+          <td>✓ personal experience (quotes May 2026)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- FAQ -->
   <h2 id="faq">Frequently asked questions</h2>
 
   <h3>Why are you moving to Australia?</h3>
   <p>
-    In 2016 we flew together to Byron Bay, me for my chef apprenticeship, Lucy for what was meant to be a single semester abroad. Two semesters turned into two full years in the region, and we felt at home there. Since coming back to Germany at the end of 2018 the wish to return has never gone away. In 2026, Lucy's Master's degree, Joris starting school and our restaurant fatigue all line up at the same point, a one-off window.
+    In January 2017 I flew to Byron Bay for my chef apprenticeship, Lucy followed in February for her semester abroad. One semester became two, almost two years in the region in which we felt at home. Since returning to Germany at the end of 2018 the wish to go back never fully went away, but for years it stayed a pipe dream without serious ambition. In 2026, Lucy's Master's degree, Joris starting school and our restaurant fatigue all lined up at the same point.
   </p>
 
   <h3>What was the concrete trigger for the decision?</h3>
   <p>
-    In spring 2024, I told Lucy at the kitchen table for the first time, seriously, that I couldn't keep running the restaurant. Too much work, too little family time, especially in summer. Lucy was nearing her Master's, Joris was approaching school age, three levers at once. We decided together: if not now, then never.
+    In early September 2025 we had to clear our second vegetable field. Again a lot of work that wasn't rewarded, again a plan that didn't work out. In that moment the doubts about the restaurant and the old Australia idea flowed together: now or never. The decision to close the restaurant and the decision to emigrate were made together, not one after the other.
   </p>
 
   <h3>When did you close die farm?</h3>
@@ -553,41 +816,57 @@ const weiterlesen = [
     We ran die farm, our restaurant in Essen, from 1 February 2019 to 31 December 2025, almost seven years. In October 2025 we celebrated our own wedding there, two months before closing. Our team was loyal and well-rehearsed, staff shortages were not a closure factor. Emigration was.
   </p>
 
-  <h3>Which visa are you using, and why?</h3>
+  <h3>How did you find a sponsoring employer as a chef in Australia?</h3>
   <p>
-    We are going via the 186 visa (Employer Nomination Scheme) – that requires a sponsoring employer in Australia, who I'll be looking for on the ground as a trained chef. Skill Assessment as a cook is complete, PTE Academic passed with score 89 (Proficient), Migration Agent <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz</a> engaged. The full 186 route is described in a separate article: <a href="/en/186-visa-australia-family-guide">186 Visa Australia</a>.
+    Not online, but on the ground. The tip from the German expat meetup in Byron Bay: walk around, be open, talk to people, hospitality is always hiring. That's exactly how it went. I walked into restaurants in person and introduced myself. In the end we found each other with <a href="https://www.threeways.store/" target="_blank" rel="noopener">Threeways of the Valley</a>, a cafe-restaurant in the Byron Bay hinterland rainforest. After many evenings talking about plans and visions, the team there is now working on their part of my 186 application, the nomination.
   </p>
 
-  <h3>Why is Christian travelling alone first?</h3>
+  <h3>Why did Christian fly alone first?</h3>
   <p>
-    I fly on 23 June 2026 alone, Lucy and the kids follow on 26 July. In those four weeks I'll be looking for a sponsor, a car and a place to live in the Northern Rivers region. Job and sponsor are the key to everything, visa, accommodation, family reunification. When Lucy and the kids arrive, the frame should be in place.
+    I flew ahead on 23 June 2026, Lucy and the kids landed in Brisbane on 28 July. In the five weeks in between I sorted sponsor, car and accommodation: a job perspective with a sponsorship commitment, a Jeep for 4,500 AUD, two housesits and an Airbnb as a bridge. When the three of them arrived, the frame was in place. That was exactly the plan, and it worked.
   </p>
 
   <h3>What does it cost to move to Australia as a family?</h3>
   <p>
-    By early May 2026 we had spent around 6,900 € on preparation in Germany (biggest item: family flights). The 186 visa application fees for four people come to roughly 9,825 AUD. For the start in Australia we have a 30,000 AUD reserve. The full breakdown – paid, estimated, with sources – is in our cost article: <a href="/en/cost-of-moving-to-australia-family-guide">Cost of Moving to Australia as a Family</a>.
+    By early May 2026 we had spent around 6,900 € on preparation in Germany, the biggest item being the family flights. The 186 visa application fees for four people were raised on 1 July 2026 to roughly 12,280 AUD (previously roughly 9,825 AUD). For the start in Australia we had a 30,000 AUD reserve. The full breakdown, paid and estimated, is in our cost article: <a href="/en/cost-of-moving-to-australia-family-guide">Cost of Moving to Australia as a Family</a>.
+  </p>
+
+  <h3>Do you regret emigrating?</h3>
+  <p>
+    One week into being a family of four here, it is too early for that question. Right now we have a very good feeling, it feels right. We are honest about it: this is not everyday life yet, it feels more like a holiday. The distance to our families in Germany is hard, daily video calls make it okay. If the visa doesn't work out, we fly back, that has been part of the plan from the start.
+  </p>
+
+  <h3>Which visa are you using, and what is the status?</h3>
+  <p>
+    We all entered on the free eVisitor (subclass 651). The goal is the permanent 186 visa (Employer Nomination Scheme). It is a two-stage process: first the employer lodges the nomination, then I lodge my visa application, supported by <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz</a>. The nomination is currently in progress. After the 186 application the whole family receives a bridging visa; the eVisitor carries no no-further-stay condition. We describe the whole route here: <a href="/en/186-visa-australia-family-guide">186 Visa Australia</a>.
   </p>
 
   <!-- Trust Box -->
   <div class="trust-box">
     <p>
-      <strong>Note:</strong> This article describes our personal story and plan as of May 2026. It is not migration, financial or life advice and does not replace consultation with a registered Migration Agent or other professionals. Visa fees, exchange rates, job market and rental prices change all the time, binding information only comes directly from the relevant authorities.
+      <strong>Note:</strong> This article describes our personal story, last updated on 5 August 2026, one week after the whole family arrived. It is not migration, financial or life advice and does not replace consultation with a registered Migration Agent or other professionals. Visa fees, exchange rates, job market and rental prices change all the time, binding information only comes directly from the relevant authorities.
     </p>
     <p>
-      <strong>Last updated:</strong> 9 June 2026 · <strong>Update:</strong> We update this article quarterly, especially after my arrival on 23 June and after the family reunification on 26 July.
+      <strong>Last updated:</strong> 5 August 2026 · <strong>Update:</strong> We update this article quarterly, next when visa, housing and school start have become concrete.
     </p>
     <p>
       <strong>Sources:</strong>
       <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs – Visa 186</a>,
+      <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651" target="_blank" rel="noopener">Department of Home Affairs – eVisitor 651</a>,
+      <a href="https://education.nsw.gov.au/schooling/calendars" target="_blank" rel="noopener">NSW Department of Education – Term Dates</a>,
       <a href="https://www.tradesrecognitionaustralia.gov.au/" target="_blank" rel="noopener">Trades Recognition Australia (TRA)</a>,
       <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE Academic</a>,
       <a href="https://jkmigrate.com.au/" target="_blank" rel="noopener">Johannes Kunz – JK Migrate</a>
     </p>
   </div>
 
-  <!-- Update Log -->
+  <!-- Update log -->
   <div class="update-log">
     <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">5 August 2026</span>
+      <span class="update-log__text">Major update after arrival: new stages (goodbye, flight, five weeks alone, family landing, where we stand), decision chapter corrected (September 2025 instead of spring 2024), 186 fees updated to July 2026, new photos and videos from Australia.</span>
+    </div>
     <div class="update-log__eintrag">
       <span class="update-log__datum">28 May 2026</span>
       <span class="update-log__text">Article published (English version of the German original from May 2026).</span>
@@ -602,13 +881,13 @@ const weiterlesen = [
     <div>
       <p class="author-box__name">Christian Schippel</p>
       <p class="author-box__bio">
-        Trained chef, 37, lived in Byron Bay from 2016 to 2018. Moving back to the Northern Rivers in summer 2026 with Lucy and two kids. Writes here about visas, costs and everything that happens along the way.
+        Trained chef, 37, lived in Byron Bay 2017–2018. Moved back to the Northern Rivers with Lucy and two kids in summer 2026. Writes here about visas, costs and everything that happens along the way.
         <a href="/en/about">More about us</a>
       </p>
     </div>
   </div>
 
-  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <!-- Related articles -->
   <WeiterlesenPfade
     lang="en"
     eyebrow="Keep reading"
@@ -616,13 +895,13 @@ const weiterlesen = [
     artikel={weiterlesen}
   />
 
-  <!-- Newsletter-Sektion, Texte 1:1 wie live -->
+  <!-- Newsletter section -->
   <section class="section" id="newsletter" aria-labelledby="newsletter-h">
     <div class="container container--text">
       <div class="card texture-paper newsletter-karte">
         <p class="eyebrow">Did this help?</p>
         <h2 id="newsletter-h">We will send you updates</h2>
-        <p>New articles, real experiences, concrete numbers, straight to your inbox.</p>
+        <p>How things continue with visa, housing and school start, you read here first: new articles, real experiences, concrete numbers, straight to your inbox.</p>
         <form class="newsletter-form" data-newsletter>
           <input type="email" placeholder="Your email address" required aria-label="Your email address" />
           <button type="submit">Subscribe</button>
@@ -687,10 +966,7 @@ const weiterlesen = [
     border-radius: var(--radius-m);
   }
 
-  /* --- Inhaltsverzeichnis ---------------------------------------
-     StickyToc erwartet ab 1100px eine Spalte vom Parent-Layout.
-     Im Ein-Spalten-Artikel: bis 1439px als Aufklappbox im Fluss,
-     ab 1440px als sticky Randspalte links neben der Lese-Spalte. */
+  /* --- Table of contents ------------------------------------------ */
   :global(.prose) {
     position: relative;
   }
@@ -719,7 +995,248 @@ const weiterlesen = [
     }
   }
 
-  /* --- Info-Boxen (Key takeaways, Status & note) ------------------ */
+  /* --- Stage register (unique element) ----------------------------- */
+  .etappe {
+    position: relative;
+    display: grid;
+    gap: var(--space-1);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-block-start: 2px dashed var(--line-strong, var(--line));
+    border-radius: 0 0 var(--radius-m) var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    margin-block: var(--space-8) var(--space-5);
+  }
+
+  .etappe::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -6px;
+    inset-inline: var(--space-4);
+    height: 10px;
+    background-image: radial-gradient(circle at 5px 5px, var(--bg) 3px, transparent 3.5px);
+    background-size: 22px 10px;
+    background-repeat: repeat-x;
+  }
+
+  .etappe__label {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+  }
+
+  .etappe__jahr {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  .etappe__notiz {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--accent-strong);
+    rotate: -1.2deg;
+    justify-self: end;
+  }
+
+  @media (min-width: 1100px) {
+    .etappe {
+      margin-inline-start: calc(-1 * var(--space-6));
+      padding-inline-start: var(--space-6);
+    }
+  }
+
+  /* --- Added notes (two time layers) ------------------------------- */
+  .nachtrag {
+    position: relative;
+    background: var(--surface);
+    border: 1px dashed var(--line-strong, var(--line));
+    border-radius: var(--radius-s);
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    margin-block: var(--space-6);
+    rotate: -0.4deg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .nachtrag:nth-of-type(even) {
+    rotate: 0.4deg;
+  }
+
+  .nachtrag::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -10px;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    width: 92px;
+    height: 20px;
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 26%, transparent);
+    rotate: -2deg;
+    border-radius: 2px;
+  }
+
+  .nachtrag__stempel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+    margin-block-end: var(--space-2);
+  }
+
+  .nachtrag--auftakt {
+    margin-block-start: var(--space-5);
+  }
+
+  /* --- Polaroids --------------------------------------------------- */
+  .polaroid {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-2);
+    margin-block: var(--space-6);
+    margin-inline: 0;
+    max-width: 420px;
+  }
+
+  .polaroid--links {
+    rotate: -1.4deg;
+  }
+
+  .polaroid--rechts {
+    rotate: 1.2deg;
+  }
+
+  .polaroid--gross {
+    max-width: 560px;
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .polaroid__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--ink);
+    padding-block: var(--space-2);
+    text-align: center;
+  }
+
+  /* --- Evidence pieces (glued-in artefacts with tape corners) ------ */
+  .beweis {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-4);
+    margin-block: var(--space-6);
+    margin-inline: 0;
+    max-width: 640px;
+    rotate: 0.6deg;
+  }
+
+  .beweis::before,
+  .beweis::after {
+    content: '';
+    position: absolute;
+    width: 84px;
+    height: 22px;
+    background: color-mix(in srgb, var(--sage, #7e8b6d) 24%, transparent);
+    border-radius: 2px;
+  }
+
+  .beweis::before {
+    inset-block-start: -10px;
+    inset-inline-start: -18px;
+    rotate: -35deg;
+  }
+
+  .beweis::after {
+    inset-block-end: -10px;
+    inset-inline-end: -18px;
+    rotate: -35deg;
+  }
+
+  /* On small screens the tape corners stay inside the viewport (no h-scroll) */
+  @media (max-width: 719.98px) {
+    .beweis::before {
+      inset-inline-start: 8px;
+    }
+
+    .beweis::after {
+      inset-inline-end: 8px;
+    }
+  }
+
+  .beweis img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .beweis__caption {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    padding-block-start: var(--space-2);
+  }
+
+  /* --- Video label (subtle YouTube pointer, no embed) -------------- */
+  .video-etikett {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--surface);
+    border: 1px dashed var(--line-strong, var(--line));
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    margin-block: var(--space-5);
+    rotate: -0.3deg;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .video-etikett:hover .video-etikett__text {
+    text-decoration: underline;
+  }
+
+  .video-etikett__play {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.7rem;
+  }
+
+  .video-etikett__text {
+    font-size: var(--text--1);
+  }
+
+  /* --- Numbers bento: calm 2x2 ------------------------------------- */
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- Info boxes -------------------------------------------------- */
   .info-box {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -750,14 +1267,18 @@ const weiterlesen = [
     margin-block-start: var(--space-2);
   }
 
-  /* --- Fakten-Tabelle (Fact matrix) ------------------------------ */
-  .schritte-tabelle {
+  /* --- Fact matrix table ------------------------------------------- */
+  .tabelle-halter {
+    overflow-x: auto;
+  }
+
+  .kosten-tabelle {
     width: 100%;
     border-collapse: collapse;
     font-size: var(--text--1);
   }
 
-  .schritte-tabelle th {
+  .kosten-tabelle th {
     text-align: left;
     font-family: var(--font-mono);
     font-weight: 400;
@@ -768,17 +1289,17 @@ const weiterlesen = [
     border-bottom: 1px solid var(--line);
   }
 
-  .schritte-tabelle td {
+  .kosten-tabelle td {
     padding: var(--space-2);
     border-bottom: 1px dashed var(--line);
     vertical-align: top;
   }
 
-  .schritte-tabelle tbody tr:last-child td {
+  .kosten-tabelle tbody tr:last-child td {
     border-bottom: none;
   }
 
-  /* --- Trust Box ------------------------------------------------- */
+  /* --- Trust box --------------------------------------------------- */
   .trust-box {
     background: var(--surface);
     border: 1px dashed var(--line);
@@ -792,7 +1313,7 @@ const weiterlesen = [
     margin-block-start: var(--space-3);
   }
 
-  /* --- Update-Log ------------------------------------------------ */
+  /* --- Update log -------------------------------------------------- */
   .update-log {
     font-family: var(--font-mono);
     font-size: var(--text--1);
@@ -817,7 +1338,7 @@ const weiterlesen = [
     color: var(--ink-soft);
   }
 
-  /* --- Autor-Box ------------------------------------------------- */
+  /* --- Author box -------------------------------------------------- */
   .author-box {
     display: flex;
     gap: var(--space-4);
