@@ -291,14 +291,16 @@ const kinderfragen = [
   <p><strong>Weniger Sorge um die Zukunft.</strong> Nicht nur innenpolitisch, auch außenpolitisch sehen wir viele Dinge in Deutschland schlechter werden. Gerade was Perspektiven für die Kinder betrifft. Das mag dramatisch klingen. Aber es ist ein ehrlicher Grund.</p>
 
   <figure class="polaroid polaroid--links">
-    <img
-      src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
-      srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp"
-      alt="Kleinkind zieht eine gelbe Schubkarre voller geernteter Kürbisse und Gemüse über eine Wiese"
-      loading="lazy"
-      width="960"
-      height="720"
-    />
+    <picture>
+      <source srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
+        alt="Kleinkind zieht eine gelbe Schubkarre voller geernteter Kürbisse und Gemüse über eine Wiese"
+        loading="lazy"
+        width="960"
+        height="720"
+      />
+    </picture>
     <figcaption class="polaroid__caption">Draußen aufwachsen: Ernte-Hilfe auf unserem Feld.</figcaption>
   </figure>
 
@@ -494,14 +496,16 @@ const kinderfragen = [
   <p>Für die Kinder hat das funktioniert. Für Lucy und mich war es schwer, aber wir haben es uns gegenseitig nicht anmerken lassen.</p>
 
   <figure class="polaroid polaroid--rechts">
-    <img
-      src="/assets/images/de-abreise-gepaeck-p960.jpg"
-      srcset="/assets/images/de-abreise-gepaeck-p960.webp"
-      alt="Gepacktes Reisegepäck für den Abflug nach Australien"
-      loading="lazy"
-      width="960"
-      height="720"
-    />
+    <picture>
+      <source srcset="/assets/images/de-abreise-gepaeck-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/de-abreise-gepaeck-p960.jpg"
+        alt="Gepacktes Reisegepäck für den Abflug nach Australien"
+        loading="lazy"
+        width="960"
+        height="720"
+      />
+    </picture>
     <figcaption class="polaroid__caption">23. Juni: zwei Koffer, ein Abschied.</figcaption>
   </figure>
 
@@ -999,6 +1003,10 @@ const kinderfragen = [
 
   .polaroid--rechts {
     rotate: 1.2deg;
+  }
+
+  .polaroid picture {
+    display: block;
   }
 
   .polaroid img {

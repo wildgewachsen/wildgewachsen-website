@@ -291,14 +291,16 @@ const kinderfragen = [
   <p><strong>Less worry about the future.</strong> Not only domestically, but internationally too, we see many things in Germany going downhill. Especially what it means for the kids' prospects. That may sound dramatic. But it's an honest reason.</p>
 
   <figure class="polaroid polaroid--links">
-    <img
-      src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
-      srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp"
-      alt="Toddler pulling a yellow wheelbarrow full of harvested pumpkins and vegetables across a meadow"
-      loading="lazy"
-      width="960"
-      height="720"
-    />
+    <picture>
+      <source srcset="/assets/images/de-feld-ernte-schubkarre-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/de-feld-ernte-schubkarre-p960.jpg"
+        alt="Toddler pulling a yellow wheelbarrow full of harvested pumpkins and vegetables across a meadow"
+        loading="lazy"
+        width="960"
+        height="720"
+      />
+    </picture>
     <figcaption class="polaroid__caption">Growing up outdoors: harvest help on our field.</figcaption>
   </figure>
 
@@ -494,14 +496,16 @@ const kinderfragen = [
   <p>For the kids, it worked. For Lucy and me it was hard, but we didn't let each other see it.</p>
 
   <figure class="polaroid polaroid--rechts">
-    <img
-      src="/assets/images/de-abreise-gepaeck-p960.jpg"
-      srcset="/assets/images/de-abreise-gepaeck-p960.webp"
-      alt="Packed luggage for the flight to Australia"
-      loading="lazy"
-      width="960"
-      height="720"
-    />
+    <picture>
+      <source srcset="/assets/images/de-abreise-gepaeck-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/de-abreise-gepaeck-p960.jpg"
+        alt="Packed luggage for the flight to Australia"
+        loading="lazy"
+        width="960"
+        height="720"
+      />
+    </picture>
     <figcaption class="polaroid__caption">23 June: two suitcases, one goodbye.</figcaption>
   </figure>
 
@@ -988,6 +992,10 @@ const kinderfragen = [
 
   .polaroid--rechts {
     rotate: 1.2deg;
+  }
+
+  .polaroid picture {
+    display: block;
   }
 
   .polaroid img {
