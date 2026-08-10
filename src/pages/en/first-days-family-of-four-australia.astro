@@ -1,0 +1,902 @@
+---
+// B12 EN "First days as a family of four" (counterpart of
+// blog/erste-tage-familie-zu-viert-australien.astro, same staging, English text).
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import FotoStory from '../../components/FotoStory.astro';
+import InlineVideo from '../../components/InlineVideo.astro';
+
+const toc = [
+  { id: 'monitor', label: 'Two screens in Brisbane' },
+  { id: 'stau', label: 'A reunion in a traffic jam' },
+  { id: 'strand', label: 'The first beach afternoon' },
+  { id: 'jetlag', label: 'Jet lag times four: the first nights' },
+  { id: 'housesit', label: 'Move number one: the house sit' },
+  { id: 'alltag', label: 'Chickens, two dogs, passionfruit' },
+  { id: 'vogelbild', label: 'Walkie-talkies and a bird drawing' },
+  { id: 'skateparks', label: 'Skate parks: the new family hobby' },
+  { id: 'bilanz', label: 'What remains after week one' },
+  { id: 'faq', label: 'Frequently asked questions' },
+];
+
+const weiterlesen = [
+  {
+    href: '/en/arrived-first-days-in-australia',
+    meta: 'Arriving & everyday life',
+    titel: 'Arriving in Australia: My First Days Alone',
+  },
+  {
+    href: '/en/from-vegetable-garden-to-australia-family-move',
+    meta: 'Our story',
+    titel: 'From a Vegetable Garden to Australia: Moving as a Family',
+  },
+  {
+    href: '/en/moving-to-australia-with-kids-family-guide',
+    meta: 'Family & kids',
+    titel: 'Moving to Australia With Kids (2 and 6): Honest Family Prep',
+  },
+];
+
+const fotostoryHousesit = [
+  {
+    src: '/assets/images/au-huehnerstall-kinder.jpg',
+    alt: 'Joris looks down at the chicken coop on the slope, black and white chickens pecking below',
+    caption: 'Once a day: check what the chickens have laid.',
+  },
+  {
+    src: '/assets/images/au-huehnernest-eier.jpg',
+    alt: 'Linnea looks at the straw inside the chicken coop, a black hen next to her',
+    caption: 'Sometimes three eggs, sometimes none. The hens are getting on a bit.',
+  },
+  {
+    src: '/assets/images/au-tinsel-streicheln-p960.jpg',
+    alt: 'Joris and Linnea bend down to pet Tinsel, with Lucy’s hand in between',
+    caption: 'Tinsel needed two or three days. Best friends ever since.',
+  },
+];
+---
+
+<ArtikelLayout
+  title="A family of four again: our first days together in Australia"
+  description="The reunion in Brisbane, two hours of traffic, jet lag times four and week one in a house sit. Real numbers: 3,061.80 euros for flights, 7 duffel bags, 30 kg each."
+  lang="en"
+  eyebrow="Arriving & everyday life"
+  datum="13 August 2026"
+  lesezeit="9 min read"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/first-days-family-of-four-australia" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/first-days-family-of-four-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="A family of four again: our first days together in Australia" />
+    <meta property="og:description" content="The reunion in Brisbane, two hours of traffic, jet lag times four and week one in a house sit. Real numbers: 3,061.80 euros for flights, 7 duffel bags, 30 kg each." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/first-days-family-of-four-australia" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A family of four again: our first days together in Australia" />
+    <meta name="twitter:description" content="The reunion in Brisbane, two hours of traffic, jet lag times four and week one in a house sit. Real numbers: 3,061.80 euros for flights, 7 duffel bags, 30 kg each." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "A family of four again: our first days together in Australia",
+    "description": "The reunion in Brisbane, two hours of traffic, jet lag times four and week one in a house sit. Real numbers: 3,061.80 euros for flights, 7 duffel bags, 30 kg each.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg",
+      "caption": "The first beach afternoon after arriving: a child runs through the shallow waves near Byron Bay.",
+      "creditText": "Wildgewachsen",
+      "copyrightNotice": "© Wildgewachsen",
+      "creator": {
+        "@type": "Person",
+        "name": "Christian Schippel"
+      },
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/kontakt"
+    },
+    "datePublished": "2026-08-13T10:00:00+10:00",
+    "dateModified": "2026-08-13T10:00:00+10:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/en/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/en/first-days-family-of-four-australia"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "The first days after a family arrives in Australia"
+    },
+    "keywords": "family arriving in Australia, first days Australia family, emigrating to Australia with kids, jet lag kids Australia, house sitting Australia family, Emirates baggage family"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does jet lag last for kids after arriving in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For us it took several days until everyone slept through the night again. We deliberately pushed through the arrival day, but Lucy still fell asleep with the kids between 6 and 7 pm at first, and Linnea went back to daytime naps for a few days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What did the flights to Australia cost for the family?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "3,061.80 euros for Lucy and the two kids together, Emirates from Düsseldorf via Dubai to Brisbane, booked in late March 2026 via Expedia. Christian's single flight a month earlier cost 467 euros."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much luggage can a family take on Emirates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On our fare it was 30 kilograms per person, split across as many pieces as you like. That is why we packed 7 lightweight duffel bags instead of suitcases. The exact allowance depends on the Emirates fare you book."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does a family live right after arriving in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We used an Airbnb in Byron Bay as a bridge for the first three nights (765.70 euros for the whole booking of almost ten days, during which Christian already lived there alone). Then we moved into a house sit in the hinterland for four weeks, which costs no rent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How cold is winter in and around Byron Bay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In August the mean daily maximum at the Cape Byron station is 20.2 degrees Celsius, the minimum 13.2 degrees. Nights get chilly, colder in the hinterland, while days in the sun are pleasantly warm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly do kids settle in after emigrating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our two were wide awake and happy the moment they reached the beach on the first afternoon. After a week both seemed settled, but honestly: it is early days, and much of it still feels like a holiday because school and work have not started yet."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wildgewachsen-australien.de/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/en/blog" },
+      { "@type": "ListItem", "position": 3, "name": "A family of four again: our first days together in Australia", "item": "https://wildgewachsen-australien.de/en/first-days-family-of-four-australia" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero -->
+  <picture>
+    <source srcset="/assets/images/au-erster-strandnachmittag.webp" type="image/webp" />
+    <img
+      class="artikel-bild"
+      src="/assets/images/au-erster-strandnachmittag.jpg"
+      alt="A child runs as a silhouette through the shallow waves on the beach at Byron Bay, the water glittering in the afternoon light"
+      width="1600"
+      height="900"
+      fetchpriority="high"
+    />
+  </picture>
+
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="en" titel="Contents" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    I spent five weeks here alone. On 28 July, at eight in the morning, the plane from Dubai lands in Brisbane, carrying the three people we are doing all of this for: Lucy, Joris, Linnea. This article tells the story of our first days as a family in Australia. The reunion, the traffic jam right after, the jet lag nights, the move into the house sit. With everything that was beautiful, and the parts that were hard work.
+  </p>
+
+  <!-- Key takeaways -->
+  <div class="info-box">
+    <p class="info-box__titel">Key takeaways</p>
+    <ul>
+      <li>The flights for Lucy and the kids cost 3,061.80 euros in total (Emirates, Düsseldorf via Dubai to Brisbane).</li>
+      <li>Luggage trick: on our fare, 30 kg per person, split across as many pieces as you like. We packed 7 lightweight duffel bags instead of suitcases.</li>
+      <li>Plan the arrival day generously: for us, almost two hours of accident traffic came on top of the two-hour drive to Byron Bay.</li>
+      <li>Jet lag with kids: pushing through the first day helps, but it still took several days until everyone slept through the night.</li>
+      <li>House sitting right after arrival takes enormous pressure off: four weeks without rent, with a house, garden and animals.</li>
+      <li>Winter is a plus, not a minus: chilly nights, around 20 degrees in the daytime, and the kids are outside every single day.</li>
+    </ul>
+  </div>
+
+  <!-- Section: monitor -->
+  <h2 id="monitor">Two screens in Brisbane</h2>
+
+  <p>I was almost late. That morning the drive to Brisbane took me nearly three and a half hours, rush hour, heavy traffic. The whole way, the same thought kept looping: the three of them will walk out of that plane any minute, they have no Australian phone reception, and I am not there. Luckily the flight itself was delayed. It was enough.</p>
+
+  <p>In the arrivals area in Brisbane there is something I had never consciously noticed before: two screens above the waiting crowd showing who is currently walking out of the baggage hall towards the exit. You see your people before you see them.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-brisbane-ankunft-monitore.webp" type="image/webp" />
+      <img src="/assets/images/au-brisbane-ankunft-monitore.jpg" alt="Arrivals area at Brisbane Airport: two monitors under the ceiling show the camera feed of the corridor that arriving passengers walk through" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>The two screens above the arrivals gate. This is where I saw the three of them first.</figcaption>
+  </figure>
+
+  <p>I stared at those screens like a goalkeeper at a penalty. And then, there they were, as a small camera image: Linnea asleep in the stroller, Joris pushing the stroller, and Lucy pushing the luggage trolley with the seven heavy duffel bags. The grin came instantly. When the three of them came around the corner in real life, the tears came too. We did not say much and simply held each other. Joris meanwhile was looking around with huge eyes, because everything was new. Linnea slept through the entire moment.</p>
+
+  {/* This article's signature piece: the arrivals board. Airport display look
+      (Courier, paper card), lines taken verbatim from the scene, LANDED as
+      the section's single terracotta accent. Purely static, no invented
+      flight data. */}
+  <figure class="ankunftstafel" aria-label="Arrivals board: the scene at Brisbane Airport as a display board">
+    <div class="ankunftstafel__kopf">BRISBANE AIRPORT · ARRIVALS · 28 JUL 2026</div>
+    <dl class="ankunftstafel__liste">
+      <div class="ankunftstafel__zeile ankunftstafel__zeile--akzent">
+        <dt>DXB → BNE</dt>
+        <dd>LANDED</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>LINNEA</dt>
+        <dd>ASLEEP IN THE STROLLER</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>JORIS</dt>
+        <dd>PUSHING THE STROLLER</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>LUCY</dt>
+        <dd>7 DUFFEL BAGS ON THE TROLLEY</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>CHRISTIAN</dt>
+        <dd>3.5 HOUR DRIVE · WAITING AT THE MONITOR</dd>
+      </div>
+    </dl>
+    <figcaption class="ankunftstafel__caption">Five weeks of waiting, condensed into one display board.</figcaption>
+  </figure>
+
+  <p>Why the three of them flew four weeks after me in the first place, and what five weeks alone on the other side of the world feel like, is in the article about <a href="/en/arrived-first-days-in-australia">my first days alone in Australia</a>. The same weeks also exist in moving pictures: as the first episode of our documentary on YouTube, <a href="https://www.youtube.com/watch?v=UJRxrk_UyIw" target="_blank" rel="noopener">"Angekommen. Und es fühlt sich falsch an."</a> (in German). The short version: those five weeks made one thing very clear to me. Life without my family is no longer fulfilling. No matter where you are and how beautiful it is.</p>
+
+  <!-- Section: traffic jam -->
+  <h2 id="stau">A reunion in a traffic jam</h2>
+
+  <p>The luggage trick first, because after this nobody thinks about logistics anymore: on our <a href="https://www.emirates.com/de/german/before-you-fly/baggage/checked-baggage/" target="_blank" rel="noopener">Emirates</a> fare, every person could take 30 kilograms of luggage, split across as many pieces as you like. So we did not buy suitcases, we bought duffel bags. They weigh next to nothing and they are flexible. In the end, seven olive-green bags stood on the trolley: our entire remaining life from Germany. The flights for the three of them cost 3,061.80 euros in total. How we booked and why the price was what it was is in the <a href="/en/cost-of-flights-to-australia-family-guide">article about flight costs for a family</a>.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-kofferraum-seesaecke.webp" type="image/webp" />
+      <img src="/assets/images/au-kofferraum-seesaecke.jpg" alt="Fully packed boot of the Jeep: olive-green duffel bags with Emirates tags, a green carry-on suitcase and a folded stroller" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Seven duffel bags, one stroller, one boot. It fits. Just.</figcaption>
+  </figure>
+
+  <p>Then the drive home, two hours to Byron Bay. So we thought. Because of an accident, nothing moved on the highway for almost two hours. Linnea had woken up right before we hit the jam, of all moments. I had imagined that moment differently: I could not pick her up, I was driving. I caught up on it in the middle of the traffic jam, between standing cars. She was completely overtired and still incredibly happy.</p>
+
+  <Randnotiz lang="en" ausrichtung="rechts">Joris' first verdict on Australia from the back seat: the trucks look different. Apart from that, the highway looks pretty normal. Except for the wrong side.</Randnotiz>
+
+  <p>Lucy was completely wrecked. She had not slept a minute on the plane, probably that subconscious tension of being solely responsible for two kids on a long-haul flight. Joris practically fell asleep standing up when we got out of the car in the jam, but he powered through because he did not want to miss anything. And so there we stood, on an Australian highway, finally a family of four again, talking about the flight and about what we wanted to do in the first days.</p>
+
+  <!-- Section: beach -->
+  <h2 id="strand">The first beach afternoon</h2>
+
+  <p>The Airbnb in Byron Bay was unpacked quickly, and then we went straight to the beach. It was the moment of the day, maybe of the week: both kids were suddenly wide awake the second they stood at the water. Joris ran up and down the water's edge like mad, Linnea jumped into the small shallow waves at the front. The tiredness of 24 hours of travelling had simply evaporated.</p>
+
+  <PullQuote lang="en">Simply seeing that we are doing the right thing, and that despite all the hard steps still ahead of us, we are somehow making this life here work.</PullQuote>
+
+  <p>That is how I described this afternoon afterwards, and I stand by it. The most important thing is that the kids live a happy and fulfilled life. On this afternoon, it looked exactly like that.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-familienselfie-duene-tag2.webp" type="image/webp" />
+      <img src="/assets/images/au-familienselfie-duene-tag2.jpg" alt="Family selfie at the edge of the dunes in evening light: Lucy carrying Linnea, Joris and Christian next to them, beach and surf behind" loading="lazy" decoding="async" width="1200" height="900" />
+    </picture>
+    <figcaption>Day 2, edge of the dunes, all four of us in one picture. The first one in five weeks.</figcaption>
+  </figure>
+
+  <!-- Section: jet lag -->
+  <h2 id="jetlag">Jet lag times four: the first nights</h2>
+
+  <p>How long does jet lag last with kids? For us: several days until everyone slept through the night again. The three of them landed in the morning, and we deliberately pushed through the day to get into the rhythm. It helped, but it was no magic trick.</p>
+
+  <AufklappBox titel="Our jet lag days in detail" lang="en">
+    <ul>
+      <li><strong>Push through the day:</strong> morning arrival, no nap for the big ones, early bedtime. The classic, and it works, just not instantly.</li>
+      <li><strong>Early nights:</strong> for the first days, Lucy fell asleep with the kids between 6 and 7 pm. Not planned, it just happened.</li>
+      <li><strong>Relapses allowed:</strong> Linnea went back to daytime naps for a few days, which she normally does not do anymore. The mix of jet lag and all the new impressions was clearly exhausting, Joris was unusually tired early too.</li>
+      <li><strong>Early risers win:</strong> we get up early and go to bed early anyway. The Australian rhythm plays right into that. Hence the sunrise beach photos on the second morning.</li>
+    </ul>
+  </AufklappBox>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-duenenpfad-morgen.webp" type="image/webp" />
+      <img src="/assets/images/au-duenenpfad-morgen.jpg" alt="Linnea in a red poncho walks alone down the sandy dune path between coastal trees towards the beach, early morning light" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Day 2, just after sunrise. If everyone is awake anyway, you might as well go to the beach.</figcaption>
+  </figure>
+
+  <!-- Section: house sit -->
+  <h2 id="housesit">Move number one: the house sit in the hinterland</h2>
+
+  <p>The Airbnb was only ever the bridge: booked until 31 July, 765.70 euros in total for the almost ten days during which I had already lived there alone. For the three of them it was just three nights. Then the next move was due, the first as a family: out of Byron Bay, into the hinterland near Murwillumbah, into our house sit for the next four weeks.</p>
+
+  <p>The house is an absolute stroke of luck. Beautiful, big, well kept, in a very quiet suburb, with a property the kids can run onto straight from the front door. Four weeks without moving, without rent, with time to plan everything else. How house sitting works in detail and how we found our sits will get its own article, because it is our biggest cost lever while settling in. What life here costs overall, we track in our <a href="/en/cost-of-moving-to-australia-family-guide">big cost guide</a>.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-housesit-ankunft-veranda.webp" type="image/webp" />
+      <img src="/assets/images/au-housesit-ankunft-veranda.jpg" alt="Veranda of the house sit with white pillars: Linnea sits on her toy unicorn, Joris rides his scooter on the gravel driveway, rainforest behind" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Arrived: unicorn on the veranda, scooter on the driveway, rainforest all around.</figcaption>
+  </figure>
+
+  <!-- Numbers bento -->
+  <div class="zahlen-bento">
+    <BentoSektion lang="en">
+      <BentoKachel zahl="€3,061.80" label="Flights for Lucy and the kids, Emirates via Dubai" akzent lang="en" />
+      <BentoKachel zahl="7" label="duffel bags for our entire remaining life" raster lang="en" />
+      <BentoKachel zahl="2 hrs" label="accident traffic on the way home, barely moving" raster lang="en" />
+      <BentoKachel zahl="€765.70" label="Airbnb bridge in Byron Bay, almost ten days" raster lang="en" />
+    </BentoSektion>
+  </div>
+
+  <!-- Section: everyday life -->
+  <h2 id="alltag">Chickens, two dogs, passionfruit</h2>
+
+  <p>The house sit comes with two dogs, and within days the kids developed a complete little farm routine. Tinsel looks like a Dalmatian but is a mixed breed, nobody knows exactly what. She was shy and anxious for the first two or three days; since she thawed, she has been a wonderfully uncomplicated, sweet dog who listens to every word on walks. Hammer, the small black one, has only lived here for a few weeks himself, the owners rescued him. His hearing is not great anymore, but he is a very funny old gentleman who has zero interest in walks: he always trots a few steps down the driveway, turns around and shuffles back to the house.</p>
+
+  <p>The kids feed both dogs entirely on their own, roam the property with them, and Linnea especially is head over heels. Only when it comes to poo patrol does the fun stop. That remains a parent job.</p>
+
+  <FotoStory bilder={fotostoryHousesit} lang="en" ueberschrift="House-sit life in three pictures" />
+
+  <p>Then there are the chickens. Once a day someone checks what has been laid: sometimes three eggs, sometimes one, sometimes none, the ladies are getting on a bit. Fresh food and water every two days, and of course the kids handle that. Passionfruit grows along the fence, and the two of them are obsessed: every day they check whether ripe fruit has dropped, ready to eat on the spot.</p>
+
+  <Randnotiz lang="en" ausrichtung="rechts" pfeil>I always come along for egg collecting. In this region, carpet pythons do occasionally help themselves to a chicken. So far: not a single visit. Snakes are barely active in winter.</Randnotiz>
+
+  <p>And yes, that margin note is meant seriously: the <a href="https://murwillumbahsnakecatchers.com.au/coastal-carpet-python" target="_blank" rel="noopener">local snake catcher in Murwillumbah</a> regularly reports carpet pythons helping themselves to chickens. In the Australian winter, though, snakes are barely active; things only pick up again in spring. So our rule is relaxed, but it is a rule: the kids do not go into the coop alone.</p>
+
+  <!-- Section: bird drawing -->
+  <h2 id="vogelbild">Walkie-talkies and a bird drawing</h2>
+
+  <p>Two things tell the story of our arrival better than any summary. The first: the walkie-talkies the kids brought from Germany. The typical house-sit scene now looks like this: I am at the laptop, Lucy is in the kitchen, and the kids are out on the property, radioing in what they are up to. We even tested whether the range covers walks: I set off with Linnea and Tinsel, Joris radioed from the house, and the signal held the whole way. Back in Germany we had a lovely flat, but no garden. A property where kids can simply run off was always a dream of ours. Here, it is almost the default.</p>
+
+  <p>The second: a sheet of paper. Lucy had taken both kids and Tinsel to a small park nearby; the "playground" there consists of one swing in the middle of a huge meadow. Afterwards, Joris sat down and drew what he had seen: the birds.</p>
+
+  <figure class="scrapbook">
+    <picture>
+      <source srcset="/assets/images/au-vogelbild-joris-zeichnung.webp" type="image/webp" />
+      <img src="/assets/images/au-vogelbild-joris-zeichnung.jpg" alt="Joris' coloured pencil drawing: a cockatoo with a yellow crest, a brush turkey with a red head, a flying bird, trees and an orange sun" loading="lazy" decoding="async" width="1200" height="900" />
+    </picture>
+    <figcaption class="scrapbook__caption">Cockatoo, brush turkey, orange sun: Australia, drawn after one week.</figcaption>
+  </figure>
+
+  <p>In the picture: a cockatoo with a yellow crest, a brush turkey, a flying bird, plus trees and a big orange sun. Brush turkeys and cockatoos the kids can now name with confidence. And then there is their favourite: a bird that looks like it is wearing a yellow mask. The two of them find it absolutely hilarious.</p>
+
+  <Randnotiz lang="en" ausrichtung="rechts">The bird with the yellow mask really is called that: Masked Lapwing. The yellow face wattles gave it its name.</Randnotiz>
+
+  <!-- Section: skate parks -->
+  <h2 id="skateparks">Skate parks: the new family hobby</h2>
+
+  <p>One thing we had not planned for: besides working our way through the beaches, the first days turned into a little skate park tour. We discovered that basically every town here has its own skate park, and not a sad concrete leftover, but properly good, well-kept facilities. Free, public, simply there. Joris borrowed a park scooter from the people whose house we are sitting, we are kindly allowed to use everything, helmet included. Linnea has her toy unicorn to ride around on. And Lucy and I have since bought a skateboard and are trying to teach ourselves.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-skatepark-joris.webp" type="image/webp" />
+      <img src="/assets/images/au-skatepark-joris.jpg" alt="Spacious concrete skate park between trees, Joris standing at the edge with helmet and scooter, other kids and teenagers in the background" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Rails, bowls, shade sails, picnic tables. In a small town.</figcaption>
+  </figure>
+
+  <p>The only park that was properly busy was the one in Byron Bay. And that is exactly where the most beautiful thing was on display: every age group was there. Dads with their kids, the dads mostly on skateboards themselves, teenagers, some older folks too. And nobody gets worked up about toddlers standing in the way. Simply a lovely way of sharing a space. Exactly the kind of everyday life we came here for: kids outside, movement, and a public space that carries it.</p>
+
+  <div class="skatepark-duo">
+    <figure class="artikel-figur artikel-figur--duo">
+      <picture>
+        <source srcset="/assets/images/au-skatepark-linnea-einhorn-p960.webp" type="image/webp" />
+        <img src="/assets/images/au-skatepark-linnea-einhorn-p960.jpg" alt="Linnea pushes her white toy unicorn across the skate park concrete against the light, a ramp next to her" loading="lazy" decoding="async" width="960" height="1280" />
+      </picture>
+      <figcaption>Unicorn meets half-pipe.</figcaption>
+    </figure>
+    <figure class="artikel-figur artikel-figur--duo">
+      <picture>
+        <source srcset="/assets/images/au-skatepark-familienselfie.webp" type="image/webp" />
+        <img src="/assets/images/au-skatepark-familienselfie.jpg" alt="Tilted family selfie from a low angle at the skate park: Christian doing the shaka sign, Joris grinning, Lucy and Linnea behind, blue sky" loading="lazy" decoding="async" width="1200" height="900" />
+      </picture>
+      <figcaption>Skate park closing shot, slightly crooked. Matches our riding style.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Section: verdict -->
+  <h2 id="bilanz">What remains after week one</h2>
+
+  <p>What does the first week as an emigrated family feel like? The short answer: good, but we deliberately do not fully trust the peace yet. There is still a bit of holiday mood in the air, because I am not working yet and Joris is not in school yet. It is too early to say that all of this was worth it. Right now it feels like it. But that is also simply the first phase.</p>
+
+  <p>For Lucy, the beginning was the harder part. Everything was a lot: the new impressions, the new life, the huge responsibility, and then we also had to move again after just a few days. Her questions were the big ones: How are we going to manage all of this? What is best for the kids? It took a few days until she had properly arrived too. There was no real argument, but it was not all postcard material either.</p>
+
+  <PullQuote lang="en">The beginning is exhausting, because you cannot do anything in your usual rhythms. But it is rather beautiful when you notice, in lots of small moments, what life could be like.</PullQuote>
+
+  <p>That is Lucy's sentence from the first week, and it captures it better than anything I could phrase. Alongside it, her second, quieter finding: it is lovely to see that Joris and Linnea feel so at home here, and that the move does not seem nearly as drastic for them as you would have expected beforehand.</p>
+
+  <p>And winter? So far it is an argument for Australia, not against it. Nights get chilly, noticeably so in the hinterland, while the <a href="http://reg.bom.gov.au/climate/averages/tables/cw_058216.shtml" target="_blank" rel="noopener">August mean at the coast</a> is a 20.2 degree maximum and a 13.2 degree minimum. In practice that means: fire in the wood stove in the morning, beach or skate park in the afternoon. The mere fact that it is winter and we are still outside every single day is almost worth the whole thing on its own.</p>
+
+  <InlineVideo
+    src="/assets/images/au-kaminofen-loop.mp4"
+    poster="/assets/images/au-kaminofen-poster.jpg"
+    caption="Evening programme in August: lighting the fire, all four of us in front of it."
+    lang="en"
+    aspectRatio="16 / 9"
+  />
+
+  <p>This is how our days end at the moment: Lucy lights the wood stove with the kids, it gets dark outside, the house smells of firewood. How things continue, with school, housing and everything still open, we will tell step by step. How this whole journey started in the first place is in <a href="/en/from-vegetable-garden-to-australia-family-move">our story from vegetable garden to Australia</a>. And how we prepared the kids for all of this, in the <a href="/en/moving-to-australia-with-kids-family-guide">guide to emigrating with kids</a>.</p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>How long does jet lag last for kids after arriving in Australia?</h3>
+  <p>For us it took several days until everyone slept through the night again. We deliberately pushed through the arrival day, but Lucy still fell asleep with the kids between 6 and 7 pm at first, and Linnea went back to daytime naps for a few days.</p>
+
+  <h3>What did the flights to Australia cost for the family?</h3>
+  <p>3,061.80 euros for Lucy and the two kids together, Emirates from Düsseldorf via Dubai to Brisbane, booked in late March 2026 via Expedia. My single flight a month earlier cost 467 euros.</p>
+
+  <h3>How much luggage can a family take on Emirates?</h3>
+  <p>On our fare it was 30 kilograms per person, split across as many pieces as you like. That is why we packed 7 lightweight duffel bags instead of suitcases. The exact allowance depends on the Emirates fare you book, worth checking before booking.</p>
+
+  <h3>Where does a family live right after arriving in Australia?</h3>
+  <p>We used an Airbnb in Byron Bay as a bridge for the first three nights (765.70 euros for the whole booking of almost ten days, during which I already lived there alone). Then we moved into a house sit in the hinterland for four weeks, which costs no rent.</p>
+
+  <h3>How cold is winter in and around Byron Bay?</h3>
+  <p>In August the mean daily maximum at the Cape Byron station is 20.2 degrees Celsius, the minimum 13.2 degrees. Nights get chilly, colder in the hinterland, while days in the sun are pleasantly warm.</p>
+
+  <h3>How quickly do kids settle in after emigrating?</h3>
+  <p>Our two were wide awake and happy the moment they reached the beach on the first afternoon. After a week both seemed settled, but the honest part belongs in the answer too: it is early days, and much of it still feels like a holiday because school and work have not started yet.</p>
+
+  <p><strong>Status:</strong> August 2026. Lucy and the kids have been here since 28 July, we are living in the hinterland house sit until the end of August. How things continue with housing and school, we will tell here step by step.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Note:</strong> This post tells our personal experience of arriving in Australia as a family.
+      It is not legal or migration advice. Airline baggage rules and fares can change; the airline's
+      own information is always what counts. Climate data: Bureau of Meteorology, Cape Byron station (August monthly means).
+    </p>
+    <p>
+      <strong>Last updated:</strong> 13 August 2026
+    </p>
+  </div>
+
+  <!-- Update log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">13 Aug 2026</span>
+      <span class="update-log__text">Article published.</span>
+    </div>
+  </div>
+
+  <!-- Author box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Trained chef, 37, lived in Byron Bay from 2016–2018. Emigrated back to the Northern Rivers with Lucy and two kids in the winter of 2026. Writes here about visas, costs and everything that happens along the way.
+        <a href="/en/about">More about us</a>
+      </p>
+    </div>
+  </div>
+
+  <WeiterlesenPfade
+    lang="en"
+    eyebrow="Keep reading"
+    ueberschrift="You might also like"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter section (handler central in BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Want to know how it continues?</p>
+        <h2 id="newsletter-h">We send you updates</h2>
+        <p>How things continue with school, housing and settling in, we tell first in the newsletter.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Your email address" required aria-label="Your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-hinweis">You can unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    height: auto;
+    max-block-size: 75vh;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  .artikel-figur {
+    max-inline-size: 420px;
+    margin-inline: 0;
+    margin-block: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: -1deg;
+  }
+
+  .artikel-figur:nth-of-type(even) {
+    rotate: 1deg;
+  }
+
+  .artikel-figur img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-s);
+  }
+
+  .artikel-figur figcaption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  .skatepark-duo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .skatepark-duo .artikel-figur--duo {
+    flex: 1 1 260px;
+    max-inline-size: 340px;
+  }
+
+  .ankunftstafel {
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: var(--radius-m);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-card);
+    rotate: 0.6deg;
+    font-family: var(--font-mono);
+    color: #33291f;
+  }
+
+  .ankunftstafel__kopf {
+    font-size: var(--text--1);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a6c58;
+    border-block-end: 2px solid #33291f;
+    padding-block-end: var(--space-2);
+  }
+
+  .ankunftstafel__liste {
+    margin: 0;
+  }
+
+  .ankunftstafel__zeile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-2);
+    border-block-end: 1px dashed #ddd3bc;
+    font-size: var(--text--1);
+    letter-spacing: 0.06em;
+  }
+
+  .ankunftstafel__zeile dt {
+    font-weight: 700;
+  }
+
+  .ankunftstafel__zeile dd {
+    margin: 0;
+    text-align: right;
+  }
+
+  .ankunftstafel__zeile--akzent {
+    color: #a63e22;
+    font-weight: 700;
+  }
+
+  .ankunftstafel__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: #a63e22;
+    text-align: center;
+    margin-block-start: var(--space-3);
+  }
+
+  .scrapbook {
+    position: relative;
+    max-inline-size: 520px;
+    margin-inline: 0;
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: 2px;
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3);
+    rotate: -1.2deg;
+  }
+
+  .scrapbook::before,
+  .scrapbook::after {
+    content: '';
+    position: absolute;
+    inline-size: 84px;
+    block-size: 26px;
+    background: color-mix(in srgb, #e8dcc2 78%, transparent);
+    border: 1px solid color-mix(in srgb, #c9b98f 60%, transparent);
+    box-shadow: 0 1px 2px rgb(51 41 31 / 0.12);
+  }
+
+  .scrapbook::before {
+    inset-block-start: -12px;
+    inset-inline-start: -26px;
+    rotate: -38deg;
+  }
+
+  .scrapbook::after {
+    inset-block-end: -12px;
+    inset-inline-end: -26px;
+    rotate: -38deg;
+  }
+
+  .scrapbook img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  .scrapbook__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: #a63e22;
+    text-align: center;
+    margin-block-start: var(--space-2);
+  }
+
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>

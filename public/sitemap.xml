@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wildgewachsen-australien.de/</loc>
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://wildgewachsen-australien.de/blog</loc>
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -110,6 +110,12 @@
   <url>
     <loc>https://wildgewachsen-australien.de/blog/auto-kaufen-australien-gebrauchtwagen-ummelden</loc>
     <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien</loc>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

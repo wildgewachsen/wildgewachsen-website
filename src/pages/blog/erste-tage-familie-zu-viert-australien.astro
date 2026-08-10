@@ -1,0 +1,917 @@
+---
+// B12 "Erste Tage als Familie zu viert" (Slot 13.08.2026, Thema A9).
+// Neuer Artikel, Quellen: CONTEXT.md Update 10.08.2026 (B12-Interview),
+// Transkripte IMG_2234/2434/2436, recherche/erste-tage-familie-ankunft-b12-2026-08-10.md
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import FotoStory from '../../components/FotoStory.astro';
+import InlineVideo from '../../components/InlineVideo.astro';
+
+const toc = [
+  { id: 'monitor', label: 'Zwei Bildschirme in Brisbane' },
+  { id: 'stau', label: 'Das Wiedersehen im Stau' },
+  { id: 'strand', label: 'Der erste Strandnachmittag' },
+  { id: 'jetlag', label: 'Jetlag zu viert: die ersten Nächte' },
+  { id: 'housesit', label: 'Umzug Nummer eins: das Housesit' },
+  { id: 'alltag', label: 'Hühner, zwei Hunde, Passionsfrüchte' },
+  { id: 'vogelbild', label: 'Walkie-Talkies und ein Vogel-Bild' },
+  { id: 'skateparks', label: 'Skateparks: das neue Familien-Hobby' },
+  { id: 'bilanz', label: 'Was nach der ersten Woche bleibt' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const weiterlesen = [
+  {
+    href: '/blog/angekommen-erste-tage-australien',
+    meta: 'Ankommen & Alltag',
+    titel: 'Angekommen in Australien: meine ersten Tage allein',
+  },
+  {
+    href: '/blog/vom-gemuesegarten-nach-australien-auswanderung-familie',
+    meta: 'Unsere Geschichte',
+    titel: 'Vom Gemüsegarten nach Australien: unser ganzer Weg',
+  },
+  {
+    href: '/blog/auswandern-australien-mit-kindern-vorbereitung',
+    meta: 'Familie & Kinder',
+    titel: 'Auswandern mit Kindern: wie wir unsere zwei vorbereitet haben',
+  },
+];
+
+const fotostoryHousesit = [
+  {
+    src: '/assets/images/au-huehnerstall-kinder.jpg',
+    alt: 'Joris schaut von oben auf den Hühnerstall am Hang, unten picken schwarze und weiße Hühner',
+    caption: 'Einmal am Tag: nachsehen, was die Hühner gelegt haben.',
+  },
+  {
+    src: '/assets/images/au-huehnernest-eier.jpg',
+    alt: 'Linnea schaut im Hühnerstall auf das Stroh, neben ihr eine schwarze Henne',
+    caption: 'Mal sind es drei Eier, mal keins. Die Hühner sind schon älter.',
+  },
+  {
+    src: '/assets/images/au-tinsel-streicheln-p960.jpg',
+    alt: 'Joris und Linnea beugen sich zu Tinsel hinunter und streicheln sie, dazwischen Lucys Hand',
+    caption: 'Tinsel brauchte zwei, drei Tage. Seitdem: beste Freunde.',
+  },
+];
+---
+
+<ArtikelLayout
+  title="Wieder zu viert: unsere ersten Tage als Familie in Australien"
+  description="Das Wiedersehen in Brisbane, zwei Stunden Stau, Jetlag zu viert und die erste Woche im Housesit. Echte Zahlen: 3.061,80 Euro Flüge, 7 Seesäcke, 30 kg pro Person."
+  lang="de"
+  eyebrow="Ankommen & Alltag"
+  datum="13. August 2026"
+  lesezeit="9 Min. Lesezeit"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/first-days-family-of-four-australia" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wieder zu viert: unsere ersten Tage als Familie in Australien" />
+    <meta property="og:description" content="Das Wiedersehen in Brisbane, zwei Stunden Stau, Jetlag zu viert und die erste Woche im Housesit. Echte Zahlen: 3.061,80 Euro Flüge, 7 Seesäcke, 30 kg pro Person." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg" />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Wieder zu viert: unsere ersten Tage als Familie in Australien" />
+    <meta name="twitter:description" content="Das Wiedersehen in Brisbane, zwei Stunden Stau, Jetlag zu viert und die erste Woche im Housesit. Echte Zahlen: 3.061,80 Euro Flüge, 7 Seesäcke, 30 kg pro Person." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wieder zu viert: unsere ersten Tage als Familie in Australien",
+    "description": "Das Wiedersehen in Brisbane, zwei Stunden Stau, Jetlag zu viert und die erste Woche im Housesit. Echte Zahlen: 3.061,80 Euro Flüge, 7 Seesäcke, 30 kg pro Person.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://wildgewachsen-australien.de/assets/images/au-erster-strandnachmittag-og.jpg",
+      "caption": "Der erste Strandnachmittag nach der Ankunft: ein Kind rennt durch die auslaufende Welle bei Byron Bay.",
+      "creditText": "Wildgewachsen",
+      "copyrightNotice": "© Wildgewachsen",
+      "creator": {
+        "@type": "Person",
+        "name": "Christian Schippel"
+      },
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Wildgewachsen"
+      },
+      "license": "https://wildgewachsen-australien.de/impressum",
+      "acquireLicensePage": "https://wildgewachsen-australien.de/kontakt"
+    },
+    "datePublished": "2026-08-13T10:00:00+10:00",
+    "dateModified": "2026-08-13T10:00:00+10:00",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Schippel",
+      "url": "https://wildgewachsen-australien.de/ueber-uns"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wildgewachsen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wildgewachsen-australien.de/assets/images/wildgewachsen_logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Die ersten Tage nach der Familien-Ankunft in Australien"
+    },
+    "keywords": "Familie Ankunft Australien, erste Tage Australien Familie, Auswandern Australien mit Kindern, Jetlag Kinder Australien, Housesitting Australien Familie, Emirates Gepäck Familie"
+  }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert der Jetlag mit Kindern nach der Ankunft in Australien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bei uns hat es mehrere Tage gedauert, bis alle wieder durchgeschlafen haben. Wir haben den Ankunftstag bewusst durchgezogen, trotzdem schlief Lucy mit den Kindern anfangs zwischen 18 und 19 Uhr ein, und Linnea machte tagsüber wieder Mittagsschlaf."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was haben die Flüge nach Australien für die Familie gekostet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "3.061,80 Euro für Lucy und die zwei Kinder zusammen, Emirates von Düsseldorf über Dubai nach Brisbane, gebucht Ende März 2026 über Expedia. Christians Einzelflug einen Monat vorher kostete 467 Euro."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie viel Gepäck darf eine Familie bei Emirates mitnehmen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In unserem Tarif waren es 30 Kilogramm pro Person, aufteilbar auf beliebig viele Gepäckstücke. Wir haben deshalb 7 leichte Seesäcke statt Koffer genommen. Die Freigepäckmenge hängt bei Emirates vom gebuchten Tarif ab."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wo wohnt eine Familie direkt nach der Ankunft in Australien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir hatten für die ersten drei Nächte ein Airbnb in Byron Bay als Brücke (765,70 Euro für die gesamte Buchung von knapp zehn Tagen, in denen Christian schon allein dort wohnte). Danach ging es für vier Wochen in ein Housesit im Hinterland, das keine Miete kostet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie kalt ist der Winter in Byron Bay und Umgebung?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Im August liegt das durchschnittliche Tagesmaximum an der Station Cape Byron bei 20,2 Grad, das Minimum bei 13,2 Grad. Nachts wird es frisch, im Hinterland auch kälter, tagsüber ist es in der Sonne angenehm warm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie schnell leben sich Kinder nach der Auswanderung ein?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unsere zwei waren am ersten Nachmittag am Strand schlagartig hellwach und glücklich. Nach einer Woche wirkten beide angekommen, aber wir sagen dazu: es ist noch früh, gerade fühlt sich vieles wie Urlaub an, weil Schule und Arbeit noch nicht gestartet sind."
+        }
+      }
+    ]
+  }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://wildgewachsen-australien.de/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wildgewachsen-australien.de/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Wieder zu viert: unsere ersten Tage als Familie in Australien", "item": "https://wildgewachsen-australien.de/blog/erste-tage-familie-zu-viert-australien" }
+    ]
+  }
+    </script>
+  </Fragment>
+
+  <!-- Hero: erster Strandnachmittag, Joris rennt durch die auslaufende Welle -->
+  <picture>
+    <source srcset="/assets/images/au-erster-strandnachmittag.webp" type="image/webp" />
+    <img
+      class="artikel-bild"
+      src="/assets/images/au-erster-strandnachmittag.jpg"
+      alt="Ein Kind rennt als Silhouette durch die auslaufende Welle am Strand von Byron Bay, das Wasser glitzert im Nachmittagslicht"
+      width="1600"
+      height="900"
+      fetchpriority="high"
+    />
+  </picture>
+
+  <div class="toc-halter">
+    <StickyToc eintraege={toc} lang="de" titel="Inhalt" />
+  </div>
+
+  <!-- Intro -->
+  <p>
+    Fünf Wochen war ich allein hier. Am 28. Juli, morgens um acht, landet der Flieger aus Dubai in Brisbane, und darin sitzen die drei Menschen, für die wir das alles machen: Lucy, Joris, Linnea. Dieser Artikel erzählt unsere ersten Tage als Familie in Australien. Das Wiedersehen, den Stau danach, die Jetlag-Nächte, den Umzug ins Housesit. Mit allem, was schön war, und dem, was zäh war.
+  </p>
+
+  <!-- Das Wichtigste in Kürze -->
+  <div class="info-box">
+    <p class="info-box__titel">Das Wichtigste in Kürze</p>
+    <ul>
+      <li>Die Flüge für Lucy und die Kinder kosteten zusammen 3.061,80 Euro (Emirates, Düsseldorf über Dubai nach Brisbane).</li>
+      <li>Gepäck-Trick: in unserem Tarif 30 kg pro Person, aufteilbar auf beliebig viele Stücke. Wir haben 7 leichte Seesäcke statt Koffer genommen.</li>
+      <li>Rechne den Ankunftstag großzügig: bei uns kamen fast zwei Stunden Unfall-Stau auf die zwei Stunden Fahrt nach Byron Bay obendrauf.</li>
+      <li>Jetlag mit Kindern: Tag durchziehen hilft, trotzdem hat es mehrere Tage gedauert, bis alle durchgeschlafen haben.</li>
+      <li>Housesitting direkt nach der Ankunft nimmt enorm Druck raus: vier Wochen ohne Miete, mit Haus, Garten und Tieren.</li>
+      <li>Der Winter ist ein Pluspunkt: nachts frisch, tagsüber um die 20 Grad und die Kinder sind jeden Tag draußen.</li>
+    </ul>
+  </div>
+
+  <!-- Abschnitt: Monitor -->
+  <h2 id="monitor">Zwei Bildschirme in Brisbane</h2>
+
+  <p>Ich wäre fast zu spät gekommen. Für die Strecke nach Brisbane habe ich an dem Morgen fast dreieinhalb Stunden gebraucht, Berufsverkehr, super viel Stau. Im Auto ging mir die ganze Zeit derselbe Gedanke durch den Kopf: die drei kommen gleich aus dem Flieger, haben keinen australischen Empfang auf dem Handy, und ich stehe nicht da. Der Flug hatte zum Glück selbst Verspätung. Es hat gereicht.</p>
+
+  <p>In Brisbane gibt es im Ankunftsbereich etwas, das ich vorher noch nie bewusst wahrgenommen habe: zwei Bildschirme über den Wartenden, auf denen man sieht, wer gerade aus der Kofferhalle kommt und den Gang zum Ausgang entlangläuft. Man sieht seine Leute also, bevor man sie sieht.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-brisbane-ankunft-monitore.webp" type="image/webp" />
+      <img src="/assets/images/au-brisbane-ankunft-monitore.jpg" alt="Ankunftsbereich am Flughafen Brisbane: zwei Monitore unter der Decke zeigen das Kamerabild des Gangs, durch den die Ankommenden laufen" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Die zwei Bildschirme über der Ankunftsschleuse. Hier habe ich die drei zuerst gesehen.</figcaption>
+  </figure>
+
+  <p>Ich habe auf diese Bildschirme gestarrt wie auf einen Elfmeter. Und dann waren sie da, als kleines Kamerabild: Linnea schlief im Kinderwagen, Joris schob den Kinderwagen, und Lucy schob den Kofferwagen mit den sieben schweren Seesäcken. Das Grinsen kam sofort. Als die drei dann live um die Ecke kamen, kamen bei mir die Tränen. Wir haben nicht viel gesagt und uns einfach in den Arm genommen. Joris hat währenddessen total interessiert überall hingeguckt, weil alles neu war. Linnea hat den kompletten Moment verschlafen.</p>
+
+  {/* Unikat dieses Artikels: die Ankunftstafel. Flughafen-Anzeige-Optik
+      (Courier, Papier-Karte), Zeilen wortgleich aus der erzaehlten Szene,
+      GELANDET als der EINE Terrakotta-Akzent der Sektion. Rein statisch,
+      keine erfundenen Flugdaten. */}
+  <figure class="ankunftstafel" aria-label="Ankunftstafel: die Szene am Flughafen Brisbane als Anzeigetafel">
+    <div class="ankunftstafel__kopf">BRISBANE AIRPORT · ANKUNFT · 28.07.2026</div>
+    <dl class="ankunftstafel__liste">
+      <div class="ankunftstafel__zeile ankunftstafel__zeile--akzent">
+        <dt>DXB → BNE</dt>
+        <dd>GELANDET</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>LINNEA</dt>
+        <dd>SCHLÄFT IM KINDERWAGEN</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>JORIS</dt>
+        <dd>SCHIEBT DEN KINDERWAGEN</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>LUCY</dt>
+        <dd>7 SEESÄCKE AUF DEM KOFFERWAGEN</dd>
+      </div>
+      <div class="ankunftstafel__zeile">
+        <dt>CHRISTIAN</dt>
+        <dd>3,5 STUNDEN ANFAHRT · WARTET AM MONITOR</dd>
+      </div>
+    </dl>
+    <figcaption class="ankunftstafel__caption">Fünf Wochen Warten, auf eine Anzeigetafel gebracht.</figcaption>
+  </figure>
+
+  <p>Warum die drei überhaupt vier Wochen später geflogen sind als ich, und wie sich fünf Wochen allein am anderen Ende der Welt anfühlen, steht im Artikel über <a href="/blog/angekommen-erste-tage-australien">meine ersten Tage allein in Australien</a>. Dieselbe Zeit gibt es auch bewegt: als erste Folge unserer Doku auf YouTube, <a href="https://www.youtube.com/watch?v=UJRxrk_UyIw" target="_blank" rel="noopener">„Angekommen. Und es fühlt sich falsch an."</a> Die Kurzfassung: die fünf Wochen haben mir klar gezeigt, dass das Leben ohne meine Familie nicht mehr erfüllend ist. Egal, wo man ist und wie schön es dort ist.</p>
+
+  <!-- Abschnitt: Stau -->
+  <h2 id="stau">Das Wiedersehen im Stau</h2>
+
+  <p>Der Gepäck-Trick zuerst, weil danach niemand mehr an Logistik denkt: Bei <a href="https://www.emirates.com/de/german/before-you-fly/baggage/checked-baggage/" target="_blank" rel="noopener">Emirates</a> durfte in unserem Tarif jede Person 30 Kilogramm Gepäck mitnehmen, aufteilbar auf beliebig viele Gepäckstücke. Also haben wir keine Koffer gekauft, sondern Seesäcke. Die wiegen fast nichts und sind flexibel. Am Ende standen sieben olivgrüne Säcke auf dem Kofferwagen, unser komplettes restliches Leben aus Deutschland. Die Flüge für die drei haben zusammen 3.061,80 Euro gekostet. Wie wir gebucht haben und warum der Preis so war, steht im <a href="/blog/fluege-nach-australien-kosten-familie">Artikel über die Flugkosten für eine Familie</a>.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-kofferraum-seesaecke.webp" type="image/webp" />
+      <img src="/assets/images/au-kofferraum-seesaecke.jpg" alt="Vollgepackter Kofferraum des Jeeps: olivgrüne Seesäcke mit Emirates-Anhängern, ein grüner Handgepäck-Koffer und ein zusammengeklappter Buggy" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Sieben Seesäcke, ein Buggy, ein Kofferraum. Passt. Knapp.</figcaption>
+  </figure>
+
+  <p>Dann der Heimweg, zwei Stunden Fahrt nach Byron Bay. Dachten wir. Wegen eines Unfalls ging auf der Strecke fast zwei Stunden gar nichts. Linnea war ausgerechnet kurz vor dem Stau aufgewacht. Ich hatte mir diesen Moment anders vorgestellt, ich konnte sie ja nicht auf den Arm nehmen, ich saß am Steuer. Nachgeholt habe ich es dann mitten im Stau, zwischen stehenden Autos. Sie war total übermüdet und trotzdem super happy.</p>
+
+  <Randnotiz lang="de" ausrichtung="rechts">Joris' erstes Australien-Fazit vom Rücksitz: die LKWs sehen anders aus. Sonst sieht der Highway erstmal recht normal aus. Bis auf die falsche Seite.</Randnotiz>
+
+  <p>Lucy war komplett gerädert. Sie hatte im Flieger kein Auge zugemacht, wahrscheinlich diese unterbewusste Anspannung, auf dem langen Flug allein für zwei Kinder verantwortlich zu sein. Joris ist beim Aussteigen im Stau gefühlt im Stehen eingeschlafen, hat aber knallhart durchgezogen, weil er nichts verpassen wollte. Und so standen wir da, auf einem australischen Highway, endlich wieder zu viert, und haben über den Flug geredet und darüber, was wir in den ersten Tagen machen wollen.</p>
+
+  <!-- Abschnitt: Strand -->
+  <h2 id="strand">Der erste Strandnachmittag</h2>
+
+  <p>Das Airbnb in Byron Bay war schnell ausgeräumt, und dann sind wir direkt an den Strand. Es war der Moment des Tages, vielleicht der Woche: Beide Kinder waren schlagartig hellwach, als sie am Wasser standen. Joris ist wie bekloppt am Wassersaum hin und her gerannt, Linnea ist vorne in die kleinen auslaufenden Wellen gesprungen. Die Müdigkeit von 24 Stunden Reise war wie verflogen.</p>
+
+  <PullQuote lang="de">Einfach zu sehen, dass wir das Richtige tun und dass wir das Leben hier trotz all der schweren Schritte, die noch vor uns liegen, schon irgendwie hinbekommen.</PullQuote>
+
+  <p>So habe ich diesen Nachmittag danach beschrieben, und dabei bleibe ich. Das Wichtigste ist, dass die Kinder ein glückliches und erfülltes Leben haben. An diesem Nachmittag sah es genau danach aus.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-familienselfie-duene-tag2.webp" type="image/webp" />
+      <img src="/assets/images/au-familienselfie-duene-tag2.jpg" alt="Familien-Selfie am Dünenrand im Abendlicht: Lucy trägt Linnea, Joris und Christian daneben, hinter ihnen Strand und Brandung" loading="lazy" decoding="async" width="1200" height="900" />
+    </picture>
+    <figcaption>Tag 2, Dünenrand, alle vier auf einem Bild. Das erste seit fünf Wochen.</figcaption>
+  </figure>
+
+  <!-- Abschnitt: Jetlag -->
+  <h2 id="jetlag">Jetlag zu viert: die ersten Nächte</h2>
+
+  <p>Wie lange dauert der Jetlag mit Kindern? Bei uns: mehrere Tage, bis alle wieder normal durchgeschlafen haben. Die drei sind morgens gelandet, und wir haben den Tag bewusst durchgezogen, um halbwegs in den Rhythmus zu kommen. Das hat geholfen, aber es war kein Zaubertrick.</p>
+
+  <AufklappBox titel="Unsere Jetlag-Tage im Detail" lang="de">
+    <ul>
+      <li><strong>Tag durchziehen:</strong> Ankunft morgens, kein Mittagsschlaf für die Großen, abends früh ins Bett. Der Klassiker, und er funktioniert, nur eben nicht sofort.</li>
+      <li><strong>Früh schlafen:</strong> Lucy ist die ersten Tage mit den Kindern zwischen 18 und 19 Uhr eingeschlafen. Nicht geplant, einfach passiert.</li>
+      <li><strong>Rückfall erlaubt:</strong> Linnea hat die ersten Tage wieder Mittagsschlaf gemacht, was sie sonst gar nicht mehr macht. Die Mischung aus Jetlag und den vielen neuen Eindrücken war offenbar sehr ermüdend, auch Joris war ungewohnt früh müde.</li>
+      <li><strong>Früh aufstehen als Vorteil:</strong> Wir stehen sowieso früh auf und gehen früh ins Bett. Der australische Rhythmus kommt einem da entgegen. Daher auch die Strandbilder vom Sonnenaufgang am zweiten Morgen.</li>
+    </ul>
+  </AufklappBox>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-duenenpfad-morgen.webp" type="image/webp" />
+      <img src="/assets/images/au-duenenpfad-morgen.jpg" alt="Linnea läuft im roten Poncho allein den sandigen Dünenpfad zwischen Küstenbäumen Richtung Strand, frühes Morgenlicht" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Tag 2, kurz nach Sonnenaufgang. Wenn eh alle wach sind, kann man auch an den Strand.</figcaption>
+  </figure>
+
+  <!-- Abschnitt: Housesit -->
+  <h2 id="housesit">Umzug Nummer eins: das Housesit im Hinterland</h2>
+
+  <p>Das Airbnb war nur die Brücke: gebucht bis zum 31. Juli, insgesamt 765,70 Euro für die knapp zehn Tage, in denen ich dort schon allein gewohnt hatte. Für die drei waren es nur drei Nächte. Dann stand der nächste Umzug an, der erste als Familie: raus aus Byron Bay, rein ins Hinterland bei Murwillumbah, in unser Housesit für die nächsten vier Wochen.</p>
+
+  <p>Das Haus ist ein absoluter Glücksfall. Wunderschön, groß, gepflegt, in einem sehr ruhigen Vorort, mit einem Grundstück, von dem die Kinder direkt aus der Haustür rauslaufen können. Vier Wochen ohne Umzug, ohne Miete, mit Zeit, alles Weitere zu planen. Wie Housesitting genau funktioniert und wie wir an unsere Sits gekommen sind, bekommt einen eigenen Artikel, denn es ist unser wichtigster Kosten-Hebel beim Ankommen. Was das Leben hier insgesamt kostet, sammeln wir laufend im <a href="/blog/auswandern-australien-kosten-familie-guide">großen Kosten-Überblick</a>.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-housesit-ankunft-veranda.webp" type="image/webp" />
+      <img src="/assets/images/au-housesit-ankunft-veranda.jpg" alt="Veranda des Housesits mit weißen Säulen: Linnea sitzt auf ihrem Spielzeug-Einhorn, Joris fährt auf der Kies-Einfahrt Roller, dahinter Regenwald" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Angekommen: Einhorn auf der Veranda, Roller auf der Einfahrt, Regenwald drumherum.</figcaption>
+  </figure>
+
+  <!-- Zahlen-Bento -->
+  <div class="zahlen-bento">
+    <BentoSektion lang="de">
+      <BentoKachel zahl="3.061,80 €" label="Flüge für Lucy und die Kinder, Emirates über Dubai" akzent lang="de" />
+      <BentoKachel zahl="7" label="Seesäcke für das ganze restliche Leben" raster lang="de" />
+      <BentoKachel zahl="2 Std." label="Unfall-Stau auf dem Heimweg, fast nichts ging" raster lang="de" />
+      <BentoKachel zahl="765,70 €" label="Airbnb-Brücke in Byron Bay, knapp zehn Tage" raster lang="de" />
+    </BentoSektion>
+  </div>
+
+  <!-- Abschnitt: Alltag -->
+  <h2 id="alltag">Hühner, zwei Hunde, Passionsfrüchte</h2>
+
+  <p>Zum Housesit gehören zwei Hunde, und die Kinder haben binnen Tagen einen kompletten Bauernhof-Alltag entwickelt. Tinsel sieht aus wie ein Dalmatiner, ist aber ein Mischling, so genau weiß das niemand. Sie war die ersten zwei, drei Tage schüchtern und ängstlich, seit sie aufgetaut ist, ist sie ein super lieber, unkomplizierter Hund, der beim Spazieren aufs Wort hört. Hammer, der kleine Schwarze, lebt selbst erst seit ein paar Wochen hier, die Besitzer haben ihn gerettet. Er hört nicht mehr so gut, ist dafür ein super lustiger alter Kerl, der keine Lust auf Spaziergänge hat: er trottet immer ein paar Schritte die Einfahrt runter, dreht um und geht zurück zum Haus.</p>
+
+  <p>Die Kinder füttern beide Hunde komplett allein, laufen mit ihnen über das Grundstück, und vor allem Linnea ist super verliebt. Nur beim Häufchen-Wegmachen hört der Spaß auf, das bleibt Elternarbeit.</p>
+
+  <FotoStory bilder={fotostoryHousesit} lang="de" ueberschrift="Housesit-Alltag in drei Bildern" />
+
+  <p>Dazu kommen die Hühner. Einmal am Tag wird nachgesehen, was gelegt wurde: mal sind es drei Eier, mal eins, mal keins, die Damen sind schon älter. Futter und Wasser gibt es alle zwei Tage frisch, und das übernehmen natürlich die Kinder. Am Zaun wächst Passionsfrucht, und die zwei sind ganz heiß darauf: jeden Tag wird geprüft, ob reife Früchte runtergefallen sind, die sofort gegessen werden können.</p>
+
+  <Randnotiz lang="de" ausrichtung="rechts" pfeil>Beim Eiersammeln gehe ich immer mit. In der Region holen sich Teppichpythons durchaus mal ein Huhn aus dem Stall. Bisher: kein einziger Besuch. Im Winter sind Schlangen kaum aktiv.</Randnotiz>
+
+  <p>Und ja, der Randnotiz-Punkt ist ernst gemeint: der <a href="https://murwillumbahsnakecatchers.com.au/coastal-carpet-python" target="_blank" rel="noopener">lokale Schlangenfänger in Murwillumbah</a> berichtet regelmäßig von Carpet Pythons, die sich an Hühnern bedienen. Im australischen Winter sind Schlangen allerdings kaum aktiv, richtig los geht es erst wieder ab dem Frühling. Deshalb ist die Regel bei uns entspannt, aber sie ist eine Regel: in den Stall gehen die Kinder nicht allein.</p>
+
+  <!-- Abschnitt: Vogelbild -->
+  <h2 id="vogelbild">Walkie-Talkies und ein Vogel-Bild</h2>
+
+  <p>Zwei Dinge erzählen unser Ankommen besser als jede Zusammenfassung. Das erste: die Walkie-Talkies, die die Kinder aus Deutschland mitgenommen haben. Die typische Szene im Housesit sieht inzwischen so aus: ich sitze am Laptop, Lucy ist in der Küche, und die Kinder sind draußen auf dem Grundstück unterwegs und funken rein, was sie gerade machen. Wir haben sogar getestet, ob die Reichweite für Spaziergänge reicht: ich bin mit Linnea und Tinsel los, Joris hat von zu Hause aus gefunkt, und der Empfang hielt den ganzen Weg. Zu Hause in Deutschland hatten wir eine schöne Wohnung, aber keinen Garten. Ein Grundstück, auf dem Kinder einfach loslaufen können, war für uns immer ein Traum. Hier ist es fast Standard.</p>
+
+  <p>Das zweite: ein Blatt Papier. Lucy war mit beiden Kindern und Tinsel in einem kleinen Park in der Nähe, der „Spielplatz" dort besteht aus einer Schaukel mitten auf einer riesigen Wiese. Danach hat Joris sich hingesetzt und gemalt, was er gesehen hat: die Vögel.</p>
+
+  <figure class="scrapbook">
+    <picture>
+      <source srcset="/assets/images/au-vogelbild-joris-zeichnung.webp" type="image/webp" />
+      <img src="/assets/images/au-vogelbild-joris-zeichnung.jpg" alt="Joris' Buntstift-Zeichnung: ein Kakadu mit gelber Haube, ein Buschhuhn mit rotem Kopf, ein fliegender Vogel, Bäume und eine orange Sonne" loading="lazy" decoding="async" width="1200" height="900" />
+    </picture>
+    <figcaption class="scrapbook__caption">Kakadu, Buschhuhn, orange Sonne: Australien, gemalt nach einer Woche.</figcaption>
+  </figure>
+
+  <p>Auf dem Bild: ein Kakadu mit gelber Haube, ein Buschhuhn, ein fliegender Vogel, dazu Bäume und eine große orange Sonne. Bush Turkey und Kakadus können die Kinder inzwischen sicher benennen. Und dann gibt es da noch ihren Liebling: einen Vogel, der aussieht, als würde er eine gelbe Maske tragen. Die beiden finden ihn total witzig.</p>
+
+  <Randnotiz lang="de" ausrichtung="rechts">Der Vogel mit der gelben Maske heißt wirklich so: Maskenkiebitz, auf Englisch Masked Lapwing. Die gelben Gesichtslappen sind namensgebend.</Randnotiz>
+
+  <!-- Abschnitt: Skateparks -->
+  <h2 id="skateparks">Skateparks: das neue Familien-Hobby</h2>
+
+  <p>Womit wir nicht gerechnet hatten: die ersten Tage sind neben Strand-Abklappern zu einer kleinen Skatepark-Tour geworden. Wir haben festgestellt, dass gefühlt jeder Ort hier einen eigenen Skatepark hat, und zwar keinen traurigen Beton-Rest, sondern richtig gute, gepflegte Anlagen. Kostenlos, öffentlich, einfach da. Joris hat sich einen Park-Scooter von den Leuten geliehen, bei denen wir das Housesit machen, wir dürfen netterweise alles mitbenutzen, Helm inklusive. Linnea hat ihr Spielzeug-Einhorn, mit dem sie herumfährt. Und Lucy und ich haben uns inzwischen ein Skateboard geholt und versuchen, es uns selbst beizubringen.</p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-skatepark-joris.webp" type="image/webp" />
+      <img src="/assets/images/au-skatepark-joris.jpg" alt="Weitläufiger Betonskatepark zwischen Bäumen, Joris steht mit Helm und Roller am Rand, im Hintergrund weitere Kinder und Jugendliche" loading="lazy" decoding="async" width="1200" height="675" />
+    </picture>
+    <figcaption>Rails, Bowls, Schattendächer, Picknickbänke. Und das in einem kleinen Ort.</figcaption>
+  </figure>
+
+  <p>Der einzige Park, der richtig voll war, war der in Byron Bay. Und genau da war das Schönste zu sehen: jedes Alter war vertreten. Väter mit ihren Kindern, die Väter meistens selbst auf dem Skateboard, Jugendliche, teilweise auch ältere Leute. Und niemand regt sich auf, dass Kleinkinder im Weg stehen. Einfach ein schönes Miteinander. Genau die Sorte Alltag, für die wir hergekommen sind: Kinder, die draußen sind, Bewegung, und eine Öffentlichkeit, die das mitträgt.</p>
+
+  <div class="skatepark-duo">
+    <figure class="artikel-figur artikel-figur--duo">
+      <picture>
+        <source srcset="/assets/images/au-skatepark-linnea-einhorn-p960.webp" type="image/webp" />
+        <img src="/assets/images/au-skatepark-linnea-einhorn-p960.jpg" alt="Linnea schiebt ihr weißes Spielzeug-Einhorn im Gegenlicht über den Beton des Skateparks, neben ihr eine Rampe" loading="lazy" decoding="async" width="960" height="1280" />
+      </picture>
+      <figcaption>Einhorn trifft Halfpipe.</figcaption>
+    </figure>
+    <figure class="artikel-figur artikel-figur--duo">
+      <picture>
+        <source srcset="/assets/images/au-skatepark-familienselfie.webp" type="image/webp" />
+        <img src="/assets/images/au-skatepark-familienselfie.jpg" alt="Schiefes Familien-Selfie aus der Froschperspektive im Skatepark: Christian macht die Shaka-Geste, Joris grinst, Lucy und Linnea dahinter, blauer Himmel" loading="lazy" decoding="async" width="1200" height="900" />
+      </picture>
+      <figcaption>Skatepark-Abschlussfoto, leicht schief. Passt zum Fahrstil.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Abschnitt: Bilanz -->
+  <h2 id="bilanz">Was nach der ersten Woche bleibt</h2>
+
+  <p>Wie fühlt sich die erste Woche als ausgewanderte Familie an? Die kurze Antwort: gut, aber wir trauen dem Frieden bewusst noch nicht ganz. Es ist noch so ein bisschen Urlaubsstimmung, weil ich noch nicht arbeite und Joris noch nicht in der Schule ist. Es ist zu früh, um zu sagen, dass sich das Ganze gelohnt hat. Gerade fühlt es sich so an. Aber das ist eben auch die erste Phase.</p>
+
+  <p>Für Lucy war der Anfang der härtere Teil. Alles war viel: die neuen Eindrücke, das neue Leben, die riesige Verantwortung, und dann mussten wir nach ein paar Tagen auch noch direkt umziehen. Ihre Fragen waren die großen: Wie kriegen wir das alles hin? Was ist das Beste für die Kinder? Es hat ein paar Tage gedauert, bis auch sie richtig angekommen ist. Einen richtigen Streit gab es nicht, aber es war nicht alles Postkarte.</p>
+
+  <PullQuote lang="de">Der Anfang ist anstrengend, weil man nichts in seinen gewohnten Rhythmen machen kann. Aber es ist ziemlich schön, wenn man in ganz vielen kleinen Momenten merkt, wie das Leben sein könnte.</PullQuote>
+
+  <p>Das ist Lucys Satz aus der ersten Woche, und er trifft es besser als alles, was ich formulieren könnte. Dazu kommt ihr zweiter, leiserer Befund: es ist schön zu sehen, dass Joris und Linnea sich hier so wohlfühlen und der Umzug für sie gar nicht so krass scheint, wie man es vorher erwartet hätte.</p>
+
+  <p>Und der Winter? Ist bisher ein Argument für Australien, nicht dagegen. Nachts wird es frisch, im Hinterland deutlich, tagsüber liegt das <a href="http://reg.bom.gov.au/climate/averages/tables/cw_058216.shtml" target="_blank" rel="noopener">August-Mittel an der Küste</a> bei 20,2 Grad Maximum und 13,2 Grad Minimum. Heißt praktisch: morgens Feuer im Kaminofen, nachmittags Strand oder Skatepark. Allein der Fakt, dass wir Winter haben und trotzdem jeden Tag draußen sind, ist das Ganze fast schon wert.</p>
+
+  <InlineVideo
+    src="/assets/images/au-kaminofen-loop.mp4"
+    poster="/assets/images/au-kaminofen-poster.jpg"
+    caption="Abendprogramm im August: Feuer machen, alle vier davor."
+    lang="de"
+    aspectRatio="16 / 9"
+  />
+
+  <p>So enden unsere Tage gerade: Lucy macht mit den Kindern Feuer im Kaminofen, draußen wird es dunkel, drinnen riecht es nach Holz. Wie es weitergeht, mit Schule, Wohnung und allem, was noch offen ist, erzählen wir Schritt für Schritt. Wie dieser ganze Weg überhaupt angefangen hat, steht in <a href="/blog/vom-gemuesegarten-nach-australien-auswanderung-familie">unserer Geschichte vom Gemüsegarten nach Australien</a>. Und wie wir die Kinder auf all das vorbereitet haben, im <a href="/blog/auswandern-australien-mit-kindern-vorbereitung">Guide zum Auswandern mit Kindern</a>.</p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Häufige Fragen</h2>
+
+  <h3>Wie lange dauert der Jetlag mit Kindern nach der Ankunft in Australien?</h3>
+  <p>Bei uns hat es mehrere Tage gedauert, bis alle wieder durchgeschlafen haben. Wir haben den Ankunftstag bewusst durchgezogen, trotzdem schlief Lucy mit den Kindern anfangs zwischen 18 und 19 Uhr ein, und Linnea machte tagsüber wieder Mittagsschlaf.</p>
+
+  <h3>Was haben die Flüge nach Australien für die Familie gekostet?</h3>
+  <p>3.061,80 Euro für Lucy und die zwei Kinder zusammen, Emirates von Düsseldorf über Dubai nach Brisbane, gebucht Ende März 2026 über Expedia. Mein Einzelflug einen Monat vorher kostete 467 Euro.</p>
+
+  <h3>Wie viel Gepäck darf eine Familie bei Emirates mitnehmen?</h3>
+  <p>In unserem Tarif waren es 30 Kilogramm pro Person, aufteilbar auf beliebig viele Gepäckstücke. Wir haben deshalb 7 leichte Seesäcke statt Koffer genommen. Die Freigepäckmenge hängt bei Emirates vom gebuchten Tarif ab, das lohnt sich vor der Buchung zu prüfen.</p>
+
+  <h3>Wo wohnt eine Familie direkt nach der Ankunft in Australien?</h3>
+  <p>Wir hatten für die ersten drei Nächte ein Airbnb in Byron Bay als Brücke (765,70 Euro für die gesamte Buchung von knapp zehn Tagen, in denen ich schon allein dort gewohnt habe). Danach ging es für vier Wochen in ein Housesit im Hinterland, das keine Miete kostet.</p>
+
+  <h3>Wie kalt ist der Winter in Byron Bay und Umgebung?</h3>
+  <p>Im August liegt das durchschnittliche Tagesmaximum an der Station Cape Byron bei 20,2 Grad, das Minimum bei 13,2 Grad. Nachts wird es frisch, im Hinterland auch kälter, tagsüber ist es in der Sonne angenehm warm.</p>
+
+  <h3>Wie schnell leben sich Kinder nach der Auswanderung ein?</h3>
+  <p>Unsere zwei waren am ersten Nachmittag am Strand schlagartig hellwach und glücklich. Nach einer Woche wirkten beide angekommen, aber dazu gehört die Wahrheit: es ist noch früh, gerade fühlt sich vieles wie Urlaub an, weil Schule und Arbeit noch nicht gestartet sind.</p>
+
+  <p><strong>Stand:</strong> August 2026. Lucy und die Kinder sind seit dem 28. Juli da, wir wohnen bis Ende August im Housesit im Hinterland. Wie es mit Wohnung und Schule weitergeht, erzählen wir hier Schritt für Schritt.</p>
+
+  <!-- Trust Box -->
+  <div class="trust-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Beitrag erzählt unsere persönliche Erfahrung als Familie beim Ankommen in Australien.
+      Er ist keine Rechts- oder Migrationsberatung. Gepäckregeln und Tarife der Airlines können sich ändern, verbindlich
+      ist immer die Auskunft der Airline. Klimadaten: Bureau of Meteorology, Station Cape Byron (Monatsmittel August).
+    </p>
+    <p>
+      <strong>Zuletzt aktualisiert:</strong> 13.08.2026
+    </p>
+  </div>
+
+  <!-- Update-Log -->
+  <div class="update-log">
+    <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">13.08.2026</span>
+      <span class="update-log__text">Artikel veröffentlicht.</span>
+    </div>
+  </div>
+
+  <!-- Autor-Box -->
+  <div class="author-box">
+    <div class="author-box__avatar">
+      <img src="/assets/images/author.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div>
+      <p class="author-box__name">Christian Schippel</p>
+      <p class="author-box__bio">
+        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Ist im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers ausgewandert. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        <a href="/ueber-uns">Mehr über uns</a>
+      </p>
+    </div>
+  </div>
+
+  <WeiterlesenPfade
+    lang="de"
+    eyebrow="Weiterlesen"
+    ueberschrift="Das könnte dich auch interessieren"
+    artikel={weiterlesen}
+  />
+
+  <!-- Newsletter-Sektion (Handler zentral im BaseLayout) -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-h">
+    <div class="container container--text">
+      <div class="card texture-paper newsletter-karte">
+        <p class="eyebrow">Weiterlesen, wenn es weitergeht?</p>
+        <h2 id="newsletter-h">Wir schicken dir Updates</h2>
+        <p>Wie es mit Schule, Wohnung und dem Ankommen weitergeht, erzählen wir zuerst im Newsletter.</p>
+        <form class="newsletter-form" data-newsletter>
+          <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="Deine E-Mail-Adresse" />
+          <button type="submit">Abonnieren</button>
+        </form>
+        <p class="newsletter-hinweis">Du kannst dich jederzeit abmelden.</p>
+      </div>
+    </div>
+  </section>
+</ArtikelLayout>
+
+<style>
+  .newsletter-karte {
+    display: grid;
+    gap: var(--space-3);
+    rotate: -0.5deg;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-2);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .newsletter-hinweis {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
+
+<style>
+  .artikel-bild {
+    width: 100%;
+    height: auto;
+    max-block-size: 75vh;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+  }
+
+  /* Eingeklebte Polaroids (Retro-Leitlinie), linksbuendig an der Textkante */
+  .artikel-figur {
+    max-inline-size: 420px;
+    margin-inline: 0;
+    margin-block: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: -1deg;
+  }
+
+  .artikel-figur:nth-of-type(even) {
+    rotate: 1deg;
+  }
+
+  .artikel-figur img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-s);
+  }
+
+  .artikel-figur figcaption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    color: var(--accent-strong);
+    margin-block-start: var(--space-2);
+  }
+
+  /* Skatepark-Bildpaar: nebeneinander ab Tablet, sonst gestapelt */
+  .skatepark-duo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .skatepark-duo .artikel-figur--duo {
+    flex: 1 1 260px;
+    max-inline-size: 340px;
+  }
+
+  /* --- Unikat: Ankunftstafel -------------------------------------
+     Flughafen-Anzeige als eingeklebte Papier-Karte. Wie alle Charts
+     immer hell (Papier-Regel), Courier fuer den Tafel-Charakter,
+     GELANDET ist der EINE Terrakotta-Akzent der Sektion. */
+  .ankunftstafel {
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: var(--radius-m);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-card);
+    rotate: 0.6deg;
+    font-family: var(--font-mono);
+    color: #33291f;
+  }
+
+  .ankunftstafel__kopf {
+    font-size: var(--text--1);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a6c58;
+    border-block-end: 2px solid #33291f;
+    padding-block-end: var(--space-2);
+  }
+
+  .ankunftstafel__liste {
+    margin: 0;
+  }
+
+  .ankunftstafel__zeile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-2);
+    border-block-end: 1px dashed #ddd3bc;
+    font-size: var(--text--1);
+    letter-spacing: 0.06em;
+  }
+
+  .ankunftstafel__zeile dt {
+    font-weight: 700;
+  }
+
+  .ankunftstafel__zeile dd {
+    margin: 0;
+    text-align: right;
+  }
+
+  .ankunftstafel__zeile--akzent {
+    color: #a63e22;
+    font-weight: 700;
+  }
+
+  .ankunftstafel__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: #a63e22;
+    text-align: center;
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Unikat: Scrapbook-Rahmen fuer die Kinderzeichnung ----------
+     Wie mit Klebeband-Ecken ins Reisetagebuch geklebt. */
+  .scrapbook {
+    position: relative;
+    max-inline-size: 520px;
+    margin-inline: 0;
+    margin-block: var(--space-6);
+    background: #fbf7ee;
+    border: 1px solid #ddd3bc;
+    border-radius: 2px;
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3);
+    rotate: -1.2deg;
+  }
+
+  .scrapbook::before,
+  .scrapbook::after {
+    content: '';
+    position: absolute;
+    inline-size: 84px;
+    block-size: 26px;
+    background: color-mix(in srgb, #e8dcc2 78%, transparent);
+    border: 1px solid color-mix(in srgb, #c9b98f 60%, transparent);
+    box-shadow: 0 1px 2px rgb(51 41 31 / 0.12);
+  }
+
+  .scrapbook::before {
+    inset-block-start: -12px;
+    inset-inline-start: -26px;
+    rotate: -38deg;
+  }
+
+  .scrapbook::after {
+    inset-block-end: -12px;
+    inset-inline-end: -26px;
+    rotate: -38deg;
+  }
+
+  .scrapbook img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  .scrapbook__caption {
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: #a63e22;
+    text-align: center;
+    margin-block-start: var(--space-2);
+  }
+
+  /* Zahlen-Bento als ruhiges 2x2 in der Artikel-Spalte */
+  .zahlen-bento :global(.bento__grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .zahlen-bento :global(.bento__grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- Inhaltsverzeichnis (Muster wie B8) ------------------------ */
+  :global(.prose) {
+    position: relative;
+  }
+
+  @media (min-width: 1100px) and (max-width: 1439.98px) {
+    .toc-halter :global(.toc) {
+      position: static;
+    }
+
+    .toc-halter :global(.toc__box--desktop) {
+      display: none;
+    }
+
+    .toc-halter :global(.toc__box--mobile) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .toc-halter {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-240px - var(--space-7));
+      width: 240px;
+      margin: 0;
+    }
+  }
+
+  /* --- Info-Box --------------------------------------------------- */
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .info-box__titel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-3);
+  }
+
+  .info-box p + p,
+  .info-box ul {
+    margin-block-start: var(--space-3);
+  }
+
+  .info-box ul {
+    padding-inline-start: 1.4em;
+  }
+
+  .info-box li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  /* --- Trust Box -------------------------------------------------- */
+  .trust-box {
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-s);
+    padding: var(--space-5);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  .trust-box p + p {
+    margin-block-start: var(--space-3);
+  }
+
+  /* --- Update-Log ------------------------------------------------- */
+  .update-log {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+  }
+
+  .update-log__titel {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+  }
+
+  .update-log__eintrag {
+    display: flex;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .update-log__datum {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  /* --- Autor-Box -------------------------------------------------- */
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+  }
+
+  .author-box__avatar {
+    flex: none;
+  }
+
+  .author-box__avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-box__name {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+  }
+
+  .author-box__bio {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+</style>
