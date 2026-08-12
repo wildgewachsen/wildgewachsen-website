@@ -1,0 +1,149 @@
+---
+// Danke-Seite nach der Newsletter-Bestaetigung (Double-Opt-In).
+// Ersetzt Kits englische Standardseite "Subscription confirmed!", die
+// zusaetzlich Werbung fuer Kit selbst zeigt.
+//
+// EINGETRAGEN WIRD SIE IN KIT: Formular "wildgewachsen DE" (ID 9795984)
+// -> Settings -> Confirmation email -> "After confirming redirect to" -> URL.
+//
+// noindex: Danke-Seiten gehoeren nicht in den Index und nicht in die Sitemap.
+// Sie sind nur ueber den Bestaetigungslink aus der Mail erreichbar.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Dieselben drei Einstiegs-Artikel wie in der Willkommensmail,
+// damit Mail und Seite dasselbe erzaehlen.
+const einstieg = [
+  {
+    titel: 'Warum wir überhaupt gegangen sind',
+    text: 'Vom Gemüsegarten bis zum Entschluss, alles hinter uns zu lassen.',
+    href: '/blog/vom-gemuesegarten-nach-australien-auswanderung-familie',
+    label: 'Die Geschichte lesen',
+  },
+  {
+    titel: 'Was es gekostet hat',
+    text: 'Was der Umzug für vier Personen am Ende gekostet hat, Posten für Posten.',
+    href: '/blog/auswandern-australien-kosten-familie-guide',
+    label: 'Zu den Zahlen',
+  },
+  {
+    titel: 'Das Visum, an dem alles hängt',
+    text: 'Wie das 186er funktioniert und warum es unser Weg geworden ist.',
+    href: '/blog/visum-186-australien-familie-guide',
+    label: 'Zum Guide',
+  },
+];
+---
+
+<BaseLayout
+  title="Anmeldung bestätigt – Wildgewachsen"
+  description="Deine Anmeldung zum Newsletter ist bestätigt."
+  lang="de"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://wildgewachsen-australien.de/newsletter-bestaetigt" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/newsletter-bestaetigt" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/newsletter-confirmed" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/newsletter-bestaetigt" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== Bestaetigt: kurzer Kopf, danach die drei Einstiegs-Artikel.
+       Der EINE Terrakotta-Akzent = die Artikel-Links. ===== */}
+  <section class="section">
+    <div class="container danke">
+      <header class="sektion-kopf sektion-kopf--mitte">
+        <p class="eyebrow">Geschafft</p>
+        <h1>Du bist dabei</h1>
+        <p class="danke__text">
+          Deine Anmeldung ist bestätigt. Wir melden uns sonntags alle zwei Wochen
+          bei dir, mit dem was gerade wirklich passiert. Wenn es dir nicht
+          gefällt, kommst du mit einem Klick am Ende jeder Mail wieder raus.
+        </p>
+      </header>
+
+      <p class="danke__zwischentitel">Zum Anfangen</p>
+
+      <ul class="danke__liste">
+        {
+          einstieg.map((e) => (
+            <li class="danke__eintrag">
+              <p class="danke__titel">{e.titel}</p>
+              <p class="danke__teaser">{e.text}</p>
+              <a class="danke__link" href={e.href}>
+                {e.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="danke__fuss">
+        Wenn du eine Frage hast, antworte einfach auf eine unserer Mails. Die
+        kommt bei uns an. Oder <a href="/kontakt">schreib uns hier</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .danke {
+    max-inline-size: 46rem;
+  }
+
+  .danke__text {
+    color: var(--ink-soft);
+    margin-inline: auto;
+    max-inline-size: 42ch;
+  }
+
+  .danke__zwischentitel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-block: var(--space-6) var(--space-4);
+    padding-block-end: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .danke__liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  /* Eukalyptus-Kante wie in der Willkommensmail, damit Mail und Seite zusammenpassen */
+  .danke__eintrag {
+    border-left: 2px solid var(--sage);
+    padding-left: var(--space-3);
+  }
+
+  .danke__titel {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .danke__teaser {
+    color: var(--ink-soft);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .danke__link {
+    color: var(--accent-strong);
+  }
+
+  .danke__fuss {
+    margin-block-start: var(--space-6);
+    color: var(--ink-soft);
+  }
+</style>

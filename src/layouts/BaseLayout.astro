@@ -44,9 +44,19 @@ const { title, description, lang = 'de' } = Astro.props;
     </main>
     <SiteFooter lang={lang} />
     <script is:inline>
-      // Newsletter (Buttondown), 1:1 portiert aus dem Live-app.js handleNewsletter.
-      // Bindet alle form[data-newsletter]; Texte + Verhalten wie live.
+      // Newsletter (Kit). EIN Handler fuer alle form[data-newsletter] auf der
+      // Seite; Texte + Verhalten wie vorher.
+      //
+      // Die Sprachtrennung entsteht ueber ZWEI Kit-Formulare, nicht ueber ein
+      // Tag im Request: die Seitensprache waehlt die Formular-ID, und wer sich
+      // wo eingetragen hat, steht damit in Kit fest (Broadcast an ein Formular
+      // adressierbar). Kein API-Schluessel im Browser, kein Server noetig --
+      // der Endpunkt schickt access-control-allow-origin: * (geprueft 13.08.2026).
       (function () {
+        // >>> Die einzigen zwei Werte, die beim Anlegen der Kit-Formulare
+        // >>> eingetragen werden: die Formular-IDs aus dem Kit-Einbettungscode.
+        var KIT_FORM = { de: '9795984', en: '9795996' };
+
         var messages = {
           de: {
             success: 'Danke! Bitte bestätige deine E-Mail.',
@@ -69,12 +79,15 @@ const { title, description, lang = 'de' } = Astro.props;
             btn.textContent = '...';
             btn.disabled = true;
             try {
-              var res = await fetch('https://buttondown.com/api/emails/embed-subscribe/wildgewachsen', {
+              var res = await fetch('https://app.kit.com/forms/' + KIT_FORM[lang] + '/subscriptions', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'email=' + encodeURIComponent(input.value) + '&tag=' + lang,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  Accept: 'application/json',
+                },
+                body: 'email_address=' + encodeURIComponent(input.value),
               });
-              if (res.ok || res.status === 201) {
+              if (res.ok) {
                 form.innerHTML = '<p style="color:inherit;font-size:0.95rem;">' + messages[lang].success + '</p>';
               } else {
                 btn.textContent = origText;

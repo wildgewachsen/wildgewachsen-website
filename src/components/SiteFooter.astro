@@ -24,6 +24,7 @@ const t =
         folgeUns: 'Folge uns',
         navLabel: 'Footer-Seiten',
         newsletterPlaceholder: 'E-Mail',
+        newsletterHinweis: 'Alle zwei Wochen sonntags. Abmelden mit einem Klick.',
         bottom: [
           { href: 'https://ko-fi.com/wildgewachsen', label: 'Unterstützen', extern: true },
           { href: '/impressum', label: 'Impressum', extern: false },
@@ -42,6 +43,8 @@ const t =
         folgeUns: 'Follow us',
         navLabel: 'Footer pages',
         newsletterPlaceholder: 'Email',
+        newsletterHinweis:
+          'Every second Sunday. Currently written in German, we will let you know when an English edition starts.',
         bottom: [
           { href: 'https://ko-fi.com/wildgewachsen', label: 'Support us', extern: true },
           { href: '/impressum', label: 'Legal Notice (German legal requirement)', extern: false },
@@ -89,6 +92,7 @@ const t =
           <input type="email" placeholder={t.newsletterPlaceholder} required aria-label={t.newsletterPlaceholder} />
           <button type="submit">OK</button>
         </form>
+        <p class="site-footer__hinweis">{t.newsletterHinweis}</p>
       </div>
     </div>
     <div class="site-footer__bottom">
@@ -213,6 +217,15 @@ const t =
     text-transform: uppercase;
     letter-spacing: 0.08em;
     cursor: pointer;
+  }
+
+  /* Takt + Abmelde-Hinweis unter dem Formular; EN nennt hier zusaetzlich
+     die Sprache, damit englische Anmeldungen wissen, worauf sie sich einlassen */
+  .site-footer__hinweis {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+    max-inline-size: 34ch;
   }
 
   .site-footer__bottom {
