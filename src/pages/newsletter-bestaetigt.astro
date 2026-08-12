@@ -56,7 +56,7 @@ const einstieg = [
        Der EINE Terrakotta-Akzent = die Artikel-Links. ===== */}
   <section class="section">
     <div class="container danke">
-      <header class="sektion-kopf sektion-kopf--mitte">
+      <header class="sektion-kopf">
         <p class="eyebrow">Geschafft</p>
         <h1>Du bist dabei</h1>
         <p class="danke__text">
@@ -95,10 +95,12 @@ const einstieg = [
     max-inline-size: 46rem;
   }
 
+  /* Linksbuendig auf derselben Kante wie die Artikel darunter, sonst
+     laeuft der Absatz gegen die eingerueckte Liste. Luft oben und unten. */
   .danke__text {
     color: var(--ink-soft);
-    margin-inline: auto;
-    max-inline-size: 42ch;
+    max-inline-size: 46ch;
+    margin-block: var(--space-6) var(--space-7);
   }
 
   .danke__zwischentitel {
@@ -107,7 +109,7 @@ const einstieg = [
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--ink-soft);
-    margin-block: var(--space-6) var(--space-4);
+    margin-block: 0 var(--space-5);
     padding-block-end: var(--space-2);
     border-bottom: 1px dashed var(--line);
   }
