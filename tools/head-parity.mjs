@@ -1,65 +1,125 @@
 // tools/head-parity.mjs
-// SEO-Kopf-Vergleich live vs dist ueber ALLE Seiten-Paare: title, description,
-// canonical, hreflang-Set, og:image, JSON-LD-Typen. Meldet NUR Abweichungen.
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import * as cheerio from 'cheerio';
+// SEO-Kopf-Regressions-Gate gegen den eingefrorenen Cutover-Snapshot.
+// Aufruf: node tools/head-parity.mjs   (nach `npm run build`)
+//
+// Vergleicht jede Seite aus migration/site_snapshot.json (Stand der Handschrift-
+// Site zum Cutover, = der Stand, den Google indexiert hatte) mit der gleichnamigen
+// Seite im frisch gebauten dist/.
+//
+// Die Trennung ist bewusst:
+//   FAIL  = SEO-Infrastruktur, die verloren gegangen ist. Canonical, hreflang,
+//           og:image, JSON-LD-Typen, GoatCounter, html[lang]. Sowas verschwindet
+//           nie absichtlich; wenn doch, gehoert es mit Grund in
+//           tools/snapshot-ausnahmen.json.
+//   INFO  = Redaktion. Titel, Description, Datums-Felder, zusaetzliche hreflang-
+//           oder Schema-Eintraege, neue Seiten. Das aendert sich staendig und
+//           darf kein Gate blockieren — wird aber gezeigt, damit ungewollte
+//           Aenderungen auffallen.
+import {
+  ladeSnapshot,
+  pruefeDist,
+  snapshotSeiten,
+  distDatei,
+  kopfExtrahieren,
+  hreflangSatz,
+  ladeAusnahmen,
+  istAusnahme,
+} from './_snapshot-basis.mjs';
 
-const HERE = dirname(fileURLToPath(import.meta.url));
-const RD = resolve(HERE, '..');
-const LIVE = resolve(RD, '..', 'website');
+pruefeDist();
+const snap = ladeSnapshot();
+const ausnahmen = ladeAusnahmen();
+const seiten = snapshotSeiten(snap);
 
-const SEITEN = ['index.html', 'blog.html', 'ueber-uns.html', 'unsere-reise.html', 'kontakt.html', 'impressum.html'];
-const EN_SEITEN = ['index.html', 'blog.html', 'about.html', 'our-journey.html', 'contact.html', 'privacy.html'];
+const fails = [];
+const infos = [];
+const genutzteAusnahmen = [];
+let sauber = 0;
 
-const paare = [];
-for (const f of SEITEN) paare.push(f);
-for (const f of readdirSync(resolve(LIVE, 'blog')).filter((f) => f.endsWith('.html') && !f.includes('template'))) paare.push(`blog/${f}`);
-for (const f of EN_SEITEN) paare.push(`en/${f}`);
-for (const f of readdirSync(resolve(LIVE, 'en')).filter((f) => f.endsWith('.html') && !EN_SEITEN.includes(f) && f !== 'sitemap.xml')) paare.push(`en/${f}`);
-
-function kopf(file) {
-  const $ = cheerio.load(readFileSync(file, 'utf8'));
-  const jsonldTypen = [];
-  $('script[type="application/ld+json"]').each((_, el) => {
-    try {
-      const d = JSON.parse($(el).text());
-      for (const n of Array.isArray(d) ? d : [d]) jsonldTypen.push(n['@type'] ?? '?');
-    } catch {
-      jsonldTypen.push('PARSE_ERROR');
-    }
-  });
-  return {
-    title: $('head > title').first().text().trim(),
-    description: $('meta[name="description"]').attr('content') ?? '(keine)',
-    canonical: $('link[rel="canonical"]').attr('href') ?? '(keins)',
-    hreflang: $('link[rel="alternate"][hreflang]')
-      .map((_, el) => `${$(el).attr('hreflang')}=${$(el).attr('href')}`)
-      .get()
-      .sort()
-      .join(' | ') || '(keins)',
-    ogImage: $('meta[property="og:image"]').attr('content') ?? '(keins)',
-    jsonld: jsonldTypen.sort().join(',') || '(keins)',
-  };
+function melde(liste, seite, feld, text) {
+  if (istAusnahme(ausnahmen, seite, feld)) {
+    const a = ausnahmen.find((x) => x.seite === seite && (x.feld === feld || x.feld === '*'));
+    genutzteAusnahmen.push(`${seite} · ${feld}: ${a.grund ?? '(kein Grund hinterlegt)'}`);
+    return;
+  }
+  liste.push({ seite, feld, text });
 }
 
-let ok = 0;
-const probleme = [];
-for (const rel of paare) {
-  const liveF = resolve(LIVE, rel);
-  const distF = resolve(RD, 'dist', rel);
-  if (!existsSync(distF)) {
-    probleme.push(`${rel}: DIST FEHLT`);
+for (const alt of seiten) {
+  const datei = distDatei(alt.file);
+  if (!datei) {
+    melde(fails, alt.file, 'seite', 'im dist nicht vorhanden (URL waere ein 404)');
     continue;
   }
-  const a = kopf(liveF);
-  const b = kopf(distF);
-  const diffs = Object.keys(a).filter((k) => a[k] !== b[k]);
-  if (!diffs.length) ok++;
-  else probleme.push(`${rel}:\n` + diffs.map((k) => `    ${k}\n      live: ${a[k]}\n      neu:  ${b[k]}`).join('\n'));
+  const neu = kopfExtrahieren(datei);
+  const vorher = fails.length + infos.length;
+
+  // --- FAIL-Klasse: verlorene SEO-Infrastruktur ---
+  if (alt.canonical && neu.canonical !== alt.canonical) {
+    melde(fails, alt.file, 'canonical', `alt: ${alt.canonical}\n      neu: ${neu.canonical ?? '(fehlt)'}`);
+  }
+  const altHref = hreflangSatz(alt.hreflang);
+  const neuHref = hreflangSatz(neu.hreflang);
+  const verloreneHref = [...altHref].filter((h) => !neuHref.has(h));
+  if (verloreneHref.length) {
+    melde(fails, alt.file, 'hreflang', `fehlt jetzt: ${verloreneHref.join(' | ')}`);
+  }
+  if (alt.ogImage && !neu.ogImage) {
+    melde(fails, alt.file, 'og:image', `war: ${alt.ogImage} — jetzt keins`);
+  }
+  const verloreneTypen = alt.jsonldTypes.filter((t) => !neu.jsonldTypes.includes(t));
+  if (verloreneTypen.length) {
+    melde(fails, alt.file, 'json-ld', `Typ(en) verschwunden: ${verloreneTypen.join(', ')}`);
+  }
+  if (neu.jsonldTypes.includes('PARSE_ERROR')) {
+    melde(fails, alt.file, 'json-ld', 'ein JSON-LD-Block ist kein gueltiges JSON');
+  }
+  if (alt.goatcounter && !neu.goatcounter) {
+    melde(fails, alt.file, 'goatcounter', 'Tracking-Snippet fehlt jetzt');
+  }
+  if (alt.lang && neu.lang !== alt.lang) {
+    melde(fails, alt.file, 'html[lang]', `alt: ${alt.lang} · neu: ${neu.lang ?? '(fehlt)'}`);
+  }
+
+  // --- INFO-Klasse: redaktioneller Drift ---
+  if (alt.title !== neu.title) {
+    melde(infos, alt.file, 'title', `alt: ${alt.title}\n      neu: ${neu.title}`);
+  }
+  if (alt.metaDescription !== neu.metaDescription) {
+    melde(infos, alt.file, 'description', `alt: ${alt.metaDescription}\n      neu: ${neu.metaDescription}`);
+  }
+  const neueHref = [...neuHref].filter((h) => !altHref.has(h));
+  if (neueHref.length) melde(infos, alt.file, 'hreflang', `neu dazu: ${neueHref.join(' | ')}`);
+  const neueTypen = neu.jsonldTypes.filter((t) => !alt.jsonldTypes.includes(t));
+  if (neueTypen.length) melde(infos, alt.file, 'json-ld', `Typ(en) dazu: ${neueTypen.join(', ')}`);
+  if (alt.ogImage && neu.ogImage && alt.ogImage !== neu.ogImage) {
+    melde(infos, alt.file, 'og:image', `alt: ${alt.ogImage}\n      neu: ${neu.ogImage}`);
+  }
+  if (alt.dateModified !== neu.dateModified) {
+    melde(infos, alt.file, 'dateModified', `alt: ${alt.dateModified ?? '(keins)'} · neu: ${neu.dateModified ?? '(keins)'}`);
+  }
+  if (alt.datePublished && alt.datePublished !== neu.datePublished) {
+    melde(infos, alt.file, 'datePublished', `alt: ${alt.datePublished} · neu: ${neu.datePublished ?? '(keins)'}`);
+  }
+
+  if (fails.length + infos.length === vorher) sauber++;
 }
 
-console.log(`Seiten geprueft: ${paare.length} · Kopf identisch: ${ok} · Abweichungen: ${probleme.length}`);
-for (const p of probleme) console.log('\n' + p);
-process.exit(probleme.length ? 1 : 0);
+const ausgabe = (titel, liste) => {
+  if (!liste.length) return;
+  console.log(`\n${titel} (${liste.length}):`);
+  for (const e of liste) console.log(`  ${e.seite} · ${e.feld}\n      ${e.text}`);
+};
+
+console.log(
+  `Snapshot-Seiten geprueft: ${seiten.length} · Kopf unveraendert: ${sauber} · ` +
+    `FAIL: ${fails.length} · INFO: ${infos.length}`,
+);
+ausgabe('FAIL — verlorene SEO-Infrastruktur', fails);
+ausgabe('INFO — redaktioneller Drift seit dem Cutover', infos);
+if (genutzteAusnahmen.length) {
+  console.log(`\nBewusste Abweichungen laut snapshot-ausnahmen.json (${genutzteAusnahmen.length}):`);
+  for (const a of genutzteAusnahmen) console.log('  - ' + a);
+}
+if (!fails.length) console.log('\nHEAD-PARITAET OK: keine SEO-Infrastruktur verloren.');
+process.exit(fails.length ? 1 : 0);

@@ -35,10 +35,25 @@
   (`tools/postbuild.mjs`) — URL-Map dist == live (46/46, `tools/urlmap-diff.mjs`).
 - ✅ Formular-Funktion: Newsletter (Buttondown, 1:1-Handler im BaseLayout, alle
   `form[data-newsletter]`), Kontakt DE+EN (Formspree als form action).
-- Bei kuenftigen Live-Aenderungen VOR dem Cutover: Sitemaps/robots aus `website/` neu
-  nach `public/` kopieren + `tools/parity-alle-artikel.mjs`, `tools/head-parity.mjs`,
-  `tools/urlmap-diff.mjs`, `tools/klaro-diff.mjs` erneut laufen lassen (Drift-Schutz).
+- ~~Bei kuenftigen Live-Aenderungen VOR dem Cutover: Sitemaps/robots aus `website/` neu
+  nach `public/` kopieren + Paritaets-Tools erneut laufen lassen.~~ Gegenstandslos:
+  es gibt keinen zweiten `website/`-Ordner mehr, aus dem kopiert werden koennte.
+  Was ab jetzt vor jedem Push gilt, steht unter "Pflicht-Gates" weiter unten.
 
 ## Nach dem Cutover (Phase 6, aus Master-Prompt §6)
 - Sitemap in GSC neu einreichen (`node Content_Dashboard/scripts/gsc_sitemap_submit.js`)
 - Indexierung der wichtigsten Guides anstossen
+
+## Pflicht-Gates vor jedem Push (Stand 27.07.2026)
+
+`npm run gates` — Build, Link-Check, Head-Paritaet, URL-Map, Klaro, Kontrast.
+Alle sechs muessen Exit 0 liefern. Vollstaendige Tabelle mit Zweck je Gate:
+[`README.md`](README.md#pflicht-gates-vor-jedem-push).
+
+Die Paritaets-Gates (Head, URL-Map, Klaro) vergleichen seit dem 27.07.2026 nicht
+mehr gegen einen zweiten `website/`-Ordner, sondern gegen den eingefrorenen
+`migration/site_snapshot.json` (Cutover-Stand 22.07.2026). Der Textblock-Beweis
+(`text-parity` und die beiden `parity-alle*`-Laeufe) hat nach dem Cutover keine
+Vergleichsbasis mehr und liegt stillgelegt in
+[`tools/_archiv/`](tools/_archiv/README.md) — inhaltliche Qualitaet laeuft
+seitdem ueber die Redaktions-Gates (`blog-seo-check`, `blog-factcheck`).
