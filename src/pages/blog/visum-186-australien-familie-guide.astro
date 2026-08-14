@@ -1,29 +1,43 @@
 ---
-// Visum-186-Guide im neuen Look (Port des Live-Artikels, Content + SEO strikt 1:1).
-// Quelle: website/blog/visum-186-australien-familie-guide.html
+// Visum-186-Guide, Phase-C-Ueberarbeitung 15.08.2026.
+// Story-Update (Sponsor gefunden, Nomination laeuft), Gebuehren-Stand 01.07.2026,
+// neue Sektionen Nomination + Bridging/Medicare, Unikat: Aktenstapel (KartenDeck) + Wartemarke.
+// Recherche-Beleg: Projekt_Wildgewachsen/recherche/visum-186-artikel-ueberarbeitung-2026-08-14.md
 import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
 import StickyToc from '../../components/StickyToc.astro';
 import PullQuote from '../../components/PullQuote.astro';
 import Randnotiz from '../../components/Randnotiz.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import KartenDeck from '../../components/KartenDeck.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import BentoSektion from '../../components/BentoSektion.astro';
+import BentoKachel from '../../components/BentoKachel.astro';
+import InlineCta from '../../components/InlineCta.astro';
 
-// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten)
+// IDs 1:1 wie im Live-Artikel (extern verlinkbare Anker bleiben erhalten), neue Sektionen additiv
 const toc = [
   { id: 'was-ist-186', label: 'Was ist das Visum 186?' },
   { id: 'streams', label: 'Die drei Streams – welchen wir nehmen' },
   { id: 'strategie', label: 'Unsere Strategie: Tourist-Visum, dann 186 aus Australien' },
   { id: 'voraussetzungen', label: 'Voraussetzungen: Skill Assessment, PTE, Alter' },
   { id: 'migration-agent', label: 'Der Migration Agent: Warum wir uns beraten lassen' },
-  { id: 'kosten', label: 'Kosten-Breakdown: Was wir bisher bezahlt haben' },
-  { id: 'sponsor', label: 'Sponsor finden: Warum wir vor Ort suchen' },
+  { id: 'kosten', label: 'Kosten: Was bezahlt ist und was noch kommt' },
+  { id: 'sponsor', label: 'Sponsor finden: Wie es wirklich gelaufen ist' },
+  { id: 'nomination', label: 'Die Nomination: Was gerade passiert' },
   { id: 'familie', label: 'Familie im 186: Lucy und die Kinder als Dependents' },
+  { id: 'bridging', label: 'Bridging Visa und Medicare: die Zeit dazwischen' },
   { id: 'timeline', label: 'Timeline: Wo wir heute stehen' },
   { id: 'gelernt', label: 'Was wir bis jetzt gelernt haben' },
   { id: 'faq', label: 'Häufig gestellte Fragen' },
 ];
 
-// Gleiche 3 Ziele + Texte wie der Live-Block "Das könnte dich auch interessieren"
+// Weiterlesen: der logische naechste Klick in dieser Geschichte
 const weiterlesen = [
+  {
+    href: '/blog/vom-gemuesegarten-nach-australien-auswanderung-familie',
+    meta: 'Unsere Geschichte',
+    titel: 'Vom Gemüsegarten nach Australien: Wie es nach der Landung weiterging',
+  },
   {
     href: '/blog/tra-skill-assessment-koch-australien',
     meta: 'Visum & Migration',
@@ -34,21 +48,76 @@ const weiterlesen = [
     meta: 'Familie & Kinder',
     titel: 'Auswandern nach Australien mit Kindern (2 und 6 Jahre): Unsere ehrliche Vorbereitung',
   },
+];
+
+// Der Aktenstapel: alle Stationen des 186-Wegs als durchblaetterbarer Stapel.
+// startIndex zeigt auf die aktuell offene Station (Nomination).
+const stationen = [
   {
-    href: '/blog/letzte-wochen-vor-abflug-australien',
-    meta: 'Unsere Geschichte',
-    titel: 'Die letzten Wochen vor dem Abflug: Abschied, Schule und offene Fragen',
+    titel: 'Erstgespräch Migration Agent',
+    meta: 'ERLEDIGT · 12/2025',
+    text: 'Johannes Kunz erklärt uns die Visa-Wege und legt den Direct Entry Stream als unseren Weg fest. Ab hier gibt es eine Liste statt eines Nebels.',
+  },
+  {
+    titel: 'Skill Assessment als Koch (TRA)',
+    meta: 'ERLEDIGT · 03/2026',
+    text: 'Über ATTC, Pathway für Selbstständige: Steuerbescheide, Übersetzungen, Technical Interview. Rund 4.120 AUD, bestanden.',
+  },
+  {
+    titel: 'PTE Academic',
+    meta: 'ERLEDIGT · 11.03.2026',
+    text: 'Englisch-Test in Hamburg, 270 €. Ergebnis Proficient, deutlich mehr als das 186 verlangt.',
+  },
+  {
+    titel: 'eVisitor (651) beantragt',
+    meta: 'ERLEDIGT · 28.05.2026',
+    text: 'Alle vier Touristenvisa über Christians alten ImmiAccount. Kostenlos, und die Bestätigungen kamen Sekunden später per Mail.',
+  },
+  {
+    titel: 'Einreise Christian',
+    meta: 'ERLEDIGT · 25.06.2026',
+    text: 'Landung in Brisbane um 8:30 Uhr. Ab jetzt läuft die Uhr: drei Monate Zeit für einen Sponsor, ohne arbeiten zu dürfen.',
+  },
+  {
+    titel: 'Familie gelandet',
+    meta: 'ERLEDIGT · 28.07.2026',
+    text: 'Lucy, Joris und Linnea kommen nach. Ab hier warten wir zu viert.',
+  },
+  {
+    titel: 'Sponsor gefunden',
+    meta: 'ERLEDIGT · Ende Juli 2026',
+    text: 'Ein Café-Restaurant im Hinterland will Christian sponsern. Der Teil des Plans, an dem alles hing, ist eingelöst.',
+  },
+  {
+    titel: 'Nomination des Arbeitgebers',
+    meta: 'LÄUFT GERADE',
+    text: 'Der Betrieb reicht seinen Teil des Antrags ein: die Nominierung der Position. Wir können in dieser Phase nichts tun außer zuarbeiten und warten.',
+  },
+  {
+    titel: 'Visa-Antrag der Familie',
+    meta: 'AUSSTEHEND',
+    text: 'Sobald die Nomination eingereicht ist, kann Christian den eigenen Antrag stellen, mit Lucy und den Kindern als Dependents. 12.280 AUD Gebühren für uns vier.',
+  },
+  {
+    titel: 'Bridging Visa A',
+    meta: 'AUSSTEHEND',
+    text: 'Kommt automatisch mit dem Antrag und wird aktiv, sobald der eVisitor endet. Ab dann darf Christian arbeiten.',
+  },
+  {
+    titel: 'Entscheidung über das 186',
+    meta: 'AUSSTEHEND',
+    text: 'Offizielle Bearbeitungszeit: die Hälfte der Anträge in 10 Monaten, 90 Prozent in 14. Wenn es gut ausgeht, sind wir danach permanent in Australien.',
   },
 ];
 ---
 
 <ArtikelLayout
   title="Visum 186 Australien für Familien: Employer Sponsored (2026)"
-  description="Visum 186 Australien als Familie: Tourist-Visum-Einreise, Bridging Visa mit Arbeitsrecht, rund 9.825 AUD Antragsgebühren. Unser Weg und echte Kosten (2026)."
+  description="Visum 186 Australien als Familie: eVisitor-Einreise, Sponsor gefunden, Nomination läuft. 12.280 AUD Gebühren für vier, Bridging Visa und echte Kosten (2026)."
   lang="de"
   eyebrow="Visum & Migration"
   datum="22. April 2026"
-  lesezeit="12 Min. Lesezeit · Zuletzt aktualisiert: 09.06.2026"
+  lesezeit="14 Min. Lesezeit · Zuletzt aktualisiert: 15.08.2026"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide" />
@@ -57,16 +126,16 @@ const weiterlesen = [
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide" />
     <!-- Open Graph -->
     <meta property="og:title" content="Visum 186 Australien für Familien: Employer Sponsored (2026)" />
-    <meta property="og:description" content="Visum 186 Australien als Familie: Tourist-Visum-Einreise, Bridging Visa mit Arbeitsrecht, rund 9.825 AUD Antragsgebühren. Unser Weg und echte Kosten (2026)." />
-    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg" />
+    <meta property="og:description" content="Visum 186 Australien als Familie: eVisitor-Einreise, Sponsor gefunden, Nomination läuft. 12.280 AUD Gebühren für vier, Bridging Visa und echte Kosten (2026)." />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/visum-186-landung-brisbane-og.jpg" />
     <meta property="og:url" content="https://wildgewachsen-australien.de/blog/visum-186-australien-familie-guide" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="de_DE" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Visum 186 Australien für Familien: Employer Sponsored (2026)" />
-    <meta name="twitter:description" content="Visum 186 Australien als Familie: Tourist-Visum-Einreise, Bridging Visa mit Arbeitsrecht, rund 9.825 AUD Antragsgebühren. Unser Weg und echte Kosten (2026)." />
-    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg" />
+    <meta name="twitter:description" content="Visum 186 Australien als Familie: eVisitor-Einreise, Sponsor gefunden, Nomination läuft. 12.280 AUD Gebühren für vier, Bridging Visa und echte Kosten (2026)." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/visum-186-landung-brisbane-og.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
 
@@ -76,11 +145,11 @@ const weiterlesen = [
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Visum 186 Australien für Familien: Employer Sponsored (2026)",
-    "description": "Visum 186 Australien als Familie: Tourist-Visum-Einreise, Bridging Visa mit Arbeitsrecht, rund 9.825 AUD Antragsgebühren. Unser Weg und echte Kosten (2026).",
+    "description": "Visum 186 Australien als Familie: eVisitor-Einreise, Sponsor gefunden, Nomination läuft. 12.280 AUD Gebühren für vier, Bridging Visa und echte Kosten (2026).",
     "image": {
       "@type": "ImageObject",
-      "url": "https://wildgewachsen-australien.de/assets/images/artikel-visum-186.jpg",
-      "caption": "Surfer bei Sonnenaufgang am Strand in der Region Byron Bay, New South Wales.",
+      "url": "https://wildgewachsen-australien.de/assets/images/visum-186-landung-brisbane-og.jpg",
+      "caption": "Blick aus dem Flugzeugfenster kurz nach der Landung in Brisbane: Tragfläche mit ausgefahrenen Störklappen über dem Rollfeld.",
       "creditText": "Wildgewachsen",
       "copyrightHolder": {
         "@type": "Organization",
@@ -96,7 +165,7 @@ const weiterlesen = [
       "acquireLicensePage": "https://wildgewachsen-australien.de/impressum#bildrechte"
     },
     "datePublished": "2026-04-22T12:00:00+02:00",
-    "dateModified": "2026-06-09T12:00:00+02:00",
+    "dateModified": "2026-08-15T12:00:00+10:00",
     "author": {
       "@type": "Person",
       "name": "Christian Schippel",
@@ -118,11 +187,11 @@ const weiterlesen = [
       "@type": "Thing",
       "name": "Visum 186 Australien (Employer Nomination Scheme)"
     },
-    "keywords": "Visum 186, Australien auswandern, Employer Sponsored Visa, Bridging Visa, Migration Agent, Skill Assessment Koch, eVisitor 651, Northern Rivers, Family Migration"
+    "keywords": "Visum 186, Australien auswandern, Employer Sponsored Visa, Nomination, Bridging Visa A, Migration Agent, Skill Assessment Koch, eVisitor 651, CSIT, Northern Rivers, Family Migration"
   }
     </script>
 
-    <!-- Structured Data: FAQPage -->
+    <!-- Structured Data: FAQPage (synchron zur sichtbaren FAQ-Sektion) -->
     <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
@@ -133,7 +202,7 @@ const weiterlesen = [
         "name": "Wie lange dauert das Visum 186 realistisch?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die Bearbeitungszeit schwankt stark. Unser Migration Agent hat uns gesagt, dass ein 186-Verfahren im Direct Entry Stream aus dem Ausland im ungünstigen Fall über ein Jahr dauern kann. Wir rechnen mit 9–15 Monaten nach Antragseinreichung. Aktuelle Richtwerte veröffentlicht das Department of Home Affairs regelmäßig."
+          "text": "Das Department of Home Affairs nennt für den Direct Entry Stream aktuell 10 Monate für die Hälfte und 14 Monate für 90 Prozent der Anträge (Global Processing Times, Stand August 2026). Dazu kommt vorab die Zeit für Skill Assessment, Englisch-Test und die Nomination des Arbeitgebers. Bei uns lagen zwischen Erstgespräch und laufender Nomination rund acht Monate."
         }
       },
       {
@@ -141,7 +210,15 @@ const weiterlesen = [
         "name": "Darf ich auf dem Bridging Visa in Australien arbeiten?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In unserem Fall ja, weil wir das 186 aus Australien heraus beantragen und unser Migration Agent das Bridging Visa entsprechend mit Arbeitsrechten ausstattet. Die genauen Rechte hängen vom Typ des Bridging Visa ab (A, B oder C). Auf einem reinen Tourist-Visum darfst du nicht arbeiten, nur nach 186-Antragseinreichung greift die Brücke."
+          "text": "Mit dem 186-Antrag aus Australien entsteht automatisch ein Bridging Visa A. Es wird aktiv, sobald das aktuelle Visum abläuft, bei uns der eVisitor. Bridging Visas aus einem Antrag auf ein permanentes Visum kommen in der Regel ohne Arbeitsverbot, verbindlich steht es aber erst im eigenen Grant Letter. Auf dem Touristenvisum selbst gilt weiterhin: keine Arbeit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dürfen wir während der Wartezeit nach Deutschland fliegen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mit einem aktiven Bridging Visa A nicht, es erlaubt keine Wiedereinreise. Wer während der 186-Wartezeit ausreisen will, braucht vorher ein separates Bridging Visa B. Das planen wir bewusst ein: Zwischen Antrag und Entscheidung liegt womöglich mehr als ein Jahr ohne spontanen Deutschland-Besuch."
         }
       },
       {
@@ -149,15 +226,7 @@ const weiterlesen = [
         "name": "Brauche ich wirklich einen Migration Agent für das Visum 186?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pflicht ist es nicht. Aber ein 186-Antrag mit Familie ist komplex, Stream-Wahl, Dokumentenliste, Fristen, Kommunikation mit dem Department. Wir haben uns für einen deutschsprachigen Agent entschieden, weil das Erstgespräch (~250 AUD) mehr geklärt hat als ein Monat Eigenrecherche. Mit Kindern würden wir davon abraten, ohne Agent zu starten."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Was passiert, wenn vor Ort kein Sponsor gefunden wird?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dann läuft das eVisitor nach drei Monaten ab und wir müssen neu entscheiden. Theoretisch denkbar: Verlängerung über ein Visitor Visa (subclass 600) oder Wechsel auf ein 482-Sponsored-Work-Visa als Zwischenschritt. Realistisch heißt es für uns: Rückflug. Wir haben das im Hinterkopf. Wir rechnen nicht fest damit, weil die Sponsor-Chancen in der Region und vor allem als Koch real sind, aber wir gehen mit der Bereitschaft rein."
+          "text": "Pflicht ist es nicht. Aber ein 186-Antrag mit Familie ist komplex: Stream-Wahl, Dokumentenliste, Fristen, Nomination und Visa-Antrag müssen zusammenpassen. Unser Erstgespräch (~250 AUD) hat mehr geklärt als die eigene Recherche davor. Mit Kindern würden wir nicht ohne Agent starten."
         }
       },
       {
@@ -165,7 +234,15 @@ const weiterlesen = [
         "name": "Was kostet das Visum 186 insgesamt für eine Familie aus Deutschland?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Offizielle Antragsgebühren ändern sich regelmäßig. Dazu kommen Skill Assessment, PTE Academic, Migration Agent, Gesundheitschecks und Police Clearance. Für eine vierköpfige Familie rechnen wir konservativ mit einem niedrigen fünfstelligen Euro-Betrag, also deutlich über 10.000 €. Verbindlich beim Department of Home Affairs prüfen."
+          "text": "Die reinen Antragsgebühren liegen seit dem 1. Juli 2026 bei 12.280 AUD für zwei Erwachsene und zwei Kinder: 6.140 AUD Hauptantragsteller, 3.070 AUD Partner, je 1.535 AUD pro Kind (Quelle: Visa Pricing Estimator, Department of Home Affairs). Dazu kommen Skill Assessment (~4.120 AUD), Englisch-Test, Migration Agent, Gesundheitschecks und Police Clearance. Für erwachsene Familienmitglieder ohne nachgewiesenes Functional English kann eine zweite Rate von 4.890 AUD anfallen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Warum nicht erst ein 482-Visum und später das 186?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das 482 (Skills in Demand) ist das gängigere Arbeitgeber-Sponsoring: befristet, schneller, aber eben kein Daueraufenthalt. Unser Migration Agent hat uns das direkte 186 empfohlen, wenn der Arbeitgeber mitzieht, weil es sofort permanent ist. Viele Arbeitgeber bieten lieber das 482 an, weil es den Arbeitnehmer länger an sie bindet. Unser Sponsor war bereit, direkt das 186 zu nominieren."
         }
       },
       {
@@ -173,15 +250,7 @@ const weiterlesen = [
         "name": "Warum nicht das Punkte-Visum (189 oder 190) statt 186?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die Punkte-Visa sind unabhängig von einem Arbeitgeber, aber brauchen sehr hohe Punktzahlen, und für Köche ist die Konkurrenz in der Skilled Occupation List eng. Wir überlegen eine EOI für 189/190 parallel, vor allem wenn wir PTE auf Superior hochziehen. Aktuell ist das 186 über einen Sponsor der realistischere Hauptweg."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Was sind die drei Streams des Visum 186?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Direct Entry Stream (für Antragsteller, die nicht vorher auf einem 482 in Australien gearbeitet haben), Temporary Residence Transition Stream (nach mind. 2 Jahren auf 482 beim selben Arbeitgeber) und Labour Agreement Stream (Sonderfall mit Branchen-Vereinbarung). Wir gehen den Direct Entry Stream."
+          "text": "Die Punkte-Visa sind unabhängig von einem Arbeitgeber, brauchen aber sehr hohe Punktzahlen, und für Köche ist die Konkurrenz eng. Eine parallele EOI für 189/190 bleibt unser Plan B, vor allem falls Christian den PTE später auf Superior hochzieht. Mit gefundenem Sponsor ist das 186 unser Hauptweg."
         }
       }
     ]
@@ -220,12 +289,20 @@ const weiterlesen = [
     <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
   </Fragment>
 
-  <!-- Hero-Bild (Original-Pfad wie live) -->
-  <img
-    class="artikel-bild"
-    src="/assets/images/artikel-visum-186.jpg"
-    alt="Surfer bei Sonnenaufgang am Strand in Byron Bay, Australien"
-  />
+  <!-- Hero: Landung in Brisbane, der Moment, ab dem die Uhr lief -->
+  <figure class="hero-figur">
+    <picture>
+      <source srcset="/assets/images/visum-186-landung-brisbane.webp" type="image/webp" />
+      <img
+        class="artikel-bild"
+        src="/assets/images/visum-186-landung-brisbane.jpg"
+        alt="Blick aus dem Flugzeugfenster kurz nach dem Aufsetzen in Brisbane: Tragfläche mit ausgefahrenen Störklappen über dem Rollfeld im Morgenlicht"
+        width="1600"
+        height="900"
+      />
+    </picture>
+    <figcaption class="hero-caption">25. Juni 2026, 8:30 Uhr, Brisbane: gelandet. Ab hier lief die Uhr.</figcaption>
+  </figure>
 
   <!-- Inhaltsverzeichnis: mobil Aufklappbox, ab 1440px sticky Randspalte -->
   <div class="toc-halter">
@@ -236,20 +313,24 @@ const weiterlesen = [
   <div class="info-box">
     <p class="info-box__titel">Key Takeaways</p>
     <ul>
-      <li>Wir beantragen das Visum 186 nicht aus Deutschland, sondern reisen mit einem kostenlosen eVisitor (651) ein und stellen den Antrag vor Ort, damit greift ein Bridging Visa, auf dem Christian arbeiten darf.</li>
-      <li>Skill Assessment als Koch (~4.120 AUD), PTE Academic (250 €) und das Erstgespräch beim Migration Agent (~250 AUD) sind erledigt, die Antragsgebühren fürs 186 folgen erst beim Einreichen.</li>
-      <li>Einen Sponsor aus Deutschland zu finden, ist in der Gastronomie sehr unrealistisch. Christian sucht ab Juni 2026 vor Ort in der Northern Rivers Region, NSW.</li>
-      <li>Lucy und die Kinder laufen als Dependents im selben Antrag, kein PR bedeutet aber: Schule und Medicare zahlen wir in den ersten Jahren selbst.</li>
+      <li>Wir haben das Visum 186 nicht aus Deutschland beantragt, sondern sind mit dem kostenlosen eVisitor (651) eingereist. Die Wette ist aufgegangen: Seit Ende Juli steht unser Sponsor, gerade arbeitet der Arbeitgeber an der Nomination.</li>
+      <li>Die Antragsgebühren liegen seit dem 01.07.2026 bei 12.280 AUD für uns vier: 6.140 AUD Hauptantragsteller, 3.070 AUD Partner, je 1.535 AUD pro Kind. Fällig erst bei der Antragstellung.</li>
+      <li>Mit dem Antrag entsteht automatisch ein Bridging Visa A. Es wird aktiv, wenn der eVisitor endet. Erst dann darf Christian arbeiten, und erst dann können wir Medicare beantragen.</li>
+      <li>Vorarbeit war: Skill Assessment als Koch (~4.120 AUD), PTE Academic (270 €), Migration Agent. Offizielle Bearbeitungszeit nach dem Antrag: die Hälfte in 10, 90 Prozent in 14 Monaten.</li>
     </ul>
   </div>
 
   <!-- Intro -->
   <p>
-    Wir wandern 2026 als Familie nach Australien aus. Zielvisum: das 186, offiziell "Employer Nomination Scheme". Das ist kein Visum, das man mal eben online beantragt, das ist ein mehrstufiger Prozess, der ohne Sponsor-Arbeitgeber nicht funktioniert. Wir sind gerade mittendrin. Dieser Artikel ist kein Ratgeber, sondern unser Logbuch: Was wir entschieden haben, warum, was es gekostet hat und wo wir heute stehen. Für Familien, die einen ähnlichen Weg vor sich haben.
+    Wir wandern 2026 als Familie nach Australien aus. Zielvisum: das 186, offiziell "Employer Nomination Scheme". Das ist kein Visum, das man mal eben online beantragt, das ist ein mehrstufiger Prozess, der ohne Sponsor-Arbeitgeber nicht funktioniert. Dieser Artikel ist kein Ratgeber, sondern unser Logbuch: Was wir entschieden haben, warum, was es gekostet hat und wo wir heute stehen.
   </p>
 
   <p>
-    Kurz zu uns: Christian ist 37, ausgebildeter Koch mit sieben Jahren Selbstständigkeit. Lucy ist 30, schreibt gerade ihre Masterthesis in Innenarchitektur. Joris ist sechs, Linnea zwei. Ziel ist die Northern Rivers Region in New South Wales, Byron Bay und Umgebung. Christian fliegt am 23. Juni 2026 vor. Lucy und die Kinder folgen am 26. Juli.
+    Seit dem ersten Eintrag im April ist viel passiert. Christian ist am 25. Juni mit dem Touristenvisum eingereist, Lucy und die Kinder sind seit Ende Juli da. Und der Teil des Plans, an dem alles hing, ist eingelöst: Ein Betrieb im Hinterland will Christian sponsern. Gerade läuft die Nomination, der erste von zwei Anträgen. Genau an dieser Stelle im Prozess schreiben wir dieses Update.
+  </p>
+
+  <p>
+    Kurz zu uns: Christian ist 37, ausgebildeter Koch mit sieben Jahren Selbstständigkeit. Lucy ist 31 und hat ihren Master in Innenarchitektur in diesem Sommer abgeschlossen. Joris ist sechs, Linnea zwei. Wir leben aktuell in der Northern Rivers Region in New South Wales, Byron Bay und Umgebung.
   </p>
 
   <!-- Was ist das 186 -->
@@ -260,7 +341,7 @@ const weiterlesen = [
   </p>
 
   <p>
-    Was das konkret heißt: Ohne Arbeitgeber, der dich nominiert, gibt es kein 186. Ohne 186 keine permanente Aufenthaltserlaubnis über diesen Weg. Und der Arbeitgeber muss eine Position anbieten, die auf der offiziellen Berufsliste steht, für Köche ist das der Fall. Die Liste heißt "Core Skills Occupation List" und wird regelmäßig aktualisiert.
+    Was das konkret heißt: Ohne Arbeitgeber, der dich nominiert, gibt es kein 186. Ohne 186 keine permanente Aufenthaltserlaubnis über diesen Weg. Und der Arbeitgeber muss eine Position anbieten, die auf der offiziellen Berufsliste steht. Die Liste heißt "Core Skills Occupation List", und sowohl Chef (ANZSCO 351311) als auch Cook (351411) stehen darauf (Stand August 2026, <a href="https://immi.homeaffairs.gov.au/Documents/core-sol.pdf" target="_blank" rel="noopener">Core Skills Occupation List, Department of Home Affairs</a>).
   </p>
 
   <p>
@@ -296,33 +377,37 @@ const weiterlesen = [
   <h2 id="strategie">Unsere Strategie: Tourist-Visum, dann 186 aus Australien</h2>
 
   <p>
-    Das ist der Teil, über den wir am längsten nachgedacht haben. Wir haben uns bewusst gegen den direkten Weg entschieden, also gegen 186-Antrag aus Deutschland heraus. Der Grund: Bearbeitungszeiten. Unser Migration Agent hat uns gesagt, dass ein 186-Verfahren im ungünstigen Fall über ein Jahr dauern kann. Ein Jahr sitzen und warten, während Wohnung gekündigt, Restaurant geschlossen und die Kinder in der Schwebe hängen, das war keine Option.
+    Das ist der Teil, über den wir am längsten nachgedacht haben. Wir haben uns bewusst gegen den direkten Weg entschieden, also gegen einen 186-Antrag aus Deutschland heraus. Der Grund: Bearbeitungszeiten. Ein 186-Verfahren kann länger als ein Jahr dauern. Ein Jahr sitzen und warten, während Wohnung gekündigt, Restaurant geschlossen und die Kinder in der Schwebe hängen, das war keine Option.
   </p>
 
   <p>
-    Also haben wir umgeplant. Unser Weg sieht jetzt so aus:
+    Also haben wir umgeplant. Unser Weg sah so aus:
   </p>
 
   <ol>
-    <li>Einreise über ein kostenloses <strong>eVisitor (651)</strong> Tourist-Visum. Gilt für EU-Bürger, ist online beantragt, in der Regel innerhalb von Tagen genehmigt. Einreise bis drei Monate am Stück erlaubt, ohne Arbeitserlaubnis.</li>
-    <li>Vor Ort einen Sponsor-Arbeitgeber finden. Dafür hat Christian die drei Monate.</li>
-    <li>Sobald der Sponsor steht: 186-Antrag aus Australien heraus einreichen, zusammen mit unserem Migration Agent.</li>
-    <li>Mit dem Antrag bekommen wir automatisch ein <strong>Bridging Visa</strong>. Das überbrückt die Wartezeit bis zur 186-Entscheidung. Wichtig: Auf dem Bridging Visa dürfen wir arbeiten.</li>
+    <li>Einreise über ein kostenloses <strong>eVisitor (651)</strong> Tourist-Visum. Gilt für deutsche Pässe, wird online beantragt, je Einreise drei Monate Aufenthalt, ohne Arbeitserlaubnis. Wie die Beantragung lief, steht im <a href="/blog/tourist-visum-australien-evisitor-651">eVisitor-Artikel</a>.</li>
+    <li>Vor Ort einen Sponsor-Arbeitgeber finden. Dafür hatte Christian die drei Monate.</li>
+    <li>Sobald der Sponsor steht: Nomination durch den Arbeitgeber, danach 186-Antrag aus Australien heraus, zusammen mit unserem Migration Agent.</li>
+    <li>Mit dem Antrag entsteht automatisch ein <strong>Bridging Visa A</strong>. Es wird aktiv, sobald der eVisitor endet, und überbrückt die Wartezeit bis zur 186-Entscheidung. Ab dann darf Christian arbeiten.</li>
   </ol>
 
   <p>
-    Der Nachteil liegt auf der Hand: In den drei Monaten Tourist-Visum darf Christian nicht arbeiten. Das heißt Budget muss reichen, Mietwagen, Unterkunft, Essen, alles aus Ersparnissen. Gleichzeitig läuft die Suche nach Sponsor und Wohnung.
-  </p>
-
-  <p>
-    Der Vorteil dagegen ist entscheidend: Sobald das 186 beantragt ist und das Bridging Visa greift, dürfen wir arbeiten und müssen nicht mehr warten. Statt ein Jahr aus Deutschland zu bangen, bauen wir parallel unser Leben auf.
+    Der Nachteil lag auf der Hand: In den Tourist-Monaten darf Christian nicht arbeiten. Das heißt, das Budget muss reichen, Mietwagen, Unterkunft, Essen, alles aus Ersparnissen. Der Vorteil dagegen war entscheidend: Sobald das 186 beantragt ist und das Bridging Visa greift, dürfen wir arbeiten und bauen unser Leben parallel auf, statt aus Deutschland zu bangen.
   </p>
 
   <PullQuote lang="de">Statt ein Jahr aus Deutschland zu bangen, bauen wir parallel unser Leben auf.</PullQuote>
 
+  <p>
+    Wie sich diese Wette anfühlt, gehört zur Wahrheit dazu: Anfang Juni, gut zwei Wochen vor dem Abflug, lag Christian zum ersten Mal bis drei Uhr nachts wach. Nicht wegen der Umzugskisten. Wegen dieser einen Rechnung: Touristenvisum plus Sponsor in drei Monaten, sonst ist der Plan gescheitert. Am nächsten Morgen war der Optimismus zurück. Aber wer diese Strategie wählt, sollte wissen, dass solche Nächte dazugehören.
+  </p>
+
   <blockquote>
-    <strong>Unsere Einordnung:</strong> Diese Entscheidung hängt an einer einzigen Annahme: dass wir in den drei Tourist-Monaten wirklich einen Sponsor finden. Klappt das nicht, fliegen wir zurück. Das ist uns bewusst, finanziell und mental. Es ist keine Empfehlung, sondern unsere bewusste Entscheidung. Jede Familie hat andere Rücklagen, andere Visa-Optionen, anderen Zeithorizont. Wer mehr Geduld hat, wartet vielleicht lieber auf eine 186-Bewilligung von Offshore. Wir setzen darauf, weil wir schon mal vor Ort waren. Wir haben Kontakte, mit denen wir sprechen können. Wir haben einen gewissen Plan davon, wie das Ganze ablaufen kann. Und wir wissen auch, was schief gehen kann.
+    <strong>Unsere Einordnung:</strong> Diese Entscheidung hing an einer einzigen Annahme: dass wir in den Tourist-Monaten wirklich einen Sponsor finden. Wäre das nicht gelungen, wären wir zurückgeflogen. Das war uns bewusst, finanziell und mental. Es ist keine Empfehlung, sondern unsere bewusste Entscheidung. Jede Familie hat andere Rücklagen, andere Visa-Optionen, einen anderen Zeithorizont. Wir haben darauf gesetzt, weil wir schon mal vor Ort gelebt haben, Kontakte hatten und wussten, was schiefgehen kann.
   </blockquote>
+
+  <p>
+    So ist es dann gelaufen: Die vier eVisitor-Anträge vom 28. Mai waren Sekunden nach dem Absenden bestätigt. Die Einreise am 25. Juni war unspektakulär, ungewöhnlich kurze Schlangen, keine einzige Rückfrage. Und die Sponsor-Suche, der eigentliche Kern der Wette, hat gut fünf Wochen gebraucht. Dazu gleich mehr.
+  </p>
 
   <!-- Voraussetzungen -->
   <h2 id="voraussetzungen">Voraussetzungen: Skill Assessment, PTE, Alter</h2>
@@ -340,18 +425,42 @@ const weiterlesen = [
   <h3>PTE Academic – Proficient bestanden</h3>
 
   <p>
-    Christian hat den PTE Academic in Hamburg gemacht und Proficient erreicht. Superior haben wir knapp verpasst, einzelne Skill-Scores waren gerade so darunter. Proficient reicht fürs 186, da muss man nicht optimieren. Der Test kostet rund 250 € (Stand April 2026, laut <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE</a>), dazu kommen Anreise und ggf. Übernachtung – bei uns ICE nach Hamburg, schlafen bei Christians Bruder, also überschaubar.
+    Christian hat den PTE Academic am 11. März 2026 in Hamburg abgelegt und Proficient erreicht. Superior haben wir knapp verpasst, einzelne Skill-Scores lagen gerade so darunter. Proficient reicht fürs 186 deutlich, verlangt ist dort nur Competent. Bezahlt haben wir 270 € Testgebühr, dazu kamen Anreise und Übernachtung, bei uns ICE nach Hamburg und schlafen bei Christians Bruder, also überschaubar.
   </p>
 
   <p>
-    Wir überlegen, Superior nachzuschieben. Nicht fürs 186, sondern als Rückversicherung für eine parallele EOI (Expression of Interest) auf einem Punkte-Visum. Superior gibt dort zusätzliche Punkte. Ob wir das machen, entscheiden wir, wenn der 186-Weg stabil läuft.
+    Ein Re-Test auf Superior bleibt eine Option, aber nicht fürs 186, sondern als Rückversicherung für eine parallele EOI (Expression of Interest) auf einem Punkte-Visum. Ob wir das machen, entscheiden wir, wenn der 186-Weg durch ist.
   </p>
 
   <h3>Alter</h3>
 
   <p>
-    Die Altersgrenze liegt laut Department of Home Affairs bei 45 Jahren, zum Zeitpunkt der Einladung zum Antrag. Christian (37) und Lucy (30) sind klar darunter. Für Familien, die später im Leben auswandern wollen, ist das der kritische Punkt: Je näher man der 45 kommt, desto enger wird der Zeitplan.
+    Die Altersgrenze liegt beim 186 Direct Entry bei 45 Jahren, Stichtag ist der Tag der Antragstellung ("on the date you lodge your application", <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Christian (37) und Lucy (31) sind klar darunter. Für Familien, die später im Leben auswandern wollen, ist das der kritische Punkt: Je näher man der 45 kommt, desto enger wird der Zeitplan.
   </p>
+
+  <!-- PLATZHALTER-DOKUMENT: vor jedem Push echten geschwaerzten Scan einsetzen ODER Box komplett entfernen (CEO liefert Scans im naechsten Durchgang) -->
+  <AufklappBox titel="Die Akte: unsere Belege zum Nachlesen" lang="de">
+    <figure class="muster-akte">
+      <svg viewBox="0 0 560 340" role="img" aria-label="Stilisiertes Muster-Dokument mit geschwärzten Stellen als Platzhalter für die echten Belege" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="12" width="544" height="316" rx="4" fill="var(--surface, #FBF7EE)" stroke="var(--line, #d8ccb6)" stroke-width="2" transform="rotate(-0.6 280 170)" />
+        <text x="40" y="58" font-family="'Courier Prime', monospace" font-size="15" fill="var(--ink, #33291F)" letter-spacing="2">TRA SKILL ASSESSMENT · OUTCOME</text>
+        <line x1="40" y1="76" x2="520" y2="76" stroke="var(--line, #d8ccb6)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <rect x="40" y="96" width="220" height="16" fill="var(--ink, #33291F)" opacity="0.85" />
+        <text x="272" y="109" font-family="'Courier Prime', monospace" font-size="12" fill="var(--ink-soft, #6b5f4e)">← Aktenzeichen, geschwärzt</text>
+        <line x1="40" y1="140" x2="480" y2="140" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
+        <line x1="40" y1="168" x2="510" y2="168" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
+        <line x1="40" y1="196" x2="450" y2="196" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
+        <rect x="40" y="220" width="150" height="16" fill="var(--ink, #33291F)" opacity="0.85" />
+        <line x1="40" y1="264" x2="490" y2="264" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
+        <g transform="rotate(-8 420 290)">
+          <rect x="330" y="262" width="180" height="52" fill="none" stroke="#B5482A" stroke-width="3" rx="6" />
+          <text x="352" y="296" font-family="'Courier Prime', monospace" font-size="26" fill="#B5482A" letter-spacing="6">MUSTER</text>
+        </g>
+      </svg>
+      <figcaption>So sieht die Stelle aus, an der die echten Belege hinkommen: eingescannt, Aktenzeichen geschwärzt. Wir reichen sie nach, sobald sie aufbereitet sind.</figcaption>
+    </figure>
+    <p>Geplant für diese Akte: das TRA-Ergebnis, der PTE-Score-Report und später die Antragsbestätigung. Nicht als Deko, sondern als Beleg, dass hinter jeder Zahl in diesem Artikel ein echtes Stück Papier steht.</p>
+  </AufklappBox>
 
   <!-- Migration Agent -->
   <h2 id="migration-agent">Der Migration Agent: Warum wir uns beraten lassen</h2>
@@ -365,7 +474,7 @@ const weiterlesen = [
   </p>
 
   <p>
-    Die nächsten Kosten kommen erst, wenn er den 186-Antrag mit uns zusammen einreicht. Wie hoch das genau wird, hängt vom Fall ab, er rechnet nach Aufwand, nicht pauschal. Sobald wir die konkrete Zahl haben, tragen wir sie hier nach.
+    Sein nächster Einsatz kommt jetzt: Sobald die Nomination durch ist, reicht er den 186-Antrag mit uns ein, damit keine Fehler passieren. Er rechnet nach Aufwand, nicht pauschal. Sobald wir die konkrete Zahl haben, tragen wir sie hier nach.
   </p>
 
   <blockquote>
@@ -373,114 +482,196 @@ const weiterlesen = [
   </blockquote>
 
   <!-- Kosten -->
-  <h2 id="kosten">Kosten-Breakdown: Was wir bisher bezahlt haben</h2>
+  <h2 id="kosten">Kosten: Was bezahlt ist und was noch kommt</h2>
 
   <p>
-    Wir bauen hier keine Zahlen-Fantasie, sondern zeigen echte Rechnungen. Die großen Posten fürs 186 fallen erst beim Antrag an, die haben wir noch nicht. Was bis jetzt ausgegeben wurde:
+    Die kurze Antwort: Bezahlt sind bisher rund 4.120 AUD fürs Skill Assessment, 270 € für den PTE und 250 AUD für den Migration Agent. Der große Posten steht noch aus: 12.280 AUD Antragsgebühren für uns vier, fällig bei der Antragstellung. Hier die Zahlen im Einzelnen:
   </p>
 
-  <div class="tabellen-halter">
-    <table class="kosten-tabelle">
-      <thead>
-        <tr>
-          <th>Was</th>
-          <th>Kosten</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>TRA Skill Assessment als Koch (inkl. Übersetzungen)</td>
-          <td>~4.120 AUD</td>
-          <td>Bezahlt</td>
-        </tr>
-        <tr>
-          <td>PTE Academic Test (Hamburg)</td>
-          <td>~250 €</td>
-          <td>Bezahlt</td>
-        </tr>
-        <tr>
-          <td>Anreise + Übernachtung PTE (bei uns überschaubar)</td>
-          <td>individuell</td>
-          <td>Bezahlt</td>
-        </tr>
-        <tr>
-          <td>Erstgespräch Migration Agent (Johannes Kunz)</td>
-          <td>~250 AUD</td>
-          <td>Bezahlt</td>
-        </tr>
-        <tr>
-          <td>eVisitor (651) Tourist-Visum</td>
-          <td>0 €</td>
-          <td>In Vorbereitung</td>
-        </tr>
-        <tr>
-          <td>186-Antragsgebühren + Agent-Honorar</td>
-          <td>folgt</td>
-          <td>Nach Sponsor-Zusage</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <BentoSektion lang="de">
+    <BentoKachel groesse="m" zahl="4.120 AUD" label="TRA Skill Assessment als Koch, bezahlt" raster />
+    <BentoKachel groesse="s" zahl="270 €" label="PTE Academic in Hamburg, bezahlt" raster />
+    <BentoKachel groesse="s" zahl="250 AUD" label="Erstgespräch Migration Agent, bezahlt" raster />
+    <BentoKachel groesse="m" zahl="12.280 AUD" label="Antragsgebühren für uns vier, stehen noch aus" akzent raster />
+  </BentoSektion>
 
   <p>
-    Die offiziellen Antragsgebühren fürs 186 sind nicht trivial. Sie werden vom Department of Home Affairs regelmäßig angepasst und fallen für jedes Familienmitglied getrennt an (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Wir rechnen aktuell damit, dass die gesamten Visa-Kosten für uns vier im niedrigen fünfstelligen Bereich landen werden – inklusive Agent-Honorar, Gesundheitschecks und Police Clearance. Sobald wir die konkrete Summe kennen, tragen wir sie hier nach.
+    Die Antragsgebühren im Detail: Seit dem 1. Juli 2026 kostet das 186 laut dem offiziellen Preisrechner des Department of Home Affairs 6.140 AUD für den Hauptantragsteller, 3.070 AUD für einen erwachsenen Mitantragsteller und 1.535 AUD pro Kind unter 18 (<a href="https://immi.homeaffairs.gov.au/visas/visa-pricing-estimator" target="_blank" rel="noopener">Visa Pricing Estimator</a>, abgefragt August 2026). Für zwei Erwachsene und zwei Kinder macht das 12.280 AUD. Als wir diesen Artikel im April geschrieben haben, lag dieselbe Rechnung noch bei rund 9.825 AUD. Zwischen Planung und Antrag können die Gebühren steigen, bei uns um rund 2.500 AUD.
+  </p>
+
+  <AufklappBox titel="Alle Posten im Detail aufklappen" lang="de">
+    <div class="tabellen-halter">
+      <table class="kosten-tabelle">
+        <thead>
+          <tr>
+            <th>Was</th>
+            <th>Kosten</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TRA Skill Assessment als Koch (inkl. Übersetzungen)</td>
+            <td>~4.120 AUD</td>
+            <td>Bezahlt</td>
+          </tr>
+          <tr>
+            <td>PTE Academic Test (Hamburg, 11.03.2026)</td>
+            <td>270 €</td>
+            <td>Bezahlt</td>
+          </tr>
+          <tr>
+            <td>Anreise + Übernachtung PTE (bei uns überschaubar)</td>
+            <td>individuell</td>
+            <td>Bezahlt</td>
+          </tr>
+          <tr>
+            <td>Erstgespräch Migration Agent (Johannes Kunz)</td>
+            <td>~250 AUD</td>
+            <td>Bezahlt</td>
+          </tr>
+          <tr>
+            <td>eVisitor (651) Tourist-Visum, alle vier</td>
+            <td>0 €</td>
+            <td>Erteilt 28.05.2026</td>
+          </tr>
+          <tr>
+            <td>186-Antragsgebühren (2 Erwachsene + 2 Kinder)</td>
+            <td>12.280 AUD</td>
+            <td>Bei Antragstellung</td>
+          </tr>
+          <tr>
+            <td>Agent-Honorar für den Antrag, Gesundheitschecks, Police Clearance</td>
+            <td>folgt</td>
+            <td>Nach der Nomination</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </AufklappBox>
+
+  <p>
+    Dazu kommen später Gesundheitschecks, Police Clearances und das Honorar unseres Agents für den Antrag. Alle Auswanderungs-Kosten, vom Flug bis zur Kaution, haben wir gesammelt im <a href="/blog/auswandern-australien-kosten-familie-guide">Kosten-Guide</a> aufgeschlüsselt. Sobald unsere 186-Rechnung komplett ist, tragen wir sie in beiden Artikeln nach.
   </p>
 
   <!-- Sponsor -->
-  <h2 id="sponsor">Sponsor finden: Warum wir vor Ort suchen</h2>
+  <h2 id="sponsor">Sponsor finden: Wie es wirklich gelaufen ist</h2>
 
   <p>
-    Wir haben monatelang aus Deutschland heraus versucht, einen Sponsor zu finden. Facebook-Gruppen, Jobportale wie Seek und Indeed, direkte Anschreiben an Restaurants in der Region. Was uns mittlerweile klar ist: In der Gastronomie funktioniert das nur sehr selten. Die meisten Betriebe haben zwar Personalmangel, aber niemand stellt einen Koch ein, der nicht mindestens einmal zum Probearbeiten vorbeikommen kann. Und kein Probearbeiten ohne vor Ort zu sein.
+    Aus Deutschland heraus hatten wir es monatelang versucht: Facebook-Gruppen, Jobportale wie Seek und Indeed, direkte Anschreiben an Restaurants in der Region. In der Gastronomie funktioniert das praktisch nie. Die meisten Betriebe haben zwar Personalmangel, aber niemand stellt einen Koch ein, den er noch nie in seiner Küche gesehen hat. Anders ist das nur in internationalen Konzernen mit australischer Niederlassung, dort kann HR eine Nominierung auch aus der Ferne anstoßen. In der inhabergeführten Gastro? Vergiss es.
   </p>
 
   <p>
-    Anders ist es, wenn du in einem internationalen Konzern arbeitest, der in Australien eine Niederlassung hat. Dann kann die interne HR oft eine Visum-Nominierung ausstellen, ohne dass du physisch da bist. In der selbstständigen Gastronomie? Praktisch nie.
+    Deshalb war der Plan: hinfliegen, reingehen, Lebenslauf auf den Tisch. CVs persönlich abzugeben gilt in Australien als engagiert, nicht als altmodisch. Und genau so ist es dann auch gelaufen, nur schneller, als wir dachten.
   </p>
 
   <p>
-    Deshalb fliegt Christian vor. Er hat drei Monate Tourist-Visum, in denen er vor Ort in Restaurants reingeht, den Lebenslauf auf den Tisch legt und nach einem Gespräch fragt. Dieser Weg ist in Australien völlig normal, CVs physisch abzugeben gilt als engagiert, nicht als altmodisch. Parallel läuft die Online-Suche weiter, falls doch jemand von Deutschland aus antwortet.
+    In der ersten Woche hat Christian einen deutschen Stammtisch in Byron Bay besucht. Der Rat dort, sinngemäß: rumgehen, offen sein, mit Leuten sprechen, in der Gastro wird immer gesucht, ein Kontakt bringt den nächsten. Ab Woche zwei ist er mit dem Lebenslauf durch die Region, hat sich vorgestellt und dabei immer offen gesagt, wie sein Stand ist: Touristenvisum, arbeiten darf er erst später. Mehrere Betriebe zeigten trotzdem Interesse, ihn zu sponsern.
   </p>
 
   <p>
-    Was die Vor-Ort-Suche praktisch bedeutet: Wo lebt Christian in dieser Zeit? Wie bleibt er mobil? Die Antwort heißt <a href="/blog/letzte-wochen-vor-abflug-australien">Housesitting, Mietwagen und später Auto-Kauf</a> – das haben wir in einem anderen Artikel beschrieben. Kurz: Die ersten zwei Wochen Mietwagen, dann Gebrauchtwagen, Unterkunft über Aussie House Sitting und Facebook-Gruppen.
+    Ende Juli war es dann konkret: <a href="https://www.threeways.store/" target="_blank" rel="noopener">Threeways of the Valley</a>, ein Café-Restaurant im Hinterland, will Christian sponsern. Seitdem sitzen der Betrieb, Christian und unser Agent gemeinsam an den Anträgen. Dass der Betrieb in den Bergen liegt, ist für uns kein Kompromiss, sondern der Plan: In dieser Region wollen wir wohnen.
   </p>
+
+  <figure class="bild-polaroid">
+    <picture>
+      <source srcset="/assets/images/visum-186-hinterland-hoefe.webp" type="image/webp" />
+      <img
+        src="/assets/images/visum-186-hinterland-hoefe.jpg"
+        alt="Drohnenaufnahme im tiefen Sonnenlicht: bewaldete Hügel des Byron-Hinterlands mit verstreuten Höfen zwischen Bäumen"
+        width="1200"
+        height="676"
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>Die Hügel hinter der Küste: hier liegt der Betrieb, hier wollen wir bleiben.</figcaption>
+  </figure>
+
+  <p>
+    Und der Plan B? Den gab es, so nüchtern wie möglich: Wäre bis zum Ende der drei Monate kein Sponsor in Sicht gewesen, wären wir zurückgeflogen. Kein Verlängerungs-Basteln, kein Visum-Hopping mit zwei kleinen Kindern. Wir haben diese Antwort damals oft gegeben, wenn Leute gefragt haben, was passiert, wenn es nicht klappt. So weit kam es nicht.
+  </p>
+
+  <!-- Nomination -->
+  <h2 id="nomination">Die Nomination: Was gerade passiert</h2>
+
+  <p>
+    Das 186 besteht aus zwei Anträgen, nicht aus einem. Zuerst nominiert der Arbeitgeber die Position, erst danach beantragt der Arbeitnehmer das Visum. Genau zwischen diesen beiden Schritten stehen wir gerade: Der Betrieb arbeitet an seinem Teil, der Nomination.
+  </p>
+
+  <p class="wartemarke" aria-label="Aktueller Stand des Verfahrens">
+    <span class="wartemarke__label">186-Verfahren · Station 8 von 11</span>
+    <strong>Nomination läuft</strong>
+    <span class="wartemarke__stand">Stand: 15.08.2026</span>
+  </p>
+
+  <Randnotiz ausrichtung="rechts" pfeil lang="de">Gerade liegt der Ball beim Arbeitgeber. Wir können nichts tun außer zuarbeiten und warten.</Randnotiz>
+
+  <p>
+    Die Nomination ist der Teil des Verfahrens, den man als Antragsteller kaum sieht und der trotzdem über alles entscheidet. Der Arbeitgeber reicht sie online über sein ImmiAccount ein und zahlt dafür selbst: 540 AUD Nomination-Gebühr plus die Abgabe in den Skilling Australians Fund, einmalig 3.000 AUD bei einem Jahresumsatz unter 10 Millionen AUD, sonst 5.000 AUD (<a href="https://immi.homeaffairs.gov.au/visas/employing-and-sponsoring-someone/sponsoring-workers/learn-about-sponsoring/cost-of-sponsoring" target="_blank" rel="noopener">Department of Home Affairs, Cost of sponsoring</a>, 2026). Für einen kleinen Betrieb ist das ein echtes Bekenntnis. Auch deshalb sind wir dankbar, dass unser Sponsor diesen Weg mitgeht.
+  </p>
+
+  <p>
+    Zur Nomination gehört auch das Gehalt: Die nominierte Stelle muss mindestens die Core Skills Income Threshold erreichen, seit dem 1. Juli 2026 sind das 79.423 AUD Jahresgehalt (<a href="https://immi.homeaffairs.gov.au/visas/employing-and-sponsoring-someone/sponsoring-workers/nominating-a-position/salary-requirements" target="_blank" rel="noopener">Department of Home Affairs, Salary requirements</a>). Die Schwelle hieß früher TSMIT und wird jährlich angehoben. Mehr als diesen Rahmen nennen wir hier bewusst nicht, Christians Gehalt liegt über der Schwelle, und das ist die einzige Zahl, die für das Visum zählt.
+  </p>
+
+  <p>
+    Was uns beim Erklären selbst überrascht hat: Die "Nummer", auf die Christian wartet, heißt offiziell Transaction Reference Number (TRN). Sie entsteht bereits, wenn der Arbeitgeber die Nomination einreicht, nicht erst bei der Bewilligung. Mit dieser TRN kann Christian seinen eigenen Visa-Antrag verknüpfen und muss dafür nicht auf die Nomination-Entscheidung warten (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/direct-entry-stream" target="_blank" rel="noopener">Department of Home Affairs, 186 Direct Entry</a>). Wird die Nomination zuerst bewilligt, gilt: Der Visa-Antrag muss innerhalb von 6 Monaten danach gestellt werden. Beides stimmen wir mit unserem Agent ab.
+  </p>
+
+  <InlineCta
+    titel="Wie es mit der Nomination weitergeht"
+    text="erzählen wir zuerst im Newsletter. Alle zwei Wochen, echte Zahlen, keine Floskeln."
+    buttonLabel="Updates bekommen"
+    href="#newsletter"
+    lang="de"
+    variante="leise"
+  />
 
   <!-- Familie -->
   <h2 id="familie">Familie im 186: Lucy und die Kinder als Dependents</h2>
 
   <p>
-    Ein großer Pluspunkt des 186: Familienmitglieder laufen als Dependents im selben Antrag mit. Laut Department of Home Affairs gelten Ehepartner oder De-facto-Partner sowie Kinder unter 18 als "secondary applicants" (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Bedeutet für uns: Christian ist primärer Antragsteller, Lucy, Joris und Linnea sind mit drin.
+    Ein großer Pluspunkt des 186: Familienmitglieder laufen als Dependents im selben Antrag mit. Laut Department of Home Affairs gelten Ehepartner oder De-facto-Partner sowie Kinder als "members of the family unit" (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Bedeutet für uns: Christian ist primärer Antragsteller, Lucy, Joris und Linnea sind mit drin. Wird das Visum bewilligt, sind alle vier gleichzeitig permanent in Australien.
   </p>
 
   <p>
-    Das hat praktische Vorteile. Lucy muss keine eigene Visum-Route bauen, die Kinder ebenfalls nicht. Sobald das 186 bewilligt ist, sind wir alle vier permanent in Australien. Die Antragsgebühren fallen pro Person an, das ist der Nachteil, aber ein gemeinsames Verfahren ist immer noch schneller und günstiger als vier einzelne.
+    Das hat praktische Vorteile. Lucy muss keine eigene Visum-Route bauen, die Kinder ebenfalls nicht. Die Antragsgebühren fallen pro Person an, das ist der Nachteil, aber ein gemeinsames Verfahren ist immer noch schneller und günstiger als vier einzelne. Eine Regel sollte man kennen: Für erwachsene Familienmitglieder ohne nachgewiesenes Functional English verlangt das Department eine zweite Rate von 4.890 AUD, fällig erst kurz vor der Bewilligung (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/direct-entry-stream" target="_blank" rel="noopener">Department of Home Affairs</a>). Der Nachweis geht zum Beispiel über einen Englisch-Test oder ein englischsprachiges Studium.
   </p>
 
   <p>
-    Was das 186 <strong>nicht</strong> beinhaltet: Schule und Medicare in den ersten Jahren. Solange wir noch keinen PR-Status in der Tasche haben, zahlen wir Schulgebühren und Krankenversicherung selbst. Wie wir das mit Joris' Einschulung und Linneas Betreuung planen, haben wir hier aufgeschrieben: <a href="/blog/auswandern-australien-mit-kindern-vorbereitung">Auswandern nach Australien mit Kindern: Unsere ehrliche Vorbereitung</a>.
+    Was das 186 <strong>nicht</strong> sofort mitbringt: kostenlose Schule und Medicare. Bis zur Bewilligung zahlen wir beides selbst, die Details dazu stehen im nächsten Abschnitt. Wie wir Joris' Einschulung und Linneas Betreuung planen, haben wir hier aufgeschrieben: <a href="/blog/auswandern-australien-mit-kindern-vorbereitung">Auswandern nach Australien mit Kindern: Unsere ehrliche Vorbereitung</a>.
+  </p>
+
+  <!-- Bridging -->
+  <h2 id="bridging">Bridging Visa und Medicare: die Zeit dazwischen</h2>
+
+  <p>
+    Die Monate zwischen Antrag und Entscheidung regelt ein Bridging Visa. Bei einem Onshore-Antrag wie unserem entsteht automatisch ein <strong>Bridging Visa A (Subclass 010)</strong>. Wichtig zu verstehen: Es beginnt nicht sofort, sondern erst, wenn das aktuelle Visum endet, bei uns also der eVisitor (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/bridging-visa-a-010" target="_blank" rel="noopener">Department of Home Affairs, Bridging visa A</a>). Bis dahin gelten die eVisitor-Regeln weiter, inklusive Arbeitsverbot.
+  </p>
+
+  <p>
+    Zum Arbeiten auf dem Bridging Visa: Bridging Visas aus einem Antrag auf ein permanentes Visum kommen in der Regel ohne Arbeitsverbot. Verbindlich ist aber erst, was im eigenen Grant Letter steht, und genau da werden wir nachschauen, sobald wir ihn haben. In einer früheren Fassung dieses Artikels stand, unser Agent "stattet das Bridging Visa mit Arbeitsrechten aus". So läuft es nicht, die Rechte ergeben sich aus den Regeln, nicht aus einem Antrag des Agents. Wir korrigieren das hier ausdrücklich.
+  </p>
+
+  <p>
+    Eine Einschränkung haben wir erst spät verstanden: Mit einem aktiven Bridging Visa A dürfen wir Australien nicht verlassen, es erlaubt keine Wiedereinreise. Wer während der Wartezeit nach Deutschland will, braucht vorher ein separates Bridging Visa B. Für uns heißt das: Zwischen Antrag und Entscheidung liegt womöglich mehr als ein Jahr, in dem ein spontaner Deutschland-Besuch nicht drin ist. Das sollte jede Familie vorher wissen.
+  </p>
+
+  <p>
+    Und Medicare? Deutschland gehört nicht zu den elf Ländern mit einem Gesundheitsabkommen mit Australien (<a href="https://www.servicesaustralia.gov.au/reciprocal-health-care-agreements" target="_blank" rel="noopener">Services Australia, Reciprocal Health Care Agreements</a>). Als Antragsteller auf ein permanentes Visum kann man Medicare beantragen, sobald drei Bedingungen gleichzeitig erfüllt sind: Antrag gestellt, im Land, und das aktuelle Visum erlaubt Arbeit (<a href="https://operational.servicesaustralia.gov.au/public/Pages/your-health/011-44020000-01.html" target="_blank" rel="noopener">Services Australia, Medicare-Richtlinien</a>). Für uns heißt das konkret: Solange der eVisitor läuft, sind wir privat versichert, erst mit dem aktiven Bridging Visa können wir Medicare beantragen. Wie unsere private Auslandsversicherung aussieht, steht im <a href="/blog/krankenversicherung-australien-auswandern-familie">Krankenversicherungs-Artikel</a>.
   </p>
 
   <!-- Timeline -->
   <h2 id="timeline">Timeline: Wo wir heute stehen</h2>
 
   <p>
-    Wir haben den Prozess im Dezember 2025 offiziell gestartet, mit dem Erstgespräch beim Migration Agent. Zwischenstand April 2026:
+    Elf Stationen, sieben erledigt, eine läuft. Wir haben den Prozess im Dezember 2025 gestartet, mit dem Erstgespräch beim Migration Agent. Der Stapel unten ist unser Verfahren zum Durchblättern, er schlägt bei der Station auf, an der wir gerade festhängen:
   </p>
 
-  <ul>
-    <li><strong>Dezember 2025:</strong> Erstgespräch Migration Agent, Planung der Stream-Wahl</li>
-    <li><strong>Januar–März 2026:</strong> Skill Assessment Koch (Dokumente, Übersetzungen, Technical Interview), bestanden</li>
-    <li><strong>Februar 2026:</strong> PTE Academic in Hamburg, Proficient</li>
-    <li><strong>April 2026:</strong> eVisitor (651) wird in den kommenden Tagen beantragt</li>
-    <li><strong>23. Juni 2026:</strong> Christian fliegt vor</li>
-    <li><strong>Juli–September 2026:</strong> Sponsor-Suche vor Ort</li>
-    <li><strong>Idealfall ab September 2026:</strong> 186-Antrag aus Australien + Bridging Visa + Arbeitserlaubnis</li>
-    <li><strong>Bewilligung 186:</strong> je nach Bearbeitungszeit, aktuell kein Stichtag</li>
-  </ul>
+  <KartenDeck karten={stationen} lang="de" startIndex={7} deckLabel="Der 186-Antrag als Aktenstapel: elf Stationen von Erstgespräch bis Entscheidung" />
 
   <p>
-    Der optimistische Pfad sieht so aus. Der realistische: Alles kann sich schieben. Wir haben uns innerlich darauf eingestellt, dass zwischen Ankunft und 186-Bewilligung ein Jahr oder mehr liegen kann.
+    Der optimistische Pfad ab hier: Nomination durch, Antrag eingereicht, Bridging Visa, und irgendwann im Laufe von 2027 die Entscheidung. Der realistische: Alles kann sich schieben. Die offiziellen Bearbeitungszeiten für den Direct Entry Stream liegen aktuell bei 10 Monaten für die Hälfte und 14 Monaten für 90 Prozent der Anträge (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times" target="_blank" rel="noopener">Global Visa Processing Times</a>, abgefragt August 2026). Wir haben uns innerlich darauf eingestellt, dass zwischen Antrag und Bewilligung mehr als ein Jahr liegen kann.
   </p>
 
   <!-- Gelernt -->
@@ -489,7 +680,7 @@ const weiterlesen = [
   <Randnotiz ausrichtung="rechts" pfeil lang="de">Ohne TRA kein 186.</Randnotiz>
 
   <p>
-    Drei Dinge, die wir gerne früher gewusst hätten:
+    Vier Dinge, die wir gerne früher gewusst hätten:
   </p>
 
   <h3>1. Stream-Wahl früh klären</h3>
@@ -504,10 +695,16 @@ const weiterlesen = [
     Ohne TRA kein 186. Und das TRA kann, je nach Weg, Monate dauern. Wir haben es über ATTC gemacht, weil das schneller ist. Details stehen im Skill-Assessment-Artikel oben. Wer erst mit dem Rest anfängt und das Skill Assessment hinten anhängt, verschenkt Zeit.
   </p>
 
-  <h3>3. Aus Deutschland heraus keinen Sponsor zu erzwingen</h3>
+  <h3>3. Aus Deutschland heraus keinen Sponsor erzwingen</h3>
 
   <p>
-    Wir haben lange versucht, den 186-Antrag komplett aus Deutschland durchzuziehen. Gibt es Leute, bei denen das funktioniert? Ja, aber selten, und fast nur in Konzernen mit australischer Tochter. In der selbstständigen Gastronomie: Lass es. Spart Nerven.
+    Wir haben lange versucht, den 186-Antrag komplett aus Deutschland durchzuziehen. Gibt es Leute, bei denen das funktioniert? Ja, aber selten, und fast nur in Konzernen mit australischer Tochter. In der inhabergeführten Gastronomie: Lass es. Spart Nerven.
+  </p>
+
+  <h3>4. Nach der Sponsor-Zusage fängt ein neues Warten an</h3>
+
+  <p>
+    Die Zusage fühlt sich wie das Ziel an. Sie ist aber der Start der eigentlichen Behörden-Kette: Nomination, Visa-Antrag, Bridging Visa, Entscheidung. Jede Station hat ihr eigenes Tempo, und auf keine davon hat man selbst Einfluss. Wer nur bis zur Sponsor-Suche plant, plant zu kurz, finanziell wie mental.
   </p>
 
   <!-- FAQ -->
@@ -515,42 +712,49 @@ const weiterlesen = [
 
   <h3>Wie lange dauert das Visum 186 realistisch?</h3>
   <p>
-    Die Bearbeitungszeit schwankt stark. Unser Migration Agent hat uns gesagt, dass ein 186-Verfahren im Direct Entry Stream aus dem Ausland im ungünstigen Fall über ein Jahr dauern kann. Aktuelle Richtwerte veröffentlicht das Department of Home Affairs regelmäßig (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Wir rechnen mit 9–15 Monaten nach Antragseinreichung.
+    Das Department of Home Affairs nennt für den Direct Entry Stream aktuell 10 Monate für die Hälfte und 14 Monate für 90 Prozent der Anträge (<a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times" target="_blank" rel="noopener">Global Visa Processing Times</a>, Stand August 2026). Dazu kommt vorab die Zeit für Skill Assessment, Englisch-Test und die Nomination des Arbeitgebers. Bei uns lagen zwischen Erstgespräch und laufender Nomination rund acht Monate.
   </p>
 
   <h3>Darf ich auf dem Bridging Visa in Australien arbeiten?</h3>
   <p>
-    In unserem Fall ja, weil wir das 186 aus Australien heraus beantragen und unser Migration Agent das Bridging Visa entsprechend mit Arbeitsrechten ausstattet. Die genauen Rechte hängen vom Typ des Bridging Visa ab (Bridging Visa A, B oder C). Welches du bekommst, klärt dein Agent. Auf einem reinen Tourist-Visum darfst du nicht arbeiten, nur nach 186-Antragseinreichung greift die Brücke.
+    Mit dem 186-Antrag aus Australien entsteht automatisch ein Bridging Visa A. Es wird aktiv, sobald das aktuelle Visum abläuft, bei uns der eVisitor. Bridging Visas aus einem Antrag auf ein permanentes Visum kommen in der Regel ohne Arbeitsverbot, verbindlich steht es aber erst im eigenen Grant Letter. Auf dem Touristenvisum selbst gilt weiterhin: keine Arbeit.
+  </p>
+
+  <h3>Dürfen wir während der Wartezeit nach Deutschland fliegen?</h3>
+  <p>
+    Mit einem aktiven Bridging Visa A nicht, es erlaubt keine Wiedereinreise. Wer während der 186-Wartezeit ausreisen will, braucht vorher ein separates Bridging Visa B. Das planen wir bewusst ein: Zwischen Antrag und Entscheidung liegt womöglich mehr als ein Jahr ohne spontanen Deutschland-Besuch.
   </p>
 
   <h3>Brauche ich wirklich einen Migration Agent?</h3>
   <p>
-    Pflicht ist es nicht. Aber ein 186-Antrag mit Familie ist komplex, Stream-Wahl, Dokumentenliste, Fristen, Kommunikation mit dem Department. Wir haben uns für Johannes Kunz entschieden, weil das Erstgespräch (~250 AUD) mehr geklärt hat als ein Monat Eigenrecherche. Für einen klaren, einfachen Einzelfall ohne Familie kann ein Selbstantrag gehen. Mit Kindern würden wir davon abraten.
-  </p>
-
-  <h3>Was passiert, wenn Christian vor Ort keinen Sponsor findet?</h3>
-  <p>
-    Dann läuft das eVisitor nach drei Monaten ab und wir müssen neu entscheiden. Theoretisch denkbar: Verlängerung über ein Visitor Visa (subclass 600) oder Wechsel auf ein 482-Sponsored-Work-Visa als Zwischenschritt. Realistisch heißt es für uns: Rückflug. Wir haben das im Hinterkopf. Wir rechnen nicht fest damit, weil die Sponsor-Chancen in der Region und vor allem als Koch real sind, aber wir gehen mit der Bereitschaft rein.
+    Pflicht ist es nicht. Aber ein 186-Antrag mit Familie ist komplex: Stream-Wahl, Dokumentenliste, Fristen, Nomination und Visa-Antrag müssen zusammenpassen. Unser Erstgespräch mit Johannes Kunz (~250 AUD) hat mehr geklärt als die eigene Recherche davor. Für einen klaren Einzelfall ohne Familie kann ein Selbstantrag gehen. Mit Kindern würden wir davon abraten.
   </p>
 
   <h3>Was kostet das Visum 186 insgesamt für eine Familie?</h3>
   <p>
-    Offizielle Antragsgebühren ändern sich regelmäßig. Dazu kommen Skill Assessment, PTE, Migration Agent, Gesundheitschecks und Police Clearance. Für eine vierköpfige Familie rechnen wir konservativ mit einem niedrigen fünfstelligen Euro-Betrag – also deutlich über 10.000 €. Die aktuell offizielle Gebührenübersicht findest du beim <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Department of Home Affairs</a>. Sobald unsere Rechnung steht, tragen wir sie hier nach.
+    Die reinen Antragsgebühren liegen seit dem 1. Juli 2026 bei 12.280 AUD für zwei Erwachsene und zwei Kinder: 6.140 AUD Hauptantragsteller, 3.070 AUD Partner, je 1.535 AUD pro Kind (<a href="https://immi.homeaffairs.gov.au/visas/visa-pricing-estimator" target="_blank" rel="noopener">Visa Pricing Estimator, Department of Home Affairs</a>). Dazu kommen Skill Assessment (~4.120 AUD), Englisch-Test, Migration Agent, Gesundheitschecks und Police Clearance. Für erwachsene Familienmitglieder ohne nachgewiesenes Functional English kann eine zweite Rate von 4.890 AUD anfallen. Insgesamt rechnen wir weiter mit einem niedrigen fünfstelligen Euro-Betrag.
+  </p>
+
+  <h3>Warum nicht erst ein 482-Visum und später das 186?</h3>
+  <p>
+    Das 482 (Skills in Demand) ist das gängigere Arbeitgeber-Sponsoring: befristet, oft schneller, aber kein Daueraufenthalt. Unser Migration Agent hat uns von Anfang an das direkte 186 empfohlen, wenn der Arbeitgeber mitzieht, weil es sofort permanent ist. Viele Arbeitgeber bieten lieber das 482 an, weil es den Arbeitnehmer länger bindet. Unser Sponsor war bereit, direkt das 186 zu nominieren, deshalb sparen wir uns den Zwischenschritt.
   </p>
 
   <h3>Warum nicht das Punkte-Visum (189 oder 190)?</h3>
   <p>
-    Die Punkte-Visa sind unabhängig von einem Arbeitgeber, aber brauchen sehr hohe Punktzahlen, und für Köche ist die Konkurrenz in der Skilled Occupation List eng. Wir überlegen eine EOI für 189/190 parallel, vor allem wenn wir PTE auf Superior hochziehen. Aktuell ist das 186 über einen Sponsor der realistischere Hauptweg.
+    Die Punkte-Visa sind unabhängig von einem Arbeitgeber, brauchen aber sehr hohe Punktzahlen, und für Köche ist die Konkurrenz eng. Eine parallele EOI für 189/190 bleibt unser Plan B, vor allem falls Christian den PTE später auf Superior hochzieht. Mit gefundenem Sponsor ist das 186 unser Hauptweg.
   </p>
 
   <!-- Trust Box -->
   <div class="trust-box">
     <p>
-      <strong>Hinweis:</strong> Dieser Artikel beschreibt unsere persönliche Erfahrung und den Stand unseres laufenden Verfahrens im April 2026. Er ist kein Migrationsrat und ersetzt keine professionelle Beratung durch einen registrierten Migration Agent oder Anwalt. Regelungen, Kosten und Bearbeitungszeiten können sich kurzfristig ändern, verbindliche Auskünfte gibt es nur direkt beim australischen Department of Home Affairs oder einem qualifizierten Berater.
+      <strong>Hinweis:</strong> Dieser Artikel beschreibt unsere persönliche Erfahrung und den Stand unseres laufenden Verfahrens im August 2026. Er ist kein Migrationsrat und ersetzt keine professionelle Beratung durch einen registrierten Migration Agent oder Anwalt. Regelungen, Kosten und Bearbeitungszeiten können sich kurzfristig ändern, verbindliche Auskünfte gibt es nur direkt beim australischen Department of Home Affairs oder einem qualifizierten Berater.
     </p>
     <p>
-      <strong>Zuletzt aktualisiert:</strong> 01.06.2026 · <strong>Quellen:</strong>
+      <strong>Zuletzt aktualisiert:</strong> 15.08.2026 · <strong>Quellen:</strong>
       <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs – Visa 186</a>,
+      <a href="https://immi.homeaffairs.gov.au/visas/visa-pricing-estimator" target="_blank" rel="noopener">DHA Visa Pricing Estimator</a>,
+      <a href="https://www.servicesaustralia.gov.au/reciprocal-health-care-agreements" target="_blank" rel="noopener">Services Australia</a>,
       <a href="https://pearsonpte.com" target="_blank" rel="noopener">Pearson PTE Academic</a>,
       <a href="https://www.tradesrecognitionaustralia.gov.au" target="_blank" rel="noopener">Trades Recognition Australia</a>
     </p>
@@ -559,6 +763,10 @@ const weiterlesen = [
   <!-- Update-Log (Spec §11.2) -->
   <div class="update-log">
     <p class="update-log__titel">Update-Log</p>
+    <div class="update-log__eintrag">
+      <span class="update-log__datum">15.08.2026</span>
+      <span class="update-log__text">Großes Status-Update: Sponsor gefunden, Nomination läuft. Gebühren auf Stand 01.07.2026 (12.280 AUD für vier), neue Abschnitte zur Nomination und zum Bridging Visa, offizielle Bearbeitungszeiten, PTE-Kosten und Altersgrenzen-Stichtag korrigiert.</span>
+    </div>
     <div class="update-log__eintrag">
       <span class="update-log__datum">29.05.2026</span>
       <span class="update-log__text">Englische Version verfügbar unter <a href="/en/186-visa-australia-family-guide">186-visa-australia-family-guide</a>.</span>
@@ -577,13 +785,13 @@ const weiterlesen = [
     <div>
       <p class="author-box__name">Christian Schippel</p>
       <p class="author-box__bio">
-        Ausgebildeter Koch, 37, lebte 2016–2018 in Byron Bay. Wandert im Sommer 2026 mit Lucy und zwei Kindern zurück nach Northern Rivers. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
+        Ausgebildeter Koch, 37, lebte 2017–2018 in Byron Bay. Ist im Sommer 2026 mit Lucy und den zwei Kindern zurück in die Northern Rivers gezogen und wartet dort gerade auf die 186-Nomination. Schreibt hier über Visa, Kosten und alles, was unterwegs passiert.
         <a href="/ueber-uns">Mehr über uns</a>
       </p>
     </div>
   </div>
 
-  <!-- Verwandte Artikel: gleiche 3 Ziele + Texte wie live -->
+  <!-- Verwandte Artikel -->
   <WeiterlesenPfade
     lang="de"
     eyebrow="Weiterlesen"
@@ -591,7 +799,7 @@ const weiterlesen = [
     artikel={weiterlesen}
   />
 
-  <!-- Newsletter-Sektion, Texte 1:1 wie live (Handler zentral im BaseLayout) -->
+  <!-- Newsletter-Sektion (Handler zentral im BaseLayout, Kit) -->
   <section class="section" id="newsletter" aria-labelledby="newsletter-h">
     <div class="container container--text">
       <div class="card texture-paper newsletter-karte">
@@ -659,7 +867,22 @@ const weiterlesen = [
 <style>
   .artikel-bild {
     width: 100%;
+    height: auto;
     border-radius: var(--radius-m);
+  }
+
+  /* --- Hero-Figur mit Handschrift-Zeile --------------------------- */
+  .hero-figur {
+    margin: 0;
+  }
+
+  .hero-caption {
+    margin-block-start: var(--space-2);
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--accent-strong);
+    text-align: right;
+    rotate: -0.5deg;
   }
 
   /* --- Inhaltsverzeichnis ---------------------------------------
@@ -727,6 +950,84 @@ const weiterlesen = [
     border-radius: var(--radius-s);
     padding: var(--space-4) var(--space-5);
     box-shadow: var(--shadow-card);
+  }
+
+  /* --- Inline-Bild im Polaroid-Look ------------------------------ */
+  .bild-polaroid {
+    margin: var(--space-6) 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    rotate: 0.6deg;
+  }
+
+  .bild-polaroid img {
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius-s) - 2px);
+    display: block;
+  }
+
+  .bild-polaroid figcaption {
+    margin-block-start: var(--space-3);
+    font-family: var(--font-hand);
+    font-size: var(--text-1);
+    color: var(--accent-strong);
+    text-align: center;
+  }
+
+  /* --- Wartemarke: Ticket-Stub an der offenen Station ------------ */
+  .wartemarke {
+    display: grid;
+    gap: var(--space-1);
+    justify-items: start;
+    max-inline-size: 22rem;
+    margin-block: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface);
+    border: 2px dashed var(--accent-strong);
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-card);
+    rotate: -1deg;
+    font-family: var(--font-mono);
+  }
+
+  .wartemarke__label {
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+  }
+
+  .wartemarke strong {
+    font-size: var(--text-2);
+    letter-spacing: 0.04em;
+    color: var(--accent-strong);
+    text-transform: uppercase;
+  }
+
+  .wartemarke__stand {
+    font-size: var(--text--1);
+    color: var(--ink-soft);
+  }
+
+  /* --- Muster-Akte (Platzhalter-Dokument) ------------------------ */
+  .muster-akte {
+    margin: 0 0 var(--space-3);
+  }
+
+  .muster-akte svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .muster-akte figcaption {
+    margin-block-start: var(--space-2);
+    font-size: var(--text--1);
+    color: var(--ink-soft);
   }
 
   /* --- Kosten-Tabelle -------------------------------------------- */
