@@ -44,18 +44,28 @@ const { title, description, lang = 'de' } = Astro.props;
     </main>
     <SiteFooter lang={lang} />
     <script is:inline>
-      // Newsletter (Kit). EIN Handler fuer alle form[data-newsletter] auf der
-      // Seite; Texte + Verhalten wie vorher.
+      // Newsletter (Brevo, seit 17.08.2026; vorher Kit). EIN Handler fuer alle
+      // form[data-newsletter] auf der Seite; Texte + Verhalten unveraendert.
       //
-      // Die Sprachtrennung entsteht ueber ZWEI Kit-Formulare, nicht ueber ein
-      // Tag im Request: die Seitensprache waehlt die Formular-ID, und wer sich
-      // wo eingetragen hat, steht damit in Kit fest (Broadcast an ein Formular
-      // adressierbar). Kein API-Schluessel im Browser, kein Server noetig --
-      // der Endpunkt schickt access-control-allow-origin: * (geprueft 13.08.2026).
+      // Die Sprachtrennung entsteht ueber ZWEI Brevo-Formulare, nicht ueber ein
+      // Tag im Request: die Seitensprache waehlt den Endpunkt, und wer sich wo
+      // eingetragen hat, steht damit in Brevo fest (je eigene Liste, je eigene
+      // Bestaetigungs-Weiterleitung). Kein API-Schluessel im Browser, kein
+      // Server noetig -- der Endpunkt schickt
+      // access-control-allow-origin: https://wildgewachsen-australien.de
+      // (am 15.08.2026 per OPTIONS und POST gemessen).
+      //
+      // Warum Brevo statt Kit: Kits Editor nimmt kein HTML, die Mails liessen
+      // sich dort nicht im Marken-Look bauen. Belege + Auswahlverfahren in
+      // Projekt_Wildgewachsen/recherche/newsletter-tool-alternative-kit-2026-08-14.md
       (function () {
-        // >>> Die einzigen zwei Werte, die beim Anlegen der Kit-Formulare
-        // >>> eingetragen werden: die Formular-IDs aus dem Kit-Einbettungscode.
-        var KIT_FORM = { de: '9795984', en: '9795996' };
+        // >>> Die einzigen zwei Werte, die beim Anlegen der Brevo-Formulare
+        // >>> eingetragen werden: die action-Adressen aus dem Reiter
+        // >>> "Einfaches HTML" (Schritt 6 "Teilen") des jeweiligen Formulars.
+        var BREVO_FORM = {
+          de: 'https://4e8fdf9a.sibforms.com/serve/MUIFABaywhK4Z1Iq1v6XA16Z3v7_NWbsEpHZ3odAsDkxSS3C2_Xkd3XKgigveFVHAmuoecsbCHJ0l9BVNe4ca3F1V4YnkO05545o0GWxhD4rFJe-sx9Ct8eRYpK5yOj9GY-WZDxlhxJrTSwFIJHK17O76yKkh4752Gy-rJK2uTJPd-wp1T2QV-ZFnj4QGRU30HwSWSUBoc2xkXrMSA==',
+          en: 'https://4e8fdf9a.sibforms.com/serve/MUIFADll01Ztzz5DTK-muRyLOdV6rc0lukwQiw8WPctRSpTtOCs1OqxpSHSOZjfMUu-cbEhDMnHONHhPDwU0yhykPUNKojDGMSqGcsJrDD1m2tm5MWPtmX8fH93baq-ClTB9tjwiysEEbcB5pgg2CHy4fO93pIyosGYFGVJpHS1-xywsxD6O8TuSDrpNR-GTW4kdexTRQzDDzNyikw==',
+        };
 
         var messages = {
           de: {
@@ -79,15 +89,40 @@ const { title, description, lang = 'de' } = Astro.props;
             btn.textContent = '...';
             btn.disabled = true;
             try {
-              var res = await fetch('https://app.kit.com/forms/' + KIT_FORM[lang] + '/subscriptions', {
+              // Feldnamen exakt wie im Brevo-Einbettungscode:
+              //   EMAIL                -- gross geschrieben, nicht email_address
+              //   email_address_check  -- Honigtopf, muss LEER mitgeschickt werden
+              //   locale, html_type    -- Brevo generiert beide Formulare mit
+              //                           locale=de (Kontosprache). Steuert nur
+              //                           Brevos eigene Formularseiten, die wir
+              //                           nie anzeigen. Deshalb bewusst so
+              //                           uebernommen, statt fuer EN zu raten.
+              var body = new URLSearchParams({
+                EMAIL: input.value,
+                email_address_check: '',
+                locale: 'de',
+                html_type: 'simple',
+              });
+              var res = await fetch(BREVO_FORM[lang], {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded',
                   Accept: 'application/json',
                 },
-                body: 'email_address=' + encodeURIComponent(input.value),
+                body: body.toString(),
               });
-              if (res.ok) {
+              // Brevo antwortet 200 mit {"success":true}. Ein 200 mit
+              // success:false waere ein fachlicher Fehler trotz HTTP-OK.
+              var ok = res.ok;
+              if (ok) {
+                try {
+                  var data = await res.json();
+                  if (data && data.success === false) ok = false;
+                } catch (parseErr) {
+                  // Kein JSON zurueck: HTTP-Status entscheidet, wie vorher.
+                }
+              }
+              if (ok) {
                 form.innerHTML = '<p style="color:inherit;font-size:0.95rem;">' + messages[lang].success + '</p>';
               } else {
                 btn.textContent = origText;
