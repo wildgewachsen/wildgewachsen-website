@@ -438,28 +438,21 @@ const stationen = [
     Die Altersgrenze liegt beim 186 Direct Entry bei 45 Jahren, Stichtag ist der Tag der Antragstellung ("on the date you lodge your application", <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186" target="_blank" rel="noopener">Department of Home Affairs</a>, 2026). Lucy (31) und ich (37) sind klar darunter. Für Familien, die später im Leben auswandern wollen, ist das der kritische Punkt: Je näher man der 45 kommt, desto enger wird der Zeitplan.
   </p>
 
-  <!-- PLATZHALTER-DOKUMENT: vor jedem Push echten geschwaerzten Scan einsetzen ODER Box komplett entfernen (CEO liefert Scans im naechsten Durchgang) -->
-  <AufklappBox titel="Die Akte: unsere Belege zum Nachlesen" lang="de">
+  <AufklappBox titel="Die Akte: unser Skill-Assessment-Ergebnis im Original" lang="de">
     <figure class="muster-akte">
-      <svg viewBox="0 0 560 340" role="img" aria-label="Stilisiertes Muster-Dokument mit geschwärzten Stellen als Platzhalter für die echten Belege" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="12" width="544" height="316" rx="4" fill="var(--surface, #FBF7EE)" stroke="var(--line, #d8ccb6)" stroke-width="2" transform="rotate(-0.6 280 170)" />
-        <text x="40" y="58" font-family="'Courier Prime', monospace" font-size="15" fill="var(--ink, #33291F)" letter-spacing="2">TRA SKILL ASSESSMENT · OUTCOME</text>
-        <line x1="40" y1="76" x2="520" y2="76" stroke="var(--line, #d8ccb6)" stroke-width="1.5" stroke-dasharray="4 4" />
-        <rect x="40" y="96" width="220" height="16" fill="var(--ink, #33291F)" opacity="0.85" />
-        <text x="272" y="109" font-family="'Courier Prime', monospace" font-size="12" fill="var(--ink-soft, #6b5f4e)">← Aktenzeichen, geschwärzt</text>
-        <line x1="40" y1="140" x2="480" y2="140" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
-        <line x1="40" y1="168" x2="510" y2="168" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
-        <line x1="40" y1="196" x2="450" y2="196" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
-        <rect x="40" y="220" width="150" height="16" fill="var(--ink, #33291F)" opacity="0.85" />
-        <line x1="40" y1="264" x2="490" y2="264" stroke="var(--line, #d8ccb6)" stroke-width="1.5" />
-        <g transform="rotate(-8 420 290)">
-          <rect x="330" y="262" width="180" height="52" fill="none" stroke="#B5482A" stroke-width="3" rx="6" />
-          <text x="352" y="296" font-family="'Courier Prime', monospace" font-size="26" fill="#B5482A" letter-spacing="6">MUSTER</text>
-        </g>
-      </svg>
-      <figcaption>So sieht die Stelle aus, an der die echten Belege hinkommen: eingescannt, Aktenzeichen geschwärzt. Wir reichen sie nach, sobald sie aufbereitet sind.</figcaption>
+      <picture>
+        <source srcset="/assets/images/visum-186-tra-ergebnis-beleg.webp" type="image/webp" />
+        <img
+          src="/assets/images/visum-186-tra-ergebnis-beleg.jpg"
+          alt="Ergebnisschreiben des Australian Trade Training College vom 12. März 2026 mit der Überschrift Skills Assessment Result: nominierter Beruf Chef 351311, Assessment program Offshore Skills Assessment Program, Assessment outcome Successful. Adresse, Geburtsdatum, TRA-Nummer und Passfoto sind geschwärzt."
+          width="1200"
+          height="1594"
+          loading="lazy"
+        />
+      </picture>
+      <figcaption>Ausgestellt am 12. März 2026, einen Tag nach dem PTE. Wohnadresse, Geburtsdatum, TRA-Nummer und Passfoto haben wir geschwärzt, alles andere steht so im Schreiben.</figcaption>
     </figure>
-    <p>Geplant für diese Akte: das TRA-Ergebnis, der PTE-Score-Report und später die Antragsbestätigung. Nicht als Deko, sondern als Beleg, dass hinter jeder Zahl in diesem Artikel ein echtes Stück Papier steht.</p>
+    <p>Das ist der Beleg für den Satz, an dem der ganze Rest hängt: „Assessment outcome: Successful", ausgestellt für Chef mit der Berufsnummer 351311. Der PTE-Score-Report und später die Antragsbestätigung kommen an dieselbe Stelle. Nicht als Deko, sondern als Nachweis, dass hinter jeder Zahl in diesem Artikel ein echtes Stück Papier steht.</p>
   </AufklappBox>
 
   <!-- Migration Agent -->
@@ -1018,10 +1011,13 @@ const stationen = [
     margin: 0 0 var(--space-3);
   }
 
-  .muster-akte svg {
+  .muster-akte svg,
+  .muster-akte img {
     width: 100%;
     height: auto;
     display: block;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
   }
 
   .muster-akte figcaption {
