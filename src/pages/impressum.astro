@@ -151,7 +151,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           unbedingt erforderlich sind.
         </li>
         <li>
-          <strong>Newsletter-Versand (Kit):</strong>{' '}
+          <strong>Newsletter-Versand (Brevo):</strong>{' '}
           Verarbeitung der E-Mail-Adresse zum Versand des Newsletters im Double-Opt-In-Verfahren.{' '}
           <em>Rechtsgrundlage:</em> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) sowie
           Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Newsletter-Vertrags).
@@ -213,10 +213,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <td>Anonymisierte Seitenaufrufe</td>
             </tr>
             <tr>
-              <td>Kit Inc.</td>
-              <td>USA</td>
+              <td>Brevo GmbH</td>
+              <td>Deutschland (Berlin); Muttergesellschaft Sendinblue SAS, Paris</td>
               <td>Newsletter-Versand</td>
-              <td>E-Mail, Opt-In-Zeitpunkt, ggf. Vorname</td>
+              <td>E-Mail, Opt-In-Zeitpunkt, Opt-In-IP</td>
             </tr>
             <tr>
               <td>Wise (Wise Payments Limited)</td>
@@ -253,7 +253,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <ul>
         <li>
-          <strong>USA (Cloudflare, Kit):</strong>{' '}
+          <strong>USA (Cloudflare):</strong>{' '}
           Übermittlung auf Basis des EU-US Data Privacy Frameworks (Angemessenheitsbeschluss
           der EU-Kommission vom 10.07.2023, soweit die Anbieter zertifiziert sind)
           und/oder Standardvertragsklauseln (SCC) gemäß Art. 46 Abs. 2 lit. c DSGVO.
@@ -291,7 +291,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><strong>Affiliate-Cookies:</strong> Speicherdauer wird vom jeweiligen
           Anbieter festgelegt; siehe verlinkte Datenschutzerklärungen.</li>
         <li><strong>Newsletter-Daten:</strong> bis zur Abmeldung. Nach Abmeldung
-          wird der Datensatz bei Kit entfernt.</li>
+          wird der Datensatz bei Brevo entfernt.</li>
         <li><strong>Kontaktanfragen:</strong> bis zur abschließenden Bearbeitung
           bzw. solange gesetzliche Aufbewahrungsfristen das erfordern.</li>
       </ul>
@@ -397,20 +397,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h3>12. Newsletter im Detail</h3>
       <p>
-        Wir versenden unseren Newsletter über Kit Inc., eine Gesellschaft nach dem
-        Recht des US-Bundesstaates Idaho. Beim Abonnement
+        Wir versenden unseren Newsletter über die Brevo GmbH, Köpenicker Str. 126,
+        10179 Berlin, eingetragen im Handelsregister des Amtsgerichts
+        Berlin-Charlottenburg unter HRB 133191, eine Tochtergesellschaft der
+        Sendinblue SAS, 17 rue de Salneuve, 75017 Paris, Frankreich. Beim Abonnement
         bestätigst du deine Anmeldung über das Double-Opt-In-Verfahren
         (Bestätigungslink per E-Mail). Wir speichern deine E-Mail-Adresse, den
-        Zeitpunkt der Einwilligung und ggf. einen optionalen Vornamen. Du kannst dich
-        jederzeit über den Abmeldelink am Ende jeder Newsletter-Mail abmelden; die
-        Verarbeitung deiner E-Mail-Adresse wird dann eingestellt. Kit verarbeitet die
-        Daten der Newsletter-Empfänger als Auftragsverarbeiter für uns; maßgeblich ist
-        der Data Processing Addendum, der die EU-Standardvertragsklauseln
-        (Durchführungsbeschluss (EU) 2021/914) einbezieht. Die Übermittlung in die USA
-        erfolgt auf dieser Grundlage und/oder auf Basis des EU-US Data Privacy
-        Frameworks.{' '}
-        <a href="https://kit.com/dpa" target="_blank" rel="noopener">Data Processing Addendum von Kit</a>,{' '}
-        <a href="https://kit.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung Kit</a>.
+        Zeitpunkt der Einwilligung und die bei der Anmeldung übermittelte IP-Adresse
+        als Einwilligungsnachweis. Du kannst dich jederzeit über den Abmeldelink am
+        Ende jeder Newsletter-Mail abmelden; die Verarbeitung deiner E-Mail-Adresse
+        wird dann eingestellt. Brevo verarbeitet die Daten der Newsletter-Empfänger
+        als Auftragsverarbeiter für uns. Die Vereinbarung zur Auftragsverarbeitung
+        nach Art. 28 DSGVO ist Bestandteil der Nutzungsbedingungen (Anhang 3), eine
+        gesonderte Vereinbarung ist deshalb nicht erforderlich.{' '}
+        <a href="https://www.brevo.com/de/legal/termsofuse/" target="_blank" rel="noopener">Nutzungsbedingungen von Brevo (mit Auftragsverarbeitung)</a>,{' '}
+        <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung Brevo</a>.
+      </p>
+      <p>
+        Bis zum 17.08.2026 lief der Newsletter-Versand über Kit Inc. (USA). Die
+        wenigen bis dahin gespeicherten Abonnenten-Daten wurden zu Brevo übertragen,
+        das Konto bei Kit wurde geschlossen.
       </p>
 
       <h3>13. Änderungen dieser Datenschutzerklärung</h3>
