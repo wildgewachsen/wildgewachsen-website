@@ -9,9 +9,12 @@
 // verwendet (klassischer POST statt AJAX-Handler).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Social links - Texte + URLs 1:1 von live
+// Social links - Texte + URLs von live, EINE Korrektur: Der YouTube-Handle
+// stand noch auf @die_farm. Der gibt seit der Kanal-Umbenennung HTTP 404
+// (am 18.08.2026 gemessen, auch mit Browser-Kennung). Richtig ist
+// @wildgewachsen = Kanal UCl12R5rLyAqH1ptzD1LuL6A (per canonical bestaetigt).
 const social = [
-  { href: 'https://www.youtube.com/@die_farm', label: 'YouTube – @die_farm' },
+  { href: 'https://www.youtube.com/@wildgewachsen', label: 'YouTube – @wildgewachsen' },
   {
     href: 'https://www.instagram.com/wildgewachsen_australien/',
     label: 'Instagram – @wildgewachsen_australien',
