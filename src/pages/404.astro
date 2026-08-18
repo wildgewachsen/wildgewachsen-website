@@ -1,0 +1,145 @@
+---
+// 404-Seite. Astro baut daraus dist/404.html, und Cloudflare Pages liefert
+// diese Datei fuer jede unbekannte URL mit HTTP-Status 404 aus.
+//
+// WARUM ES SIE BRAUCHT (gemessen am 18.08.2026, vor diesem File):
+// Ohne 404.html faellt Cloudflare Pages auf index.html zurueck und antwortet
+// mit HTTP 200. Jede unbekannte URL lieferte damit die Startseite als 200er,
+// nachgewiesen u.a. an /datenschutz, /en/imprint, /blog/artikel-template und
+// /gibt-es-garantiert-nicht-12345. Fuer Google sind das Soft-404s bzw.
+// Dubletten der Startseite, und echte tote Links blieben unsichtbar.
+//
+// Bewusst KEIN canonical: die Seite wird unter beliebig vielen URLs
+// ausgeliefert, ein Selbst-Canonical waere dort ein falsches Signal. Der
+// 404-Status verhindert die Indexierung ohnehin, noindex ist der Guertel
+// zum Hosentraeger.
+//
+// Bewusst NICHT in der Sitemap (analog zu den Newsletter-Danke-Seiten).
+//
+// Deutsch gefuehrt mit englischem Ausweg am Fuss: Cloudflare liefert diese
+// eine Datei fuer alle Pfade aus, also auch fuer /en/*. Ein eigenes
+// en/404.html ist erst sinnvoll, wenn belegt ist, dass Pages
+// verzeichnis-eigene 404-Seiten beruecksichtigt.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const wege = [
+  { titel: 'Startseite', text: 'Worum es hier geht, in Kurzform.', href: '/' },
+  { titel: 'Blog', text: 'Alle Artikel zu Visum, Kosten und Ankommen.', href: '/blog' },
+  { titel: 'Unsere Reise', text: 'Der Weg von der Entscheidung bis nach Australien.', href: '/unsere-reise' },
+  { titel: 'Kontakt', text: 'Schreib uns, wenn du etwas Bestimmtes suchst.', href: '/kontakt' },
+];
+---
+
+<BaseLayout
+  title="Seite nicht gefunden – Wildgewachsen"
+  description="Diese Seite gibt es nicht. Hier geht es zurück zur Startseite, zum Blog und zu unserer Reise."
+  lang="de"
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
+    <meta property="og:title" content="Seite nicht gefunden – Wildgewachsen" />
+    <meta property="og:description" content="Diese Seite gibt es nicht." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Wildgewachsen" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/css/klaro.css" />
+    <script is:inline defer src="/js/klaro-config.js"></script>
+    <script is:inline defer data-config="klaroConfig" src="/js/klaro.js"></script>
+  </Fragment>
+
+  {/* ===== 404: kurzer Kopf, danach vier Wege zurueck ins Sinnvolle.
+       Der EINE Terrakotta-Akzent = die Weg-Links. ===== */}
+  <section class="section">
+    <div class="container fehler">
+      <header class="sektion-kopf">
+        <p class="eyebrow">Fehler 404</p>
+        <h1>Diese Seite gibt es nicht</h1>
+        <p class="fehler__text">
+          Vielleicht hat sich ein Tippfehler in die Adresse geschlichen,
+          vielleicht ist die Seite umgezogen. Beides halb so wild.
+        </p>
+      </header>
+
+      <p class="fehler__zwischentitel">Hier geht es weiter</p>
+
+      <ul class="fehler__liste">
+        {
+          wege.map((w) => (
+            <li class="fehler__eintrag">
+              <p class="fehler__titel">{w.titel}</p>
+              <p class="fehler__teaser">{w.text}</p>
+              <a class="fehler__link" href={w.href}>
+                Dorthin
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="fehler__fuss" lang="en">
+        Looking for the English site? <a href="/en/">Go to the English start page</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fehler {
+    max-inline-size: 46rem;
+  }
+
+  .fehler__text {
+    color: var(--ink-soft);
+    max-inline-size: 46ch;
+    margin-block: var(--space-6) var(--space-7);
+  }
+
+  .fehler__zwischentitel {
+    font-family: var(--font-mono);
+    font-size: var(--text--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-block: 0 var(--space-5);
+    padding-block-end: var(--space-2);
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .fehler__liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  /* Eukalyptus-Kante wie auf der Danke-Seite, damit die schlichten
+     Service-Seiten dieselbe Sprache sprechen. */
+  .fehler__eintrag {
+    border-left: 2px solid var(--sage);
+    padding-left: var(--space-3);
+  }
+
+  .fehler__titel {
+    font-family: var(--font-display);
+    font-size: var(--text-1);
+    line-height: 1.3;
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .fehler__teaser {
+    color: var(--ink-soft);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .fehler__link {
+    color: var(--accent-strong);
+  }
+
+  .fehler__fuss {
+    margin-block-start: var(--space-6);
+    color: var(--ink-soft);
+  }
+</style>

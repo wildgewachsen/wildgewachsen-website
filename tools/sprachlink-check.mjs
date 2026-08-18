@@ -27,6 +27,13 @@ const AUSNAHMEN = new Map([
   // Impressum/Datenschutz: Live-Mapping der Alt-Site, Ziel traegt ein Fragment.
   ['/impressum', '/en/privacy'],
   ['/en/privacy', '/impressum#datenschutz'],
+  // 404: bewusst ohne hreflang. Die Seite wird unter beliebig vielen Pfaden
+  // ausgeliefert und ist noindex; ein hreflang-Paar behauptet ein uebersetztes
+  // Gegenstueck, das es fuer einen Fehlerzustand nicht gibt (Google wertet
+  // hreflang auf noindex-Seiten ohnehin nicht aus). Der Umschalter zeigt
+  // deshalb auf den Startseiten-Fallback der Zielsprache, und das ist hier
+  // die richtige Antwort statt eines fehlenden Paares.
+  ['/404', '/en/'],
 ]);
 
 const DOMAIN = 'https://wildgewachsen-australien.de';
