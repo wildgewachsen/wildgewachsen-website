@@ -1,0 +1,928 @@
+---
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EINE Datenquelle, zwei Auftritte: oben unsere Bilanz, unten die Leser-Liste.
+// Belege: video_katalog/catalog.json + video_katalog/transkripte/
+// Dokumentiert in blog-drafts/b13-tiere-bestandsaufnahme.md
+// "tage" = an wie vielen verschiedenen Tagen wir das Tier gesehen haben.
+// ─────────────────────────────────────────────────────────────────────────────
+const tiere = [
+  // Am Wasser
+  { name: 'Delfin',            ast: 'wasser', gesehen: '2026-06-25', tage: 2, saison: null,      zeichnung: true,  notiz: 'Am ersten Tag, eine Flosse im Wasser.' },
+  { name: 'Buckelwal',         ast: 'wasser', gesehen: '2026-07-03', tage: 2, saison: [5, 11],   zeichnung: true,  notiz: 'Erst eine Fontäne weit draußen. Später einer direkt neben den Surfern.' },
+  { name: 'Hai',               ast: 'wasser', gesehen: '2026-07-04', tage: 1, saison: null,      zeichnung: true,  notiz: 'Von der Klippe aus. Ich habe unten Bescheid gesagt.' },
+  { name: 'Pelikan',           ast: 'wasser', gesehen: '2026-07-03', tage: 1, saison: null,      zeichnung: false, notiz: 'Tief über der Flussmündung.' },
+  { name: 'Meeresschildkröte', ast: 'wasser', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+
+  // Im Wald und Busch
+  { name: 'Koala',             ast: 'busch',  gesehen: '2026-07-04', tage: 2, saison: null,      zeichnung: true,  notiz: 'Beim Joggen. Andere Leute standen schon da und schauten hoch.' },
+  { name: 'Wallaby',           ast: 'busch',  gesehen: '2026-07-20', tage: 2, saison: null,      zeichnung: true,  notiz: 'Auf das haben wir am längsten gewartet.' },
+  { name: 'Echidna',           ast: 'busch',  gesehen: '2026-06-30', tage: 2, saison: null,      zeichnung: true,  notiz: 'Wühlte im Laub am Fuß eines morschen Stamms.' },
+  { name: 'Große Echse',       ast: 'busch',  gesehen: '2026-07-29', tage: 1, saison: null,      zeichnung: true,  notiz: 'Saß regungslos auf einem Stein. Nackenkamm, rötliche Brust.' },
+  { name: 'Schlange',          ast: 'busch',  gesehen: '2026-07-23', tage: 1, saison: null,      zeichnung: true,  notiz: 'Klein, schnell weg. Kein Foto. Bis heute weiß ich nicht, welche es war.' },
+  { name: 'Goanna',            ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Großes Känguru',    ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Wombat',            ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+
+  // Im Garten und am Haus
+  { name: 'Buschhuhn',         ast: 'garten', gesehen: '2026-06-25', tage: 1, saison: null,      zeichnung: true,  notiz: 'Das allererste Tier, noch am Ankunftstag, am Zaun neben dem Küstenpfad.' },
+  { name: 'Kookaburra',        ast: 'garten', gesehen: '2026-06-28', tage: 3, saison: null,      zeichnung: true,  notiz: 'Einmal auf einem rostigen Wegweiser, zweimal auf einer Gartenfigur.' },
+  { name: 'Huntsman-Spinne',   ast: 'garten', gesehen: '2026-07-03', tage: 1, saison: null,      zeichnung: true,  notiz: 'Nicht draußen. An der Wand im Haus.' },
+  { name: 'Heller Papagei',    ast: 'garten', gesehen: '2026-08-04', tage: 1, saison: null,      zeichnung: false, notiz: 'Oben in der Baumkrone über dem Spielplatz. Art unbestimmt.' },
+  { name: 'Schwarzer Vogel',   ast: 'garten', gesehen: '2026-07-29', tage: 1, saison: null,      zeichnung: false, notiz: 'Linnea ist ihm über den ganzen Grasstreifen hinterhergelaufen.' },
+
+  // Nachts
+  { name: 'Flughunde',         ast: 'nacht',  gesehen: '2026-06-26', tage: 1, saison: null,      zeichnung: true,  notiz: 'Hingen kopfüber im Baum, nach dem Regen.' },
+  { name: 'Possum',            ast: 'nacht',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Aga-Kröte',         ast: 'nacht',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+];
+
+const aeste = [
+  { id: 'wasser', label: 'Am Wasser',          hinweis: 'Von der Landzunge oder vom Strand aus. Fernglas hilft mehr als jede App.' },
+  { id: 'busch',  label: 'Im Wald und Busch',  hinweis: 'Früh morgens und in der Dämmerung. Langsam gehen, oft nach oben schauen.' },
+  { id: 'garten', label: 'Im Garten und am Haus', hinweis: 'Die meisten Begegnungen passieren hier, nicht in der Wildnis.' },
+  { id: 'nacht',  label: 'Nachts',             hinweis: 'Ohren statt Augen. Vieles hört man lange, bevor man es sieht.' },
+];
+
+const gesehenAnzahl = tiere.filter((t) => t.gesehen).length;
+const gesamt = tiere.length;
+
+const tocEintraege = [
+  { id: 'bilanz',       label: 'Unsere Bilanz nach zwei Monaten' },
+  { id: 'erste-tage',   label: 'Die ersten Begegnungen' },
+  { id: 'wale',         label: 'Wale, und wie man sie verpasst' },
+  { id: 'wallaby',      label: 'Das Wallaby, auf das wir warten mussten' },
+  { id: 'schlangen',    label: 'Schlangen: was die Zahlen sagen' },
+  { id: 'gibt-es-nicht',label: 'Was es hier nicht gibt' },
+  { id: 'deine-liste',  label: 'Deine Liste zum Mitnehmen' },
+  { id: 'faq',          label: 'Häufige Fragen' },
+];
+
+const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+---
+
+<ArtikelLayout
+  title="Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist"
+  seoTitle="Gefährliche Tiere in Australien: unsere Erfahrung mit Kindern"
+  description="Zwei Monate Byron Bay mit zwei kleinen Kindern: 15 Tierarten selbst gesehen, eine Schlange, keine einzige gefährliche Situation. Was die Statistik zu Schlangenbissen wirklich sagt und welche Tiere es hier gar nicht gibt."
+  lang="de"
+  eyebrow="Alltag in Australien"
+  datum="3. September 2026"
+  lesezeit="11 Minuten"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist" />
+    <meta property="og:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation. Was die Statistik wirklich sagt." />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gefährliche Tiere in Australien: unsere Erfahrung mit Kindern" />
+    <meta name="twitter:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation." />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: 'Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist',
+      description: 'Zwei Monate Byron Bay mit zwei kleinen Kindern: 15 Tierarten selbst gesehen, eine Schlange, keine einzige gefährliche Situation.',
+      datePublished: '2026-09-03',
+      dateModified: '2026-09-03',
+      inLanguage: 'de-DE',
+      author: { '@type': 'Person', name: 'Christian', url: 'https://wildgewachsen-australien.de/ueber-uns' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'wildgewachsen',
+        url: 'https://wildgewachsen-australien.de',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung',
+      },
+    })} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://wildgewachsen-australien.de/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://wildgewachsen-australien.de/blog' },
+        { '@type': 'ListItem', position: 3, name: 'Gefährliche Tiere in Australien' },
+      ],
+    })} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Wie gefährlich sind Schlangen in Australien wirklich?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Im Australian Snakebite Project wurden zwischen Juli 2005 und Juni 2015 insgesamt 23 Todesfälle durch Schlangenbisse erfasst, im Mittel zwei pro Jahr. Im selben Zeitraum kamen 1548 Menschen mit Verdacht auf Schlangenbiss ins Krankenhaus, bei 835 davon wirkte tatsächlich Gift. 17 der 23 Todesfälle gingen auf Brown Snakes zurück.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Wie kommt es zu Schlangenbissen in Australien?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'In 47,1 Prozent der erfassten Fälle war die gebissene Person unterwegs oder mit etwas anderem beschäftigt und ahnungslos in der Nähe der Schlange. In 14 Prozent versuchte sie, die Schlange zu fangen oder zu töten, in 8,3 Prozent passierte es bei der Gartenarbeit. In 52 Prozent traf der Biss das Bein.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Gibt es in Byron Bay Krokodile?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Nein. Das Leistenkrokodil kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Byron Bay liegt rund tausend Kilometer weiter südlich in New South Wales, weit außerhalb des Verbreitungsgebiets.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Wann kann man in Byron Bay Wale sehen?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Buckelwale ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Wanderroute. Wir haben unsere ersten Wale am 3. Juli gesehen.',
+          },
+        },
+      ],
+    })} />
+  </Fragment>
+
+  <div class="toc-halter">
+    <StickyToc eintraege={tocEintraege} lang="de" />
+  </div>
+
+  <div class="info-box">
+    <p class="info-box__titel">Das Wichtigste in Kürze</p>
+    <ul>
+      <li>In zwei Monaten haben wir <strong>{gesehenAnzahl} Tierarten</strong> selbst gesehen, vom Delfin am Ankunftstag bis zum Koala über dem Wanderweg.</li>
+      <li><strong>Eine einzige Schlange</strong>, klein, am Wegrand, in Sekunden verschwunden. Kein Foto, keine gefährliche Situation.</li>
+      <li>Laut Australian Snakebite Project sterben in Australien <strong>im Mittel zwei Menschen pro Jahr</strong> an Schlangenbissen. Fast die Hälfte aller Bisse passiert, weil jemand ahnungslos in der Nähe war.</li>
+      <li><strong>Krokodile und Kasuare gibt es hier nicht.</strong> Beide leben deutlich weiter nördlich.</li>
+      <li>Unten findest du eine <strong>Liste zum Abhaken und Ausdrucken</strong> für deine eigene Zeit hier.</li>
+    </ul>
+  </div>
+
+  <p>
+    Die Frage kam vor dem Abflug in fast jedem Gespräch, meistens irgendwann zwischen Kaffee und Verabschiedung: „Und was ist mit den ganzen Tieren da?" Manche haben gelacht dabei. Die meisten nicht wirklich.
+  </p>
+
+  <p>
+    Ich kann sie inzwischen beantworten, aber nicht so, wie man es erwartet. Wir sind am 25. Juni in Byron Bay angekommen. Was seitdem passiert ist, war weniger dramatisch und deutlich schöner, als ich selbst gedacht hätte. Und der eine Moment, in dem es wirklich um etwas ging, kam nicht von einem Tier, sondern von einer Nachbarin und ihrer Geschichte.
+  </p>
+
+  <h2 id="bilanz">Unsere Bilanz nach zwei Monaten</h2>
+
+  <p>
+    Das hier ist keine Liste von Tieren, die es in Australien gibt. Das ist die Liste der Tiere, die wir mit eigenen Augen gesehen haben, mit Datum, an der Ostküste zwischen Byron Bay und dem Hinterland. Jedes Feld mit Stempel steht für einen Tag, an dem wir dastanden und geschaut haben.
+  </p>
+
+  <figure class="pass">
+    <figcaption class="pass__kopf">
+      <span class="pass__titel">Unser Sichtungs-Pass</span>
+      <span class="pass__zaehler">{gesehenAnzahl}<span class="pass__von">/{gesamt}</span></span>
+    </figcaption>
+    <div class="pass__gitter">
+      {tiere.map((t) => (
+        <div class={t.gesehen ? 'stempel stempel--voll' : 'stempel stempel--leer'}>
+          <span class="stempel__name">{t.name}</span>
+          {t.gesehen ? (
+            <span class="stempel__datum">{new Date(t.gesehen).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}</span>
+          ) : (
+            <span class="stempel__offen">offen</span>
+          )}
+        </div>
+      ))}
+    </div>
+    <p class="pass__fuss">
+      Gestempelt heißt: selbst gesehen. Nicht im Zoo, nicht auf einer Tour, nicht auf dem Handy von jemand anderem.
+    </p>
+  </figure>
+
+  <Randnotiz ausrichtung="rechts" pfeil={true} lang="de">
+    Sechs Felder sind noch leer. Das Possum höre ich fast jede Nacht über dem Dach. Gesehen habe ich es bis heute nicht.
+  </Randnotiz>
+
+  <h2 id="erste-tage">Die ersten Begegnungen</h2>
+
+  <p>
+    Das erste Tier war eine Enttäuschung, und genau deshalb erzähle ich es zuerst. Am Ankunftstag lief neben dem Küstenpfad ein dunkler, hühnergroßer Vogel am Zaun entlang und scharrte im Laub. Kein Känguru, kein Koala. Ein Buschhuhn. Ich habe es gefilmt, weil es das erste war.
+  </p>
+
+  <p>
+    Am selben Tag dann, vom Strand aus, eine Rückenflosse im Wasser. Delfine, an Tag eins. Damit hatte ich nicht gerechnet.
+  </p>
+
+  <figure class="zeichnung-reihe">
+    <div class="zeichnung-platz" data-tier="Buschhuhn">
+      <span class="zeichnung-platz__label">Zeichnung folgt</span>
+      <span class="zeichnung-platz__name">Buschhuhn</span>
+    </div>
+    <div class="zeichnung-platz" data-tier="Delfin">
+      <span class="zeichnung-platz__label">Zeichnung folgt</span>
+      <span class="zeichnung-platz__name">Delfin</span>
+    </div>
+    <figcaption>Gezeichnet von Joris und Linnea. Platzhalter, bis die Bilder eingescannt sind.</figcaption>
+  </figure>
+
+  <p>
+    Am nächsten Abend hingen Flughunde kopfüber in einem Baum, die Blätter noch nass vom Regen. Drei Tage später saß ein Kookaburra auf einem rostigen Wegweiser und ließ sich in Ruhe ansehen. Am 30. Juni wühlte ein Echidna im Laub am Fuß eines morschen Stamms, so nah, dass ich mich nicht bewegen wollte.
+  </p>
+
+  <PullQuote quelle="Aus dem Video vom 4. Juli" lang="de">
+    Ich wollte joggen. Es wurde mehr Stehenbleiben als Laufen.
+  </PullQuote>
+
+  <p>
+    Der 4. Juli war der Tag, an dem beides passierte. Ich bin den Lighthouse-Walk hochgelaufen, vorne standen Leute und schauten nach oben. Da saß er, grau, in der Astgabel. Mein erster Koala, nach insgesamt über zwei Jahren, die ich vorher schon einmal in diesem Land verbracht hatte. Ein Punkt auf einer Liste, von der ich gar nicht wusste, dass ich sie habe.
+  </p>
+
+  <p>
+    Zwanzig Minuten später, von den Klippen aus, ein dunkler Schatten im türkisen Wasser. Ein Hai, groß, und er schwamm aus der Richtung der Surfer. Ich habe unten Bescheid gesagt. Es schien niemanden zu stören. Ich hatte an dem Tag eigentlich selbst noch surfen wollen und habe es gelassen. Der Respekt war dann doch größer.
+  </p>
+
+  <h2 id="wale">Wale, und wie man sie verpasst</h2>
+
+  <p>
+    Cape Byron ist der östlichste Punkt Australiens und liegt damit direkt auf der Wanderroute der Buckelwale. Zwischen Mai und November ziehen sie an der Ostküste vorbei, auf dem Weg von der Antarktis nach Norden und später mit den Kälbern wieder zurück.
+  </p>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 300 74" role="img" aria-label="Balkendiagramm: Buckelwale sind an der Ostküste von Mai bis November zu sehen, mit den höchsten Werten von Juli bis Oktober. Von Dezember bis April sind keine Wale zu erwarten.">
+      <title>Wann Buckelwale vorbeiziehen</title>
+      <text x="4" y="10" font-family="Courier Prime, monospace" font-size="8" fill="#695A48">BUCKELWAL — WANN</text>
+      {monate.map((m, i) => {
+        const hoehe = [0, 0, 0, 0, 8, 18, 30, 32, 28, 26, 14, 0][i];
+        const x = 12 + i * 23;
+        return (
+          <g>
+            <rect x={x} y={58 - hoehe} width="15" height={hoehe} fill={hoehe > 20 ? '#B5482A' : '#7E8B6D'} />
+            <text x={x + 7.5} y="70" font-family="Courier Prime, monospace" font-size="8" fill="#695A48" text-anchor="middle">{m}</text>
+          </g>
+        );
+      })}
+    </svg>
+    <figcaption>Nach den Angaben von WWF Australia und Visit NSW. Terrakotta markiert die dichteste Zeit.</figcaption>
+  </figure>
+
+  <p>
+    Am 3. Juli stand ich am Housesit und draußen zogen welche vorbei, weit genug weg, dass man sie nur an den Fontänen erkannte. Am 26. Juli bin ich mit der Drohne losgezogen, um endlich gute Aufnahmen zu bekommen. Erst war es zu windig. Dann waren die Wale zu weit draußen. Dann fand ich Delfine statt Wale.
+  </p>
+
+  <p>
+    Und als ich schon zurück am Auto war, an der Bucht, in der ich sonst surfe, schwamm einer direkt neben den Surfern vorbei. Am selben Tag hatte ich vorher noch einen Koala gefilmt. Manche Tage geben einem alles auf einmal, nachdem sie einen vorher stundenlang haben laufen lassen.
+  </p>
+
+  <div class="zeichnung-platz zeichnung-platz--breit" data-tier="Buckelwal">
+    <span class="zeichnung-platz__label">Zeichnung folgt</span>
+    <span class="zeichnung-platz__name">Buckelwal</span>
+  </div>
+
+  <h2 id="wallaby">Das Wallaby, auf das wir warten mussten</h2>
+
+  <p>
+    Am 3. Juli, dem Morgen nach meiner ersten Nacht im Housesit, habe ich in die Kamera gesagt, dass hier eigentlich ständig Wallabys durch den Garten hüpfen sollen. Gesehen hatte ich bis dahin keins.
+  </p>
+
+  <p>
+    Es hat siebzehn Tage gedauert. Am 20. Juli, auf einem Feldweg in der küstennahen Heidelandschaft südlich von Byron Bay, stand dann eins mitten auf dem Weg und schaute zurück. Danach noch eins, und noch eins. Vier Tage später eins im Abendlicht, aufgerichtet im hohen Gras.
+  </p>
+
+  <PullQuote lang="de">
+    Das Warten gehört dazu. Es ist sogar der bessere Teil.
+  </PullQuote>
+
+  <p>
+    Genau deshalb hat dieser Artikel unten eine Liste zum Abhaken statt einer Galerie. Der Reiz liegt nicht darin, alles gesehen zu haben. Er liegt in den leeren Feldern.
+  </p>
+
+  <!-- ══════════ ERNSTER TEIL: anderes Papier ══════════ -->
+  <div class="ernst">
+    <h2 id="schlangen">Schlangen: was die Zahlen sagen</h2>
+
+    <p>
+      Am 23. Juli bin ich auf einem schattigen Weg durch das Küstengrün gegangen und habe mich durchs Gebüsch geschoben. Vor mir glitt etwas Kleines vom Weg ins Gras. Meine erste Schlange. Ich weiß bis heute nicht, welche es war. Sie war sofort weg, es gibt kein Bild davon.
+    </p>
+
+    <div class="zeichnung-platz zeichnung-platz--ernst" data-tier="Die Schlange am Wegrand">
+      <span class="zeichnung-platz__label">Zeichnung folgt</span>
+      <span class="zeichnung-platz__name">Die Schlange am Wegrand</span>
+      <span class="zeichnung-platz__hinweis">Von den Kindern gezeichnet, nach meiner Erzählung. Ein Foto gibt es nicht.</span>
+    </div>
+
+    <p>
+      Was mich an dem Tag mehr beschäftigt hat als die Schlange selbst, war eine Geschichte, die mir kurz vorher jemand erzählt hatte.
+    </p>
+
+    <h3>Die Nachbarin</h3>
+
+    <p>
+      Im Housesit nebenan wohnte eine Frau, die mit auf die Hunde aufgepasst hat. Sie kann seit Jahren nicht mehr arbeiten, aus gesundheitlichen Gründen. Der Grund dafür liegt lange zurück: Sie wurde von einer Brown Snake gebissen, einer der giftigsten Arten hier.
+    </p>
+
+    <p>
+      Sie hat damals mit ihren Kindern in einem Tipi gewohnt. Nachts musste sie raus, ist aufgestanden und im Dunkeln neben der Matratze auf die Schlange getreten. Nicht im Busch. Nicht auf einer Wanderung. Neben ihrem eigenen Bett.
+    </p>
+
+    <p>
+      Auf dem Grundstück, auf dem ich zu der Zeit gewohnt habe, lebten laut ihr eine Brown Snake und mehrere Pythons. Sie blieben eigentlich in den Büschen, sagte sie. Einmal wäre sie fast wieder auf eine getreten.
+    </p>
+
+    <Randnotiz ausrichtung="links" lang="de">
+      „Sehr beruhigend", habe ich in dem Moment gedacht. Und bin danach anders durch den Garten gelaufen.
+    </Randnotiz>
+
+    <h3>Und was sagen die Zahlen dazu?</h3>
+
+    <p>
+      Ich habe im Video von „vielleicht einem Todesfall im Jahr" gesprochen. Das war aus dem Gedächtnis. Die belastbare Quelle dafür ist das Australian Snakebite Project, eine über zehn Jahre laufende Studie an australischen Krankenhäusern, veröffentlicht im Medical Journal of Australia.
+    </p>
+
+    <div class="zahlen-block">
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">23</span>
+        <span class="zahlen-block__text">Todesfälle durch Schlangenbisse in zehn Jahren, Juli 2005 bis Juni 2015. Im Mittel <strong>zwei pro Jahr</strong>.</span>
+      </div>
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">17</span>
+        <span class="zahlen-block__text">davon gingen auf <strong>Brown Snakes</strong> zurück. Genau die Art, die meine Nachbarin erwischt hat.</span>
+      </div>
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">1548</span>
+        <span class="zahlen-block__text">Menschen kamen im selben Zeitraum mit Verdacht auf Schlangenbiss ins Krankenhaus. Bei 835 wirkte tatsächlich Gift.</span>
+      </div>
+    </div>
+
+    <p>
+      Der Punkt, der mich am meisten überrascht hat, war aber nicht die Sterblichkeit. Es ist die Frage, <em>wie</em> Menschen gebissen werden.
+    </p>
+
+    <figure class="chart-figur">
+      <svg viewBox="0 0 300 108" role="img" aria-label="Balkendiagramm zu den Umständen von Schlangenbissen in Australien: In 47,1 Prozent der Fälle war die Person unterwegs und ahnungslos in der Nähe der Schlange, in 14 Prozent versuchte sie die Schlange zu fangen oder zu töten, in 8,3 Prozent passierte es bei der Gartenarbeit.">
+        <title>Wie es zu Schlangenbissen kommt</title>
+        <text x="4" y="10" font-family="Courier Prime, monospace" font-size="8" fill="#695A48">WIE ES ZUM BISS KAM (ASP, 2005–2015)</text>
+
+        <text x="4" y="30" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">Ahnungslos in der Nähe</text>
+        <rect x="4" y="34" width="235" height="12" fill="#B5482A" />
+        <text x="245" y="43" font-family="Courier Prime, monospace" font-size="9" fill="#A63E22">47,1 %</text>
+
+        <text x="4" y="62" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">Fangen oder töten wollen</text>
+        <rect x="4" y="66" width="70" height="12" fill="#7E8B6D" />
+        <text x="80" y="75" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">14 %</text>
+
+        <text x="4" y="94" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">Bei der Gartenarbeit</text>
+        <rect x="4" y="98" width="42" height="8" fill="#7E8B6D" />
+        <text x="52" y="106" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">8,3 %</text>
+      </svg>
+      <figcaption>Australian Snakebite Project (ASP-20), Medical Journal of Australia 2017. 1548 erfasste Fälle.</figcaption>
+    </figure>
+
+    <p>
+      Fast die Hälfte aller Bisse passiert also nicht, weil eine Schlange jemanden angreift, sondern weil jemand unterwegs war und nichts gemerkt hat. In 52 Prozent der Fälle traf der Biss das Bein. Und: 31 Prozent passierten in der Nähe von Häusern, weitere 14 Prozent <em>in</em> Gebäuden.
+    </p>
+
+    <p>
+      Die Geschichte meiner Nachbarin ist damit kein Ausreißer. Sie ist der Normalfall.
+    </p>
+
+    <h3>Woran man die gefährlichen erkennt</h3>
+
+    <p>
+      Ehrlich gesagt: sicher gar nicht. Das ist die wichtigste Aussage dieses Abschnitts. Auch geübte Leute verwechseln Arten, und junge Tiere sehen anders aus als ausgewachsene. Was man lernen kann, ist eine grobe Unterscheidung auf Abstand, mehr nicht.
+    </p>
+
+    <figure class="tafel">
+      <figcaption class="tafel__kopf">Tafel I — Grobe Unterscheidung auf Abstand</figcaption>
+      <svg viewBox="0 0 300 150" role="img" aria-label="Vergleichszeichnung zweier Schlangen. Oben eine schlanke, grünliche Schlange mit dünnem Körper als Beispiel für eine ungiftige Baumschlange. Unten eine kräftige, einfarbige Schlange mit gleichmäßig dickem Körper als Beispiel für eine Brown Snake. Pfeile zeigen jeweils auf die Körperdicke als Unterscheidungsmerkmal.">
+        <title>Schlanke Baumschlange im Vergleich zur kräftigen Brown Snake</title>
+
+        <path d="M20 46 q28-24 56 0 t56 0 t56 0" stroke="#7E8B6D" stroke-width="6" fill="none" stroke-linecap="round" />
+        <line x1="104" y1="18" x2="104" y2="32" stroke="#B5482A" stroke-width="1.5" />
+        <path d="M100.5 30 l3.5 6 l3.5-6 z" fill="#B5482A" />
+        <text x="112" y="26" font-family="Caveat, cursive" font-size="15" fill="#A63E22">dünn, oft grünlich</text>
+        <text x="20" y="70" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">1. MEIST HARMLOS — schlanke Baumschlange</text>
+
+        <path d="M20 112 q28-24 56 0 t56 0 t56 0" stroke="#33291F" stroke-width="13" fill="none" stroke-linecap="round" />
+        <line x1="104" y1="80" x2="104" y2="94" stroke="#B5482A" stroke-width="1.5" />
+        <path d="M100.5 92 l3.5 6 l3.5-6 z" fill="#B5482A" />
+        <text x="112" y="88" font-family="Caveat, cursive" font-size="15" fill="#A63E22">kräftig, einfarbig</text>
+        <text x="20" y="140" font-family="Courier Prime, monospace" font-size="9" fill="#A63E22">2. GIFTIG — Brown Snake</text>
+      </svg>
+      <figcaption>
+        Schematisch, nicht artgenau. Die Pfeile zeigen auf das Merkmal, das man aus der Entfernung überhaupt beurteilen kann: die Körperdicke.
+      </figcaption>
+    </figure>
+
+    <AufklappBox titel="Was wir den Kindern beigebracht haben" lang="de">
+      <ul>
+        <li><strong>Auf dem Weg bleiben.</strong> Nicht ins hohe Gras, nicht in Laubhaufen greifen.</li>
+        <li><strong>Feste Schuhe im Busch.</strong> Über die Hälfte der Bisse trifft das Bein.</li>
+        <li><strong>Stehenbleiben statt weglaufen.</strong> Wenn eine Schlange da ist: anhalten, Abstand halten, sie in Ruhe wegziehen lassen.</li>
+        <li><strong>Niemals anfassen, niemals verjagen.</strong> Auch nicht mit einem Stock.</li>
+        <li><strong>Nachts Licht mitnehmen.</strong> Die Geschichte der Nachbarin passierte im Dunkeln, zwei Schritte vom Bett entfernt.</li>
+      </ul>
+    </AufklappBox>
+
+    <div class="hinweis-medizin">
+      <p>
+        <strong>Kein medizinischer Rat.</strong> Bei einem Verdacht auf Schlangenbiss gilt in Australien sofort <strong>000</strong> anrufen. Die offizielle Erste-Hilfe-Empfehlung ist der Druckverband mit Ruhigstellung, betroffene Person nicht laufen lassen, Wunde nicht auswaschen und nicht aussaugen. Die aktuell gültige Anleitung steht bei <a href="https://www.healthdirect.gov.au/snake-bites" rel="nofollow noopener" target="_blank">healthdirect Australia</a>. Wir geben hier nur wieder, was wir selbst gelernt haben.
+      </p>
+    </div>
+  </div>
+  <!-- ══════════ ENDE ERNSTER TEIL ══════════ -->
+
+  <h2 id="gibt-es-nicht">Was es hier nicht gibt</h2>
+
+  <p>
+    Ein großer Teil der Angst vor Australien richtet sich auf Tiere, die es in unserer Ecke schlicht nicht gibt. Das gehört zur ehrlichen Antwort dazu.
+  </p>
+
+  <figure class="nichtda">
+    <figcaption>Kommt hier nicht vor</figcaption>
+    <div class="nichtda__reihe">
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Krokodil">
+        <span class="zeichnung-platz__label">Zeichnung folgt</span>
+        <span class="zeichnung-platz__name">Leistenkrokodil</span>
+      </div>
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Kasuar">
+        <span class="zeichnung-platz__label">Zeichnung folgt</span>
+        <span class="zeichnung-platz__name">Kasuar</span>
+      </div>
+    </div>
+    <p class="nichtda__text">
+      Das <strong>Leistenkrokodil</strong> kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Wir sind rund tausend Kilometer weiter südlich. Der <strong>Kasuar</strong> lebt in den Wet Tropics im Nordosten Queenslands, zwischen Cooktown und Townsville. Beides ist von hier so weit weg wie Hamburg von Rom.
+    </p>
+  </figure>
+
+  <h2 id="deine-liste">Deine Liste zum Mitnehmen</h2>
+
+  <p>
+    Oben steht unser Pass. Hier ist deiner, noch leer. Gleicher Vordruck, anderer Zustand. Sortiert nicht danach, wie selten etwas ist, sondern danach, wo du suchen musst.
+  </p>
+
+  <div class="liste" data-liste>
+    <div class="liste__kopf">
+      <span class="liste__zaehler"><span data-zaehler>0</span> von {gesamt} entdeckt</span>
+      <button type="button" class="liste__druck" data-drucken>Liste ausdrucken</button>
+    </div>
+
+    {aeste.map((ast) => (
+      <details class="liste__ast" open>
+        <summary>{ast.label}</summary>
+        <p class="liste__hinweis">{ast.hinweis}</p>
+        <ul class="liste__eintraege">
+          {tiere.filter((t) => t.ast === ast.id).map((t) => (
+            <li>
+              <label>
+                <input type="checkbox" data-tier={t.name} />
+                <span class="liste__name">{t.name}</span>
+                {t.saison && <span class="liste__saison">Mai bis Nov</span>}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
+
+    <p class="liste__fuss">
+      Deine Haken bleiben nur in diesem Browser gespeichert. Wenn du die Browserdaten löschst, fängt die Liste wieder bei null an. Deshalb der Druckknopf.
+    </p>
+  </div>
+
+  <h2 id="faq">Häufige Fragen</h2>
+
+  <AufklappBox titel="Wie gefährlich sind Schlangen in Australien wirklich?" lang="de">
+    <p>
+      Zwischen Juli 2005 und Juni 2015 wurden im Australian Snakebite Project 23 Todesfälle erfasst, im Mittel zwei pro Jahr. Im selben Zeitraum kamen 1548 Menschen mit Verdacht auf Schlangenbiss ins Krankenhaus, bei 835 davon wirkte tatsächlich Gift. 17 der 23 Todesfälle gingen auf Brown Snakes zurück.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Wie kommt es überhaupt zu Bissen?" lang="de">
+    <p>
+      In 47,1 Prozent der Fälle war die gebissene Person unterwegs oder mit etwas anderem beschäftigt und ahnungslos in der Nähe. In 14 Prozent versuchte sie, die Schlange zu fangen oder zu töten, in 8,3 Prozent passierte es bei der Gartenarbeit. In 52 Prozent traf der Biss das Bein. Fast die Hälfte aller Fälle passierte in oder direkt an Gebäuden.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Gibt es in Byron Bay Krokodile?" lang="de">
+    <p>
+      Nein. Das Leistenkrokodil kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor, also rund tausend Kilometer nördlich von hier.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Wann kann man hier Wale sehen?" lang="de">
+    <p>
+      Buckelwale ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Route. Unsere ersten haben wir am 3. Juli gesehen, den schönsten am 26. Juli direkt neben den Surfern.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Muss ich mir mit kleinen Kindern mehr Sorgen machen?" lang="de">
+    <p>
+      Wir sind mit zwei kleinen Kindern hier und haben in zwei Monaten keine einzige gefährliche Situation gehabt. Was sich geändert hat, sind Gewohnheiten: feste Schuhe im Busch, auf dem Weg bleiben, nachts Licht mitnehmen, nichts anfassen. Das ist weniger Aufwand, als es klingt, und nach zwei Wochen macht man es automatisch.
+    </p>
+  </AufklappBox>
+
+  <div class="trust-box">
+    <p>
+      <strong>Woher diese Angaben stammen:</strong> Alle Sichtungen in diesem Artikel sind eigene Beobachtungen zwischen dem 25. Juni und dem 9. August 2026 im Raum Byron Bay, belegt durch eigenes Film- und Fotomaterial mit Aufnahmedatum. Die Zahlen zu Schlangenbissen stammen aus dem
+      <a href="https://www.mja.com.au/journal/2017/207/3/australian-snakebite-project-2005-2015-asp-20" rel="nofollow noopener" target="_blank">Australian Snakebite Project (ASP-20)</a>,
+      Medical Journal of Australia 2017. Angaben zur Walsaison nach WWF Australia und Visit NSW, Verbreitungsgebiete von Krokodil und Kasuar nach Angaben australischer Behörden und Naturschutzorganisationen.
+    </p>
+  </div>
+
+  <div class="update-log">
+    <p><strong>Stand:</strong> 3. September 2026. Die Liste wächst weiter, wir aktualisieren sie.</p>
+  </div>
+
+  <WeiterlesenPfade
+    lang="de"
+    artikel={[
+      { href: '/blog/erste-tage-familie-zu-viert-australien', titel: 'Wieder zu viert: unsere ersten Tage als Familie', teaser: 'Wiedersehen in Brisbane, Jetlag und die erste Woche im Housesit.' },
+      { href: '/blog/auswandern-australien-mit-kindern-vorbereitung', titel: 'Auswandern mit Kindern: die Vorbereitung', teaser: 'Was wir vorher geregelt haben und was wir uns hätten sparen können.' },
+      { href: '/blog/angekommen-erste-tage-australien', titel: 'Angekommen: die ersten Tage', teaser: 'Der erste Monat allein, bevor die Familie nachkam.' },
+    ]}
+  />
+
+  <style>
+    /* Sticky-TOC-Halter, gleiche Logik wie im Familien-Artikel */
+    .toc-halter { margin-bottom: var(--space-6); }
+    @media (min-width: 1100px) {
+      .toc-halter {
+        position: absolute;
+        inset-inline-start: calc(50% - var(--container) / 2);
+        inline-size: 220px;
+      }
+    }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-inline-start: 3px solid var(--accent);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .info-box__titel {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-block-end: var(--space-2);
+    }
+    .info-box ul { margin: 0; padding-inline-start: 1.1rem; }
+    .info-box li { margin-block: var(--space-1); }
+
+    /* ── Sichtungs-Pass ─────────────────────────────────────────────── */
+    /* Bewusst feste Hexwerte statt Tokens: verhält sich wie ein eingeklebtes
+       Blatt Papier, das sich im Dark Mode nicht mitverdunkelt. */
+    .pass {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .pass__kopf {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-block-end: 2px solid #33291f;
+      padding-block-end: var(--space-2);
+      margin-block-end: var(--space-3);
+    }
+    .pass__titel { font-family: var(--font-display); font-size: var(--text-1); color: #33291f; }
+    .pass__zaehler { font-family: var(--font-mono); font-size: var(--text-2); color: #a63e22; }
+    .pass__von { font-size: var(--text-0); color: #695a48; }
+    .pass__gitter {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: var(--space-3);
+    }
+    .stempel {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4px;
+      gap: 2px;
+    }
+    .stempel--voll { border: 1.5px solid #b5482a; }
+    .stempel--voll:nth-child(3n) { transform: rotate(-6deg); }
+    .stempel--voll:nth-child(3n + 1) { transform: rotate(4deg); }
+    .stempel--leer { border: 1.5px dashed #ddd3bc; }
+    .stempel__name {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      line-height: 1.15;
+      color: #33291f;
+    }
+    .stempel--leer .stempel__name { color: #a1937c; }
+    .stempel__datum { font-family: var(--font-mono); font-size: 0.58rem; color: #a63e22; }
+    .stempel__offen { font-family: var(--font-mono); font-size: 0.58rem; color: #c4b8a0; }
+    .pass__fuss {
+      font-family: var(--font-hand);
+      color: #a63e22;
+      font-size: var(--text-1);
+      margin-block-start: var(--space-3);
+      margin-block-end: 0;
+    }
+
+    /* ── Zeichnungs-Platzhalter ─────────────────────────────────────── */
+    .zeichnung-platz {
+      border: 1.5px dashed #c4b8a0;
+      border-radius: var(--radius-s);
+      background: #fbf7ee;
+      min-block-size: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: var(--space-3);
+      text-align: center;
+    }
+    .zeichnung-platz__label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a1937c;
+    }
+    .zeichnung-platz__name {
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: #a63e22;
+    }
+    .zeichnung-platz__hinweis {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #695a48;
+      max-inline-size: 30ch;
+      line-height: 1.5;
+    }
+    .zeichnung-platz--breit { min-block-size: 190px; margin-block: var(--space-4); }
+    .zeichnung-platz--ernst { background: #ebe0c8; border-color: #b5a88c; margin-block: var(--space-4); }
+    .zeichnung-platz--durchgestrichen { position: relative; overflow: hidden; }
+    .zeichnung-platz--durchgestrichen::after {
+      content: '';
+      position: absolute;
+      inset-inline: -10%;
+      inset-block-start: 50%;
+      block-size: 2px;
+      background: #b5482a;
+      transform: rotate(-14deg);
+    }
+    .zeichnung-reihe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-block: var(--space-5);
+    }
+    .zeichnung-reihe figcaption {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    @media (max-width: 560px) { .zeichnung-reihe { grid-template-columns: 1fr; } }
+
+    /* ── Charts: "eingeklebtes Papier", immer hell ──────────────────── */
+    .chart-figur {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .chart-figur svg { inline-size: 100%; block-size: auto; }
+    .chart-figur figcaption {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: #695a48;
+      margin-block-start: var(--space-2);
+    }
+
+    /* ── Ernster Teil: getöntes Papier ──────────────────────────────── */
+    .ernst {
+      background: #ebe0c8;
+      border-block: 1px solid #c4b8a0;
+      padding: var(--space-5) var(--space-4);
+      margin-block: var(--space-6);
+      margin-inline: calc(var(--space-4) * -1);
+      color: #33291f;
+    }
+    .ernst h2, .ernst h3 { color: #33291f; }
+    .ernst p { color: #3d3227; }
+    .ernst a { color: #a63e22; }
+
+    .zahlen-block { margin-block: var(--space-4); }
+    .zahlen-block__zeile {
+      display: flex;
+      gap: var(--space-3);
+      align-items: baseline;
+      padding-block: var(--space-2);
+      border-block-end: 1px dotted #c4b8a0;
+    }
+    .zahlen-block__zahl {
+      font-family: var(--font-display);
+      font-size: var(--text-2);
+      color: #a63e22;
+      min-inline-size: 3.5ch;
+      flex: none;
+    }
+    .zahlen-block__text { font-size: var(--text-0); line-height: 1.6; }
+
+    .tafel {
+      background: #fbf7ee;
+      border: 1.5px solid #33291f;
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .tafel__kopf {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #695a48;
+      margin-block-end: var(--space-3);
+    }
+    .tafel svg { inline-size: 100%; block-size: auto; }
+    .tafel figcaption {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: #695a48;
+      margin-block-start: var(--space-2);
+      line-height: 1.5;
+    }
+
+    .hinweis-medizin {
+      background: #fbf7ee;
+      border-inline-start: 3px solid #b5482a;
+      padding: var(--space-3) var(--space-4);
+      margin-block-start: var(--space-5);
+    }
+    .hinweis-medizin p { margin: 0; font-size: var(--text--1); line-height: 1.65; }
+
+    /* ── Was es nicht gibt ──────────────────────────────────────────── */
+    .nichtda {
+      border: 1.5px dashed var(--accent);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .nichtda > figcaption {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-block-end: var(--space-3);
+    }
+    .nichtda__reihe { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    @media (max-width: 560px) { .nichtda__reihe { grid-template-columns: 1fr; } }
+    .nichtda__text { margin-block-start: var(--space-3); margin-block-end: 0; }
+
+    /* ── Leser-Liste ────────────────────────────────────────────────── */
+    .liste {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .liste__kopf {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      border-block-end: 2px solid var(--ink);
+      padding-block-end: var(--space-2);
+      margin-block-end: var(--space-3);
+    }
+    .liste__zaehler { font-family: var(--font-mono); font-size: var(--text-0); color: var(--accent-strong); }
+    .liste__druck {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      background: transparent;
+      border: 1px solid var(--accent-strong);
+      color: var(--accent-strong);
+      border-radius: var(--radius-s);
+      padding: 6px 14px;
+      cursor: pointer;
+    }
+    .liste__druck:hover { background: var(--accent-strong); color: var(--accent-contrast); }
+    .liste__ast { margin-block-end: var(--space-3); }
+    .liste__ast > summary {
+      font-family: var(--font-display);
+      font-size: var(--text-1);
+      cursor: pointer;
+      padding-block: var(--space-1);
+    }
+    .liste__hinweis {
+      font-family: var(--font-hand);
+      color: var(--accent-strong);
+      font-size: var(--text-1);
+      margin-block: var(--space-1) var(--space-2);
+    }
+    .liste__eintraege { list-style: none; margin: 0; padding: 0; }
+    .liste__eintraege li { border-block-end: 1px dotted var(--line); }
+    .liste__eintraege label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding-block: var(--space-2);
+      cursor: pointer;
+    }
+    .liste__eintraege input { inline-size: 17px; block-size: 17px; accent-color: var(--accent-strong); flex: none; }
+    .liste__name { font-size: var(--text-0); }
+    .liste__saison {
+      margin-inline-start: auto;
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: var(--accent-strong);
+    }
+    .liste__fuss { font-size: var(--text--1); color: var(--ink-soft); margin-block-end: 0; }
+
+    .trust-box, .update-log {
+      font-size: var(--text--1);
+      color: var(--ink-soft);
+      border-block-start: 1px solid var(--line);
+      padding-block-start: var(--space-3);
+      margin-block-start: var(--space-5);
+    }
+
+    /* ── Druck: nur die Liste, leer, auf einer Seite ─────────────────── */
+    @media print {
+      body * { visibility: hidden; }
+      .liste, .liste * { visibility: visible; }
+      .liste {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        border: none;
+        padding: 0;
+      }
+      .liste__druck, .liste__fuss { display: none; }
+      .liste__ast > summary { break-after: avoid; }
+      .liste__eintraege input { appearance: none; border: 1.5px solid #33291f; }
+    }
+  </style>
+
+  <script>
+    // Fortschritt der Leser-Liste, rein lokal im Browser.
+    const wurzel = document.querySelector('[data-liste]');
+    if (wurzel) {
+      const SCHLUESSEL = 'wg-tierliste-v1';
+      const kaesten = wurzel.querySelectorAll('input[type="checkbox"]');
+      const zaehler = wurzel.querySelector('[data-zaehler]');
+
+      const lies = () => {
+        try {
+          return JSON.parse(localStorage.getItem(SCHLUESSEL) || '[]');
+        } catch {
+          return [];
+        }
+      };
+      const schreib = (werte) => {
+        try {
+          localStorage.setItem(SCHLUESSEL, JSON.stringify(werte));
+        } catch {
+          /* Privater Modus oder blockierte Speicherung: Liste funktioniert trotzdem. */
+        }
+      };
+      const aktualisiere = () => {
+        const an = [...kaesten].filter((k) => k.checked);
+        if (zaehler) zaehler.textContent = String(an.length);
+        schreib(an.map((k) => k.dataset.tier));
+      };
+
+      const gespeichert = lies();
+      kaesten.forEach((k) => {
+        if (gespeichert.includes(k.dataset.tier)) k.checked = true;
+        k.addEventListener('change', aktualisiere);
+      });
+      if (zaehler) zaehler.textContent = String([...kaesten].filter((k) => k.checked).length);
+
+      wurzel.querySelector('[data-drucken]')?.addEventListener('click', () => window.print());
+    }
+  </script>
+</ArtikelLayout>

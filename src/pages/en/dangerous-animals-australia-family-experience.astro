@@ -1,0 +1,913 @@
+---
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+import StickyToc from '../../components/StickyToc.astro';
+import Randnotiz from '../../components/Randnotiz.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import AufklappBox from '../../components/AufklappBox.astro';
+import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+
+// Same single data source as the German article, rendered twice:
+// our tally at the top, the reader's checklist at the bottom.
+// Evidence: video_katalog/catalog.json + video_katalog/transkripte/
+const tiere = [
+  { name: 'Dolphin',          ast: 'water',  gesehen: '2026-06-25', saison: null,    zeichnung: true },
+  { name: 'Humpback whale',   ast: 'water',  gesehen: '2026-07-03', saison: [5, 11], zeichnung: true },
+  { name: 'Shark',            ast: 'water',  gesehen: '2026-07-04', saison: null,    zeichnung: true },
+  { name: 'Pelican',          ast: 'water',  gesehen: '2026-07-03', saison: null,    zeichnung: false },
+  { name: 'Sea turtle',       ast: 'water',  gesehen: null,         saison: null,    zeichnung: false },
+
+  { name: 'Koala',            ast: 'bush',   gesehen: '2026-07-04', saison: null,    zeichnung: true },
+  { name: 'Wallaby',          ast: 'bush',   gesehen: '2026-07-20', saison: null,    zeichnung: true },
+  { name: 'Echidna',          ast: 'bush',   gesehen: '2026-06-30', saison: null,    zeichnung: true },
+  { name: 'Large lizard',     ast: 'bush',   gesehen: '2026-07-29', saison: null,    zeichnung: true },
+  { name: 'Snake',            ast: 'bush',   gesehen: '2026-07-23', saison: null,    zeichnung: true },
+  { name: 'Goanna',           ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Kangaroo',         ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Wombat',           ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
+
+  { name: 'Brush turkey',     ast: 'garden', gesehen: '2026-06-25', saison: null,    zeichnung: true },
+  { name: 'Kookaburra',       ast: 'garden', gesehen: '2026-06-28', saison: null,    zeichnung: true },
+  { name: 'Huntsman spider',  ast: 'garden', gesehen: '2026-07-03', saison: null,    zeichnung: true },
+  { name: 'Pale parrot',      ast: 'garden', gesehen: '2026-08-04', saison: null,    zeichnung: false },
+  { name: 'Black bird',       ast: 'garden', gesehen: '2026-07-29', saison: null,    zeichnung: false },
+
+  { name: 'Flying foxes',     ast: 'night',  gesehen: '2026-06-26', saison: null,    zeichnung: true },
+  { name: 'Possum',           ast: 'night',  gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Cane toad',        ast: 'night',  gesehen: null,         saison: null,    zeichnung: false },
+];
+
+const aeste = [
+  { id: 'water',  label: 'On the water',        hinweis: 'From the headland or the beach. Binoculars help more than any app.' },
+  { id: 'bush',   label: 'In forest and bush',  hinweis: 'Early morning and at dusk. Walk slowly, look up often.' },
+  { id: 'garden', label: 'Garden and house',    hinweis: 'Most encounters happen here, not out in the wild.' },
+  { id: 'night',  label: 'At night',            hinweis: 'Ears before eyes. You hear most of it long before you see it.' },
+];
+
+const gesehenAnzahl = tiere.filter((t) => t.gesehen).length;
+const gesamt = tiere.length;
+
+const tocEintraege = [
+  { id: 'tally',        label: 'Our tally after two months' },
+  { id: 'first-days',   label: 'The first encounters' },
+  { id: 'whales',       label: 'Whales, and how to miss them' },
+  { id: 'wallaby',      label: 'The wallaby we had to wait for' },
+  { id: 'snakes',       label: 'Snakes: what the numbers say' },
+  { id: 'not-here',     label: 'What you will not find here' },
+  { id: 'your-list',    label: 'Your list to take along' },
+  { id: 'faq',          label: 'Frequently asked questions' },
+];
+
+const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+---
+
+<ArtikelLayout
+  title="Dangerous animals in Australia: what actually crossed our path in two months"
+  seoTitle="Dangerous animals in Australia: our experience with kids"
+  description="Two months in Byron Bay with two small children: 15 species seen ourselves, one snake, not a single dangerous situation. What the snakebite data really says and which animals do not live here at all."
+  lang="en"
+  eyebrow="Everyday life in Australia"
+  datum="3 September 2026"
+  lesezeit="11 minutes"
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
+    <link rel="alternate" hreflang="de" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
+    <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Dangerous animals in Australia: what actually crossed our path in two months" />
+    <meta property="og:description" content="15 species seen ourselves, one snake, no dangerous situation. What the data really says." />
+    <meta property="og:url" content="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dangerous animals in Australia: our experience with kids" />
+    <meta name="twitter:description" content="15 species seen ourselves, one snake, no dangerous situation." />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: 'Dangerous animals in Australia: what actually crossed our path in two months',
+      description: 'Two months in Byron Bay with two small children: 15 species seen ourselves, one snake, not a single dangerous situation.',
+      datePublished: '2026-09-03',
+      dateModified: '2026-09-03',
+      inLanguage: 'en',
+      author: { '@type': 'Person', name: 'Christian', url: 'https://wildgewachsen-australien.de/en/about' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'wildgewachsen',
+        url: 'https://wildgewachsen-australien.de',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience',
+      },
+    })} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wildgewachsen-australien.de/en/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://wildgewachsen-australien.de/en/blog' },
+        { '@type': 'ListItem', position: 3, name: 'Dangerous animals in Australia' },
+      ],
+    })} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How dangerous are snakes in Australia really?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The Australian Snakebite Project recorded 23 deaths from snakebite between July 2005 and June 2015, a median of two per year. Over the same period 1548 people were admitted with suspected snakebite, 835 of them were actually envenomed. 17 of the 23 deaths were attributed to brown snakes.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How do snakebites actually happen in Australia?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'In 47.1 per cent of recorded cases the person was walking or doing something else, unknowingly near a snake. In 14 per cent they were trying to catch or kill it, and in 8.3 per cent it happened while gardening. The bite was to a lower limb in 52 per cent of cases.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Are there crocodiles in Byron Bay?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. On the east coast the saltwater crocodile occurs only as far south as roughly Gladstone and Rockhampton in Queensland. Byron Bay lies about a thousand kilometres further south in New South Wales, well outside that range.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'When can you see whales in Byron Bay?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Humpback whales migrate along the east coast between May and November. Cape Byron, the easternmost point of Australia, sits directly on their route. We saw our first whales on 3 July.',
+          },
+        },
+      ],
+    })} />
+  </Fragment>
+
+  <div class="toc-halter">
+    <StickyToc eintraege={tocEintraege} lang="en" />
+  </div>
+
+  <div class="info-box">
+    <p class="info-box__titel">The short version</p>
+    <ul>
+      <li>In two months we have seen <strong>{gesehenAnzahl} species</strong> ourselves, from a dolphin on arrival day to a koala above the walking track.</li>
+      <li><strong>One single snake</strong>, small, at the edge of the path, gone within seconds. No photo, no dangerous situation.</li>
+      <li>According to the Australian Snakebite Project, a median of <strong>two people per year</strong> die of snakebite in Australia. Almost half of all bites happen because someone was near a snake without knowing.</li>
+      <li><strong>There are no crocodiles or cassowaries here.</strong> Both live considerably further north.</li>
+      <li>At the bottom you will find a <strong>list to tick off and print</strong> for your own time here.</li>
+    </ul>
+  </div>
+
+  <p>
+    Before we flew out, the question came up in almost every conversation, usually somewhere between the coffee and the goodbye: “What about all those animals over there?” Some people laughed while asking. Most did not, really.
+  </p>
+
+  <p>
+    I can answer it now, but not the way people expect. We arrived in Byron Bay on 25 June. What has happened since then was less dramatic and considerably more beautiful than I had expected myself. And the one moment that genuinely mattered did not come from an animal at all. It came from a neighbour, and her story.
+  </p>
+
+  <h2 id="tally">Our tally after two months</h2>
+
+  <p>
+    This is not a list of animals that exist in Australia. It is the list of animals we have seen with our own eyes, with dates, on the east coast between Byron Bay and the hinterland. Every stamped field stands for a day we stood there and watched.
+  </p>
+
+  <figure class="pass">
+    <figcaption class="pass__kopf">
+      <span class="pass__titel">Our sightings pass</span>
+      <span class="pass__zaehler">{gesehenAnzahl}<span class="pass__von">/{gesamt}</span></span>
+    </figcaption>
+    <div class="pass__gitter">
+      {tiere.map((t) => (
+        <div class={t.gesehen ? 'stempel stempel--voll' : 'stempel stempel--leer'}>
+          <span class="stempel__name">{t.name}</span>
+          {t.gesehen ? (
+            <span class="stempel__datum">{new Date(t.gesehen).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit' })}</span>
+          ) : (
+            <span class="stempel__offen">open</span>
+          )}
+        </div>
+      ))}
+    </div>
+    <p class="pass__fuss">
+      Stamped means: seen ourselves. Not in a zoo, not on a tour, not on somebody else's phone.
+    </p>
+  </figure>
+
+  <Randnotiz ausrichtung="rechts" pfeil={true} lang="en">
+    Six fields are still empty. I hear the possum over the roof almost every night. I have never once seen it.
+  </Randnotiz>
+
+  <h2 id="first-days">The first encounters</h2>
+
+  <p>
+    The first animal was a disappointment, which is exactly why I am telling you about it first. On arrival day a dark, chicken-sized bird was walking along the fence beside the coastal path, scratching in the leaf litter. No kangaroo, no koala. A brush turkey. I filmed it because it was the first.
+  </p>
+
+  <p>
+    Later the same day, from the beach, a dorsal fin in the water. Dolphins, on day one. I had not counted on that.
+  </p>
+
+  <figure class="zeichnung-reihe">
+    <div class="zeichnung-platz">
+      <span class="zeichnung-platz__label">Drawing to come</span>
+      <span class="zeichnung-platz__name">Brush turkey</span>
+    </div>
+    <div class="zeichnung-platz">
+      <span class="zeichnung-platz__label">Drawing to come</span>
+      <span class="zeichnung-platz__name">Dolphin</span>
+    </div>
+    <figcaption>Drawn by Joris and Linnea. Placeholders until the originals are scanned in.</figcaption>
+  </figure>
+
+  <p>
+    The next evening, flying foxes hung upside down in a tree, the leaves still wet from the rain. Three days later a kookaburra sat on a rusty signpost and let itself be looked at in peace. On 30 June an echidna rummaged through the leaf litter at the foot of a rotting trunk, so close that I did not want to move.
+  </p>
+
+  <PullQuote quelle="From the video on 4 July" lang="en">
+    I set out to jog. It turned into more standing still than running.
+  </PullQuote>
+
+  <p>
+    The fourth of July was the day both things happened. I ran up the Lighthouse Walk, and up ahead people were standing and looking upwards. There he sat, grey, in the fork of a branch. My first koala, after more than two years I had already spent in this country at an earlier time. A item on a list I did not know I was keeping.
+  </p>
+
+  <p>
+    Twenty minutes later, from the cliffs, a dark shape in the turquoise water. A shark, a big one, swimming in from the direction of the surfers. I let them know down below. Nobody seemed particularly bothered. I had been planning to surf myself that day and left it. My respect was a little larger than my plan.
+  </p>
+
+  <h2 id="whales">Whales, and how to miss them</h2>
+
+  <p>
+    Cape Byron is the easternmost point of Australia, which puts it directly on the humpback migration route. Between May and November they pass along the east coast, heading north and later back south again with their calves.
+  </p>
+
+  <figure class="chart-figur">
+    <svg viewBox="0 0 300 74" role="img" aria-label="Bar chart: humpback whales pass the east coast from May to November, with the highest values from July to October. From December to April no whales are expected.">
+      <title>When humpback whales pass by</title>
+      <text x="4" y="10" font-family="Courier Prime, monospace" font-size="8" fill="#695A48">HUMPBACK WHALE — WHEN</text>
+      {monate.map((m, i) => {
+        const hoehe = [0, 0, 0, 0, 8, 18, 30, 32, 28, 26, 14, 0][i];
+        const x = 12 + i * 23;
+        return (
+          <g>
+            <rect x={x} y={58 - hoehe} width="15" height={hoehe} fill={hoehe > 20 ? '#B5482A' : '#7E8B6D'} />
+            <text x={x + 7.5} y="70" font-family="Courier Prime, monospace" font-size="8" fill="#695A48" text-anchor="middle">{m}</text>
+          </g>
+        );
+      })}
+    </svg>
+    <figcaption>Based on figures from WWF Australia and Visit NSW. Terracotta marks the densest period.</figcaption>
+  </figure>
+
+  <p>
+    On 3 July I was standing at the housesit and they went past outside, far enough away that you could only make them out by the spouts. On 26 July I set off with the drone to finally get decent footage. First it was too windy. Then the whales were too far out. Then I found dolphins instead of whales.
+  </p>
+
+  <p>
+    And when I was already back at the car, at the bay where I usually surf, one swam past right next to the surfers. Earlier that same day I had filmed a koala. Some days hand you everything at once, after letting you walk for hours first.
+  </p>
+
+  <div class="zeichnung-platz zeichnung-platz--breit">
+    <span class="zeichnung-platz__label">Drawing to come</span>
+    <span class="zeichnung-platz__name">Humpback whale</span>
+  </div>
+
+  <h2 id="wallaby">The wallaby we had to wait for</h2>
+
+  <p>
+    On 3 July, the morning after my first night at the housesit, I said into the camera that wallabies were supposed to hop through this garden constantly. I had not seen a single one.
+  </p>
+
+  <p>
+    It took seventeen days. On 20 July, on a dirt track through the coastal heathland south of Byron Bay, one stood in the middle of the path and looked back at me. Then another, and another. Four days later, one in the evening light, standing upright in the tall grass.
+  </p>
+
+  <PullQuote lang="en">
+    The waiting is part of it. It is the better part, in fact.
+  </PullQuote>
+
+  <p>
+    That is exactly why this article ends with a list to tick off instead of a gallery. The appeal is not in having seen everything. It is in the empty fields.
+  </p>
+
+  <!-- ══════════ THE SERIOUS PART: different paper ══════════ -->
+  <div class="ernst">
+    <h2 id="snakes">Snakes: what the numbers say</h2>
+
+    <p>
+      On 23 July I was walking a shaded track through the coastal green and pushed my way through some scrub. Something small slid off the path into the grass in front of me. My first snake. To this day I do not know what it was. It was gone immediately, and there is no picture of it.
+    </p>
+
+    <div class="zeichnung-platz zeichnung-platz--ernst">
+      <span class="zeichnung-platz__label">Drawing to come</span>
+      <span class="zeichnung-platz__name">The snake at the edge of the path</span>
+      <span class="zeichnung-platz__hinweis">Drawn by the kids, from my description. There is no photograph.</span>
+    </div>
+
+    <p>
+      What occupied me more that day than the snake itself was a story somebody had told me shortly before.
+    </p>
+
+    <h3>The neighbour</h3>
+
+    <p>
+      A woman living at the housesit next door helped look after the dogs. She has not been able to work for years, for health reasons. The cause goes a long way back: she was bitten by a brown snake, one of the most venomous species here.
+    </p>
+
+    <p>
+      At the time she was living in a tipi with her children. She had to get up in the night, stood up, and in the dark she stepped on the snake right beside the mattress. Not in the bush. Not on a hike. Beside her own bed.
+    </p>
+
+    <p>
+      On the property where I was staying at the time, she said, there lived one brown snake and several pythons. They generally stayed in the scrub, she said. Once she had nearly stepped on one again.
+    </p>
+
+    <Randnotiz ausrichtung="links" lang="en">
+      “Very reassuring”, I thought at the time. And walked through that garden differently afterwards.
+    </Randnotiz>
+
+    <h3>So what do the numbers say?</h3>
+
+    <p>
+      In my video I said something like “maybe one death a year”. That was from memory. The solid source is the Australian Snakebite Project, a ten-year study run across Australian hospitals and published in the Medical Journal of Australia.
+    </p>
+
+    <div class="zahlen-block">
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">23</span>
+        <span class="zahlen-block__text">deaths from snakebite in ten years, July 2005 to June 2015. A median of <strong>two per year</strong>.</span>
+      </div>
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">17</span>
+        <span class="zahlen-block__text">of those were attributed to <strong>brown snakes</strong>. Precisely the species that got my neighbour.</span>
+      </div>
+      <div class="zahlen-block__zeile">
+        <span class="zahlen-block__zahl">1548</span>
+        <span class="zahlen-block__text">people were admitted with suspected snakebite over the same period. 835 of them were actually envenomed.</span>
+      </div>
+    </div>
+
+    <p>
+      The part that surprised me most was not the death rate, though. It is the question of <em>how</em> people get bitten.
+    </p>
+
+    <figure class="chart-figur">
+      <svg viewBox="0 0 300 108" role="img" aria-label="Bar chart on the circumstances of snakebites in Australia: in 47.1 per cent of cases the person was unknowingly near the snake, in 14 per cent they were trying to catch or kill it, and in 8.3 per cent it happened while gardening.">
+        <title>How snakebites happen</title>
+        <text x="4" y="10" font-family="Courier Prime, monospace" font-size="8" fill="#695A48">HOW THE BITE HAPPENED (ASP, 2005–2015)</text>
+
+        <text x="4" y="30" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">Unknowingly nearby</text>
+        <rect x="4" y="34" width="235" height="12" fill="#B5482A" />
+        <text x="245" y="43" font-family="Courier Prime, monospace" font-size="9" fill="#A63E22">47.1 %</text>
+
+        <text x="4" y="62" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">Trying to catch or kill it</text>
+        <rect x="4" y="66" width="70" height="12" fill="#7E8B6D" />
+        <text x="80" y="75" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">14 %</text>
+
+        <text x="4" y="94" font-family="Courier Prime, monospace" font-size="8" fill="#33291F">While gardening</text>
+        <rect x="4" y="98" width="42" height="8" fill="#7E8B6D" />
+        <text x="52" y="106" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">8.3 %</text>
+      </svg>
+      <figcaption>Australian Snakebite Project (ASP-20), Medical Journal of Australia 2017. 1548 recorded cases.</figcaption>
+    </figure>
+
+    <p>
+      So almost half of all bites happen not because a snake attacks somebody, but because somebody was walking along and noticed nothing. In 52 per cent of cases the bite was to a leg. And 31 per cent happened near houses, with a further 14 per cent <em>inside</em> buildings.
+    </p>
+
+    <p>
+      Which makes my neighbour's story not an outlier. It makes it the standard case.
+    </p>
+
+    <h3>How to tell the dangerous ones apart</h3>
+
+    <p>
+      Honestly: reliably, you cannot. That is the most important sentence in this section. Even experienced people confuse species, and juveniles look different from adults. What you can learn is a rough distinction at a distance, nothing more.
+    </p>
+
+    <figure class="tafel">
+      <figcaption class="tafel__kopf">Plate I — Rough distinction at a distance</figcaption>
+      <svg viewBox="0 0 300 150" role="img" aria-label="Comparative drawing of two snakes. Above, a slender greenish snake with a thin body as an example of a non-venomous tree snake. Below, a solid single-coloured snake with an evenly thick body as an example of a brown snake. Arrows point to body thickness as the distinguishing feature.">
+        <title>Slender tree snake compared with a solid brown snake</title>
+
+        <path d="M20 46 q28-24 56 0 t56 0 t56 0" stroke="#7E8B6D" stroke-width="6" fill="none" stroke-linecap="round" />
+        <line x1="104" y1="18" x2="104" y2="32" stroke="#B5482A" stroke-width="1.5" />
+        <path d="M100.5 30 l3.5 6 l3.5-6 z" fill="#B5482A" />
+        <text x="112" y="26" font-family="Caveat, cursive" font-size="15" fill="#A63E22">thin, often greenish</text>
+        <text x="20" y="70" font-family="Courier Prime, monospace" font-size="9" fill="#5C6850">1. USUALLY HARMLESS — slender tree snake</text>
+
+        <path d="M20 112 q28-24 56 0 t56 0 t56 0" stroke="#33291F" stroke-width="13" fill="none" stroke-linecap="round" />
+        <line x1="104" y1="80" x2="104" y2="94" stroke="#B5482A" stroke-width="1.5" />
+        <path d="M100.5 92 l3.5 6 l3.5-6 z" fill="#B5482A" />
+        <text x="112" y="88" font-family="Caveat, cursive" font-size="15" fill="#A63E22">solid, single colour</text>
+        <text x="20" y="140" font-family="Courier Prime, monospace" font-size="9" fill="#A63E22">2. VENOMOUS — brown snake</text>
+      </svg>
+      <figcaption>
+        Schematic, not species-accurate. The arrows point to the one feature you can actually judge from a distance: body thickness.
+      </figcaption>
+    </figure>
+
+    <AufklappBox titel="What we taught the kids" lang="en">
+      <ul>
+        <li><strong>Stay on the path.</strong> Not into tall grass, no reaching into leaf litter.</li>
+        <li><strong>Closed shoes in the bush.</strong> More than half of all bites are to the leg.</li>
+        <li><strong>Stop instead of running.</strong> If there is a snake: halt, keep your distance, let it move away.</li>
+        <li><strong>Never touch, never shoo it off.</strong> Not even with a stick.</li>
+        <li><strong>Take a light at night.</strong> The neighbour's story happened in the dark, two steps from her bed.</li>
+      </ul>
+    </AufklappBox>
+
+    <div class="hinweis-medizin">
+      <p>
+        <strong>Not medical advice.</strong> If a snakebite is suspected in Australia, call <strong>000</strong> immediately. The official first aid guidance is a pressure bandage with immobilisation, do not let the person walk, do not wash the wound and do not attempt to suck out venom. The current instructions are published by <a href="https://www.healthdirect.gov.au/snake-bites" rel="nofollow noopener" target="_blank">healthdirect Australia</a>. We only pass on what we have learned ourselves.
+      </p>
+    </div>
+  </div>
+  <!-- ══════════ END OF THE SERIOUS PART ══════════ -->
+
+  <h2 id="not-here">What you will not find here</h2>
+
+  <p>
+    A large share of the fear of Australia is aimed at animals that simply do not live in our corner of it. That belongs in an honest answer.
+  </p>
+
+  <figure class="nichtda">
+    <figcaption>Does not occur here</figcaption>
+    <div class="nichtda__reihe">
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen">
+        <span class="zeichnung-platz__label">Drawing to come</span>
+        <span class="zeichnung-platz__name">Saltwater crocodile</span>
+      </div>
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen">
+        <span class="zeichnung-platz__label">Drawing to come</span>
+        <span class="zeichnung-platz__name">Cassowary</span>
+      </div>
+    </div>
+    <p class="nichtda__text">
+      On the east coast the <strong>saltwater crocodile</strong> occurs only as far south as roughly Gladstone and Rockhampton in Queensland. We are about a thousand kilometres further south. The <strong>cassowary</strong> lives in the Wet Tropics of north-eastern Queensland, between Cooktown and Townsville. Both are as far from here as Hamburg is from Rome.
+    </p>
+  </figure>
+
+  <h2 id="your-list">Your list to take along</h2>
+
+  <p>
+    Our pass is at the top. Here is yours, still empty. Same form, different state. Sorted not by rarity, but by where you need to look.
+  </p>
+
+  <div class="liste" data-liste>
+    <div class="liste__kopf">
+      <span class="liste__zaehler"><span data-zaehler>0</span> of {gesamt} spotted</span>
+      <button type="button" class="liste__druck" data-drucken>Print this list</button>
+    </div>
+
+    {aeste.map((ast) => (
+      <details class="liste__ast" open>
+        <summary>{ast.label}</summary>
+        <p class="liste__hinweis">{ast.hinweis}</p>
+        <ul class="liste__eintraege">
+          {tiere.filter((t) => t.ast === ast.id).map((t) => (
+            <li>
+              <label>
+                <input type="checkbox" data-tier={t.name} />
+                <span class="liste__name">{t.name}</span>
+                {t.saison && <span class="liste__saison">May to Nov</span>}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
+
+    <p class="liste__fuss">
+      Your ticks are only stored in this browser. If you clear your browsing data, the list starts from zero again. Hence the print button.
+    </p>
+  </div>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <AufklappBox titel="How dangerous are snakes in Australia really?" lang="en">
+    <p>
+      Between July 2005 and June 2015 the Australian Snakebite Project recorded 23 deaths, a median of two per year. Over the same period 1548 people were admitted with suspected snakebite, 835 of them actually envenomed. 17 of the 23 deaths were attributed to brown snakes.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="How do bites happen in the first place?" lang="en">
+    <p>
+      In 47.1 per cent of cases the person was walking or doing something else, unknowingly near the snake. In 14 per cent they were trying to catch or kill it, and in 8.3 per cent it happened while gardening. In 52 per cent the bite was to a leg. Almost half of all cases happened in or immediately around buildings.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Are there crocodiles in Byron Bay?" lang="en">
+    <p>
+      No. On the east coast the saltwater crocodile occurs only as far south as roughly Gladstone and Rockhampton in Queensland, about a thousand kilometres north of here.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="When can you see whales here?" lang="en">
+    <p>
+      Humpback whales pass along the east coast between May and November. Cape Byron, the easternmost point of Australia, sits directly on the route. We saw our first on 3 July and the best one on 26 July, right beside the surfers.
+    </p>
+  </AufklappBox>
+
+  <AufklappBox titel="Should I worry more with small children?" lang="en">
+    <p>
+      We are here with two small children and have not had a single dangerous situation in two months. What has changed are habits: closed shoes in the bush, stay on the path, carry a light at night, touch nothing. It is less effort than it sounds, and after two weeks you do it automatically.
+    </p>
+  </AufklappBox>
+
+  <div class="trust-box">
+    <p>
+      <strong>Where these details come from:</strong> every sighting in this article is our own observation between 25 June and 9 August 2026 in the Byron Bay area, backed by our own video and photo material with recording dates. The snakebite figures come from the
+      <a href="https://www.mja.com.au/journal/2017/207/3/australian-snakebite-project-2005-2015-asp-20" rel="nofollow noopener" target="_blank">Australian Snakebite Project (ASP-20)</a>,
+      Medical Journal of Australia 2017. Whale season according to WWF Australia and Visit NSW; crocodile and cassowary ranges according to Australian government agencies and conservation organisations.
+    </p>
+  </div>
+
+  <div class="update-log">
+    <p><strong>Last updated:</strong> 3 September 2026. The list keeps growing and we keep updating it.</p>
+  </div>
+
+  <WeiterlesenPfade
+    lang="en"
+    artikel={[
+      { href: '/en/first-days-family-of-four-australia', titel: 'A family of four again: our first days', teaser: 'The reunion in Brisbane, jet lag and the first week at the housesit.' },
+      { href: '/en/moving-to-australia-with-kids-family-guide', titel: 'Moving to Australia with kids', teaser: 'What we sorted out beforehand and what we could have skipped.' },
+      { href: '/en/arrived-first-days-in-australia', titel: 'Arrived: the first days', teaser: 'The first month on my own, before the family followed.' },
+    ]}
+  />
+
+  <style>
+    .toc-halter { margin-bottom: var(--space-6); }
+    @media (min-width: 1100px) {
+      .toc-halter {
+        position: absolute;
+        inset-inline-start: calc(50% - var(--container) / 2);
+        inline-size: 220px;
+      }
+    }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-inline-start: 3px solid var(--accent);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .info-box__titel {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-block-end: var(--space-2);
+    }
+    .info-box ul { margin: 0; padding-inline-start: 1.1rem; }
+    .info-box li { margin-block: var(--space-1); }
+
+    /* Sightings pass: fixed hex values on purpose, behaves like a sheet of
+       paper glued in that does not darken with the rest of the page. */
+    .pass {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .pass__kopf {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-block-end: 2px solid #33291f;
+      padding-block-end: var(--space-2);
+      margin-block-end: var(--space-3);
+    }
+    .pass__titel { font-family: var(--font-display); font-size: var(--text-1); color: #33291f; }
+    .pass__zaehler { font-family: var(--font-mono); font-size: var(--text-2); color: #a63e22; }
+    .pass__von { font-size: var(--text-0); color: #695a48; }
+    .pass__gitter {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: var(--space-3);
+    }
+    .stempel {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4px;
+      gap: 2px;
+    }
+    .stempel--voll { border: 1.5px solid #b5482a; }
+    .stempel--voll:nth-child(3n) { transform: rotate(-6deg); }
+    .stempel--voll:nth-child(3n + 1) { transform: rotate(4deg); }
+    .stempel--leer { border: 1.5px dashed #ddd3bc; }
+    .stempel__name {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      line-height: 1.15;
+      color: #33291f;
+    }
+    .stempel--leer .stempel__name { color: #a1937c; }
+    .stempel__datum { font-family: var(--font-mono); font-size: 0.58rem; color: #a63e22; }
+    .stempel__offen { font-family: var(--font-mono); font-size: 0.58rem; color: #c4b8a0; }
+    .pass__fuss {
+      font-family: var(--font-hand);
+      color: #a63e22;
+      font-size: var(--text-1);
+      margin-block-start: var(--space-3);
+      margin-block-end: 0;
+    }
+
+    .zeichnung-platz {
+      border: 1.5px dashed #c4b8a0;
+      border-radius: var(--radius-s);
+      background: #fbf7ee;
+      min-block-size: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: var(--space-3);
+      text-align: center;
+    }
+    .zeichnung-platz__label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a1937c;
+    }
+    .zeichnung-platz__name {
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: #a63e22;
+    }
+    .zeichnung-platz__hinweis {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #695a48;
+      max-inline-size: 30ch;
+      line-height: 1.5;
+    }
+    .zeichnung-platz--breit { min-block-size: 190px; margin-block: var(--space-4); }
+    .zeichnung-platz--ernst { background: #ebe0c8; border-color: #b5a88c; margin-block: var(--space-4); }
+    .zeichnung-platz--durchgestrichen { position: relative; overflow: hidden; }
+    .zeichnung-platz--durchgestrichen::after {
+      content: '';
+      position: absolute;
+      inset-inline: -10%;
+      inset-block-start: 50%;
+      block-size: 2px;
+      background: #b5482a;
+      transform: rotate(-14deg);
+    }
+    .zeichnung-reihe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-block: var(--space-5);
+    }
+    .zeichnung-reihe figcaption {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    @media (max-width: 560px) { .zeichnung-reihe { grid-template-columns: 1fr; } }
+
+    .chart-figur {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .chart-figur svg { inline-size: 100%; block-size: auto; }
+    .chart-figur figcaption {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: #695a48;
+      margin-block-start: var(--space-2);
+    }
+
+    .ernst {
+      background: #ebe0c8;
+      border-block: 1px solid #c4b8a0;
+      padding: var(--space-5) var(--space-4);
+      margin-block: var(--space-6);
+      margin-inline: calc(var(--space-4) * -1);
+      color: #33291f;
+    }
+    .ernst h2, .ernst h3 { color: #33291f; }
+    .ernst p { color: #3d3227; }
+    .ernst a { color: #a63e22; }
+
+    .zahlen-block { margin-block: var(--space-4); }
+    .zahlen-block__zeile {
+      display: flex;
+      gap: var(--space-3);
+      align-items: baseline;
+      padding-block: var(--space-2);
+      border-block-end: 1px dotted #c4b8a0;
+    }
+    .zahlen-block__zahl {
+      font-family: var(--font-display);
+      font-size: var(--text-2);
+      color: #a63e22;
+      min-inline-size: 3.5ch;
+      flex: none;
+    }
+    .zahlen-block__text { font-size: var(--text-0); line-height: 1.6; }
+
+    .tafel {
+      background: #fbf7ee;
+      border: 1.5px solid #33291f;
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .tafel__kopf {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #695a48;
+      margin-block-end: var(--space-3);
+    }
+    .tafel svg { inline-size: 100%; block-size: auto; }
+    .tafel figcaption {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: #695a48;
+      margin-block-start: var(--space-2);
+      line-height: 1.5;
+    }
+
+    .hinweis-medizin {
+      background: #fbf7ee;
+      border-inline-start: 3px solid #b5482a;
+      padding: var(--space-3) var(--space-4);
+      margin-block-start: var(--space-5);
+    }
+    .hinweis-medizin p { margin: 0; font-size: var(--text--1); line-height: 1.65; }
+
+    .nichtda {
+      border: 1.5px dashed var(--accent);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .nichtda > figcaption {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-block-end: var(--space-3);
+    }
+    .nichtda__reihe { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    @media (max-width: 560px) { .nichtda__reihe { grid-template-columns: 1fr; } }
+    .nichtda__text { margin-block-start: var(--space-3); margin-block-end: 0; }
+
+    .liste {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: var(--space-4);
+      margin-block: var(--space-5);
+    }
+    .liste__kopf {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      border-block-end: 2px solid var(--ink);
+      padding-block-end: var(--space-2);
+      margin-block-end: var(--space-3);
+    }
+    .liste__zaehler { font-family: var(--font-mono); font-size: var(--text-0); color: var(--accent-strong); }
+    .liste__druck {
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      background: transparent;
+      border: 1px solid var(--accent-strong);
+      color: var(--accent-strong);
+      border-radius: var(--radius-s);
+      padding: 6px 14px;
+      cursor: pointer;
+    }
+    .liste__druck:hover { background: var(--accent-strong); color: var(--accent-contrast); }
+    .liste__ast { margin-block-end: var(--space-3); }
+    .liste__ast > summary {
+      font-family: var(--font-display);
+      font-size: var(--text-1);
+      cursor: pointer;
+      padding-block: var(--space-1);
+    }
+    .liste__hinweis {
+      font-family: var(--font-hand);
+      color: var(--accent-strong);
+      font-size: var(--text-1);
+      margin-block: var(--space-1) var(--space-2);
+    }
+    .liste__eintraege { list-style: none; margin: 0; padding: 0; }
+    .liste__eintraege li { border-block-end: 1px dotted var(--line); }
+    .liste__eintraege label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding-block: var(--space-2);
+      cursor: pointer;
+    }
+    .liste__eintraege input { inline-size: 17px; block-size: 17px; accent-color: var(--accent-strong); flex: none; }
+    .liste__name { font-size: var(--text-0); }
+    .liste__saison {
+      margin-inline-start: auto;
+      font-family: var(--font-mono);
+      font-size: var(--text--1);
+      color: var(--accent-strong);
+    }
+    .liste__fuss { font-size: var(--text--1); color: var(--ink-soft); margin-block-end: 0; }
+
+    .trust-box, .update-log {
+      font-size: var(--text--1);
+      color: var(--ink-soft);
+      border-block-start: 1px solid var(--line);
+      padding-block-start: var(--space-3);
+      margin-block-start: var(--space-5);
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      .liste, .liste * { visibility: visible; }
+      .liste {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        border: none;
+        padding: 0;
+      }
+      .liste__druck, .liste__fuss { display: none; }
+      .liste__ast > summary { break-after: avoid; }
+      .liste__eintraege input { appearance: none; border: 1.5px solid #33291f; }
+    }
+  </style>
+
+  <script>
+    // Reader checklist progress, stored locally in the browser only.
+    const wurzel = document.querySelector('[data-liste]');
+    if (wurzel) {
+      const SCHLUESSEL = 'wg-animal-list-v1';
+      const kaesten = wurzel.querySelectorAll('input[type="checkbox"]');
+      const zaehler = wurzel.querySelector('[data-zaehler]');
+
+      const lies = () => {
+        try {
+          return JSON.parse(localStorage.getItem(SCHLUESSEL) || '[]');
+        } catch {
+          return [];
+        }
+      };
+      const schreib = (werte) => {
+        try {
+          localStorage.setItem(SCHLUESSEL, JSON.stringify(werte));
+        } catch {
+          /* Private mode or blocked storage: the list still works. */
+        }
+      };
+      const aktualisiere = () => {
+        const an = [...kaesten].filter((k) => k.checked);
+        if (zaehler) zaehler.textContent = String(an.length);
+        schreib(an.map((k) => k.dataset.tier));
+      };
+
+      const gespeichert = lies();
+      kaesten.forEach((k) => {
+        if (gespeichert.includes(k.dataset.tier)) k.checked = true;
+        k.addEventListener('change', aktualisiere);
+      });
+      if (zaehler) zaehler.textContent = String([...kaesten].filter((k) => k.checked).length);
+
+      wurzel.querySelector('[data-drucken]')?.addEventListener('click', () => window.print());
+    }
+  </script>
+</ArtikelLayout>
