@@ -5,6 +5,8 @@ import Randnotiz from '../../components/Randnotiz.astro';
 import PullQuote from '../../components/PullQuote.astro';
 import AufklappBox from '../../components/AufklappBox.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import FotoStory from '../../components/FotoStory.astro';
+import InlineVideo from '../../components/InlineVideo.astro';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // EINE Datenquelle, zwei Auftritte: oben unsere Bilanz, unten die Leser-Liste.
@@ -85,9 +87,11 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <meta property="og:title" content="Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist" />
     <meta property="og:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation. Was die Statistik wirklich sagt." />
     <meta property="og:url" content="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Gefährliche Tiere in Australien: unsere Erfahrung mit Kindern" />
     <meta name="twitter:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
 
@@ -99,6 +103,15 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
       datePublished: '2026-09-03',
       dateModified: '2026-09-03',
       inLanguage: 'de-DE',
+      image: {
+        '@type': 'ImageObject',
+        url: 'https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg',
+        width: 1200,
+        height: 630,
+        creditText: 'wildgewachsen',
+        license: 'https://wildgewachsen-australien.de/impressum',
+        acquireLicensePage: 'https://wildgewachsen-australien.de/kontakt',
+      },
       author: { '@type': 'Person', name: 'Christian', url: 'https://wildgewachsen-australien.de/ueber-uns' },
       publisher: {
         '@type': 'Organization',
@@ -161,6 +174,21 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     })} />
   </Fragment>
 
+  <figure slot="hero" class="hero-figur">
+    <picture>
+      <source srcset="/assets/images/au-buckelwal-drohne-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-buckelwal-drohne-byron.jpg"
+        width="1200"
+        height="675"
+        alt="Luftaufnahme eines Buckelwals dicht unter der Wasseroberfläche vor Byron Bay, der Kopf durchbricht das türkisgrüne Wasser, rechts glitzert die Sonne."
+        loading="eager"
+        fetchpriority="high"
+      />
+    </picture>
+    <figcaption>26. Juli, vor Byron Bay. Ich war losgezogen, um Wale zu filmen, und hatte den halben Tag keine gefunden.</figcaption>
+  </figure>
+
   <div class="toc-halter">
     <StickyToc eintraege={tocEintraege} lang="de" />
   </div>
@@ -216,6 +244,22 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Sechs Felder sind noch leer. Das Possum höre ich fast jede Nacht über dem Dach. Gesehen habe ich es bis heute nicht.
   </Randnotiz>
 
+  <figure class="artikel-figur artikel-figur--alt">
+    <picture>
+      <source srcset="/assets/images/au-kaenguru-mit-joey-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-kaenguru-mit-joey-p960.jpg"
+        width="720"
+        height="960"
+        alt="Känguru auf einer Rasenfläche, im Beutel schaut ein Jungtier heraus, im Vordergrund unscharf eine Schulter."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>
+      <strong>Nicht aus diesen zwei Monaten.</strong> Ein großes Känguru haben wir seit dem 25. Juni nicht gesehen. Dieses Bild ist vom Januar 2018, aus unserer früheren Zeit in Australien. Es steht hier für das, worauf wir noch warten.
+    </figcaption>
+  </figure>
+
   <h2 id="erste-tage">Die ersten Begegnungen</h2>
 
   <p>
@@ -226,21 +270,48 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Am selben Tag dann, vom Strand aus, eine Rückenflosse im Wasser. Delfine, an Tag eins. Damit hatte ich nicht gerechnet.
   </p>
 
-  <figure class="zeichnung-reihe">
-    <div class="zeichnung-platz" data-tier="Buschhuhn">
-      <span class="zeichnung-platz__label">Zeichnung folgt</span>
-      <span class="zeichnung-platz__name">Buschhuhn</span>
-    </div>
-    <div class="zeichnung-platz" data-tier="Delfin">
-      <span class="zeichnung-platz__label">Zeichnung folgt</span>
-      <span class="zeichnung-platz__name">Delfin</span>
-    </div>
-    <figcaption>Gezeichnet von Joris und Linnea. Platzhalter, bis die Bilder eingescannt sind.</figcaption>
-  </figure>
+  <p>
+    Am nächsten Abend hingen Flughunde kopfüber in einem Baum, die Blätter noch nass vom Regen. Drei Tage später saß ein Kookaburra auf einem Wegweiser zum Strand und ließ sich in Ruhe ansehen.
+  </p>
+
+  <FotoStory
+    lang="de"
+    ueberschrift="Die erste Woche"
+    bilder={[
+      {
+        src: '/assets/images/au-buschhuhn-zaun-byron.jpg',
+        alt: 'Buschhuhn mit rotem Kopf und gelbem Kehllappen scharrt im Laub an einem Zaunpfosten neben dem Küstenpfad.',
+        caption: '25. Juni: das allererste Tier. Ein Buschhuhn am Zaun, kein Känguru.',
+      },
+      {
+        src: '/assets/images/au-delfin-finne-tag-eins.jpg',
+        alt: 'Dunkler Delfinrücken mit Finne durchbricht die graue Wasseroberfläche, weit vom Strand entfernt.',
+        caption: 'Am selben Tag, weit draußen: eine Rückenflosse. Mehr war nicht zu sehen, und es reichte.',
+      },
+      {
+        src: '/assets/images/au-flughunde-baum-byron-p960.jpg',
+        alt: 'Mehrere Flughunde hängen kopfüber mit zusammengefalteten Flügeln in den Ästen eines Baumes, rostrotes Nackenfell.',
+        caption: '26. Juni: Flughunde im Baum, die Blätter noch nass vom Regen.',
+      },
+      {
+        src: '/assets/images/au-kookaburra-wegweiser.jpg',
+        alt: 'Kookaburra sitzt auf einem roten Wegweiser mit der Aufschrift Beach Access, dahinter grüne Sträucher.',
+        caption: '28. Juni: der Kookaburra saß da, bis ich nah genug war.',
+      },
+    ]}
+  />
 
   <p>
-    Am nächsten Abend hingen Flughunde kopfüber in einem Baum, die Blätter noch nass vom Regen. Drei Tage später saß ein Kookaburra auf einem rostigen Wegweiser und ließ sich in Ruhe ansehen. Am 30. Juni wühlte ein Echidna im Laub am Fuß eines morschen Stamms, so nah, dass ich mich nicht bewegen wollte.
+    Am 30. Juni wühlte ein Echidna im Laub am Fuß eines morschen Stamms, so nah, dass ich mich nicht bewegen wollte. Auf einem Foto sieht so ein Tier aus wie ein Stachelball. Das Eigentliche ist, was es tut.
   </p>
+
+  <InlineVideo
+    src="/assets/images/au-echidna-loop.mp4"
+    poster="/assets/images/au-echidna-loop-poster.jpg"
+    caption="30. Juni, Küstenbusch bei Byron Bay. Sechs Sekunden, ohne Ton."
+    lang="de"
+    aspectRatio="9/16"
+  />
 
   <PullQuote quelle="Aus dem Video vom 4. Juli" lang="de">
     Ich wollte joggen. Es wurde mehr Stehenbleiben als Laufen.
@@ -250,9 +321,37 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Der 4. Juli war der Tag, an dem beides passierte. Ich bin den Lighthouse-Walk hochgelaufen, vorne standen Leute und schauten nach oben. Da saß er, grau, in der Astgabel. Mein erster Koala, nach insgesamt über zwei Jahren, die ich vorher schon einmal in diesem Land verbracht hatte. Ein Punkt auf einer Liste, von der ich gar nicht wusste, dass ich sie habe.
   </p>
 
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-koala-eukalyptus-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-koala-eukalyptus-byron.jpg"
+        width="1200"
+        height="1189"
+        alt="Koala sitzt grau und zusammengekauert in einer Astgabel, das Gesicht mit Auge und Ohr ist zwischen Blättern zu erkennen."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>So sieht man Koalas wirklich: halb hinter Blättern, und nur weil jemand anderes vorher stehen geblieben ist.</figcaption>
+  </figure>
+
   <p>
     Zwanzig Minuten später, von den Klippen aus, ein dunkler Schatten im türkisen Wasser. Ein Hai, groß, und er schwamm aus der Richtung der Surfer. Ich habe unten Bescheid gesagt. Es schien niemanden zu stören. Ich hatte an dem Tag eigentlich selbst noch surfen wollen und habe es gelassen. Der Respekt war dann doch größer.
   </p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-hai-unter-oberflaeche.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-hai-unter-oberflaeche.jpg"
+        width="1200"
+        height="1188"
+        alt="Blick von oben auf türkisgrünes Wasser, darin eine längliche dunkle Gestalt knapp unter der Oberfläche."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>Mehr war es nicht. Und genau deshalb bin ich an dem Tag nicht mehr rein.</figcaption>
+  </figure>
 
   <h2 id="wale">Wale, und wie man sie verpasst</h2>
 
@@ -282,14 +381,23 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Am 3. Juli stand ich am Housesit und draußen zogen welche vorbei, weit genug weg, dass man sie nur an den Fontänen erkannte. Am 26. Juli bin ich mit der Drohne losgezogen, um endlich gute Aufnahmen zu bekommen. Erst war es zu windig. Dann waren die Wale zu weit draußen. Dann fand ich Delfine statt Wale.
   </p>
 
-  <p>
-    Und als ich schon zurück am Auto war, an der Bucht, in der ich sonst surfe, schwamm einer direkt neben den Surfern vorbei. Am selben Tag hatte ich vorher noch einen Koala gefilmt. Manche Tage geben einem alles auf einmal, nachdem sie einen vorher stundenlang haben laufen lassen.
-  </p>
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-delfine-drohne-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-delfine-drohne-byron.jpg"
+        width="1200"
+        height="675"
+        alt="Luftaufnahme von fünf Delfinen dicht unter der Oberfläche in grünem Wasser, einer hebt die Schwanzflosse aus dem Wasser."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>„Keine Wale, aber da hinten sind ein paar Delfine." Fünf Stück, einer hebt die Fluke.</figcaption>
+  </figure>
 
-  <div class="zeichnung-platz zeichnung-platz--breit" data-tier="Buckelwal">
-    <span class="zeichnung-platz__label">Zeichnung folgt</span>
-    <span class="zeichnung-platz__name">Buckelwal</span>
-  </div>
+  <p>
+    Und dann doch, und zwar näher als alles vorher. Später, als ich schon zurück am Auto war, schwamm an der Bucht, in der ich sonst surfe, einer direkt neben den Surfern vorbei. Am selben Tag hatte ich vorher noch einen Koala gefilmt. Manche Tage geben einem alles auf einmal, nachdem sie einen vorher stundenlang haben laufen lassen.
+  </p>
 
   <h2 id="wallaby">Das Wallaby, auf das wir warten mussten</h2>
 
@@ -301,6 +409,20 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Es hat siebzehn Tage gedauert. Am 20. Juli, auf einem Feldweg in der küstennahen Heidelandschaft südlich von Byron Bay, stand dann eins mitten auf dem Weg und schaute zurück. Danach noch eins, und noch eins. Vier Tage später eins im Abendlicht, aufgerichtet im hohen Gras.
   </p>
 
+  <figure class="artikel-figur artikel-figur--gross">
+    <picture>
+      <source srcset="/assets/images/au-wallaby-goldene-stunde-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-wallaby-goldene-stunde-p960.jpg"
+        width="820"
+        height="1093"
+        alt="Wallaby steht aufgerichtet im hohen Gras einer Küstendüne, dahinter Bäume und das Meer im Abendlicht."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>24. Juli, kurz vor Sonnenuntergang. Siebzehn Tage nachdem ich gesagt hatte, hier gäbe es angeblich ständig welche.</figcaption>
+  </figure>
+
   <PullQuote lang="de">
     Das Warten gehört dazu. Es ist sogar der bessere Teil.
   </PullQuote>
@@ -308,6 +430,24 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <p>
     Genau deshalb hat dieser Artikel unten eine Liste zum Abhaken statt einer Galerie. Der Reiz liegt nicht darin, alles gesehen zu haben. Er liegt in den leeren Feldern.
   </p>
+
+  <p>
+    Am 29. Juli saß dann noch etwas auf einem Stein am Wegrand, aufgerichtet und völlig regungslos, und ließ sich aus zwei Metern ansehen. Rostrote Brust, gezackter Kamm im Nacken, dunkler Streifen durchs Auge. Nach allem, was ich dazu finde, eine Australische Wasseragame. Sicher bin ich nicht, und das ist der Übergang zum nächsten Teil.
+  </p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-wasseragame-stein-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-wasseragame-stein-byron.jpg"
+        width="1200"
+        height="675"
+        alt="Große Echse mit gezacktem Nackenkamm, dunklem Augenstreif und rostroter Brust sitzt aufgerichtet zwischen Laub und Farnwedeln."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>29. Juli. Sie hat sich nicht bewegt, ich auch nicht.</figcaption>
+  </figure>
 
   <!-- ══════════ ERNSTER TEIL: anderes Papier ══════════ -->
   <div class="ernst">
@@ -565,6 +705,49 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         inline-size: 220px;
       }
     }
+
+    /* ── Hero + Artikel-Bilder im Polaroid-Muster ───────────────────── */
+    .hero-figur { margin: 0; }
+    .hero-figur img {
+      inline-size: 100%;
+      block-size: auto;
+      display: block;
+      border-block: 1px solid var(--line);
+    }
+    .hero-figur figcaption {
+      max-inline-size: var(--container-text);
+      margin: var(--space-2) auto 0;
+      padding-inline: var(--space-4);
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: var(--accent-strong);
+    }
+
+    .artikel-figur {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      padding: var(--space-3) var(--space-3) var(--space-2);
+      margin-block: var(--space-5);
+      box-shadow: var(--shadow-card);
+    }
+    .artikel-figur img { inline-size: 100%; block-size: auto; display: block; }
+    .artikel-figur figcaption {
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: #a63e22;
+      margin-block-start: var(--space-2);
+      line-height: 1.35;
+    }
+    .artikel-figur:nth-of-type(even) { transform: rotate(-0.5deg); }
+    .artikel-figur:nth-of-type(odd) { transform: rotate(0.4deg); }
+    .artikel-figur--gross { margin-inline: calc(var(--space-3) * -1); }
+    .artikel-figur--alt { border-style: dashed; }
+    .artikel-figur--alt figcaption {
+      font-family: var(--font-body);
+      font-size: var(--text--1);
+      color: #695a48;
+    }
+    .artikel-figur--alt figcaption strong { color: #a63e22; }
 
     .info-box {
       background: var(--surface);

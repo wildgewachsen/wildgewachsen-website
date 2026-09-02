@@ -5,6 +5,8 @@ import Randnotiz from '../../components/Randnotiz.astro';
 import PullQuote from '../../components/PullQuote.astro';
 import AufklappBox from '../../components/AufklappBox.astro';
 import WeiterlesenPfade from '../../components/WeiterlesenPfade.astro';
+import FotoStory from '../../components/FotoStory.astro';
+import InlineVideo from '../../components/InlineVideo.astro';
 
 // Same single data source as the German article, rendered twice:
 // our tally at the top, the reader's checklist at the bottom.
@@ -78,9 +80,11 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <meta property="og:title" content="Dangerous animals in Australia: what actually crossed our path in two months" />
     <meta property="og:description" content="15 species seen ourselves, one snake, no dangerous situation. What the data really says." />
     <meta property="og:url" content="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
+    <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dangerous animals in Australia: our experience with kids" />
     <meta name="twitter:description" content="15 species seen ourselves, one snake, no dangerous situation." />
+    <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
 
@@ -92,6 +96,15 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
       datePublished: '2026-09-03',
       dateModified: '2026-09-03',
       inLanguage: 'en',
+      image: {
+        '@type': 'ImageObject',
+        url: 'https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg',
+        width: 1200,
+        height: 630,
+        creditText: 'wildgewachsen',
+        license: 'https://wildgewachsen-australien.de/en/privacy',
+        acquireLicensePage: 'https://wildgewachsen-australien.de/en/contact',
+      },
       author: { '@type': 'Person', name: 'Christian', url: 'https://wildgewachsen-australien.de/en/about' },
       publisher: {
         '@type': 'Organization',
@@ -154,6 +167,21 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     })} />
   </Fragment>
 
+  <figure slot="hero" class="hero-figur">
+    <picture>
+      <source srcset="/assets/images/au-buckelwal-drohne-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-buckelwal-drohne-byron.jpg"
+        width="1200"
+        height="675"
+        alt="Aerial view of a humpback whale just below the surface off Byron Bay, its head breaking through the turquoise water, sunlight glittering on the right."
+        loading="eager"
+        fetchpriority="high"
+      />
+    </picture>
+    <figcaption>26 July, off Byron Bay. I had gone out to film whales and spent half the day finding none.</figcaption>
+  </figure>
+
   <div class="toc-halter">
     <StickyToc eintraege={tocEintraege} lang="en" />
   </div>
@@ -209,6 +237,22 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Six fields are still empty. I hear the possum over the roof almost every night. I have never once seen it.
   </Randnotiz>
 
+  <figure class="artikel-figur artikel-figur--alt">
+    <picture>
+      <source srcset="/assets/images/au-kaenguru-mit-joey-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-kaenguru-mit-joey-p960.jpg"
+        width="720"
+        height="960"
+        alt="Kangaroo on a lawn with a joey looking out of the pouch, a shoulder blurred in the foreground."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>
+      <strong>Not from these two months.</strong> We have not seen a large kangaroo since 25 June. This picture is from January 2018, from our earlier time in Australia. It stands here for what we are still waiting for.
+    </figcaption>
+  </figure>
+
   <h2 id="first-days">The first encounters</h2>
 
   <p>
@@ -219,21 +263,48 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Later the same day, from the beach, a dorsal fin in the water. Dolphins, on day one. I had not counted on that.
   </p>
 
-  <figure class="zeichnung-reihe">
-    <div class="zeichnung-platz">
-      <span class="zeichnung-platz__label">Drawing to come</span>
-      <span class="zeichnung-platz__name">Brush turkey</span>
-    </div>
-    <div class="zeichnung-platz">
-      <span class="zeichnung-platz__label">Drawing to come</span>
-      <span class="zeichnung-platz__name">Dolphin</span>
-    </div>
-    <figcaption>Drawn by Joris and Linnea. Placeholders until the originals are scanned in.</figcaption>
-  </figure>
+  <p>
+    The next evening, flying foxes hung upside down in a tree, the leaves still wet from the rain. Three days later a kookaburra sat on a sign pointing to the beach and let itself be looked at in peace.
+  </p>
+
+  <FotoStory
+    lang="en"
+    ueberschrift="The first week"
+    bilder={[
+      {
+        src: '/assets/images/au-buschhuhn-zaun-byron.jpg',
+        alt: 'Brush turkey with a red head and yellow wattle scratching through leaf litter beside a fence post on the coastal path.',
+        caption: '25 June: the very first animal. A brush turkey at the fence, not a kangaroo.',
+      },
+      {
+        src: '/assets/images/au-delfin-finne-tag-eins.jpg',
+        alt: 'A dark dolphin back and dorsal fin breaking the grey surface of the sea, far from the beach.',
+        caption: 'The same day, far out: one dorsal fin. That was all there was, and it was enough.',
+      },
+      {
+        src: '/assets/images/au-flughunde-baum-byron-p960.jpg',
+        alt: 'Several flying foxes hanging upside down with folded wings in the branches of a tree, rust-coloured fur around the neck.',
+        caption: '26 June: flying foxes in the tree, the leaves still wet from the rain.',
+      },
+      {
+        src: '/assets/images/au-kookaburra-wegweiser.jpg',
+        alt: 'Kookaburra sitting on a red sign reading Beach Access, green shrubs behind it.',
+        caption: '28 June: the kookaburra stayed put until I was close enough.',
+      },
+    ]}
+  />
 
   <p>
-    The next evening, flying foxes hung upside down in a tree, the leaves still wet from the rain. Three days later a kookaburra sat on a rusty signpost and let itself be looked at in peace. On 30 June an echidna rummaged through the leaf litter at the foot of a rotting trunk, so close that I did not want to move.
+    On 30 June an echidna rummaged through the leaf litter at the foot of a rotting trunk, so close that I did not want to move. In a photograph an animal like that looks like a ball of spines. The point is what it is doing.
   </p>
+
+  <InlineVideo
+    src="/assets/images/au-echidna-loop.mp4"
+    poster="/assets/images/au-echidna-loop-poster.jpg"
+    caption="30 June, coastal bush near Byron Bay. Six seconds, no sound."
+    lang="en"
+    aspectRatio="9/16"
+  />
 
   <PullQuote quelle="From the video on 4 July" lang="en">
     I set out to jog. It turned into more standing still than running.
@@ -243,9 +314,37 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     The fourth of July was the day both things happened. I ran up the Lighthouse Walk, and up ahead people were standing and looking upwards. There he sat, grey, in the fork of a branch. My first koala, after more than two years I had already spent in this country at an earlier time. A item on a list I did not know I was keeping.
   </p>
 
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-koala-eukalyptus-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-koala-eukalyptus-byron.jpg"
+        width="1200"
+        height="1189"
+        alt="A grey koala curled into the fork of a branch, its face with eye and ear visible between leaves."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>This is how you actually see koalas: half behind leaves, and only because somebody else stopped first.</figcaption>
+  </figure>
+
   <p>
     Twenty minutes later, from the cliffs, a dark shape in the turquoise water. A shark, a big one, swimming in from the direction of the surfers. I let them know down below. Nobody seemed particularly bothered. I had been planning to surf myself that day and left it. My respect was a little larger than my plan.
   </p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-hai-unter-oberflaeche.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-hai-unter-oberflaeche.jpg"
+        width="1200"
+        height="1188"
+        alt="Looking down onto turquoise water with a long dark shape just below the surface."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>That was all it was. And exactly why I stayed out of the water that day.</figcaption>
+  </figure>
 
   <h2 id="whales">Whales, and how to miss them</h2>
 
@@ -275,14 +374,23 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     On 3 July I was standing at the housesit and they went past outside, far enough away that you could only make them out by the spouts. On 26 July I set off with the drone to finally get decent footage. First it was too windy. Then the whales were too far out. Then I found dolphins instead of whales.
   </p>
 
-  <p>
-    And when I was already back at the car, at the bay where I usually surf, one swam past right next to the surfers. Earlier that same day I had filmed a koala. Some days hand you everything at once, after letting you walk for hours first.
-  </p>
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-delfine-drohne-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-delfine-drohne-byron.jpg"
+        width="1200"
+        height="675"
+        alt="Aerial view of five dolphins just below the surface of green water, one lifting its tail fluke clear of the water."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>“No whales, but there are a few dolphins over there.” Five of them, one lifting its fluke.</figcaption>
+  </figure>
 
-  <div class="zeichnung-platz zeichnung-platz--breit">
-    <span class="zeichnung-platz__label">Drawing to come</span>
-    <span class="zeichnung-platz__name">Humpback whale</span>
-  </div>
+  <p>
+    And then there were, closer than anything before. Later, when I was already back at the car, one swam past right next to the surfers at the bay where I usually surf. Earlier that same day I had filmed a koala. Some days hand you everything at once, after letting you walk for hours first.
+  </p>
 
   <h2 id="wallaby">The wallaby we had to wait for</h2>
 
@@ -294,6 +402,20 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     It took seventeen days. On 20 July, on a dirt track through the coastal heathland south of Byron Bay, one stood in the middle of the path and looked back at me. Then another, and another. Four days later, one in the evening light, standing upright in the tall grass.
   </p>
 
+  <figure class="artikel-figur artikel-figur--gross">
+    <picture>
+      <source srcset="/assets/images/au-wallaby-goldene-stunde-p960.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-wallaby-goldene-stunde-p960.jpg"
+        width="820"
+        height="1093"
+        alt="A wallaby standing upright in tall grass on a coastal dune, trees and the sea behind it in evening light."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>24 July, just before sunset. Seventeen days after I said there were supposedly wallabies here all the time.</figcaption>
+  </figure>
+
   <PullQuote lang="en">
     The waiting is part of it. It is the better part, in fact.
   </PullQuote>
@@ -301,6 +423,24 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <p>
     That is exactly why this article ends with a list to tick off instead of a gallery. The appeal is not in having seen everything. It is in the empty fields.
   </p>
+
+  <p>
+    Then on 29 July something was sitting on a rock at the edge of the path, upright and completely motionless, and let me look at it from two metres away. Rust-red chest, a jagged crest along the neck, a dark stripe through the eye. From everything I can find, an eastern water dragon. I am not certain, and that is the bridge to the next part.
+  </p>
+
+  <figure class="artikel-figur">
+    <picture>
+      <source srcset="/assets/images/au-wasseragame-stein-byron.webp" type="image/webp" />
+      <img
+        src="/assets/images/au-wasseragame-stein-byron.jpg"
+        width="1200"
+        height="675"
+        alt="A large lizard with a jagged neck crest, dark eye stripe and rust-red chest sitting upright among leaf litter and fern fronds."
+        loading="lazy"
+      />
+    </picture>
+    <figcaption>29 July. It did not move, and neither did I.</figcaption>
+  </figure>
 
   <!-- ══════════ THE SERIOUS PART: different paper ══════════ -->
   <div class="ernst">
@@ -557,6 +697,49 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         inline-size: 220px;
       }
     }
+
+    /* Hero + article images, polaroid pattern */
+    .hero-figur { margin: 0; }
+    .hero-figur img {
+      inline-size: 100%;
+      block-size: auto;
+      display: block;
+      border-block: 1px solid var(--line);
+    }
+    .hero-figur figcaption {
+      max-inline-size: var(--container-text);
+      margin: var(--space-2) auto 0;
+      padding-inline: var(--space-4);
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: var(--accent-strong);
+    }
+
+    .artikel-figur {
+      background: #fbf7ee;
+      border: 1px solid #ddd3bc;
+      padding: var(--space-3) var(--space-3) var(--space-2);
+      margin-block: var(--space-5);
+      box-shadow: var(--shadow-card);
+    }
+    .artikel-figur img { inline-size: 100%; block-size: auto; display: block; }
+    .artikel-figur figcaption {
+      font-family: var(--font-hand);
+      font-size: var(--text-1);
+      color: #a63e22;
+      margin-block-start: var(--space-2);
+      line-height: 1.35;
+    }
+    .artikel-figur:nth-of-type(even) { transform: rotate(-0.5deg); }
+    .artikel-figur:nth-of-type(odd) { transform: rotate(0.4deg); }
+    .artikel-figur--gross { margin-inline: calc(var(--space-3) * -1); }
+    .artikel-figur--alt { border-style: dashed; }
+    .artikel-figur--alt figcaption {
+      font-family: var(--font-body);
+      font-size: var(--text--1);
+      color: #695a48;
+    }
+    .artikel-figur--alt figcaption strong { color: #a63e22; }
 
     .info-box {
       background: var(--surface);
