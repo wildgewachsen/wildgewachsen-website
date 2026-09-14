@@ -167,20 +167,15 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     })} />
   </Fragment>
 
-  <figure slot="hero" class="hero-figur">
-    <picture>
-      <source srcset="/assets/images/au-buckelwal-drohne-byron.webp" type="image/webp" />
-      <img
-        src="/assets/images/au-buckelwal-drohne-byron.jpg"
-        width="1200"
-        height="675"
-        alt="Aerial view of a humpback whale just below the surface off Byron Bay, its head breaking through the turquoise water, sunlight glittering on the right."
-        loading="eager"
-        fetchpriority="high"
-      />
-    </picture>
-    <figcaption>26 July, off Byron Bay. I had gone out to film whales and spent half the day finding none.</figcaption>
-  </figure>
+  <div slot="hero" class="hero-video">
+    <InlineVideo
+      src="/assets/images/au-buckelwal-loop.mp4"
+      poster="/assets/images/au-buckelwal-drohne-byron.jpg"
+      caption="26 July, off Byron Bay. I had gone out to film whales and spent half the day finding none."
+      lang="en"
+      aspectRatio="16 / 9"
+    />
+  </div>
 
   <div class="toc-halter">
     <StickyToc eintraege={tocEintraege} lang="en" />
@@ -198,7 +193,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </div>
 
   <p>
-    Before we flew out, the question came up in almost every conversation, usually somewhere between the coffee and the goodbye: “What about all those animals over there?” Some people laughed while asking. Most did not, really.
+    “What about all those dangerous animals?” You hear that question a lot beforehand. Do you even see them in everyday life? And if you do, what is it actually like?
   </p>
 
   <p>
@@ -256,7 +251,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <h2 id="first-days">The first encounters</h2>
 
   <p>
-    The first animal was a disappointment, which is exactly why I am telling you about it first. On arrival day a dark, chicken-sized bird was walking along the fence beside the coastal path, scratching in the leaf litter. No kangaroo, no koala. A brush turkey. I filmed it because it was the first.
+    The first interesting animal was not a snake, not a spider and nothing out of the sea. On arrival day a dark, chicken-sized bird was walking along the fence beside the coastal path, scratching in the leaf litter. No kangaroo, no koala. A brush turkey. I like them. But keep an eye on your food at the beach. I have watched them get a zip-lock bag open and tear into a packet of chips.
   </p>
 
   <p>
@@ -282,7 +277,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         caption: 'The same day, far out: one dorsal fin. That was all there was, and it was enough.',
       },
       {
-        src: '/assets/images/au-flughunde-baum-byron-p960.jpg',
+        src: '/assets/images/au-flughunde-baum-byron.jpg',
         alt: 'Several flying foxes hanging upside down with folded wings in the branches of a tree, rust-coloured fur around the neck.',
         caption: '26 June: flying foxes in the tree, the leaves still wet from the rain.',
       },
@@ -295,7 +290,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   />
 
   <p>
-    On 30 June an echidna rummaged through the leaf litter at the foot of a rotting trunk, so close that I did not want to move. In a photograph an animal like that looks like a ball of spines. The point is what it is doing.
+    On 30 June an echidna rummaged through the leaf litter at the foot of a rotting trunk, so close that I did not want to move. In a photograph an animal like that looks like a ball of spines. You only see the difference once it moves.
   </p>
 
   <InlineVideo
@@ -699,20 +694,18 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     }
 
     /* Hero + article images, polaroid pattern */
-    .hero-figur { margin: 0; }
-    .hero-figur img {
-      inline-size: 100%;
-      block-size: auto;
-      display: block;
-      border-block: 1px solid var(--line);
-    }
-    .hero-figur figcaption {
-      max-inline-size: var(--container-text);
-      margin: var(--space-2) auto 0;
+    /* Hero sitzt im Layout ausserhalb des Containers (= randlos).
+       Deshalb hier selbst begrenzen, sonst laeuft er ueber die volle Seite.
+       InlineVideo bringt seinen Polaroid-Rahmen mit; fuer den Hero nur die
+       Schraeglage und den oberen Abstand herausnehmen. */
+    .hero-video {
+      margin: 0 auto;
+      max-inline-size: var(--container);
       padding-inline: var(--space-4);
-      font-family: var(--font-hand);
-      font-size: var(--text-1);
-      color: var(--accent-strong);
+    }
+    .hero-video :global(.inline-video) {
+      rotate: 0deg;
+      margin-block-start: 0;
     }
 
     .artikel-figur {

@@ -174,20 +174,15 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     })} />
   </Fragment>
 
-  <figure slot="hero" class="hero-figur">
-    <picture>
-      <source srcset="/assets/images/au-buckelwal-drohne-byron.webp" type="image/webp" />
-      <img
-        src="/assets/images/au-buckelwal-drohne-byron.jpg"
-        width="1200"
-        height="675"
-        alt="Luftaufnahme eines Buckelwals dicht unter der Wasseroberfläche vor Byron Bay, der Kopf durchbricht das türkisgrüne Wasser, rechts glitzert die Sonne."
-        loading="eager"
-        fetchpriority="high"
-      />
-    </picture>
-    <figcaption>26. Juli, vor Byron Bay. Ich war losgezogen, um Wale zu filmen, und hatte den halben Tag keine gefunden.</figcaption>
-  </figure>
+  <div slot="hero" class="hero-video">
+    <InlineVideo
+      src="/assets/images/au-buckelwal-loop.mp4"
+      poster="/assets/images/au-buckelwal-drohne-byron.jpg"
+      caption="26. Juli, vor Byron Bay. Ich war losgezogen, um Wale zu filmen, und hatte den halben Tag keine gefunden."
+      lang="de"
+      aspectRatio="16 / 9"
+    />
+  </div>
 
   <div class="toc-halter">
     <StickyToc eintraege={tocEintraege} lang="de" />
@@ -205,11 +200,11 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </div>
 
   <p>
-    Die Frage kam vor dem Abflug in fast jedem Gespräch, meistens irgendwann zwischen Kaffee und Verabschiedung: „Und was ist mit den ganzen Tieren da?" Manche haben gelacht dabei. Die meisten nicht wirklich.
+    „Was ist mit den ganzen gefährlichen Tieren?" Die Frage hört man vorher oft. Sieht man die überhaupt im Alltag? Und wenn ja, wie ist das wirklich?
   </p>
 
   <p>
-    Ich kann sie inzwischen beantworten, aber nicht so, wie man es erwartet. Wir sind am 25. Juni in Byron Bay angekommen. Was seitdem passiert ist, war weniger dramatisch und deutlich schöner, als ich selbst gedacht hätte. Und der eine Moment, in dem es wirklich um etwas ging, kam nicht von einem Tier, sondern von einer Nachbarin und ihrer Geschichte.
+    Ich kann das inzwischen beantworten, aber nicht so, wie man es erwartet. Wir sind am 25. Juni in Byron Bay angekommen. Was seitdem passiert ist, war weniger dramatisch und deutlich schöner, als ich selbst gedacht hätte. Und der eine Moment, in dem es wirklich um etwas ging, kam nicht von einem Tier, sondern von einer Nachbarin und ihrer Geschichte.
   </p>
 
   <h2 id="bilanz">Unsere Bilanz nach zwei Monaten</h2>
@@ -263,7 +258,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <h2 id="erste-tage">Die ersten Begegnungen</h2>
 
   <p>
-    Das erste Tier war eine Enttäuschung, und genau deshalb erzähle ich es zuerst. Am Ankunftstag lief neben dem Küstenpfad ein dunkler, hühnergroßer Vogel am Zaun entlang und scharrte im Laub. Kein Känguru, kein Koala. Ein Buschhuhn. Ich habe es gefilmt, weil es das erste war.
+    Das erste spannende Tier war keine Schlange, keine Spinne und kein Meeresbewohner. Am Ankunftstag lief neben dem Küstenpfad ein dunkler, hühnergroßer Vogel am Zaun entlang und scharrte im Laub. Kein Känguru, kein Koala. Ein Buschhuhn, hier heißt es Brush Turkey. Ich mag die Tiere. Am Strand sollte man sein Essen trotzdem im Blick behalten. Ich habe selbst gesehen, wie sie Zip-Beutel aufbekommen und Chipstüten aufreißen.
   </p>
 
   <p>
@@ -289,7 +284,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         caption: 'Am selben Tag, weit draußen: eine Rückenflosse. Mehr war nicht zu sehen, und es reichte.',
       },
       {
-        src: '/assets/images/au-flughunde-baum-byron-p960.jpg',
+        src: '/assets/images/au-flughunde-baum-byron.jpg',
         alt: 'Mehrere Flughunde hängen kopfüber mit zusammengefalteten Flügeln in den Ästen eines Baumes, rostrotes Nackenfell.',
         caption: '26. Juni: Flughunde im Baum, die Blätter noch nass vom Regen.',
       },
@@ -302,7 +297,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   />
 
   <p>
-    Am 30. Juni wühlte ein Echidna im Laub am Fuß eines morschen Stamms, so nah, dass ich mich nicht bewegen wollte. Auf einem Foto sieht so ein Tier aus wie ein Stachelball. Das Eigentliche ist, was es tut.
+    Am 30. Juni wühlte ein Echidna im Laub am Fuß eines morschen Stamms, so nah, dass ich mich nicht bewegen wollte. Auf einem Foto sieht so ein Tier aus wie ein Stachelball. Erst wenn es sich bewegt, sieht man den Unterschied.
   </p>
 
   <InlineVideo
@@ -707,20 +702,18 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     }
 
     /* ── Hero + Artikel-Bilder im Polaroid-Muster ───────────────────── */
-    .hero-figur { margin: 0; }
-    .hero-figur img {
-      inline-size: 100%;
-      block-size: auto;
-      display: block;
-      border-block: 1px solid var(--line);
-    }
-    .hero-figur figcaption {
-      max-inline-size: var(--container-text);
-      margin: var(--space-2) auto 0;
+    /* Hero sitzt im Layout ausserhalb des Containers (= randlos).
+       Deshalb hier selbst begrenzen, sonst laeuft er ueber die volle Seite.
+       InlineVideo bringt seinen Polaroid-Rahmen mit; fuer den Hero nur die
+       Schraeglage und den oberen Abstand herausnehmen. */
+    .hero-video {
+      margin: 0 auto;
+      max-inline-size: var(--container);
       padding-inline: var(--space-4);
-      font-family: var(--font-hand);
-      font-size: var(--text-1);
-      color: var(--accent-strong);
+    }
+    .hero-video :global(.inline-video) {
+      rotate: 0deg;
+      margin-block-start: 0;
     }
 
     .artikel-figur {
