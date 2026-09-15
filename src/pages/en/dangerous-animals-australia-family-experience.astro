@@ -13,29 +13,32 @@ import InlineVideo from '../../components/InlineVideo.astro';
 // Evidence: video_katalog/catalog.json + video_katalog/transkripte/
 const tiere = [
   { name: 'Dolphin',          ast: 'water',  gesehen: '2026-06-25', saison: null,    zeichnung: true },
-  { name: 'Humpback whale',   ast: 'water',  gesehen: '2026-07-03', saison: [5, 11], zeichnung: true },
+  { name: 'Humpback Whale',   ast: 'water',  gesehen: '2026-07-03', saison: [5, 11], zeichnung: true },
   { name: 'Shark',            ast: 'water',  gesehen: '2026-07-04', saison: null,    zeichnung: true },
   { name: 'Pelican',          ast: 'water',  gesehen: '2026-07-03', saison: null,    zeichnung: false },
-  { name: 'Sea turtle',       ast: 'water',  gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Sea Eagle',        ast: 'water',  gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Sea Turtle',       ast: 'water',  gesehen: null,         saison: null,    zeichnung: false },
 
   { name: 'Koala',            ast: 'bush',   gesehen: '2026-07-04', saison: null,    zeichnung: true },
   { name: 'Wallaby',          ast: 'bush',   gesehen: '2026-07-20', saison: null,    zeichnung: true },
   { name: 'Echidna',          ast: 'bush',   gesehen: '2026-06-30', saison: null,    zeichnung: true },
-  { name: 'Large lizard',     ast: 'bush',   gesehen: '2026-07-29', saison: null,    zeichnung: true },
-  { name: 'Snake',            ast: 'bush',   gesehen: '2026-07-23', saison: null,    zeichnung: true },
-  { name: 'Goanna',           ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'Water Dragon',     ast: 'bush',   gesehen: '2026-07-29', saison: null,    zeichnung: true },
+  { name: 'Green Tree Snake', ast: 'bush',   gesehen: '2026-09-03', saison: null,    zeichnung: true },
+  { name: 'Python',           ast: 'bush',   gesehen: '2026-09-03', saison: null,    zeichnung: true },
+  { name: 'Goanna',           ast: 'bush',   gesehen: '2026-09-05', saison: null,    zeichnung: false },
   { name: 'Kangaroo',         ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
-  { name: 'Wombat',           ast: 'bush',   gesehen: null,         saison: null,    zeichnung: false },
 
-  { name: 'Brush turkey',     ast: 'garden', gesehen: '2026-06-25', saison: null,    zeichnung: true },
+  { name: 'Brush Turkey',     ast: 'garden', gesehen: '2026-06-25', saison: null,    zeichnung: true },
   { name: 'Kookaburra',       ast: 'garden', gesehen: '2026-06-28', saison: null,    zeichnung: true },
-  { name: 'Huntsman spider',  ast: 'garden', gesehen: '2026-07-03', saison: null,    zeichnung: true },
-  { name: 'Pale parrot',      ast: 'garden', gesehen: '2026-08-04', saison: null,    zeichnung: false },
-  { name: 'Black bird',       ast: 'garden', gesehen: '2026-07-29', saison: null,    zeichnung: false },
+  { name: 'Huntsman',         ast: 'garden', gesehen: '2026-07-03', saison: null,    zeichnung: true },
+  { name: 'Cockatoo',         ast: 'garden', gesehen: '2026-08-04', saison: null,    zeichnung: false },
+  { name: 'Gecko',            ast: 'garden', gesehen: '2026-08-28', saison: null,    zeichnung: false },
+  { name: 'Rainbow Lorikeet', ast: 'garden', gesehen: null,         saison: null,    zeichnung: false },
+  { name: 'White Ibis',       ast: 'garden', gesehen: null,         saison: null,    zeichnung: false },
 
-  { name: 'Flying foxes',     ast: 'night',  gesehen: '2026-06-26', saison: null,    zeichnung: true },
+  { name: 'Flying Fox',       ast: 'night',  gesehen: '2026-06-26', saison: null,    zeichnung: true },
+  { name: 'Cane Toad',        ast: 'night',  gesehen: '2026-08-25', saison: null,    zeichnung: false },
   { name: 'Possum',           ast: 'night',  gesehen: null,         saison: null,    zeichnung: false },
-  { name: 'Cane toad',        ast: 'night',  gesehen: null,         saison: null,    zeichnung: false },
 ];
 
 const aeste = [

@@ -16,33 +16,36 @@ import InlineVideo from '../../components/InlineVideo.astro';
 // ─────────────────────────────────────────────────────────────────────────────
 const tiere = [
   // Am Wasser
-  { name: 'Delfin',            ast: 'wasser', gesehen: '2026-06-25', tage: 2, saison: null,      zeichnung: true,  notiz: 'Am ersten Tag, eine Flosse im Wasser.' },
-  { name: 'Buckelwal',         ast: 'wasser', gesehen: '2026-07-03', tage: 2, saison: [5, 11],   zeichnung: true,  notiz: 'Erst eine Fontäne weit draußen. Später einer direkt neben den Surfern.' },
-  { name: 'Hai',               ast: 'wasser', gesehen: '2026-07-04', tage: 1, saison: null,      zeichnung: true,  notiz: 'Von der Klippe aus. Ich habe unten Bescheid gesagt.' },
-  { name: 'Pelikan',           ast: 'wasser', gesehen: '2026-07-03', tage: 1, saison: null,      zeichnung: false, notiz: 'Tief über der Flussmündung.' },
-  { name: 'Meeresschildkröte', ast: 'wasser', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Dolphin',           ast: 'wasser', gesehen: '2026-06-25', tage: 2, saison: null,      zeichnung: true,  notiz: 'Am ersten Tag, eine Flosse im Wasser.' },
+  { name: 'Humpback Whale',    ast: 'wasser', gesehen: '2026-07-03', tage: 2, saison: [5, 11],   zeichnung: true,  notiz: 'Erst eine Fontäne weit draußen. Später einer direkt neben den Surfern.' },
+  { name: 'Shark',             ast: 'wasser', gesehen: '2026-07-04', tage: 1, saison: null,      zeichnung: true,  notiz: 'Von der Klippe aus. Ich habe unten Bescheid gesagt.' },
+  { name: 'Pelican',           ast: 'wasser', gesehen: '2026-07-03', tage: 1, saison: null,      zeichnung: false, notiz: 'Tief über der Flussmündung.' },
+  { name: 'Sea Eagle',         ast: 'wasser', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Sea Turtle',        ast: 'wasser', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
 
   // Im Wald und Busch
   { name: 'Koala',             ast: 'busch',  gesehen: '2026-07-04', tage: 2, saison: null,      zeichnung: true,  notiz: 'Beim Joggen. Andere Leute standen schon da und schauten hoch.' },
   { name: 'Wallaby',           ast: 'busch',  gesehen: '2026-07-20', tage: 2, saison: null,      zeichnung: true,  notiz: 'Auf das haben wir am längsten gewartet.' },
   { name: 'Echidna',           ast: 'busch',  gesehen: '2026-06-30', tage: 2, saison: null,      zeichnung: true,  notiz: 'Wühlte im Laub am Fuß eines morschen Stamms.' },
-  { name: 'Große Echse',       ast: 'busch',  gesehen: '2026-07-29', tage: 1, saison: null,      zeichnung: true,  notiz: 'Saß regungslos auf einem Stein. Nackenkamm, rötliche Brust.' },
-  { name: 'Schlange',          ast: 'busch',  gesehen: '2026-07-23', tage: 1, saison: null,      zeichnung: true,  notiz: 'Klein, schnell weg. Kein Foto. Bis heute weiß ich nicht, welche es war.' },
-  { name: 'Goanna',            ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
-  { name: 'Großes Känguru',    ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
-  { name: 'Wombat',            ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'Water Dragon',      ast: 'busch',  gesehen: '2026-07-29', tage: 1, saison: null,      zeichnung: true,  notiz: 'Saß regungslos auf einem Stein. Nackenkamm, rötliche Brust.' },
+  { name: 'Green Tree Snake',  ast: 'busch',  gesehen: '2026-09-03', tage: 2, saison: null,      zeichnung: true,  notiz: 'Wohnt an der Natursteinmauer am Pool. Am 3. und am 14. September an derselben Stelle.' },
+  { name: 'Python',            ast: 'busch',  gesehen: '2026-09-03', tage: 2, saison: null,      zeichnung: true,  notiz: 'Erst nachts im Gebüsch, im Licht der Taschenlampe. Später eine zweite, aufgerollt in einer Felsspalte.' },
+  { name: 'Goanna',            ast: 'busch',  gesehen: '2026-09-05', tage: 1, saison: null,      zeichnung: false, notiz: 'Joris hat ihn entdeckt. Bis ich draußen war, war er im Gebüsch.' },
+  { name: 'Kangaroo',          ast: 'busch',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
 
   // Im Garten und am Haus
-  { name: 'Buschhuhn',         ast: 'garten', gesehen: '2026-06-25', tage: 1, saison: null,      zeichnung: true,  notiz: 'Das allererste Tier, noch am Ankunftstag, am Zaun neben dem Küstenpfad.' },
+  { name: 'Brush Turkey',      ast: 'garten', gesehen: '2026-06-25', tage: 1, saison: null,      zeichnung: true,  notiz: 'Das allererste Tier, noch am Ankunftstag, am Zaun neben dem Küstenpfad.' },
   { name: 'Kookaburra',        ast: 'garten', gesehen: '2026-06-28', tage: 3, saison: null,      zeichnung: true,  notiz: 'Einmal auf einem rostigen Wegweiser, zweimal auf einer Gartenfigur.' },
-  { name: 'Huntsman-Spinne',   ast: 'garten', gesehen: '2026-07-03', tage: 1, saison: null,      zeichnung: true,  notiz: 'Nicht draußen. An der Wand im Haus.' },
-  { name: 'Heller Papagei',    ast: 'garten', gesehen: '2026-08-04', tage: 1, saison: null,      zeichnung: false, notiz: 'Oben in der Baumkrone über dem Spielplatz. Art unbestimmt.' },
-  { name: 'Schwarzer Vogel',   ast: 'garten', gesehen: '2026-07-29', tage: 1, saison: null,      zeichnung: false, notiz: 'Linnea ist ihm über den ganzen Grasstreifen hinterhergelaufen.' },
+  { name: 'Huntsman',          ast: 'garten', gesehen: '2026-07-03', tage: 4, saison: null,      zeichnung: true,  notiz: 'Im Haus, am Poolkescher, in der Mülltonne und nachts an der Hauswand.' },
+  { name: 'Cockatoo',          ast: 'garten', gesehen: '2026-08-04', tage: 1, saison: null,      zeichnung: false, notiz: 'Hell und cremefarben, oben in der Baumkrone über dem Spielplatz.' },
+  { name: 'Gecko',             ast: 'garten', gesehen: '2026-08-28', tage: 1, saison: null,      zeichnung: false, notiz: 'Am Deckenbalken, später auf der Decke auf dem Sofa.' },
+  { name: 'Rainbow Lorikeet',  ast: 'garten', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
+  { name: 'White Ibis',        ast: 'garten', gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
 
   // Nachts
-  { name: 'Flughunde',         ast: 'nacht',  gesehen: '2026-06-26', tage: 1, saison: null,      zeichnung: true,  notiz: 'Hingen kopfüber im Baum, nach dem Regen.' },
+  { name: 'Flying Fox',        ast: 'nacht',  gesehen: '2026-06-26', tage: 1, saison: null,      zeichnung: true,  notiz: 'Hingen kopfüber im Baum, nach dem Regen.' },
+  { name: 'Cane Toad',         ast: 'nacht',  gesehen: '2026-08-25', tage: 3, saison: null,      zeichnung: false, notiz: 'Auf der Veranda. Lucy hat sie mit dem Besen über die Kante geschoben.' },
   { name: 'Possum',            ast: 'nacht',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
-  { name: 'Aga-Kröte',         ast: 'nacht',  gesehen: null,         tage: 0, saison: null,      zeichnung: false, notiz: null },
 ];
 
 const aeste = [
