@@ -52,11 +52,12 @@ const gesehenAnzahl = tiere.filter((t) => t.gesehen).length;
 const gesamt = tiere.length;
 
 const tocEintraege = [
-  { id: 'tally',        label: 'Our tally after two months' },
+  { id: 'tally',        label: 'Our tally after three months' },
   { id: 'first-days',   label: 'The first encounters' },
   { id: 'whales',       label: 'Whales, and how to miss them' },
   { id: 'wallaby',      label: 'The wallaby we had to wait for' },
   { id: 'snakes',       label: 'Snakes: what the numbers say' },
+  { id: 'rainforest',   label: 'Postscript: the rainforest' },
   { id: 'not-here',     label: 'What you will not find here' },
   { id: 'your-list',    label: 'Your list to take along' },
   { id: 'faq',          label: 'Frequently asked questions' },
@@ -66,13 +67,13 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
 ---
 
 <ArtikelLayout
-  title="Dangerous animals in Australia: what actually crossed our path in two months"
+  title="Dangerous animals in Australia: what actually crossed our path in three months"
   seoTitle="Dangerous animals in Australia: our experience with kids"
-  description="Two months in Byron Bay with two small children: 15 species seen ourselves, one snake, not a single dangerous situation. What the snakebite data really says and which animals do not live here at all."
+  description="Three months on the east coast with two small children: 18 species seen ourselves, three snakes, no dangerous situation. What the snakebite data really says."
   lang="en"
   eyebrow="Everyday life in Australia"
-  datum="3 September 2026"
-  lesezeit="11 minutes"
+  datum="15 September 2026"
+  lesezeit="15 minutes"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
@@ -80,13 +81,13 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Dangerous animals in Australia: what actually crossed our path in two months" />
-    <meta property="og:description" content="15 species seen ourselves, one snake, no dangerous situation. What the data really says." />
+    <meta property="og:title" content="Dangerous animals in Australia: what actually crossed our path in three months" />
+    <meta property="og:description" content="18 species seen ourselves, three snakes, no dangerous situation. What the data really says." />
     <meta property="og:url" content="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
     <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dangerous animals in Australia: our experience with kids" />
-    <meta name="twitter:description" content="15 species seen ourselves, one snake, no dangerous situation." />
+    <meta name="twitter:description" content="18 species seen ourselves, three snakes, no dangerous situation." />
     <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -94,10 +95,10 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      headline: 'Dangerous animals in Australia: what actually crossed our path in two months',
-      description: 'Two months in Byron Bay with two small children: 15 species seen ourselves, one snake, not a single dangerous situation.',
+      headline: 'Dangerous animals in Australia: what actually crossed our path in three months',
+      description: 'Three months on the Australian east coast with two small children: 18 species seen ourselves, three snakes, no dangerous situation.',
       datePublished: '2026-09-03',
-      dateModified: '2026-09-03',
+      dateModified: '2026-09-15',
       inLanguage: 'en',
       image: {
         '@type': 'ImageObject',
@@ -187,10 +188,10 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <div class="info-box">
     <p class="info-box__titel">The short version</p>
     <ul>
-      <li>In two months we have seen <strong>{gesehenAnzahl} species</strong> ourselves, from a dolphin on arrival day to a koala above the walking track.</li>
-      <li><strong>One single snake</strong>, small, at the edge of the path, gone within seconds. No photo, no dangerous situation.</li>
+      <li>In three months we have seen <strong>{gesehenAnzahl} species</strong> ourselves, from a dolphin on arrival day to a goanna in our own garden.</li>
+      <li><strong>Three snakes</strong>, two of them since we moved into the rainforest. A green tree snake lives in the stone wall beside the pool. Not one encounter turned dangerous.</li>
       <li>According to the Australian Snakebite Project, a median of <strong>two people per year</strong> die of snakebite in Australia. Almost half of all bites happen because someone was near a snake without knowing.</li>
-      <li><strong>There are no crocodiles or cassowaries here.</strong> Both live considerably further north.</li>
+      <li><strong>There are no saltwater crocodiles or cassowaries here</strong>, and you will look for a wombat in vain on this stretch of coast. All three live somewhere else.</li>
       <li>At the bottom you will find a <strong>list to tick off and print</strong> for your own time here.</li>
     </ul>
   </div>
@@ -203,7 +204,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     I can answer it now, but not the way people expect. We arrived in Byron Bay on 25 June. What has happened since then was less dramatic and considerably more beautiful than I had expected myself. And the one moment that genuinely mattered did not come from an animal at all. It came from a neighbour, and her story.
   </p>
 
-  <h2 id="tally">Our tally after two months</h2>
+  <h2 id="tally">Our tally after three months</h2>
 
   <p>
     This is not a list of animals that exist in Australia. It is the list of animals we have seen with our own eyes, with dates, on the east coast between Byron Bay and the hinterland. Every stamped field stands for a day we stood there and watched.
@@ -247,7 +248,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
       />
     </picture>
     <figcaption>
-      <strong>Not from these two months.</strong> We have not seen a large kangaroo since 25 June. This picture is from January 2018, from our earlier time in Australia. It stands here for what we are still waiting for.
+      <strong>Not from these three months.</strong> We have not seen a large kangaroo since 25 June. This picture is from January 2018, from our earlier time in Australia. It stands here for what we are still waiting for.
     </figcaption>
   </figure>
 
@@ -575,6 +576,100 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </div>
   <!-- ══════════ END OF THE SERIOUS PART ══════════ -->
 
+  <h2 id="rainforest">Postscript: the rainforest</h2>
+
+  <p>
+    Everything up to here happened on the coast, during the first two months. At the end of August we moved, away from the ocean and into the hinterland. A property in the rainforest, pool, horse paddock, open veranda. I said at the time that everything was a bit more basic here. That is true. What I had not seen coming: the list that had grown steadily over two months almost fell over itself in the two weeks that followed.
+  </p>
+
+  <h3>The last days at the old address</h3>
+
+  <p>
+    It started small. On 21 August a small brown lizard sat on the brick wall next to the cushion on the veranda, early in the morning. Four days later a cane toad sat on the same concrete, fist-sized, entirely unimpressed. Lucy pushed it over the edge with a broom and went back to raking. That is, I think, the most honest wildlife clip we own. No drama, one movement, carry on.
+  </p>
+
+  <p>
+    The next day a huntsman sat on the pool net at the edge of the water. Palm-sized, flat, motionless. That evening a second cane toad in the grass by the roadside. I had gone six weeks without seeing any of them. Then three in two days.
+  </p>
+
+  <h3>Moving day already had a visitor</h3>
+
+  <p>
+    On 28 August we filled the car twice, an hour each way. Just after seven in the evening a gecko was sitting on the dark ceiling beam. Twenty minutes later it was on the fringed blanket on the sofa. First evening, first animal in the house, and honestly it was more funny than anything else.
+  </p>
+
+  <h3>3 September</h3>
+
+  <p>
+    Just after three in the afternoon something thin and green-brown moved through the grass at the foot of the stone wall and disappeared into the ferns beside the pool. We stood there and waited. A few minutes later it came back out across the red terrace tiles, entirely unhurried, and for the first time ever I had a snake on video. A green tree snake. Non-venomous.
+  </p>
+
+  <p>
+    That same night a second one lay in the bushes, clearly bigger, a python. I lit it up with the torch. Joris stood next to me and said afterwards: "I was really scared too." He had looked at it anyway, until I turned the light back off.
+  </p>
+
+  <p>
+    That was the day the question in the headline came up for real for the first time. Not as a statistic, but in the evening, in the dark, holding the hand of a six-year-old.
+  </p>
+
+  <h3>And then it simply kept going</h3>
+
+  <p>
+    On 5 September Joris stood at the open door in the morning, pointing outside, excited. A goanna, down in the sloping garden. By the time I got there with the camera, only the bush was still moving. We ticked it off anyway, since I did see it, however briefly.
+  </p>
+
+  <p>
+    On 12 September, at night, a large flat spider on the white outside wall, lit by the lamp. On 13 September a small lizard ran across the breakfast table in the morning and stopped in the strip of sunlight between the peanut butter and the storage jars. You get used to it faster than you would think.
+  </p>
+
+  <h3>14 September, two snakes in one day</h3>
+
+  <p>
+    At 9:54 in the morning it was back. Same wall, same corner by the pool as eleven days earlier. A green tree snake, olive-bronze back, pale salmon flank, and we watched it for ten minutes straight as it pulled itself between the boulders and slid back under the leaves.
+  </p>
+
+  <p>
+    That is the point where something shifted for me. It is no longer an encounter. I have seen it several times now in exactly that spot. <strong>The snakes live there.</strong> They are not an event, they are neighbours. And you settle in differently once you have understood that, compared to waiting for the one dramatic moment.
+  </p>
+
+  <p>
+    At ten to four that afternoon, about ninety metres from the house, the second one was lying there. Thick, powerful, a high-contrast black and cream pattern, coiled in a crack in the rock. A python. And then came the question this whole article is really building towards, from one of the children:
+  </p>
+
+  <PullQuote quelle="14 September, from the video" lang="en">
+    Are they not dangerous at all, not at all?
+  </PullQuote>
+
+  <p>
+    The answer was: they are not venomous. No, they are not. And the answer is correct. Pythons kill by constriction, not venom. For a human the ones here are not a problem. For a chicken they are.
+  </p>
+
+  <p>
+    Earlier in the same video there was another exchange, and it says more about emigrating as a family than anything else in this section. One of the children asked whether they could quickly go and tell someone. The answer: better not. Why? Because then she will be scared again.
+  </p>
+
+  <Randnotiz ausrichtung="rechts" pfeil={true} lang="en">
+    Two people standing in front of a python, negotiating who gets to hear about it and who is better off not knowing. That is what everyday life with dangerous animals actually looks like.
+  </Randnotiz>
+
+  <h3>Lucy's side of it</h3>
+
+  <p>
+    I am the one with the camera, which is why this is my version. Lucy has her own, and hers is more matter-of-fact. She was out with Linnea when a very large python was lying on the road a few minutes from our future house. Her explanation was neither bad luck nor drama, it was geography: there is a river here, there is rainforest here, so there are more snakes here. Plus big cane toads and, as she puts it, properly green frogs.
+  </p>
+
+  <p>
+    The house we are moving into next has no flyscreens on the doors and windows. Lucy wants them fitted, and her reasoning is the best sentence either of us has produced on this subject:
+  </p>
+
+  <PullQuote quelle="Lucy, late August" lang="en">
+    Because I do want to know what is inside the house, and what I can expect when I walk around somewhere and clear something out.
+  </PullQuote>
+
+  <p>
+    That is not fear. That is respect translated into a job for a tradesperson. And it is exactly the attitude that has carried us through three months here: play nothing down, blow nothing up, order a flyscreen.
+  </p>
+
   <h2 id="not-here">What you will not find here</h2>
 
   <p>
@@ -586,15 +681,22 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <div class="nichtda__reihe">
       <div class="zeichnung-platz zeichnung-platz--durchgestrichen">
         <span class="zeichnung-platz__label">Drawing to come</span>
-        <span class="zeichnung-platz__name">Saltwater crocodile</span>
+        <span class="zeichnung-platz__name">Saltwater Crocodile</span>
       </div>
       <div class="zeichnung-platz zeichnung-platz--durchgestrichen">
         <span class="zeichnung-platz__label">Drawing to come</span>
         <span class="zeichnung-platz__name">Cassowary</span>
       </div>
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen">
+        <span class="zeichnung-platz__label">Drawing to come</span>
+        <span class="zeichnung-platz__name">Wombat</span>
+      </div>
     </div>
     <p class="nichtda__text">
       On the east coast the <strong>saltwater crocodile</strong> occurs only as far south as roughly Gladstone and Rockhampton in Queensland. We are about a thousand kilometres further south. The <strong>cassowary</strong> lives in the Wet Tropics of north-eastern Queensland, between Cooktown and Townsville. Both are as far from here as Hamburg is from Rome.
+    </p>
+    <p class="nichtda__text">
+      The <strong>wombat</strong> surprised me. It sat on our list for a long time, until I looked it up. According to the <a href="https://australian.museum/learn/animals/mammals/bare-nosed-wombat/" rel="nofollow noopener" target="_blank">Australian Museum</a>, in northern New South Wales it lives only in sclerophyll forest above about 600 metres, and it avoids rainforest. We live in rainforest, considerably lower. It dropped off our list before we ever got to tick it.
     </p>
   </figure>
 
@@ -661,20 +763,22 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
 
   <AufklappBox titel="Should I worry more with small children?" lang="en">
     <p>
-      We are here with two small children and have not had a single dangerous situation in two months. What has changed are habits: closed shoes in the bush, stay on the path, carry a light at night, touch nothing. It is less effort than it sounds, and after two weeks you do it automatically.
+      We are here with two small children and have not had a single dangerous situation in three months, not even since we moved into the rainforest and snakes became part of the property. What has changed are habits: closed shoes in the bush, stay on the path, carry a light at night, touch nothing. It is less effort than it sounds, and after two weeks you do it automatically. We have still had one proper fright.
     </p>
   </AufklappBox>
 
   <div class="trust-box">
     <p>
-      <strong>Where these details come from:</strong> every sighting in this article is our own observation between 25 June and 9 August 2026 in the Byron Bay area, backed by our own video and photo material with recording dates. The snakebite figures come from the
+      <strong>Where these details come from:</strong> every sighting in this article is our own observation between 25 June and 14 September 2026, first around Byron Bay and since late August in the hinterland. Every single one is backed by our own video and photo material with recording dates. The snakebite figures come from the
       <a href="https://www.mja.com.au/journal/2017/207/3/australian-snakebite-project-2005-2015-asp-20" rel="nofollow noopener" target="_blank">Australian Snakebite Project (ASP-20)</a>,
-      Medical Journal of Australia 2017. Whale season according to WWF Australia and Visit NSW; crocodile and cassowary ranges according to Australian government agencies and conservation organisations.
+      Medical Journal of Australia 2017. Whale season according to WWF Australia and Visit NSW, the wombat range according to the
+      <a href="https://australian.museum/learn/animals/mammals/bare-nosed-wombat/" rel="nofollow noopener" target="_blank">Australian Museum</a>,
+      saltwater crocodile and cassowary ranges according to Australian government agencies and conservation organisations.
     </p>
   </div>
 
   <div class="update-log">
-    <p><strong>Last updated:</strong> 3 September 2026. The list keeps growing and we keep updating it.</p>
+    <p><strong>Last updated:</strong> 15 September 2026. Published on 3 September, extended since then by the rainforest section, two snake species, goanna, gecko and cane toad. The list keeps growing and we keep updating it.</p>
   </div>
 
   <WeiterlesenPfade
