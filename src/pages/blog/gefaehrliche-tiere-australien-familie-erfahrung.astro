@@ -59,11 +59,12 @@ const gesehenAnzahl = tiere.filter((t) => t.gesehen).length;
 const gesamt = tiere.length;
 
 const tocEintraege = [
-  { id: 'bilanz',       label: 'Unsere Bilanz nach zwei Monaten' },
+  { id: 'bilanz',       label: 'Unsere Bilanz nach drei Monaten' },
   { id: 'erste-tage',   label: 'Die ersten Begegnungen' },
   { id: 'wale',         label: 'Wale, und wie man sie verpasst' },
   { id: 'wallaby',      label: 'Das Wallaby, auf das wir warten mussten' },
   { id: 'schlangen',    label: 'Schlangen: was die Zahlen sagen' },
+  { id: 'regenwald',    label: 'Nachtrag: der Regenwald' },
   { id: 'gibt-es-nicht',label: 'Was es hier nicht gibt' },
   { id: 'deine-liste',  label: 'Deine Liste zum Mitnehmen' },
   { id: 'faq',          label: 'Häufige Fragen' },
@@ -73,13 +74,13 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
 ---
 
 <ArtikelLayout
-  title="Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist"
+  title="Gefährliche Tiere in Australien: was uns in drei Monaten wirklich begegnet ist"
   seoTitle="Gefährliche Tiere in Australien: unsere Erfahrung mit Kindern"
-  description="Zwei Monate Byron Bay mit zwei kleinen Kindern: 15 Tierarten selbst gesehen, eine Schlange, keine einzige gefährliche Situation. Was die Statistik zu Schlangenbissen wirklich sagt und welche Tiere es hier gar nicht gibt."
+  description="Drei Monate Ostküste mit zwei kleinen Kindern: 18 Tierarten selbst gesehen, drei Schlangen, keine gefährliche Situation. Was die Statistik zu Schlangenbissen wirklich sagt."
   lang="de"
   eyebrow="Alltag in Australien"
-  datum="3. September 2026"
-  lesezeit="11 Minuten"
+  datum="15. September 2026"
+  lesezeit="15 Minuten"
 >
   <Fragment slot="head">
     <link rel="canonical" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
@@ -87,13 +88,13 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <link rel="alternate" hreflang="en" href="https://wildgewachsen-australien.de/en/dangerous-animals-australia-family-experience" />
     <link rel="alternate" hreflang="x-default" href="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist" />
-    <meta property="og:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation. Was die Statistik wirklich sagt." />
+    <meta property="og:title" content="Gefährliche Tiere in Australien: was uns in drei Monaten wirklich begegnet ist" />
+    <meta property="og:description" content="18 Tierarten selbst gesehen, drei Schlangen, keine gefährliche Situation. Was die Statistik wirklich sagt." />
     <meta property="og:url" content="https://wildgewachsen-australien.de/blog/gefaehrliche-tiere-australien-familie-erfahrung" />
     <meta property="og:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Gefährliche Tiere in Australien: unsere Erfahrung mit Kindern" />
-    <meta name="twitter:description" content="15 Tierarten selbst gesehen, eine Schlange, keine gefährliche Situation." />
+    <meta name="twitter:description" content="18 Tierarten selbst gesehen, drei Schlangen, keine gefährliche Situation." />
     <meta name="twitter:image" content="https://wildgewachsen-australien.de/assets/images/au-buckelwal-drohne-byron-og.jpg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -101,10 +102,10 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      headline: 'Gefährliche Tiere in Australien: was uns in zwei Monaten wirklich begegnet ist',
-      description: 'Zwei Monate Byron Bay mit zwei kleinen Kindern: 15 Tierarten selbst gesehen, eine Schlange, keine einzige gefährliche Situation.',
+      headline: 'Gefährliche Tiere in Australien: was uns in drei Monaten wirklich begegnet ist',
+      description: 'Drei Monate an der australischen Ostküste mit zwei kleinen Kindern: 18 Tierarten selbst gesehen, drei Schlangen, keine gefährliche Situation.',
       datePublished: '2026-09-03',
-      dateModified: '2026-09-03',
+      dateModified: '2026-09-15',
       inLanguage: 'de-DE',
       image: {
         '@type': 'ImageObject',
@@ -159,10 +160,10 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         },
         {
           '@type': 'Question',
-          name: 'Gibt es in Byron Bay Krokodile?',
+          name: 'Gibt es in Byron Bay Saltwater Crocodiles?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nein. Das Leistenkrokodil kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Byron Bay liegt rund tausend Kilometer weiter südlich in New South Wales, weit außerhalb des Verbreitungsgebiets.',
+            text: 'Nein. Das Saltwater Crocodile kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Byron Bay liegt rund tausend Kilometer weiter südlich in New South Wales, weit außerhalb des Verbreitungsgebiets.',
           },
         },
         {
@@ -170,7 +171,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
           name: 'Wann kann man in Byron Bay Wale sehen?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Buckelwale ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Wanderroute. Wir haben unsere ersten Wale am 3. Juli gesehen.',
+            text: 'Humpback Whales ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Wanderroute. Wir haben unsere ersten Wale am 3. Juli gesehen.',
           },
         },
       ],
@@ -194,10 +195,10 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <div class="info-box">
     <p class="info-box__titel">Das Wichtigste in Kürze</p>
     <ul>
-      <li>In zwei Monaten haben wir <strong>{gesehenAnzahl} Tierarten</strong> selbst gesehen, vom Delfin am Ankunftstag bis zum Koala über dem Wanderweg.</li>
-      <li><strong>Eine einzige Schlange</strong>, klein, am Wegrand, in Sekunden verschwunden. Kein Foto, keine gefährliche Situation.</li>
+      <li>In drei Monaten haben wir <strong>{gesehenAnzahl} Tierarten</strong> selbst gesehen, vom Dolphin am Ankunftstag bis zum Goanna im eigenen Garten.</li>
+      <li><strong>Drei Schlangen</strong>, zwei davon seit dem Umzug in den Regenwald. Eine Green Tree Snake wohnt an der Steinmauer neben dem Pool. Gefährlich wurde bis heute keine Begegnung.</li>
       <li>Laut Australian Snakebite Project sterben in Australien <strong>im Mittel zwei Menschen pro Jahr</strong> an Schlangenbissen. Fast die Hälfte aller Bisse passiert, weil jemand ahnungslos in der Nähe war.</li>
-      <li><strong>Krokodile und Kasuare gibt es hier nicht.</strong> Beide leben deutlich weiter nördlich.</li>
+      <li><strong>Saltwater Crocodile und Cassowary gibt es hier nicht</strong>, und auch den Wombat sucht man an dieser Küste vergeblich. Alle drei leben woanders.</li>
       <li>Unten findest du eine <strong>Liste zum Abhaken und Ausdrucken</strong> für deine eigene Zeit hier.</li>
     </ul>
   </div>
@@ -210,7 +211,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     Ich kann das inzwischen beantworten, aber nicht so, wie man es erwartet. Wir sind am 25. Juni in Byron Bay angekommen. Was seitdem passiert ist, war weniger dramatisch und deutlich schöner, als ich selbst gedacht hätte. Und der eine Moment, in dem es wirklich um etwas ging, kam nicht von einem Tier, sondern von einer Nachbarin und ihrer Geschichte.
   </p>
 
-  <h2 id="bilanz">Unsere Bilanz nach zwei Monaten</h2>
+  <h2 id="bilanz">Unsere Bilanz nach drei Monaten</h2>
 
   <p>
     Das hier ist keine Liste von Tieren, die es in Australien gibt. Das ist die Liste der Tiere, die wir mit eigenen Augen gesehen haben, mit Datum, an der Ostküste zwischen Byron Bay und dem Hinterland. Jedes Feld mit Stempel steht für einen Tag, an dem wir dastanden und geschaut haben.
@@ -249,27 +250,27 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         src="/assets/images/au-kaenguru-mit-joey-p960.jpg"
         width="720"
         height="960"
-        alt="Känguru auf einer Rasenfläche, im Beutel schaut ein Jungtier heraus, im Vordergrund unscharf eine Schulter."
+        alt="Kangaroo auf einer Rasenfläche, im Beutel schaut ein Jungtier heraus, im Vordergrund unscharf eine Schulter."
         loading="lazy"
       />
     </picture>
     <figcaption>
-      <strong>Nicht aus diesen zwei Monaten.</strong> Ein großes Känguru haben wir seit dem 25. Juni nicht gesehen. Dieses Bild ist vom Januar 2018, aus unserer früheren Zeit in Australien. Es steht hier für das, worauf wir noch warten.
+      <strong>Nicht aus diesen drei Monaten.</strong> Ein großes Kangaroo haben wir seit dem 25. Juni nicht gesehen. Dieses Bild ist vom Januar 2018, aus unserer früheren Zeit in Australien. Es steht hier für das, worauf wir noch warten.
     </figcaption>
   </figure>
 
   <h2 id="erste-tage">Die ersten Begegnungen</h2>
 
   <p>
-    Das erste spannende Tier war keine Schlange, keine Spinne und kein Meeresbewohner. Am Ankunftstag lief neben dem Küstenpfad ein dunkler, hühnergroßer Vogel am Zaun entlang und scharrte im Laub. Kein Känguru, kein Koala. Ein Buschhuhn, hier heißt es Brush Turkey. Ich mag die Tiere. Am Strand sollte man sein Essen trotzdem im Blick behalten. Ich habe selbst gesehen, wie sie Zip-Beutel aufbekommen und Chipstüten aufreißen.
+    Das erste spannende Tier war keine Schlange, keine Spinne und kein Meeresbewohner. Am Ankunftstag lief neben dem Küstenpfad ein dunkler, hühnergroßer Vogel am Zaun entlang und scharrte im Laub. Kein Kangaroo, kein Koala. Ein Brush Turkey. Ich mag die Tiere. Am Strand sollte man sein Essen trotzdem im Blick behalten. Ich habe selbst gesehen, wie sie Zip-Beutel aufbekommen und Chipstüten aufreißen.
   </p>
 
   <p>
-    Am selben Tag dann, vom Strand aus, eine Rückenflosse im Wasser. Delfine, an Tag eins. Damit hatte ich nicht gerechnet.
+    Am selben Tag dann, vom Strand aus, eine Rückenflosse im Wasser. Dolphins, an Tag eins. Damit hatte ich nicht gerechnet.
   </p>
 
   <p>
-    Am nächsten Abend hingen Flughunde kopfüber in einem Baum, die Blätter noch nass vom Regen. Drei Tage später saß ein Kookaburra auf einem Wegweiser zum Strand und ließ sich in Ruhe ansehen.
+    Am nächsten Abend hingen Flying Foxes kopfüber in einem Baum, die Blätter noch nass vom Regen. Drei Tage später saß ein Kookaburra auf einem Wegweiser zum Strand und ließ sich in Ruhe ansehen.
   </p>
 
   <FotoStory
@@ -278,18 +279,18 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     bilder={[
       {
         src: '/assets/images/au-buschhuhn-zaun-byron.jpg',
-        alt: 'Buschhuhn mit rotem Kopf und gelbem Kehllappen scharrt im Laub an einem Zaunpfosten neben dem Küstenpfad.',
-        caption: '25. Juni: das allererste Tier. Ein Buschhuhn am Zaun, kein Känguru.',
+        alt: 'Brush Turkey mit rotem Kopf und gelbem Kehllappen scharrt im Laub an einem Zaunpfosten neben dem Küstenpfad.',
+        caption: '25. Juni: das allererste Tier. Ein Brush Turkey am Zaun, kein Kangaroo.',
       },
       {
         src: '/assets/images/au-delfin-finne-tag-eins.jpg',
-        alt: 'Dunkler Delfinrücken mit Finne durchbricht die graue Wasseroberfläche, weit vom Strand entfernt.',
+        alt: 'Dunkler Dolphin-Rücken mit Finne durchbricht die graue Wasseroberfläche, weit vom Strand entfernt.',
         caption: 'Am selben Tag, weit draußen: eine Rückenflosse. Mehr war nicht zu sehen, und es reichte.',
       },
       {
         src: '/assets/images/au-flughunde-baum-byron.jpg',
-        alt: 'Mehrere Flughunde hängen kopfüber mit zusammengefalteten Flügeln in den Ästen eines Baumes, rostrotes Nackenfell.',
-        caption: '26. Juni: Flughunde im Baum, die Blätter noch nass vom Regen.',
+        alt: 'Mehrere Flying Foxes hängen kopfüber mit zusammengefalteten Flügeln in den Ästen eines Baumes, rostrotes Nackenfell.',
+        caption: '26. Juni: Flying Foxes im Baum, die Blätter noch nass vom Regen.',
       },
       {
         src: '/assets/images/au-kookaburra-wegweiser.jpg',
@@ -334,7 +335,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </figure>
 
   <p>
-    Zwanzig Minuten später, von den Klippen aus, ein dunkler Schatten im türkisen Wasser. Ein Hai, groß, und er schwamm aus der Richtung der Surfer. Ich habe unten Bescheid gesagt. Es schien niemanden zu stören. Ich hatte an dem Tag eigentlich selbst noch surfen wollen und habe es gelassen. Der Respekt war dann doch größer.
+    Zwanzig Minuten später, von den Klippen aus, ein dunkler Schatten im türkisen Wasser. Ein Shark, groß, und er schwamm aus der Richtung der Surfer. Ich habe unten Bescheid gesagt. Es schien niemanden zu stören. Ich hatte an dem Tag eigentlich selbst noch surfen wollen und habe es gelassen. Der Respekt war dann doch größer.
   </p>
 
   <figure class="artikel-figur">
@@ -354,12 +355,12 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <h2 id="wale">Wale, und wie man sie verpasst</h2>
 
   <p>
-    Cape Byron ist der östlichste Punkt Australiens und liegt damit direkt auf der Wanderroute der Buckelwale. Zwischen Mai und November ziehen sie an der Ostküste vorbei, auf dem Weg von der Antarktis nach Norden und später mit den Kälbern wieder zurück.
+    Cape Byron ist der östlichste Punkt Australiens und liegt damit direkt auf der Wanderroute der Humpback Whales. Zwischen Mai und November ziehen sie an der Ostküste vorbei, auf dem Weg von der Antarktis nach Norden und später mit den Kälbern wieder zurück.
   </p>
 
   <figure class="chart-figur">
-    <svg viewBox="0 0 300 74" role="img" aria-label="Balkendiagramm: Buckelwale sind an der Ostküste von Mai bis November zu sehen, mit den höchsten Werten von Juli bis Oktober. Von Dezember bis April sind keine Wale zu erwarten.">
-      <title>Wann Buckelwale vorbeiziehen</title>
+    <svg viewBox="0 0 300 74" role="img" aria-label="Balkendiagramm: Humpback Whales sind an der Ostküste von Mai bis November zu sehen, mit den höchsten Werten von Juli bis Oktober. Von Dezember bis April sind keine Wale zu erwarten.">
+      <title>Wann Humpback Whales vorbeiziehen</title>
       <text x="4" y="10" font-family="Courier Prime, monospace" font-size="8" fill="#695A48">BUCKELWAL — WANN</text>
       {monate.map((m, i) => {
         const hoehe = [0, 0, 0, 0, 8, 18, 30, 32, 28, 26, 14, 0][i];
@@ -376,7 +377,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </figure>
 
   <p>
-    Am 3. Juli stand ich am Housesit und draußen zogen welche vorbei, weit genug weg, dass man sie nur an den Fontänen erkannte. Am 26. Juli bin ich mit der Drohne losgezogen, um endlich gute Aufnahmen zu bekommen. Erst war es zu windig. Dann waren die Wale zu weit draußen. Dann fand ich Delfine statt Wale.
+    Am 3. Juli stand ich am Housesit und draußen zogen welche vorbei, weit genug weg, dass man sie nur an den Fontänen erkannte. Am 26. Juli bin ich mit der Drohne losgezogen, um endlich gute Aufnahmen zu bekommen. Erst war es zu windig. Dann waren die Wale zu weit draußen. Dann fand ich Dolphins statt Wale.
   </p>
 
   <figure class="artikel-figur">
@@ -386,11 +387,11 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
         src="/assets/images/au-delfine-drohne-byron.jpg"
         width="1200"
         height="675"
-        alt="Luftaufnahme von fünf Delfinen dicht unter der Oberfläche in grünem Wasser, einer hebt die Schwanzflosse aus dem Wasser."
+        alt="Luftaufnahme von fünf Dolphins dicht unter der Oberfläche in grünem Wasser, einer hebt die Schwanzflosse aus dem Wasser."
         loading="lazy"
       />
     </picture>
-    <figcaption>„Keine Wale, aber da hinten sind ein paar Delfine." Fünf Stück, einer hebt die Fluke.</figcaption>
+    <figcaption>„Keine Wale, aber da hinten sind ein paar Dolphins." Fünf Stück, einer hebt die Fluke.</figcaption>
   </figure>
 
   <p>
@@ -430,7 +431,7 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </p>
 
   <p>
-    Am 29. Juli saß dann noch etwas auf einem Stein am Wegrand, aufgerichtet und völlig regungslos, und ließ sich aus zwei Metern ansehen. Rostrote Brust, gezackter Kamm im Nacken, dunkler Streifen durchs Auge. Nach allem, was ich dazu finde, eine Australische Wasseragame. Sicher bin ich nicht, und das ist der Übergang zum nächsten Teil.
+    Am 29. Juli saß dann noch etwas auf einem Stein am Wegrand, aufgerichtet und völlig regungslos, und ließ sich aus zwei Metern ansehen. Rostrote Brust, gezackter Kamm im Nacken, dunkler Streifen durchs Auge. Nach allem, was ich dazu finde, ein Water Dragon. Sicher bin ich nicht, und das ist der Übergang zum nächsten Teil.
   </p>
 
   <figure class="artikel-figur">
@@ -582,6 +583,100 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   </div>
   <!-- ══════════ ENDE ERNSTER TEIL ══════════ -->
 
+  <h2 id="regenwald">Nachtrag: der Regenwald</h2>
+
+  <p>
+    Alles bis hierher ist an der Küste passiert, in den ersten zwei Monaten. Ende August sind wir umgezogen, weg vom Meer, rein ins Hinterland. Ein Grundstück im Regenwald, Pool, Pferdewiese, offene Veranda. Ich hatte damals gesagt, es sei ein bisschen rudimentärer alles. Das stimmt auch. Was ich nicht auf dem Zettel hatte: Die Liste, die vorher zwei Monate lang gemächlich gewachsen war, hat sich in den zwei Wochen danach fast überschlagen.
+  </p>
+
+  <h3>Die letzten Tage an der alten Adresse</h3>
+
+  <p>
+    Es fing klein an. Am 21. August saß morgens eine kleine braune Echse an der Backsteinwand neben dem Kissen auf der Veranda. Vier Tage später eine Cane Toad auf demselben Beton, faustgroß, völlig unbeeindruckt. Lucy hat sie mit dem Besen über die Kante geschoben und danach weiter geharkt. Das ist, glaube ich, der ehrlichste Wildlife-Clip, den wir haben. Kein Drama, ein Handgriff, weitermachen.
+  </p>
+
+  <p>
+    Am Tag darauf saß eine Huntsman auf dem Kescher am Poolrand. Handteller-groß, flach, regungslos. Abends dann noch eine zweite Cane Toad im Gras am Straßenrand. Bis dahin hatte ich sechs Wochen lang keine davon gesehen. Dann drei in zwei Tagen.
+  </p>
+
+  <h3>Der Umzugstag hatte schon Besuch</h3>
+
+  <p>
+    Am 28. August haben wir das Auto zweimal vollgepackt, eine Stunde pro Weg. Abends um kurz nach sieben saß ein Gecko am dunklen Holzbalken unter der Decke. Zwanzig Minuten später saß er auf der Fransendecke auf dem Sofa. Erster Abend, erstes Tier im Haus, und ehrlich gesagt war das eher lustig als irgendwas anderes.
+  </p>
+
+  <h3>Der 3. September</h3>
+
+  <p>
+    Nachmittags um kurz nach drei kroch etwas Dünnes, Grünbraunes am Fuß der Natursteinmauer durchs Gras und verschwand im Farn neben dem Pool. Wir haben dagestanden und gewartet. Ein paar Minuten später kam sie über die roten Terrassenfliesen wieder raus, in aller Ruhe, und ich hatte zum ersten Mal überhaupt eine Schlange auf Video. Eine Green Tree Snake. Ungiftig.
+  </p>
+
+  <p>
+    In derselben Nacht lag noch eine zweite im Gebüsch, deutlich größer, eine Python. Ich habe sie mit der Taschenlampe angeleuchtet. Joris stand neben mir und hat hinterher gesagt: „Ich hatte auch voll Angst." Er hatte sie trotzdem angeschaut, bis ich das Licht wieder ausgemacht habe.
+  </p>
+
+  <p>
+    Das war der Tag, an dem sich die Frage aus der Überschrift zum ersten Mal wirklich gestellt hat. Nicht als Statistik, sondern abends, im Dunkeln, mit einem Sechsjährigen an der Hand.
+  </p>
+
+  <h3>Und dann ging es einfach weiter</h3>
+
+  <p>
+    Am 5. September stand Joris morgens an der offenen Tür und zeigte aufgeregt nach draußen. Ein Goanna, unten im Hanggarten. Bis ich mit der Kamera da war, wackelte nur noch der Busch. Abgehakt haben wir ihn trotzdem, ich habe ihn ja gesehen, wenn auch nur kurz.
+  </p>
+
+  <p>
+    Am 12. September nachts eine große flache Spinne an der weißen Außenwand, angeleuchtet von der Lampe. Am 13. September lief eine kleine Eidechse morgens über den Frühstückstisch und blieb im Sonnenstreifen zwischen Erdnussbutter und Vorratsgläsern stehen. Man gewöhnt sich schneller daran, als man denkt.
+  </p>
+
+  <h3>Der 14. September, zwei Schlangen an einem Tag</h3>
+
+  <p>
+    Um 09:54 Uhr lag sie wieder da. Dieselbe Mauer, dieselbe Ecke am Poolrand wie elf Tage vorher. Eine Green Tree Snake, oliv-bronzefarbener Rücken, hell-lachsfarbene Flanke, und wir haben ihr zehn Minuten am Stück zugeschaut, wie sie sich zwischen den Findlingen durchzieht und wieder unter die Blätter schiebt.
+  </p>
+
+  <p>
+    Das ist der Punkt, an dem sich für mich etwas verschoben hat. Es ist keine Begegnung mehr. Ich habe sie inzwischen mehrfach an genau dieser Stelle gesehen. <strong>Die Schlangen wohnen dort.</strong> Sie sind kein Ereignis, sie sind Nachbarn. Und man richtet sich anders ein, wenn man das einmal verstanden hat, als wenn man auf den einen dramatischen Moment wartet.
+  </p>
+
+  <p>
+    Nachmittags um zehn vor vier, etwa neunzig Meter vom Haus, lag die zweite. Dick, kräftig, schwarz-cremefarbenes Netzmuster, zusammengerollt in einer Felsspalte. Eine Python. Und da kam die Frage, auf die dieser ganze Artikel eigentlich hinausläuft, von einem der Kinder:
+  </p>
+
+  <PullQuote quelle="14. September, aus dem Video" lang="de">
+    Sind die gar nicht, gar nicht gefährlich?
+  </PullQuote>
+
+  <p>
+    Die Antwort war: Die sind nicht giftig. Nein, sind sie nicht. Und die Antwort stimmt. Pythons töten durch Umschlingen, nicht durch Gift. Für einen Menschen sind die hier kein Problem, für ein Huhn schon.
+  </p>
+
+  <p>
+    Vorher hatte im selben Video noch ein anderer Satz gestanden, und der sagt über das Auswandern mit Familie mehr aus als alles andere in diesem Abschnitt. Eins der Kinder hat gefragt, ob es schnell Bescheid sagen darf. Die Antwort: Lieber nicht. Wieso? Dann kriegt sie wieder Angst.
+  </p>
+
+  <Randnotiz ausrichtung="rechts" pfeil={true} lang="de">
+    Da stehen zwei Leute vor einer Python und beraten, wer davon erfahren soll und wer besser nicht. Das ist der eigentliche Alltag mit gefährlichen Tieren.
+  </Randnotiz>
+
+  <h3>Lucys Seite davon</h3>
+
+  <p>
+    Ich bin derjenige mit der Kamera, deshalb steht hier meine Version. Lucy hat eine eigene, und die ist nüchterner. Sie war mit Linnea unterwegs, als wenige Minuten von unserem künftigen Haus entfernt eine sehr große Python auf der Straße lag. Ihre Erklärung dafür war weder Pech noch Drama, sondern Geografie: Hier ist ein Fluss, hier ist Regenwald, also sind hier mehr Schlangen. Dazu große Cane Toads und, wie sie sagt, richtig grüne Frösche.
+  </p>
+
+  <p>
+    Das Haus, in das wir als Nächstes ziehen, hat keine Flyscreens an Türen und Fenstern. Lucy will sie nachrüsten lassen, und ihre Begründung ist der beste Satz, den ich zu diesem Thema von uns beiden gehört habe:
+  </p>
+
+  <PullQuote quelle="Lucy, Ende August" lang="de">
+    Weil ich schon wissen will, was so im Haus drin ist und womit ich rechnen kann, wenn ich irgendwo rumlaufe und irgendwas ausräume.
+  </PullQuote>
+
+  <p>
+    Das ist keine Angst. Das ist die Übersetzung von Respekt in einen Handwerkerauftrag. Und es ist genau die Haltung, die uns hier durch drei Monate getragen hat: nichts kleinreden, nichts aufbauschen, ein Fliegengitter bestellen.
+  </p>
+
   <h2 id="gibt-es-nicht">Was es hier nicht gibt</h2>
 
   <p>
@@ -591,17 +686,24 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   <figure class="nichtda">
     <figcaption>Kommt hier nicht vor</figcaption>
     <div class="nichtda__reihe">
-      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Krokodil">
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Saltwater Crocodile">
         <span class="zeichnung-platz__label">Zeichnung folgt</span>
-        <span class="zeichnung-platz__name">Leistenkrokodil</span>
+        <span class="zeichnung-platz__name">Saltwater Crocodile</span>
       </div>
-      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Kasuar">
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Cassowary">
         <span class="zeichnung-platz__label">Zeichnung folgt</span>
-        <span class="zeichnung-platz__name">Kasuar</span>
+        <span class="zeichnung-platz__name">Cassowary</span>
+      </div>
+      <div class="zeichnung-platz zeichnung-platz--durchgestrichen" data-tier="Wombat">
+        <span class="zeichnung-platz__label">Zeichnung folgt</span>
+        <span class="zeichnung-platz__name">Wombat</span>
       </div>
     </div>
     <p class="nichtda__text">
-      Das <strong>Leistenkrokodil</strong> kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Wir sind rund tausend Kilometer weiter südlich. Der <strong>Kasuar</strong> lebt in den Wet Tropics im Nordosten Queenslands, zwischen Cooktown und Townsville. Beides ist von hier so weit weg wie Hamburg von Rom.
+      Das <strong>Saltwater Crocodile</strong> kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor. Wir sind rund tausend Kilometer weiter südlich. Der <strong>Cassowary</strong> lebt in den Wet Tropics im Nordosten Queenslands, zwischen Cooktown und Townsville. Beides ist von hier so weit weg wie Hamburg von Rom.
+    </p>
+    <p class="nichtda__text">
+      Der <strong>Wombat</strong> hat mich selbst überrascht. Er stand lange auf unserer Liste, bis ich nachgelesen habe. Laut <a href="https://australian.museum/learn/animals/mammals/bare-nosed-wombat/" rel="nofollow noopener" target="_blank">Australian Museum</a> lebt er in Nord-New-South-Wales nur in Hartlaubwald oberhalb von etwa 600 Metern, und Regenwald meidet er. Wir wohnen im Regenwald, deutlich tiefer. Er ist aus unserer Liste geflogen, bevor wir ihn je abhaken konnten.
     </p>
   </figure>
 
@@ -654,34 +756,36 @@ const monate = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
     </p>
   </AufklappBox>
 
-  <AufklappBox titel="Gibt es in Byron Bay Krokodile?" lang="de">
+  <AufklappBox titel="Gibt es in Byron Bay Saltwater Crocodiles?" lang="de">
     <p>
-      Nein. Das Leistenkrokodil kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor, also rund tausend Kilometer nördlich von hier.
+      Nein. Das Saltwater Crocodile kommt an der Ostküste nur bis etwa Gladstone und Rockhampton in Queensland vor, also rund tausend Kilometer nördlich von hier.
     </p>
   </AufklappBox>
 
   <AufklappBox titel="Wann kann man hier Wale sehen?" lang="de">
     <p>
-      Buckelwale ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Route. Unsere ersten haben wir am 3. Juli gesehen, den schönsten am 26. Juli direkt neben den Surfern.
+      Humpback Whales ziehen zwischen Mai und November an der Ostküste vorbei. Cape Byron liegt als östlichster Punkt Australiens direkt auf der Route. Unsere ersten haben wir am 3. Juli gesehen, den schönsten am 26. Juli direkt neben den Surfern.
     </p>
   </AufklappBox>
 
   <AufklappBox titel="Muss ich mir mit kleinen Kindern mehr Sorgen machen?" lang="de">
     <p>
-      Wir sind mit zwei kleinen Kindern hier und haben in zwei Monaten keine einzige gefährliche Situation gehabt. Was sich geändert hat, sind Gewohnheiten: feste Schuhe im Busch, auf dem Weg bleiben, nachts Licht mitnehmen, nichts anfassen. Das ist weniger Aufwand, als es klingt, und nach zwei Wochen macht man es automatisch.
+      Wir sind mit zwei kleinen Kindern hier und haben in drei Monaten keine einzige gefährliche Situation gehabt, auch nicht, seit wir im Regenwald wohnen und Schlangen zum Grundstück gehören. Was sich geändert hat, sind Gewohnheiten: feste Schuhe im Busch, auf dem Weg bleiben, nachts Licht mitnehmen, nichts anfassen. Das ist weniger Aufwand, als es klingt, und nach zwei Wochen macht man es automatisch. Erschrocken haben wir uns trotzdem, einmal richtig.
     </p>
   </AufklappBox>
 
   <div class="trust-box">
     <p>
-      <strong>Woher diese Angaben stammen:</strong> Alle Sichtungen in diesem Artikel sind eigene Beobachtungen zwischen dem 25. Juni und dem 9. August 2026 im Raum Byron Bay, belegt durch eigenes Film- und Fotomaterial mit Aufnahmedatum. Die Zahlen zu Schlangenbissen stammen aus dem
+      <strong>Woher diese Angaben stammen:</strong> Alle Sichtungen in diesem Artikel sind eigene Beobachtungen zwischen dem 25. Juni und dem 14. September 2026, zuerst im Raum Byron Bay, seit Ende August im Hinterland. Jede einzelne ist durch eigenes Film- und Fotomaterial mit Aufnahmedatum belegt. Die Zahlen zu Schlangenbissen stammen aus dem
       <a href="https://www.mja.com.au/journal/2017/207/3/australian-snakebite-project-2005-2015-asp-20" rel="nofollow noopener" target="_blank">Australian Snakebite Project (ASP-20)</a>,
-      Medical Journal of Australia 2017. Angaben zur Walsaison nach WWF Australia und Visit NSW, Verbreitungsgebiete von Krokodil und Kasuar nach Angaben australischer Behörden und Naturschutzorganisationen.
+      Medical Journal of Australia 2017. Angaben zur Walsaison nach WWF Australia und Visit NSW, das Verbreitungsgebiet des Wombat nach
+      <a href="https://australian.museum/learn/animals/mammals/bare-nosed-wombat/" rel="nofollow noopener" target="_blank">Australian Museum</a>,
+      die von Saltwater Crocodile und Cassowary nach Angaben australischer Behörden und Naturschutzorganisationen.
     </p>
   </div>
 
   <div class="update-log">
-    <p><strong>Stand:</strong> 3. September 2026. Die Liste wächst weiter, wir aktualisieren sie.</p>
+    <p><strong>Stand:</strong> 15. September 2026. Erschienen am 3. September, seitdem um den Abschnitt zum Regenwald, zwei Schlangenarten, Goanna, Gecko und Cane Toad erweitert. Die Liste wächst weiter, wir aktualisieren sie.</p>
   </div>
 
   <WeiterlesenPfade
