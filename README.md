@@ -11,7 +11,7 @@ Production-Branch `main`). Details und Historie: [`DEPLOY.md`](DEPLOY.md).
 
 ## Pflicht-Gates vor jedem Push
 
-Alle sieben in dieser Reihenfolge, alle muessen gruen sein (Exit 0):
+Alle acht in dieser Reihenfolge, alle muessen gruen sein (Exit 0):
 
 ```bash
 npm run gates
@@ -25,11 +25,18 @@ Das ist eine Verkettung von:
 | 2 | `node tools/link-check.mjs` | jede interne Referenz (`a`, `img`, `srcset`, `link`, `script`, `video`) aller `dist`-Seiten zeigt auf eine existierende Datei | immer |
 | 3 | `node tools/sprachlink-check.mjs` | der DE⇄EN-Umschalter jeder Seite zeigt auf ihr echtes Gegenstueck, nicht auf die Startseite. Paare kommen aus den `hreflang`-Tags der Seiten selbst, **nicht** aus dem Snapshot | immer |
 | 4 | `node tools/head-parity.mjs` | SEO-Kopf gegen den Cutover-Snapshot: Canonical, hreflang, og:image, JSON-LD-Typen, GoatCounter, `html[lang]` | immer |
-| 5 | `node tools/urlmap-diff.mjs` | URL-Kontinuitaet: jede Alt-URL und jede Sitemap-URL wird geliefert; Pflicht-Statics vorhanden | immer |
-| 6 | `node tools/klaro-diff.mjs` | Consent-Banner: keine Seite hat Klaro verloren | immer |
-| 7 | `node tools/contrast.mjs` | WCAG-AA-Kontrast der Farbpaare aus `src/styles/tokens.css` | immer (Pflicht bei Token-Aenderungen) |
+| 5 | `node tools/schema-check.mjs` | JSON-LD-Inhalt: jedes `ImageObject` mit `creditText`/`copyrightHolder` traegt auch `creator`, `copyrightNotice`, `license`, `acquireLicensePage`; jede Artikelseite hat BlogPosting + FAQPage + BreadcrumbList | immer |
+| 6 | `node tools/urlmap-diff.mjs` | URL-Kontinuitaet: jede Alt-URL und jede Sitemap-URL wird geliefert; Pflicht-Statics vorhanden | immer |
+| 7 | `node tools/klaro-diff.mjs` | Consent-Banner: keine Seite hat Klaro verloren | immer |
+| 8 | `node tools/contrast.mjs` | WCAG-AA-Kontrast der Farbpaare aus `src/styles/tokens.css` | immer (Pflicht bei Token-Aenderungen) |
 
-Gates 2–6 brauchen ein gebautes `dist/` und brechen sonst mit Exit 2 ab.
+Gates 2–7 brauchen ein gebautes `dist/` und brechen sonst mit Exit 2 ab.
+
+**Unterschied Gate 4 zu Gate 5:** `head-parity` prueft, ob ein JSON-LD-Block noch
+*da* ist (Typ-Ebene, gegen den Snapshot). `schema-check` prueft, ob sein *Inhalt*
+vollstaendig ist, und zwar fuer alle Seiten, auch fuer die nach dem Cutover neu
+dazugekommenen. Ein neuer Artikel taucht im Snapshot gar nicht auf, faellt also
+durch Gate 4 nie auf — genau so ist die GSC-Meldung vom 17.09.2026 entstanden.
 
 Fuer Blog-Artikel kommen die Redaktions-Gates aus den Projekt-Regeln dazu
 (`blog-seo-check`, `blog-factcheck`, Sitemap-Eintrag, Startseite + Blog-Uebersicht) —
@@ -37,7 +44,7 @@ siehe `Projekt_Wildgewachsen/CLAUDE.md`.
 
 ## Wogegen die Paritaets-Gates pruefen
 
-Gates 4–6 vergleichen den frischen Build gegen
+Gates 4, 6 und 7 vergleichen den frischen Build gegen
 **`migration/site_snapshot.json`** — einen eingefrorenen Abzug der alten Site vom
 22.07.2026 (45 Seiten, 2×21 Sitemap-URLs). Das ist der Stand, den Google zum
 Cutover indexiert hatte.
@@ -93,7 +100,7 @@ die URL-Paritaet zur Alt-Site.
 | `npm run dev` | Dev-Server (zeigt auch die Styleguide-Seiten) |
 | `npm run build` | Production-Build nach `dist/` inkl. postbuild |
 | `npm run preview` | gebautes `dist/` lokal ansehen |
-| `npm run gates` | alle sieben Pflicht-Gates nacheinander |
+| `npm run gates` | alle acht Pflicht-Gates nacheinander |
 
 ## Weitere Skripte in `tools/`
 

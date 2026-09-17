@@ -10,7 +10,7 @@
     "build": "astro build && node tools/postbuild.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "gates": "npm run build && node tools/link-check.mjs && node tools/sprachlink-check.mjs && node tools/head-parity.mjs && node tools/urlmap-diff.mjs && node tools/klaro-diff.mjs && node tools/contrast.mjs"
+    "gates": "npm run build && node tools/link-check.mjs && node tools/sprachlink-check.mjs && node tools/head-parity.mjs && node tools/schema-check.mjs && node tools/urlmap-diff.mjs && node tools/klaro-diff.mjs && node tools/contrast.mjs"
   },
   "dependencies": {
     "@fontsource-variable/alegreya": "^5.3.0",
